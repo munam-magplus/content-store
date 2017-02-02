@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 development:
   adapter: mysql2
@@ -8,6 +9,17 @@ development:
   username: root
   password: root
 
+=======
+development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: content_store_development
+  pool: 5
+  username: root
+  password: root
+
+>>>>>>> d96609ac841b94e301ffaddaec12ab35c74ae0fb
 # 
 
 test:
