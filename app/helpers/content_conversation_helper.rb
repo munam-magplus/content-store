@@ -1,0 +1,2 @@
+module ContentConversationHelper
+end
