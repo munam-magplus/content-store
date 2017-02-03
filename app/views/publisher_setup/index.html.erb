@@ -1,0 +1,42 @@
+<html>
+<body class = "body1">
+<%= render :partial => '/layouts/header' %>
+<div class="div1">
+<table>
+  <thead>
+    <th class="page_head">Publisher Setup</th>
+  </thead>
+ </table>
+
+<div class="center">
+<table style="text-align:center;">
+  <tr>
+    <td class="gindexborder" colspan="2" valign="top">
+      <%= link_to image_tag("publisher.gif"),publishers_search_path%><br>
+      Publisher
+      <table>
+          <tr>
+            <td class="gindexborder">
+              <%= link_to image_tag("search.gif"), publishers_search_path%>
+            </td>
+            <td class="gindexborder">
+              <%= link_to image_tag("create.gif"),{action: 'new', controller: 'publishers'}%>
+            </td>
+          </tr>
+      </table>
+    </td>
+    <td class="gindexborder" colspan="2" valign="top">
+      <%= image_tag("license_home.gif")%><br>
+      Auto Generation
+    </td>
+    <td class="gindexborder" colspan="2" valign="top">
+      <%= image_tag("site_setting.gif")%><br>
+      Site Settings
+    </td>
+  </tr>
+</table>
+</div>
+</div>
+</body>
+</html>
+

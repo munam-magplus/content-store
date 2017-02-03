@@ -1,0 +1,111 @@
+%body.body1
+%div.div1
+= render :partial => '/layouts/header'
+
+= form_for @publisher do |f|
+  %input{:name => "RequestAction", :type => "hidden", :value => "Create"}/
+  %input{:name => "contactType", :type => "hidden", :value => "1234"}/
+  %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "860", :class => "center"}
+    %tr
+      %td.page_head Create Publisher
+    %tr
+      %td  
+    %tr
+      %td
+        %table{:border => "0", :cellpadding => "6", :cellspacing => "0", :width => "100%", :class => "center"}
+          %tr
+            %td
+              %table{:border => "0", :cellpadding => "10", :cellspacing => "0"}
+                %tbody
+                  %tr
+                    %td{:height => "25"}
+                      Publisher Code
+                      %span.mandtory *
+                    %td{:height => "25"}
+                      = f.text_field :PUB_CODE 
+                      //%input#pubCode.text_field{:name => "code"}/
+                    %td
+                      Publisher Name
+                      %span.mandtory *
+                    %td
+                      = f.text_field :PUB_NAME
+                      //%input.text_field{:name => "name"}/
+                  %tr
+                    %td{:height => "25"} Publisher Status
+                    %td{:height => "25"}
+                      = f.select :PUB_STATUS, options_for_select([ "Live", "Staging"]), :class => 'genForm_dropBox'
+                      //%select.text_field{:name => "statusKey"}
+                      //%option{:value => "staging"} Staging
+                    %td
+                      Publisher Type
+                      %span.mandtory *
+                    %td
+
+                      %select.text_field{:name => "publisherType"}
+                        %option{:selected => "selected", :value => "DIGITAL"} Digital
+                        %option{:value => "ACADEMIC"} Academic
+                        %option{:value => "DISCOVERY"} Discovery
+                  %tr
+                    %td{:height => "25"} Supported End User Language
+                    %td{:height => "25"}
+                      = f.select(:PUB_END_USR_LANGUAGE, [['Dansk', 'da'],
+                                  ['Polish', 'pl'],
+                                  ['Latvian', 'lv'],
+                                  ['English', 'en']],{ :prompt => "Please select"},
+                                  { :multiple => true, :size => 5 })
+                      / //%select.text_field{:multiple => "true", :name => "endUserLanguages", :onblur => "populateDefaultLanguage(this,'defaultEndUserLanguage');", :size => "3"}
+                      /   %option{:value => "da"} Dansk
+                      /   %option{:value => "pl"} Polish
+                      /   %option{:value => "lv"} Latvian
+                      /   %option{:value => "en"} English
+                    %td Supported Manager Language
+                    %td
+                      %select.text_field{:multiple => "true", :name => "managerLanguages", :onblur => "populateDefaultLanguage(this,'defaultManagerLanguage');", :size => "3"}
+                        %option{:value => "da"} Dansk
+                        %option{:value => "pl"} Polish
+                        %option{:value => "lv"} Latvian
+                        %option{:value => "en"} English
+                  %tr
+                    %td{:height => "25"} Default End User Language
+                    %td{:height => "25"}
+                      %select#defaultEndUserLanguage.text_field{:name => "defaultEndUserLanguage"}
+                        %option{:selected => "selected", :value => ""} Select
+                    %td Default Manager Language
+                    %td
+                      %select#defaultManagerLanguage.text_field{:name => "defaultManagerLanguage"}
+                        %option{:selected => "selected", :value => ""} Select
+                  %tr
+                    %td{:height => "25"}
+                      Contact First Name
+                      %span.mandtory *
+                    %td{:height => "25"}
+                      %input.text_field{:name => "contactFname"}/
+                    %td
+                      Contact Last Name
+                      %span.mandtory *
+                    %td
+                      %input.text_field{:name => "contactLname"}/
+                  %tr
+                    %td{:height => "25"}
+                      Contact Email
+                      %span.mandtory *
+                    %td{:height => "25"}
+                      %input.text_field{:name => "email"}/
+                    %td  
+                    %td  
+                %tbody
+                  %tr
+                    %td.GBoldText{:align => "right", :height => "35"}  
+                    %td.GBoldText{:align => "right", :colspan => "3", :height => "35"}
+                      %table{:border => "0", :cellpadding => "0", :cellspacing => "0"}
+                        %tr
+                          %td
+                            = f.submit
+                            //%input.submit_btn{:onclick => "return validatePubCode();", :type => "submit", :value => "Submit"}/
+                          %td
+
+                            %input#button2.submit_btn{:name => "button3", :type => "reset", :value => "Reset"}/
+          %tr
+            %td  
+    %tr
+      %td
