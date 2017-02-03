@@ -1,7 +1,6 @@
-<html>
-<body class = "body1">
+
+<div>
 	<%= render :partial => '/layouts/header'%>
-<div class="div1">
 
 	<table>
 	 	<thead>
@@ -9,11 +8,10 @@
 	 	</thead>
 	 </table>
 
-<div class="center">
 	<table width="100%">
 	<tr>
 		<td class="gindexborder" colspan="2" valign="top">
-		<%= image_tag("end_user.gif")%><br>
+		<%= link_to image_tag("end_user.gif"),retailers_index_path%><br>
 		Retailer</td>
 		<td class="gindexborder" colspan="2" valign="top">
 			<%= image_tag("end_user.gif")%><br>
@@ -73,7 +71,4 @@
 		</td>
 	</tr>
 	</table>
-	</div>
 </div>
-</body>
-</html>

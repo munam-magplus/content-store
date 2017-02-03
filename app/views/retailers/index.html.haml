@@ -1,0 +1,5 @@
+= render :partial => '/layouts/header'
+
+= form_tag retailers_search_path, :method => 'get' do
+	= select_tag(:retailer_name, options_for_select(@retailers, prompt = nil))
+	= submit_tag "Search"
