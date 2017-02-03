@@ -1,0 +1,15 @@
+                    Prefix Verb   URI Pattern                           Controller#Action
+content_conversation_index GET    /content_conversation/index(.:format) content_conversation#index
+       manage_access_index GET    /manage_access/index(.:format)        manage_access#index
+ manage_user_account_index GET    /manage_user_account/index(.:format)  manage_user_account#index
+    printhouse_setup_index GET    /printhouse_setup/index(.:format)     printhouse_setup#index
+     publisher_setup_index GET    /publisher_setup/index(.:format)      publisher_setup#index
+         publishers_search GET    /publishers/search(.:format)          publishers#search
+             reports_index GET    /reports/index(.:format)              reports#index
+            new_publishers GET    /publishers/new(.:format)             publishers#new
+           edit_publishers GET    /publishers/edit(.:format)            publishers#edit
+                publishers GET    /publishers(.:format)                 publishers#show
+                           PATCH  /publishers(.:format)                 publishers#update
+                           PUT    /publishers(.:format)                 publishers#update
+                           DELETE /publishers(.:format)                 publishers#destroy
+                           POST   /publishers(.:format)                 publishers#create
