@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
 
   get 'promo_codes/search'
 
@@ -85,7 +84,6 @@ Rails.application.routes.draw do
 	get 'content_conversation/qa_check'
 	get 'content_conversation/update_status'
 	get 'content_conversation/uploaded_errors'
-=======
   get 'reports/index'
 
   get 'printhouse_setup/index'
@@ -93,7 +91,6 @@ Rails.application.routes.draw do
   get 'manage_access/index'
 
   get 'content_conversation/index'
->>>>>>> a4361fa9619c84bf9db4ba10be8fe8f157522c3c
 
   get 'manage_user_account/index'
 
@@ -103,17 +100,13 @@ Rails.application.routes.draw do
 
   get 'retailers/index'
 
-<<<<<<< HEAD
 	get 'publishers/search'
 		get 'publishers/index'
 
-=======
   get 'retailers/search'
->>>>>>> a4361fa9619c84bf9db4ba10be8fe8f157522c3c
 
   get 'publishers/index'
 
-<<<<<<< HEAD
 	resource :publishers
 	resources :cdp_users
   resources :sessions, only: [:new, :create, :destory]
@@ -122,12 +115,10 @@ Rails.application.routes.draw do
   match '/signup',  to: 'cdp_users#new', 			via: 'get'
   match '/signin',  to: 'sessions#new', 			via: 'get'
   match '/signout', to: 'sessions#destroy', 		via: 'delete'
-=======
   get 'end_user/index'
 
   #resources :sessions, only: [:new, :create, :destroy]
   resources :publishers
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
->>>>>>> a4361fa9619c84bf9db4ba10be8fe8f157522c3c
 end
