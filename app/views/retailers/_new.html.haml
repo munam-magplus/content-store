@@ -1,0 +1,51 @@
+= render :partial => '/layouts/header'
+ 
+%tr
+  %td.page_head Create Retailer
+  %td.page_head{:align => "right", :valign => "bottom"}
+    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "margin-bottom:1px;"}
+      %tr
+        %td
+          %img{:height => "23", :src => "images/btsr01.gif", :width => "6"}/
+        %td{:style => "background-image:url(images/btsr02.gif)"}
+          %table{:border => "0", :cellpadding => "0", :cellspacing => "0"}
+            %tr
+              %td
+                %a{:href => "reports.do?detceles=8"}
+                  %img{:border => "0", :height => "18", :src => "images/btsr_ico.gif", :width => "17"}
+              %td
+                %a{:href => "createretailer.do?detceles=8"}
+                  %span{:style => "font-size:11px;margin-left:8px; margin-right:8px;"} Back
+        %td
+          %img{:height => "23", :src => "images/btsr03.gif", :width => "6"}
+%tr
+  %td{:colspan => "2"}  
+%tr
+  %td{:colspan => "2"}
+    %table{:border => "0", :cellpadding => "6", :cellspacing => "0", :width => "100%"}
+      %tr
+        %td
+          %table{:border => "0", :cellpadding => "10", :cellspacing => "0"}
+            %tbody
+              %tr
+                %td{:align => "right"}
+                  %a{:href => "#", :onclick => "displayResult();"}
+                    %img{:src => "images/add.gif"}/
+              %tr
+                %td
+                  %table#items{:border => "1", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                    %tr
+                      %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Retailer Code
+                      %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Retailer Name
+                      %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Publisher Id
+                      %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Low Ip
+                      %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} High Ip
+                      %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} IP List
+                      %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Operation
+                  %table#addnewrow{:border => "1", :cellpadding => "0", :cellspacing => "0", :width => "1075px"}
+                    %tr{:style => "display:none;"}
+                      %td
+                        %input#0id{:name => "retpubid", :onblur => "deleteRow()", :type => "hidden", :value => "mps/10011"}
+              %tr
+                %td{:align => "right"}
+                  %input#retailersubmit.submit_btn{:name => "addretailer", :onclick => "return validateRetailer()", :type => "submit", :value => "Submit"}
