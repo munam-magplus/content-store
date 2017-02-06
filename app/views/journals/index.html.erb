@@ -1,0 +1,43 @@
+<html>
+<body class = "body1">
+<%= render :partial => '/layouts/header' %>
+<div class="div1">
+
+<table>
+  <thead>
+    <th class="page_head">Upload Metadata Home</th>
+  </thead>
+ </table>
+
+<div class="center">
+<table style="text-align:center;">
+  <tr>
+    <td class="gindexborder" colspan="2" valign="top">
+      <%= link_to image_tag("create_book.gif"),journals_new_path %><br>
+      Create New Journal
+    </td>
+    <td class="gindexborder" colspan="2" valign="top">
+      <%= link_to image_tag("search_book.gif"),journals_search_path %><br>
+      Search Journals
+    </td>
+    <td class="gindexborder" colspan="2" valign="top">
+      <%= link_to image_tag("book_metadata.gif"),journals_upload_article_metadata_path %><br>
+      Upload Article <br> Metadata Sheet
+    </td>
+  </tr>
+  <tr>
+      <td class="gindexborder" colspan="2" valign="top">
+      <%= link_to image_tag("search_book.gif"),journals_search_article_path %><br>
+      Search Articles
+    </td>
+    <td class="gindexborder" colspan="2" valign="top">
+      <%= link_to image_tag("create_book.gif"),journals_new_article_path %><br>
+      Create New Article
+    </td>
+  </tr>
+</table>
+</div>
+</div>
+</body>
+</html>
+

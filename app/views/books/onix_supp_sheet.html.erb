@@ -1,0 +1,85 @@
+<html>
+	<body class = "body1">
+	<%= render :partial => '/layouts/header'%>
+		<div class="div1">
+
+<form id="uploadMetadataForm" method="post" action="/AdminTool/uploadOnixSuppMetadata.do" accept-charset="UTF-8" enctype="multipart/form-data">
+  <table width="860" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="page_head">ONIX Supplement Sheet</td>
+    <td align="right" valign="bottom" class="page_head">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2"><span style="color:#ff0000">&nbsp;</span></td>
+  </tr>
+  <tr>
+    <td colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="6">
+      <tr>
+        <td><table border="0" cellpadding="10" cellspacing="0">
+                    <tbody>				<tr><td>
+                                       <input type="hidden" name="uploadType" id="uploadType" value="onixsupplementsheet"/>
+                                      </td></tr>
+                                      <tr>
+                                        <td><table width="100%" border="0" cellpadding="3" cellspacing="1">
+                                            <tr>
+                                              <td height="35">File Name</td>
+                                          </tr>
+                                            <tr>
+                                              <td height="35">
+                                          <input type="file" name="uploadMetadataFile" size="60" value="" onkeydown="return false;" onkeypress="return false;" id="uploadMetadataFile" class="text_field" />                                            </tr><tr>
+                                            <td>&nbsp;</td></tr>
+                                          <tr>
+                                            <td align="left"><input type="submit" value="Upload" class="submit_btn" />
+                                          &nbsp;
+                                          <input type="button" name="button" value="Cancel" onclick="javascript:window.location='signIn.do'" class="submit_btn" /></td>
+                                          </tr>
+                                          <tr>
+                                            <td align="right">&nbsp;</td>
+                                          </tr>
+                                          <tr>
+                                            <td align="left"><table border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td><a href="downloadTemplate.do?actionType=template&amp;templateCategory=ONIX_SUPPLEMENTAL_SHEET"><img src="images/free-download.gif" border="0" /></a></td>
+                      <td width="8">&nbsp;</td>
+                      <td><a href="downloadTemplate.do?actionType=template&amp;templateCategory=ONIX_SUPPLEMENTAL_SHEET">
+				    Download template
+				  </a></td>
+                    </tr>
+                  </table></td>
+                                          </tr>                                            
+                                        </table></td>
+                                      </tr>
+                                      <tr>
+                                        <td align="right">&nbsp;</td>
+                                      </tr>
+                                      <tr>
+                                        <td align="left"></td>
+                                      </tr>
+              </tbody>
+          </table></td>
+      </tr>
+      </TABLE></td>
+  </tr>
+</table>
+</form>		
+</td>
+            <td width="10" align="right" valign="bottom" bgcolor="#FFFFFF" style="background-image: url(images/tabl_right_bg.gif); background-position:right; background-repeat:repeat-y;"><img src="images/right_corn_bot.gif" width="13" height="361" /></td>
+          </tr>
+          <tr>
+            <td width="10" height="10" align="left" valign="bottom"><img src="images/corn_left_bot.gif" width="13" height="17" /></td>
+            <td height="10" valign="bottom" bgcolor="#FFFFFF" style="background-image: url(images/tabl_bot_bg.gif); background-position:bottom; background-repeat:repeat-x;"><img src="images/tabl_bot_bg.gif" width="4" height="4" /></td>
+            <td width="10" height="10" align="right" valign="bottom"><img src="images/corn_right_bot.gif" width="13" height="17" /></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td align="center" class="footer_white">
+Copyright © 2006-2009 MPS Technologies Ltd</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</div>
+</body>
+</html>
