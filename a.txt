@@ -1,32 +1,159 @@
-                    Prefix Verb   URI Pattern                           Controller#Action
-    institution_user_index GET    /institution_user/index(.:format)     institution_user#index
-     institution_user_show GET    /institution_user/show(.:format)      institution_user#show
-      institution_user_new GET    /institution_user/new(.:format)       institution_user#new
-   institution_user_create GET    /institution_user/create(.:format)    institution_user#create
-   institution_user_search GET    /institution_user/search(.:format)    institution_user#search
-         institution_index GET    /institution/index(.:format)          institution#index
-          institution_show GET    /institution/show(.:format)           institution#show
-           institution_new GET    /institution/new(.:format)            institution#new
-        institution_create GET    /institution/create(.:format)         institution#create
-        institution_search GET    /institution/search(.:format)         institution#search
-           countries_index GET    /countries/index(.:format)            countries#index
-            countries_show GET    /countries/show(.:format)             countries#show
-             reports_index GET    /reports/index(.:format)              reports#index
-    printhouse_setup_index GET    /printhouse_setup/index(.:format)     printhouse_setup#index
-       manage_access_index GET    /manage_access/index(.:format)        manage_access#index
-content_conversation_index GET    /content_conversation/index(.:format) content_conversation#index
- manage_user_account_index GET    /manage_user_account/index(.:format)  manage_user_account#index
-     publisher_setup_index GET    /publisher_setup/index(.:format)      publisher_setup#index
-         publishers_search GET    /publishers/search(.:format)          publishers#search
-           retailers_index GET    /retailers/index(.:format)            retailers#index
-          retailers_search GET    /retailers/search(.:format)           retailers#search
-          publishers_index GET    /publishers/index(.:format)           publishers#index
-            end_user_index GET    /end_user/index(.:format)             end_user#index
-                publishers GET    /publishers(.:format)                 publishers#index
-                           POST   /publishers(.:format)                 publishers#create
-             new_publisher GET    /publishers/new(.:format)             publishers#new
-            edit_publisher GET    /publishers/:id/edit(.:format)        publishers#edit
-                 publisher GET    /publishers/:id(.:format)             publishers#show
-                           PATCH  /publishers/:id(.:format)             publishers#update
-                           PUT    /publishers/:id(.:format)             publishers#update
-                           DELETE /publishers/:id(.:format)             publishers#destroy
+                                    Prefix Verb   URI Pattern                                     Controller#Action
+             search_institution_user_index GET    /institution_user/search(.:format)              institution_user#search
+                    institution_user_index GET    /institution_user(.:format)                     institution_user#index
+                                           POST   /institution_user(.:format)                     institution_user#create
+                      new_institution_user GET    /institution_user/new(.:format)                 institution_user#new
+                     edit_institution_user GET    /institution_user/:id/edit(.:format)            institution_user#edit
+                          institution_user GET    /institution_user/:id(.:format)                 institution_user#show
+                                           PATCH  /institution_user/:id(.:format)                 institution_user#update
+                                           PUT    /institution_user/:id(.:format)                 institution_user#update
+                                           DELETE /institution_user/:id(.:format)                 institution_user#destroy
+                  search_institution_index GET    /institution/search(.:format)                   institution#search
+                         institution_index GET    /institution(.:format)                          institution#index
+                                           POST   /institution(.:format)                          institution#create
+                           new_institution GET    /institution/new(.:format)                      institution#new
+                          edit_institution GET    /institution/:id/edit(.:format)                 institution#edit
+                               institution GET    /institution/:id(.:format)                      institution#show
+                                           PATCH  /institution/:id(.:format)                      institution#update
+                                           PUT    /institution/:id(.:format)                      institution#update
+                                           DELETE /institution/:id(.:format)                      institution#destroy
+                      search_access_tokens GET    /access_tokens/search(.:format)                 access_tokens#search
+                             access_tokens GET    /access_tokens(.:format)                        access_tokens#index
+                                           POST   /access_tokens(.:format)                        access_tokens#create
+                          new_access_token GET    /access_tokens/new(.:format)                    access_tokens#new
+                         edit_access_token GET    /access_tokens/:id/edit(.:format)               access_tokens#edit
+                              access_token GET    /access_tokens/:id(.:format)                    access_tokens#show
+                                           PATCH  /access_tokens/:id(.:format)                    access_tokens#update
+                                           PUT    /access_tokens/:id(.:format)                    access_tokens#update
+                                           DELETE /access_tokens/:id(.:format)                    access_tokens#destroy
+                          search_campaigns GET    /campaigns/search(.:format)                     campaigns#search
+                                 campaigns GET    /campaigns(.:format)                            campaigns#index
+                                           POST   /campaigns(.:format)                            campaigns#create
+                              new_campaign GET    /campaigns/new(.:format)                        campaigns#new
+                             edit_campaign GET    /campaigns/:id/edit(.:format)                   campaigns#edit
+                                  campaign GET    /campaigns/:id(.:format)                        campaigns#show
+                                           PATCH  /campaigns/:id(.:format)                        campaigns#update
+                                           PUT    /campaigns/:id(.:format)                        campaigns#update
+                                           DELETE /campaigns/:id(.:format)                        campaigns#destroy
+                         search_publishers GET    /publishers/search(.:format)                    publishers#search
+                                publishers GET    /publishers(.:format)                           publishers#index
+                                           POST   /publishers(.:format)                           publishers#create
+                             new_publisher GET    /publishers/new(.:format)                       publishers#new
+                            edit_publisher GET    /publishers/:id/edit(.:format)                  publishers#edit
+                                 publisher GET    /publishers/:id(.:format)                       publishers#show
+                                           PATCH  /publishers/:id(.:format)                       publishers#update
+                                           PUT    /publishers/:id(.:format)                       publishers#update
+                                           DELETE /publishers/:id(.:format)                       publishers#destroy
+                          search_retailers GET    /retailers/search(.:format)                     retailers#search
+                                 retailers GET    /retailers(.:format)                            retailers#index
+                                           POST   /retailers(.:format)                            retailers#create
+                              new_retailer GET    /retailers/new(.:format)                        retailers#new
+                             edit_retailer GET    /retailers/:id/edit(.:format)                   retailers#edit
+                                  retailer GET    /retailers/:id(.:format)                        retailers#show
+                                           PATCH  /retailers/:id(.:format)                        retailers#update
+                                           PUT    /retailers/:id(.:format)                        retailers#update
+                                           DELETE /retailers/:id(.:format)                        retailers#destroy
+                     search_license_groups GET    /license_groups/search(.:format)                license_groups#search
+                            license_groups GET    /license_groups(.:format)                       license_groups#index
+                                           POST   /license_groups(.:format)                       license_groups#create
+                         new_license_group GET    /license_groups/new(.:format)                   license_groups#new
+                        edit_license_group GET    /license_groups/:id/edit(.:format)              license_groups#edit
+                             license_group GET    /license_groups/:id(.:format)                   license_groups#show
+                                           PATCH  /license_groups/:id(.:format)                   license_groups#update
+                                           PUT    /license_groups/:id(.:format)                   license_groups#update
+                                           DELETE /license_groups/:id(.:format)                   license_groups#destroy
+                           search_licenses GET    /licenses/search(.:format)                      licenses#search
+                                  licenses GET    /licenses(.:format)                             licenses#index
+                                           POST   /licenses(.:format)                             licenses#create
+                               new_license GET    /licenses/new(.:format)                         licenses#new
+                              edit_license GET    /licenses/:id/edit(.:format)                    licenses#edit
+                                   license GET    /licenses/:id(.:format)                         licenses#show
+                                           PATCH  /licenses/:id(.:format)                         licenses#update
+                                           PUT    /licenses/:id(.:format)                         licenses#update
+                                           DELETE /licenses/:id(.:format)                         licenses#destroy
+                      search_subscriptions GET    /subscriptions/search(.:format)                 subscriptions#search
+                             subscriptions GET    /subscriptions(.:format)                        subscriptions#index
+                                           POST   /subscriptions(.:format)                        subscriptions#create
+                          new_subscription GET    /subscriptions/new(.:format)                    subscriptions#new
+                         edit_subscription GET    /subscriptions/:id/edit(.:format)               subscriptions#edit
+                              subscription GET    /subscriptions/:id(.:format)                    subscriptions#show
+                                           PATCH  /subscriptions/:id(.:format)                    subscriptions#update
+                                           PUT    /subscriptions/:id(.:format)                    subscriptions#update
+                                           DELETE /subscriptions/:id(.:format)                    subscriptions#destroy
+                     search_subject_groups GET    /subject_groups/search(.:format)                subject_groups#search
+             metadata_sheet_subject_groups GET    /subject_groups/metadata_sheet(.:format)        subject_groups#metadata_sheet
+                            subject_groups GET    /subject_groups(.:format)                       subject_groups#index
+                                           POST   /subject_groups(.:format)                       subject_groups#create
+                         new_subject_group GET    /subject_groups/new(.:format)                   subject_groups#new
+                        edit_subject_group GET    /subject_groups/:id/edit(.:format)              subject_groups#edit
+                             subject_group GET    /subject_groups/:id(.:format)                   subject_groups#show
+                                           PATCH  /subject_groups/:id(.:format)                   subject_groups#update
+                                           PUT    /subject_groups/:id(.:format)                   subject_groups#update
+                                           DELETE /subject_groups/:id(.:format)                   subject_groups#destroy
+                           search_journals GET    /journals/search(.:format)                      journals#search
+          upload_article_metadata_journals GET    /journals/upload_article_metadata(.:format)     journals#upload_article_metadata
+                   search_article_journals GET    /journals/search_article(.:format)              journals#search_article
+                      new_article_journals GET    /journals/new_article(.:format)                 journals#new_article
+                                  journals GET    /journals(.:format)                             journals#index
+                                           POST   /journals(.:format)                             journals#create
+                               new_journal GET    /journals/new(.:format)                         journals#new
+                              edit_journal GET    /journals/:id/edit(.:format)                    journals#edit
+                                   journal GET    /journals/:id(.:format)                         journals#show
+                                           PATCH  /journals/:id(.:format)                         journals#update
+                                           PUT    /journals/:id(.:format)                         journals#update
+                                           DELETE /journals/:id(.:format)                         journals#destroy
+                              search_books GET    /books/search(.:format)                         books#search
+                      metadata_sheet_books GET    /books/metadata_sheet(.:format)                 books#metadata_sheet
+                          onix_input_books GET    /books/onix_input(.:format)                     books#onix_input
+                     onix_supp_sheet_books GET    /books/onix_supp_sheet(.:format)                books#onix_supp_sheet
+                                     books GET    /books(.:format)                                books#index
+                                           POST   /books(.:format)                                books#create
+                                  new_book GET    /books/new(.:format)                            books#new
+                                 edit_book GET    /books/:id/edit(.:format)                       books#edit
+                                      book GET    /books/:id(.:format)                            books#show
+                                           PATCH  /books/:id(.:format)                            books#update
+                                           PUT    /books/:id(.:format)                            books#update
+                                           DELETE /books/:id(.:format)                            books#destroy
+content_history_content_conversation_index GET    /content_conversation/content_history(.:format) content_conversation#content_history
+  index_content_content_conversation_index GET    /content_conversation/index_content(.:format)   content_conversation#index_content
+       qa_check_content_conversation_index GET    /content_conversation/qa_check(.:format)        content_conversation#qa_check
+  update_status_content_conversation_index GET    /content_conversation/update_status(.:format)   content_conversation#update_status
+uploaded_errors_content_conversation_index GET    /content_conversation/uploaded_errors(.:format) content_conversation#uploaded_errors
+                content_conversation_index GET    /content_conversation(.:format)                 content_conversation#index
+                                           POST   /content_conversation(.:format)                 content_conversation#create
+                  new_content_conversation GET    /content_conversation/new(.:format)             content_conversation#new
+                 edit_content_conversation GET    /content_conversation/:id/edit(.:format)        content_conversation#edit
+                      content_conversation GET    /content_conversation/:id(.:format)             content_conversation#show
+                                           PATCH  /content_conversation/:id(.:format)             content_conversation#update
+                                           PUT    /content_conversation/:id(.:format)             content_conversation#update
+                                           DELETE /content_conversation/:id(.:format)             content_conversation#destroy
+                                 countries GET    /countries(.:format)                            countries#index
+                                   country GET    /countries/:id(.:format)                        countries#show
+                                   reports GET    /reports(.:format)                              reports#index
+                    printhouse_setup_index GET    /printhouse_setup(.:format)                     printhouse_setup#index
+                       manage_access_index GET    /manage_access(.:format)                        manage_access#index
+                 manage_user_account_index GET    /manage_user_account(.:format)                  manage_user_account#index
+                     publisher_setup_index GET    /publisher_setup(.:format)                      publisher_setup#index
+                            end_user_index GET    /end_user(.:format)                             end_user#index
+                               promo_codes GET    /promo_codes(.:format)                          promo_codes#index
+                                           POST   /promo_codes(.:format)                          promo_codes#create
+                            new_promo_code GET    /promo_codes/new(.:format)                      promo_codes#new
+                           edit_promo_code GET    /promo_codes/:id/edit(.:format)                 promo_codes#edit
+                                promo_code GET    /promo_codes/:id(.:format)                      promo_codes#show
+                                           PATCH  /promo_codes/:id(.:format)                      promo_codes#update
+                                           PUT    /promo_codes/:id(.:format)                      promo_codes#update
+                                           DELETE /promo_codes/:id(.:format)                      promo_codes#destroy
+                                 cdp_users GET    /cdp_users(.:format)                            cdp_users#index
+                                           POST   /cdp_users(.:format)                            cdp_users#create
+                              new_cdp_user GET    /cdp_users/new(.:format)                        cdp_users#new
+                             edit_cdp_user GET    /cdp_users/:id/edit(.:format)                   cdp_users#edit
+                                  cdp_user GET    /cdp_users/:id(.:format)                        cdp_users#show
+                                           PATCH  /cdp_users/:id(.:format)                        cdp_users#update
+                                           PUT    /cdp_users/:id(.:format)                        cdp_users#update
+                                           DELETE /cdp_users/:id(.:format)                        cdp_users#destroy
+                                  sessions POST   /sessions(.:format)                             sessions#create
+                               new_session GET    /sessions/new(.:format)                         sessions#new
+                                    signup GET    /signup(.:format)                               cdp_users#new
+                                    signin GET    /signin(.:format)                               sessions#new
+                                   signout DELETE /signout(.:format)                              sessions#destroy
+                                      root GET    /                                               sessions#new

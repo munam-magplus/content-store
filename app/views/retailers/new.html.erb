@@ -1,0 +1,37 @@
+<%= form_for(:CDP_RETAILER, url:  retailers_path)  do |f| %>
+	<div class="field">
+		<%= f.label :RETAILER_CODE %>
+		<%= f.text_field :RETAILER_CODE%>
+	</div>
+	<div class="field">
+		<%= f.label :REATILER_NAME %>
+		<%= f.text_field :REATILER_NAME%>
+	</div>
+	<div class="field">
+		<%= f.label :PUB_PUBLISHER_ID %>
+		<%= f.text_field :PUB_PUBLISHER_ID%>
+	</div>
+	<div class="field">
+		<%= f.label :REFERRAL_URL %>
+		<%= f.text_field :REFERRAL_URL %>
+	</div>
+	<div class="field">
+		<%= f.label :RETAILER_IP_RANGE %>
+		<%= f.text_field :RETAILER_IP_RANGE %>
+	</div>
+	<div class="field">
+		<%= f.label :RETAILER_STATUS_CD %>
+		<%= f.text_field :RETAILER_STATUS_CD %>
+	</div>
+	<div class="field">
+		<%= f.label  :RETAILER_CONFIG_PATH %>
+		<%= f.text_field  :RETAILER_CONFIG_PATH%>
+	</div>
+	<div class="field">
+		<%= f.label  :RETAILER_SALES_LINK %>
+		<%= f.text_field  :RETAILER_SALES_LINK %>
+	</div>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>
