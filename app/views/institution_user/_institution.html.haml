@@ -1,0 +1,111 @@
+%body.body1
+%div.div1
+= render :partial => '/layouts/header'
+%table.center
+  %tr
+    %td.page_head Create Institution
+  %tr
+    %td  
+  %tr
+    %td  
+  %tr
+    = form_tag institution_new_path, :method => 'get' do |f|
+      %td{:align => "left"}
+        %table{:border => "0", :cellpadding => "10", :cellspacing => "0"}
+          %tbody
+            %tr
+              %b Details 
+
+              %td{:height => "25"} Select Publisher
+              %td{:align => "left"}
+                = collection_select(:PUB_PUBLISHER_ID, 0, Publisher.all, :id, :PUB_NAME)
+            %tr
+              %td{:align => "left", :height => "25"} Institution ID
+              %td{:align => "left", :height => "25"}
+                = text_field_tag :code, params[:code]
+              %td{:align => "left", :height => "25"} Lib./Dept. Name
+              %td{:align => "left"}
+                = text_field_tag :name, params[:name]
+            %tr
+              %td{:align => "left", :height => "25"} Institution Name
+              %td{:align => "left"}
+                = text_field_tag :name, params[:name]
+              %td{:height => "25"} Status
+              %td{:height => "25"}
+                = collection_select(:INS_INSTITUTION_STATUS, 0, Institution.all, :id, :INS_INSTITUTION_STATUS) 
+          %table{:border => "0", :cellpadding => "10", :cellspacing => "0"}
+            %tbody 
+              %tr
+                %b Branding Options
+                %td{:align => "left", :height => "25"} Display Name
+                %td{:align => "left"}
+                  = text_field_tag :name, params[:name]
+              %tr
+                %td{:align => "left", :height => "25"} Logo
+                %td{:align => "left"}
+                  = file_field_tag :name
+          %table{:border => "0", :cellpadding => "10", :cellspacing => "0"}
+            %tbody 
+              %tr
+                %b Billing Address
+                %td{:align => "left", :height => "25"} Contact First Name
+                %td{:align => "left"}
+                  = text_field_tag :name
+                %td{:align => "left", :height => "25"} Contact Last Name
+                %td{:align => "left"}
+                  = text_field_tag :name 
+              %tr
+                %td{:align => "left", :height => "25"} Phone
+                %td{:align => "left"}
+                  = text_field_tag :name 
+                %td{:align => "left", :height => "25"} Email
+                %td{:align => "left"}
+                  = text_field_tag :name 
+              %tr
+                %td{:align => "left", :height => "25"} Address
+                %td{:align => "left"}
+                  = text_field_tag :name
+                %td{:align => "left", :height => "25"} Address Line 2
+                %td{:align => "left"}
+                  = text_field_tag :name
+              %tr
+                %td{:align => "left", :height => "25"} Address Line 3
+                %td{:align => "left"}
+                  = text_field_tag :name
+                %td{:align => "left", :height => "25"} City / Town
+                %td{:align => "left"}
+                  = text_field_tag :name
+              %tr
+                %td{:align => "left", :height => "25"} State / Province
+                %td{:align => "left"}
+                  = text_field_tag :name
+                %td{:align => "left", :height => "25"} Postal Code
+                %td{:align => "left"}
+                  = text_field_tag :name
+              %tr
+                %td{:align => "left", :height => "25"} Country
+                %td{:align => "left"}
+                  = collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Countryname.all, :id, :CON_COUNTRY_NAME)
+              %tr
+                %td{:align => "left", :height => "25"} Comments
+                %td{:align => "left"}
+                  = text_area_tag :INS_COMMENTS
+            %tbody
+            %tr
+              %td{:align => "left"}  
+              %td{:align => "left"}
+                = submit_tag "Submit", :name => nil 
+                //%input.submit_btn{:name => "search", :type => "submit", :value => "Search"}/
+                = submit_tag "Reset", :name => nil 
+                //%input.submit_btn{:name => "button2", :onclick => "getCancel();", :type => "button", :value => "Cancel"}/
+
+  %tr
+    %td  
+  %tr
+    %td 
+
+
+
+ 
+
+ 

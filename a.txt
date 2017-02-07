@@ -1,15 +1,32 @@
                     Prefix Verb   URI Pattern                           Controller#Action
-content_conversation_index GET    /content_conversation/index(.:format) content_conversation#index
-       manage_access_index GET    /manage_access/index(.:format)        manage_access#index
- manage_user_account_index GET    /manage_user_account/index(.:format)  manage_user_account#index
+    institution_user_index GET    /institution_user/index(.:format)     institution_user#index
+     institution_user_show GET    /institution_user/show(.:format)      institution_user#show
+      institution_user_new GET    /institution_user/new(.:format)       institution_user#new
+   institution_user_create GET    /institution_user/create(.:format)    institution_user#create
+   institution_user_search GET    /institution_user/search(.:format)    institution_user#search
+         institution_index GET    /institution/index(.:format)          institution#index
+          institution_show GET    /institution/show(.:format)           institution#show
+           institution_new GET    /institution/new(.:format)            institution#new
+        institution_create GET    /institution/create(.:format)         institution#create
+        institution_search GET    /institution/search(.:format)         institution#search
+           countries_index GET    /countries/index(.:format)            countries#index
+            countries_show GET    /countries/show(.:format)             countries#show
+             reports_index GET    /reports/index(.:format)              reports#index
     printhouse_setup_index GET    /printhouse_setup/index(.:format)     printhouse_setup#index
+       manage_access_index GET    /manage_access/index(.:format)        manage_access#index
+content_conversation_index GET    /content_conversation/index(.:format) content_conversation#index
+ manage_user_account_index GET    /manage_user_account/index(.:format)  manage_user_account#index
      publisher_setup_index GET    /publisher_setup/index(.:format)      publisher_setup#index
          publishers_search GET    /publishers/search(.:format)          publishers#search
-             reports_index GET    /reports/index(.:format)              reports#index
-            new_publishers GET    /publishers/new(.:format)             publishers#new
-           edit_publishers GET    /publishers/edit(.:format)            publishers#edit
-                publishers GET    /publishers(.:format)                 publishers#show
-                           PATCH  /publishers(.:format)                 publishers#update
-                           PUT    /publishers(.:format)                 publishers#update
-                           DELETE /publishers(.:format)                 publishers#destroy
+           retailers_index GET    /retailers/index(.:format)            retailers#index
+          retailers_search GET    /retailers/search(.:format)           retailers#search
+          publishers_index GET    /publishers/index(.:format)           publishers#index
+            end_user_index GET    /end_user/index(.:format)             end_user#index
+                publishers GET    /publishers(.:format)                 publishers#index
                            POST   /publishers(.:format)                 publishers#create
+             new_publisher GET    /publishers/new(.:format)             publishers#new
+            edit_publisher GET    /publishers/:id/edit(.:format)        publishers#edit
+                 publisher GET    /publishers/:id(.:format)             publishers#show
+                           PATCH  /publishers/:id(.:format)             publishers#update
+                           PUT    /publishers/:id(.:format)             publishers#update
+                           DELETE /publishers/:id(.:format)             publishers#destroy

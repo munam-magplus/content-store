@@ -1,6 +1,7 @@
-
-<div>
-	<%= render :partial => '/layouts/header'%>
+<html>
+<body class = "body1">
+<%= render :partial => '/layouts/header'%>
+<div class="div1">
 
 	<table>
 	 	<thead>
@@ -8,7 +9,7 @@
 	 	</thead>
 	 </table>
 
-	<table width="100%">
+	<table width="100%" class="center">
 	<tr>
 		<td class="gindexborder" colspan="2" valign="top">
 		<%= link_to image_tag("end_user.gif"),retailers_index_path%><br>
@@ -42,26 +43,26 @@
 				</table>
 		</td>
 		<td class="gindexborder" colspan="2" valign="center">
-			<%= image_tag("institution.gif")%><br>
+			<%= link_to image_tag("institution.gif"), institution_search_path%><br>
 			Institutional Account
 				<table>
 					<tr>
 						<td class="gindexborder">
-							<%= image_tag("search.gif")%>
+							<%= link_to image_tag("search.gif"), institution_search_path%>
 						</td>
 						<td class="gindexborder">
-							<%= image_tag("create.gif")%>
+							<%= link_to image_tag("create.gif"), institution_new_path%>
 						</td>
 					</tr>
 				</table>
 		</td>
 		<td class="gindexborder" colspan="2" valign="top">
-			<%= image_tag("institutional-user.gif")%><br>
+			<%= link_to image_tag("institutional-user.gif"), institution_user_search_path%><br>
 			Institutional Admin User Account
 				<table>
 					<tr>
 						<td class="gindexborder">
-							<%= image_tag("search.gif")%>
+							<%= link_to image_tag("search.gif"), institution_user_search_path%>
 						</td>
 						<td class="gindexborder">
 							<%= image_tag("create.gif")%>

@@ -1,16 +1,18 @@
+%body.body1
+%div.div1
 = render :partial => '/layouts/header'
 
 = form_for @publisher do |f|
   %input{:name => "RequestAction", :type => "hidden", :value => "Create"}/
   %input{:name => "contactType", :type => "hidden", :value => "1234"}/
-  %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "860"}
+  %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "860", :class => "center"}
     %tr
       %td.page_head Create Publisher
     %tr
       %td  
     %tr
       %td
-        %table{:border => "0", :cellpadding => "6", :cellspacing => "0", :width => "100%"}
+        %table{:border => "0", :cellpadding => "6", :cellspacing => "0", :width => "100%", :class => "center"}
           %tr
             %td
               %table{:border => "0", :cellpadding => "10", :cellspacing => "0"}

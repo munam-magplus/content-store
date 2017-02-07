@@ -1,4 +1,28 @@
 Rails.application.routes.draw do
+  get 'institution_user/index'
+
+  get 'institution_user/show'
+
+  get 'institution_user/new'
+
+  get 'institution_user/create'
+
+  get 'institution_user/search'
+
+  get 'institution/index'
+
+  get 'institution/show'
+
+  get 'institution/new'
+
+  get 'institution/create'
+
+  get 'institution/search'
+
+  get 'countries/index'
+
+  get 'countries/show'
+
   get 'reports/index'
 
   get 'printhouse_setup/index'
