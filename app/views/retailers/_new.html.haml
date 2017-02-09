@@ -1,3 +1,4 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
 %body.body1
 %div.div1
 = render :partial => '/layouts/header'
@@ -12,15 +13,15 @@
   %td.page_head Create Retailer
   %td.page_head{:align => "right", :valign => "bottom"}
     %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "margin-bottom:1px;"}
-
   %table{:border => "0", :cellpadding => "6", :cellspacing => "0", :width => "100%", :class => "center"}
     %tr
       %td
         %table{:border => "0", :cellpadding => "10", :cellspacing => "0"}
           %tbody
             %tr
-              %td.page_head{:align => "right"}
-                = link_to image_tag("add.gif"), new_retailer_path
+              %td{:align => "right", :id=> "addAction"}
+                %a{:href => "#"}
+                  = image_tag("add.gif")
             %tr
               %td
   %table#items{:border => "1", :cellpadding => "0", :cellspacing => "0", :width => "100%", :class => "center"}
@@ -55,6 +56,19 @@
           %input#retailersubmit.submit_btn{:name => "addretailer", :onclick => "return validateRetailer()", :type => "submit", :value => "Submit"}
 
 
- 
 
- 
+:javascript
+  jQuery('#addAction').click( function () {
+      var $quantity = $('.tableheader').length;
+      var $quants = $('#items tr').length;
+      jQuery("#items").append("<tr></tr>");
+      $("#items tr:last").addClass('tablecount'+$quants);
+      $.each(new Array($quantity - 1 ),
+       function(n){
+        jQuery("#items tr:last").append("<td><input type='text' name='table'></td>");
+      });
+      jQuery("#items tr:last").append("<td><input type='image' name='delete' onclick ='remove(" + $quants + ");'></td>"); 
+  });
+  function remove(elem) {
+    $('.tablecount'+ elem ).hide();
+  }

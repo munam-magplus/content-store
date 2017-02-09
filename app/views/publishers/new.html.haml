@@ -1,7 +1,6 @@
 %body.body1
 %div.div1
 = render :partial => '/layouts/header'
-
 = form_for @publisher do |f|
   %input{:name => "RequestAction", :type => "hidden", :value => "Create"}/
   %input{:name => "contactType", :type => "hidden", :value => "1234"}/
@@ -23,19 +22,15 @@
                       %span.mandtory *
                     %td{:height => "25"}
                       = f.text_field :PUB_CODE 
-                      //%input#pubCode.text_field{:name => "code"}/
                     %td
                       Publisher Name
                       %span.mandtory *
                     %td
                       = f.text_field :PUB_NAME
-                      //%input.text_field{:name => "name"}/
                   %tr
                     %td{:height => "25"} Publisher Status
                     %td{:height => "25"}
                       = f.select :PUB_STATUS, options_for_select([ "Live", "Staging"]), :class => 'genForm_dropBox'
-                      //%select.text_field{:name => "statusKey"}
-                      //%option{:value => "staging"} Staging
                     %td
                       Publisher Type
                       %span.mandtory *
@@ -53,11 +48,6 @@
                                   ['Latvian', 'lv'],
                                   ['English', 'en']],{ :prompt => "Please select"},
                                   { :multiple => true, :size => 5 })
-                      / //%select.text_field{:multiple => "true", :name => "endUserLanguages", :onblur => "populateDefaultLanguage(this,'defaultEndUserLanguage');", :size => "3"}
-                      /   %option{:value => "da"} Dansk
-                      /   %option{:value => "pl"} Polish
-                      /   %option{:value => "lv"} Latvian
-                      /   %option{:value => "en"} English
                     %td Supported Manager Language
                     %td
                       %select.text_field{:multiple => "true", :name => "managerLanguages", :onblur => "populateDefaultLanguage(this,'defaultManagerLanguage');", :size => "3"}
@@ -101,11 +91,5 @@
                         %tr
                           %td
                             = f.submit
-                            //%input.submit_btn{:onclick => "return validatePubCode();", :type => "submit", :value => "Submit"}/
                           %td
-
-                            %input#button2.submit_btn{:name => "button3", :type => "reset", :value => "Reset"}/
-          %tr
-            %td  
-    %tr
-      %td
+                            %input#button2.submit_btn{:name => "button3", :type => "reset", :value => "Reset"}

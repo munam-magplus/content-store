@@ -1,12 +1,11 @@
 class RetailersController < ApplicationController
-	
 	def index
+		@retailers = Retailer.all
 		@retail = Retailer.pluck(:PUB_PUBLISHER_ID)
 		@publishers = Publisher.where(:PUB_PUBLISHER_ID => @retail).pluck(:PUB_NAME)
 	end 
 	
 	def new
-		byebug
 		@retailer = Retailer.new
 	end
 	
