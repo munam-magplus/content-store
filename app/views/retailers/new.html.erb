@@ -11,27 +11,32 @@
 		<%= f.label :PUB_PUBLISHER_ID %>
 		<%= f.text_field :PUB_PUBLISHER_ID%>
 	</div>
-	<div class="field">
-		<%= f.label :REFERRAL_URL %>
-		<%= f.text_field :REFERRAL_URL %>
-	</div>
-	<div class="field">
-		<%= f.label :RETAILER_IP_RANGE %>
-		<%= f.text_field :RETAILER_IP_RANGE %>
-	</div>
-	<div class="field">
-		<%= f.label :RETAILER_STATUS_CD %>
-		<%= f.text_field :RETAILER_STATUS_CD %>
-	</div>
-	<div class="field">
-		<%= f.label  :RETAILER_CONFIG_PATH %>
-		<%= f.text_field  :RETAILER_CONFIG_PATH%>
-	</div>
-	<div class="field">
-		<%= f.label  :RETAILER_SALES_LINK %>
-		<%= f.text_field  :RETAILER_SALES_LINK %>
-	</div>
+
+	<%= f.fields_for :retailerip do |builder| %>
+	<p>
+    <%= builder.label :CRI_IP_AUTH_ID, "ip auth" %><br />
+    <%= builder.text_field :CRI_IP_AUTH_ID %>
+  </p>
+  <p>
+    <%= builder.label :CRI_LOW_IP, "low ip" %><br />
+    <%= builder.text_field :CRI_LOW_IP %>
+  </p>
+  <p>
+    <%= builder.label :CRI_HIGH_IP, "high ip" %><br />
+    <%= builder.text_field :CRI_HIGH_IP %>
+  </p>
+  <p>
+    <%= builder.label :CRI_IP_LIST, "ip list" %><br />
+    <%= builder.text_field :CRI_IP_LIST %>
+  </p>
+  <p>
+    <%= builder.label :CRI_RETAILER_CODE, "retailer code" %><br />
+    <%= builder.text_field :CRI_RETAILER_CODE %>
+  </p>
+  <% end %>
+	
 	<div class="actions">
 		<%= f.submit %>
 	</div>
 <% end %>
+
