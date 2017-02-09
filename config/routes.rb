@@ -1,124 +1,61 @@
 Rails.application.routes.draw do
 
-  get 'promo_codes/search'
+  resources :institution_user,:institution,:access_tokens,:campaigns,
+            :publishers,:retailers,:license_groups, :licenses,:subscriptions  do 
+    collection do 
+      get 'search'
+    end
+  end
 
-  get 'promo_codes/create'
+  resources :subject_groups do
+    collection do
+      get 'search'
+      get 'metadata_sheet'
+    end
+  end
 
-  get 'promo_codes/new'
+  resources :journals do
+    collection do
+      get 'search'  
+      get 'upload_article_metadata'
+      get 'search_article'
+      get 'new_article'
+    end
+  end
 
-  get 'promo_codes/index'
+  resources :books do
+    collection do
+      get 'search'
+      get 'metadata_sheet'
+      get 'onix_input'
+      get 'onix_supp_sheet'
+    end
+  end
 
-  get 'access_tokens/search'
+  resources :content_conversation do
+    collection do 
+  		get 'content_history'
+    	get 'index_content'
+    	get 'qa_check'
+    	get 'update_status'
+    	get 'uploaded_errors'
+    end
+  end
 
-  get 'access_tokens/create'
+  resources :countries, only: [:index, :show]
 
-  get 'access_tokens/new'
+  resources :reports, :printhouse_setup, :manage_access, 
+            :manage_user_account, :publisher_setup, :end_user, only: [:index]
 
-  get 'access_tokens/index'
+  resources :promo_codes,:cdp_users 
 
-  get 'campaigns/search'
-
-  get 'campaigns/create'
-
-  get 'campaigns/new'
-
-  get 'campaigns/index'
-
-  get 'license_groups/search'
-
-  get 'license_groups/create'
-
-  get 'license_groups/new'
-
-  get 'license_groups/index'
-
-  get 'licenses/search'
-
-  get 'licenses/create'
-
-  get 'licenses/new'
-
-  get 'licenses/index'
-
-  get 'subscriptions/search'
-
-  get 'subscriptions/create'
-
-  get 'subscriptions/new'
-
-  get 'subscriptions/index'
-
-  get 'subject_groups/create'
-
-  get 'subject_groups/search'
-    get 'subject_groups/index'
-
-  get 'subject_groups/metadata_sheet'
-
-  get 'journals/new'
-   get 'journals/index'
-
-  get 'journals/search'
-
-  get 'journals/upload_article_metadata'
-
-  get 'journals/search_article'
-
-  get 'journals/new_article'
-
-  get 'books/create'
-
-  get 'books/search'
-
-    get 'books/index'
-    get 'books/metadata_sheet'
-    get 'books/onix_input'
-    get 'books/onix_supp_sheet'
-
-
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-	get 'content_conversation/index'
-		get 'content_conversation/content_history'
-	get 'content_conversation/index_content'
-	get 'content_conversation/qa_check'
-	get 'content_conversation/update_status'
-	get 'content_conversation/uploaded_errors'
-  get 'reports/index'
-
-  get 'printhouse_setup/index'
-
-  get 'manage_access/index'
-
-  get 'content_conversation/index'
-
-  get 'manage_user_account/index'
-
-  get 'publisher_setup/index'
-
-  get 'publishers/search'
-
-  get 'retailers/index'
-
-	get 'publishers/search'
-		get 'publishers/index'
-
-  get 'retailers/search'
-
-  get 'publishers/index'
-
-	resource :publishers
-	resources :cdp_users
   resources :sessions, only: [:new, :create, :destory]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'sessions#new'
+
   match '/signup',  to: 'cdp_users#new', 			via: 'get'
   match '/signin',  to: 'sessions#new', 			via: 'get'
-  match '/signout', to: 'sessions#destroy', 		via: 'delete'
-  get 'end_user/index'
+  match '/signout', to: 'sessions#destroy', 	via: 'delete'
+ 
+  root 'sessions#new'
 
-  #resources :sessions, only: [:new, :create, :destroy]
-  resources :publishers
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

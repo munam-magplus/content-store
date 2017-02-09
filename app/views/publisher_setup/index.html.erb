@@ -1,19 +1,23 @@
-<%= render :partial => '/layouts/header' %>
+<html>
+<body class = "body1">
+<%= render :partial => '/layouts/header'%>
+<div class="div1">
 <table>
   <thead>
     <th class="page_head">Publisher Setup</th>
   </thead>
  </table>
 
+<div class="center">
 <table>
   <tr>
     <td class="gindexborder" colspan="2" valign="top">
-      <%= link_to image_tag("publisher.gif"),publishers_index_path%><br>
+      <%= link_to image_tag("publisher.gif"),publishers_path%><br>
       Publisher
       <table>
           <tr>
             <td class="gindexborder">
-              <%= link_to image_tag("search.gif"), publishers_index_path%>
+              <%= link_to image_tag("search.gif"), publishers_path%>
             </td>
             <td class="gindexborder">
               <%= link_to image_tag("create.gif"),{action: 'new', controller: 'publishers'}%>
@@ -31,3 +35,7 @@
     </td>
   </tr>
 </table>
+</div>
+</div>
+</body>
+</html>
