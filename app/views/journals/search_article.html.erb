@@ -1,111 +1,70 @@
 <html>
-	<body class = "body1">
-	<%= render :partial => '/layouts/header'%>
-		<div class="div1">
-
-<table width="860" border="0" cellspacing="0" cellpadding="0">
-	<tr>
-		<td class="page_head">Article Search</td>
-	</tr>
-	<tr>
-		<td>&nbsp;</td>
-	</tr>
-	<tr>
-		<td>&nbsp;</td>
-	</tr>
-
-	<tr>
-		<td align="left">
-		<table cellSpacing="0" cellPadding="10" border="0">
-			<tbody>
-				<tr>
-
-					
-					<td>Journal Title</td>
-					<td height="25"><select name="journalCode" multiple="multiple" size="4" id="journalCode"><option value="" selected="selected">All Journals</option></select></td>
-					
-				</tr>
-				<tr>
-					<td height="25" align="left">Title</td>
-					<td height="25" align="left"><input name="title"
-						class="text_field" size="30" /></td>
-				</tr>
-				<tr>
-					<td height="25" align="left">Content Code</td>
-					<td height="25" align="left"><input name="code"
-						class="text_field" size="30" /></td>
-				</tr>
-				<tr>
-					<td height="25" align="left">DOI</td>
-					<td height="25" align="left"><input name="doiCode"
-						class="text_field" size="30" /></td>
-				</tr>
-				<tr>
-					<td height="25" align="left">Volume Number</td>
-					<td align="left"><input name="volumeNumber" class="text_field"
-						size="30" /></td>
-				</tr>
-				<tr>
-					<td height="25" align="left">Issue Number</td>
-					<td align="left"><input name="issueNumber" class="text_field"
-						size="30" /></td>
-				</tr>
-				<tr>
-					<td height="25" align="left">Article Section</td>
-					<td align="left"><input name="section" class="text_field"
-						size="30" /></td>
-				</tr>
-				<tr>
-					<td height="25" align="left">Author First Name</td>
-					<td align="left"><input name="authorFirstName"
-						class="text_field" size="30" /></td>
-				</tr>
-				<tr>
-					<td height="25" align="left">Author Last Name</td>
-					<td align="left"><input name="authorLastName"
-						class="text_field" size="30" /></td>
-				</tr>
-
-			</tbody>
-			<tbody>
-				<tr>
-					<td align="left">&nbsp;</td>
-					<td align="left"><input type="submit"
-						value='Search' name="search"
-						class="submit_btn" /> <input type="reset"
-						value='Reset' name="button2"
-						class="submit_btn" /></td>
-				</tr>
-			</tbody>
-		</table>
-		</td>
-	</tr>
-	<tr>
-		<td>&nbsp;</td>
-	</tr>
-	<tr>
-		<td>&nbsp;</td>
-	</tr>
-</table>
-</form>
-</td>
-            <td width="10" align="right" valign="bottom" bgcolor="#FFFFFF" style="background-image: url(images/tabl_right_bg.gif); background-position:right; background-repeat:repeat-y;"><img src="images/right_corn_bot.gif" width="13" height="361" /></td>
-          </tr>
-          <tr>
-            <td width="10" height="10" align="left" valign="bottom"><img src="images/corn_left_bot.gif" width="13" height="17" /></td>
-            <td height="10" valign="bottom" bgcolor="#FFFFFF" style="background-image: url(images/tabl_bot_bg.gif); background-position:bottom; background-repeat:repeat-x;"><img src="images/tabl_bot_bg.gif" width="4" height="4" /></td>
-            <td width="10" height="10" align="right" valign="bottom"><img src="images/corn_right_bot.gif" width="13" height="17" /></td>
-          </tr>
-        </table></td>
-      </tr>
-      <tr>
-        <td align="center" class="footer_white">
-Copyright © 2006-2009 MPS Technologies Ltd</td>
-      </tr>
-    </table></td>
-  </tr>
-</table>
-</body>
-</div>
-</body>
+  <body class = "body1">
+    <%= render :partial => '/layouts/header'%>
+    <div class="div1">
+      <table border="0" cellpadding="10" cellspacing="0">
+  <tr>
+    <td.page_head>Article Search</td>
+  <tr>
+  <tr>
+    <td> 
+  <tr>
+   <%= form_tag search_publishers_path, :method => 'get' do %>
+      <table border="0" cellpadding="10" cellspacing="0">
+          <tbody>
+            <tr>
+              <td>Journal Title</td>
+              <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :PUB_NAME) %></td>
+            </tr> 
+            <tr>
+              <td> Title </td>
+              <td>
+                <%= text_field_tag :name, params[:name] %>
+             </td>
+            </tr> 
+            <tr>
+              <td> Content Code </td>
+              <td>
+                <%= text_field_tag :name, params[:name] %>
+             </td>
+            </tr> 
+            <tr>
+              <td>  DOI </td>
+              <td><%= text_field_tag :name, params[:first_name] %></td>
+            </tr>
+            <tr>
+              <td>Volume Number </td>
+              <td><%= text_field_tag :name, params[:last_name] %></td>
+            </tr>
+             <tr>
+              <td>Issue Number </td>
+              <td><%= text_field_tag :name, params[:last_name] %></td>
+            </tr>
+             <tr>
+              <td>Article Section </td>
+              <td><%= text_field_tag :name, params[:last_name] %></td>
+            </tr>
+             <tr>
+              <td>Author First Name </td>
+              <td><%= text_field_tag :name, params[:last_name] %></td>
+            </tr>
+             <tr>
+              <td>Author Last Name  </td>
+              <td><%= text_field_tag :name, params[:last_name] %></td>
+            </tr> 
+            <tr>
+              <td>
+                <%= submit_tag "Submit" %>
+                <%= button_tag "Reset", type: :reset %>
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+    </div>
+  </body>
 </html>
+
+<tr>
+  <td align="center" class="footer_white">
+  Copyright © 2006-2009 MPS Technologies Ltd</td>
+</tr>

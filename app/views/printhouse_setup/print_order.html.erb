@@ -1,0 +1,43 @@
+<html>
+	<body class = "body1">
+		<%= render :partial => '/layouts/header'%>
+		<div class="div1">
+
+			<table>
+			 	<thead>
+			 		<th class="page_head">Print Order Search</th>
+			 	</thead>
+			</table>
+
+			<table border="0" cellpadding="10" cellspacing="0">
+    		<tbody>
+					<%= form_for :journal do |f| %>
+						<tr>
+						  <td>Publisher:</td>
+						  <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :PUB_NAME) %></td>
+						</tr> 
+						<tr> 
+						  <td>Print House</td>
+						  <td><%= select_tag(:JOC_CODE, options_for_select(['Select',0]))  %></td>
+						</tr>
+						<tr>
+						  <td>Print Order No.</td>
+						  <td><%= f.text_field :JOC_JOUR_PISSN %></td>
+						</tr>
+						<tr>
+						  <td>Print Order Status:</td>
+						  <td><%= select_tag(:JOC_CODE, options_for_select([['Select',0],['Order Shipped',1],['Print House Not Found',2],['Order Received',3],['Order Cancelled',4],['Print House Allocated',5],['Work in progress',6],['Incomplete Transaction',7]]))  %></td>
+						</tr>
+						<tr>
+						  <td>Print Order Date:</td>
+						  <td>from<%= f.text_field :JOC_CODE %></td>
+						  <td>to<%= f.text_field :JOC_DISTRIBUTORS %></td>
+						</tr>
+
+						<%= f.submit "Submit" %>
+					<% end %>
+    		</tbody>
+  		</table>
+		</div>
+	</body>
+</html>

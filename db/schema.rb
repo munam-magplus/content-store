@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170203061910) do
+ActiveRecord::Schema.define(version: 20170203063043) do
 
   create_table "CDP_ADDRESS", primary_key: "ADD_ADDRESS_ID", id: :bigint, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|
     t.bigint   "USE_USER_ID",                                                              null: false
