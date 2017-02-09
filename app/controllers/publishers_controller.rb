@@ -1,11 +1,10 @@
 class PublishersController < ApplicationController
   def index
   end
-
   def show
   end
   def search
-    #@publisher = Publisher.find_by_user_id_and_project_id(params[:user_id],params[:project_id])
+    @publisher = Publisher.search(params[:code], params[:name])
     render :partial => 'search_result'
   end
   def new

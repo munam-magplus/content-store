@@ -1,3 +1,5 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+
 = render :partial => '/layouts/header'
  
 %tr
@@ -28,9 +30,9 @@
           %table{:border => "0", :cellpadding => "10", :cellspacing => "0"}
             %tbody
               %tr
-                %td{:align => "right"}
-                  %a{:href => "#", :onclick => "displayResult();"}
-                    %img{:src => "images/add.gif"}/
+                %td{:align => "right", :id=> "addAction"}
+                  %a{:href => "#"}
+                    = image_tag("add.gif")
               %tr
                 %td
                   %table#items{:border => "1", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
@@ -42,10 +44,25 @@
                       %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} High Ip
                       %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} IP List
                       %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Operation
-                  %table#addnewrow{:border => "1", :cellpadding => "0", :cellspacing => "0", :width => "1075px"}
-                    %tr{:style => "display:none;"}
-                      %td
-                        %input#0id{:name => "retpubid", :onblur => "deleteRow()", :type => "hidden", :value => "mps/10011"}
+                  %table#addnewrow{:border => "1", :cellpadding => "0", :cellspacing => "0", :width => "1075px"}        
               %tr
                 %td{:align => "right"}
                   %input#retailersubmit.submit_btn{:name => "addretailer", :onclick => "return validateRetailer()", :type => "submit", :value => "Submit"}
+
+
+
+:javascript
+  jQuery('#addAction').click( function () {
+      var $quantity = $('.tableheader').length;
+      var $quants = $('#items tr').length;
+      jQuery("#items").append("<tr></tr>");
+      $("#items tr:last").addClass('tablecount'+$quants);
+      $.each(new Array($quantity - 1 ),
+       function(n){
+        jQuery("#items tr:last").append("<td><input type='text' name='table'></td>");
+      });
+      jQuery("#items tr:last").append("<td><input type='image' name='delete' onclick ='remove(" + $quants + ");'></td>"); 
+  });
+  function remove(elem) {
+    $('.tablecount'+ elem ).hide();
+  }
