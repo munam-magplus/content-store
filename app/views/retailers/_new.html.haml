@@ -1,3 +1,4 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
 %body.body1
 %div.div1
 = render :partial => '/layouts/header'
@@ -12,26 +13,38 @@
   %td.page_head Create Retailer
   %td.page_head{:align => "right", :valign => "bottom"}
     %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "margin-bottom:1px;"}
-
   %table{:border => "0", :cellpadding => "6", :cellspacing => "0", :width => "100%", :class => "center"}
     %tr
       %td
         %table{:border => "0", :cellpadding => "10", :cellspacing => "0"}
           %tbody
             %tr
-              %td.page_head{:align => "right"}
-                = link_to image_tag("add.gif"), new_retailer_path
+              %td{:align => "right", :id=> "addAction"}
+                %a{:href => "#"}
+                  = image_tag("add.gif")
             %tr
               %td
   %table#items{:border => "1", :cellpadding => "0", :cellspacing => "0", :width => "100%", :class => "center"}
     %tr
-      %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Retailer Code
-      %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Retailer Name
-      %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Publisher Id
-      %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Low Ip
-      %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} High Ip
-      %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} IP List
-      %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Operation
+      %td{:align => "center", :height => "30", :style => "width: 149px"} Retailer Code
+      %td{:align => "center", :height => "30", :style => "width: 149px"} Retailer Name
+      %td{:align => "center", :height => "30", :style => "width: 149px"} Publisher Id
+      %td{:align => "center", :height => "30", :style => "width: 149px"} Low Ip
+      %td{:align => "center", :height => "30", :style => "width: 149px"} High Ip
+      %td{:align => "center", :height => "30", :style => "width: 149px"} IP List
+      %td{:align => "center", :height => "30", :style => "width: 149px"} Operation
+    = form_for(:CDP_RETAILER, url:  retailers_path)  do |f| 
+      %tr
+        %td
+          = f.text_field :RETAILER_CODE
+        %td
+          =  select_tag(:RETAILER_NAME, options_for_select([[@re.PUB_NAME,1]])) 
+        %td
+          = f.text_field :PUB_PUBLISHER_ID, :value => @re.PUB_PUBLISHER_ID
+        %td
+        %td
+        %td
+        %td
     %table#addnewrow{:border => "1", :cellpadding => "0", :cellspacing => "0", :width => "1075px", :class => "center"}
       %tr{:style => "display:none;"}
         %td
@@ -44,7 +57,18 @@
 
 
 
-
- 
-
- 
+:javascript
+  jQuery('#addAction').click( function () {
+      var $quantity = $('.tableheader').length;
+      var $quants = $('#items tr').length;
+      jQuery("#items").append("<tr></tr>");
+      $("#items tr:last").addClass('tablecount'+$quants);
+      $.each(new Array($quantity - 1 ),
+       function(n){
+        jQuery("#items tr:last").append("<td><input type='text' name='table'></td>");
+      });
+      jQuery("#items tr:last").append("<td><input type='image' name='delete' onclick ='remove(" + $quants + ");'></td>"); 
+  });
+  function remove(elem) {
+    $('.tablecount'+ elem ).hide();
+  }
