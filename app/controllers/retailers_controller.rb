@@ -1,6 +1,6 @@
 class RetailersController < ApplicationController
 	def index
-		@retailers = Retailer.get_retailer_names
+		@retailers = Retailer.all
 		@retail = Retailer.pluck(:PUB_PUBLISHER_ID)
 		@publishers = Publisher.where(:PUB_PUBLISHER_ID => @retail).pluck(:PUB_NAME)
 	end 
