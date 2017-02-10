@@ -1,0 +1,25 @@
+<%= form_for :retailerip do |builder| %>
+	<p>
+    <%= builder.label :CRI_IP_AUTH_ID, "ip auth" %><br />
+    <%= builder.text_field :CRI_IP_AUTH_ID %>
+  </p>
+  <p>
+    <%= builder.label :CRI_LOW_IP, "low ip" %><br />
+    <%= builder.text_field :CRI_LOW_IP %>
+  </p>
+  <p>
+    <%= builder.label :CRI_HIGH_IP, "high ip" %><br />
+    <%= builder.text_field :CRI_HIGH_IP %>
+  </p>
+  <p>
+    <%= builder.label :CRI_IP_LIST, "ip list" %><br />
+    <%= builder.text_field :CRI_IP_LIST %>
+  </p>
+  <p>
+    <%= builder.label :CRI_RETAILER_CODE, "retailer code" %><br />
+    <%= builder.text_field :CRI_RETAILER_CODE %>
+  </p>
+  <div class="actions">
+    <%= builder.submit %>
+  </div>
+  <% end %>

@@ -1,4 +1,4 @@
-<%= form_for(:CDP_RETAILER, url:  retailers_path)  do |f| %>
+<%= form_for(:csretailer, url:  csretailers_path)  do |f| %>
 	<div class="field">
 		<%= f.label :RETAILER_CODE %>
 		<%= f.text_field :RETAILER_CODE%>
@@ -12,28 +12,7 @@
 		<%= f.text_field :PUB_PUBLISHER_ID%>
 	</div>
 
-	<%= f.fields_for :retailerip do |builder| %>
-	<p>
-    <%= builder.label :CRI_IP_AUTH_ID, "ip auth" %><br />
-    <%= builder.text_field :CRI_IP_AUTH_ID %>
-  </p>
-  <p>
-    <%= builder.label :CRI_LOW_IP, "low ip" %><br />
-    <%= builder.text_field :CRI_LOW_IP %>
-  </p>
-  <p>
-    <%= builder.label :CRI_HIGH_IP, "high ip" %><br />
-    <%= builder.text_field :CRI_HIGH_IP %>
-  </p>
-  <p>
-    <%= builder.label :CRI_IP_LIST, "ip list" %><br />
-    <%= builder.text_field :CRI_IP_LIST %>
-  </p>
-  <p>
-    <%= builder.label :CRI_RETAILER_CODE, "retailer code" %><br />
-    <%= builder.text_field :CRI_RETAILER_CODE %>
-  </p>
-  <% end %>
+	
 	
 	<div class="actions">
 		<%= f.submit %>

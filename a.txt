@@ -1,4 +1,13 @@
                                     Prefix Verb   URI Pattern                                     Controller#Action
+                          search_retailers GET    /retailers/search(.:format)                     retailers#search
+                                 retailers GET    /retailers(.:format)                            retailers#index
+                                           POST   /retailers(.:format)                            retailers#create
+                              new_retailer GET    /retailers/new(.:format)                        retailers#new
+                             edit_retailer GET    /retailers/:id/edit(.:format)                   retailers#edit
+                                  retailer GET    /retailers/:id(.:format)                        retailers#show
+                                           PATCH  /retailers/:id(.:format)                        retailers#update
+                                           PUT    /retailers/:id(.:format)                        retailers#update
+                                           DELETE /retailers/:id(.:format)                        retailers#destroy
              search_institution_user_index GET    /institution_user/search(.:format)              institution_user#search
                     institution_user_index GET    /institution_user(.:format)                     institution_user#index
                                            POST   /institution_user(.:format)                     institution_user#create
@@ -44,15 +53,6 @@
                                            PATCH  /publishers/:id(.:format)                       publishers#update
                                            PUT    /publishers/:id(.:format)                       publishers#update
                                            DELETE /publishers/:id(.:format)                       publishers#destroy
-                          search_retailers GET    /retailers/search(.:format)                     retailers#search
-                                 retailers GET    /retailers(.:format)                            retailers#index
-                                           POST   /retailers(.:format)                            retailers#create
-                              new_retailer GET    /retailers/new(.:format)                        retailers#new
-                             edit_retailer GET    /retailers/:id/edit(.:format)                   retailers#edit
-                                  retailer GET    /retailers/:id(.:format)                        retailers#show
-                                           PATCH  /retailers/:id(.:format)                        retailers#update
-                                           PUT    /retailers/:id(.:format)                        retailers#update
-                                           DELETE /retailers/:id(.:format)                        retailers#destroy
                      search_license_groups GET    /license_groups/search(.:format)                license_groups#search
                             license_groups GET    /license_groups(.:format)                       license_groups#index
                                            POST   /license_groups(.:format)                       license_groups#create

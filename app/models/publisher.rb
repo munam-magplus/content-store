@@ -4,5 +4,5 @@ class Publisher < ApplicationRecord
 	def self.search(code,name)
   	 result = where("pub_code LIKE ? AND pub_name LIKE ?", "%#{code}%", "%#{name}")
 	end
-	has_many :retailers
+	has_many :csretailers
 end
