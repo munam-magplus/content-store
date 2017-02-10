@@ -14,21 +14,21 @@
 <table>
 <tr>
 	<td class="gindexborder" colspan="2" valign="top">
-		<%= image_tag("group_license_home.gif")%><br>
+		<%= link_to image_tag("group_license_home.gif"),printhouse_setup_search_path %><br>
 		Print House
 			<table>
 				<tr>
 					<td class="gindexborder">
-						<%= image_tag("search.gif")%>
+						<%= link_to image_tag("search.gif"),printhouse_setup_search_path %>
 					</td>
 					<td class="gindexborder">
-						<%= image_tag("create.gif")%>
+						<%= link_to image_tag("create.gif"),printhouse_setup_create_path %>
 					</td>
 				</tr>
 			</table>
 	</td>
 	<td class="gindexborder" colspan="2" valign="top">
-		<%= image_tag("campaign.gif")%><br>
+		<%= link_to image_tag("campaign.gif"),printhouse_setup_print_order_path %><br>
 		Print Order
 	</td>
 	

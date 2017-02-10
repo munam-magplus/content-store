@@ -1,0 +1,52 @@
+<html>
+<body class = "body1">
+<%= render :partial => '/layouts/header'%>
+<div class="div1">
+
+<table>
+ 	<thead>
+ 		<th class="page_head">Print House Search</th>
+ 	</thead>
+ </table>
+
+<table border="0" cellpadding="10" cellspacing="0">
+        <tbody>
+          <%= form_for :journal do |f| %>
+            <tr>
+              <td>Publisher:</td>
+              <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :PUB_NAME) %></td>
+            </tr> 
+            <tr> 
+              <td>Print House Name:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+            <tr>
+            </tr>
+              <td>Print House Code:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+            </tr>
+            <tr>
+              <td>Email:</td>
+              <td><%= f.text_field :JOC_JOUR_PISSN %></td>
+            </tr>
+            <tr>
+              <td>First Name / Last Name:</td>
+              <td><%= f.text_field :JOC_JOUR_EISSN %></td>
+            </tr>
+            <tr>
+              <td>Country:</td>
+              <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Countryname.all, :id, :CON_COUNTRY_NAME) %></td>
+            </tr>
+       
+            <%= f.submit "Save" %>
+
+          <% end %>
+        </tbody>
+      </table>
+  <tr>
+    <td align="center" class="footer_white">
+		Copyright © 2006-2009 MPS Technologies Ltd</td>
+  </tr>
+
+</div>
+</body>
+</html>

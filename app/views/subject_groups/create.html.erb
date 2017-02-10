@@ -1,221 +1,89 @@
 <html>
 	<body class = "body1">
-	<%= render :partial => '/layouts/header'%>
+	  <%= render :partial => '/layouts/header'%>
 		<div class="div1">
 
-<form id="searchSubjectGroupForm" method="post" action="/AdminTool/createSubjectGroup.do">
-<table width="860" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td class="page_head">Create Primary Subject Group</td>
-    <td align="right" valign="bottom" class="page_head">&nbsp;</td>
-  </tr>
-  <tr>
-    <td colspan="2"><span style="color:#FF0000">&nbsp;</span></td>
-  </tr>
-  <tr>
-    <td colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="6">
-      <tr>
-        <td><TABLE cellSpacing=0 cellPadding=10 border=0>
-                            <TBODY>
-                              <TR>
-                                <TD>Publisher </TD>
-                                <TD><label>
-                                  <select name="pubCode" id="pubCode">
-                                    
-										<option value="">Select</option>
-										
-											<option value="egramata">
-												eGramata
-											</option>
-											
-											<option value="lkjh">
-												lkjh
-											</option>
-											
-											<option value="mjhu">
-												mjhu
-											</option>
-											
-											<option value="qwer">
-												qwer1
-											</option>
-											
-											<option value="djoef">
-												DJØF Forlag
-											</option>
-											
-											<option value="mpil">
-												macmillan publishers india limited
-											</option>
-											
-											<option value="gmedia">
-												Global Media
-											</option>
-											
-											<option value="niace">
-												National Institute of Adult Continuing Education (NIACE)
-											</option>
-											
-											<option value="gillmac">
-												Gill & MacMillan
-											</option>
-											
-											<option value="dummypub2">
-												Dummy Publisher2
-											</option>
-											
-											<option value="dummypub1">
-												Dummy Publisher1
-											</option>
-											
-											<option value="versita">
-												versita.pl
-											</option>
-											
-											<option value="TP">
-												Test Publisher
-											</option>
-											
-											<option value="jhup">
-												The Johns Hopkins University Press
-											</option>
-											
-											<option value="alok">
-												alok
-											</option>
-											
-											<option value="aiaa">
-												AIAA
-											</option>
-											
-											<option value="croner">
-												Wolters Kluwer Croner business
-											</option>
-											
-											<option value="1234">
-												mps test
-											</option>
-											
-											<option value="mps">
-												MPS
-											</option>
-											
-											<option value="mpstest1">
-												mpstest1
-											</option>
-											
-											<option value="bk">
-												bijay kmuar
-											</option>
-											
-											<option value="uo1">
-												urmi
-											</option>
-											
-											<option value="rts">
-												revive
-											</option>
-											
-											<option value="mpst">
-												macmillan publishing
-											</option>
-											
-											<option value="wtbooks">
-												World Technology
-											</option>
-											
-											<option value="allenpress">
-												Allen Press
-											</option>
-											
-											<option value="u01">
-												check
-											</option>
-											
-							     </select>
-                                </label></TD>
-                              </TR>
-                              <TR>
-                                <TD>Subject Group Level</TD>
-                                <TD><INPUT name="level" value="1" id="level" disabled="disabled" /></TD>
-                              </TR>
-                              <TR>
-                                <TD>Subject Group Code <span class="mandtory">*</span></TD>
-                                <TD><INPUT name="code" id="code" maxLength=50 onBlur="validateKeys(this,'alphanumeric');" class="text_field" /></TD>
-                              </TR>
-                              
-                              <TR>
-                                <TD>Subject Group Name<span class="mandtory">*</span></TD>
-                                <TD><INPUT name="name" id="name" maxLength=100  class="text_field" /></TD>
-                              </TR>
-                              <TR>
-                                <TD>Guest User View Limit</TD>
-                                <TD><INPUT name="guestUVL" id="guestUVL" maxlength=5 onBlur="validateKeys(this,'numeric');" class="text_field" /></TD>
-                              </TR>
-                              <TR>
-                                <TD>Auth User View Limit</TD>
-                                <TD><INPUT name="authUVL" id="authUVL" maxlength=5 onBlur="validateKeys(this,'numeric');" class="text_field" /></TD>
-                              </TR>
-                              <TR>
-                                <TD>Discount Percentage</TD>
-                                <TD><INPUT name="discount" id="discount" maxlength=5 onBlur="validateFloat(this);" class="text_field" /></TD>
-                              </TR>
-                              <TR>
-		                        <TD>Viewability Percentage</TD>
-		                        <TD><INPUT name='viewability' id="viewPerc" maxlength=5 onBlur="validateKeys(this,'numeric');" class="text_field" /></TD>
-		                      </TR>
-		                      <TR>
-                              	<TD>
-									Select Language <span class="mandtory">*</span></TD>
-								<TD>	<select id="selectedMetaDataLanguage" name="selectedMetaDataLanguage" class="text_field" >
-	              					<option value="" selected="">Select</option>
-	              					
-                  					<option value="da">Dansk</option>
-                 					
-                  					<option value="pl">Polish</option>
-                 					
-                  					<option value="lv">Latvian</option>
-                 					
-                  					<option value="en">English</option>
-                 					
-                					</select>
-                				</TD>
-                              </TR>
-                              <TR>
-                                <TD valign="top">Description</TD>
-                                <TD><textarea name="description" id="description" cols="45" rows="5" class="text_field"></textarea></TD>
-                              </TR>
-                            </TBODY>
-                            <TBODY>
-                               <TR>
-								<TD align="right">&nbsp;</TD>
-								 <td><input type="submit" value="Submit" onclick="return Validations();" class="submit_btn" />
-								<input type="reset" value="Reset" class="submit_btn" /></td>                             
-                              </TR>
-                            </TBODY>
-            </TABLE></td>
-      </tr>
-      </TABLE></td>
-      </tr>
-    </table>
-</form></td>
-            <td width="10" align="right" valign="bottom" bgcolor="#FFFFFF" style="background-image: url(images/tabl_right_bg.gif); background-position:right; background-repeat:repeat-y;"><img src="images/right_corn_bot.gif" width="13" height="361" /></td>
-          </tr>
-          <tr>
-            <td width="10" height="10" align="left" valign="bottom"><img src="images/corn_left_bot.gif" width="13" height="17" /></td>
-            <td height="10" valign="bottom" bgcolor="#FFFFFF" style="background-image: url(images/tabl_bot_bg.gif); background-position:bottom; background-repeat:repeat-x;"><img src="images/tabl_bot_bg.gif" width="4" height="4" /></td>
-            <td width="10" height="10" align="right" valign="bottom"><img src="images/corn_right_bot.gif" width="13" height="17" /></td>
-          </tr>
-        </table></td>
-      </tr>
-      <tr>
-        <td align="center" class="footer_white">
-Copyright © 2006-2009 MPS Technologies Ltd</td>
-      </tr>
-    </table></td>
-  </tr>
-</table>
-</body>
-</div>
-</body>
+      <h1> Create Primary Subject Group </h1>
+      <table border="0" cellpadding="10" cellspacing="0">
+        <tbody>
+          <%= form_for :journal do |f| %>
+            <tr>
+              <td>Journal Code:</td>
+			        <td><%= f.text_field :JOC_CODE %></td>
+              <td>Publisher:</td>
+              <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :PUB_NAME) %></td>
+            </tr> 
+            <tr> 
+              <td>Journal Title:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+              <td>Journal Sub Title:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+            </tr>
+            <tr>
+              <td>Journal Primary ISSN:</td>
+              <td><%= f.text_field :JOC_JOUR_PISSN %></td>
+              <td>Journal Electronic ISSN:</td>
+              <td><%= f.text_field :JOC_JOUR_EISSN %></td>
+            </tr>
+            <tr>
+              <td>Journal Owner:</td>
+              <td><%= f.text_field :JOC_OWNER %></td>
+              <td>Language:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+            </tr>
+            <tr>
+              <td>Journal Content Classification:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+              <td>Journal Distributor :</td>
+              <td><%= f.text_field :JOC_DISTRIBUTORS %></td>
+            </tr>
+            <tr>
+              <td>Price in:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+              <td>Journal Publication Date:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+            </tr>
+            <tr>
+              <td>Stock Number:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+            </tr>
+            <tr>
+              <td>Cover Image:</td>
+              <td colspan="2"><input type="file" name="coverImage" size="60" value="" id="coverImage" style="background-color: #E8E8E8">
+              <br />
+                  Please upload only a jpg image of (height,width)=(110,74)pixels.</td>
+            </tr>
+            <tr>
+              <td>Journal Categories:</td>
+              <td>  </td>
+            </tr>
+            <tr>
+              <td>Journal Description:</td>
+              <td><%= f.text_area :JOC_DESCRIPTION %></td>
+            </tr>
+            <tr>
+              <td>Editorial:</td>
+              <td><%= f.radio_button :JOC_DESCRIPTION, 'Internal', :checked => true %> Internal
+              <%= f.radio_button :JOC_DESCRIPTION, 'External' %> External<br>
+              <%= f.text_area :JOC_CODE %></td>
+            </tr>
+            <tr>
+              <td>Instructions for Authors:</td>
+              <td><%= f.radio_button :JOC_DESCRIPTION, 'Internal', :checked => true %> Internal
+              <%= f.radio_button :JOC_DESCRIPTION, 'External' %> External<br>
+              <%= f.text_area :JOC_CODE %></td>
+            </tr>
+
+            <%= f.submit "Save" %>
+
+          <% end %>
+        </tbody>
+      </table>
+      
+    </div>
+  </body>
 </html>
+<tr>
+  <td align="center" class="footer_white">
+  Copyright © 2006-2009 MPS Technologies Ltd</td>
+</tr>

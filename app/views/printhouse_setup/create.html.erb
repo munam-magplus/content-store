@@ -1,0 +1,79 @@
+<html>
+	<body class = "body1">
+		<%= render :partial => '/layouts/header'%>
+		<div class="div1">
+
+			<table><thead><th class="page_head">Print House Search</th></thead></table>
+
+			<table border="0" cellpadding="10" cellspacing="0">
+        <tbody>
+          <%= form_for :journal do |f| %>
+          <h3>Details</h3>
+            <tr>
+              <td>Publisher:</td>
+              <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :PUB_NAME) %></td>
+            </tr> 
+            <tr>
+              <td>Print House Code*:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+              <td>Print House Name*:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+            </tr>
+             <tr>
+              <td>Ranking:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+              <td>VAT Reg. No.:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+            </tr>
+            <h3>Address</h3>
+             <tr>
+              <td>Contact First Name*:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+              <td>Contact Last Name*:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+            </tr>
+             <tr>
+              <td>Phone*:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+              <td>Email*:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+            </tr>
+            <tr>
+              <td>Address Line1*:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+              <td>Address Line2:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+            </tr>
+            <tr>
+              <td>City/Town:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+              <td>State/Province*:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+            </tr>
+            <tr>
+              <td>Postal Code*:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+              <td>Country*:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+            </tr>
+            <h3>Shipping Preferences</h3>
+            <tr>
+              <td>Shipping Types*:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+              <td>Shipping Countries*:</td>
+              <td><%= f.text_field :JOC_CODE %></td>
+            </tr>
+          
+            <%= f.submit "Submit" %>
+
+          <% end %>
+        </tbody>
+      </table>
+
+		  <tr>
+		    <td align="center" class="footer_white">
+				Copyright © 2006-2009 MPS Technologies Ltd</td>
+		  </tr>
+		</div>
+	</body>
+</html>

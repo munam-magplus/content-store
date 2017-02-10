@@ -1,6 +1,5 @@
 class CdpUsersController < ApplicationController
   before_action :set_cdp_user, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_api_user!, only: [ :create ]
 
   # GET /cdp_users
   # GET /cdp_users.json
@@ -31,7 +30,7 @@ class CdpUsersController < ApplicationController
       if @cdp_user.save
         sign_in @cdp_user
       flash[:success] = "Welcome to the Sample App!"
-      redirect_to @cdp_user
+      redirect_to root_url
     else
       render 'new'
       #   format.html { redirect_to @cdp_user, notice: 'Cdp user was successfully created.' }

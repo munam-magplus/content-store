@@ -21,8 +21,12 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'subject_groups/create'
+  get 'subject_groups/new'
+
   resources :journals do
     collection do
+      get 'index'
       get 'search'  
       get 'upload_article_metadata'
       get 'search_article'
@@ -30,14 +34,21 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'journals/create'
+  get 'journals/new'
+
   resources :books do
     collection do
+      get 'index'
+      get 'create'
       get 'search'
       get 'metadata_sheet'
       get 'onix_input'
       get 'onix_supp_sheet'
     end
   end
+
+  get 'books/create'
 
   resources :content_conversation do
     collection do 
@@ -49,12 +60,16 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'printhouse_setup/create'
+  get 'printhouse_setup/print_order'
+  get 'printhouse_setup/search'
+
   resources :countries, only: [:index, :show]
 
   resources :reports, :printhouse_setup, :manage_access, 
             :manage_user_account, :publisher_setup, :end_user, only: [:index]
 
-  resources :promo_codes,:cdp_users 
+  resources :promo_codes, :cdp_users 
 
   resources :sessions, only: [:new, :create, :destory]
 
@@ -63,6 +78,4 @@ Rails.application.routes.draw do
   match '/signout', to: 'sessions#destroy', 	via: 'delete'
  
   root 'sessions#new'
-
-
 end
