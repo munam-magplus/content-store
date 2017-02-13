@@ -1,0 +1,83 @@
+%body{:class => "body1"}
+= render :partial => '/layouts/header'
+%div{:class=>"div1"}
+  %form{:action => "getSubscriptionResult.do", :method => "post", :name => "searchSubscription"}
+    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "860"}
+      %tr
+        %td.page_head Search Subscription
+        %td.page_head{:align => "right", :valign => "bottom"}
+      %tr
+        %td{:colspan => "2"}  
+      %tr
+        %td{:colspan => "2"}
+          %table{:border => "0", :cellpadding => "6", :cellspacing => "0"}
+            %tr
+              %td
+                %table{:align => "left", :border => "0", :cellpadding => "10", :cellspacing => "0"}
+                  %tbody
+                    %tr
+                      %td Publisher
+                      %td
+                        %select#pubCodeCombo{:name => "pubCode"}
+                          %option{:value => "wtbooks"}
+                            World Technology
+                    %tr
+                      %td Subscription Name
+                      %td
+                        %input.text_field{:name => "subscriptionName"}/
+                    %tr
+                      %td Subscription Type
+                      %td
+                        %select#subscriptionType{:name => "subscriptionType"}
+                          %option{:selected => "selected", :value => ""} Select
+                          %option{:value => "INSTITUTE_FIXED"} Fixed Date Range
+                          %option{:value => "INSTITUTE_RELATIVE"} Relative Date Range
+                    %tr
+                      %td{:height => "12"} Subject Group Name
+                      %td{:height => "12"}
+                        %input.text_field{:name => "subjectGroupName"}/
+                    %tr
+                      %td{:height => "12"} Publication Year
+                      %td{:height => "12"}
+                        %input.text_field{:name => "publicationYear"}/
+                    %tr
+                      %td{:height => "12"} Title
+                      %td{:height => "12"}
+                        %input.text_field{:name => "bookTitle"}/
+                    %tr
+                      %td{:height => "12"} Author First Name
+                      %td{:height => "12"}
+                        %input.text_field{:name => "authorFirstName"}/
+                    %tr
+                      %td{:height => "12"} Author Last Name
+                      %td{:height => "12"}
+                        %input.text_field{:name => "authorLastName"}/
+                    %tr
+                      %td{:height => "12"} Available for Institutional Accounts
+                      %td{:height => "12"}
+                        %select#select{:name => "isAvailableSearch"}
+                          %option{:selected => "selected", :value => ""} Select
+                          %option{:value => "Y"} Yes
+                          %option{:value => "N"} No
+                    %tr
+                      %td Subscription category
+                      %td
+                        %table{:cellpadding => "4", :cellspacing => "0"}
+                          %tr
+                            %td
+                              %input#onlineSubs{:name => "radio2", :onclick => "setCategoryValue(this.value)", :type => "radio", :value => "ONLINE_SUBSCRIPTION"}/
+                              Online Subscription for library
+                            %td{:nowrap => "nowrap"}
+                              %input#indivBorrow{:name => "radio2", :onclick => "setCategoryValue(this.value)", :type => "radio", :value => "INDIVIDUAL_BORROW"}/
+                              Individual Borrow
+                            %td{:nowrap => "nowrap"}
+                              %input#libBorrow{:name => "radio2", :onclick => "setCategoryValue(this.value)", :type => "radio", :value => "LIBRARY_BORROW"}/
+                              Library Borrow
+                              %input#licenseCategory{:name => "licenseCategory", :type => "hidden"}/
+                  %tbody
+                    %tr
+                      %td{:align => "right"}  
+                      %td{:align => "left"}
+                        %input.submit_btn{:name => "search", :onclick => "return checkPublisher();", :type => "submit", :value => "Search"}/
+                        \ 
+                        %input.submit_btn{:name => "button", :type => "reset", :value => "Reset"}/

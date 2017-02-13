@@ -1,0 +1,51 @@
+%body{:class => "body1"}
+= render :partial => '/layouts/header'
+%div{:class=>"div1"}
+  %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "860"}
+    %tr
+      %td.page_head Search License
+    %tr
+      %td{:align => "left"}  
+    %tr
+      %td
+    %tr
+      = form_tag search_licenses_path, :method => 'get' do
+        %td
+          %table{:align => "left", :border => "0", :cellpadding => "10", :cellspacing => "0"}
+            %tbody
+              %tr
+                %td{:height => "25", :width => "171"} Publisher
+                %td{:height => "25", :width => "414"}
+                  = select_tag(:PUB_PUBLISHER_ID, options_for_select(@publishers, prompt = nil))
+              %tr
+                %td{:height => "25", :width => "149"} License ID
+                %td{:height => "25"}
+                  = text_field_tag :LIC_LICENSE_CODE
+              %tr
+                %td{:height => "25"} License Name
+                %td{:height => "25", :width => "436"}
+                  = text_field_tag :LIC_LICENSE_NAME
+              %tr
+                %td{:height => "25"} License Type
+                %td{:height => "25"}
+                  = collection_select(:lic_type, 0, TransactionDetail.all, :id, :LIC_LICENSE_TYPE)
+              %tr
+                %td{:height => "25"} Content Identifier
+                %td{:height => "25"}
+                  = text_field_tag :isbn_search
+              %tr
+                %td{:height => "25"} Created By
+                %td{:height => "25"}
+                  = text_field_tag :created_by
+              %tr
+                %td{:height => "25"} Saleability
+                %td{:height => "25"}
+                  %select#select2{:name => "LIC_FOR_SALE"}
+                    %option{:selected => "selected", :value => ""} Select
+                    %option{:value => "Y"} For Sale
+                    %option{:value => "N"} Not For Sale
+              %tr
+                %td.GBoldText{:align => "right"}  
+                %td.GBoldText{:align => "left"}
+                  = submit_tag "Search"
+                  %input.submit_btn{:type => "reset", :value => "Reset"} 

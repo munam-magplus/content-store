@@ -8,33 +8,25 @@
   %tr
     %td  
   %tr
-    = form_tag search_publishers_path, :method => 'get' do 
-      %td{:align => "left"}
-        %table{:border => "0", :cellpadding => "10", :cellspacing => "0",:class => "center"}
-          %tbody
-            %tr
-              %td{:align => "left", :height => "25"} Publisher Code
-              %td{:align => "left", :height => "25"}
-                = text_field_tag :code, params[:code]
-                //%input.text_field{:name => "code", :size => "30"}/
-            %tr
-              %td{:align => "left", :height => "25"} Publisher Name
-              %td{:align => "left"}
-                = text_field_tag :name, params[:name]
-                //%input.text_field{:name => "name", :size => "30"}/
-          %tbody
-            %tr
-              %td{:align => "left"}  
-              %td{:align => "left"}
-                = submit_tag "Search", :name => nil 
-                //%input.submit_btn{:name => "search", :type => "submit", :value => "Search"}/
-                = submit_tag "cancel", :name => nil 
-                //%input.submit_btn{:name => "button2", :onclick => "getCancel();", :type => "button", :value => "Cancel"}/
-
-  %tr
-    %td  
-  %tr
-    %td 
+   = form_tag search_publishers_path, :method => 'get' do 
+    %td{:align => "left"}
+     %table{:border => "0", :cellpadding => "10", :cellspacing => "0",:class => "center"}
+       %tbody
+         %tr
+          %td{:align => "left", :height => "25"} Publisher Code
+          %td{:align => "left", :height => "25"}
+           = text_field_tag :code, params[:code]
+         %tr
+          %td{:align => "left", :height => "25"} Publisher Name
+          %td{:align => "left"}
+           = text_field_tag :name, params[:name]
+       %tbody
+        %tr
+         %td{:align => "left"}  
+         %td{:align => "left"}
+          = submit_tag "Search", :name => nil 
+          = submit_tag "cancel", :name => nil 
+          //%input.submit_btn{:name => "button2", :onclick => "getCancel();", :type => "button", :value => "Cancel"} 
 
 
 
