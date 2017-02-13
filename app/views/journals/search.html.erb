@@ -1,360 +1,59 @@
 <html>
-	<body class = "body1">
-	<%= render :partial => '/layouts/header'%>
-		<div class="div1">
-
-<form name="searchJournalSubmit" method="post" action="/AdminTool/searchJournalSubmit.do" accept-charset="UTF-8" enctype="multipart/form-data">
-<table border="0" cellpadding="0" cellspacing="0" width="860">
-            
-		    <tbody>
-			
+  <body class = "body1">
+    <%= render :partial => '/layouts/header'%>
+    <div class="div1">
+      <table border="0" cellpadding="10" cellspacing="0">
+  <tr>
+    <td.page_head> Search Journal</td>
+  <tr>
+  <tr>
+    <td> 
+  <tr>
+   <%= form_tag search_publishers_path, :method => 'get' do  %>
+      <table border="0" cellpadding="10" cellspacing="0">
+          <tbody>
             <tr>
-              <td class="page_head">Search Journal </td>
-              <td class="page_head" align="right" valign="bottom"><table style="margin-bottom: 1px;" border="0" cellpadding="0" cellspacing="0">
-      <tbody><tr>
-        <td><img src="primaryContentInfoTemplate.do_files/btsr01.gif" width="6" height="23"></td>
-        <td style="background-image: url(images/btsr02.gif);"><table border="0" cellpadding="0" cellspacing="0">
-          <tbody><tr>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody></table></td>
-        <td><img src="primaryContentInfoTemplate.do_files/btsr03.gif" width="6" height="23"></td>
-      </tr>
-    </tbody></table></td>
-            </tr>
+              <td>Publisher Name:</td>
+              <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :PUB_NAME) %></td>
+            </tr> 
             <tr>
-              <td colspan="2" align="left"></td>
-            </tr>
+              <td> Journal Code</td>
+              <td>
+                <%= text_field_tag :name, params[:name] %>
+             </td>
+            </tr> 
             <tr>
-              <td colspan="2" align="right"></td>
-            </tr>
+              <td> Journal Title</td>
+              <td>
+                <%= text_field_tag :name, params[:name] %>
+             </td>
+            </tr> 
             <tr>
-              <td colspan="2" align="right">&nbsp;</td>
-            </tr>
+              <td>  Journal Primary ISSN</td>
+              <td>
+                <%= text_field_tag :name, params[:name] %>
+             </td>
+            </tr> 
             <tr>
-              <td colspan="2"><table border="0" cellpadding="10" cellspacing="0">
-                
-				
-                <tbody>
-				<tr>
-				
-							
-			
-                  <td valign="top">Publisher</td>
-                  <td><select name="pubCode" id="pubCode" multiple>
-                    <option selected="selected" value="">Select</option>
-                    
-                    <option value="ab">Aakar Books</option>
-                    
-                    <option value="ap">Aavishar Publications</option>
-                    
-                    <option value="abdp">ABD Publications</option>
-                    
-                    <option value="abhip">Abhishek Publications</option>
-                    
-                    <option value="akp">Agam Kala Prakashan</option>
-                    
-                    <option value="aiaa">AIAA</option>
-                    
-                    <option value="ebookowo">All Free Media (e-bookowo)</option>
-                    
-                    <option value="allenpress">Allen Press</option>
-                    
-                    <option value="alok">alok</option>
-                    
-                    <option value="alpb">Alp Books</option>
-                    
-                    <option value="aph">Anshah Publishing House</option>
-                    
-                    <option value="asb">Asian Books</option>
-                    
-                    <option value="atena">Atēna</option>
-                    
-                    <option value="aup">Authors Press</option>
-                    
-                    <option value="avots">Avots</option>
-                    
-                    <option value="bsp">B S Publication</option>
-                    
-                    <option value="brb">Better Books</option>
-                    
-                    <option value="bk">bijay kmuar</option>
-                    
-                    <option value="bph">Bimla Publishing House</option>
-                    
-                    <option value="bhb">Biotech Books</option>
-                    
-                    <option value="biznesa augstskola turiba">Biznesa augstskola Turība</option>
-                    
-                    <option value="be">Book Enclave</option>
-                    
-                    <option value="u01">check</option>
-                    
-                    <option value="001">check1</option>
-                    
-                    <option value="cp">Computech Publication</option>
-                    
-                    <option value="dbb">Delhi Book Bureau</option>
-                    
-                    <option value="dgramata">Dienas Grāmata</option>
-                    
-                    <option value="djoef">DJØF Forlag</option>
-                    
-                    <option value="dummypub1">Dummy Publisher1</option>
-                    
-                    <option value="dummypub2">Dummy Publisher2</option>
-                    
-                    <option value="egramata">eGramata</option>
-                    
-                    <option value="egrammempublisher">egramataMemberPublisher </option>
-                    
-                    <option value="eb">Epitome Books</option>
-                    
-                    <option value="gtp">Genetech Publications</option>
-                    
-                    <option value="gillmac">Gill & MacMillan</option>
-                    
-                    <option value="gmedia">Global Media</option>
-                    
-                    <option value="gp">Gyan Publications</option>
-                    
-                    <option value="hbpl">Himalaya Books Pvt. Ltd.</option>
-                    
-                    <option value="hph">Himalaya Publishing House</option>
-                    
-                    <option value="hb">Holiday Bookstore</option>
-                    
-                    <option value="ibdc">Ibdc</option>
-                    
-                    <option value="iip">Inter-India Publications</option>
-                    
-                    <option value="jumava">Jumava</option>
-                    
-                    <option value="jana rozes apgads">Jāņa Rozes apgāds</option>
-                    
-                    <option value="kp">Kalpaz Publications</option>
-                    
-                    <option value="kontinents">Kontinents</option>
-                    
-                    <option value="lbb">Latvijas Bībeles biedrība</option>
-                    
-                    <option value="ldp">Leeladevi Publications</option>
-                    
-                    <option value="lkjh">lkjh</option>
-                    
-                    <option value="mpil">macmillan publishers india limited</option>
-                    
-                    <option value="mpst">macmillan publishing</option>
-                    
-                    <option value="madris">Madris</option>
-                    
-                    <option value="mmp">Managalam Prakashan</option>
-                    
-                    <option value="mp">Mayur Publication</option>
-                    
-                    <option value="dummy_mempub">Mem</option>
-                    
-                    <option value="mm">Mind Melodies</option>
-                    
-                    <option value="mjhu">mjhu</option>
-                    
-                    <option value="moderator">Moderator</option>
-                    
-                    <option value="mtp">Mohit Publications</option>
-                    
-                    <option value="mps">MPS</option>
-                    
-                    <option value="1234">mps test</option>
-                    
-                    <option value="mpstest1">mpstest1</option>
-                    
-                    <option value="nims">N.I.M.S</option>
-                    
-                    <option value="ngm">National Gandhi Museum</option>
-                    
-                    <option value="niace">National Institute of Adult Continuing Education (NIACE)</option>
-                    
-                    <option value="np">Navyug Publications</option>
-                    
-                    <option value="nap">New Asian Publications</option>
-                    
-                    <option value="njf">Nyt Juridisk Forlag</option>
-                    
-                    <option value="impuls">Oficyna Wydawnicza Impuls</option>
-                    
-                    <option value="aks">omkar</option>
-                    
-                    <option value="obc">Oxford Book Co.</option>
-                    
-                    <option value="pdp">Paradise Publications</option>
-                    
-                    <option value="pbs">Pharma Book Syndicate</option>
-                    
-                    <option value="pbp">Prabha Publications</option>
-                    
-                    <option value="p01">pradeep</option>
-                    
-                    <option value="pgp">Pragati Prakashan</option>
-                    
-                    <option value="pp">Pragun Publications</option>
-                    
-                    <option value="petergailis">Pētergailis</option>
-                    
-                    <option value="qwer">qwer1</option>
-                    
-                    <option value="rsb">R. S. Books</option>
-                    
-                    <option value="rp">Rahul Publications</option>
-                    
-                    <option value="rjp">Rajat Publications</option>
-                    
-                    <option value="rpp">Rajput Publications</option>
-                    
-                    <option value="raka">RaKa</option>
-                    
-                    <option value="rtp">Rastogi Publications</option>
-                    
-                    <option value="rae">Readworthy And Epitome</option>
-                    
-                    <option value="rts">revive</option>
-                    
-                    <option value="sasp">Satish Serial Publications</option>
-                    
-                    <option value="satp">Satya Prakashan</option>
-                    
-                    <option value="scitp">SCI Tech Publishing</option>
-                    
-                    <option value="sp">Shipra Publications</option>
-                    
-                    <option value="smp">Studium Press</option>
-                    
-                    <option value="sas">Suarup And Sons</option>
-                    
-                    <option value="sunp">Sunrise Publishers</option>
-                    
-                    <option value="skp">Swastik Publications</option>
-                    
-                    <option value="spc">Swastik Publications (Chandigarh)</option>
-                    
-                    <option value="sip">Swati Publications</option>
-                    
-                    <option value="TP">Test Publisher</option>
-                    
-                    <option value="jhup">The Johns Hopkins University Press</option>
-                    
-                    <option value="tiesu namu agentura">Tiesu namu aģentūra</option>
-                    
-                    <option value="uo1">urmi</option>
-                    
-                    <option value="versita">versita.pl</option>
-                    
-                    <option value="croner">Wolters Kluwer Croner business</option>
-                    
-                    <option value="wp">Word Press</option>
-                    
-                    <option value="wasle">World Association For Studies In Literatures In English</option>
-                    
-                    <option value="wtbooks">World Technology</option>
-                    
-                    <option value="ajpress">Wydawnictwo AJ- Press</option>
-                    
-                    <option value="wahe">Wydawnictwo Akademii Humanistyczno-Ekonomicznej w Łodzi</option>
-                    
-                    <option value="empi2">Wydawnictwo eMPi&#178;</option>
-                    
-                    <option value="homodei">Wydawnictwo Homo Dei</option>
-                    
-                    <option value="wkarmel">Wydawnictwo Karmelitów Bosych</option>
-                    
-                    <option value="kastor">Wydawnictwo Kastor</option>
-                    
-                    <option value="wuam">Wydawnictwo Naukowe Uniwersytetu im. Adama Mickiewicza</option>
-                    
-                    <option value="wumk">Wydawnictwo Naukowe Uniwersytetu Mikołaja Kopernika</option>
-                    
-                    <option value="placet">Wydawnictwo Placet</option>
-                    
-                    <option value="wpk">Wydawnictwo Politechniki Krakowskiej</option>
-                    
-                    <option value="wug">Wydawnictwo Uniwersytetu Gdańskiego</option>
-                    
-                    <option value="zysk">Wydawnictwo Zysk i S-ka</option>
-                    
-                    <option value="yp">Yugank Publisher</option>
-                    
-                    <option value="zinatne">Zinātne</option>
-                    
-                  </select></td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-				<tr>
-                  <td>Journal Code</td>
-				   <td><input type="text" name="jrnlCode" id="jrnlCode" value="" class="text_field" ></td>
-                  <td >&nbsp;</td>
-                  <td>&nbsp;</td>
-				   
-                </tr>
-                
-                <tr>
-                  <td>Journal Title</td>
-                  <td><input name="jrnlTitle" type="text" class="text_field" id="jrnlTitle" value="" /></td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-                <tr>
-                  <td>Journal Primary ISSN</td>
-                  <td><input name="jrnlPrimIssn" type="text" class="text_field" id="jrnlPrimIssn" value="" /></td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-                <tr>
-                  <td>Journal Electronic ISSN</td>
-                  <td><input name="jrnlElecIssn" type="text" class="text_field" id="jrnlElecIssn" value="" /></td>
-                  <td>&nbsp;<input type="hidden" name="jrnlstatus" id="jrnlstatus"></td>
-                  <td>&nbsp;</td>
-                </tr>
-                <tr>
-                  <td>&nbsp;</td>
-                  <td colspan="3" align="right"><input name="action" value='Submit' id="button6" class="submit_btn1" type="submit" onclick="return validatePublisher();">
-                  <input type="reset" value='Reset' name="button" class="submit_btn" /></td>
-                </tr>
-              </tbody></table></td>
-            </tr>
+              <td>Journal Electronic ISSN</td>
+              <td>
+                <%= text_field_tag :name, params[:name] %>
+             </td>
+            </tr> 
             <tr>
-              <td colspan="2">&nbsp;</td>
+              <td>
+                <%= submit_tag "Submit" %>
+                <%= button_tag "Reset", type: :reset %>
+                <% end %>
+              </td>
             </tr>
-          </tbody></table>
-		  </form>
-		  
-<script type="text/javascript">
-	function validatePublisher() {
-		var pubCode = document.getElementById("pubCode");
-		if (pubCode == null || pubCode.value == "") {
-		alert('Please select Publisher');
-		return false;
-	}
-	return true;	
-}
-</script></td>
-            <td width="10" align="right" valign="bottom" bgcolor="#FFFFFF" style="background-image: url(images/tabl_right_bg.gif); background-position:right; background-repeat:repeat-y;"><img src="images/right_corn_bot.gif" width="13" height="361" /></td>
-          </tr>
-          <tr>
-            <td width="10" height="10" align="left" valign="bottom"><img src="images/corn_left_bot.gif" width="13" height="17" /></td>
-            <td height="10" valign="bottom" bgcolor="#FFFFFF" style="background-image: url(images/tabl_bot_bg.gif); background-position:bottom; background-repeat:repeat-x;"><img src="images/tabl_bot_bg.gif" width="4" height="4" /></td>
-            <td width="10" height="10" align="right" valign="bottom"><img src="images/corn_right_bot.gif" width="13" height="17" /></td>
-          </tr>
-        </table></td>
-      </tr>
-      <tr>
-        <td align="center" class="footer_white">
-Copyright © 2006-2009 MPS Technologies Ltd</td>
-      </tr>
-    </table></td>
-  </tr>
-</table>
-</body>
-</div>
-</body>
+          </tbody>
+    </div>
+  </body>
 </html>
+
+<tr>
+  <td align="center" class="footer_white">
+  Copyright © 2006-2009 MPS Technologies Ltd</td>
+</tr>
+

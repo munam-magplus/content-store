@@ -24,19 +24,36 @@
                   = image_tag("add.gif")
             %tr
               %td
-                %table#items{:border => "1", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
-                  %tr
-                    %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Retailer Code
-                    %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Retailer Name
-                    %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Publisher Id
-                    %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Low Ip
-                    %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} High Ip
-                    %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} IP List
-                    %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Operation
-                %table#addnewrow{:border => "1", :cellpadding => "0", :cellspacing => "0", :width => "1075px"}        
-            %tr
-              %td{:align => "right"}
-                %input#retailersubmit.submit_btn{:name => "addretailer", :onclick => "return validateRetailer()", :type => "submit", :value => "Submit"}
+  %table#items{:border => "1", :cellpadding => "0", :cellspacing => "0", :width => "100%", :class => "center"}
+    %tr
+      %td{:align => "center", :height => "30", :style => "width: 149px"} Retailer Code
+      %td{:align => "center", :height => "30", :style => "width: 149px"} Retailer Name
+      %td{:align => "center", :height => "30", :style => "width: 149px"} Publisher Id
+      %td{:align => "center", :height => "30", :style => "width: 149px"} Low Ip
+      %td{:align => "center", :height => "30", :style => "width: 149px"} High Ip
+      %td{:align => "center", :height => "30", :style => "width: 149px"} IP List
+      %td{:align => "center", :height => "30", :style => "width: 149px"} Operation
+    = form_for(:CDP_RETAILER, url:  retailers_path)  do |f| 
+      %tr
+        %td
+          = f.text_field :RETAILER_CODE
+        %td
+          =  select_tag(:RETAILER_NAME, options_for_select([[@re.PUB_NAME,1]])) 
+        %td
+          = f.text_field :PUB_PUBLISHER_ID, :value => @re.PUB_PUBLISHER_ID
+        %td
+        %td
+        %td
+        %td
+    %table#addnewrow{:border => "1", :cellpadding => "0", :cellspacing => "0", :width => "1075px", :class => "center"}
+      %tr{:style => "display:none;"}
+        %td
+          %input#0id{:name => "retpubid", :onblur => "deleteRow()", :type => "hidden", :value => "mps/10011", :class => "center"}
+      %tr
+        %td
+      %tr
+        %td{:align => "right"}
+          %input#retailersubmit.submit_btn{:name => "addretailer", :onclick => "return validateRetailer()", :type => "submit", :value => "Submit"}
 
 
 
