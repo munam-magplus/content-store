@@ -6,6 +6,15 @@ Rails.application.routes.draw do
    
     collection do 
       get 'search'
+<<<<<<< HEAD
+=======
+    end
+  end
+  post 'publishers/create'
+  resources :subject_groups do
+    collection do
+      get 'search'
+>>>>>>> bfe39f7f7e2b392e89c1a004b4fe88fe8363e199
       get 'metadata_sheet'
     end
   end

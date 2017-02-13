@@ -41,48 +41,46 @@
                         %option{:value => "ACADEMIC"} Academic
                         %option{:value => "DISCOVERY"} Discovery
                   %tr
-                    %td{:height => "25"} Supported End User Language
+                    %td{:height => "25"} Default End User Language
                     %td{:height => "25"}
                       = f.select(:PUB_END_USR_LANGUAGE, [['Dansk', 'da'],
                                   ['Polish', 'pl'],
                                   ['Latvian', 'lv'],
-                                  ['English', 'en']],{ :prompt => "Please select"},
-                                  { :multiple => true, :size => 5 })
-                    %td Supported Manager Language
-                    %td
-                      %select.text_field{:multiple => "true", :name => "managerLanguages", :onblur => "populateDefaultLanguage(this,'defaultManagerLanguage');", :size => "3"}
-                        %option{:value => "da"} Dansk
-                        %option{:value => "pl"} Polish
-                        %option{:value => "lv"} Latvian
-                        %option{:value => "en"} English
-                  %tr
-                    %td{:height => "25"} Default End User Language
-                    %td{:height => "25"}
-                      %select#defaultEndUserLanguage.text_field{:name => "defaultEndUserLanguage"}
-                        %option{:selected => "selected", :value => ""} Select
+                                  ['English', 'en']],{ :prompt => "Please select"})
                     %td Default Manager Language
-                    %td
-                      %select#defaultManagerLanguage.text_field{:name => "defaultManagerLanguage"}
-                        %option{:selected => "selected", :value => ""} Select
-                  %tr
                     %td{:height => "25"}
-                      Contact First Name
-                      %span.mandtory *
-                    %td{:height => "25"}
-                      %input.text_field{:name => "contactFname"}/
-                    %td
-                      Contact Last Name
-                      %span.mandtory *
-                    %td
-                      %input.text_field{:name => "contactLname"}/
-                  %tr
-                    %td{:height => "25"}
-                      Contact Email
-                      %span.mandtory *
-                    %td{:height => "25"}
-                      %input.text_field{:name => "email"}/
-                    %td  
-                    %td  
+                      = f.select(:PUB_ADMIN_TOOL_LANGUAGE_ID, [['Dansk', 'da'],
+                                  ['Polish', 'pl'],
+                                  ['Latvian', 'lv'],
+                                  ['English', 'en']],{ :prompt => "Please select"})
+                    / %tr
+                    /   %td{:height => "25"} Default End User Language
+                    /   %td{:height => "25"}
+                    /     %select#defaultEndUserLanguage.text_field{:name => "defaultEndUserLanguage"}
+                    /       %option{:selected => "selected", :value => ""} Select
+                    /   %td Default Manager Language
+                    /   %td
+                    /     %select#defaultManagerLanguage.text_field{:name => "defaultManagerLanguage"}
+                    /       %option{:selected => "selected", :value => ""} Select
+                    = f.fields_for :publisher_contact do |builder|
+                      %tr
+                        %td{:height => "25"}
+                          Contact First Name
+                          %span.mandtory 
+                        %td{:height => "25"}
+                          = builder.text_field :PUC_CONTACT_FNAME 
+                        %td
+                          Contact Last Name
+                          %span.mandtory *
+                        %td
+                          = builder.text_field :PUC_CONTACT_LNAME 
+                      %tr
+                        %td{:height => "25"}
+                          Contact Email
+                          %span.mandtory *
+                        %td{:height => "25"}
+                          = builder.text_field :PUC_CONTACT_EMAIL
+                        %td
                 %tbody
                   %tr
                     %td.GBoldText{:align => "right", :height => "35"}  
