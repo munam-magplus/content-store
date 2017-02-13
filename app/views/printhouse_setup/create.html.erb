@@ -11,7 +11,7 @@
           <h3>Details</h3>
             <tr>
               <td>Publisher:</td>
-              <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :PUB_NAME) %></td>
+              <td><%= f.collection_select :PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME %></td>
             </tr> 
             <tr>
               <td>Print House Code*:</td>

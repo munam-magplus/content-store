@@ -1,7 +1,5 @@
 class JournalsController < ApplicationController
   def new
-    @pub = Publisher.pluck(:PUB_NAME)
-    @journal = Journal.new
   end
 
   def search
@@ -14,6 +12,5 @@ class JournalsController < ApplicationController
   end
 
   def new_article
-    @pub = Publisher.pluck(:PUB_NAME)
   end
 end
