@@ -1,10 +1,10 @@
-class RetaileripController < ApplicationController
+class CsRetaileripController < ApplicationController
   def new
-  	@retailerip = Retailerip.new
+  	@retailerip = CsRetailerip.new
   end
 
   def create
-  	@retailerip = Retailerip.new(retailerip_params)
+  	@retailerip = CsRetailerip.new(retailerip_params)
   	if @retailerip.save
   		redirect_to search_institution_index_path
   	else

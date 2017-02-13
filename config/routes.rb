@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :csretailers do
+  resources :cs_retailers do
     collection do 
       get 'search'
     end
   end
 
+  get 'institution/result'
 
   resources :institution_user,:institution,:access_tokens,:campaigns,
             :publishers,:license_groups, :licenses,:subscriptions  do 
