@@ -17,10 +17,6 @@
               %table{:border => "0", :cellpadding => "10", :cellspacing => "0"}
                 %tbody
                   %tr
-                    %td
-                      = f.text_field :CREATED_BY
-                    %td
-                      = f.text_field :LASTUPDATED_BY
                     %td{:height => "25"}
                       Publisher Code
                       %span.mandtory *
@@ -68,8 +64,6 @@
                     /       %option{:selected => "selected", :value => ""} Select
                     = f.fields_for :publisher_contact do |builder|
                       %tr
-                        %td
-                          = builder.text_field :PUC_CONTACT_TYPE
                         %td{:height => "25"}
                           Contact First Name
                           %span.mandtory 
