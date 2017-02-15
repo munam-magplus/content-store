@@ -6,18 +6,11 @@ Rails.application.routes.draw do
    
     collection do 
       get 'search'
-<<<<<<< HEAD
-=======
-    end
-  end
-  post 'publishers/create'
-  resources :subject_groups do
-    collection do
-      get 'search'
->>>>>>> bfe39f7f7e2b392e89c1a004b4fe88fe8363e199
       get 'metadata_sheet'
     end
   end
+
+  post 'publishers/create'
   
   resources :journals do
     collection do
@@ -55,9 +48,10 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'printhouse_setup/create'
+  post 'printhouse_setup/create'
   get 'printhouse_setup/print_order'
   get 'printhouse_setup/search'
+  get 'printhouse_setup/new'
 
   resources :countries, only: [:index, :show]
 

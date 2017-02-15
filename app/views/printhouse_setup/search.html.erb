@@ -37,7 +37,8 @@
               <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Countryname.all, :id, :CON_COUNTRY_NAME) %></td>
             </tr>
        
-            <%= f.submit "Save" %>
+            <td><%= f.submit "Submit" %></td>
+            <td><%= f.button "Reset", type: :reset %></td>
 
           <% end %>
         </tbody>

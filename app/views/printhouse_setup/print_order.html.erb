@@ -14,7 +14,7 @@
 					<%= form_for :journal do |f| %>
 						<tr>
 						  <td>Publisher:</td>
-						  <td><%= f.collection_select(:PUB_PUBLISHER_ID, Publisher.all, 0, :id, :PUB_NAME) %></td>
+						  <td><%= f.collection_select :PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME %></td>
 						</tr> 
 						<tr> 
 						  <td>Print House</td>
@@ -34,7 +34,7 @@
 						  <td>to<%= f.text_field :JOC_DISTRIBUTORS %></td>
 						</tr>
 
-						<%= f.submit "Submit" %>
+						<td><%= f.submit "Submit" %></td>
 					<% end %>
     		</tbody>
   		</table>
