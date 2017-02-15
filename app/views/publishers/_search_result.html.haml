@@ -1,16 +1,16 @@
-%body.body1
-%div.div1
+%body{:class=>"body1"}
 = render :partial => '/layouts/header'
-%table{:bgcolor => "#cccccc", :border => "0", :cellpadding => "8", :cellspacing => "1", :width => "70%"}
-%table{:bgcolor => "#cccccc", :border => "0", :cellpadding => "8", :cellspacing => "1", :width => "100%", :class => "center"}
-  %tbody
-    %tr
-      %td.tableheader Publisher Code
-      %td.tableheader Publisher Name
-      %td.tableheader Contact Name
-      %td.tableheader Contact Email
-    %tr
-      %td= @publisher.first.PUB_CODE
-      %td= @publisher.first.PUB_NAME
-      %td= @publisher.first.publisher_contact.PUC_CONTACT_FNAME
-      %td= @publisher.first.publisher_contact.PUC_CONTACT_EMAIL
+%div{:class=>"div1"}
+  %table{:bgcolor => "#cccccc", :border => "0", :cellpadding => "8", :cellspacing => "1", :width => "70%"}
+  %table{:bgcolor => "#cccccc", :border => "0", :cellpadding => "8", :cellspacing => "1", :width => "100%", :class => "center"}
+    %tbody
+      %tr
+        %td.tableheader Publisher Code
+        %td.tableheader Publisher Name
+        %td.tableheader Contact Name
+        %td.tableheader Contact Email
+      %tr
+        %td= @publisher.first.PUB_CODE
+        %td= @publisher.first.PUB_NAME
+        %td= @publisher.first.publisher_contact.PUC_CONTACT_FNAME
+        %td= @publisher.first.publisher_contact.PUC_CONTACT_EMAIL

@@ -1,11 +1,11 @@
 class InstitutionController < ApplicationController
   def index
-    byebug
     @pub = Publisher.all
     @country = Countryname.all
     @res = Institution.where(:INS_INSTITUTION_ID => params[:INS_INSTITUTION_ID]).all
+    @chec = params[:ip_address]
     if @res.present?
-      render 'result', locals: { :res => @res }
+      render 'result', locals: { :res => @res, :chec => @chec }
     else
       render 'index'
     end  

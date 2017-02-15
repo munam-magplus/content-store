@@ -93,3 +93,13 @@
     padding-left: 0px;
 
 }
+.tableheader {
+    border-top: #FFFFFF 1px solid;
+    border-left: #FFFFFF 1px solid;
+    border-bottom: #5F5380 1px solid;
+    border-right: #5F5380 1px solid;
+    background-color: #A6B8CE;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 12px;
+}

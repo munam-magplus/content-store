@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-
+  post 'publishers/create'
   resources :subject_groups do
     collection do
       get 'search'

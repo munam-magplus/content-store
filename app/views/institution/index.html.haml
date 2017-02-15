@@ -42,9 +42,9 @@
               %td{:align => "left"}
                 = select_tag 'PUY_PUBLISHER_COUNTRY_ID',options_from_collection_for_select(@country, 'id', 'CON_COUNTRY_NAME')
             %tr
-            %td{:height => "25"} Status
-            %td{:height => "25"}
-              = collection_select(:INS_INSTITUTION_STATUS, 0, Institution.all, :id, :INS_INSTITUTION_STATUS) 
+              %td{:height => "25"} Status
+              %td{:height => "25"}
+                = select_tag 'INS_INSTITUTION_STATUS',options_from_collection_for_select(Institution.all, 'id', 'INS_INSTITUTION_STATUS')
             %tr
               %td{:align => "left", :height => "25"} Contact First Name
               %td{:align => "left"}
