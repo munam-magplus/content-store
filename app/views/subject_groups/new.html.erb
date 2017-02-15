@@ -1,51 +1,60 @@
 <html>
-	<body class = "body1">
-	  <%= render :partial => '/layouts/header'%>
-		<div class="div1">
+  <body class = "body1">
+    <%= render :partial => '/layouts/header'%>
+    <div class="div1">
 
-      <h1> Create Primary Subject Group	 </h1>
+      <h1> Create Primary Subject Group  </h1>
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
-          <%= form_for :journal do |f| %>
+          <%= form_for @subject_group do |f| %>
             <tr>
               <td>Publisher:</td>
-              <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :PUB_NAME) %></td>
+              <td><%= f.collection_select(:PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME) %></td>
+             
             </tr> 
             <tr> 
-              <td>Subject Group Level	</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td>Subject Group Level </td>
+              <td><%= f.text_field :SUG_GROUP_DESC %></td>
             </tr> 
             <tr> 
-              <td>Subject Group Code *	</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td>Subject Group Code *  </td>
+              <td><%= f.text_field :SUG_GROUP_CODE %></td>
             </tr>
             <tr>
-              <td>Subject Group Name*	</td>
-              <td><%= f.text_field :JOC_JOUR_PISSN %></td>
+              <td>Subject Group Name* </td>
+              <td><%= f.text_field :SUG_GROUP_NAME %></td>
             </tr> 
             <tr> 
-              <td>Guest User View Limit	</td>
-              <td><%= f.text_field :JOC_JOUR_EISSN %></td>
+              <td>Guest User View Limit </td>
+              <td><%= f.text_field :SUG_GUEST_USER_ACCESS_LIMIT %></td>
             </tr>
             <tr>
-              <td>Auth User View Limit	</td>
-              <td><%= f.text_field :JOC_OWNER %></td>
+              <td>Auth User View Limit  </td>
+              <td><%= f.text_field :SUG_AUTH_USER_ACCESS_LIMIT %></td>
             </tr> 
             <tr> 
-              <td>Discount Percentage	</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td>Discount Percentage </td>
+              <td><%= f.text_field :SUG_DISCOUNT_PERCENTAGE %></td>
             </tr>
             <tr>
-              <td>Viewability Percentage	</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td>Viewability Percentage  </td>
+              <td><%= f.text_field :SUG_VIEWING_LIMIT_PERCENTAGE %></td>
+            </tr>
+            <tr>
+              <td>Created by  </td>
+              <td><%= f.text_field :CREATED_BY %></td>
+            </tr>
+            <tr>
+              <td>Lastupdated by  </td>
+              <td><%= f.text_field :LASTUPDATED_BY %></td>
             </tr> 
             <tr> 
-              <td>Select Language *	</td>
-              <td><%= select_tag(:JOC_CODE, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %></td>
+              <td>Select Language * </td>
+              <td><%= f.select(:LAN_LANGUAGE_ID, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %></td>
             </tr>
             <tr>
-              <td>Description	</td>
-              <td><%= f.text_area :JOC_CODE %></td>
+              <td>Description </td>
+              <td><%= f.text_area :SHORT_DESC %></td>
             </tr> 
           
             <td><%= f.submit "Save" %></td>

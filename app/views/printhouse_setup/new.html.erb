@@ -1,0 +1,83 @@
+<html>
+  <body class = "body1">
+    <%= render :partial => '/layouts/header'%>
+    <div class="div1">
+
+      <table><thead><th class="page_head">Print House Setup  </th></thead></table>
+
+      <table border="0" cellpadding="10" cellspacing="0">
+        <tbody>
+          <%= form_for :printhouse, :url => {:controller => "printhouse_setup", :action => "create"} do |f| %>
+          <td style="font-weight:bold">Details</td>
+            <tr>
+              <td>Publisher:</td>
+              <td><%= f.collection_select :PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME %></td>
+            </tr> 
+            <tr>
+              <td>Print House Code*:</td>
+              <td><%= f.text_field :PRI_PRINTHOUSE_CODE %></td>
+              <td>Print House Name*:</td>
+              <td><%= f.text_field :PRI_PRINTHOUSE_NAME %></td>
+            </tr>
+             <tr>
+              <td>Ranking:</td>
+              <td><%= f.text_field :PRI_RANK %></td>
+              <td>VAT Reg. No.:</td>
+              <td><%= f.text_field :PRI_VAT_REGISTRATION_NUMBER %></td>
+            </tr>
+            <td style="font-weight:bold">Address</td>
+             <tr>
+              <td>Contact First Name*:</td>
+              <td><%= f.text_field :PRI_CONTACT_FIRST_NAME %></td>
+              <td>Contact Last Name*:</td>
+              <td><%= f.text_field :PRI_CONTACT_LAST_NAME %></td>
+            </tr>
+             <tr>
+              <td>Phone*:</td>
+              <td><%= f.text_field :PRI_CONTACT_PHONE %></td>
+              <td>Email*:</td>
+              <td><%= f.text_field :PRI_CONTACT_EMAIL %></td>
+            </tr>
+            <tr>
+              <td>Address Line1*:</td>
+              <td><%= f.text_field :PRI_CONTACT_ADDRESS_LINE1 %></td>
+              <td>Address Line2:</td>
+              <td><%= f.text_field :PRI_CONTACT_ADDRESS_LINE2 %></td>
+            </tr>
+            <tr>
+              <td>City/Town:</td>
+              <td><%= f.text_field :PRI_CITY %></td>
+              <td>State/Province*:</td>
+              <td><%= f.text_field :PRI_STATE %></td>
+            </tr>
+            <tr>
+              <td>Postal Code*:</td>
+              <td><%= f.text_field :PRI_POSTAL_CODE %></td>
+              <td>Country*:</td>
+              <td><%= f.collection_select :COI_COUNTRY_ID, Countryname.all, :id, :CON_COUNTRY_NAME %></td>
+            </tr>
+            <td style="font-weight:bold">Shipping Preferences</td>
+            <tr>
+            <%= f.fields_for :printhouse_type do |builder| %>
+              <td>Shipping Types*:</td>
+              <td><%= builder.select :CDP_PUB_SHIPPING_TYPE_ID, [['Select','0'],['','1'],['','2']],{}, {:multiple => true} %></td>
+            <%= f.fields_for :printhouse_country do |ship| %>
+              <td>Shipping Countries*:</td>
+              <td><%= ship.collection_select(:COI_COUNTRY_ID, Countryname.all, :id, :CON_COUNTRY_NAME,{}, {:multiple => true}) %></td>
+            </tr>
+          
+            <td><%= f.submit "Submit" %></td>
+            <td><%= f.button "Reset", type: :reset %></td>
+          <% end %>
+          <% end %>
+          <% end %>
+        </tbody>
+      </table>
+
+      <tr>
+        <td align="center" class="footer_white">
+        Copyright © 2006-2009 MPS Technologies Ltd</td>
+      </tr>
+    </div>
+  </body>
+</html>

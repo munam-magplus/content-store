@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   resources :cs_retailers do
     collection do 
       get 'search'
@@ -9,22 +10,15 @@ Rails.application.routes.draw do
   get 'institution/result'
 
   resources :institution_user,:institution,:access_tokens,:campaigns,
-            :publishers,:license_groups, :licenses,:subscriptions  do 
+            :publishers,:license_groups, :licenses,:subscriptions, :subject_groups  do 
     collection do 
-      get 'search'
-    end
-  end
-  post 'publishers/create'
-  resources :subject_groups do
-    collection do
       get 'search'
       get 'metadata_sheet'
     end
   end
 
-  get 'subject_groups/create'
-  get 'subject_groups/new'
-
+  post 'publishers/create'
+  
   resources :journals do
     collection do
       get 'index'
@@ -61,9 +55,10 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'printhouse_setup/create'
+  post 'printhouse_setup/create'
   get 'printhouse_setup/print_order'
   get 'printhouse_setup/search'
+  get 'printhouse_setup/new'
 
   resources :countries, only: [:index, :show]
 

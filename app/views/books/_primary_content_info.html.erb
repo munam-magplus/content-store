@@ -19,7 +19,7 @@
 							<td>Content Code:</td>
 							<td><%= f.text_field :JOC_CODE %></td>
 							<td>Publisher*:</td>
-							<td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :PUB_NAME) %></td>
+							<td><%= f.collection_select :PUY_PUBLISHER_COUNTRY_ID, Publisher.all, :id, :PUB_NAME  %></td>
 						</tr> 
 						<tr> 
 							<td>Title:</td>

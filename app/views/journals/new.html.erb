@@ -11,8 +11,7 @@
               <td>Journal Code:</td>
 			        <td><%= f.text_field :JOC_CODE %></td>
               <td>Publisher:</td>
-              <td><%= select_tag(:JOC_CODE, options_for_select(@pub, prompt = nil),
-              { :class => 'form-control' })  %></td>
+              <td><%= f.collection_select :PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME %></td>
             </tr> 
             <tr> 
               <td>Journal Title:</td>

@@ -20,7 +20,7 @@ class PublishersController < ApplicationController
     @publisher.publisher_contact.PUC_CONTACT_TYPE = "demo"
     #@publisher.build_publisher_contact
     if @publisher.save!
-      redirect_to publishers_path
+      redirect_to publisher_setup_index_path
     else
       render 'new'
     end

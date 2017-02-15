@@ -9,8 +9,9 @@
         %td.tableheader Publisher Name
         %td.tableheader Contact Name
         %td.tableheader Contact Email
-      %tr
-        %td= @publisher.first.PUB_CODE
-        %td= @publisher.first.PUB_NAME
-        %td= @publisher.first.publisher_contact.PUC_CONTACT_FNAME
-        %td= @publisher.first.publisher_contact.PUC_CONTACT_EMAIL
+      - if @publisher.present?
+        %tr
+          %td= @publisher.first.PUB_CODE
+          %td= @publisher.first.PUB_NAME
+          %td= @publisher.first.publisher_contact.PUC_CONTACT_FNAME
+          %td= @publisher.first.publisher_contact.PUC_CONTACT_EMAIL
