@@ -1,8 +1,4 @@
-<table width="860" border="0" cellspacing="0" cellpadding="0">
-				
-				<tr>
-					<td colspan="2"><table border="0" align="center" cellpadding="10" cellspacing="1" bgcolor="#cccccc">
-				
+			<table>
 				<tr>
 					<td align="center" background="images/step_bg_over.gif" bgcolor="#FFFFFF"><strong>Primary Content Information</strong></td>
 					<td align="center">Contributors</td>
@@ -14,44 +10,47 @@
 <h1> Primary Content Information   </h1>
 			<table border="0" cellpadding="10" cellspacing="0">
 				<tbody>
-					<%= form_for :journal do |f| %>
+					<%= form_for :book_content do |f| %>
+					<%= form_for :content do |a| %>
 						<tr>
 							<td>Content Code:</td>
-							<td><%= f.text_field :JOC_CODE %></td>
+							<td><%= a.text_field :COM_CONTENT_CODE %></td>
 							<td>Publisher*:</td>
-							<td><%= f.collection_select :PUY_PUBLISHER_COUNTRY_ID, Publisher.all, :id, :PUB_NAME  %></td>
+							<td><%= a.collection_select :PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME  %></td>
 						</tr> 
 						<tr> 
 							<td>Title:</td>
-							<td><%= f.text_field :JOC_CODE %></td>
+							<td><%= a.text_field :COM_TITLE %></td>
 							<td>Sub Title</td>
-							<td><%= f.text_field :JOC_CODE %></td>
+							<td><%= a.text_field :COM_SUB_TITLE %></td>
 						</tr> 
 						<tr> 
 							<td>ISBN *</td>
-							<td><%= f.text_field :JOC_CODE %></td>
+							<td><%= f.text_field :BOC_BOOK_ISBN %></td>
 							<td>Language *</td>
-							<td><%= f.text_field :JOC_CODE %></td>
+							<td><%= a.text_field :LAN_LANGUAGE_ID %></td>
 						</tr>
 						<tr>
 							<td>Content Classification </td>
-							<td><%= select_tag(:JOC_CODE, options_for_select(['Select',0]))  %></td>
+							<td><%= a.select :COM_CLASSIFICATION, options_for_select(['Select','Select'],['hello','hello']) %></td>
 							<td>File Name*     </td>
 							<td><%= f.text_field :JOC_JOUR_PISSN %></td>
 						</tr> 
 						<tr> 
 							<td>Stock Number   </td>
-							<td><%= f.text_field :JOC_JOUR_EISSN %></td>
+							<td><%= a.text_field :COM_STOCK_NUMBER %></td>
+						</tr>
+						<tr>
 							<td>Publisher Site Sales Link     </td>
-							<td><%= f.text_field :JOC_JOUR_PISSN %></td>
+							<td><%= a.text_field :COM_PUB_SITE_SALES_LINK %></td>
 						</tr>
 						<tr>
 							<td>Blurb</td>
-							<td><%= f.text_area :JOC_OWNER %></td>
+							<td><%= a.text_area :COM_BLURB, cols: "40", rows: "5" %></td>
 						</tr> 
 						<tr> 
 							<td>Publisher Date </td>
-							<td><%= f.text_field :JOC_CODE %>(dd)</td>
+							<td><%= a.text_field :COM_PUBLICATION_DATE %>(dd)</td>
 							<td>Publisher Month </td>
 							<td><%= f.text_field :JOC_CODE %>(mm)</td>
 						</tr>
@@ -59,30 +58,31 @@
 							<td>Publisher Year </td>
 							<td><%= f.text_field :JOC_CODE %>(yyyy)</td>
 							<td>Conversion Required </td>
-							<td><%= select_tag(:JOC_CODE, options_for_select([['Select',0],[' Yes',1],['No',2]]))  %></td>
+							<td><%= f.select(:JOC_CODE, options_for_select([['Select',0],[' Yes',1],['No',2]]))  %></td>
 						</tr>
 						<tr> 
 							<td>Edition </td>
-							<td><%= f.text_field :JOC_CODE %></td>
+							<td><%= f.text_field :BOC_BOOK_EDITION %></td>
 							<td>Binding </td>
-							<td><%= select_tag(:JOC_CODE, options_for_select([['Select',0],[' Yes',1],['No',2]]))  %></td>
+							<td><%= f.select(:BOC_BINDING_TYPE, options_for_select([['Select',0],[' Yes',1],['No',2]]))  %></td>
 						</tr>
 						<tr> 
 							<td>Volume </td>
-							<td><%= f.text_field :JOC_CODE %></td>
+							<td><%= a.text_field :COM_VOLUME %></td>
 							<td>Dimensions </td>
 							<td><%= f.text_field :JOC_CODE %></td>
 						</tr>
 						<tr> 
 							<td>Series ISBN </td>
-							<td><%= f.text_field :JOC_CODE %></td>
+							<td><%= f.text_field :BOC_SERIES_ISBN %></td>
 							<td>Series Title </td>
-							<td><%= f.text_field :JOC_CODE %></td>
+							<td><%= f.text_field :BOC_SERIES_TITLE %></td>
 						</tr>
 
 						<td><%= f.submit "Save and Continue" %></td>
 						<td><%= f.button "Finish", type: :reset %></td>
 
+					<% end %>
 					<% end %>
 				</tbody>
 			</table>

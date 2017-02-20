@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
 
+  get 'admin_user/new'
+
+  get 'admin_user/create'
+
+  get 'admin_user/search'
+
   resources :cs_retailers do
     collection do 
       get 'search'
@@ -14,6 +20,7 @@ Rails.application.routes.draw do
     collection do 
       get 'search'
       get 'metadata_sheet'
+      get 'search_result'
     end
   end
 

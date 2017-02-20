@@ -1,0 +1,70 @@
+<html>
+  <body class = "body1">
+    <%= render :partial => '/layouts/header'%>
+    <div class="div1">
+
+      <h1>Create Admin Users</h1>
+      <table border="0" cellpadding="10" cellspacing="0">
+        <tbody>
+          <%= form_for :subject_group do |f| %>
+            <tr>
+              <td>Publisher*</td>
+              <td><%= f.collection_select(:PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME) %></td>
+             
+            </tr> 
+            <tr> 
+              <td>Email*</td>
+              <td><%= f.text_field :SUG_GROUP_DESC %></td>
+               <td>Confirm Email*</td>
+              <td><%= f.text_field :SUG_GROUP_DESC %></td>
+            </tr> 
+            <tr> 
+              <td>Password* </td>
+              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+              <td>Confirm Password* </td>
+              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+            </tr>
+            <tr> 
+              <td>First Name* </td>
+              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+              <td>Last Name* </td>
+              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+            </tr>
+            <tr>
+              <td>Country</td>
+              <td><%= f.collection_select :COI_COUNTRY_ID, Countryname.all, :id, :CON_COUNTRY_NAME %></td>
+              <td>Select Language * </td>
+              <td><%= f.select(:LAN_LANGUAGE_ID, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %></td>
+            </tr> 
+            <tr> 
+             <td>Role* </td>
+              <td><%= f.select(:LAN_LANGUAGE_ID, options_for_select([['Please Select',0],[' MPS Admin',1],['Publisher',2],['Member Publisher',3],['Member Publisher Role with QA',4]]))  %></td>
+            </tr>
+            <tr>
+              <td>Publisher (s)*</td>
+              <td><%= f.text_field :SUG_AUTH_USER_ACCESS_LIMIT %></td>
+            </tr> 
+            <tr> 
+            	<td></td>
+              <td>
+              	<%= f.check_box :send_email, {}, true, false %>
+              	<%= f.label "Send email confirmation to email address above" %></td>
+            </tr>
+            <tr>
+            	<td></td>
+            	<td><%= f.submit "Submit" %>
+            		<%= f.button "Reset", type: :reset %></td>
+       		</tr>
+
+
+          <% end %>
+        </tbody>
+      </table>
+      
+    </div>
+  </body>
+</html>
+<tr>
+  <td align="center" class="footer_white">
+  Copyright © 2006-2009 MPS Technologies Ltd</td>
+</tr>

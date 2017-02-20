@@ -11,7 +11,7 @@
               <td>Journal Code:</td>
 			        <td><%= f.text_field :JOC_CODE %></td>
               <td>Publisher:</td>
-              <td><%= f.collection_select :PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME %></td>
+              <td><%= collection_select(:PUB_PUBLISHER_ID, 0, Publisher.all, :id, :PUB_NAME) %></td>
             </tr> 
             <tr> 
               <td>Journal Title:</td>
@@ -29,11 +29,11 @@
               <td>Journal Owner:</td>
               <td><%= f.text_field :JOC_OWNER %></td>
               <td>Language:</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td><%= select_tag(:JOC_CODE, options_for_select([['Select',0],['Polish',1],['English',2]]))  %></td>
             </tr>
             <tr>
               <td>Journal Content Classification:</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td><%= select_tag(:JOC_CODE, options_for_select([['Select',0],['Bestsellers',1],['Comming Soon',2],['New Releases',2]]))  %></td>
               <td>Journal Distributor :</td>
               <td><%= f.text_field :JOC_DISTRIBUTORS %></td>
             </tr>
@@ -74,7 +74,9 @@
               <%= f.text_area :JOC_CODE %></td>
             </tr>
 
-            <%= f.submit "Save" %>
+            <td>
+              <%= f.submit "Save" %>
+            </td>
 
           <% end %>
         </tbody>

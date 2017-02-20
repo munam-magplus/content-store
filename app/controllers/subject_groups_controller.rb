@@ -5,7 +5,6 @@ class SubjectGroupsController < ApplicationController
   end
   
   def create
-    byebug
   	@subject_group = SubjectGroup.new(subject_group_params)
   	if @subject_group.save
 			redirect_to new_subject_group_path
@@ -15,6 +14,11 @@ class SubjectGroupsController < ApplicationController
   end
 
   def search
+  end
+  
+  def search_result
+    @subject_group = SubjectGroup.search(params[:pub_id], params[:name], params[:code], params[:lang_id])
+    render :partial => 'search_result'
   end
 
   def metadata_sheet

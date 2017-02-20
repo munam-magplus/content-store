@@ -3,14 +3,10 @@
     <%= render :partial => '/layouts/header'%>
     <div class="div1">
       <table border="0" cellpadding="10" cellspacing="0">
-  <tr>
-    <h1>Search Subject Group</h1>
-  <tr>
-  <tr>
-    <td> 
-  <tr>
-   <%= form_tag search_publishers_path, :method => 'get' do %>
-      <table border="0" cellpadding="10" cellspacing="0">
+        <tr>
+          <h1>Search Subject Group</h1>
+        </tr>
+        <%= form_tag search_result_subject_groups_path, :method => 'get' do %>
           <tbody>
             <tr>
               <td> Publisher </td>
@@ -18,28 +14,25 @@
             </tr> 
             <tr>
               <td> Subject Group Name </td>
-              <td>
-                <%= text_field_tag :name, params[:name] %>
-             </td>
+              <td><%= text_field_tag :name, params[:name] %></td>
             </tr> 
             <tr>
               <td> Subject Group Code </td>
-              <td>
-                <%= text_field_tag :name, params[:name] %>
-             </td>
+              <td><%= text_field_tag :name, params[:name] %></td>
             </tr> 
             <tr>
-              <td>  Select Language </td>
+              <td> Select Language </td>
               <td><%= select_tag(:JOC_CODE, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %></td>
             </tr>
-            <tr>
+            <tr><td></td>
               <td>
                 <%= submit_tag "Submit" %>
                 <%= button_tag "Reset", type: :reset %>
-                <% end %>
               </td>
             </tr>
           </tbody>
+        <% end %>
+      </table>
     </div>
   </body>
 </html>
