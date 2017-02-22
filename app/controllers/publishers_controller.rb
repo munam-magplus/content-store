@@ -4,8 +4,7 @@ class PublishersController < ApplicationController
   def show
   end
   def search
-    @publisher = Publisher.search(params[:code], params[:name])
-    render :partial => 'search_result'
+    @publisher = Publisher.filter(params.slice(:PUB_CODE, :PUB_NAME))
   end
   def new
     @publisher = Publisher.new
@@ -18,7 +17,6 @@ class PublishersController < ApplicationController
     @publisher.CREATED_BY = "current_user_name"
     @publisher.LASTUPDATED_BY = "current_user_name"
     @publisher.publisher_contact.PUC_CONTACT_TYPE = "demo"
-    #@publisher.build_publisher_contact
     if @publisher.save!
       redirect_to publisher_setup_index_path
     else
