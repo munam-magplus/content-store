@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
 
 
+  get 'end_user/search'
+
+  get 'end_user/new'
+
+  get 'end_user/create'
+
   get 'admin_user/new'
 
   get 'admin_user/create'
 
   get 'admin_user/search'
 
-  resources :cs_retailers do
+  resources :csretailers do
     collection do 
       get 'search'
     end

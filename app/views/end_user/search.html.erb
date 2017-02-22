@@ -3,7 +3,7 @@
     <%= render :partial => '/layouts/header'%>
     <div class="div1">
 
-      <h1>Search Admin Users</h1>
+      <h1>Search End Users</h1>
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
           <%= form_for :subject_group do |f| %>
@@ -17,7 +17,7 @@
               <td><%= f.text_field :SUG_GROUP_DESC %></td>
             </tr> 
             <tr> 
-              <td>First Name / Last Name </td>
+              <td>Last Name </td>
               <td><%= f.text_field :SUG_GROUP_CODE %></td>
             </tr>
             <tr>
@@ -25,8 +25,8 @@
               <td><%= f.collection_select :COI_COUNTRY_ID, Countryname.all, :id, :CON_COUNTRY_NAME %></td>
             </tr> 
             <tr> 
-             <td>User Type</td>
-              <td><%= f.select(:LAN_LANGUAGE_ID, options_for_select([['Please Select',0],['MPS',1],['Publisher',2],['Member Publisher',3]]))  %></td>
+             <td>License ID</td>
+              <td><%= f.text_field :SUG_GROUP_CODE %></td>
             </tr>
             <tr>
             	<td></td>

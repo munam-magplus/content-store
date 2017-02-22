@@ -1,0 +1,76 @@
+<html>
+  <body class = "body1">
+    <%= render :partial => '/layouts/header'%>
+    <div class="div1">
+
+      <h1>Create Institutional Users</h1>
+      <table border="0" cellpadding="10" cellspacing="0">
+        <tbody>
+          <%= form_for :subject_group do |f| %>
+            <tr>
+              <td>User Role*</td>
+              <td><%= f.radio_button :JOC_DESCRIPTION, 'Primary Institution Administrator', :checked => true %> Primary Institution Administrator
+              <%= f.radio_button :JOC_DESCRIPTION, 'Institution Administrator' %> Institution Administrator<br>
+              <%= f.text_area :JOC_CODE %></td>
+            </tr> 
+            <tr>
+              <td>Institution Name*</td>
+              <td><%= f.collection_select(:PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME) %></td>
+            </tr> 
+            <tr> 
+              <td>UserName</td>
+              <td><%= f.text_field :SUG_GROUP_DESC %></td>
+              <td>Status</td>
+              <td><%= select_tag(:JOC_CODE, options_for_select([['Active',0],['Inactive',1]]))  %></td>
+            </tr> 
+            <tr>
+
+            </tr>
+            <tr> 
+              <td>First Name*</td>
+              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+              <td>Last Name*</td>
+              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+            </tr>
+            <tr> 
+              <td>Email Address*</td>
+              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+              <td>Phone*</td>
+              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+            </tr>
+            <tr> 
+              <td>Position</td>
+              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+              <td>Fax</td>
+              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+            </tr>
+            <tr> 
+              <td>Password*</td>
+              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+              <td>Confirm Password*</td>
+              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+            </tr>
+            <tr>
+              <td>Comments</td>
+              <td><%= f.text_area :SUG_GROUP_CODE %></td>
+            </tr> 
+            <tr> 
+             
+            </tr>
+            <tr>
+            	<td></td>
+            	<td><%= f.submit "Save" %></td>
+       	    </tr>
+
+
+          <% end %>
+        </tbody>
+      </table>
+      
+    </div>
+  </body>
+</html>
+<tr>
+  <td align="center" class="footer_white">
+  Copyright © 2006-2009 MPS Technologies Ltd</td>
+</tr>

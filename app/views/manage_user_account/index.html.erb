@@ -12,32 +12,32 @@
 	<table width="100%" class="center">
 	<tr>
 		<td class="gindexborder" colspan="2" valign="top">
-		<%= link_to image_tag("end_user.gif"),cs_retailers_path%><br>
+		<%= link_to image_tag("end_user.gif"),csretailers_path%><br>
 		Retailer</td>
 		<td class="gindexborder" colspan="2" valign="top">
-			<%= image_tag("end_user.gif")%><br>
+			<%= link_to image_tag("end_user.gif"), end_user_search_path %><br>
 			End User
 				<table>
 					<tr>
 						<td class="gindexborder">
-							<%= image_tag("search.gif")%>
+							<%= link_to image_tag("search.gif"), end_user_search_path %>
 						</td>
 						<td class="gindexborder">
-							<%= image_tag("create.gif")%>
+							<%= link_to image_tag("create.gif"), end_user_new_path %>
 						</td>
 					</tr>
 				</table>
 		</td>
 		<td class="gindexborder" colspan="2" valign="top">
-			<%= image_tag("admin_user.gif")%><br>
+			<%= link_to image_tag("admin_user.gif"), admin_user_search_path %><br>
 			Admin User
 				<table>
 					<tr>
 						<td class="gindexborder">
-							<%= image_tag("search.gif")%>
+							<%= link_to image_tag("search.gif"), admin_user_search_path %>
 						</td>
 						<td class="gindexborder">
-							<%= image_tag("create.gif")%>
+							<%= link_to image_tag("create.gif"), admin_user_new_path %>
 						</td>
 					</tr>
 				</table>
