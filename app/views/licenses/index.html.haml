@@ -9,14 +9,14 @@
     %tr
       %td
     %tr
-      = form_tag search_licenses_path, :method => 'get' do
+      = form_tag search_licenses_path, :id => "search_license" ,:method => 'get' do
         %td
           %table{:align => "left", :border => "0", :cellpadding => "10", :cellspacing => "0"}
             %tbody
               %tr
                 %td{:height => "25", :width => "171"} Publisher
                 %td{:height => "25", :width => "414"}
-                  = select_tag(:PUB_PUBLISHER_ID, options_for_select(@publishers, prompt = nil))
+                  = collection_select(nil, :PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME)
               %tr
                 %td{:height => "25", :width => "149"} License ID
                 %td{:height => "25"}
@@ -28,15 +28,15 @@
               %tr
                 %td{:height => "25"} License Type
                 %td{:height => "25"}
-                  = collection_select(:lic_type, 0, TransactionDetail.all, :id, :LIC_LICENSE_TYPE)
+                  //= collection_select(nil, :lic_type, TransactionDetail.all, :id, :LIC_LICENSE_TYPE)
               %tr
                 %td{:height => "25"} Content Identifier
                 %td{:height => "25"}
-                  = text_field_tag :isbn_search
+                  = text_field_tag :LIC_ISBN_IDENTIFIER
               %tr
                 %td{:height => "25"} Created By
                 %td{:height => "25"}
-                  = text_field_tag :created_by
+                  = text_field_tag :CREATED_BY
               %tr
                 %td{:height => "25"} Saleability
                 %td{:height => "25"}
@@ -44,6 +44,10 @@
                     %option{:selected => "selected", :value => ""} Select
                     %option{:value => "Y"} For Sale
                     %option{:value => "N"} Not For Sale
+              %tr
+                %td{:height => "25"} Search License to Apply Discounts
+                %td{:height => "25"}
+                  = check_box_tag(:apply_discount)
               %tr
                 %td.GBoldText{:align => "right"}  
                 %td.GBoldText{:align => "left"}

@@ -9,39 +9,39 @@
     %tr
       %td  
     %tr
-      = form_tag license_groups_path, :method => 'get' do 
+      = form_tag search_license_groups_path, :method => 'get' do 
         %td
           %table{:border => "0", :cellpadding => "10", :cellspacing => "0"}
             %tbody
               %tr
                 %td{:height => "25", :width => "171"} Publisher
                 %td{:height => "25", :width => "414"}
-                  = collection_select(:PUB_PUBLISHER_ID, 0, Publisher.all, :id, :PUB_NAME)
+                  = collection_select(nil, :PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME)
               %tr
                 %td{:height => "25", :width => "149"} License Group ID
                 %td{:height => "25"}
-                  %input.text_field{:name => "codeSrch"}/
+                  = text_field_tag :LIG_GROUP_CODE
               %tr
                 %td{:height => "25"} License Group Name
                 %td{:height => "25", :width => "436"}
-                  %input.text_field{:name => "nameSrch"}/
+                  = text_field_tag :LIG_LIC_GROUP_NAME
               %tr
                 %td{:height => "25"} License Name
-                %td{:height => "25"}
-                  %input.text_field{:name => "licenseNameSrch"}/
+                %td{:height => "25", :width => "436"}
+                  %input.text_field{:name => "nameSrch"}
               %tr
                 %td{:height => "25"} Created By
                 %td{:height => "25"}
-                  %input.text_field{:name => "createdBySrch"}/
+                  = text_field_tag :CREATED_BY
               %tr
                 %td{:height => "25"} Saleability
                 %td{:height => "25"}
-                  %select#select2{:name => "saleabilitySrch"}
+                  %select#select2{:name => "LIG_FOR_SALE"}
                     %option{:selected => "selected", :value => ""} Select
                     %option{:value => "Y"} For Sale
                     %option{:value => "N"} Not For Sale
               %tr
                 %td.GBoldText{:align => "right"}  
                 %td.GBoldText{:align => "left"}
-                  %input.submit_btn{:onclick => "return checkPub();", :type => "submit", :value => "Search"}/
-                  %input.submit_btn{:type => "reset", :value => "Reset"}/
+                  = submit_tag "Search"
+                  %input.submit_btn{:type => "reset", :value => "Reset"}

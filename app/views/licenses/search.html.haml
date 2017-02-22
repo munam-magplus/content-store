@@ -1,0 +1,42 @@
+%body
+  = render :partial => '/layouts/header'
+  .div1
+    %tr
+      %td{:colspan => "2"}
+        %table{:bgcolor => "#cccccc", :border => "0", :cellpadding => "10", :cellspacing => "1", :width => "100%"}
+          %tbody
+            %tr
+              %td.tableheader Publisher
+              %td.tableheader Id
+              %td.tableheader Name
+              %td.tableheader Type
+              %td.tableheader Saleable
+              %td.tableheader Linkable From
+              %td.tableheader Linkable To
+              %td.tableheader Created By
+            %tr
+              - if @license.present?
+                - @license.each do |lic|
+                  %td{:bgcolor => "#FBFBFB"}
+                    = lic.PUB_PUBLISHER_ID
+                  %td#40521Code{:bgcolor => "#FBFBFB"} wtbooks-LIC-6HRYX1E5P8
+                  %td{:bgcolor => "#FBFBFB"}
+                    = link_to lic.LIC_LICENSE_NAME,("")
+                  %td#40521Type{:bgcolor => "#FBFBFB"} Downloadable Content
+                  %td{:bgcolor => "#FBFBFB"}
+                    = lic.LIC_FOR_SALE
+                  %td{:bgcolor => "#FBFBFB"}
+                    = lic.LIC_LINK_FROM_DATE
+                  %td{:bgcolor => "#FBFBFB"}
+                    = lic.LIC_LINK_TO_DATE
+                  %td{:bgcolor => "#FBFBFB"}
+                    = lic.CREATED_BY
+              - else
+                %td{:bgcolor => "#FBFBFB"} -
+                %td{:bgcolor => "#FBFBFB"} -
+                %td{:bgcolor => "#FBFBFB"} -
+                %td{:bgcolor => "#FBFBFB"} -
+                %td{:bgcolor => "#FBFBFB"} -
+                %td{:bgcolor => "#FBFBFB"} -
+                %td{:bgcolor => "#FBFBFB"} -
+                %td{:bgcolor => "#FBFBFB"} -

@@ -1,7 +1,5 @@
 class LicenseGroupsController < ApplicationController
-  def search
-  end
-
+  
   def create
   end
 
@@ -9,5 +7,9 @@ class LicenseGroupsController < ApplicationController
   end
 
   def index
+  end
+
+  def search
+    @license_group = LicenseGroup.filter(params.slice(:PUB_PUBLISHER_ID, :LIG_GROUP_CODE, :LIG_LIC_GROUP_NAME, :CREATED_BY,  :LIG_FOR_SALE))
   end
 end

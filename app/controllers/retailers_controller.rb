@@ -11,8 +11,6 @@ class RetailersController < ApplicationController
 	
 	def create
 		@retailer = Retailer.new(retailer_params)
-		byebug
-
 		if @retailer.save
 			redirect_to retailers_path
 		else
@@ -29,7 +27,6 @@ class RetailersController < ApplicationController
 	private 
  
 	def retailer_params
-		byebug
 		params.require(:CDP_RETAILER).permit(:RETAILER_CODE, :REATILER_NAME, :PUB_PUBLISHER_ID,
 										:REFERRAL_URL, :RETAILER_IP_RANGE, :RETAILER_STATUS_CD, :RETAILER_CONFIG_PATH,
 										:RETAILER_SALES_LINK, CDP_RETAILER_IP_DETAILS_attributes: [:CRI_IP_AUTH_ID, :CRI_LOW_IP, :CRI_HIGH_IP, :CRI_IP_LIST, :CRI_RETAILER_CODE])
