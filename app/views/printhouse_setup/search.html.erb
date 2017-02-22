@@ -14,7 +14,7 @@
           <%= form_for :journal do |f| %>
             <tr>
               <td>Publisher:</td>
-              <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :PUB_NAME) %></td>
+              <td><%= f.collection_select :PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME %></td>
             </tr> 
             <tr> 
               <td>Print House Name:</td>
@@ -37,7 +37,8 @@
               <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Countryname.all, :id, :CON_COUNTRY_NAME) %></td>
             </tr>
        
-            <%= f.submit "Save" %>
+            <td><%= f.submit "Submit" %></td>
+            <td><%= f.button "Reset", type: :reset %></td>
 
           <% end %>
         </tbody>

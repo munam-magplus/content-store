@@ -9,8 +9,7 @@
           <%= form_for :journal do |f| %>
             <tr>
               <td>Publisher*:</td>
-			  <td><%= select_tag(:JOC_CODE, options_for_select(@pub, prompt = nil),
-              { :class => 'form-control' })  %></td>
+			        <td><%= f.collection_select :PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME %></td>
           	</tr>
             <tr>
               <td>DOI:</td>

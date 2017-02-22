@@ -1,4 +1,4 @@
 class Countryname < ApplicationRecord
 	self.table_name = "CDP_COUNTRY_NAME"
-	has_many :countries
+	belongs_to :country, :foreign_key => "COI_COUNTRY_ID"
 end

@@ -9,7 +9,7 @@
   %tr
     %td  
   %tr
-    = form_tag search_retailers_path, :method => 'get' do
+    = form_tag search_csretailers_path, :method => 'get' do
       %td{:align => "left"}
         %table{:border => "0", :cellpadding => "10", :cellspacing => "0"}
           %tbody
@@ -29,6 +29,7 @@
     %td  
   %tr
     %td 
+= render :partial => '/layouts/footer'
 
 
 

@@ -40,7 +40,7 @@
 }
 
 .tab_sel {
-    background-image: url(../images/tab_bg_sel.gif);
+    background-image: url(tab_bg_sel.gif);
     background-repeat: repeat-x;
     background-position: top;
     font-family: arial;
@@ -57,7 +57,7 @@
     font-family: arial;
     color: #a20101;
     font-size: 25px;
-    background-image: url(../images/pagehead_bg.gif);
+    background-image: url(pagehead_bg.gif);
     background-repeat: repeat-x;
     background-position: left bottom;
     padding-top: 10px;
@@ -81,4 +81,25 @@
     width: 60%;
     background-color: white;
 
+}
+
+.footer_white {
+    font-family: arial;
+    font-size: 11px;
+    color: #FFFFFF;
+    padding-top: 18px;
+    padding-right: 0px;
+    padding-bottom: 18px;
+    padding-left: 0px;
+
+}
+.tableheader {
+    border-top: #FFFFFF 1px solid;
+    border-left: #FFFFFF 1px solid;
+    border-bottom: #5F5380 1px solid;
+    border-right: #5F5380 1px solid;
+    background-color: #A6B8CE;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 12px;
 }

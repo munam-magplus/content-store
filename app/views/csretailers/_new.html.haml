@@ -1,0 +1,69 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+%body.body1
+%div.div1
+= render :partial => '/layouts/header'
+%table.center
+  %tr
+    %td  
+  %tr
+    %td 
+      = image_tag("btsr_ico.gif")
+      = link_to "Back",csretailers_path
+  %tr
+  %td.page_head Create Retailer
+  %td.page_head{:align => "right", :valign => "bottom"}
+    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "margin-bottom:1px;"}
+  %table{:border => "0", :cellpadding => "6", :cellspacing => "0", :width => "100%", :class => "center"}
+    %tr
+      %td
+        %table{:border => "0", :cellpadding => "10", :cellspacing => "0"}
+          %tbody
+            %tr
+              %td{:align => "right", :id=> "addAction"}
+                %a{:href => "#"}
+                  = image_tag("add.gif")
+            %tr
+              %td
+                %table#items{:border => "1", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                  %tr
+                    %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Retailer Code
+                    %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Retailer Name
+                    %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Publisher Id
+                    %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Low Ip
+                    %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} High Ip
+                    %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} IP List
+                    %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Operation
+                    = form_for(:CDP_RETAILER, url:  csretailers_path)  do |f| 
+                      %tr
+                        %td
+                          = f.text_field :RETAILER_CODE
+                        %td
+                          =  select_tag(:RETAILER_NAME, options_for_select([[@re.PUB_CODE ,1]])) 
+                        %td
+                          = f.text_field :PUB_PUBLISHER_ID, :value => @re.PUB_PUBLISHER_ID
+                        %td
+                        %td
+                        %td
+                        %td                  
+                %table#addnewrow{:border => "1", :cellpadding => "0", :cellspacing => "0", :width => "1075px"}        
+            %tr
+              %td{:align => "right"}
+                %input#retailersubmit.submit_btn{:name => "addretailer", :onclick => "return validateRetailer()", :type => "submit", :value => "Submit"}
+
+
+
+:javascript
+  jQuery('#addAction').click( function () {
+      var $quantity = $('.tableheader').length;
+      var $quants = $('#items tr').length;
+      jQuery("#items").append("<tr></tr>");
+      $("#items tr:last").addClass('tablecount'+$quants);
+      $.each(new Array($quantity - 1 ),
+       function(n){
+        jQuery("#items tr:last").append("<td><select_tag(:RETAILER_NAME, options_for_select([[@re.PUB_CODE ,1]])) ></td>");
+      });
+      jQuery("#items tr:last").append("<td><input type='image' name='delete' onclick ='remove(" + $quants + ");'></td>"); 
+  });
+  function remove(elem) {
+    $('.tablecount'+ elem ).hide();
+  }

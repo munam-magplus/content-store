@@ -1,92 +1,147 @@
-<table width="860" border="0" cellspacing="0" cellpadding="0">
-				
-				<tr>
-					<td colspan="2"><table border="0" align="center" cellpadding="10" cellspacing="1" bgcolor="#cccccc">
-				
-				<tr>
-					<td align="center"  >Primary Content Information</td>
-					<td align="center"  >Contributors</td>
-					<td align="center"  >Content Pricing</td>
-					<td align="center"  >Content Access Rules</td>
-					<td align="center"  background="images/step_bg_over.gif" bgcolor="#FFFFFF"><strong>SEO Configuration</strong></td>
-				</tr>
-			</table>
-<h1> SEO Configuration   </h1>
-			<table border="0" cellpadding="10" cellspacing="0">
-				<tbody>
-					<%= form_for :journal do |f| %>
-						<tr>
-							<td>Content Code:</td>
-							<td><%= f.text_field :JOC_CODE %></td>
-							<td>Publisher*:</td>
-							<td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :PUB_NAME) %></td>
-						</tr> 
-						<tr> 
-							<td>Title:</td>
-							<td><%= f.text_field :JOC_CODE %></td>
-							<td>Sub Title</td>
-							<td><%= f.text_field :JOC_CODE %></td>
-						</tr> 
-						<tr> 
-							<td>ISBN *</td>
-							<td><%= f.text_field :JOC_CODE %></td>
-							<td>Language *</td>
-							<td><%= f.text_field :JOC_CODE %></td>
-						</tr>
-						<tr>
-							<td>Content Classification </td>
-							<td><%= select_tag(:JOC_CODE, options_for_select(['Select',0]))  %></td>
-							<td>File Name*     </td>
-							<td><%= f.text_field :JOC_JOUR_PISSN %></td>
-						</tr> 
-						<tr> 
-							<td>Stock Number   </td>
-							<td><%= f.text_field :JOC_JOUR_EISSN %></td>
-							<td>Publisher Site Sales Link     </td>
-							<td><%= f.text_field :JOC_JOUR_PISSN %></td>
-						</tr>
-						<tr>
-							<td>Blurb</td>
-							<td><%= f.text_area :JOC_OWNER %></td>
-						</tr> 
-						<tr> 
-							<td>Publisher Date </td>
-							<td><%= f.text_field :JOC_CODE %>(dd)</td>
-							<td>Publisher Month </td>
-							<td><%= f.text_field :JOC_CODE %>(mm)</td>
-						</tr>
-						<tr> 
-							<td>Publisher Year </td>
-							<td><%= f.text_field :JOC_CODE %>(yyyy)</td>
-							<td>Conversion Required </td>
-							<td><%= select_tag(:JOC_CODE, options_for_select([['Select',0],[' Yes',1],['No',2]]))  %></td>
-						</tr>
-						<tr> 
-							<td>Edition </td>
-							<td><%= f.text_field :JOC_CODE %></td>
-							<td>Binding </td>
-							<td><%= select_tag(:JOC_CODE, options_for_select([['Select',0],[' Yes',1],['No',2]]))  %></td>
-						</tr>
-						<tr> 
-							<td>Volume </td>
-							<td><%= f.text_field :JOC_CODE %></td>
-							<td>Dimensions </td>
-							<td><%= f.text_field :JOC_CODE %></td>
-						</tr>
-						<tr> 
-							<td>Series ISBN </td>
-							<td><%= f.text_field :JOC_CODE %></td>
-							<td>Series Title </td>
-							<td><%= f.text_field :JOC_CODE %></td>
-						</tr>
+		<table>
+      <tr>
+        <td align="center" background="images/step_bg.gif" bgcolor="#FFFFFF">Primary Content Information</td>
+        <td align="center" background="images/step_bg.gif" bgcolor="#FFFFFF">Contributors        </td>
+        <td align="center" background="images/step_bg.gif" bgcolor="#FFFFFF">Content Pricing        </td>
+        <td align="center" background="images/step_bg.gif" bgcolor="#FFFFFF">Content Access Rules        </td>
+        <td align="center" background="images/step_bg_over.gif" bgcolor="#FFFFFF"><strong>SEO Configuration</strong>        </td>
+      </tr>
+    </table>
 
-						<td><%= f.submit "Save and Continue" %></td>
-						<td><%= f.button "Finish", type: :reset %></td>
+  <tr><td class="page_head">Content Access Rules</td></tr>
+  <tr><td align="left"></td></tr>
+  <tr><td align="right">&nbsp;</td></tr>
 
-					<% end %>
-				</tbody>
-			</table>
-			
-		</div>
-	</body>
+	<%= form_for :journal do |f| %>
+  <tr>
+    <td><table border="0" cellspacing="0" cellpadding="10">
+      <tr>
+        <td>Territorial List Type</td>
+        <td><%= select_tag(:JOC_CODE, options_for_select([['INC','INC'],[' EXC','EXC']]))  %></td>
+        </tr>
+      <tr>
+        <td valign="top">Territorial List</td>
+        <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Countryname.all, :id, :CON_COUNTRY_NAME) %> </td>
+        </tr>
+      <tr>
+        <td colspan="4" valign="top"><strong>ContentStore Viewing Rules</strong></td>
+        </tr>
+      <tr>
+        <td valign="top">Landing Page</td>
+        <td><%= f.text_area :JOC_OWNER %></td></td>
+        <td valign="top">Viewability Percentage</td>
+        <td><%= f.text_area :JOC_OWNER %></td></td>
+      </tr>
+      <tr>
+        <td valign="top">Exclude Pages from Display</td>
+        <td><%= f.text_area :JOC_OWNER %></td></td>
+        <td valign="top">Total Free Page Before Purchase</td>
+        <td><%= f.text_area :JOC_OWNER %></td></td>
+      </tr>
+      <tr>
+        <td valign="top">Total Free Page Before Login</td>
+        <td><%= f.text_area :JOC_OWNER %></td></td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="4" valign="top"><strong>Book Search Index Rules</strong></td>
+        </tr>
+      <tr>
+        <td valign="top">Exclude Pages from External Index</td>
+        <td><%= f.text_area :JOC_OWNER %></td></td>
+        <td valign="top">Percentage of Pages or Actual Pages Index-able</td>
+        <td><%= f.text_area :JOC_OWNER %></td></td>
+      </tr>
+      <tr>
+        <td colspan="4" valign="top"><strong>ContentStore Search Partner Rules</strong></td>
+        </tr>
+      <tr>
+        <td valign="top">Percentage of Pages or Actual Browsable Pages</td>
+        <td><%= f.text_area :JOC_OWNER %></td>
+        <td valign="top">Percentage of Pages or Actual Printable Pages</td>
+        <td><%= f.text_area :JOC_OWNER %></td>
+      </tr>
+      <tr>
+        <td valign="top">Percentage of Pages or Actual Allowed Copying Pages</td>
+        <td><%= f.text_area :JOC_OWNER %></td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="4" valign="top"><strong>Related Content</strong></td>
+        </tr>
+      <tr>
+        <td><%= f.text_area :JOC_OWNER %></td>
+        <td><%= f.text_area :JOC_OWNER %></td>
+				<td><%= f.button "Add" %></td>
+				<td><%= f.button "Remove" %></td>
+        </tr>
+      <tr>
+        <td colspan="4" valign="top"><strong>External Related Content</strong></td>
+        </tr>
+      <tr>
+        <td colspan="4" valign="top"><table width="100%" border="0" cellpadding="8" cellspacing="1" bgcolor="#CCCCCC" >
+          <tbody>
+            <tr>
+              <td height="25" align="center" class="tableheader">#</td>
+              <td class="tableheader" height="25" align="left">Related Content Indentifier*</td>
+              <td align="left" class="tableheader">Related Content Name </td>
+              <td align="left" class="tableheader">Related Content URL*</td>
+            </tr>
+            <tr>
+              <td height="25" align="center" bgcolor="#fbfbfb" >1</td>       <td><%= f.text_area :JOC_OWNER %></td>
+              <td><%= f.text_area :JOC_OWNER %></td>
+        			<td><%= f.text_area :JOC_OWNER %></td>
+            </tr>
+            <tr>
+              <td height="25" align="center" bgcolor="#fbfbfb" >2</td>
+              <td><%= f.text_area :JOC_OWNER %></td>
+              <td><%= f.text_area :JOC_OWNER %></td>
+              <td><%= f.text_area :JOC_OWNER %></td>
+            </tr>
+            <tr>
+              <td height="25" align="center" bgcolor="#fbfbfb" >3</td>
+              <td><%= f.text_area :JOC_OWNER %></td>
+              <td><%= f.text_area :JOC_OWNER %></td>
+              <td><%= f.text_area :JOC_OWNER %></td>
+            </tr>
+          </tbody>
+        </table></td>
+        </tr>
+      <tr>
+        <td valign="top">Subject Group</td>
+         <td><%= f.text_area :JOC_OWNER %></td>
+				<td><%= f.button "Add" %></td>
+				<td><%= f.button "Remove" %></td>
+      </tr>
+      <tr>
+        <td colspan="4" valign="top"><strong>Page Access Information</strong></td>
+      </tr>
+      <tr>
+        <td valign="top">Number of Page</td>
+        <td><%= f.text_area :JOC_OWNER %></td>
+        <td valign="top">Free Matter</td>
+        <td><%= f.text_area :JOC_OWNER %></td>
+      </tr>
+      <tr>
+        <td valign="top">First Page of Full Text</td>
+        <td><%= f.text_area :JOC_OWNER %></td>
+        <td valign="top">Last Page of Full Text</td>
+        <td><%= f.text_area :JOC_OWNER %></td>
+      </tr>
+      <tr><td><%= f.submit "Finish" %></td></tr>
+      <% end %>
+      
+      
+    </table>
+      <tr>
+        <td align="center" class="footer_white">
+					Copyright © 2006-2009 MPS Technologies Ltd
+				</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
 </html>

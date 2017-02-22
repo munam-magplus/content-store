@@ -1,0 +1,48 @@
+<body class = "body1">
+	<%= render :partial => '/layouts/header'%>
+		<div class="div1">
+	 <table>
+	 <thead>
+	 		<tr>
+	 			<th width="15%" class="tableheader">Institution ID</th>
+				<th width="15%" class="tableheader">Institution Name</th>
+				<th width="15%" class="tableheader">Lib./Dept. Name</th>
+				<th width="7%" class="tableheader">Country</th>
+				<th width="10%" class="tableheader">Primary Contact Name</th>
+				<th width="10%" class="tableheader">Status</th>
+				<th width="10%" class="tableheader">New IP Requests</th>
+				<th width="25%" align="center" class="tableheader">Actions</th>
+	 		</tr>
+	 </thead>
+	 <tbody>
+	 	<tr>
+			<% @res.each do |f| %>
+				<td bgcolor="#ffe5db"><%= f.INS_INSTITUTION_CODE %></td>
+				<td bgcolor="#ffe5db"><%= f.INS_INSTITUTION_NAME %></td>
+				<td bgcolor="#ffe5db"><%= f.INS_LIB_DEPT_NAME %></td>
+				<td bgcolor="#ffe5db"></td>
+				<td bgcolor="#ffe5db"><%= f.INS_FIRST_NAME%><%= f.INS_LAST_NAME%></td>
+				<td bgcolor="#ffe5db"><%= f.INS_INSTITUTION_STATUS %></td>
+				<td bgcolor="#ffe5db">
+					<%if @chec.present? %>
+							yes
+					<%else%>
+						 no
+					<%end%>
+				</td>
+				<td bgcolor="#ffe5db">
+					<%= image_tag("IP.gif")%>
+					<%= image_tag("Library_User.png")%>
+					<%= image_tag("User_Subscription.png")%><br>
+					<%= image_tag("license.gif")%>
+					<%= image_tag("Referral_URL.png")%>
+					<%= image_tag("managins_user.gif")%>
+				</td>
+			<%end%>
+		</tr>
+	 </tbody> 
+	</table>
+		</div>
+</body>
+
+
