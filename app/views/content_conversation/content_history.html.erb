@@ -1,6 +1,7 @@
 <html>
 	<body class = "body1">
 	<%= render :partial => '/layouts/header'%>
+
 		<div class="div1">
 <h1>Content History</h1>
 <h2>Please enter a valid ISBN</h2>
@@ -20,9 +21,26 @@
 		<!--TD align="right">
 			<img src="images/pdf.gif" onclick="downloadContentResult('PDF', 0 ,0,1000,0);" title="PDF" style="cursor:pointer;cursor:hand" />
 		</TD-->
+
 	</tr>
-			
+	 	</table></td>
+	  </tr>
+										
+		<TR>
+			<TD height="10" class="pagenumber"></TD>
+	</TR>
+		<TR>
+		<TD>
+	 <table border="0" cellspacing="0" cellpadding="3">
+	  <tr>
+	 <TD>ISBN</TD>
+	  <TD><input name="isbn" type="text" size="20" class="text_field" /></TD>
+	  <TD><input type="submit" name="submit" value="Submit" class="submit_btn" /></TD>
+	  </tr>
+	 </table></TD>
+	  </TR>
 		
+
 </table>															  </TD>
 																<TD align="right" bgcolor="#ffffff" class="GBoldText">&nbsp;&nbsp;</TD>
 															</tr>
@@ -58,6 +76,7 @@ Copyright © 2006-2009 MPS Technologies Ltd</td>
   </tr>
 </table>
 </body>
+
 </div>
 </body>
 </html>

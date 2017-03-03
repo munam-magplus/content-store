@@ -2,55 +2,54 @@
 <body class = "body1">
 <%= render :partial => '/layouts/header'%>
 <div class="div1">
-
-<table>
- 	<thead>
- 		<th class="page_head">Content Conversion</th>
- 	</thead>
- </table>
-
-<div class="center">
-<table>
-<tr>
-	<td class="gindexborder" colspan="2" valign="top">
-		<%= link_to image_tag("upload_metadata.gif"),books_path %><br>
-		Books
-	</td>
-	<td class="gindexborder" colspan="2" valign="top">
-		<%= link_to image_tag("upload_journal_metadata.gif"),journals_path %><br>
-		Journals
-	</td>
-	<td class="gindexborder" colspan="2" valign="top">
-		<%= link_to image_tag("uploadErrors.gif"),uploaded_errors_content_conversation_index_path %><br>
-		Upload Errors		
-	</td>
-</tr>
-<tr>
-	<td class="gindexborder" colspan="2" valign="center">
-		<%= link_to image_tag("uploadSubjectgroup.gif"),subject_groups_path %><br>
-		Subject Group	
-	</td>
-	<td class="gindexborder" colspan="2" valign="top">
-		<%= link_to image_tag("update_status.gif"),update_status_content_conversation_index_path %><br>
-		Update Status
-	</td>
-	<td class="gindexborder" colspan="2" valign="top">
-		<%= link_to image_tag("content_history.gif"),content_history_content_conversation_index_path%><br>
-		Content History
-	</td>
-</tr>
-<tr>
-	<td class="gindexborder" colspan="2" valign="top">
-		<%= link_to image_tag("QA_Icon.gif"),qa_check_content_conversation_index_path%><br>
-		QA Check
-	</td>
-	<td class="gindexborder" colspan="2" valign="top">
-		<%= link_to image_tag("BS_metadata.gif"),index_content_content_conversation_index_path%><br>
-		Index Content
-	</td>
-</tr>
-</table>
+	<table>
+	 	<thead>
+	 		<th class="page_head">Content Conversion</th>
+	 	</thead>
+	</table>
+	<div class="center">
+		<table>
+			<tr>
+				<td class="gindexborder" colspan="2" valign="top">
+					<%= link_to image_tag("upload_metadata.gif"),books_path %><br>
+					Books
+				</td>
+				<td class="gindexborder" colspan="2" valign="top">
+					<%= link_to image_tag("upload_journal_metadata.gif"),journals_path %><br>
+					Journals
+				</td>
+				<td class="gindexborder" colspan="2" valign="top">
+					<%= link_to image_tag("uploadErrors.gif"),uploaded_errors_content_conversation_index_path %><br>
+					Upload Errors		
+				</td>
+			</tr>
+			<tr>
+				<td class="gindexborder" colspan="2" valign="center">
+					<%= link_to image_tag("uploadSubjectgroup.gif"),subject_groups_path %><br>
+					Subject Group	
+				</td>
+				<td class="gindexborder" colspan="2" valign="top">
+					<%= link_to image_tag("update_status.gif"),update_status_content_conversation_index_path %><br>
+					Update Status
+				</td>
+				<td class="gindexborder" colspan="2" valign="top">
+					<%= link_to image_tag("content_history.gif"),content_history_content_conversation_index_path%><br>
+					Content History
+				</td>
+			</tr>
+			<tr>
+				<td class="gindexborder" colspan="2" valign="top">
+					<%= link_to image_tag("QA_Icon.gif"),qa_check_content_conversation_index_path%><br>
+					QA Check
+				</td>
+				<td class="gindexborder" colspan="2" valign="top">
+					<%= link_to image_tag("BS_metadata.gif"),index_content_content_conversation_index_path%><br>
+					Index Content
+				</td>
+			</tr>
+		</table>
+	</div>
 </div>
-</div>
+<%= render :partial => '/layouts/footer'%>
 </body>
 </html>

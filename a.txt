@@ -1,15 +1,20 @@
                                     Prefix Verb   URI Pattern                                     Controller#Action
-                       search_cs_retailers GET    /cs_retailers/search(.:format)                  cs_retailers#search
-                              cs_retailers GET    /cs_retailers(.:format)                         cs_retailers#index
-                                           POST   /cs_retailers(.:format)                         cs_retailers#create
-                           new_cs_retailer GET    /cs_retailers/new(.:format)                     cs_retailers#new
-                          edit_cs_retailer GET    /cs_retailers/:id/edit(.:format)                cs_retailers#edit
-                               cs_retailer GET    /cs_retailers/:id(.:format)                     cs_retailers#show
-                                           PATCH  /cs_retailers/:id(.:format)                     cs_retailers#update
-                                           PUT    /cs_retailers/:id(.:format)                     cs_retailers#update
-                                           DELETE /cs_retailers/:id(.:format)                     cs_retailers#destroy
+                            admin_user_new GET    /admin_user/new(.:format)                       admin_user#new
+                         admin_user_create GET    /admin_user/create(.:format)                    admin_user#create
+                         admin_user_search GET    /admin_user/search(.:format)                    admin_user#search
+                        search_csretailers GET    /csretailers/search(.:format)                   csretailers#search
+                               csretailers GET    /csretailers(.:format)                          csretailers#index
+                                           POST   /csretailers(.:format)                          csretailers#create
+                            new_csretailer GET    /csretailers/new(.:format)                      csretailers#new
+                           edit_csretailer GET    /csretailers/:id/edit(.:format)                 csretailers#edit
+                                csretailer GET    /csretailers/:id(.:format)                      csretailers#show
+                                           PATCH  /csretailers/:id(.:format)                      csretailers#update
+                                           PUT    /csretailers/:id(.:format)                      csretailers#update
+                                           DELETE /csretailers/:id(.:format)                      csretailers#destroy
                         institution_result GET    /institution/result(.:format)                   institution#result
              search_institution_user_index GET    /institution_user/search(.:format)              institution_user#search
+     metadata_sheet_institution_user_index GET    /institution_user/metadata_sheet(.:format)      institution_user#metadata_sheet
+      search_result_institution_user_index GET    /institution_user/search_result(.:format)       institution_user#search_result
                     institution_user_index GET    /institution_user(.:format)                     institution_user#index
                                            POST   /institution_user(.:format)                     institution_user#create
                       new_institution_user GET    /institution_user/new(.:format)                 institution_user#new
@@ -19,6 +24,8 @@
                                            PUT    /institution_user/:id(.:format)                 institution_user#update
                                            DELETE /institution_user/:id(.:format)                 institution_user#destroy
                   search_institution_index GET    /institution/search(.:format)                   institution#search
+          metadata_sheet_institution_index GET    /institution/metadata_sheet(.:format)           institution#metadata_sheet
+           search_result_institution_index GET    /institution/search_result(.:format)            institution#search_result
                          institution_index GET    /institution(.:format)                          institution#index
                                            POST   /institution(.:format)                          institution#create
                            new_institution GET    /institution/new(.:format)                      institution#new
@@ -28,6 +35,8 @@
                                            PUT    /institution/:id(.:format)                      institution#update
                                            DELETE /institution/:id(.:format)                      institution#destroy
                       search_access_tokens GET    /access_tokens/search(.:format)                 access_tokens#search
+              metadata_sheet_access_tokens GET    /access_tokens/metadata_sheet(.:format)         access_tokens#metadata_sheet
+               search_result_access_tokens GET    /access_tokens/search_result(.:format)          access_tokens#search_result
                              access_tokens GET    /access_tokens(.:format)                        access_tokens#index
                                            POST   /access_tokens(.:format)                        access_tokens#create
                           new_access_token GET    /access_tokens/new(.:format)                    access_tokens#new
@@ -37,6 +46,8 @@
                                            PUT    /access_tokens/:id(.:format)                    access_tokens#update
                                            DELETE /access_tokens/:id(.:format)                    access_tokens#destroy
                           search_campaigns GET    /campaigns/search(.:format)                     campaigns#search
+                  metadata_sheet_campaigns GET    /campaigns/metadata_sheet(.:format)             campaigns#metadata_sheet
+                   search_result_campaigns GET    /campaigns/search_result(.:format)              campaigns#search_result
                                  campaigns GET    /campaigns(.:format)                            campaigns#index
                                            POST   /campaigns(.:format)                            campaigns#create
                               new_campaign GET    /campaigns/new(.:format)                        campaigns#new
@@ -46,6 +57,8 @@
                                            PUT    /campaigns/:id(.:format)                        campaigns#update
                                            DELETE /campaigns/:id(.:format)                        campaigns#destroy
                          search_publishers GET    /publishers/search(.:format)                    publishers#search
+                 metadata_sheet_publishers GET    /publishers/metadata_sheet(.:format)            publishers#metadata_sheet
+                  search_result_publishers GET    /publishers/search_result(.:format)             publishers#search_result
                                 publishers GET    /publishers(.:format)                           publishers#index
                                            POST   /publishers(.:format)                           publishers#create
                              new_publisher GET    /publishers/new(.:format)                       publishers#new
@@ -55,6 +68,8 @@
                                            PUT    /publishers/:id(.:format)                       publishers#update
                                            DELETE /publishers/:id(.:format)                       publishers#destroy
                      search_license_groups GET    /license_groups/search(.:format)                license_groups#search
+             metadata_sheet_license_groups GET    /license_groups/metadata_sheet(.:format)        license_groups#metadata_sheet
+              search_result_license_groups GET    /license_groups/search_result(.:format)         license_groups#search_result
                             license_groups GET    /license_groups(.:format)                       license_groups#index
                                            POST   /license_groups(.:format)                       license_groups#create
                          new_license_group GET    /license_groups/new(.:format)                   license_groups#new
@@ -64,6 +79,8 @@
                                            PUT    /license_groups/:id(.:format)                   license_groups#update
                                            DELETE /license_groups/:id(.:format)                   license_groups#destroy
                            search_licenses GET    /licenses/search(.:format)                      licenses#search
+                   metadata_sheet_licenses GET    /licenses/metadata_sheet(.:format)              licenses#metadata_sheet
+                    search_result_licenses GET    /licenses/search_result(.:format)               licenses#search_result
                                   licenses GET    /licenses(.:format)                             licenses#index
                                            POST   /licenses(.:format)                             licenses#create
                                new_license GET    /licenses/new(.:format)                         licenses#new
@@ -73,6 +90,8 @@
                                            PUT    /licenses/:id(.:format)                         licenses#update
                                            DELETE /licenses/:id(.:format)                         licenses#destroy
                       search_subscriptions GET    /subscriptions/search(.:format)                 subscriptions#search
+              metadata_sheet_subscriptions GET    /subscriptions/metadata_sheet(.:format)         subscriptions#metadata_sheet
+               search_result_subscriptions GET    /subscriptions/search_result(.:format)          subscriptions#search_result
                              subscriptions GET    /subscriptions(.:format)                        subscriptions#index
                                            POST   /subscriptions(.:format)                        subscriptions#create
                           new_subscription GET    /subscriptions/new(.:format)                    subscriptions#new
@@ -83,6 +102,7 @@
                                            DELETE /subscriptions/:id(.:format)                    subscriptions#destroy
                      search_subject_groups GET    /subject_groups/search(.:format)                subject_groups#search
              metadata_sheet_subject_groups GET    /subject_groups/metadata_sheet(.:format)        subject_groups#metadata_sheet
+              search_result_subject_groups GET    /subject_groups/search_result(.:format)         subject_groups#search_result
                             subject_groups GET    /subject_groups(.:format)                       subject_groups#index
                                            POST   /subject_groups(.:format)                       subject_groups#create
                          new_subject_group GET    /subject_groups/new(.:format)                   subject_groups#new
@@ -91,8 +111,7 @@
                                            PATCH  /subject_groups/:id(.:format)                   subject_groups#update
                                            PUT    /subject_groups/:id(.:format)                   subject_groups#update
                                            DELETE /subject_groups/:id(.:format)                   subject_groups#destroy
-                     subject_groups_create GET    /subject_groups/create(.:format)                subject_groups#create
-                        subject_groups_new GET    /subject_groups/new(.:format)                   subject_groups#new
+                         publishers_create POST   /publishers/create(.:format)                    publishers#create
                                   journals GET    /journals/index(.:format)                       journals#index
                            search_journals GET    /journals/search(.:format)                      journals#search
           upload_article_metadata_journals GET    /journals/upload_article_metadata(.:format)     journals#upload_article_metadata
@@ -136,9 +155,10 @@ uploaded_errors_content_conversation_index GET    /content_conversation/uploaded
                                            PATCH  /content_conversation/:id(.:format)             content_conversation#update
                                            PUT    /content_conversation/:id(.:format)             content_conversation#update
                                            DELETE /content_conversation/:id(.:format)             content_conversation#destroy
-                   printhouse_setup_create GET    /printhouse_setup/create(.:format)              printhouse_setup#create
+                   printhouse_setup_create POST   /printhouse_setup/create(.:format)              printhouse_setup#create
               printhouse_setup_print_order GET    /printhouse_setup/print_order(.:format)         printhouse_setup#print_order
                    printhouse_setup_search GET    /printhouse_setup/search(.:format)              printhouse_setup#search
+                      printhouse_setup_new GET    /printhouse_setup/new(.:format)                 printhouse_setup#new
                                  countries GET    /countries(.:format)                            countries#index
                                    country GET    /countries/:id(.:format)                        countries#show
                                    reports GET    /reports(.:format)                              reports#index

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   get 'end_user/search'
 
   get 'end_user/new'
@@ -13,6 +12,8 @@ Rails.application.routes.draw do
 
   get 'admin_user/search'
 
+  get 'site_settings/site_setting/index'
+  
   resources :csretailers do
     collection do 
       get 'search'

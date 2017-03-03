@@ -2,31 +2,31 @@
 <body class = "body1">
 <%= render :partial => '/layouts/header' %>
 <div class="div1">
-<table>
-  <thead>
-    <th class="page_head">Subject Group</th>
-  </thead>
- </table>
-
-<div class="center">
-<table style="text-align:center;">
-  <tr>
-    <td class="gindexborder" colspan="2" valign="top">
-      <%= link_to image_tag("create_book.gif"),new_subject_group_path %><br>
-      Create Primary <br> Subject Group
-    </td>
-    <td class="gindexborder" colspan="2" valign="top">
-      <%= link_to image_tag("search_book.gif"),search_subject_groups_path %><br>
-      Search Subject <br> Group
-    </td>
-    <td class="gindexborder" colspan="2" valign="top">
-      <%= link_to image_tag("book_metadata.gif"),metadata_sheet_subject_groups_path %><br>
-      Upload Subject <br> Group Metadata <br> Sheet
-    </td>
-  </tr>
-</table>
+  <table>
+    <thead>
+      <th class="page_head">Subject Group</th>
+    </thead>
+   </table>
+  <div class="center">
+    <table style="text-align:center;">
+      <tr>
+        <td class="gindexborder" colspan="2" valign="top">
+          <%= link_to image_tag("create_book.gif"),new_subject_group_path %><br>
+          Create Primary <br> Subject Group
+        </td>
+        <td class="gindexborder" colspan="2" valign="top">
+          <%= link_to image_tag("search_book.gif"),search_subject_groups_path %><br>
+          Search Subject <br> Group
+        </td>
+        <td class="gindexborder" colspan="2" valign="top">
+          <%= link_to image_tag("book_metadata.gif"),metadata_sheet_subject_groups_path %><br>
+          Upload Subject <br> Group Metadata <br> Sheet
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
-</div>
+<%= render :partial => '/layouts/footer'%>
 </body>
 </html>
 
