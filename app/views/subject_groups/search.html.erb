@@ -10,19 +10,19 @@
           <tbody>
             <tr>
               <td> Publisher </td>
-              <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :PUB_NAME) %></td>
+              <td><%= collection_select(nil, :PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME) %></td>
             </tr> 
             <tr>
               <td> Subject Group Name </td>
-              <td><%= text_field_tag :name, params[:name] %></td>
+              <td><%= text_field_tag :SUG_GROUP_NAME %></td>
             </tr> 
             <tr>
               <td> Subject Group Code </td>
-              <td><%= text_field_tag :name, params[:name] %></td>
+              <td><%= text_field_tag :SUG_GROUP_CODE %></td>
             </tr> 
             <tr>
               <td> Select Language </td>
-              <td><%= select_tag(:JOC_CODE, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %></td>
+              <td><%= select_tag(:LAN_LANGUAGE_ID, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %></td>
             </tr>
             <tr><td></td>
               <td>

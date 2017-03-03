@@ -11,20 +11,25 @@
               <td>User Role*</td>
               <td><%= f.radio_button :JOC_DESCRIPTION, 'Primary Institution Administrator', :checked => true %> Primary Institution Administrator
               <%= f.radio_button :JOC_DESCRIPTION, 'Institution Administrator' %> Institution Administrator<br>
-              <%= f.text_area :JOC_CODE %></td>
-            </tr> 
+              </td>
+            </tr>
+            <tr>
+              <td>Publisher*</td>
+              <td><%= f.collection_select(:PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME) %></td>
+            </tr>
             <tr>
               <td>Institution Name*</td>
               <td><%= f.collection_select(:PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME) %></td>
             </tr> 
             <tr> 
-              <td>UserName</td>
+              <td>UserName*</td>
               <td><%= f.text_field :SUG_GROUP_DESC %></td>
-              <td>Status</td>
+              <td>Status*</td>
               <td><%= select_tag(:JOC_CODE, options_for_select([['Active',0],['Inactive',1]]))  %></td>
             </tr> 
             <tr>
-
+              <td><%= f.check_box :send_email %></td>
+              <td>same as institution billing contact</td>
             </tr>
             <tr> 
               <td>First Name*</td>
@@ -55,7 +60,8 @@
               <td><%= f.text_area :SUG_GROUP_CODE %></td>
             </tr> 
             <tr> 
-             
+              <td><%= f.check_box :send_email %></td>
+              <td>Send Email Comfirmation to Email Address above</td>
             </tr>
             <tr>
             	<td></td>

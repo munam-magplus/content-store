@@ -9,15 +9,18 @@ class SessionsController < ApplicationController
 	    	redirect_to content_conversation_index_url
 	      # Sign the user in and redirect to the user's show page.
 	    else
-	      flash.now[:error] = 'Invalid password '
+	      flash[:message] = 'Invalid password '
 	      render 'new'
 	    end
 	  else
-      flash.now[:error] = 'Invalid email '
+      flash[:error] = 'Invalid email '
       render 'new'
     end
   end
 
+  def message
+  end
+  
   def destroy
   	sign_out
     redirect_to root_url

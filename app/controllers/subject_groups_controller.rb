@@ -17,7 +17,7 @@ class SubjectGroupsController < ApplicationController
   end
   
   def search_result
-    @subject_group = SubjectGroup.search(params[:pub_id], params[:name], params[:code], params[:lang_id])
+    @subject_group = SubjectGroup.filter(params.slice(:PUB_PUBLISHER_ID, :SUG_GROUP_NAME, :SUG_GROUP_CODE, :LAN_LANGUAGE_ID))
     render :partial => 'search_result'
   end
 
