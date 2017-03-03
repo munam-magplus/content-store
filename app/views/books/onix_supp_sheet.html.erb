@@ -1,15 +1,14 @@
 <html>
   <body class = "body1">
-  <%= render :partial => '/layouts/header'%>
+    <%= render :partial => '/layouts/header'%>
     <div class="div1">
-
-   <table>
-  <tr>
-    <h1 class="page_head">ONIX Supplement Sheet </h1>
-  <tr>
-  </table>
-   <%= form_tag metadata_sheet_subject_groups_path, :method => 'get' do %>
-      <table border="0" cellpadding="10" cellspacing="0">
+      <table>
+        <tr>
+          <h1 class="page_head">ONIX Supplement Sheet </h1>
+        <tr>
+      </table>
+      <%= form_tag metadata_sheet_subject_groups_path, :method => 'get' do %>
+        <table border="0" cellpadding="10" cellspacing="0">
           <tbody>
             <tr><td>File Name</td></tr>
             <tr><td><input type="file" name="uploadMetadataFile" size="60" value="" onkeydown="return false;" onkeypress="return false;" id="uploadMetadataFile" class="text_field"></td></tr>
@@ -22,35 +21,17 @@
             </tr>
           </tbody>
         </table>
-
-              <td><table border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                      <td><a href="downloadTemplate.do?actionType=template&templateCategory=metadata&pub="><img src="free-download.gif" border="0" /></a></td>
-                      <td width="8">&nbsp;</td>
-                      <td><a href="downloadTemplate.do?actionType=template&templateCategory=metadata&pub=">
-                      Download template
-                    </a></td>
-                    </tr>
-                  </table></td>
-
-              </tbody>
-          </table></td>
-      </tr>
-      </TABLE></td>
-  </tr>
-</table>
-</form>
-</td>
-        </table></td>
-      </tr>
-      <tr>
-        <td align="center" class="footer_white">
-Copyright © 2006-2009 MPS Technologies Ltd</td>
-      </tr>
-    </table></td>
-  </tr>
-</table>
-</body>
-</div>
-</body>
+      <% end %>
+        <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><a href="downloadTemplate.do?actionType=template&templateCategory=metadata&pub="><img src="free-download.gif" border="0" /></a></td>
+            <td width="8">&nbsp;</td>
+            <td><a href="downloadTemplate.do?actionType=template&templateCategory=metadata&pub=">
+            Download template
+          </a></td>
+          </tr>
+        </table>
+    </div>
+        <%= render :partial => '/layouts/footer'%>
+  </body>
 </html>
