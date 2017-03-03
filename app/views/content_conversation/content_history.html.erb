@@ -1,63 +1,23 @@
 <html>
 	<body class = "body1">
-	<%= render :partial => '/layouts/header'%>
+		<%= render :partial => '/layouts/header'%>
 		<div class="div1">
-<h1>Content History</h1>
-<h2>Please enter a valid ISBN</h2>
-<table>
-
-	<tr>
-	
-		<TD class="GBoldText">
-			Export Result As :
-		</TD>
-		<TD align="right">
-			<%= link_to image_tag("csv.gif"),content_history_content_conversation_index_path%>
-		</TD>
-		<TD align="right">
-			<%= link_to image_tag("xls.gif"),content_history_content_conversation_index_path%>
-		</TD>
-		<!--TD align="right">
-			<img src="images/pdf.gif" onclick="downloadContentResult('PDF', 0 ,0,1000,0);" title="PDF" style="cursor:pointer;cursor:hand" />
-		</TD-->
-	</tr>
-			
-		
-</table>															  </TD>
-																<TD align="right" bgcolor="#ffffff" class="GBoldText">&nbsp;&nbsp;</TD>
-															</tr>
-													 	</table></td>
-                                    </tr>
-									
-									<TR>
-										<TD height="10" class="pagenumber"></TD>
-									</TR>
-									<TR>
-										<TD>
-										  <table border="0" cellspacing="0" cellpadding="3">
-                                            <tr>
-                                             <TD>ISBN</TD>
-									    <TD><input name="isbn" type="text" size="20" class="text_field" /></TD>
-									    <TD><input type="submit" name="submit" value="Submit" class="submit_btn" /></TD>
-                                            </tr>
-                                          </table></TD>
-								    </TR>
-								<tr><td></TBODY>
-	  </TABLE></td>
-  </tr>
-  </table>
-</form>
-</td>
-        </table></td>
-      </tr>
-      <tr>
-        <td align="center" class="footer_white">
-Copyright © 2006-2009 MPS Technologies Ltd</td>
-      </tr>
-    </table></td>
-  </tr>
-</table>
-</body>
-</div>
-</body>
+			<h1>Content History</h1>
+			<h2>Please enter a valid ISBN</h2>
+			<table>
+				<tr>
+					<td class="GBoldText">
+						Export Result As :
+					</td>
+					<td align="right">
+						<%= link_to image_tag("csv.gif"),content_history_content_conversation_index_path%>
+					</td>
+					<td align="right">
+						<%= link_to image_tag("xls.gif"),content_history_content_conversation_index_path%>
+					</td>
+					<td align="right" bgcolor="#ffffff" class="GBoldText">&nbsp;&nbsp;</td>
+				</tr>
+			</table>
+		</div>
+	</body>
 </html>

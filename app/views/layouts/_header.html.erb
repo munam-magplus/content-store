@@ -2,15 +2,163 @@
 	<%= link_to "Sign out", signout_path, method: "delete" %>
 </li>
 
- <table class="divheader">
- <tr>
-<td><%= image_tag("logo.gif")%></td>
-<td class="tab_sel"><%= link_to "Publisher Setup",publisher_setup_index_path%></td>
-<td class="tab_sel"><%= link_to "Manage User Account",manage_user_account_index_path%></td>
-<td class="tab_sel"><%= link_to "Content Conversation",content_conversation_index_path%></td>
-<td class="tab_sel"><%= link_to "Manage Access",manage_access_index_path%></td>
-<td class="tab_sel"><%= link_to "PrintHouse Setup",printhouse_setup_index_path%></td>
-<td class="tab_sel"><%= link_to "Reports",reports_path%></td>
-
-</tr>
+<nav id="primary_nav_wrap">
+<table class="divheader">
+	<tr>
+		<td>
+			<%= image_tag("logo.gif")%>
+		</td>
+		<div class="container">
+		<td class="tab_sel">
+			<ul>
+			  <li>
+			  	<a><%= link_to "Publisher Setup",publisher_setup_index_path%></a>
+			  	<ul>
+			      <li><a>Publisher -></a>
+			        <ul>
+			          <li><a><%= link_to "Search", publishers_path%></a></li>
+			          <li><a><%= link_to "Create", new_publisher_path%></a></li>
+			        </ul>
+			      </li>
+			      <li><a>Auto Generation</a></li>
+			      <li><%= link_to "Site settings", site_settings_site_setting_index_path%></li>
+			    </ul>
+			  </li>
+			</ul>
+		</td>
+		</div>
+		<td class="tab_sel">
+			<ul>
+			  <li><a><%= link_to "Manage User Account",manage_user_account_index_path%></a>
+			    <ul>
+			      <li><%= link_to "Retailers",csretailers_path%></li>
+			      <li><a href="#">End User</a></li>
+			      <li><a href="#">Admin User</a></li>
+			      <li><%= link_to "Institutional Account ->", institution_index_path%>
+			        <ul>
+			          <li><a><%= link_to "Search", institution_index_path%></a>
+			          </li>
+			          <li><a><%= link_to "Create", new_institution_path%></a></li>
+			        </ul>
+			      </li>
+			    </ul>
+			  </li>
+			</ul>
+		</td>
+		<td class="tab_sel">
+			<ul>
+			  <li><a><%= link_to "Content Conversation",content_conversation_index_path%></a>
+			    <ul>
+			      <li><%= link_to "Books ->",books_path %>
+							<ul>
+			          <li><a href="#">Create</a></li>
+			          <li><a href="#">Search</a></li>
+			          <li><a href="#">Content Store Metadata sheet</a></li>
+			          <li><a href="#">ONIX Inout</a></li>
+			          <li><a href="#">ONIX Suppliment Sheet</a></li>
+			        </ul>
+			      </li>
+			      <li><%= link_to "Journals",journals_path %></li>
+			      <li><%= link_to "Uploaded Errors",uploaded_errors_content_conversation_index_path %></li>
+			      <li><%= link_to "Subject Group ->",subject_groups_path %>
+			      	<ul>
+			          <li><a>Upload</a></li>
+			          <li><a>Create</a></li>
+			          <li><a>Search</a></li>
+			        </ul>
+			      </li>
+			      <li><%= link_to "Update Status",update_status_content_conversation_index_path %></li>
+			      <li><%= link_to "content_history",content_history_content_conversation_index_path%></li>
+			      <li><%= link_to "QA Check",qa_check_content_conversation_index_path%></li>
+			      <li><%= link_to "Index Content",index_content_content_conversation_index_path%></li>
+			    </ul>
+			  </li>
+			</ul>
+		 </td>
+		<td class="tab_sel">
+			<ul>
+			  <li><a><%= link_to "Manage Access",manage_access_index_path%></a>
+			    <ul>
+			      <li><a href="#">Subscriptions -></a>
+							<ul>
+			          <li><a href="#">Search</a></li>
+			          <li><a href="#">Create</a></li>
+			        </ul>
+			      </li>
+			      <li><a href="#">Licenses -></a>
+			        <ul>
+			          <li><a href="#">Search</a></li>
+			          <li><a href="#">Create</a></li>
+			          <li><a href="#">License discount</a></li>      
+			        </ul>
+			      </li>
+			      <li><a href="#">License Groups -></a>
+			      	<ul>
+			          <li><a href="#">Search</a></li>
+			          <li><a href="#">Create</a></li>
+			        </ul>
+			      </li>
+			      <li><a href="#">Campaigns -></a>
+			      	<ul>
+			          <li><a href="#">Search</a></li>
+			          <li><a href="#">Create</a></li>
+			        </ul>
+			      </li>
+			      <li><a href="#">Access Tokens -></a>
+			      	<ul>
+			          <li><a href="#">Search</a></li>
+			          <li><a href="#">Create</a></li>
+			        </ul>
+			      </li>
+			      <li><a href="#">Promo Codes -></a>
+			      	<ul>
+			          <li><a href="#">Search</a></li>
+			          <li><a href="#">Create</a></li>
+			        </ul>
+			      </li>
+			    </ul>
+			  </li>
+			 </ul>
+		</td>
+		<td class="tab_sel">
+			<ul>
+			   <li><a><%= link_to "Reports",reports_path%></a>
+			    <ul>
+			      <li class="dir"><a href="#">All Title Report</a>
+			      </li>
+			      <li class="dir"><a href="#">Access Token Report</a>
+			      </li>
+			      <li><a href="#">Ecommerce Report</a>
+			      </li>
+			      <li><a href="#">Adobe Download Report</a>
+			      </li>
+			      <li><a href="#">Print On Demand -></a>
+			      	<ul>
+			          <li><a href="#">Print Order Report</a></li>
+			          <li><a href="#">Print Order Content Report</a></li>
+			          <li><a href="#">Print House Order Summary Report</a></li>
+			        </ul>
+			      </li>
+			      <li><a href="#">Retailer Report -></a>
+			      	<ul>
+			          <li><a href="#">By Publisher</a></li>
+			          <li><a href="#">By Retailer</a></li>
+			        </ul>
+			      </li>
+			      <li><a href="#">Institutional Ecommerce Report</a>
+			      <li><a href="#">Member Publisher Report</a>
+			      <li><a href="#">eBook Usage Report</a>
+			      <li><a href="#">User Marketing Alert Report</a>
+			      <li><a href="#">Stock Report</a>
+			      <li><a href="#">Ecommerce Order Report</a>
+			      <li><a href="#">Borrow Subscription Report</a>
+			      <li><a href="#">Matter Code Report</a>
+			      </li>
+			    </ul>
+			  </li>
+			</ul>
+		</td>
+	</tr>
 </table>
+</nav>
+

@@ -1,3 +1,4 @@
+<%byebug%>
 <body class = "body1">
 	<%= render :partial => '/layouts/header'%>
 		<div class="div1">
@@ -20,7 +21,7 @@
 				<td bgcolor="#ffe5db"><%= f.INS_INSTITUTION_CODE %></td>
 				<td bgcolor="#ffe5db"><%= f.INS_INSTITUTION_NAME %></td>
 				<td bgcolor="#ffe5db"><%= f.INS_LIB_DEPT_NAME %></td>
-				<td bgcolor="#ffe5db"></td>
+				<td bgcolor="#ffe5db"><% @count %></td>
 				<td bgcolor="#ffe5db"><%= f.INS_FIRST_NAME%><%= f.INS_LAST_NAME%></td>
 				<td bgcolor="#ffe5db"><%= f.INS_INSTITUTION_STATUS %></td>
 				<td bgcolor="#ffe5db">

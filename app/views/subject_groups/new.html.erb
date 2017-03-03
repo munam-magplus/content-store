@@ -2,7 +2,6 @@
   <body class = "body1">
     <%= render :partial => '/layouts/header'%>
     <div class="div1">
-
       <h1> Create Primary Subject Group  </h1>
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
@@ -10,7 +9,6 @@
             <tr>
               <td>Publisher:</td>
               <td><%= f.collection_select(:PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME) %></td>
-             
             </tr> 
             <tr> 
               <td>Subject Group Level </td>
@@ -50,25 +48,19 @@
             </tr> 
             <tr> 
               <td>Select Language * </td>
-              <td><%= f.select(:LAN_LANGUAGE_ID, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %></td>
+              <td><%= f.select(:LAN_LANGUAGE_ID, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %>
+              </td>
             </tr>
             <tr>
               <td>Description </td>
               <td><%= f.text_area :SHORT_DESC %></td>
             </tr> 
-          
             <td><%= f.submit "Save" %></td>
             <td><%= f.button "Reset", type: :reset %></td>
-
-
           <% end %>
         </tbody>
       </table>
-      
     </div>
+    <%= render :partial => '/layouts/footer'%>
   </body>
 </html>
-<tr>
-  <td align="center" class="footer_white">
-  Copyright © 2006-2009 MPS Technologies Ltd</td>
-</tr>

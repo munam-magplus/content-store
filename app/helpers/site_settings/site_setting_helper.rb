@@ -1,0 +1,2 @@
+module SiteSettings::SiteSettingHelper
+end
