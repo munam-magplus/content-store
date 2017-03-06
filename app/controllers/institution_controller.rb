@@ -31,7 +31,6 @@ class InstitutionController < ApplicationController
     @institution.LASTUPDATED_BY = "ctssuperadmin@bookstore.com"
     @institution.LASTUPDATED_DATE = 12
     if @institution.save!
-          byebug
       redirect_to institution_index_path
     else
       render 'new'

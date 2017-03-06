@@ -1,19 +1,18 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   get 'end_user/search'
 
   get 'end_user/new'
 
   get 'end_user/create'
 
-  get 'admin_user/new'
-
-  get 'admin_user/create'
+  get 'site_settings/site_setting/index'
 
   get 'admin_user/search'
 
-  get 'site_settings/site_setting/index'
-  
+    get 'admin_user/new'
+
   resources :csretailers do
     collection do 
       get 'search'
@@ -57,8 +56,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'books/create'
-
   resources :content_conversation do
     collection do 
   		get 'content_history'
@@ -69,23 +66,12 @@ Rails.application.routes.draw do
     end
   end
 
-  post 'printhouse_setup/create'
-  get 'printhouse_setup/print_order'
-  get 'printhouse_setup/search'
-  get 'printhouse_setup/new'
-
   resources :countries, only: [:index, :show]
 
   resources :reports, :printhouse_setup, :manage_access, 
             :manage_user_account, :publisher_setup, :end_user, only: [:index]
 
   resources :promo_codes, :cdp_users 
-
-  resources :sessions, only: [:new, :create, :destory]
-
-  match '/signup',  to: 'cdp_users#new', 			via: 'get'
-  match '/signin',  to: 'sessions#new', 			via: 'get'
-  match '/signout', to: 'sessions#destroy', 	via: 'delete'
  
-  root 'sessions#new'
+  root 'csretailers#index'
 end

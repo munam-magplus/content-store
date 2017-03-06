@@ -1,15 +1,14 @@
 <html>
   <body class = "body1">
-  <%= render :partial => '/layouts/header'%>
+    <%= render :partial => '/layouts/header'%>
     <div class="div1">
-
-   <table>
-  <tr>
-    <h1 class="page_head">Upload Metadata File </h1>
-  <tr>
-  </table>
-   <%= form_tag metadata_sheet_subject_groups_path, :method => 'get' do %>
-      <table border="0" cellpadding="10" cellspacing="0">
+      <table>
+        <tr>
+          <h1 class="page_head">Upload Metadata File </h1>
+        <tr>
+      </table>
+      <%= form_tag metadata_sheet_subject_groups_path, :method => 'get' do %>
+        <table border="0" cellpadding="10" cellspacing="0">
           <tbody>
             <tr>
               <td>Select Language </td>
@@ -21,40 +20,27 @@
               <td>
                 <%= submit_tag "Upload" %>
                 <%= button_tag "Cancel", type: :reset %>
-                <% end %>
               </td>
             </tr>
           </tbody>
         </table>
-
-              <td><table border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                      <td><a href="downloadTemplate.do?actionType=template&templateCategory=metadata&pub="><img src="images/free-download.gif" border="0" /></a></td>
-                      <td width="8">&nbsp;</td>
-                      <td><a href="downloadTemplate.do?actionType=template&templateCategory=metadata&pub=">
-                      Download template
-                    </a></td>
-                    </tr>
-                  </table></td>
-
-              </tbody>
-          </table></td>
-      </tr>
-      </TABLE></td>
-  </tr>
-</table>
-</form>
-</td>
-        </table></td>
-      </tr>
-      <tr>
-        <td align="center" class="footer_white">
-Copyright © 2006-2009 MPS Technologies Ltd</td>
-      </tr>
-    </table></td>
-  </tr>
-</table>
-</body>
-</div>
-</body>
+        <table>
+          <tr>
+            <td>
+              <table border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td><a href="downloadTemplate.do?actionType=template&templateCategory=metadata&pub="><img src="images/free-download.gif" border="0" /></a></td>
+                    <td width="8">&nbsp;</td>
+                    <td><a href="downloadTemplate.do?actionType=template&templateCategory=metadata&pub=">
+                    Download template
+                  </a></td>
+                  </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+    <%= render :partial => '/layouts/footer'%>
+  </body>
 </html>
