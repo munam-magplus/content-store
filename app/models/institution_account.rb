@@ -1,0 +1,2 @@
+class InstitutionAccount < ApplicationRecord
+end

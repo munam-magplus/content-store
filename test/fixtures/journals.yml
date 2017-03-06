@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  jou_code: MyString
+  publisher: MyString
+  jou_title: MyString
+  jou_subtitle: MyString
+  jou_prim_ISSN: MyString
+  jou_electronic_ISSN: MyString
+  jou_owner: MyString
+  lang: MyString
+  jou_content_classification: MyString
+  jou_distribution: MyString
+  price_in: MyString
+  journal_publisher_date: MyString
+  stock_no: MyString
+  cover_image: MyString
+  jou_categories: MyString
+  jou_desc: MyString
+  editorial: MyString
+  instructions_for_authors: MyString
+
+two:
+  jou_code: MyString
+  publisher: MyString
+  jou_title: MyString
+  jou_subtitle: MyString
+  jou_prim_ISSN: MyString
+  jou_electronic_ISSN: MyString
+  jou_owner: MyString
+  lang: MyString
+  jou_content_classification: MyString
+  jou_distribution: MyString
+  price_in: MyString
+  journal_publisher_date: MyString
+  stock_no: MyString
+  cover_image: MyString
+  jou_categories: MyString
+  jou_desc: MyString
+  editorial: MyString
+  instructions_for_authors: MyString

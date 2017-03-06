@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pub: MyString
+  sub_group_level: MyString
+  sub_group_code: MyString
+  sub_group_name: MyString
+  guest_user_view_limit: MyString
+  auth_user_view_limit: MyString
+  discount_percentage: MyString
+  viewability_percentage: MyString
+  select_lang: MyString
+  desc: MyString
+
+two:
+  pub: MyString
+  sub_group_level: MyString
+  sub_group_code: MyString
+  sub_group_name: MyString
+  guest_user_view_limit: MyString
+  auth_user_view_limit: MyString
+  discount_percentage: MyString
+  viewability_percentage: MyString
+  select_lang: MyString
+  desc: MyString

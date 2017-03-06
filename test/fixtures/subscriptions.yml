@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subscription_ID: MyString
+  subscription_name: MyString
+  pub: MyString
+  subscription_desc: MyString
+  subscription_category: MyString
+  sub_group_name: MyString
+  sub_group_code: MyString
+  subscription_type: MyString
+  borrow_time: MyString
+  no_of_books: MyString
+  price: MyString
+  currency: MyString
+  discount_percentage: MyString
+
+two:
+  subscription_ID: MyString
+  subscription_name: MyString
+  pub: MyString
+  subscription_desc: MyString
+  subscription_category: MyString
+  sub_group_name: MyString
+  sub_group_code: MyString
+  subscription_type: MyString
+  borrow_time: MyString
+  no_of_books: MyString
+  price: MyString
+  currency: MyString
+  discount_percentage: MyString

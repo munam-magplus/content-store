@@ -1,0 +1,2 @@
+class BooksPrimaryContentInfo < ApplicationRecord
+end
