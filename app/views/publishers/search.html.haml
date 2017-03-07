@@ -13,13 +13,13 @@
         - if @publisher.present?
           - @publisher.each do |pub|
             %td{:bgcolor => "#FBFBFB"}
-              = link_to pub.PUB_CODE
+              = link_to pub.pub_code
             %td{:bgcolor => "#FBFBFB"}
-              = pub.PUB_NAME
+              = pub.pub_name
             %td{:bgcolor => "#FBFBFB"}
-              = pub.publisher_contact.PUC_CONTACT_FNAME
+              = pub.contact_first_name
             %td{:bgcolor => "#FBFBFB"}
-              = pub.publisher_contact.PUC_CONTACT_EMAIL
+              = pub.contact_email
         - else
           %td{:bgcolor => "#FBFBFB"} -
           %td{:bgcolor => "#FBFBFB"} -

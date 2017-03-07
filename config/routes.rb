@@ -44,6 +44,7 @@ Rails.application.routes.draw do
 
   get 'journals/create'
   get 'journals/new'
+  get 'books/create'
 
   resources :books do
     collection do
@@ -71,17 +72,5 @@ Rails.application.routes.draw do
   resources :reports, :printhouse_setup, :manage_access, 
             :manage_user_account, :publisher_setup, :end_user, only: [:index]
 
-<<<<<<< HEAD
-  resources :promo_codes, :users 
-
-  resources :sessions, only: [:new, :create, :destory]
-
-  match '/signup',  to: 'users#new', 			via: 'get'
-  match '/signin',  to: 'sessions#new', 			via: 'get'
-  match '/signout', to: 'sessions#destroy', 	via: 'delete'
-=======
-  resources :promo_codes, :cdp_users 
->>>>>>> e19792cb2383f4529f90fb24c1aafe41939e61e1
- 
   root 'csretailers#index'
 end

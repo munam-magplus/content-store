@@ -14,48 +14,17 @@
   <tr><td align="right">&nbsp;</td></tr>
 
 	<%= form_for :books_seo_config do |f| %>
-=======
-<table>
-  <tr>
-    <td align="center" background="images/step_bg.gif" bgcolor="#FFFFFF">Primary Content Information</td>
-    <td align="center" background="images/step_bg.gif" bgcolor="#FFFFFF">Contributors        </td>
-    <td align="center" background="images/step_bg.gif" bgcolor="#FFFFFF">Content Pricing        </td>
-    <td align="center" background="images/step_bg.gif" bgcolor="#FFFFFF">Content Access Rules        </td>
-    <td align="center" background="images/step_bg_over.gif" bgcolor="#FFFFFF"><strong>SEO Configuration</strong>        </td>
-  </tr>
-</table>
-<table>
-  <tr>
-    <td class="page_head">Content Access Rules</td>
-  </tr>
-  <tr>
-   <td align="left"></td>
-  </tr>
-  <tr>
-    <td align="right">&nbsp;</td>
-  </tr>
-	<%= form_for :journal do |f| %>
->>>>>>> e19792cb2383f4529f90fb24c1aafe41939e61e1
   <tr>
     <td>
     <table border="0" cellspacing="0" cellpadding="10">
       <tr>
         <td>Territorial List Type</td>
-<<<<<<< HEAD
         <td><%= f.select(:territorial_list_type, options_for_select([['INC','INC'],[' EXC','EXC']]))  %></td>
         </tr>
       <tr>
         <td valign="top">Territorial List</td>
         <td><%= f.text_area :territorial_list %></td>
         </tr>
-=======
-        <td><%= select_tag(:JOC_CODE, options_for_select([['INC','INC'],[' EXC','EXC']]))  %></td>
-      </tr>
-      <tr>
-        <td valign="top">Territorial List</td>
-        <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Countryname.all, :id, :CON_COUNTRY_NAME) %> </td>
-      </tr>
->>>>>>> e19792cb2383f4529f90fb24c1aafe41939e61e1
       <tr>
         <td colspan="4" valign="top"><strong>ContentStore Viewing Rules</strong></td>
       </tr>
@@ -112,7 +81,6 @@
       </tr>
       <tr>
         <td colspan="4" valign="top"><strong>External Related Content</strong></td>
-<<<<<<< HEAD
         </tr>
       <tr>
         <td colspan="4" valign="top"><table width="100%" border="0" cellpadding="8" cellspacing="1" bgcolor="#CCCCCC" >
@@ -144,40 +112,6 @@
           </tbody>
         </table></td>
         </tr>
-=======
-      </tr>
-      <tr>
-        <td colspan="4" valign="top">
-          <table width="100%" border="0" cellpadding="8" cellspacing="1" bgcolor="#CCCCCC" >
-            <tbody>
-              <tr>
-                <td height="25" align="center" class="tableheader">#</td>
-                <td class="tableheader" height="25" align="left">Related Content Indentifier*</td>
-                <td align="left" class="tableheader">Related Content Name </td>
-                <td align="left" class="tableheader">Related Content URL*</td>
-              </tr>
-              <tr>
-                <td height="25" align="center" bgcolor="#fbfbfb" >1</td>       <td><%= f.text_area :JOC_OWNER %></td>
-                <td><%= f.text_area :JOC_OWNER %></td>
-          			<td><%= f.text_area :JOC_OWNER %></td>
-              </tr>
-              <tr>
-                <td height="25" align="center" bgcolor="#fbfbfb" >2</td>
-                <td><%= f.text_area :JOC_OWNER %></td>
-                <td><%= f.text_area :JOC_OWNER %></td>
-                <td><%= f.text_area :JOC_OWNER %></td>
-              </tr>
-              <tr>
-                <td height="25" align="center" bgcolor="#fbfbfb" >3</td>
-                <td><%= f.text_area :JOC_OWNER %></td>
-                <td><%= f.text_area :JOC_OWNER %></td>
-                <td><%= f.text_area :JOC_OWNER %></td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-      </tr>
->>>>>>> e19792cb2383f4529f90fb24c1aafe41939e61e1
       <tr>
         <td valign="top">Subject Group</td>
          <td><%= f.text_area :subject_group %></td>

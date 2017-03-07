@@ -10,50 +10,25 @@
 <h1> Primary Content Information   </h1>
 <table border="0" cellpadding="10" cellspacing="0">
 	<tbody>
-		<%= form_for :book_content do |f| %>
-			<%= form_for :content do |a| %>
+			<%= form_for :books_primary_content_infos do |a| %>
 				<tr>
 					<td>Content Code:</td>
-					<td><%= a.text_field :COM_CONTENT_CODE %></td>
+					<td><%= a.text_field :content_code %></td>
 					<td>Publisher*:</td>
-					<td><%= a.collection_select :PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME  %></td>
+					<td><%= a.text_field :publisher %></td>
 				</tr> 
 				<tr> 
 					<td>Title:</td>
-					<td><%= a.text_field :COM_TITLE %></td>
+					<td><%= a.text_field :title %></td>
 					<td>Sub Title</td>
-					<td><%= a.text_field :COM_SUB_TITLE %></td>
+					<td><%= a.text_field :sub_title %></td>
 				</tr> 
 				<tr> 
 					<td>ISBN *</td>
-					<td><%= f.text_field :BOC_BOOK_ISBN %></td>
+					<td><%= f.text_field :ISBN %></td>
 					<td>Language *</td>
-					<td><%= a.text_field :LAN_LANGUAGE_ID %></td>
+					<td><%= a.text_field :lang %></td>
 				</tr>
-<<<<<<< HEAD
-			</table>
-<h1> Primary Content Information   </h1>
-			<table border="0" cellpadding="10" cellspacing="0">
-				<tbody>
-					<%= form_for :books_content_pricing do |f| %>
-						<tr>
-							<td>Content Code:</td>
-							<td><%= f.text_field :content_code %></td>
-							<td>Publisher*:</td>
-							<td><%= f.text_field :publisher %></td>
-						</tr> 
-						<tr> 
-							<td>Title:</td>
-							<td><%= f.text_field :title %></td>
-							<td>Sub Title</td>
-							<td><%= f.text_field :sub_title %></td>
-						</tr> 
-						<tr> 
-							<td>ISBN *</td>
-							<td><%= f.text_field :ISBN %></td>
-							<td>Language *</td>
-							<td><%= a.text_field :lang %></td>
-						</tr>
 						<tr>
 							<td>Content Classification </td>
 							<td><%= a.select :content_clasification, options_for_select(['Select','Select'],['hello','hello']) %></td>
@@ -113,61 +88,3 @@
 		</div>
 	</body>
 </html>
-=======
-				<tr>
-					<td>Content Classification </td>
-					<td><%= a.select :COM_CLASSIFICATION, options_for_select(['Select','Select'],['hello','hello']) %></td>
-					<td>File Name*     </td>
-					<td><%= f.text_field :JOC_JOUR_PISSN %></td>
-				</tr> 
-				<tr> 
-					<td>Stock Number   </td>
-					<td><%= a.text_field :COM_STOCK_NUMBER %></td>
-				</tr>
-				<tr>
-					<td>Publisher Site Sales Link     </td>
-					<td><%= a.text_field :COM_PUB_SITE_SALES_LINK %></td>
-				</tr>
-				<tr>
-					<td>Blurb</td>
-					<td><%= a.text_area :COM_BLURB, cols: "40", rows: "5" %></td>
-				</tr> 
-				<tr> 
-					<td>Publisher Date </td>
-					<td><%= a.text_field :COM_PUBLICATION_DATE %>(dd)</td>
-					<td>Publisher Month </td>
-					<td><%= f.text_field :JOC_CODE %>(mm)</td>
-				</tr>
-				<tr> 
-					<td>Publisher Year </td>
-					<td><%= f.text_field :JOC_CODE %>(yyyy)</td>
-					<td>Conversion Required </td>
-					<td><%= f.select(:JOC_CODE, options_for_select([['Select',0],[' Yes',1],['No',2]]))  %></td>
-				</tr>
-				<tr> 
-					<td>Edition </td>
-					<td><%= f.text_field :BOC_BOOK_EDITION %></td>
-					<td>Binding </td>
-					<td><%= f.select(:BOC_BINDING_TYPE, options_for_select([['Select',0],[' Yes',1],['No',2]]))  %></td>
-				</tr>
-				<tr> 
-					<td>Volume </td>
-					<td><%= a.text_field :COM_VOLUME %></td>
-					<td>Dimensions </td>
-					<td><%= f.text_field :JOC_CODE %></td>
-				</tr>
-				<tr> 
-					<td>Series ISBN </td>
-					<td><%= f.text_field :BOC_SERIES_ISBN %></td>
-					<td>Series Title </td>
-					<td><%= f.text_field :BOC_SERIES_TITLE %></td>
-				</tr>
-				<tr>
-					<td><%= f.submit "Save and Continue" %></td>
-					<td><%= f.button "Finish", type: :reset %></td>
-				</tr>
-			<% end %>
-		<% end %>
-	</tbody>
-</table>
->>>>>>> e19792cb2383f4529f90fb24c1aafe41939e61e1

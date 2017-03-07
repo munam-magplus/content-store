@@ -8,7 +8,6 @@
 	</tr>
 </table>
 <h1> Contributor's Information   </h1>
-<<<<<<< HEAD
 	<table border="0" cellpadding="10" cellspacing="0">
 		<tbody>
 			<tr>
@@ -92,103 +91,4 @@
 			
 		</div>
 	</body>
-=======
-<table border="0" cellpadding="10" cellspacing="0">
-	<tbody>
-		<tr>
-		  <td colspan="2" align="left"></td>
-		</tr>
-	  <tr>
-	    <td colspan="2" align="right"></td>
-	  </tr>
-	  <tr>
-	    <td colspan="2" align="right">&nbsp;</td>
-	  </tr>
-	  <tr>
-	    <td colspan="2">
-	    	<div style="height: 350px; overflow: auto;">
-					<table width="100%" border=0 cellPadding=10 cellSpacing=1 bgColor=#cccccc id="contributorTable">
-						<tbody>
-							<%= form_for :journal do |f| %>
-							<tr>
-								<td align="center" valign="top" class="tableheader">
-									<input type="checkbox" name="ctrSel" onclick="checkall(this);" />
-								</td>
-								<td align="left" valign="top" class="tableheader">											  Role*</td>
-								<td align="left" valign="top" class="tableheader">											      Name*</td>
-								<td align="left" valign="top" class="tableheader">											      Description</td>
-								<td align="left" valign="top" class="tableheader">											      Date of Birth</td>
-								<td align="left" valign="top" class="tableheader">											      Date of Death  </td>
-								<td align="left" valign="top" class="tableheader">											      Professional Position</td>
-								<td align="left" valign="top" class="tableheader">											      Professional Affiliation</td>
-								<td align="left" valign="top" class="tableheader">											      Website</td>
-								<td align="left" valign="top" class="tableheader">											      Website Description</td>
-							</tr>
-							<tr>
-								<td  align="center" valign="top" bgcolor="#fbfbfb">
-							  	<input type="checkbox" name="selDataCK" value="checkbox" />													
-							 	</td>
-								<td valign="top" bgColor="#fbfbfb" >
-									<%= select_tag(:JOC_CODE, options_for_select([['By (author)',0],['Screenplay by',1],['Libretto by',2],['Lyrics by',3],['By (composer)',4],['By (artist)',5],['By (photographer)',6],['From an idea by',7],['Designed by',8],['Photographs by',9],['Text by',10],['Preface by',11],['Prologue by',12],['Summary by',13],['Supplement by',14],['Afterword by',15],['Notes by',16],['Commentaries by',17],['Foreword by',18],['Introduction by',19],['Footnotes by',20],['Memoir by',21],['Software written by',22],['Contributions by',23],['Cover design or artwork by',24],['Other primary creator',25],['Edited by',26],['Revised by',27],['Retold by',28],['Abridged by',29],['Adapted by',30],['Translated by',31],['As told by',32],['Series edited by',33],['Editor-in-chief',34],['Guest editor',35],['Editorial board member',0],['Founded by',0],['Associate editor',0],['Consultant editor',0],['General editor',0],['Other adaptation by',0],['Compiled by',0],['Selected by',0],['Other compilation by',0],['Producer',0],['Director',0],['Conductor',0],['Other direction by',0],['Actor',0],['Narrator',0],['Vocal soloist',0],['Instrumental soloist',0],['Read by',0],['Performed by (orchestra, band, ensemble)',0],['Performed by',0],['Filmed/photographed by',0],['Other recording by',0],['Other',0]]))  %>
-								</td>
-								<td valign="top" bgColor=#fbfbfb><%= f.text_field :JOC_CODE %><br />
-									<%= f.text_field :JOC_CODE %>
-								</td>
-								<td valign="top" bgColor=#fbfbfb > <%= f.text_area :JOC_CODE %>
-								</td>
-								<td valign="top" bgColor=#fbfbfb>
-									<table width="100%" border=0 cellPadding=0 cellSpacing=0>
-										<tr>
-											<td>
-												<%= f.text_field :JOC_CODE %>
-											</td>
-											<td><img src="images/search_img_blue.gif" width="21" height="18" border="0" id="dob-cal-button[0]" style="cursor:pointer;cursor:hand" />
-											</td>
-											<td><img src="images/clear_cal.gif" width="21" height="18" border="0" onclick="clearElement('dob-cal-field[0]')" style="cursor:pointer;cursor:hand" />
-											</td>
-										</tr>
-									</table>
-								</td>
-								<td valign="top" bgColor=#fbfbfb >
-									<table width="100%" border=0 cellPadding=0 cellSpacing=0>
-										<tr>
-											<td>
-												<%= f.text_field :JOC_CODE %>
-											</td>
-											<td>
-												<img src="images/search_img_blue.gif" width="21" height="18" border="0" id="dod-cal-button[0]" style="cursor:pointer;cursor:hand" />
-											</td>
-											<td>
-												<img src="images/clear_cal.gif" width="21" height="18" border="0" onclick="clearElement('dod-cal-field[0]')" style="cursor:pointer;cursor:hand" />
-											</td>
-										</tr>
-									</table>
-								</td>
-	 							<td valign="top" bgColor="#fbfbfb" >
-	 								<%= f.text_field :JOC_CODE %>
-	 							</td>
-	  						<td valign="top" bgColor="#fbfbfb" >
-	  							<%= f.text_field :JOC_CODE %>
-	 							</td>
-	  						<td valign="top" bgColor="#fbfbfb" >
-	  							<%= f.text_field :JOC_CODE %>	
-	  						</td>
-	 							<td valign="top" bgColor="#fbfbfb" >
-	 								<%= f.text_area :JOC_CODE %>
-	 							</td>
-						</tr>
-						<tr>
-							<td><%= f.submit "Save and Continue" %></td>
-							<td><%= f.button "Finish", type: :reset %></td>
-						</tr>
-						<% end %>
-					</tbody>
-					</table>
-				</div>
-			</td>
-		</tr>
-	</tbody>
-</table>
-</body>
->>>>>>> e19792cb2383f4529f90fb24c1aafe41939e61e1
 </html>
