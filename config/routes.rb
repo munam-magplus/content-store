@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
     get 'admin_user/new'
 
-  resources :csretailers do
+  resources :retailers do
     collection do 
       get 'search'
     end

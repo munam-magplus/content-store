@@ -20,16 +20,16 @@
                       Publisher Code
                       %span.mandtory *
                     %td{:height => "25"}
-                      = f.text_field :PUB_CODE 
+                      = f.text_field :pub_code 
                     %td
                       Publisher Name
                       %span.mandtory *
                     %td
-                      = f.text_field :PUB_NAME
+                      = f.text_field :pub_name
                   %tr
                     %td{:height => "25"} Publisher Status
                     %td{:height => "25"}
-                      = f.select :PUB_STATUS, options_for_select([ "Live", "Staging"]), :class => 'genForm_dropBox'
+                      = f.select :pub_status, options_for_select([ "Live", "Staging"]), :class => 'genForm_dropBox'
                     %td
                       Publisher Type
                       %span.mandtory *
@@ -42,16 +42,16 @@
                   %tr
                     %td{:height => "25"} Default End User Language
                     %td{:height => "25"}
-                      = f.select(:PUB_END_USR_LANGUAGE, [['Dansk', 'da'],
+                      = f.select(:end_user_lang, [['Dansk', 'da'],
                                   ['Polish', 'pl'],
                                   ['Latvian', 'lv'],
                                   ['English', 'en']],{ :prompt => "Please select"})
                     %td Default Manager Language
-                    %td{:height => "25"}
-                      = f.select(:PUB_ADMIN_TOOL_LANGUAGE_ID, [['Dansk', 'da'],
-                                  ['Polish', 'pl'],
-                                  ['Latvian', 'lv'],
-                                  ['English', 'en']],{ :prompt => "Please select"})
+                    / %td{:height => "25"}
+                    /   = f.select(:PUB_ADMIN_TOOL_LANGUAGE_ID, [['Dansk', 'da'],
+                    /               ['Polish', 'pl'],
+                    /               ['Latvian', 'lv'],
+                    /               ['English', 'en']],{ :prompt => "Please select"})
                     / %tr
                     /   %td{:height => "25"} Default End User Language
                     /   %td{:height => "25"}
@@ -67,18 +67,18 @@
                           Contact First Name
                           %span.mandtory 
                         %td{:height => "25"}
-                          = builder.text_field :PUC_CONTACT_FNAME 
+                          = builder.text_field :contact_first_name 
                         %td
                           Contact Last Name
                           %span.mandtory *
                         %td
-                          = builder.text_field :PUC_CONTACT_LNAME 
+                          = builder.text_field :contact_last_name 
                       %tr
                         %td{:height => "25"}
                           Contact Email
                           %span.mandtory *
                         %td{:height => "25"}
-                          = builder.text_field :PUC_CONTACT_EMAIL
+                          = builder.text_field :contact_email
                         %td
                 %tbody
                   %tr

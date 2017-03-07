@@ -11,8 +11,8 @@
         %td.tableheader Contact Email
       - if @publisher.present?
         %tr
-          %td= @publisher.first.PUB_CODE
-          %td= @publisher.first.PUB_NAME
-          %td= @publisher.first.publisher_contact.PUC_CONTACT_FNAME
-          %td= @publisher.first.publisher_contact.PUC_CONTACT_EMAIL
+          %td= @publisher.first.pub_code
+          %td= @publisher.first.pub_name
+          %td= @publisher.first.contact_first_name
+          %td= @publisher.first.contact_email
 = render :partial => '/layouts/footer'

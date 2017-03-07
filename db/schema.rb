@@ -10,11 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20170306120656) do
-=======
+
 ActiveRecord::Schema.define(version: 20170307040135) do
->>>>>>> e19792cb2383f4529f90fb24c1aafe41939e61e1
 
   create_table "CDP_ADDRESS", primary_key: "ADD_ADDRESS_ID", id: :bigint, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|
     t.bigint   "USE_USER_ID",                                                              null: false
@@ -1105,8 +1102,6 @@ ActiveRecord::Schema.define(version: 20170307040135) do
     t.index ["PUB_PARENT_ID", "PUB_CHILD_ID"], name: "PUB_PARENT_CHILD.PARENT.CHILD.UK", unique: true, using: :btree
   end
 
-  create_table "CDP_REPORTS", primary_key: "REP_REPORT_ID", id: :bigint, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|
-  end
 
   create_table "CDP_REPORTS_TEMP", primary_key: "COM_CONTENT_ID", id: :bigint, default: nil, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|
     t.bigint   "PUBLISHER_ID",                                  null: false
@@ -1765,6 +1760,7 @@ ActiveRecord::Schema.define(version: 20170307040135) do
     t.index ["PUBLISHER_ID"], name: "PUBLISHER_ID", using: :btree
   end
 
+
   create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "publisher"
     t.string   "email"
@@ -1780,8 +1776,8 @@ ActiveRecord::Schema.define(version: 20170307040135) do
     t.datetime "updated_at",    null: false
   end
 
-<<<<<<< HEAD
-  create_table "article_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+
+  create_table "article_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "role"
     t.string   "name"
     t.string   "desc"
@@ -1797,7 +1793,8 @@ ActiveRecord::Schema.define(version: 20170307040135) do
     t.datetime "updated_at",   null: false
   end
 
-  create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+
+  create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "publisher"
     t.string   "DOI"
     t.string   "content_code"
@@ -1822,7 +1819,8 @@ ActiveRecord::Schema.define(version: 20170307040135) do
     t.datetime "updated_at",              null: false
   end
 
-  create_table "books_content_pricings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+
+  create_table "books_content_pricings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "format"
     t.string   "ISBN"
     t.string   "DOI"
@@ -1833,7 +1831,8 @@ ActiveRecord::Schema.define(version: 20170307040135) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "books_contributors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+
+  create_table "books_contributors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "role"
     t.string   "name"
     t.string   "description"
@@ -1847,7 +1846,8 @@ ActiveRecord::Schema.define(version: 20170307040135) do
     t.datetime "updated_at",               null: false
   end
 
-  create_table "books_primary_content_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+
+  create_table "books_primary_content_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content_code"
     t.string   "publisher"
     t.string   "title"
@@ -1873,7 +1873,8 @@ ActiveRecord::Schema.define(version: 20170307040135) do
     t.string   "dimension"
   end
 
-  create_table "books_seo_configs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+
+  create_table "books_seo_configs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "territorial_list_type"
     t.string   "territorial_list"
     t.string   "landing_page"
@@ -1899,14 +1900,15 @@ ActiveRecord::Schema.define(version: 20170307040135) do
     t.datetime "updated_at",                        null: false
   end
 
-  create_table "campaigns", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "campaigns", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "pub"
     t.string   "campaign_name"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
 
-  create_table "institution_acc_billing_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+
+  create_table "institution_acc_billing_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone"
@@ -1921,16 +1923,202 @@ ActiveRecord::Schema.define(version: 20170307040135) do
     t.string   "comments"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-=======
-  create_table "content_live", id: false, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|
-    t.string  "isbn",  limit: 30,                          null: false
-    t.decimal "price",            precision: 10, scale: 2
->>>>>>> e19792cb2383f4529f90fb24c1aafe41939e61e1
   end
 
-  create_table "content_livelit", id: false, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|
-    t.bigint  "isbn",                           null: false
-    t.decimal "price", precision: 10, scale: 2
+  create_table "institution_accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "pub"
+    t.string   "inst_ID"
+    t.string   "Lib_name"
+    t.string   "inst_name"
+    t.string   "status"
+    t.string   "display_name"
+    t.string   "logo"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "institution_admin_user_accs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "role"
+    t.string   "publisher"
+    t.string   "institution_name"
+    t.string   "user_name"
+    t.string   "status"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "position"
+    t.string   "fax"
+    t.string   "password"
+    t.string   "confirm_password"
+    t.string   "comments"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "journals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "jou_code"
+    t.string   "publisher"
+    t.string   "jou_title"
+    t.string   "jou_subtitle"
+    t.string   "jou_prim_ISSN"
+    t.string   "jou_electronic_ISSN"
+    t.string   "jou_owner"
+    t.string   "lang"
+    t.string   "jou_content_classification"
+    t.string   "jou_distribution"
+    t.string   "price_in"
+    t.string   "journal_publisher_date"
+    t.string   "stock_no"
+    t.string   "cover_image"
+    t.string   "jou_categories"
+    t.string   "jou_desc"
+    t.string   "editorial"
+    t.string   "instructions_for_authors"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "license_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "lic_group_ID"
+    t.string   "lic_group_name"
+    t.string   "pub"
+    t.string   "created_on"
+    t.string   "created_by"
+    t.string   "lic_ID"
+    t.string   "lic_name"
+    t.string   "lic_type"
+    t.string   "content_identifier"
+    t.string   "from"
+    t.string   "to"
+    t.string   "purchase_infodiscount"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "licenses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "lic_ID"
+    t.string   "lic_name"
+    t.string   "pub"
+    t.string   "created_on"
+    t.string   "created_by"
+    t.string   "ISBN"
+    t.string   "title"
+    t.string   "lic_type"
+    t.string   "from"
+    t.string   "to"
+    t.string   "discount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "models", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["email"], name: "index_models_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "print_houses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "pub"
+    t.string   "print_house_code"
+    t.string   "print_house_name"
+    t.string   "ranking"
+    t.string   "VAT_reg_no"
+    t.string   "contact_first_name"
+    t.string   "contact_last_name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "address_line1"
+    t.string   "address_line2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "postal_code"
+    t.string   "country"
+    t.string   "shipping_type"
+    t.string   "shipping_countries"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "promo_codes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "pub"
+    t.string   "campaign"
+    t.string   "no_of_promo_code"
+    t.string   "applicable_discount"
+    t.string   "from"
+    t.string   "to"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "publishers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "pub_code"
+    t.string   "pub_name"
+    t.string   "pub_status"
+    t.string   "pub_type"
+    t.string   "end_user_lang"
+    t.string   "manager_lang"
+    t.string   "contact_first_name"
+    t.string   "contact_last_name"
+    t.string   "contact_email"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "retailers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "ret_code"
+    t.string   "ret_name"
+    t.string   "pub_id"
+    t.string   "low_IP"
+    t.string   "high_IP"
+    t.string   "IP_list"
+    t.string   "operation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subject_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "pub"
+    t.string   "sub_group_level"
+    t.string   "sub_group_code"
+    t.string   "sub_group_name"
+    t.string   "guest_user_view_limit"
+    t.string   "auth_user_view_limit"
+    t.string   "discount_percentage"
+    t.string   "viewability_percentage"
+    t.string   "select_lang"
+    t.string   "desc"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "subscriptions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "subscription_ID"
+    t.string   "subscription_name"
+    t.string   "pub"
+    t.string   "subscription_desc"
+    t.string   "subscription_category"
+    t.string   "sub_group_name"
+    t.string   "sub_group_code"
+    t.string   "subscription_type"
+    t.string   "borrow_time"
+    t.string   "no_of_books"
+    t.string   "price"
+    t.string   "currency"
+    t.string   "discount_percentage"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
