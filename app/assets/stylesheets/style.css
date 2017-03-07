@@ -222,3 +222,14 @@
     padding-bottom: 0px;
     padding-left: 3px;
 }
+
+/*css to display font in white color*/
+.font_white {
+    font-family: arial;
+    font-size: 30px;
+    color: #FFFFFF;
+    padding-top: 18px;
+    padding-right: 0px;
+    padding-bottom: 18px;
+    padding-left: 0px;
+}

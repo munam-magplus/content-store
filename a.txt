@@ -1,7 +1,23 @@
                                     Prefix Verb   URI Pattern                                     Controller#Action
-                            admin_user_new GET    /admin_user/new(.:format)                       admin_user#new
-                         admin_user_create GET    /admin_user/create(.:format)                    admin_user#create
-                         admin_user_search GET    /admin_user/search(.:format)                    admin_user#search
+                          new_user_session GET    /users/sign_in(.:format)                        devise/sessions#new
+                              user_session POST   /users/sign_in(.:format)                        devise/sessions#create
+                      destroy_user_session DELETE /users/sign_out(.:format)                       devise/sessions#destroy
+                         new_user_password GET    /users/password/new(.:format)                   devise/passwords#new
+                        edit_user_password GET    /users/password/edit(.:format)                  devise/passwords#edit
+                             user_password PATCH  /users/password(.:format)                       devise/passwords#update
+                                           PUT    /users/password(.:format)                       devise/passwords#update
+                                           POST   /users/password(.:format)                       devise/passwords#create
+                  cancel_user_registration GET    /users/cancel(.:format)                         devise/registrations#cancel
+                     new_user_registration GET    /users/sign_up(.:format)                        devise/registrations#new
+                    edit_user_registration GET    /users/edit(.:format)                           devise/registrations#edit
+                         user_registration PATCH  /users(.:format)                                devise/registrations#update
+                                           PUT    /users(.:format)                                devise/registrations#update
+                                           DELETE /users(.:format)                                devise/registrations#destroy
+                                           POST   /users(.:format)                                devise/registrations#create
+                           end_user_search GET    /end_user/search(.:format)                      end_user#search
+                              end_user_new GET    /end_user/new(.:format)                         end_user#new
+                           end_user_create GET    /end_user/create(.:format)                      end_user#create
+          site_settings_site_setting_index GET    /site_settings/site_setting/index(.:format)     site_settings/site_setting#index
                         search_csretailers GET    /csretailers/search(.:format)                   csretailers#search
                                csretailers GET    /csretailers(.:format)                          csretailers#index
                                            POST   /csretailers(.:format)                          csretailers#create
@@ -183,9 +199,4 @@ uploaded_errors_content_conversation_index GET    /content_conversation/uploaded
                                            PATCH  /cdp_users/:id(.:format)                        cdp_users#update
                                            PUT    /cdp_users/:id(.:format)                        cdp_users#update
                                            DELETE /cdp_users/:id(.:format)                        cdp_users#destroy
-                                  sessions POST   /sessions(.:format)                             sessions#create
-                               new_session GET    /sessions/new(.:format)                         sessions#new
-                                    signup GET    /signup(.:format)                               cdp_users#new
-                                    signin GET    /signin(.:format)                               sessions#new
-                                   signout DELETE /signout(.:format)                              sessions#destroy
-                                      root GET    /                                               sessions#new
+                                      root GET    /                                               publishers#search
