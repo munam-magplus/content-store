@@ -6,74 +6,104 @@
       <h1>New Article Setup </h1>
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
-          <%= form_for :journal do |f| %>
+          <%= form_for :articles do |f| %>
+          <%= form_for :article_infos do |h| %>
             <tr>
               <td>Publisher*:</td>
-			        <td><%= f.collection_select :PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME %></td>
+			        <td><%= f.text_field :publisher %></td>
           	</tr>
             <tr>
               <td>DOI:</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td><%= f.text_field :DOI %></td>
               <td>Content Code*:</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td><%= f.text_field :content_code %></td>
             </tr> 
             <tr> 
               <td>Journal Title*:</td>
-              <td><%= select_tag(:JOC_CODE, options_for_select([['Select',0],['Issue',1],['Early Bird',2]]))  %></td>
+              <td><%= select_tag(:jou_title, options_for_select([['Select',0],['Issue',1],['Early Bird',2]]))  %></td>
               <td>Article Type*:</td>
-              <td><%= select_tag(:JOC_CODE, options_for_select([['Select',0],['Issue',1],['Early Bird',2]]))  %></td>
+              <td><%= select_tag(:article_type, options_for_select([['Select',0],['Issue',1],['Early Bird',2]]))  %></td>
             </tr>
             <tr>
               <td>Issue Type*:</td>
-              <td><%= select_tag(:JOC_CODE, options_for_select([['Select',0],['Regular',1],['Supplement',2],['Double',3]]))  %></td>
+              <td><%= select_tag(:issue_type, options_for_select([['Select',0],['Regular',1],['Supplement',2],['Double',3]]))  %></td>
             </tr>
             <tr>
               <td>Volume Number*:</td>
-              <td><%= f.text_field :JOC_OWNER %></td>
+              <td><%= f.text_field :vol_no %></td>
               <td>Volume Title:</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td><%= f.text_field :vol_title %></td>
             </tr>
             <tr>
               <td>Issue Number*:</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td><%= f.text_field :issue_no %></td>
               <td>Issue Supplement* :</td>
-              <td><%= f.text_field :JOC_DISTRIBUTORS %></td>
+              <td><%= f.text_field :issue_supplement %></td>
             </tr>
             <tr>
               <td>Issue Number Begin*:</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td><%= f.text_field :issue_number_begin %></td>
               <td>Issue Number End*:</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td><%= f.text_field :issue_number_end %></td>
             </tr>
             <tr>
               <td>Access Level*:</td>
-              <td><%= select_tag(:JOC_CODE, options_for_select([['Select',0],['Free',1],['Paid',2]]))  %></td>
+              <td><%= select_tag(:access_level, options_for_select([['Select',0],['Free',1],['Paid',2]]))  %></td>
                <td>Access Languages*:</td>
-              <td><%= select_tag(:JOC_CODE, options_for_select([['Select',0],['Polish',1],['English',2]]))  %></td>
+              <td><%= select_tag(:article_lang, options_for_select([['Select',0],['Polish',1],['English',2]]))  %></td>
             </tr>
             <tr>
               <td>External DRM*:</td>
-              <td><%= f.radio_button :JOC_DESCRIPTION, 'Yes'%>Yes
-              <%= f.radio_button :JOC_DESCRIPTION, 'No', :checked => true %>No</td>
+              <td><%= f.radio_button :external_DRM, 'Yes'%>Yes
+              <%= f.radio_button :external_DRM, 'No', :checked => true %>No</td>
                <td>Article Sequence Number:</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td><%= f.text_field :article_sequence_number %></td>
             </tr>
             <tr>
               <td>Publication Date*:</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td><%= f.text_field :pub_date %></td>
                <td>Issue Cover Date:</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td><%= f.text_field :issue_cover_date %></td>
             </tr>
             <tr>
               <td>Stock Number:</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td><%= f.text_field :stock_number %></td>
             </tr>
             <tr>
                <td>Abstract:</td>
-              <td><%= f.text_area :JOC_CODE %></td>
+              <td><%= f.text_area :abstract %></td>
             </tr>
             <tr>
               <td><strong>Contributor's Information</strong></td>
+            </tr>
+            <tr>
+              <td colspan="4">
+            <div style="min-height:100px; max-height:190px; overflow:auto;">
+              <table width="97%" border=0 cellPadding="8" cellSpacing="1" id="contributorTable" bgColor="#cccccc">
+               <td>Role*:</td>
+              <td><%= h.text_area :role %></td>
+            </tr>
+            <tr>
+               <td>Name:</td>
+              <td><%= h.text_area :name %></td>
+            </tr>
+            <tr>
+               <td>desc:</td>
+              <td><%= h.text_area :desc %></td>
+              </table>
+      </div>
+      </td>
+            </tr>
+            <tr>
+               <td>Format:</td>
+              <td><%= f.text_area :format %></td>
+            </tr>
+            <tr>
+               <td>DOI:</td>
+              <td><%= f.text_area :DOI %></td>
+            </tr><tr>
+               <td>Abstract:</td>
+              <td><%= f.text_area :abstract %></td>
             </tr>
             <tr>
             <td colspan="4">
@@ -139,12 +169,12 @@
 												<td width="15" height="25" bgcolor="#fbfbfb"><input type="checkbox"name="selbaseONLPriceDataCK" value="checkbox" />	</td>
 												<td bgcolor="#fbfbfb">
 													<div id="countryOnlineDiv" >
-														<%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Countryname.all, :id, :CON_COUNTRY_NAME) %>
+														<%= h.text_field :BOA_country %>
 													</div>
 												</td>
 	  										<td bgcolor="#fbfbfb"  >
 	  											<div id="currencyOnlineDiv" >
-														<%= select_tag(:JOC_CODE, options_for_select([['Select',0],['Polish Zloty Default',1],['US Dollar',2]]))  %>
+														<%= h.select(:BOA_currency, options_for_select([['Select',0],['Polish Zloty Default',1],['US Dollar',2]]))  %>
 													</div>
 	  										</td>
 	  										<td bgcolor="#fbfbfb"  >
@@ -184,12 +214,12 @@
 	<td width="15" height="25" bgcolor="#fbfbfb"><input type="checkbox"name="selbaseONLPriceDataCK" value="checkbox" />	</td>
 	<td bgcolor="#fbfbfb">
 		<div id="countryOnlineDiv" >
-		<%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Countryname.all, :id, :CON_COUNTRY_NAME) %>	
+		<%= h.text_field :BDP_country %>
 		</div>
 	</td>
 	  <td bgcolor="#fbfbfb"  >
 	  	<div id="currencyOnlineDiv" >
-		<%= select_tag(:JOC_CODE, options_for_select([['Select',0],['Polish Zloty Default',1],['US Dollar',2]]))  %>	</div>
+		<%= h.select(:BDP_currency, options_for_select([['Select',0],['Polish Zloty Default',1],['US Dollar',2]]))  %>	</div>
 	  </td>
 	  <td bgcolor="#fbfbfb"  >
 		<input type="text" name="contentFormatOnlinePrices[0].price" size="10" value="0.0" onchange="validateCurrency(this);" class="text_field">	</td>
@@ -204,6 +234,7 @@
             <%= f.submit "Submit" %>
 
           <% end %>
+           <% end %>
         </tbody>
       </table>
     </div>

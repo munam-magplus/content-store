@@ -1,5 +1,4 @@
 class Publisher < ApplicationRecord
-	self.table_name = "CDP_PUBLISHER"
 	include Filterable
 	has_many :csretailers
 	belongs_to :institution, :foreign_key => "PUB_PUBLISHER_ID", optional: true

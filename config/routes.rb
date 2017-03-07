@@ -79,11 +79,11 @@ Rails.application.routes.draw do
   resources :reports, :printhouse_setup, :manage_access, 
             :manage_user_account, :publisher_setup, :end_user, only: [:index]
 
-  resources :promo_codes, :cdp_users 
+  resources :promo_codes, :users 
 
   resources :sessions, only: [:new, :create, :destory]
 
-  match '/signup',  to: 'cdp_users#new', 			via: 'get'
+  match '/signup',  to: 'users#new', 			via: 'get'
   match '/signin',  to: 'sessions#new', 			via: 'get'
   match '/signout', to: 'sessions#destroy', 	via: 'delete'
  
