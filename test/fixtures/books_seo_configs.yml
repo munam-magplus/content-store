@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  territorial_list_type: MyString
+  territorial_list: MyString
+  landing_page: MyString
+  viewability_percentage: MyString
+  exclude_pages_from_display: MyString
+  total_free_pages_before_purchase: MyString
+  total_free_page_before_login: MyString
+  exclude_pages_from_external_index: MyString
+  actual_pages_indexable: MyString
+  actual_browsable_pages: MyString
+  actual_printable: MyString
+  actual_allowed_copying_pages: MyString
+  internal_related_content: MyString
+  related_content_identifier: MyString
+  related_content_name: MyString
+  related_content_url: MyString
+  subject_group: MyString
+  no_of_page: MyString
+  free_matter: MyString
+  first_page_of_full_text: MyString
+  last_page_of_full_text: MyString
+
+two:
+  territorial_list_type: MyString
+  territorial_list: MyString
+  landing_page: MyString
+  viewability_percentage: MyString
+  exclude_pages_from_display: MyString
+  total_free_pages_before_purchase: MyString
+  total_free_page_before_login: MyString
+  exclude_pages_from_external_index: MyString
+  actual_pages_indexable: MyString
+  actual_browsable_pages: MyString
+  actual_printable: MyString
+  actual_allowed_copying_pages: MyString
+  internal_related_content: MyString
+  related_content_identifier: MyString
+  related_content_name: MyString
+  related_content_url: MyString
+  subject_group: MyString
+  no_of_page: MyString
+  free_matter: MyString
+  first_page_of_full_text: MyString
+  last_page_of_full_text: MyString

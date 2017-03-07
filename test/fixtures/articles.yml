@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  publisher: MyString
+  DOI: MyString
+  content_code: MyString
+  jou_title: MyString
+  article_type: MyString
+  issue_type: MyString
+  vol_no: MyString
+  vol_title: MyString
+  issue_no: MyString
+  issue_supplement: MyString
+  issue_number_begin: MyString
+  issue_number_end: MyString
+  access_level: MyString
+  article_lang: MyString
+  external_DRM: MyString
+  article_sequence_number: MyString
+  pub_date: MyString
+  issue_cover_date: MyString
+  stock_number: MyString
+  abstract: MyString
+
+two:
+  publisher: MyString
+  DOI: MyString
+  content_code: MyString
+  jou_title: MyString
+  article_type: MyString
+  issue_type: MyString
+  vol_no: MyString
+  vol_title: MyString
+  issue_no: MyString
+  issue_supplement: MyString
+  issue_number_begin: MyString
+  issue_number_end: MyString
+  access_level: MyString
+  article_lang: MyString
+  external_DRM: MyString
+  article_sequence_number: MyString
+  pub_date: MyString
+  issue_cover_date: MyString
+  stock_number: MyString
+  abstract: MyString

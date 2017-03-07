@@ -1,0 +1,2 @@
+class BooksSeoConfig < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class BooksContentPricing < ApplicationRecord
+end

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lic_ID: MyString
+  lic_name: MyString
+  pub: MyString
+  created_on: MyString
+  created_by: MyString
+  ISBN: MyString
+  title: MyString
+  lic_type: MyString
+  from: MyString
+  to: MyString
+  discount: MyString
+
+two:
+  lic_ID: MyString
+  lic_name: MyString
+  pub: MyString
+  created_on: MyString
+  created_by: MyString
+  ISBN: MyString
+  title: MyString
+  lic_type: MyString
+  from: MyString
+  to: MyString
+  discount: MyString

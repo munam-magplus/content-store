@@ -23,7 +23,7 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: content_store_production
+  database: CS_database_production
   pool: 5
   username: root
   password: root

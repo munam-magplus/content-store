@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  role: MyString
+  name: MyString
+  desc: MyString
+  format: MyString
+  DOI: MyString
+  BOA_country: MyString
+  BOA_currency: MyString
+  BOA_price: MyString
+  BDP_country: MyString
+  BDP_currency: MyString
+  BDP_price: MyString
+
+two:
+  role: MyString
+  name: MyString
+  desc: MyString
+  format: MyString
+  DOI: MyString
+  BOA_country: MyString
+  BOA_currency: MyString
+  BOA_price: MyString
+  BDP_country: MyString
+  BDP_currency: MyString
+  BDP_price: MyString
