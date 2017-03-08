@@ -1,8 +1,8 @@
 %body.body1
 = render :partial => '/layouts/header'
-= form_for @publisher do |f|
+= form_for :publisher do |f|
   %input{:name => "RequestAction", :type => "hidden", :value => "Create"}/
-  %input{:name => "contactType", :type => "hidden", :value => "1234"}/
+  %input{:nlame => "contactType", :type => "hidden", :value => "1234"}/
   %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "860", :class => "center"}
     %tr
       %td.page_head Create Publisher
@@ -47,21 +47,13 @@
                                   ['Latvian', 'lv'],
                                   ['English', 'en']],{ :prompt => "Please select"})
                     %td Default Manager Language
-                    / %td{:height => "25"}
-                    /   = f.select(:PUB_ADMIN_TOOL_LANGUAGE_ID, [['Dansk', 'da'],
-                    /               ['Polish', 'pl'],
-                    /               ['Latvian', 'lv'],
-                    /               ['English', 'en']],{ :prompt => "Please select"})
-                    / %tr
-                    /   %td{:height => "25"} Default End User Language
-                    /   %td{:height => "25"}
-                    /     %select#defaultEndUserLanguage.text_field{:name => "defaultEndUserLanguage"}
-                    /       %option{:selected => "selected", :value => ""} Select
-                    /   %td Default Manager Language
-                    /   %td
-                    /     %select#defaultManagerLanguage.text_field{:name => "defaultManagerLanguage"}
-                    /       %option{:selected => "selected", :value => ""} Select
-                    = f.fields_for :publisher_contact do |builder|
+
+                    %td{:height => "25"}
+                      = f.select(:manager_lang,[['Dansk', 'da'],
+                                  ['Polish', 'pl'],
+                                  ['Latvian', 'lv'],
+                                  ['English', 'en']],{ :prompt => "Please select"})
+                    = f.fields_for :publisher do |builder|
                       %tr
                         %td{:height => "25"}
                           Contact First Name
