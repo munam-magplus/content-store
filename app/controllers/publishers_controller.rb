@@ -4,6 +4,7 @@ class PublishersController < ApplicationController
   def show
   end
   def search
+    #call filter method to get search results
     @publisher = Publisher.filter(params.slice(:PUB_CODE, :PUB_NAME))
   end
   def new
@@ -18,8 +19,10 @@ class PublishersController < ApplicationController
     @publisher.LASTUPDATED_BY = "current_user_name"
     @publisher.publisher_contact.PUC_CONTACT_TYPE = "demo"
     if @publisher.save!
+      # if successfully stored then redirect to publisher's setup path 
       redirect_to publisher_setup_index_path
     else
+      # if not save in that case render new
       render 'new'
     end
   end
