@@ -1,7 +1,6 @@
 <html>
   <body class = "body1">
     <div class="div1">
-
       <% provide(:title, 'Sign up') %>
       <h1>Sign up</h1>
 
@@ -9,7 +8,7 @@
         <div class="span6 offset3">
           <%= form_for(@cdp_user) do |f| %>
 
-             <%= f.label :USE_USER_TYPE %>
+            <%= f.label :USE_USER_TYPE %>
             <%= f.text_field :USE_USER_TYPE %><br>
 
             <%= f.label :CREATED_BY %>
@@ -18,7 +17,7 @@
             <%= f.label :LASTUPDATED_BY %>
             <%= f.text_field :LASTUPDATED_BY %><br>
 
-             <%= f.label :USE_USER_NAME %>
+            <%= f.label :USE_USER_NAME %>
             <%= f.text_field :USE_USER_NAME %><br>
 
             <%= f.label :USE_FIRST_NAME %>
@@ -43,7 +42,6 @@
           <% end %>
         </div>
       </div>
-
     </div>
   </body>
 </html>

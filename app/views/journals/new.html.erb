@@ -9,43 +9,43 @@
           <%= form_for :journal do |f| %>
             <tr>
               <td>Journal Code:</td>
-			        <td><%= f.text_field :JOC_CODE %></td>
+			        <td><%= f.text_field :jou_code %></td>
               <td>Publisher:</td>
-              <td><%= collection_select(:PUB_PUBLISHER_ID, 0, Publisher.all, :id, :PUB_NAME) %></td>
+              <td><%= f.text_field :publisher %></td>
             </tr> 
             <tr> 
               <td>Journal Title:</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td><%= f.text_field :jou_title %></td>
               <td>Journal Sub Title:</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td><%= f.text_field :jou_subtitle %></td>
             </tr>
             <tr>
               <td>Journal Primary ISSN:</td>
-              <td><%= f.text_field :JOC_JOUR_PISSN %></td>
+              <td><%= f.text_field :jou_prim_ISSN %></td>
               <td>Journal Electronic ISSN:</td>
-              <td><%= f.text_field :JOC_JOUR_EISSN %></td>
+              <td><%= f.text_field :jou_electronic_ISSN %></td>
             </tr>
             <tr>
               <td>Journal Owner:</td>
-              <td><%= f.text_field :JOC_OWNER %></td>
+              <td><%= f.text_field :jou_owner %></td>
               <td>Language:</td>
-              <td><%= select_tag(:JOC_CODE, options_for_select([['Select',0],['Polish',1],['English',2]]))  %></td>
+              <td><%= select_tag(:lang, options_for_select([['Select',0],['Polish',1],['English',2]]))  %></td>
             </tr>
             <tr>
               <td>Journal Content Classification:</td>
-              <td><%= select_tag(:JOC_CODE, options_for_select([['Select',0],['Bestsellers',1],['Comming Soon',2],['New Releases',2]]))  %></td>
+              <td><%= select_tag(:jou_content_classification, options_for_select([['Select',0],['Bestsellers',1],['Comming Soon',2],['New Releases',2]]))  %></td>
               <td>Journal Distributor :</td>
-              <td><%= f.text_field :JOC_DISTRIBUTORS %></td>
+              <td><%= f.text_field :jou_distribution %></td>
             </tr>
             <tr>
               <td>Price in:</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td><%= f.text_field :price_in %></td>
               <td>Journal Publication Date:</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td><%= f.text_field :journal_publisher_date %></td>
             </tr>
             <tr>
               <td>Stock Number:</td>
-              <td><%= f.text_field :JOC_CODE %></td>
+              <td><%= f.text_field :stock_no %></td>
             </tr>
             <tr>
               <td>Cover Image:</td>
@@ -55,23 +55,20 @@
             </tr>
             <tr>
               <td>Journal Categories:</td>
-              <td>  </td>
+              <td> <%= f.text_area :jou_categories %> </td>
             </tr>
             <tr>
               <td>Journal Description:</td>
-              <td><%= f.text_area :JOC_DESCRIPTION %></td>
+              <td><%= f.text_area :jou_desc %></td>
             </tr>
             <tr>
               <td>Editorial:</td>
-              <td><%= f.radio_button :JOC_DESCRIPTION, 'Internal', :checked => true %> Internal
-              <%= f.radio_button :JOC_DESCRIPTION, 'External' %> External<br>
-              <%= f.text_area :JOC_CODE %></td>
+              <td><%= f.radio_button :editorial, 'Internal', :checked => true %> Internal
+              <%= f.radio_button :editorial, 'External' %> External<br>
             </tr>
             <tr>
               <td>Instructions for Authors:</td>
-              <td><%= f.radio_button :JOC_DESCRIPTION, 'Internal', :checked => true %> Internal
-              <%= f.radio_button :JOC_DESCRIPTION, 'External' %> External<br>
-              <%= f.text_area :JOC_CODE %></td>
+              <%= f.text_area :instructions_for_authors %></td>
             </tr>
 
             <td>

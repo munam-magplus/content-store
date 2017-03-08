@@ -2,40 +2,39 @@
 <body class = "body1">
 <%= render :partial => '/layouts/header' %>
 <div class="div1">
-<table>
-  <thead>
-    <th class="page_head">Upload Metadata Home</th>
-  </thead>
- </table>
-
-<div class="center">
-<table style="text-align:center;">
-  <tr>
-    <td class="gindexborder" colspan="2" valign="top">
-      <%= link_to image_tag("create_book.gif"),books_create_path %><br>
-      Create New Book
-    </td>
-    <td class="gindexborder" colspan="2" valign="top">
-      <%= link_to image_tag("search_book.gif"),search_books_path %><br>
-      Search Book
-    </td>
-    <td class="gindexborder" colspan="2" valign="top">
-      <%= link_to image_tag("book_metadata.gif"),metadata_sheet_books_path %><br>
-      Book Metadata Sheet
-    </td>
-  </tr>
-  <tr>
-      <td class="gindexborder" colspan="2" valign="top">
-      <%= link_to image_tag("onix_input.gif"),onix_input_books_path %><br>
-      ONIX Input
-    </td>
-    <td class="gindexborder" colspan="2" valign="top">
-      <%= link_to image_tag("onix_supp_sheet.gif"),onix_supp_sheet_books_path %><br>
-      ONIX Supplement Sheet
-    </td>
-  </tr>
-</table>
-</div>
+  <table>
+    <thead>
+      <th class="page_head">Upload Metadata Home</th>
+    </thead>
+  </table>
+  <div class="center">
+    <table style="text-align:center;">
+      <tr>
+        <td class="gindexborder" colspan="2" valign="top">
+          <%= link_to image_tag("create_book.gif"),books_create_path %><br>
+          Create New Book
+        </td>
+        <td class="gindexborder" colspan="2" valign="top">
+          <%= link_to image_tag("search_book.gif"),search_books_path %><br>
+          Search Book
+        </td>
+        <td class="gindexborder" colspan="2" valign="top">
+          <%= link_to image_tag("book_metadata.gif"),metadata_sheet_books_path %><br>
+          Book Metadata Sheet
+        </td>
+      </tr>
+      <tr>
+          <td class="gindexborder" colspan="2" valign="top">
+          <%= link_to image_tag("onix_input.gif"),onix_input_books_path %><br>
+          ONIX Input
+        </td>
+        <td class="gindexborder" colspan="2" valign="top">
+          <%= link_to image_tag("onix_supp_sheet.gif"),onix_supp_sheet_books_path %><br>
+          ONIX Supplement Sheet
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
 </body>
 </html>

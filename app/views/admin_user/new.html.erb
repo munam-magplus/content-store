@@ -6,17 +6,17 @@
       <h1>Create Admin Users</h1>
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
-          <%= form_for :subject_group do |f| %>
+          <%= form_for :admin_users do |f| %>
             <tr>
               <td>Publisher*</td>
-              <td><%= f.collection_select(:PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME) %></td>
+              <td><%= f.text_field :publisher %></td>
              
             </tr> 
             <tr> 
               <td>Email*</td>
-              <td><%= f.text_field :SUG_GROUP_DESC %></td>
+              <td><%= f.text_field :email %></td>
                <td>Confirm Email*</td>
-              <td><%= f.text_field :SUG_GROUP_DESC %></td>
+              <td><%= f.text_field :confirm_email %></td>
             </tr> 
             <tr> 
               <td>Password* </td>
@@ -26,23 +26,23 @@
             </tr>
             <tr> 
               <td>First Name* </td>
-              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+              <td><%= f.text_field :first_name %></td>
               <td>Last Name* </td>
-              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+              <td><%= f.text_field :last_name %></td>
             </tr>
             <tr>
               <td>Country</td>
-              <td><%= f.collection_select :COI_COUNTRY_ID, Countryname.all, :id, :CON_COUNTRY_NAME %></td>
+              <td><%= f.text_field :country %></td>
               <td>Select Language * </td>
-              <td><%= f.select(:LAN_LANGUAGE_ID, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %></td>
+              <td><%= f.select(:lang, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %></td>
             </tr> 
             <tr> 
              <td>Role* </td>
-              <td><%= f.select(:LAN_LANGUAGE_ID, options_for_select([['Please Select',0],[' MPS Admin',1],['Publisher',2],['Member Publisher',3],['Member Publisher Role with QA',4]]))  %></td>
+              <td><%= f.select(:role, options_for_select([['Please Select',0],[' MPS Admin',1],['Publisher',2],['Member Publisher',3],['Member Publisher Role with QA',4]]))  %></td>
             </tr>
             <tr>
               <td>Publisher (s)*</td>
-              <td><%= f.text_field :SUG_AUTH_USER_ACCESS_LIMIT %></td>
+              <td><%= f.text_field :publishers %></td>
             </tr> 
             <tr> 
             	<td></td>

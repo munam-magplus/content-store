@@ -31,14 +31,14 @@
                     %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} High Ip
                     %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} IP List
                     %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Operation
-                    = form_for(:CDP_RETAILER, url:  csretailers_path)  do |f| 
+                    = form_for(:retailer, url:  csretailers_path)  do |f| 
                       %tr
                         %td
-                          = f.text_field :RETAILER_CODE
+                          = f.text_field :ret_code
                         %td
-                          =  select_tag(:RETAILER_NAME, options_for_select([[@re.PUB_CODE ,1]])) 
+                          =  f.select(:ret_name, options_for_select([[@re.PUB_CODE ,1]])) 
                         %td
-                          = f.text_field :PUB_PUBLISHER_ID, :value => @re.PUB_PUBLISHER_ID
+                          = f.text_field :pub_id, :value => @re.PUB_PUBLISHER_ID
                         %td
                         %td
                         %td
@@ -47,8 +47,6 @@
             %tr
               %td{:align => "right"}
                 %input#retailersubmit.submit_btn{:name => "addretailer", :onclick => "return validateRetailer()", :type => "submit", :value => "Submit"}
-
-
 
 :javascript
   jQuery('#addAction').click( function () {

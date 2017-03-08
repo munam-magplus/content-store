@@ -6,26 +6,26 @@
       <h1>Create Institutional Users</h1>
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
-          <%= form_for :subject_group do |f| %>
+          <%= form_for :institution_admin_user_acc do |f| %>
             <tr>
               <td>User Role*</td>
-              <td><%= f.radio_button :JOC_DESCRIPTION, 'Primary Institution Administrator', :checked => true %> Primary Institution Administrator
-              <%= f.radio_button :JOC_DESCRIPTION, 'Institution Administrator' %> Institution Administrator<br>
+              <td><%= f.radio_button :role, 'Primary Institution Administrator', :checked => true %> Primary Institution Administrator
+              <%= f.radio_button :role, 'Institution Administrator' %> Institution Administrator<br>
               </td>
             </tr>
             <tr>
               <td>Publisher*</td>
-              <td><%= f.collection_select(:PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME) %></td>
+              <td><%= f.collection_select(:publisher, Publisher.all, :id, :PUB_NAME) %></td>
             </tr>
             <tr>
               <td>Institution Name*</td>
-              <td><%= f.collection_select(:PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME) %></td>
+              <td><%= f.collection_select(:institution_name, Publisher.all, :id, :PUB_NAME) %></td>
             </tr> 
             <tr> 
               <td>UserName*</td>
-              <td><%= f.text_field :SUG_GROUP_DESC %></td>
+              <td><%= f.text_field :user_name %></td>
               <td>Status*</td>
-              <td><%= select_tag(:JOC_CODE, options_for_select([['Active',0],['Inactive',1]]))  %></td>
+              <td><%= f.select(:status, options_for_select([['Active',0],['Inactive',1]]))  %></td>
             </tr> 
             <tr>
               <td><%= f.check_box :send_email %></td>
@@ -33,31 +33,31 @@
             </tr>
             <tr> 
               <td>First Name*</td>
-              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+              <td><%= f.text_field :first_name %></td>
               <td>Last Name*</td>
-              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+              <td><%= f.text_field :last_name %></td>
             </tr>
             <tr> 
               <td>Email Address*</td>
-              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+              <td><%= f.text_field :email %></td>
               <td>Phone*</td>
-              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+              <td><%= f.text_field :phone %></td>
             </tr>
             <tr> 
               <td>Position</td>
-              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+              <td><%= f.text_field :position %></td>
               <td>Fax</td>
-              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+              <td><%= f.text_field :fax %></td>
             </tr>
             <tr> 
               <td>Password*</td>
-              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+              <td><%= f.text_field :password %></td>
               <td>Confirm Password*</td>
-              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+              <td><%= f.text_field :confirm_password %></td>
             </tr>
             <tr>
               <td>Comments</td>
-              <td><%= f.text_area :SUG_GROUP_CODE %></td>
+              <td><%= f.text_area :comments %></td>
             </tr> 
             <tr> 
               <td><%= f.check_box :send_email %></td>

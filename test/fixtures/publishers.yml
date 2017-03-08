@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pub_code: MyString
+  pub_name: MyString
+  pub_status: MyString
+  pub_type: MyString
+  end_user_lang: MyString
+  manager_lang: MyString
+  contact_first_name: MyString
+  contact_last_name: MyString
+  contact_email: MyString
+
+two:
+  pub_code: MyString
+  pub_name: MyString
+  pub_status: MyString
+  pub_type: MyString
+  end_user_lang: MyString
+  manager_lang: MyString
+  contact_first_name: MyString
+  contact_last_name: MyString
+  contact_email: MyString

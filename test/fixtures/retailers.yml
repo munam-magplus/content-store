@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ret_code: MyString
+  ret_name: MyString
+  pub_id: MyString
+  low_IP: MyString
+  high_IP: MyString
+  IP_list: MyString
+  operation: MyString
+
+two:
+  ret_code: MyString
+  ret_name: MyString
+  pub_id: MyString
+  low_IP: MyString
+  high_IP: MyString
+  IP_list: MyString
+  operation: MyString

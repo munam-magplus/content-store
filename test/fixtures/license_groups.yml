@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lic_group_ID: MyString
+  lic_group_name: MyString
+  pub: MyString
+  created_on: MyString
+  created_by: MyString
+  lic_ID: MyString
+  lic_name: MyString
+  lic_type: MyString
+  content_identifier: MyString
+  from: MyString
+  to: MyString
+  purchase_infodiscount: MyString
+
+two:
+  lic_group_ID: MyString
+  lic_group_name: MyString
+  pub: MyString
+  created_on: MyString
+  created_by: MyString
+  lic_ID: MyString
+  lic_name: MyString
+  lic_type: MyString
+  content_identifier: MyString
+  from: MyString
+  to: MyString
+  purchase_infodiscount: MyString

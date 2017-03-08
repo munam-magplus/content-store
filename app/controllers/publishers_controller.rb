@@ -9,15 +9,11 @@ class PublishersController < ApplicationController
   end
   def new
     @publisher = Publisher.new
-    @publisher.publisher_contact = PublisherContact.new
   end
 
   def create
     @publisher = Publisher.new(publisher_params)
     # not able to access current user, so giving demo values to mandatory fields
-    @publisher.CREATED_BY = "current_user_name"
-    @publisher.LASTUPDATED_BY = "current_user_name"
-    @publisher.publisher_contact.PUC_CONTACT_TYPE = "demo"
     if @publisher.save!
       # if successfully stored then redirect to publisher's setup path 
       redirect_to publisher_setup_index_path
@@ -29,6 +25,6 @@ class PublishersController < ApplicationController
   private 
 
   def publisher_params
-    params.require(:publisher).permit(:PUB_CODE, :PUB_NAME, :PUB_STATUS,:PUB_END_USR_LANGUAGE, :PUB_ADMIN_TOOL_LANGUAGE_ID, :publisher_contact_attributes =>[:PUC_CONTACT_FNAME, :PUC_CONTACT_LNAME, :PUC_CONTACT_EMAIL])
+    params.require(:publisher).permit(:pub_code, :pub_name, :pub_status, :end_user_lang, :manager_lang, :publisher_contact_attributes =>[:contact_first_name, :contact_last_name, :contact_email])
   end
 end

@@ -1,5 +1,4 @@
 class SubjectGroup < ApplicationRecord
-	self.table_name = "CDP_SUBJECT_GROUP"
 	include Filterable
 
 	# def self.search(pub_id,name,code,lang_id)

@@ -1,0 +1,2 @@
+class InstitutionAccBillingAddress < ApplicationRecord
+end

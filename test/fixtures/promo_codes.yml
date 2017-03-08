@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pub: MyString
+  campaign: MyString
+  no_of_promo_code: MyString
+  applicable_discount: MyString
+  from: MyString
+  to: MyString
+
+two:
+  pub: MyString
+  campaign: MyString
+  no_of_promo_code: MyString
+  applicable_discount: MyString
+  from: MyString
+  to: MyString

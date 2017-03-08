@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  format: MyString
+  ISBN: MyString
+  DOI: MyString
+  weight: MyString
+  watermark_DRM: MyString
+  external_DRM: MyString
+
+two:
+  format: MyString
+  ISBN: MyString
+  DOI: MyString
+  weight: MyString
+  watermark_DRM: MyString
+  external_DRM: MyString
