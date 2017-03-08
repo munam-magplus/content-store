@@ -6,7 +6,7 @@
   %tr
     %td 
       = image_tag("btsr_ico.gif")
-      = link_to "Back",csretailers_path
+      = link_to "Back",retailers_path
   %tr
   %td.page_head Create Retailer
   %td.page_head{:align => "right", :valign => "bottom"}
@@ -36,9 +36,9 @@
                         %td
                           = f.text_field :ret_code
                         %td
-                          =  f.select(:ret_name, options_for_select([[@re.PUB_CODE ,1]])) 
+                          =  select_tag(:ret_name, options_for_select([[@re.pub_code ,1]])) 
                         %td
-                          = f.text_field :pub_id, :value => @re.PUB_PUBLISHER_ID
+                          = f.text_field :pub_id, :value => @re.pub_id
                         %td
                         %td
                         %td
@@ -63,3 +63,6 @@
   function remove(elem) {
     $('.tablecount'+ elem ).hide();
   }
+
+
+  

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  
   get 'end_user/search'
 
   get 'end_user/new'
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
 
     get 'admin_user/new'
 
-  resources :csretailers do
+  resources :retailers do
     collection do 
       get 'search'
     end
@@ -28,6 +29,10 @@ Rails.application.routes.draw do
       get 'metadata_sheet'
       get 'search_result'
     end
+  end
+
+  devise_scope :user do
+    root to: "devise/sessions#new"
   end
 
   post 'publishers/create'
@@ -72,5 +77,8 @@ Rails.application.routes.draw do
   resources :reports, :printhouse_setup, :manage_access, 
             :manage_user_account, :publisher_setup, :end_user, only: [:index]
 
+  resources :promo_codes
+ 
   root 'csretailers#index'
+
 end
