@@ -6,7 +6,7 @@
   %tr
     %td 
       = image_tag("btsr_ico.gif")
-      = link_to "Back",csretailers_path
+      = link_to "Back",retailers_path
   %tr
   %td.page_head Create Retailer
   %td.page_head{:align => "right", :valign => "bottom"}
@@ -31,14 +31,14 @@
                     %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} High Ip
                     %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} IP List
                     %td.tableheader{:align => "center", :height => "30", :style => "width: 149px"} Operation
-                    = form_for(:CDP_RETAILER, url:  csretailers_path)  do |f| 
+                    = form_for(:retailer, url:  retailers_path)  do |f| 
                       %tr
                         %td
                           = f.text_field :RETAILER_CODE
                         %td
-                          =  select_tag(:RETAILER_NAME, options_for_select([[@re.PUB_CODE ,1]])) 
+                          =  select_tag(:ret_name, options_for_select([[@re.pub_code ,1]])) 
                         %td
-                          = f.text_field :PUB_PUBLISHER_ID, :value => @re.PUB_PUBLISHER_ID
+                          = f.text_field :pub_id, :value => @re.pub_id
                         %td
                         %td
                         %td
@@ -63,3 +63,6 @@
   function remove(elem) {
     $('.tablecount'+ elem ).hide();
   }
+
+
+  
