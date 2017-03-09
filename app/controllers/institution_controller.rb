@@ -24,13 +24,7 @@ class InstitutionController < ApplicationController
 
   def create
     @institution = Institution.new(institution_params)
-   #mandatory fields that are not displayed in browser
-    @institution.INS_INSTITUTION_CODE = "Test"
-    @institution.INS_PARENT_INST_ID = 1
-    @institution.CREATED_BY = "ctssuperadmin@bookstore.com"
-    @institution.LASTUPDATED_BY = "ctssuperadmin@bookstore.com"
-    @institution.LASTUPDATED_DATE = 12
-    if @institution.save!
+     if @institution.save!
       redirect_to institution_index_path
     else
       render 'new'

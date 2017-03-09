@@ -5,7 +5,7 @@
     %td.page_head Create Institution
   %tr
     %td  
-  %tr
+  %tr 
     %td  
   %tr 
     = form_for(:institution, url:  institution_index_path) do |f|
@@ -17,74 +17,74 @@
 
               %td{:height => "25"} Select Publisher
               %td{:align => "left"}
-                = f.select 'PUB_PUBLISHER_ID',options_from_collection_for_select(Publisher.all, 'id', 'PUB_NAME')
+                = f.select 'pub',options_from_collection_for_select(Publisher.all, 'id', 'pub_code')
             %tr
               %td{:align => "left", :height => "25"} Institution ID
               %td{:align => "left", :height => "25"}
-                = f.text_field :INS_INSTITUTION_ID
+                = f.text_field :inst_ID
               %td{:align => "left", :height => "25"} Lib./Dept. Name
               %td{:align => "left"}
-                = f.text_field :INS_LIB_DEPT_NAME
+                = f.text_field :Lib_name
             %tr
               %td{:align => "left", :height => "25"} Institution Name
               %td{:align => "left"}
-                = f.text_field :INS_INSTITUTION_NAME
+                = f.text_field :inst_name
               %td{:height => "25"} Status
               %td{:height => "25"}
-                = f.select 'INS_INSTITUTION_STATUS',options_from_collection_for_select(Institution.all, 'id', 'INS_INSTITUTION_STATUS')
+                = f.select 'status',options_from_collection_for_select(Institution.all, 'id', 'status')
           %table{:border => "0", :cellpadding => "10", :cellspacing => "0"}
             %tbody 
               %tr
                 %b Branding Options
                 %td{:align => "left", :height => "25"} Display Name
                 %td{:align => "left"}
-                  = f.text_field :INS_DISPLAY_NAME
+                  = f.text_field :display_name
               %tr
                 %td{:align => "left", :height => "25"} Logo
                 %td{:align => "left"}
-                  = f.file_field :INS_LOGO
+                  = f.file_field :logo
           %table{:border => "0", :cellpadding => "10", :cellspacing => "0"}
             %tbody 
               %tr
-                %b Billing Address
+                %b Billing Address 
                 %td{:align => "left", :height => "25"} Contact First Name
                 %td{:align => "left"}
-                  = f.text_field :INS_FIRST_NAME
+                  = f.text_field :first_name
                 %b sdbnis  
                 %td{:align => "left", :height => "25"} parent id
                 %td{:align => "left"}
                   = f.text_field :INS_PARENT_INST_ID
                 %td{:align => "left", :height => "25"} Contact Last Name
                 %td{:align => "left"}
-                  = f.text_field :INS_LAST_NAME 
+                  = f.text_field :last_name 
               %tr
                 %td{:align => "left", :height => "25"} Phone
                 %td{:align => "left"}
-                  = f.text_field :INS_PHONE_NUMBER 
+                  = f.text_field :phone 
                 %td{:align => "left", :height => "25"} Email
                 %td{:align => "left"}
-                  = f.text_field :INS_EMAIL_ID 
+                  = f.text_field :email 
               %tr
                 %td{:align => "left", :height => "25"} Address
                 %td{:align => "left"}
-                  = f.text_field :INS_ADDRESS
+                  = f.text_field :address
                 %td{:align => "left", :height => "25"} Address Line 2
                 %td{:align => "left"}
-                  = f.text_field :INS_ADDRESS_LINE2
+                  = f.text_field :add_line2
               %tr
                 %td{:align => "left", :height => "25"} Address Line 3
                 %td{:align => "left"}
-                  = f.text_field :INS_ADDRESS_LINE3
+                  = f.text_field :add_line3
                 %td{:align => "left", :height => "25"} City / Town
                 %td{:align => "left"}
-                  = f.text_field :INS_CITY
+                  = f.text_field :city
               %tr
                 %td{:align => "left", :height => "25"} State / Province
                 %td{:align => "left"}
-                  = f.text_field :INS_STATE
+                  = f.text_field :state
                 %td{:align => "left", :height => "25"} Postal Code
                 %td{:align => "left"}
-                  = f.text_field :INS_POSTAL_CODE
+                  = f.text_field :postal_code
               %tr
                 %td{:align => "left", :height => "25"} Country
                 %td{:align => "left"}
@@ -92,16 +92,13 @@
               %tr
                 %td{:align => "left", :height => "25"} Comments
                 %td{:align => "left"}
-                  = f.text_area :INS_COMMENTS
+                  = f.text_area :comments
             %tbody
             %tr
               %td{:align => "left"}  
               %td{:align => "left"}
                 = f.submit "Submit", :name => nil 
-                //%input.submit_btn{:name => "search", :type => "submit", :value => "Search"}/
                 = f.submit "Reset", :name => nil 
-                //%input.submit_btn{:name => "button2", :onclick => "getCancel();", :type => "button", :value => "Cancel"}/
-
   %tr
     %td  
   %tr
