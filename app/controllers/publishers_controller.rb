@@ -20,12 +20,12 @@ class PublishersController < ApplicationController
       # if successfully stored then redirect to publisher's setup path 
       redirect_to publisher_setup_index_path
     else
-      # if not save in that case render new
+      # if not save then render same page
       render 'new'
     end
   end
-  private 
 
+  private 
   def publisher_params
     params.require(:publisher).permit(:publisher_code, :publisher_name, 
     :publisher_status, :publisher_type, :end_user_language, :manager_language,
