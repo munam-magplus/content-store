@@ -15,17 +15,17 @@
             %tr
               %td{:height => "25"} Select Publisher
               %td{:align => "left"}
-                = select_tag 'PUB_PUBLISHER_ID',options_from_collection_for_select(@pub, 'id', 'PUB_NAME')
+                = select_tag 'PUB_PUBLISHER_ID',options_from_collection_for_select(@pub, 'id', 'pub')
               %td{:align => "left", :height => "25"} Institution ID
               %td{:align => "left", :height => "25"}
-                = text_field_tag :INS_INSTITUTION_ID
+                = text_field_tag :inst_ID
             %tr
               %td{:align => "left", :height => "25"} Lib./Dept. Name
               %td{:align => "left"}
-                = text_field_tag :INS_LIB_DEPT_NAME
+                = text_field_tag :Lib_name
               %td{:align => "left", :height => "25"} Institution Name
               %td{:align => "left"}
-                = text_field_tag :INS_INSTITUTION_NAME
+                = text_field_tag :inst_name
             %tr
               %td{:align => "left", :height => "25"} IP Address
               %td{:align => "left"}
