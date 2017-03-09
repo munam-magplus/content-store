@@ -1,6 +1,6 @@
 %body.body1
 = render :partial => '/layouts/header'
-= form_for :publisher do |f|
+= form_for @publisher do |f|
   %input{:name => "RequestAction", :type => "hidden", :value => "Create"}/
   %input{:nlame => "contactType", :type => "hidden", :value => "1234"}/
   %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "860", :class => "center"}
@@ -53,25 +53,24 @@
                                   ['Polish', 'pl'],
                                   ['Latvian', 'lv'],
                                   ['English', 'en']],{ :prompt => "Please select"})
-                    = f.fields_for :publisher do |builder|
-                      %tr
-                        %td{:height => "25"}
-                          Contact First Name
-                          %span.mandtory 
-                        %td{:height => "25"}
-                          = builder.text_field :contact_first_name 
-                        %td
-                          Contact Last Name
-                          %span.mandtory *
-                        %td
-                          = builder.text_field :contact_last_name 
-                      %tr
-                        %td{:height => "25"}
-                          Contact Email
-                          %span.mandtory *
-                        %td{:height => "25"}
-                          = builder.text_field :contact_email
-                        %td
+                    %tr
+                      %td{:height => "25"}
+                        Contact First Name
+                        %span.mandtory 
+                      %td{:height => "25"}
+                        = f.text_field :contact_first_name 
+                      %td
+                        Contact Last Name
+                        %span.mandtory *
+                      %td
+                        = f.text_field :contact_last_name 
+                    %tr
+                      %td{:height => "25"}
+                        Contact Email
+                        %span.mandtory *
+                      %td{:height => "25"}
+                        = f.text_field :contact_email
+                      %td
                 %tbody
                   %tr
                     %td.GBoldText{:align => "right", :height => "35"}  

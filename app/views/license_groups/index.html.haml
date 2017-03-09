@@ -16,30 +16,30 @@
               %tr
                 %td{:height => "25", :width => "171"} Publisher
                 %td{:height => "25", :width => "414"}
-                  = collection_select(nil, :PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME)
+                  = collection_select(nil, :id, Publisher.all, :id, :pub_name)
               %tr
                 %td{:height => "25", :width => "149"} License Group ID
                 %td{:height => "25"}
-                  = text_field_tag :LIG_GROUP_CODE
+                  = text_field_tag :lic_group_ID
               %tr
                 %td{:height => "25"} License Group Name
                 %td{:height => "25", :width => "436"}
-                  = text_field_tag :LIG_LIC_GROUP_NAME
+                  = text_field_tag :lic_group_name
               %tr
                 %td{:height => "25"} License Name
                 %td{:height => "25", :width => "436"}
-                  %input.text_field{:name => "nameSrch"}
-              %tr
-                %td{:height => "25"} Created By
-                %td{:height => "25"}
-                  = text_field_tag :CREATED_BY
-              %tr
-                %td{:height => "25"} Saleability
-                %td{:height => "25"}
-                  %select#select2{:name => "LIG_FOR_SALE"}
-                    %option{:selected => "selected", :value => ""} Select
-                    %option{:value => "Y"} For Sale
-                    %option{:value => "N"} Not For Sale
+                  = text_field_tag :lic_name
+              / %tr
+              /   %td{:height => "25"} Created By
+              /   %td{:height => "25"}
+              /     = text_field_tag :CREATED_BY
+              / %tr
+              /   %td{:height => "25"} Saleability
+              /   %td{:height => "25"}
+              /     %select#select2{:name => "LIG_FOR_SALE"}
+              /       %option{:selected => "selected", :value => ""} Select
+              /       %option{:value => "Y"} For Sale
+              /       %option{:value => "N"} Not For Sale
               %tr
                 %td.GBoldText{:align => "right"}  
                 %td.GBoldText{:align => "left"}
