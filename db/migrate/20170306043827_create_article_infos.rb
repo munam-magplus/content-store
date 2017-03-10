@@ -1,17 +1,17 @@
 class CreateArticleInfos < ActiveRecord::Migration[5.0]
   def change
     create_table :article_infos do |t|
-      t.string :role
-      t.string :name
-      t.string :desc
-      t.string :format
-      t.string :DOI
-      t.string :BOA_country
-      t.string :BOA_currency
-      t.string :BOA_price
-      t.string :BDP_country
-      t.string :BDP_currency
-      t.string :BDP_price
+      t.string :contributor_info_role
+      t.string :contributor_info_name
+      t.string :contributor_info_description
+      t.string :content_format_format
+      t.string :content_format_doi
+      t.string :base_online_access_country
+      t.string :base_online_access_currency
+      t.string :base_online_access_price
+      t.string :base_download_price_country
+      t.string :base_download_price_currency
+      t.string :base_download_price_price
 
       t.timestamps
     end

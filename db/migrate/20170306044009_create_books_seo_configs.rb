@@ -18,7 +18,7 @@ class CreateBooksSeoConfigs < ActiveRecord::Migration[5.0]
       t.string :related_content_name
       t.string :related_content_url
       t.string :subject_group
-      t.string :no_of_page
+      t.string :number_of_page
       t.string :free_matter
       t.string :first_page_of_full_text
       t.string :last_page_of_full_text

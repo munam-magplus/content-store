@@ -1,11 +1,11 @@
 class CreatePrintHouses < ActiveRecord::Migration[5.0]
   def change
     create_table :print_houses do |t|
-      t.string :pub
+      t.string :publisher
       t.string :print_house_code
       t.string :print_house_name
       t.string :ranking
-      t.string :VAT_reg_no
+      t.string :vat_reg_no
       t.string :contact_first_name
       t.string :contact_last_name
       t.string :phone

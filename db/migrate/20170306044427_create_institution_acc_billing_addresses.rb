@@ -6,8 +6,8 @@ class CreateInstitutionAccBillingAddresses < ActiveRecord::Migration[5.0]
       t.string :phone
       t.string :email
       t.string :address
-      t.string :add_line2
-      t.string :add_line3
+      t.string :address_line2
+      t.string :address_line3
       t.string :city
       t.string :state
       t.integer :postal_code

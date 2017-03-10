@@ -1,5 +1,4 @@
 class BookContent < ApplicationRecord
-	self.table_name = "CDP_BOOK_CONTENT"
 	attr_accessor :primary_content_info, :contributors, :content_pricing, :content_access_rules, :seo_config
 	attr_writer :current_step
 

@@ -37,30 +37,35 @@ Rails.application.routes.draw do
 
   post 'publishers/create'
   
-  resources :journals do
-    collection do
-      get 'index'
-      get 'search'  
-      get 'upload_article_metadata'
-      get 'search_article'
-      get 'new_article'
-    end
-  end
+  # resources :journals do
+  #   collection do
+  #     get 'index'
+  #     get 'search'  
+  #     get 'upload_article_metadata'
+  #     get 'search_article'
+  #     get 'new_article'
+  #   end
+  # end
 
-  get 'journals/create'
-  get 'journals/new'
   get 'books/create'
 
   resources :books do
     collection do
       get 'index'
-      get 'create'
+      post 'create'
       get 'search'
       get 'metadata_sheet'
       get 'onix_input'
       get 'onix_supp_sheet'
     end
   end
+
+# get 'journals/new'
+# post  'journals/create'
+
+resources :journals
+
+post 'journals/new'
 
   resources :content_conversation do
     collection do 

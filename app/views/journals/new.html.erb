@@ -6,36 +6,36 @@
       <h1> Journal Setup </h1>
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
-          <%= form_for :journal do |f| %>
+          <%= form_for :journal, url: new_journal_path do |f| %>
             <tr>
               <td>Journal Code:</td>
-			        <td><%= f.text_field :jou_code %></td>
+			        <td><%= f.text_field :journal_code %></td>
               <td>Publisher:</td>
               <td><%= f.text_field :publisher %></td>
             </tr> 
             <tr> 
               <td>Journal Title:</td>
-              <td><%= f.text_field :jou_title %></td>
+              <td><%= f.text_field :journal_title %></td>
               <td>Journal Sub Title:</td>
-              <td><%= f.text_field :jou_subtitle %></td>
+              <td><%= f.text_field :journal_subtitle %></td>
             </tr>
             <tr>
               <td>Journal Primary ISSN:</td>
-              <td><%= f.text_field :jou_prim_ISSN %></td>
+              <td><%= f.text_field :journal_primary_issn %></td>
               <td>Journal Electronic ISSN:</td>
-              <td><%= f.text_field :jou_electronic_ISSN %></td>
+              <td><%= f.text_field :journal_electronic_issn %></td>
             </tr>
             <tr>
               <td>Journal Owner:</td>
-              <td><%= f.text_field :jou_owner %></td>
+              <td><%= f.text_field :journal_owner %></td>
               <td>Language:</td>
-              <td><%= select_tag(:lang, options_for_select([['Select',0],['Polish',1],['English',2]]))  %></td>
+              <td><%= select_tag(:language, options_for_select([['Select',0],['Polish',1],['English',2]]))  %></td>
             </tr>
             <tr>
               <td>Journal Content Classification:</td>
-              <td><%= select_tag(:jou_content_classification, options_for_select([['Select',0],['Bestsellers',1],['Comming Soon',2],['New Releases',2]]))  %></td>
+              <td><%= select_tag(:journal_content_classification, options_for_select([['Select',0],['Bestsellers',1],['Comming Soon',2],['New Releases',2]]))  %></td>
               <td>Journal Distributor :</td>
-              <td><%= f.text_field :jou_distribution %></td>
+              <td><%= f.text_field :journal_distribution %></td>
             </tr>
             <tr>
               <td>Price in:</td>
@@ -45,7 +45,7 @@
             </tr>
             <tr>
               <td>Stock Number:</td>
-              <td><%= f.text_field :stock_no %></td>
+              <td><%= f.text_field :stock_number %></td>
             </tr>
             <tr>
               <td>Cover Image:</td>
@@ -55,11 +55,11 @@
             </tr>
             <tr>
               <td>Journal Categories:</td>
-              <td> <%= f.text_area :jou_categories %> </td>
+              <td> <%= f.text_area :journal_categories %> </td>
             </tr>
             <tr>
               <td>Journal Description:</td>
-              <td><%= f.text_area :jou_desc %></td>
+              <td><%= f.text_area :journal_description %></td>
             </tr>
             <tr>
               <td>Editorial:</td>
@@ -68,7 +68,7 @@
             </tr>
             <tr>
               <td>Instructions for Authors:</td>
-              <%= f.text_area :instructions_for_authors %></td>
+              <td><%= f.text_area :instructions_for_authors %></td>
             </tr>
 
             <td>

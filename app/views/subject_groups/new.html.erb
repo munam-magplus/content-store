@@ -5,55 +5,47 @@
       <h1> Create Primary Subject Group  </h1>
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
-          <%= form_for @subject_group do |f| %>
+          <%= form_for :subject_group do |f| %>
             <tr>
               <td>Publisher:</td>
-              <td><%= f.collection_select(:PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME) %></td>
+              <td><%= f.text_field :pub %></td>
             </tr> 
             <tr> 
               <td>Subject Group Level </td>
-              <td><%= f.text_field :SUG_GROUP_DESC %></td>
+              <td><%= f.text_field :sub_group_level %></td>
             </tr> 
             <tr> 
               <td>Subject Group Code *  </td>
-              <td><%= f.text_field :SUG_GROUP_CODE %></td>
+              <td><%= f.text_field :sub_group_code %></td>
             </tr>
             <tr>
               <td>Subject Group Name* </td>
-              <td><%= f.text_field :SUG_GROUP_NAME %></td>
+              <td><%= f.text_field :sub_group_name %></td>
             </tr> 
             <tr> 
               <td>Guest User View Limit </td>
-              <td><%= f.text_field :SUG_GUEST_USER_ACCESS_LIMIT %></td>
+              <td><%= f.text_field :guest_user_view_limit %></td>
             </tr>
             <tr>
               <td>Auth User View Limit  </td>
-              <td><%= f.text_field :SUG_AUTH_USER_ACCESS_LIMIT %></td>
+              <td><%= f.text_field :auth_user_view_limit %></td>
             </tr> 
             <tr> 
               <td>Discount Percentage </td>
-              <td><%= f.text_field :SUG_DISCOUNT_PERCENTAGE %></td>
+              <td><%= f.text_field :discount_percentage %></td>
             </tr>
             <tr>
               <td>Viewability Percentage  </td>
-              <td><%= f.text_field :SUG_VIEWING_LIMIT_PERCENTAGE %></td>
+              <td><%= f.text_field :viewability_percentage %></td>
             </tr>
-            <tr>
-              <td>Created by  </td>
-              <td><%= f.text_field :CREATED_BY %></td>
-            </tr>
-            <tr>
-              <td>Lastupdated by  </td>
-              <td><%= f.text_field :LASTUPDATED_BY %></td>
-            </tr> 
             <tr> 
               <td>Select Language * </td>
-              <td><%= f.select(:LAN_LANGUAGE_ID, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %>
+              <td><%= f.select(:select_lang, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %>
               </td>
             </tr>
             <tr>
               <td>Description </td>
-              <td><%= f.text_area :SHORT_DESC %></td>
+              <td><%= f.text_area :desc %></td>
             </tr> 
             <td><%= f.submit "Save" %></td>
             <td><%= f.button "Reset", type: :reset %></td>

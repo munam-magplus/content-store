@@ -7,7 +7,7 @@ class CreateAdminUsers < ActiveRecord::Migration[5.0]
       t.string :first_name
       t.string :last_name
       t.string :country
-      t.string :lang
+      t.string :language
       t.string :user_type
       t.string :role
       t.string :publishers
