@@ -1,0 +1,38 @@
+<body class = "body1">
+<%= render :partial => '/layouts/header' %>
+<table border = "0", cellpadding = "0", cellspacing = "0", width = "860", class = "center">
+  <tr>
+    <td class = "page_head"> Search Publisher</td> 
+  </tr>
+  <tr>
+    <%= form_tag search_retailers_path, :method => 'get' do%>
+      <td align = "left">
+        <table border = "0", cellpadding = "10", cellspacing = "0">
+          <tbody>
+            <tr>
+              <td align = "left", height = "25"> Select Publisher:</td>
+              <td align = "left", height = "25">
+                <%= select_tag(:retailer_name, options_for_select(@publishers, prompt = nil))%>
+              </td>
+                <!-- //%input.text_field{:name => "code", :size => "30"}/ -->
+            </tr>
+          </tbody>
+          <!-- %tbody -->
+            <tr>
+              <td align = "left" > 
+                <%= submit_tag "Search", :name => nil %>
+              </td>
+            </tr>
+        </table>
+      </td>
+    <% end %>
+  </tr>
+</table>
+<%= render :partial => '/layouts/footer' %>
+</body>
+
+
+
+ 
+
+ 
