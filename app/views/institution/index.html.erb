@@ -1,0 +1,96 @@
+<body class = "body1">
+  <%= render :partial => '/layouts/header'%>
+  <table class = "center">
+    <tr>
+      <td class = "page_head"> Institution Account</td>
+    </tr>
+    <tr>
+      <%= form_tag institution_index_path, :method => 'get' do |f| %>
+        <td align =  "left">
+          <table border = "0", cellpadding = "10", cellspacing = "0">
+            <tbody>
+              <tr>
+                <td height => "25"> Select Publisher</td>
+                <td align => "left">
+                  <%= select_tag 'PUB_PUBLISHER_ID',options_from_collection_for_select(@pub, 'id', 'pub')%>
+                </td>
+                <td align = "left", height = "25">Institution ID</td>
+                <td align = "left", height = "25">
+                  <%= text_field_tag :inst_ID %>
+                </td>
+              </tr>
+              <tr>
+                <td align = "left", height = "25"> Lib./Dept. Name</td>
+                <td align = "left">
+                  <%= text_field_tag :Lib_name %>
+                </td>
+                <td align = "left", height = "25"> Institution Name</td>
+                <td align = "left">
+                  <%= text_field_tag :inst_name %>
+                </td>
+              </tr>
+              <tr>
+                <td align = "left", height = "25"> IP Address</td>
+                <td align = "left">
+                  <%= text_field_tag :name,params[:ipadd] %>
+                </td>
+                <td align = "left", height = "25"> City</td>
+                <td align = "left">
+                  <%= text_field_tag :INS_CITY %>
+                </td>
+              </tr>
+              <tr>
+                <td align = "left", height = "25"> State/Province</td>
+                <td align = "left">
+                  <%= text_field_tag :INS_STATE %>
+                </td>
+                <td align = "left", height = "25"> Country</td>
+                <td align = "left">
+                  <%= select_tag 'PUY_PUBLISHER_COUNTRY_ID',options_from_collection_for_select(@country, 'id', 'CON_COUNTRY_NAME') %>
+                </td>
+              </tr>
+              <tr>
+                <td height = "25"> Status</td>
+                <td height = "25">
+                  <%= select_tag 'INS_INSTITUTION_STATUS',options_from_collection_for_select(Institution.all, 'id', 'INS_INSTITUTION_STATUS')%>
+                </td>
+              </tr>
+              <tr>
+                <td align = "left", height = "25"> Contact First Name</td>
+                <td align = "left">
+                  <%= text_field_tag :INS_FIRST_NAME %>
+                </td>
+                <td align = "left", height = "25"> Contact Last Name</td>
+                <td align = "left">
+                  <%= text_field_tag :INS_LAST_NAME %>
+                </td>
+              </tr>
+              <tr>
+                <td align = "left", height = "25"> Contact Email</td>
+                <td align = "left">
+                  <%= text_field_tag :INS_EMAIL_ID %>
+                </td>
+                <td align = "left", height = "25"> New IP Request</td>
+                <td align = "left">
+                  <%= check_box_tag(:ip_address) %>
+                </td>
+              </tr>
+            <!-- %tbody -->
+              <tr>
+                <td align = "left">  
+                  <%= submit_tag "Submit"%>
+                </td>
+                <td align = "left">
+                  <%= submit_tag "Reset" %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      <% end %>
+    </tr>
+  </table>
+  <%= render :partial => '/layouts/footer'%>
+</body>
+
+
