@@ -1,0 +1,115 @@
+<body class = "body1">
+<%= render :partial => '/layouts/header' %>
+<%= form_for :publisher do |f| %>
+  <table border =  "0", cellpadding = "0", cellspacing = "0", width = "860", class = "center">
+    <tr>
+      <td class = "page_head"> Create Publisher</td>
+    </tr>
+    <tr>
+      <td>
+        <table border = "0", cellpadding = "6", cellspacing = "0", width = "100%", class = "center">
+          <tr>
+            <td>
+              <table border = "0", cellpadding = "10", cellspacing = "0">
+                <tbody>
+                  <tr>
+                    <td height = "25">
+                      Publisher Code
+                      <span class = "mandtory *"></span>
+                    </td>
+                    <td height = "25">
+                      <%= f.text_field :pub_code %>
+                    </td>
+                    <td>
+                      Publisher Name
+                      <span class = "mandtory *"></span>
+                    </td>
+                    <td>
+                      <%= f.text_field :pub_name %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td height = "25"> Publisher Status</td>
+                    <td height = "25">
+                      <%= f.select :pub_status, options_for_select([ "Live", "Staging"]), :class => 'genForm_dropBox' %>
+                    </td>
+                    <td>
+                      Publisher Type
+                      <span class = "mandtory *"></span>
+                    </td>
+                    <td>
+                      <%= select.text_field{:name => "publisherType"}%>
+                        <%= option{:selected => "selected", :value => "DIGITAL"} %> Digital
+                        <%= option{:value => "ACADEMIC"} %> Academic
+                        <%= option{:value => "DISCOVERY"} %> Discovery
+                    </td>
+                  </tr>
+                  <tr>
+                    <td height = "25"> Default End User Language</td>
+                    <td height = "25">
+                      <%= f.select(:end_user_lang, [['Dansk', 'da'],
+                                  ['Polish', 'pl'],
+                                  ['Latvian', 'lv'],
+                                  ['English', 'en']],{ :prompt => "Please select"}) %>
+                    </td>
+                    <td> Default Manager Language </td>
+                    <td height = "25">
+                      <%= f.select(:manager_lang,[['Dansk', 'da'],
+                                  ['Polish', 'pl'],
+                                  ['Latvian', 'lv'],
+                                  ['English', 'en']],{ :prompt => "Please select"}) %>
+                    </td>
+                  </tr>
+                    <%= f.fields_for :publisher do |builder| %>
+                      <tr>
+                        <td height = "25">
+                          Contact First Name
+                          <span class = "mandtory *"></span>
+                        </td>
+                        <td height = "25">
+                          <%= builder.text_field :contact_first_name %>
+                        </td>
+                        <td>
+                          Contact Last Name
+                          <span class = "mandtory *"></span>
+                        </td>
+                        <td>
+                          <%= builder.text_field :contact_last_name%>
+                        </td>
+                      </tr> 
+                      <tr>
+                        <td height = "25">
+                          Contact Email
+                          <span class = "mandtory *"></span>
+                        </td>
+                        <td height = "25">
+                          <%= builder.text_field :contact_email%>
+                        </td>
+                      </tr>
+                <!-- %tbody -->
+                      <tr>
+                        <td class = "GBoldText" align = "right", height = "35">
+                          <table border = "0", cellpadding = "0", cellspacing = "0">
+                            <tr>
+                              <td>
+                                <%= f.submit %>
+                              </td>
+                              <td>
+                                <input id = "button2.submit_btn" name = "button3", type = "reset", value = "Reset">
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+<%= render :partial => '/layouts/footer' %>
+  </body>
