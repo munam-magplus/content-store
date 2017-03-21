@@ -1,2 +1,52 @@
-<h1>Campaigns#index</h1>
-<p>Find me in app/views/campaigns/index.html.erb</p>
+<body class="body1"></body>
+<%= render :partial => '/layouts/header' %>
+<div class="div1">
+  <table border="0" cellpadding="0" cellspacing="0" width="860">
+    <tr>
+      <td class="page_head">Search Campaign</td>
+    </tr>
+    <tr>
+      <td align="left"></td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+      <%= form_tag search_campaigns_path, :id => "search_campaign" ,:method => 'get' do |f|%>
+        <td>
+          <table align="left" border="0" cellpadding="10" cellspacing="0">
+            <tbody>
+              <tr>
+                <td height="25" width="171">Publisher</td>
+                <td height="25" width="414">
+                  <%= collection_select(nil, :id, Publisher.all, :id, :pub_name) %>
+                </td>
+              </tr>
+              <tr>
+                <td height="25" width="149">Campaign Name</td>
+                <td height="25">
+                  <%= text_field_tag :campaign_name%>
+                </td>
+              </tr>
+              <tr>
+                <td height="25">Created By</td>
+                <td height="25" width="436">
+                  <%= text_field_tag :created_by %>
+                </td>
+              </tr>
+              <tr>
+              </tr>
+              <tr>
+                <td align="right" class="GBoldText"></td>
+                <td align="left" class="GBoldText">
+                  <%= submit_tag "Search" %>
+                  <input class="submit_btn" type="reset" value="Reset"></input>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      <% end %>
+    </tr>
+  </table>
+</div>

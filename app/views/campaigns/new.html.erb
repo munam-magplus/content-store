@@ -1,2 +1,39 @@
-<h1>Campaigns#new</h1>
-<p>Find me in app/views/campaigns/new.html.erb</p>
+<body class="body1"></body>
+<%= render :partial => '/layouts/header' %>
+<div class="div1">
+  <table border="0" cellpadding="0" cellspacing="0" width="860">
+    <tr>
+      <td class="page_head">Create Campaign</td>
+    </tr>
+    <tr>
+      <td align="left"></td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+    	<%= form_for @campaign do |f|%>
+    		<td>
+          <table align="left" border="0" cellpadding="10" cellspacing="0">
+            <tbody>
+              <tr>
+                <td height="25" width="171">Publisher</td>
+                <td height="25" width="414">
+                  <%= collection_select(nil, :id, Publisher.all, :id, :pub_name) %>
+                </td>
+              </tr>
+              <tr>
+                <td height="25" width="149">Campaign Name</td>
+                <td height="25">
+                  <%= f.text_field :campaign_name%>
+                </td>
+              </tr>
+          		<tr>
+                <td height="25" width="149"></td>
+                <td height="25">
+                  <%= f.submit "Save" %>
+                </td>
+              </tr>
+    	<%end%>
+    </tr>
+  </div>

@@ -1,0 +1,59 @@
+<body class="body1"></body>
+<%= render :partial => '/layouts/header' %>
+<div class="div1">
+  <tr>
+    <td colspan="2">
+      <table bgcolor="#cccccc" border="0" cellpadding="10" cellspacing="1" width="100%">
+        <tbody>
+          <tr>
+            <td class="tableheader">Publisher</td>
+            <td class="tableheader">Id</td>
+            <td class="tableheader">Name</td>
+            <td class="tableheader">Saleable</td>
+            <td class="tableheader">Is Linkable</td>
+            <td class="tableheader">Linkable From</td>
+            <td class="tableheader">Linkable To</td>
+            <td class="tableheader">Created By</td>
+          </tr>
+          <tr>
+            <% if @license_group.present? %>
+              <% @license_group.each do |lic_group| %>
+                <td bgcolor="#FBFBFB">
+                  <%= lic_group.PUB_PUBLISHER_ID %>
+                </td>
+                <td bgcolor="#FBFBFB" id="40521Code">
+                  <%= lic_group.LIG_LICENSE_GROUP_ID %>
+                </td>
+                <td bgcolor="#FBFBFB">
+                  <%= link_to lic_group.LIG_LIC_GROUP_NAME,("") %>
+                </td>
+                <td bgcolor="#FBFBFB" id="40521Type">
+                  <%= lic_group.LIG_FOR_SALE %>
+                </td>
+                <td bgcolor="#FBFBFB">-</td>
+                <td bgcolor="#FBFBFB">
+                  <%= lic_group.LIG_LINK_FROM_DATE %>
+                </td>
+                <td bgcolor="#FBFBFB">
+                  <%= lic_group.LIG_LINK_TO_DATE %>
+                </td>
+                <td bgcolor="#FBFBFB">
+                  <%= lic_group.CREATED_BY %>
+                </td>
+              <% end %>
+            <% else %>
+              <td bgcolor="#FBFBFB">-</td>
+              <td bgcolor="#FBFBFB">-</td>
+              <td bgcolor="#FBFBFB">-</td>
+              <td bgcolor="#FBFBFB">-</td>
+              <td bgcolor="#FBFBFB">-</td>
+              <td bgcolor="#FBFBFB">-</td>
+              <td bgcolor="#FBFBFB">-</td>
+              <td bgcolor="#FBFBFB">-</td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+</div>

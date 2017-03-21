@@ -1,0 +1,78 @@
+<body class="body1"></body>
+<%= render :partial => '/layouts/header' %>
+<div class="div1">
+  <table border="0" cellpadding="0" cellspacing="0" width="860">
+    <tr>
+      <td class="page_head">Search License Group</td>
+    </tr>
+    <tr>
+      <td align="left"></td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+      <%= form_tag search_license_groups_path, :method => 'get' do  %>
+        <td>
+          <table border="0" cellpadding="10" cellspacing="0">
+            <tbody>
+              <tr>
+                <td height="25" width="171">Publisher</td>
+                <td height="25" width="414">
+                  <%= collection_select(nil, :id, Publisher.all, :id, :pub_name) %>
+                </td>
+              </tr>
+              <tr>
+                <td height="25" width="149">License Group ID</td>
+                <td height="25">
+                  <%= text_field_tag :lic_group_ID %>
+                </td>
+              </tr>
+              <tr>
+                <td height="25">License Group Name</td>
+                <td height="25" width="436">
+                  <%= text_field_tag :lic_group_name %>
+                </td>
+              </tr>
+              <tr>
+                <td height="25">License Name</td>
+                <td height="25" width="436">
+                  <%= text_field_tag :lic_name %>
+                </td>
+              </tr>
+              <!-- %tr
+              -->
+              <!--   %td{:height => "25"} Created By
+              -->
+              <!--   %td{:height => "25"}
+              -->
+              <!--     = text_field_tag :CREATED_BY
+              -->
+              <!-- %tr
+              -->
+              <!--   %td{:height => "25"} Saleability
+              -->
+              <!--   %td{:height => "25"}
+              -->
+              <!--     %select#select2{:name => "LIG_FOR_SALE"}
+              -->
+              <!--       %option{:selected => "selected", :value => ""} Select
+              -->
+              <!--       %option{:value => "Y"} For Sale
+              -->
+              <!--       %option{:value => "N"} Not For Sale
+              -->
+              <tr>
+                <td align="right" class="GBoldText"></td>
+                <td align="left" class="GBoldText">
+                  <%= submit_tag "Search" %>
+                  <input class="submit_btn" type="reset" value="Reset"></input>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      <% end %>
+    </tr>
+  </table>
+</div>
