@@ -6,23 +6,23 @@
         <tr>
           <h1>Search Subject Group</h1>
         </tr>
-        <%= form_tag search_result_subject_groups_path, :method => 'get' do %>
+        <%= form_tag search_result_subject_groups_path, :method => 'get' do |f| %>
           <tbody>
             <tr>
               <td> Publisher </td>
-              <td><%= collection_select(nil, :PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME) %></td>
+              <td><%= f.text_field :publisher %></td>
             </tr> 
             <tr>
               <td> Subject Group Name </td>
-              <td><%= text_field_tag :SUG_GROUP_NAME %></td>
+              <td><%= f.text_field :subject_group_name %></td>
             </tr> 
             <tr>
               <td> Subject Group Code </td>
-              <td><%= text_field_tag :SUG_GROUP_CODE %></td>
+              <td><%= f.text_field :subject_group_code %></td>
             </tr> 
             <tr>
               <td> Select Language </td>
-              <td><%= select_tag(:LAN_LANGUAGE_ID, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %></td>
+              <td><%= f.select_tag(:language, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %></td>
             </tr>
             <tr><td></td>
               <td>

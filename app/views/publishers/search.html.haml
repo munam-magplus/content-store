@@ -13,9 +13,9 @@
         - if @publisher.present?
           - @publisher.each do |pub|
             %td{:bgcolor => "#FBFBFB"}
-              = link_to pub.pub_code
+              = link_to pub.publisher_code
             %td{:bgcolor => "#FBFBFB"}
-              = pub.pub_name
+              = pub.publisher_name
             %td{:bgcolor => "#FBFBFB"}
               = pub.contact_first_name
             %td{:bgcolor => "#FBFBFB"}

@@ -18,8 +18,15 @@
                               end_user_new GET    /end_user/new(.:format)                         end_user#new
                            end_user_create GET    /end_user/create(.:format)                      end_user#create
           site_settings_site_setting_index GET    /site_settings/site_setting/index(.:format)     site_settings/site_setting#index
-                         admin_user_search GET    /admin_user/search(.:format)                    admin_user#search
-                            admin_user_new GET    /admin_user/new(.:format)                       admin_user#new
+                   search_admin_user_index GET    /admin_user/search(.:format)                    admin_user#search
+                          admin_user_index GET    /admin_user(.:format)                           admin_user#index
+                                           POST   /admin_user(.:format)                           admin_user#create
+                            new_admin_user GET    /admin_user/new(.:format)                       admin_user#new
+                           edit_admin_user GET    /admin_user/:id/edit(.:format)                  admin_user#edit
+                                admin_user GET    /admin_user/:id(.:format)                       admin_user#show
+                                           PATCH  /admin_user/:id(.:format)                       admin_user#update
+                                           PUT    /admin_user/:id(.:format)                       admin_user#update
+                                           DELETE /admin_user/:id(.:format)                       admin_user#destroy
                           search_retailers GET    /retailers/search(.:format)                     retailers#search
                                  retailers GET    /retailers(.:format)                            retailers#index
                                            POST   /retailers(.:format)                            retailers#create
@@ -130,24 +137,11 @@
                                            PUT    /subject_groups/:id(.:format)                   subject_groups#update
                                            DELETE /subject_groups/:id(.:format)                   subject_groups#destroy
                                       root GET    /                                               devise/sessions#new
+                            publishers_new POST   /publishers/new(.:format)                       publishers#new
                          publishers_create POST   /publishers/create(.:format)                    publishers#create
-                                  journals GET    /journals/index(.:format)                       journals#index
-                           search_journals GET    /journals/search(.:format)                      journals#search
-          upload_article_metadata_journals GET    /journals/upload_article_metadata(.:format)     journals#upload_article_metadata
-                   search_article_journals GET    /journals/search_article(.:format)              journals#search_article
-                      new_article_journals GET    /journals/new_article(.:format)                 journals#new_article
-                                           GET    /journals(.:format)                             journals#index
-                                           POST   /journals(.:format)                             journals#create
-                               new_journal GET    /journals/new(.:format)                         journals#new
-                              edit_journal GET    /journals/:id/edit(.:format)                    journals#edit
-                                   journal GET    /journals/:id(.:format)                         journals#show
-                                           PATCH  /journals/:id(.:format)                         journals#update
-                                           PUT    /journals/:id(.:format)                         journals#update
-                                           DELETE /journals/:id(.:format)                         journals#destroy
-                           journals_create GET    /journals/create(.:format)                      journals#create
-                              journals_new GET    /journals/new(.:format)                         journals#new
+                              books_create GET    /books/create(.:format)                         books#create
                                      books GET    /books/index(.:format)                          books#index
-                                           GET    /books/create(.:format)                         books#create
+                                           POST   /books/create(.:format)                         books#create
                               search_books GET    /books/search(.:format)                         books#search
                       metadata_sheet_books GET    /books/metadata_sheet(.:format)                 books#metadata_sheet
                           onix_input_books GET    /books/onix_input(.:format)                     books#onix_input
@@ -160,6 +154,15 @@
                                            PATCH  /books/:id(.:format)                            books#update
                                            PUT    /books/:id(.:format)                            books#update
                                            DELETE /books/:id(.:format)                            books#destroy
+                                  journals GET    /journals(.:format)                             journals#index
+                                           POST   /journals(.:format)                             journals#create
+                               new_journal GET    /journals/new(.:format)                         journals#new
+                              edit_journal GET    /journals/:id/edit(.:format)                    journals#edit
+                                   journal GET    /journals/:id(.:format)                         journals#show
+                                           PATCH  /journals/:id(.:format)                         journals#update
+                                           PUT    /journals/:id(.:format)                         journals#update
+                                           DELETE /journals/:id(.:format)                         journals#destroy
+                              journals_new POST   /journals/new(.:format)                         journals#new
 content_history_content_conversation_index GET    /content_conversation/content_history(.:format) content_conversation#content_history
   index_content_content_conversation_index GET    /content_conversation/index_content(.:format)   content_conversation#index_content
        qa_check_content_conversation_index GET    /content_conversation/qa_check(.:format)        content_conversation#qa_check
@@ -189,11 +192,4 @@ uploaded_errors_content_conversation_index GET    /content_conversation/uploaded
                                            PATCH  /promo_codes/:id(.:format)                      promo_codes#update
                                            PUT    /promo_codes/:id(.:format)                      promo_codes#update
                                            DELETE /promo_codes/:id(.:format)                      promo_codes#destroy
-                                 cdp_users GET    /cdp_users(.:format)                            cdp_users#index
-                                           POST   /cdp_users(.:format)                            cdp_users#create
-                              new_cdp_user GET    /cdp_users/new(.:format)                        cdp_users#new
-                             edit_cdp_user GET    /cdp_users/:id/edit(.:format)                   cdp_users#edit
-                                  cdp_user GET    /cdp_users/:id(.:format)                        cdp_users#show
-                                           PATCH  /cdp_users/:id(.:format)                        cdp_users#update
-                                           PUT    /cdp_users/:id(.:format)                        cdp_users#update
-                                           DELETE /cdp_users/:id(.:format)                        cdp_users#destroy
+                                           GET    /                                               csretailers#index

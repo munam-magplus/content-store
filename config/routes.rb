@@ -3,16 +3,28 @@ Rails.application.routes.draw do
   devise_for :users
   
   get 'end_user/search'
+  
+  post 'subject_groups/new'
 
   get 'end_user/new'
+  get 'journals/search'
 
   get 'end_user/create'
 
   get 'site_settings/site_setting/index'
 
-  get 'admin_user/search'
+  # get 'admin_user/search'
+  # # post 'admin_user/search'
 
-    get 'admin_user/new'
+  # get 'admin_user/new'
+  # post 'admin_user/new'
+
+  resources :admin_user do
+    collection do 
+      get 'search'
+      get 'index'
+    end
+  end
 
   resources :retailers do
     collection do 
@@ -22,7 +34,7 @@ Rails.application.routes.draw do
 
   get 'institution/result'
 
-  resources :institution_user,:institution,:access_tokens,:campaigns,
+  resources :institution_user, :institution, :access_tokens, :campaigns,
             :publishers,:license_groups, :licenses,:subscriptions, :subject_groups  do 
     collection do 
       get 'search'
@@ -34,7 +46,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     root to: "devise/sessions#new"
   end
-
+ 
+  post 'publishers/new'
   post 'publishers/create'
   
   # resources :journals do

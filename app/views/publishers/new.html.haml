@@ -1,6 +1,6 @@
 %body.body1
 = render :partial => '/layouts/header'
-= form_for :publisher do |f|
+= form_for @publisher do |f|
   %input{:name => "RequestAction", :type => "hidden", :value => "Create"}/
   %input{:nlame => "contactType", :type => "hidden", :value => "1234"}/
   %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "860", :class => "center"}
@@ -20,16 +20,16 @@
                       Publisher Code
                       %span.mandtory *
                     %td{:height => "25"}
-                      = f.text_field :pub_code 
+                      = f.text_field :publisher_code 
                     %td
                       Publisher Name
                       %span.mandtory *
                     %td
-                      = f.text_field :pub_name
+                      = f.text_field :publisher_name
                   %tr
                     %td{:height => "25"} Publisher Status
                     %td{:height => "25"}
-                      = f.select :pub_status, options_for_select([ "Live", "Staging"]), :class => 'genForm_dropBox'
+                      = f.select :publisher_status, options_for_select([ "Live", "Staging"]), :class => 'genForm_dropBox'
                     %td
                       Publisher Type
                       %span.mandtory *
@@ -42,35 +42,34 @@
                   %tr
                     %td{:height => "25"} Default End User Language
                     %td{:height => "25"}
-                      = f.select(:end_user_lang, [['Dansk', 'da'],
+                      = f.select(:end_user_language, [['Dansk', 'da'],
                                   ['Polish', 'pl'],
                                   ['Latvian', 'lv'],
                                   ['English', 'en']],{ :prompt => "Please select"})
                     %td Default Manager Language
 
                     %td{:height => "25"}
-                      = f.select(:manager_lang,[['Dansk', 'da'],
+                      = f.select(:manager_language,[['Dansk', 'da'],
                                   ['Polish', 'pl'],
                                   ['Latvian', 'lv'],
                                   ['English', 'en']],{ :prompt => "Please select"})
-                    = f.fields_for :publisher do |builder|
                       %tr
                         %td{:height => "25"}
                           Contact First Name
                           %span.mandtory 
                         %td{:height => "25"}
-                          = builder.text_field :contact_first_name 
+                          = f.text_field :contact_first_name 
                         %td
                           Contact Last Name
                           %span.mandtory *
                         %td
-                          = builder.text_field :contact_last_name 
+                          = f.text_field :contact_last_name 
                       %tr
                         %td{:height => "25"}
                           Contact Email
                           %span.mandtory *
                         %td{:height => "25"}
-                          = builder.text_field :contact_email
+                          = f.text_field :contact_email
                         %td
                 %tbody
                   %tr

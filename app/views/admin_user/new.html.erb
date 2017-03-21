@@ -6,11 +6,10 @@
       <h1>Create Admin Users</h1>
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
-          <%= form_for :admin_users do |f| %>
+          <%= form_for :admin_user, url: admin_user_index_path do |f| %>
             <tr>
               <td>Publisher*</td>
               <td><%= f.text_field :publisher %></td>
-             
             </tr> 
             <tr> 
               <td>Email*</td>
@@ -18,12 +17,7 @@
                <td>Confirm Email*</td>
               <td><%= f.text_field :confirm_email %></td>
             </tr> 
-            <tr> 
-              <td>Password* </td>
-              <td><%= f.text_field :SUG_GROUP_CODE %></td>
-              <td>Confirm Password* </td>
-              <td><%= f.text_field :SUG_GROUP_CODE %></td>
-            </tr>
+            
             <tr> 
               <td>First Name* </td>
               <td><%= f.text_field :first_name %></td>
@@ -34,7 +28,7 @@
               <td>Country</td>
               <td><%= f.text_field :country %></td>
               <td>Select Language * </td>
-              <td><%= f.select(:lang, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %></td>
+              <td><%= f.select(:language, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %></td>
             </tr> 
             <tr> 
              <td>Role* </td>
@@ -46,17 +40,12 @@
             </tr> 
             <tr> 
             	<td></td>
-              <td>
-              	<%= f.check_box :send_email, {}, true, false %>
-              	<%= f.label "Send email confirmation to email address above" %></td>
-            </tr>
+              
             <tr>
             	<td></td>
             	<td><%= f.submit "Submit" %>
             		<%= f.button "Reset", type: :reset %></td>
        		</tr>
-
-
           <% end %>
         </tbody>
       </table>
