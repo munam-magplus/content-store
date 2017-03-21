@@ -12,17 +12,11 @@ Rails.application.routes.draw do
 
   get 'admin_user/search'
 
-    get 'admin_user/new'
+  get 'admin_user/new'
 
-  resources :retailers do
-    collection do 
-      get 'search'
-    end
-  end
+  resources :csretailers
 
-  get 'institution/result'
-
-  resources :institution_user,:institution,:access_tokens,:campaigns,
+  resources :institution_admin_user,:institution_account,:access_tokens,:campaigns,
             :publishers,:license_groups, :licenses,:subscriptions, :subject_groups  do 
     collection do 
       get 'search'
