@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306044650) do
-
+ActiveRecord::Schema.define(version: 20170321071400) do
   create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "publisher"
     t.string   "email"
@@ -179,6 +178,9 @@ ActiveRecord::Schema.define(version: 20170306044650) do
     t.string   "logo"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "institution_account_id"
   end
 
   create_table "institution_admin_user_accs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -201,6 +203,7 @@ ActiveRecord::Schema.define(version: 20170306044650) do
   end
 
   create_table "journals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+<<<<<<< 053c0b05937a5399e177fdfe1e8f7afc12192a95
     t.string   "journal_code"
     t.string   "publisher"
     t.string   "journal_title"
@@ -304,6 +307,7 @@ ActiveRecord::Schema.define(version: 20170306044650) do
   end
 
   create_table "retailers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+<<<<<<< 053c0b05937a5399e177fdfe1e8f7afc12192a95
     t.string   "retailer_code"
     t.string   "retailer_name"
     t.string   "publisher_id"

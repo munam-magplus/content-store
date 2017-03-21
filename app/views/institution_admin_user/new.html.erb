@@ -1,0 +1,33 @@
+<html>
+  <body class = "body1">
+    <%= render :partial => '/layouts/header'%>
+    <div class="div1">
+      <h1>Create Institutional Users</h1>
+      <table border="0" cellpadding="10" cellspacing="0">
+        <tbody>
+          <%= form_for :institution_admin_user_acc do |f| %>
+            <tr>
+              <td>User Role*</td>
+              <td>
+              <%= f.radio_button 'primary', :role, 'Primary Institution Administrator' %> Primary Institution Administrator
+              <%= f.radio_button 'institution',:role,'Institution Administrator' %> Institution Administrator<br>
+              </td>
+            </tr>
+            <div id="primary" class="none">xdgxg</div>
+            <div id="institution" class="none"></div>
+           
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+  </body>
+</html>
+
+<script>
+$(':radio').change(function (event) {
+    var id = $(this).data('id');
+    console.log(id);
+      alert(id);
+    $('#' + id).addClass('none').siblings().removeClass('none');
+});
+</script>

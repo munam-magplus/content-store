@@ -19,22 +19,24 @@ Rails.application.routes.draw do
   # get 'admin_user/new'
   # post 'admin_user/new'
 
+<<<<<<< 053c0b05937a5399e177fdfe1e8f7afc12192a95
   resources :admin_user do
     collection do 
       get 'search'
       get 'index'
     end
   end
+=======
+  get 'admin_user/new'
+>>>>>>> create and search operation for institution
 
-  resources :retailers do
-    collection do 
-      get 'search'
-    end
-  end
+  resources :csretailers
 
-  get 'institution/result'
-
+<<<<<<< 053c0b05937a5399e177fdfe1e8f7afc12192a95
   resources :institution_user, :institution, :access_tokens, :campaigns,
+=======
+  resources :institution_admin_user,:institution_account,:access_tokens,:campaigns,
+>>>>>>> create and search operation for institution
             :publishers,:license_groups, :licenses,:subscriptions, :subject_groups  do 
     collection do 
       get 'search'
