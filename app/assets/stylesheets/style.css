@@ -1,5 +1,6 @@
 .div1 {
     border: 1px solid black;
+    border-color: #89bde7
     margin-right: 150px;
     margin-left: 180px;
     background-color: white;
@@ -12,6 +13,7 @@
     margin-left: 180px;
     text-align:center;
 }
+/*css for header*/
 .divheader {
     border: 1px solid black;
     margin-top: 100px;
@@ -20,6 +22,7 @@
     background-color: white;
     text-align:center;
 }
+/*css for header ends*/
 .gindexborder {
     border: 1px solid #E8E8E8;
     border-top-width: 1px;
@@ -108,6 +111,7 @@
     font-weight: bold;
     font-size: 12px;
 }
+/*css to display flash messages*/
 .alert-error {
     background-color: #f2dede;
     border-color: #eed3d7;
@@ -135,7 +139,9 @@
     color: #468847;
     text-align: left;
  }
-/*css for dropdown list start:*/
+/*css to display flash messages ends*/
+
+/*css for dropdown list of header start:*/
 #primary_nav_wrap ul
 {
     list-style:none;
@@ -208,6 +214,7 @@
     display:block
 }
 /*css for dropdown list end:*/
+
 .tab {
     background-image: url(tab_bg.gif);
     background-repeat: repeat-x;
@@ -233,7 +240,23 @@
     padding-bottom: 18px;
     padding-left: 0px;
 }
-
+/*css to display font in white color ends*/
 .none {
     display:none;
+}
+/* css used for displaying data if the table*/
+.tabledata {
+    border-top: #FFFFFF 1px solid;
+    border-left: #FFFFFF 1px solid;
+    border-bottom: #5F5380 1px solid;
+    border-right: #5F5380 1px solid;
+    font-size: 12px;
+}
+/*css used for displaying data if the table ends*/
+
+.backgroundcolor {
+    background-color: #e9ffdb 
+}
+.backgroundcolor1 {
+    background-color: #ffe5db 
 }

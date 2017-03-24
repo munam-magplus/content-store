@@ -1,1 +1,76 @@
-<%= render :partial => '/institution_admin_user/primary' %>
+<html>
+<body class ="body1">
+<%= render :partial => '/layouts/header'%>
+<table class = "center">
+  <tr>
+    <td class = "page_head"> Search Institutional Users</td>
+  </tr>
+  <tr>
+    <%= form_tag institution_admin_user_search_op_path, :method => 'get' do %>
+      <td align = "left">
+        <table border = "0", cellpadding = "10", cellspacing = "0">
+          <tbody>
+            <tr>
+              <td align = "left", height = "25"> First Name</td>
+              <td align = "left", height = "25">
+                <%= text_field_tag :first_name %></td>
+            </tr>
+            <tr>
+              <td align = "left", height = "25"> Last Name</td>
+              <td align = "left">
+                <%= text_field_tag :last_name %>
+              </td>
+            </tr>
+            <tr>
+              <td align = "left", height = "25"> Contact Email </td>
+              <td align = "left">
+                <%= text_field_tag :email%>
+              </td>
+            </tr>
+            <tr>
+              <td align = "left", height = "25"> User Status</td>
+              <td align = "left">
+                <%= select_tag 'status',options_from_collection_for_select(InstitutionAdminUserAcc.all, 'status', 'status'),{:include_blank => 'select'}%>
+              </td>
+            </tr>
+            <tr>
+              <td align = "left", height = "25"> User Role</td>
+              <td align = "left">
+                <%= text_field_tag :role %>
+              </td>
+            </tr>
+            <tr>
+              <td align = "left", height = "25"> User Name</td>
+              <td align = "left">
+                <%= text_field_tag :user_name %>
+              </td>
+            </tr>
+            <tr>
+              <td align = "left", height = "25"> Institution Id</td>
+              <!-- <td align = "left">
+                <%= text_field_tag :institution_name %>
+              </td> -->
+            </tr>
+            <tr>
+              <td align = "left", height = "25"> Institution Name</td>
+              <td align = "left">
+                <%= text_field_tag :institution_name  %>
+              </td>
+            </tr>
+            <tr>
+              <td align = "left">
+                <%= submit_tag "Submit", :name => nil %>
+                <%= submit_tag "Reset", :name => nil %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    <% end %>
+  </tr>
+</table>
+<%= render :partial => '/layouts/footer' %>
+</body>
+</html>
+
+

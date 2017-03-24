@@ -5,28 +5,28 @@
       <td class = "page_head"> Institution Account</td>
     </tr>
     <tr>
-      <%= form_for institution_account_index_path, :method => 'get' do |f| %>
+     <%= form_for institution_account_index_path, :method => 'get' do |f| %>
         <td align =  "left">
           <table border = "0", cellpadding = "10", cellspacing = "0">
             <tbody>
               <tr>
                 <td height = "25"> Select Publisher</td>
                 <td align = "left">
-                  <%= select_tag 'pub',options_from_collection_for_select(@pub, 'id', 'pub_name')%>
+                  <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name')%>
                 </td>
                 <td align = "left", height = "25">Institution ID</td>
                 <td align = "left", height = "25">
-                  <%= text_field_tag :inst_ID %>
+                  <%= text_field_tag :institution_id %>
                 </td>
               </tr>
               <tr>
                 <td align = "left", height = "25"> Lib./Dept. Name</td>
                 <td align = "left">
-                  <%= text_field_tag :Lib_name %>
+                  <%= text_field_tag :libary_name %>
                 </td>
                 <td align = "left", height = "25"> Institution Name</td>
                 <td align = "left">
-                  <%= text_field_tag :inst_name %>
+                  <%= text_field_tag :institution_name %>
                 </td>
               </tr>
                <tr>
@@ -50,6 +50,7 @@
 
               <tr>
                 <td height = "25"> Status</td>
+
               </tr>
               <tr>
                 <td align = "left", height = "25"> Contact First Name</td>
@@ -72,7 +73,6 @@
                 </td>
               </tr>
               <% end %>
-            <!-- %tbody -->
               <tr>
                 <td align = "left">  
                   <%= submit_tag "Submit"%>

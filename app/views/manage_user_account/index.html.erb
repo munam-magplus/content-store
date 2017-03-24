@@ -12,7 +12,7 @@
 	<table width="100%" class="center">
 	<tr>
 		<td class="gindexborder" colspan="2" valign="top">
-		<%= link_to image_tag("end_user.gif"),csretailers_path%><br>
+		<%= link_to image_tag("end_user.gif"),retailers_path%><br>
 		Retailer</td>
 		<td class="gindexborder" colspan="2" valign="top">
 			<%= link_to image_tag("end_user.gif"), end_user_search_path %><br>
@@ -29,15 +29,15 @@
 				</table>
 		</td>
 		<td class="gindexborder" colspan="2" valign="top">
-			<%= link_to image_tag("admin_user.gif"), admin_user_search_path %><br>
+			<%= link_to image_tag("admin_user.gif"), search_admin_user_index_path %><br>
 			Admin User
 				<table>
 					<tr>
 						<td class="gindexborder">
-							<%= link_to image_tag("search.gif"), admin_user_search_path %>
+							<%= link_to image_tag("search.gif"), search_admin_user_index_path %>
 						</td>
 						<td class="gindexborder">
-							<%= link_to image_tag("create.gif"), admin_user_new_path %>
+							<%= link_to image_tag("create.gif"), new_admin_user_path %>
 						</td>
 					</tr>
 				</table>
@@ -57,15 +57,15 @@
 				</table>
 		</td>
 		<td class="gindexborder" colspan="2" valign="top">
-			<%= link_to image_tag("institutional-user.gif"), search_institution_user_index_path%><br>
+			<%= link_to image_tag("institutional-user.gif"), institution_admin_user_index_path%><br>
 			Institutional Admin User Account
 				<table>
 					<tr>
 						<td class="gindexborder">
-							<%= link_to image_tag("search.gif"), search_institution_user_index_path%>
+							<%= link_to image_tag("search.gif"), institution_admin_user_index_path%>
 						</td>
 						<td class="gindexborder">
-							<%= link_to image_tag("create.gif"), new_institution_user_path %>
+							<%= link_to image_tag("create.gif"), new_institution_admin_user_path %>
 						</td>
 					</tr>
 				</table>

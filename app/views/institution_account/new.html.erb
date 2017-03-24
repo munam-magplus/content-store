@@ -14,23 +14,23 @@
                 <b> Details </b>
                 <td height = "25"> Select Publisher</td>
                 <td align = "left">
-                  <%= f.select 'pub',options_from_collection_for_select(Publisher.all, 'id', 'pub_name') %>
+                  <%= f.select 'publisher',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name') %>
                 </td>
               </tr>
               <tr>
                 <td align = "left", height = "25"> Institution ID</td>
                 <td align = "left", height = "25">
-                  <%= f.text_field :inst_ID %>
+                  <%= f.text_field :institution_id %>
                 </td>
                 <td align = "left", height = "25"> Lib./Dept. Name</td>
                 <td align = "left">
-                  <%= f.text_field :Lib_name %>
+                  <%= f.text_field :libary_name %>
                 </td>
               </tr>
               <tr>
                 <td align = "left", height = "25"> Institution Name</td>
                 <td align = "left">
-                  <%= f.text_field :inst_name %>
+                  <%= f.text_field :institution_name %>
                 </td>
                 <td height = "25"> Status </td>
                 <td height = "25">
@@ -63,9 +63,8 @@
                   <b> Billing Address </b>
                   <td align = "left", height = "25"> Contact First Name</td>
                   <td align = "left">
-                    <%= builder.text_field :first_name%>
+                    <%= builder.text_field :first_name %>
                   </td>
-                  <b> sdbnis </b>
                   <td align = "left", height = "25"> parent id</td>
                   <td align = "left">                  
                   </td>
@@ -91,13 +90,13 @@
                   </td>
                   <td align = "left", height = "25"> Address Line 2</td>
                   <td align = "left">
-                    <%= builder.text_field :add_line2 %>
+                    <%= builder.text_field :address_line2 %>
                   </td>
                 </tr>
                 <tr>
-                  <td align = "left", height => "25"> Address Line 3</td>
+                  <td align = "left", height = "25"> Address Line 3</td>
                   <td align = "left">
-                    <%= builder.text_field :add_line3 %>
+                    <%= builder.text_field :address_line3 %>
                   </td>
                   <td align = "left", height = "25"> City / Town</td>
                   <td align = "left">
@@ -127,7 +126,7 @@
               <% end %>
               <tr>
                 <td align = "left">  
-                  <%= f.submit "Submit", :name => nil %>
+                  <%= f.submit "Submit" %>
                 </td>
               </tr>
             </tbody>

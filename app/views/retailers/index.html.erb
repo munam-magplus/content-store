@@ -5,7 +5,7 @@
     <td class = "page_head"> Search Publisher</td> 
   </tr>
   <tr>
-    <%= form_tag search_retailers_path, :method => 'get' do%>
+    <%= form_tag retailers_search_path, :method => 'get' do%>
       <td align = "left">
         <table border = "0", cellpadding = "10", cellspacing = "0">
           <tbody>
@@ -14,10 +14,8 @@
               <td align = "left", height = "25">
                 <%= select_tag(:retailer_name, options_for_select(@publishers, prompt = nil))%>
               </td>
-                <!-- //%input.text_field{:name => "code", :size => "30"}/ -->
             </tr>
           </tbody>
-          <!-- %tbody -->
             <tr>
               <td align = "left" > 
                 <%= submit_tag "Search", :name => nil %>

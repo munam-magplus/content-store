@@ -203,7 +203,6 @@ ActiveRecord::Schema.define(version: 20170321071400) do
   end
 
   create_table "journals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-<<<<<<< 053c0b05937a5399e177fdfe1e8f7afc12192a95
     t.string   "journal_code"
     t.string   "publisher"
     t.string   "journal_title"

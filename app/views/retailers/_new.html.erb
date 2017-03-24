@@ -1,16 +1,17 @@
+<html>
 <body class = "body1">
 <%= render :partial => '/layouts/header' %>
 <table class = "center">
+<thead  style="text-decoration: underline; color:  #89bde7 ">
   <tr>
-    <td> 
-      <%= image_tag("btsr_ico.gif")%>
-      <%= link_to "Back",retailers_path%>
+    <td class = "page_head" > Create Retailer</td>
+    <td class="tab_sel" >
+      <a><%= image_tag("btsr_ico.gif")%><%= link_to "Back",retailers_path %></a>
     </td>
   </tr>
+</thead>
   <tr>
-  <td class = "page_head"> Create Retailer</td>
   <td class = "page_head" align = "right", valign = "bottom">
-    <!-- %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "margin-bottom:1px;"} -->
   <table border = "0", cellpadding = "6", cellspacing = "0", width = "100%", class = "center">
     <tr>
       <td>
@@ -22,50 +23,87 @@
                   <%= image_tag("add.gif") %>
                 </a>
               </td>
+              <td align = "right", id= "addForm">
+                <a href = "#">
+                  <%= image_tag("add.gif") %>
+                </a>
+              </td>
             </tr>
             <tr>
               <td>
                 <table id = "items" border = "1", cellpadding = "0", cellspacing = "0", width = "100%">
-                  <tr>
-                    <td class = "tableheader" align = "center", height = "30", style = "width: 149px"> Retailer Code</td>
-                    <td class = "tableheader" align = "center", height = "30", style = "width: 149px"> Retailer Name</td>
-                    <td class = "tableheader" align = "center", height = "30", style = "width: 149px"> Publisher Id</td>
-                    <td class = "tableheader" align = "center", height = "30", style = "width: 149px"> Low Ip</td>
-                    <td class = "tableheader" align = "center", height = "30", style = "width: 149px"> High Ip</td>
-                    <td class = "tableheader" align = "center", height = "30", style = "width: 149px"> IP List</td>
-                    <td class = "tableheader" align = "center", height = "30", style = "width: 149px"> Operation</td>
-                    <%= form_for(:retailer, url:  csretailers_path)  do |f| %>
-                      <tr>
-                        <td>
-                          <%= f.text_field :ret_code %>
-                        </td>
-                        <td>
-                          <%=  select_tag(:ret_name, options_for_select([[@re.pub_code ,1]])) %>
-                        </td>
-                        <td>
-                          <%= f.text_field :pub_id, :value => @re.pub_id %>
-                        </td>
-                      </tr>                  
-                <table id = "addnewrow" border = "1", cellpadding = "0", cellspacing = "0", width = "1075px">        
-            <tr>
-              <td align = "right"
-                %input#retailersubmit.submit_btn{:name => "addretailer", :onclick => "return validateRetailer()", :type => "submit", :value => "Submit"}
-
-:javascript
+                    <tr>
+                      <td class = "tableheader" align = "center", height = "30"> Retailer Code</td>
+                      <td class = "tableheader" align = "center", height = "30"> Retailer Name</td>
+                      <td class = "tableheader" align = "center", height = "30"> Publisher Id</td>
+                      <td class = "tableheader" align = "center", height = "30"> Low Ip</td>
+                      <td class = "tableheader" align = "center", height = "30"> High Ip</td>
+                      <td class = "tableheader" align = "center", height = "30"> IP List</td>
+                      <td class = "tableheader" align = "center", height = "30"> Operation</td>
+                    </tr>
+                  <%= form_for(:retailer, url: retailers_path)  do |f| %>
+                    <tr id="form">
+                      <td align = "left", height = "25">
+                        <%= f.text_field :retailer_code %>
+                      </td>
+                     <td align = "left", height = "25" >
+                        <%=  f.select(:retailer_name, options_for_select([[@re.publisher_code ,@re.publisher_code]])) %>
+                      </td> 
+                      <td align = "left", height = "25">
+                        <%= f.text_field :publisher_id , :value => @re.id%>
+                      </td>
+                      <td align = "left", height = "25">
+                        <%= f.text_field :low_ip %>
+                      </td>
+                      <td align = "left", height = "25">
+                        <%= f.text_field :high_ip %>
+                      </td>
+                      <td align = "left", height = "25">
+                        <%= f.text_field :ip_list %>
+                      </td>
+                    </tr> 
+                </table>
+                <td>
+                  <%= f.submit %>
+                </td>
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </table>
+</td> 
+</tr>
+</table>
+<%= render :partial => '/layouts/footer'%>
+</body>
+</html>    
+            
+<script>
+  $(document).ready(function(){
+    $("#addAction").hide();
+    $("#form").hide();
+    $("#addForm").click(function(e) {
+      $("#form").show();
+      $("#addForm").hide();
+      $("#addAction").show();
+    });
+  });
   jQuery('#addAction').click( function () {
-      var $quantity = $('.tableheader').length;
-      var $quants = $('#items tr').length;
-      jQuery("#items").append("<tr></tr>");
-      $("#items tr:last").addClass('tablecount'+$quants);
-      $.each(new Array($quantity - 1 ),
-       function(n){
-        jQuery("#items tr:last").append("<td><select_tag(:RETAILER_NAME, options_for_select([[@re.PUB_CODE ,1]])) ></td>");
-      });
-      jQuery("#items tr:last").append("<td><input type='image' name='delete' onclick ='remove(" + $quants + ");'></td>"); 
+    var $quantity = $('.tableheader').length;
+    var $quants = $('#items tr').length;
+    jQuery("#items").append("<tr></tr>");
+    $("#items tr:last").addClass('tablecount'+$quants);
+    $.each(new Array($quantity - 1 ),
+     function(n){
+      jQuery("#items tr:last").append("<td><select_tag(:retailer_name, options_for_select([[@re.publisher_code ,1]])) ></td>");
+    });
+    jQuery("#items tr:last").append("<td><input type='image' name='delete' onclick ='remove(" + $quants + ");'></td>"); 
   });
   function remove(elem) {
     $('.tablecount'+ elem ).hide();
   }
+</script>
 
-
-  

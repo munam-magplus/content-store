@@ -1,16 +1,23 @@
 class InstitutionAdminUserController < ApplicationController
   def index
-    @inst_admin_user = InstitutionAdminUserAcc.all
+  end
+
+  def search_op
+    byebug
+    @res = InstitutionAdminUserAcc.filter(params.slice(:status,:role, :first_name))
+    render 'result', locals: { :res => @res }
   end
 
   def show
   end
 
   def new
+    byebug
     @inst_admin_user = InstitutionAdminUserAcc.new
   end
 
   def create
+    byebug
     @inst_admin_user = InstitutionAdminUserAcc.new(insti_admin_user_params)
     if @inst_admin_user.save!
       redirect_to institution_admin_user_index_path
@@ -19,9 +26,6 @@ class InstitutionAdminUserController < ApplicationController
     end
   end
   
-  def search
-  end
-
   private
 
   def insti_admin_user_params
