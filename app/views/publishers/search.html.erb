@@ -10,31 +10,29 @@
         <td class="tableheader">Contact Name</td>
         <td class="tableheader">Contact Email</td>
       </tr>
-      <tr>
-        <% if @publisher.present? %>
-          <% @publisher.each do |pub| %>
-            <td bgcolor="#FBFBFB">
-              <%= link_to pub.pub_code %>
-            </td>
-            <td bgcolor="#FBFBFB">
-              <%= pub.pub_name %>
-            </td>
-            <td bgcolor="#FBFBFB">
-              <%= pub.contact_first_name %>
-            </td>
-            <td bgcolor="#FBFBFB">
-              <%= pub.contact_email %>
-            </td>
-          <% end %>
+      <% if @publisher.present? %>
+        <% @publisher.each do |pub| %>
+        <tr>
+          <td bgcolor="#FBFBFB">
+            <%= link_to pub.publisher_code %>
+          </td>
+          <td bgcolor="#FBFBFB">
+            <%= pub.publisher_name %>
+          </td>
+          <td bgcolor="#FBFBFB">
+            <%= pub.contact_first_name %>
+          </td>
+          <td bgcolor="#FBFBFB">
+            <%= pub.contact_email %>
+          </td>
+        </tr>
+        <% end %>
         <% else %>
-          <td bgcolor="#FBFBFB">-</td>
-          <td bgcolor="#FBFBFB">-</td>
-          <td bgcolor="#FBFBFB">-</td>
-          <td bgcolor="#FBFBFB">-</td>
-          <td bgcolor="#FBFBFB">-</td>
-          <td bgcolor="#FBFBFB">-</td>
-          <td bgcolor="#FBFBFB">-</td>
-          <td bgcolor="#FBFBFB">-</td>
+          <tr>
+            <td bgcolor="#FBFBFB">
+              <p> Record Not Found </p> 
+            </td>
+          </tr>
         <% end %>
       </tr>
     </tbody>

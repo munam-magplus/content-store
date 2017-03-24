@@ -19,66 +19,56 @@
               <tr>
                 <td height="25" width="171">Publisher</td>
                 <td height="25" width="414">
-                  <%= collection_select(nil, :id, Publisher.all, :id, :pub_name) %>
+                 <%= collection_select(nil, :publisher_id, Publisher.all, :id, :publisher_name) %>
                 </td>
               </tr>
               <tr>
                 <td height="25" width="149">License ID</td>
                 <td height="25">
-                  <%= text_field_tag :lic_id %>
+                  <%= text_field_tag :license_id %>
                 </td>
               </tr>
               <tr>
                 <td height="25">License Name</td>
                 <td height="25" width="436">
-                  <%= text_field_tag :lic_name %>
+                 <%= text_field_tag :license_name %>
                 </td>
               </tr>
               <tr>
                 <td height="25">License Type</td>
                 <td height="25">
-                  <%= text_field_tag :lic_type %>
+                 <%= collection_select(nil, :id, License.all, :id, :license_type)%>
                 </td>
               </tr>
               <tr>
                 <td height="25">Content Identifier</td>
                 <td height="25">
-                  <%= text_field_tag :ISBN %>
+                 <%= text_field_tag :isbn %>
                 </td>
               </tr>
-              <!-- %tr
-              -->
-              <!--   %td{:height => "25"} Created By
-              -->
-              <!--   %td{:height => "25"}
-              -->
-              <!--     = text_field_tag :created_by
-              -->
-              <!-- %tr
-              -->
-              <!--   %td{:height => "25"} Saleability
-              -->
-              <!--   %td{:height => "25"}
-              -->
-              <!--     %select#select2{:name => "LIC_FOR_SALE"}
-              -->
-              <!--       %option{:selected => "selected", :value => ""} Select
-              -->
-              <!--       %option{:value => "Y"} For Sale
-              -->
-              <!--       %option{:value => "N"} Not For Sale
-              -->
+              <tr>
+                <td height="25">Created By</td>
+                <td height="25">
+                  <%= text_field_tag :created_by %>
+                </td>
+              </tr>
+               <tr>
+                <td height = "25">Saleability </td>
+                <td height = "25"> 
+                 <%= select_tag(:license_for_sale, options_for_select([['Select',0],[' For Sale',:y],['Not For Sale',:n]]))%>
+                </td>
+               </tr>
               <tr>
                 <td height="25">Search License to Apply Discounts</td>
                 <td height="25">
-                  <%= check_box_tag(:apply_discount) %>
+                 <%= check_box_tag(:apply_discount) %>
                 </td>
               </tr>
               <tr>
                 <td align="right" class="GBoldText"></td>
                 <td align="left" class="GBoldText">
-                  <%= submit_tag "Search" %>
-                  <input class="submit_btn" type="reset" value="Reset"></input>
+                 <%= submit_tag "Search" %>
+                 <input class="submit_btn" type="reset" value="Reset"></input>
                 </td>
               </tr>
             </tbody>

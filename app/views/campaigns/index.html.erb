@@ -19,7 +19,7 @@
               <tr>
                 <td height="25" width="171">Publisher</td>
                 <td height="25" width="414">
-                  <%= collection_select(nil, :id, Publisher.all, :id, :pub_name) %>
+                  <%= collection_select(nil, :id, Publisher.all, :id, :publisher_name) %>
                 </td>
               </tr>
               <tr>
@@ -35,6 +35,22 @@
                 </td>
               </tr>
               <tr>
+                <td height="25">Created On</td>
+                <td height="25" width="430">
+                  From<input type="text" id="datepicker">
+                </td>
+                <td height="25" width="430">
+                 To<input type="text" id="datepicker1">
+              </td>
+              </tr>
+              <tr>
+                <td height="25">Access Tokens Generated</td>
+                <td height="25" width="430">
+                  <%= radio_button_tag :access_token_generated, 'email'%> 
+                  <%= label :contactmethod_email, 'Yes' %>
+                  <%= radio_button_tag :access_token_generated, 'sms' %>
+                  <%= label :contactmethod_sms, 'No' %>
+                </td>
               </tr>
               <tr>
                 <td align="right" class="GBoldText"></td>

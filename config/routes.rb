@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
   get 'institution/result'
 
-  resources :institution_user, :institution, :access_tokens, :campaigns,
+  resources :institution_user, :institution, :access_tokens, :promo_codes, :campaigns,
             :publishers,:license_groups, :licenses,:subscriptions, :subject_groups  do 
     collection do 
       get 'search'
@@ -95,7 +95,6 @@ post 'journals/new'
   resources :reports, :printhouse_setup, :manage_access, 
             :manage_user_account, :publisher_setup, :end_user, only: [:index]
 
-  resources :promo_codes
  
   root 'csretailers#index'
 

@@ -64,7 +64,7 @@
 			<table>
 				<tr>
 					<td class="gindexborder">
-						<%= link_to image_tag("search.gif"), campaigns_path %>
+					 <%= link_to image_tag("search.gif"), campaigns_path %>
 					</td>
 					<td class="gindexborder">
 						<%= link_to image_tag("create.gif"),{action: 'new', controller: 'campaigns'}%>
@@ -78,7 +78,7 @@
 			<table>
 				<tr>
 					<td class="gindexborder">
-						<%= image_tag("search.gif")%>
+					 <%= link_to image_tag("search.gif"), access_tokens_path %>
 					</td>
 					<td class="gindexborder">
 						<%= image_tag("create.gif")%>
@@ -92,10 +92,10 @@
 			<table>
 				<tr>
 					<td class="gindexborder">
-						<%= image_tag("search.gif")%>
+					 <%= link_to image_tag("search.gif"), promo_codes_path %>
 					</td>
 					<td class="gindexborder">
-						<%= image_tag("create.gif")%>
+					 <%= link_to image_tag("create.gif"),{action: 'new', controller: 'promo_codes'}%>
 					</td>
 				</tr>
 			</table>

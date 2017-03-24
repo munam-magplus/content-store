@@ -1,2 +1,80 @@
-<h1>PromoCodes#new</h1>
-<p>Find me in app/views/promo_codes/new.html.erb</p>
+<body class="body1"></body>
+<%= render :partial => '/layouts/header' %>
+<div class="div1">
+  <table border="0" cellpadding="0" cellspacing="0" width="860">
+    <tr>
+      <td class="page_head">Create Promo Codes</td>
+    </tr>
+    <tr>
+      <td align="left"></td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+      <%= form_for @promo_codes do |f|%>
+        <td>
+          <table align="left" border="0" cellpadding="10" cellspacing="0">
+            <tbody>
+              <tr>
+                <td height="25" width="171">
+                	Publisher
+                	<span class = "mandtory ">*</span>
+                </td>
+                <td height="25" width="414">
+                  <%= f.collection_select(:publisher_id, Publisher.all, :id, :publisher_name) %>
+                </td>
+              </tr>
+              <tr>
+                <td height="25" width="149">
+                	Campaign Name
+                	<span class = "mandtory ">*</span>
+                </td>
+                <td height="25">
+                 <%= f.collection_select(:campaign_id, Campaign.all, :id, :campaign_name) %>
+                </td>
+              </tr>
+              <tr>
+                <td height="25">
+                	Number Of Promo Codes
+                	<span class = "mandtory ">*</span>
+                </td>
+                <td height="25" width="436">
+                  <%= f.text_field :number_of_promo_code %>
+                </td>
+              </tr>
+              <tr>
+                <td height="25">
+                	Applicable Discount%
+                	<span class = "mandtory ">*</span>
+                </td>
+                <td height="25" width="436">
+                  <%= f.text_field :applicable_discount %>
+                </td>
+              </tr>
+              <tr>
+                <td height="25">
+                	Promo Code Date Range
+                	<span class = "mandtory ">*</span>
+                </td>
+                <td height="25" width="430">
+                  From <%= f.text_field :from, :id => 'datepicker' %>
+                </td>
+                <td height="25" width="430">
+                  To <%= f.text_field :to, :id => 'datepicker1' %>
+                </td>
+              </tr>
+              <tr>
+                <td align="right" class="GBoldText"></td>
+                <td align="left" class="GBoldText">
+                  <%= f.submit "Submit" %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      <%end%>
+    </tr>
+  </table>
+</div>
+

@@ -3,14 +3,8 @@ class CampaignsController < ApplicationController
   end
 
   def create
-     @campaign = Campaign.create!(campaign_params)
-     if @campaign.save!
-      # if successfully stored then redirect 
-      redirect_to campaigns
-    else
-      # if not save then render same page
-      render 'new'
-    end
+    @campaign = Campaign.create!(campaign_params)
+    redirect_to campaigns_path
   end
 
   def new
@@ -24,6 +18,6 @@ class CampaignsController < ApplicationController
   end
   private 
   def campaign_params
-    params.require(:campaign).permit(:pub, :campaign_name)
+    params.require(:campaign).permit(:publisher, :campaign_name)
   end
 end

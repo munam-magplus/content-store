@@ -11,6 +11,6 @@ class LicenseGroupsController < ApplicationController
 
   def search
   	#call filter method to get search results
-    @license_group = LicenseGroup.filter(params.slice(:id, :lic_group_ID, :lic_group_name, :lic_name))
+    @license_group = LicenseGroup.filter(params.slice(:publisher_id, :license_group_id, :license_group_name, :license_name, :created_by, :license_for_sale))
   end
 end
