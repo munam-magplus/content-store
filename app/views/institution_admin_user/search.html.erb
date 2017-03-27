@@ -1,0 +1,76 @@
+<html>
+<body class ="body1">
+<%= render :partial => '/layouts/header'%>
+<table class = "center">
+  <tr>
+    <td class = "page_head"> Search Institutional Users</td>
+  </tr>
+  <tr>
+    <%= form_tag search_institution_user_index_path, :method => 'get' do %>
+      <td align = "left">
+        <table border = "0", cellpadding = "10", cellspacing = "0">
+          <tbody>
+            <tr>
+              <td align = "left", height = "25"> First Name</td>
+              <td align = "left", height = "25">
+                <%= text_field_tag :code, params[:code]%></td>
+            </tr>
+            <tr>
+              <td align = "left", height = "25"> Last Name</td>
+              <td align = "left">
+                <%= text_field_tag :name, params[:name]%>
+              </td>
+            </tr>
+            <tr>
+              <td align = "left", height = "25"> Contact Email </td>
+              <td align = "left">
+                <%= text_field_tag :name, params[:name]%>
+              </td>
+            </tr>
+            <tr>
+              <td align = "left", height = "25"> User Status</td>
+              
+            </tr>
+            <tr>
+              <td align = "left", height = "25"> User Role</td>
+              
+            </tr>
+            <tr>
+              <td align = "left", height = "25"> User Name</td>
+              <td align = "left">
+                <%= text_field_tag :name, params[:name] %>
+              </td>
+            </tr>
+            <tr>
+              <td align = "left", height = "25"> Institution Id</td>
+              <td align = "left">
+                <%= text_field_tag :name, params[:name] %>
+              </td>
+            </tr>
+            <tr>
+              <td align = "left", height = "25"> Institution Name</td>
+              <td align = "left">
+                <%= text_field_tag :name, params[:name] %>
+              </td>
+            </tr>
+            <tr>
+              <td align = "left">
+                <%= submit_tag "Submit", :name => nil %>
+                <%= submit_tag "Reset", :name => nil %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    <% end %>
+  </tr>
+</table>
+<%= render :partial => '/layouts/footer' %>
+</body>
+</html>
+
+
+
+ 
+
+ 

@@ -5,26 +5,29 @@
       <h1>Create Institutional Users</h1>
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
-          <%= form_for @inst_admin_user, url: institution_admin_user_index_path do |f| %>
+          <%= form_for :institution_admin_user_acc do |f| %>
             <tr>
               <td>User Role*</td>
               <td>
-              <%= f.radio_button  :role, 'Primary Institution Administrator' %> Primary Institution Administrator
-              <%= f.radio_button :role,'Institution Administrator' %> Institution Administrator<br>
+              <%= f.radio_button 'primary', :role, 'Primary Institution Administrator' %> Primary Institution Administrator
+              <%= f.radio_button 'institution',:role,'Institution Administrator' %> Institution Administrator<br>
               </td>
             </tr>
-            <tr>
-              <%= render :partial => 'institution_admin_user/primary', :locals => { :f => f} %>
-            </tr>
-            <tr>
-              <td>
-                <%= f.submit "save" %>
-              </td>
-            </tr>
+            <div id="primary" class="none">xdgxg</div>
+            <div id="institution" class="none"></div>
+           
           <% end %>
         </tbody>
       </table>
-    </div>
+      </div>
   </body>
 </html>
 
+<script>
+$(':radio').change(function (event) {
+    var id = $(this).data('id');
+    console.log(id);
+      alert(id);
+    $('#' + id).addClass('none').siblings().removeClass('none');
+});
+</script>

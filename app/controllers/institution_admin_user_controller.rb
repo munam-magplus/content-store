@@ -12,12 +12,10 @@ class InstitutionAdminUserController < ApplicationController
   end
 
   def new
-    byebug
     @inst_admin_user = InstitutionAdminUserAcc.new
   end
 
   def create
-    byebug
     @inst_admin_user = InstitutionAdminUserAcc.new(insti_admin_user_params)
     if @inst_admin_user.save!
       redirect_to institution_admin_user_index_path
@@ -26,6 +24,7 @@ class InstitutionAdminUserController < ApplicationController
     end
   end
   
+
   private
 
   def insti_admin_user_params

@@ -1,4 +1,12 @@
+<body class = "body1">
+<%= render :partial => '/layouts/header'%>
+<div class = "div1">
+<table class = "center" >
   <tr>
+    <td class = "page_head"> Create Institution</td>
+  </tr>
+  <tr>
+    <%= form_tag new_institution_admin_user_path, :method => 'get' do |f|%>
       <td align = "left">
         <table border = "0", cellpadding = "10", cellspacing = "0">
           <tbody>
@@ -19,13 +27,8 @@
               <td align = "left", height = "25">
                 <%= text_field_tag :code, params[:code] %>
               </td>
-              <td align = "left", height = "25"> Status </td>
-              <td align = "left">
-                <%= text_field_tag :name, params[:name] %>
-              </td>
-            </tr>
-            <tr>
-              <td align = "left", height = "25"> Institution Name</td>
+              <td align = "left", height => "25"> Status </td>
+              <td align = "left", height => "25"> Institution Name</td>
               <td align = "left">
                 <%= text_field_tag :name, params[:name] %>
               </td>
@@ -34,10 +37,22 @@
                 <%= collection_select(:status, 0, InstitutionAccount.all, :id, :status) %>
               </td>
             </tr>
+            <tr>
+              <td align = "left">  
+                <%= submit_tag "Submit", :name => nil %>
+              </td>
+              <td align = "left">
+                <%= submit_tag "Reset", :name => nil %>
+              </td>
+            </tr>
           </tbody>
         </table>
       </td>
+    <% end %>
   </tr>
+</table>
+</div>
+</body>
 
 
 

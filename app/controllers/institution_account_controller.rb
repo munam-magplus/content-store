@@ -1,5 +1,4 @@
-class InstitutionAccountController < ApplicationController
-  
+class InstitutionAccountController < ApplicationController  
   def index
     byebug
     if params[:publisher].present?
@@ -12,13 +11,15 @@ class InstitutionAccountController < ApplicationController
   end
   
 
+  def result
+  end
+
   def not_found
   end
 
   def new
     byebug
     @institution = InstitutionAccount.new
-
   end
 
   def create
@@ -33,7 +34,7 @@ class InstitutionAccountController < ApplicationController
     else
       render 'new'
     end
-    
+
   end
  
 

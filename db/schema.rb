@@ -306,7 +306,6 @@ ActiveRecord::Schema.define(version: 20170321071400) do
   end
 
   create_table "retailers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-<<<<<<< 053c0b05937a5399e177fdfe1e8f7afc12192a95
     t.string   "retailer_code"
     t.string   "retailer_name"
     t.string   "publisher_id"
@@ -349,6 +348,7 @@ ActiveRecord::Schema.define(version: 20170321071400) do
     t.string   "discount_percentage"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
