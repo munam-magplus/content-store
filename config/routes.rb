@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   post 'publishers/new'
   post 'publishers/create'
 
+  get 'publishers/search'
+
   resources :admin_user do
     collection do 
       get 'search'
@@ -62,11 +64,18 @@ Rails.application.routes.draw do
     end
   end  
 
-  get 'institution_admin_user/search_op'
+ 
 
-  resources :retailers,:institution_admin_user,
-            :institution_account,:publishers,:journals,
-            :promo_codes   
+  resources :institution_admin_user do 
+    collection do 
+      get 'search_op'
+      post 'create'
+      post 'new'
+    end
+  end
+
+  resources :retailers,:institution_account,:publishers,
+            :journals,:promo_codes   
 
   resources :reports, :printhouse_setup, :manage_access, 
             :manage_user_account, :publisher_setup, 

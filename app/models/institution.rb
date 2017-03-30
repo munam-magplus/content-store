@@ -1,4 +1,0 @@
-class Institution < ApplicationRecord
-	has_one :institution_acc_billing_address
-	accepts_nested_attributes_for :institution_acc_billing_address
-end

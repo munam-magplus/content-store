@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321071400) do
+ActiveRecord::Schema.define(version: 20170328094454) do
+
   create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "publisher"
     t.string   "email"
@@ -164,8 +165,9 @@ ActiveRecord::Schema.define(version: 20170321071400) do
     t.integer  "postal_code"
     t.string   "country"
     t.string   "comments"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "institution_account_id"
   end
 
   create_table "institution_accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -178,9 +180,6 @@ ActiveRecord::Schema.define(version: 20170321071400) do
     t.string   "logo"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "institution_account_id"
   end
 
   create_table "institution_admin_user_accs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -200,6 +199,7 @@ ActiveRecord::Schema.define(version: 20170321071400) do
     t.string   "comments"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "primary_count"
   end
 
   create_table "journals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -312,7 +312,6 @@ ActiveRecord::Schema.define(version: 20170321071400) do
     t.string   "low_ip"
     t.string   "high_ip"
     t.string   "ip_list"
-    t.string   "operation"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
@@ -348,7 +347,6 @@ ActiveRecord::Schema.define(version: 20170321071400) do
     t.string   "discount_percentage"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

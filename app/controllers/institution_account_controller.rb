@@ -45,7 +45,8 @@ class InstitutionAccountController < ApplicationController
     params.require(:institution_account).permit(:publisher,:institution_id, 
         :libary_name,:institution_name,:status,:display_name, 
         :institution_acc_billing_address_attributes =>[
-        :first_name, :last_name, :phone, :email, :address, :address_line2,
-        :address_line3, :city, :state, :postal_code, :comments]) 
+        :id, :first_name, :last_name, :phone, :email, :address, 
+        :address_line2,:address_line3, :city, :state, 
+        :postal_code, :comments]) 
   end
 end
