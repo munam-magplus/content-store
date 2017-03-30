@@ -1,2 +1,37 @@
-<h1>Campaigns#search</h1>
-<p>Find me in app/views/campaigns/search.html.erb</p>
+<body class="body1"></body>
+<%= render :partial => '/layouts/header' %>
+<div class="div1">
+  <table bgcolor="#cccccc" border="0" cellpadding="8" cellspacing="1" width="70%"></table>
+  <table bgcolor="#cccccc" border="0" cellpadding="8" cellspacing="1" class="center" width="100%">
+    <tbody>
+      <tr>
+        <td class="tableheader">Campaign Name</td>
+        <td class="tableheader">Created By</td>
+        <td class="tableheader">Created At</td>
+        <td class="tableheader"></td>
+      </tr>
+      <% if @campaigns.present? %>
+        <% @campaigns.each do |campaign| %>
+        <tr>
+          <td bgcolor="#FBFBFB">
+            <%= campaign.campaign_name%>
+          </td>
+          <td bgcolor="#FBFBFB">
+            <%= campaign.created_by %>
+          </td>
+          <td bgcolor="#FBFBFB">
+            <%= campaign.created_at%>
+          </td>
+        </tr>
+        <% end %>
+        <% else %>
+          <tr>
+            <td bgcolor="#FBFBFB">
+              <p> Record Not Found </p> 
+            </td>
+          </tr>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>

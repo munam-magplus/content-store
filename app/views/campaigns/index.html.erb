@@ -19,7 +19,7 @@
               <tr>
                 <td height="25" width="171">Publisher</td>
                 <td height="25" width="414">
-                  <%= collection_select(nil, :id, Publisher.all, :id, :publisher_name) %>
+                  <%= collection_select(nil, :publisher_id, Publisher.all, :id, :publisher_name) %>
                 </td>
               </tr>
               <tr>
@@ -37,10 +37,10 @@
               <tr>
                 <td height="25">Created On</td>
                 <td height="25" width="430">
-                  From<input type="text" id="datepicker">
+                  From<%= text_field_tag :from %>
                 </td>
                 <td height="25" width="430">
-                 To<input type="text" id="datepicker1">
+                 To<%= text_field_tag :to %>
               </td>
               </tr>
               <tr>

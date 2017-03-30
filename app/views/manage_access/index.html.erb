@@ -28,7 +28,7 @@
 			</table>
 	</td>
 	<td class="gindexborder" colspan="2" valign="top">
-		<%= image_tag("license_home.gif")%><br>
+		<%= link_to image_tag("license_home.gif"),licenses_path %><br>
 		Licenses
 			<table>
 				<tr>
@@ -73,7 +73,7 @@
 			</table>
 	</td>
 	<td class="gindexborder" colspan="2" valign="top">
-		<%= image_tag("access_token.gif")%><br>
+		<%= link_to image_tag("access_token.gif"), access_tokens_path %><br>
 		Access Tokens
 			<table>
 				<tr>
@@ -81,13 +81,13 @@
 					 <%= link_to image_tag("search.gif"), access_tokens_path %>
 					</td>
 					<td class="gindexborder">
-						<%= image_tag("create.gif")%>
+						<%= link_to image_tag("create.gif"),{action: 'new', controller: 'access_tokens'}%>
 					</td>
 				</tr>
 			</table>
 	</td>
 	<td class="gindexborder" colspan="2" valign="top">
-		<%= image_tag("access_token.gif")%><br>
+		<%= link_to image_tag("access_token.gif"),promo_codes_path%><br>
 		Promo Codes
 			<table>
 				<tr>

@@ -19,7 +19,7 @@
               <tr>
                 <td height="25" width="171">Publisher</td>
                 <td height="25" width="414">
-                  <%= f.collection_select(:publisher, Publisher.all, :id, :publisher_name) %>
+                  <%= f.collection_select(:publisher_id, Publisher.all, :id, :publisher_name) %>
                 </td>
               </tr>
               <tr>
