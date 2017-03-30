@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
   devise_for :users
+
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
   
+  get 'retailers/search'
+
   get 'end_user/search'
   
   post 'subject_groups/new'
@@ -14,8 +20,10 @@ Rails.application.routes.draw do
 
   get 'site_settings/site_setting/index'
 
-  # get 'admin_user/search'
-  # # post 'admin_user/search'
+  post 'journals/new'
+
+  post 'publishers/new'
+  post 'publishers/create'
 
    get 'admin_user/new'
    post 'admin_user/new'
@@ -33,30 +41,30 @@ Rails.application.routes.draw do
   #   end
   # end
 
-  resources :retailers do
+  resources :content_conversation do
     collection do 
-      get 'search'
+      get 'content_history'
+      get 'index_content'
+      get 'qa_check'
+      get 'update_status'
+      get 'uploaded_errors'
     end
   end
-
-  get 'institution/result'
-
-  resources :institution_user, :institution, :access_tokens, :campaigns,
-            :publishers,:license_groups, :licenses,:subscriptions, :subject_groups  do 
+ 
+  resources :publishers, :access_tokens, :promo_codes, :campaigns, :license_groups, :licenses,
+            :subscriptions, :subject_groups  do 
     collection do 
       get 'search'
       get 'metadata_sheet'
       get 'search_result'
+      get 'result'
     end
   end
 
-  devise_scope :user do
-    root to: "devise/sessions#new"
-  end
+  # devise_scope :user do
+  #   root to: "devise/sessions#new"
+  # end
  
-  post 'publishers/new'
-  post 'publishers/create'
-  get 'journals/index'
   post 'books/new'
   
    resources :journals do
@@ -75,6 +83,18 @@ Rails.application.routes.draw do
    end
 
   get 'books/create'
+  # post 'publishers/new'
+  # post 'publishers/create'
+  
+  # # resources :journals do
+  # #   collection do
+  # #     get 'index'
+  # #     get 'search'  
+  # #     get 'upload_article_metadata'
+  # #     get 'search_article'
+  # #     get 'new_article'
+  # #   end
+  # # end
 
   resources :books do
     collection do
@@ -94,20 +114,22 @@ Rails.application.routes.draw do
   end
 
   resources :content_conversation do
+  end  
+
+ 
+
+  resources :institution_admin_user do 
     collection do 
-  		get 'content_history'
-    	get 'index_content'
-    	get 'qa_check'
-    	get 'update_status'
-    	get 'uploaded_errors'
+      get 'search_op'
+      post 'create'
+      post 'new'
     end
   end
 
-  resources :countries, only: [:index, :show]
+  resources :retailers,:institution_account,
+            :journals   
 
   resources :reports, :printhouse_setup, :manage_access, 
-            :manage_user_account, :publisher_setup, :end_user, only: [:index]
-
-  resources :promo_codes
- 
+            :manage_user_account, :publisher_setup, 
+            :end_user, only: [:index]
 end

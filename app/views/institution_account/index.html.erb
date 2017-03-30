@@ -1,0 +1,92 @@
+<body class = "body1">
+  <%= render :partial => '/layouts/header'%>
+  <table class = "center">
+    <tr>
+      <td class = "page_head"> Institution Account</td>
+    </tr>
+    <tr>
+     <%= form_for institution_account_index_path, :method => 'get' do |f| %>
+        <td align =  "left">
+          <table border = "0", cellpadding = "10", cellspacing = "0">
+            <tbody>
+              <tr>
+                <td height = "25"> Select Publisher</td>
+                <td align = "left">
+                  <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name')%>
+                </td>
+                <td align = "left", height = "25">Institution ID</td>
+                <td align = "left", height = "25">
+                  <%= text_field_tag :institution_id %>
+                </td>
+              </tr>
+              <tr>
+                <td align = "left", height = "25"> Lib./Dept. Name</td>
+                <td align = "left">
+                  <%= text_field_tag :libary_name %>
+                </td>
+                <td align = "left", height = "25"> Institution Name</td>
+                <td align = "left">
+                  <%= text_field_tag :institution_name %>
+                </td>
+              </tr>
+               <tr>
+                <td align = "left", height = "25"> IP Address</td>
+                <td align = "left">
+                  <%= text_field_tag :name,params[:ipadd] %>
+                </td>
+                <%= f.fields_for :institution_acc_billing_address do |ff| %>
+                  <td align = "left", height = "25"> City</td>
+                  <td align = "left">
+                    <%= text_field_tag :city %>
+                  </td>
+              </tr>
+              <tr>
+                <td align = "left", height = "25"> State/Province</td>
+                <td align = "left">
+                  <%= text_field_tag :state %>
+                </td>
+                <td align = "left", height = "25"> Country</td>
+              </tr>
+
+              <tr>
+                <td height = "25"> Status</td>
+              </tr>
+              <tr>
+                <td align = "left", height = "25"> Contact First Name</td>
+                <td align = "left">
+                  <%= text_field_tag :first_name %>
+                </td>
+                <td align = "left", height = "25"> Contact Last Name</td>
+                <td align = "left">
+                  <%= text_field_tag :last_name %>
+                </td>
+              </tr>
+              <tr>
+                <td align = "left", height = "25"> Contact Email</td>
+                <td align = "left">
+                  <%= text_field_tag :email %>
+                </td>
+                <td align = "left", height = "25"> New IP Request</td>
+                <td align = "left">
+                  <%= check_box_tag(:ip_address) %>
+                </td>
+              </tr>
+              <% end %>
+              <tr>
+                <td align = "left">  
+                  <%= submit_tag "Submit"%>
+                </td>
+                <td align = "left">
+                  <%= submit_tag "Reset" %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      <% end %>
+    </tr>
+  </table>
+  <%= render :partial => '/layouts/footer'%>
+</body>
+
+

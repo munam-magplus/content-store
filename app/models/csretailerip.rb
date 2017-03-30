@@ -1,3 +1,0 @@
-class Csretailerip < ApplicationRecord
-end
-

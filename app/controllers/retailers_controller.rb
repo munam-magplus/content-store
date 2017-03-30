@@ -3,36 +3,37 @@ class RetailersController < ApplicationController
 		# this is done because the association between
 		# retailer and publisher association is through publisher's code.
 		#here we get the retailers based on the publishers
-		@retail = Retailer.pluck(:pub_id)
-		#here we get all the publishers that are to be displayed in dropdown list of create page
-		@publishers = Publisher.where(:pub_id => @retail).pluck(:pub_name)
+		 # @retail = Retailer.pluck(:publisher_id)
+		 #here we get all the publishers that are to be displayed in dropdown list of create page
+		 # @publishers = Publisher.where(:id => @retail).pluck(:publisher_name)
+		 @publishers = Publisher.all.pluck(:publisher_name)
 	end 
 	
 	def new
+		byebug
 		@retailer = Retailer.new
 	end
 	
 	def create
+		byebug
 		@retailer = Retailer.new(retailer_params)
 		if @retailer.save
-			redirect_to cs_retailers_path
+			redirect_to retailers_path
 		else
 			render 'new'
 		end
 	end
 	
 	def search
-		#store retailer's name and get the publisher that have same retailer name
-		@pub = params[:retailer_name]
-		@re = Publisher.where(:pub_name => @pub).first
-		#sending the resulted variable into the partial so that the result get displayed
-		render :partial => 'new', locals: { :re => @re }
+	  #get the publisher that have same retailer name
+	  @re = Publisher.find_by_publisher_name(params[:retailer_name])
 	end
 
 	private 
  
 	def retailer_params
-		params.require(:retailer).permit(:ret_code, :ret_name,	:pub_id, :low_IP,	:high_IP,	:IP_list, :operation)
+		params.require(:retailer).permit(:retailer_code, :retailer_name,	
+			:publisher_id, :low_ip,	:high_ip,	:ip_list)
 	end
 end	
 
