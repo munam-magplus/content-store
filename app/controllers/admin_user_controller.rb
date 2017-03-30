@@ -5,16 +5,14 @@ class AdminUserController < ApplicationController
   end
 
   def new
-    byebug
     @admin_user = AdminUser.new
   end
 
   def create
-    byebug
     @admin_user = AdminUser.new(admin_user_params)
     if @admin_user.save!
       # If successfully stored then redirect to  setup path 
-      redirect_to admin_user_index_path
+      redirect_to admin_user_new_path
     else
       # If not save in that case render new
       render 'new'

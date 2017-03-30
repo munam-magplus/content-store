@@ -1,6 +1,6 @@
-class CreateArticleInfos < ActiveRecord::Migration[5.0]
+class ArticleInfo < ActiveRecord::Migration[5.0]
   def change
-    create_table :article_infos do |t|
+  	 create_table :article_infos do |t|
       t.string :contributor_info_role
       t.string :contributor_info_name
       t.string :contributor_info_description
@@ -12,7 +12,8 @@ class CreateArticleInfos < ActiveRecord::Migration[5.0]
       t.string :base_download_price_country
       t.string :base_download_price_currency
       t.string :base_download_price_price
-
+      t.integer :article_id
+      
       t.timestamps
     end
   end

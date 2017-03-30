@@ -14,30 +14,30 @@
           <tbody>
             <tr>
               <td>Publisher Name:</td>
-              <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :PUB_NAME) %></td>
+              <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :publisher_name) %></td>
             </tr> 
             <tr>
               <td> Journal Code</td>
               <td>
-                <%= text_field_tag :name, params[:name] %>
+                <%= text_field_tag :code, params[:code] %>
              </td>
             </tr> 
             <tr>
               <td> Journal Title</td>
               <td>
-                <%= text_field_tag :name, params[:name] %>
+                <%= text_field_tag :title, params[:title] %>
              </td>
             </tr> 
             <tr>
               <td>  Journal Primary ISSN</td>
               <td>
-                <%= text_field_tag :name, params[:name] %>
+                <%= text_field_tag :primary_issn, params[:primary_issn] %>
              </td>
             </tr> 
             <tr>
               <td>Journal Electronic ISSN</td>
               <td>
-                <%= text_field_tag :name, params[:name] %>
+                <%= text_field_tag :electronic_issn, params[:electronic_issn] %>
              </td>
             </tr> 
             <tr>

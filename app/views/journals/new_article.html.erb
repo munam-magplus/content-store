@@ -6,21 +6,20 @@
       <h1>New Article Setup </h1>
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
-          <%= form_for :articles do |f| %>
-          <%= form_for :article_infos do |h| %>
+          <%= form_for(:article, url:  create_article_journals_path) do |f| %>
             <tr>
               <td>Publisher*:</td>
 			        <td><%= f.text_field :publisher %></td>
           	</tr>
             <tr>
               <td>DOI:</td>
-              <td><%= f.text_field :DOI %></td>
+              <td><%= f.text_field :doi %></td>
               <td>Content Code*:</td>
               <td><%= f.text_field :content_code %></td>
             </tr> 
             <tr> 
               <td>Journal Title*:</td>
-              <td><%= select_tag(:jou_title, options_for_select([['Select',0],['Issue',1],['Early Bird',2]]))  %></td>
+              <td><%= select_tag(:journal_title, options_for_select([['Select',0],['Issue',1],['Early Bird',2]]))  %></td>
               <td>Article Type*:</td>
               <td><%= select_tag(:article_type, options_for_select([['Select',0],['Issue',1],['Early Bird',2]]))  %></td>
             </tr>
@@ -30,13 +29,13 @@
             </tr>
             <tr>
               <td>Volume Number*:</td>
-              <td><%= f.text_field :vol_no %></td>
+              <td><%= f.text_field :volume_number %></td>
               <td>Volume Title:</td>
-              <td><%= f.text_field :vol_title %></td>
+              <td><%= f.text_field :volume_title %></td>
             </tr>
             <tr>
               <td>Issue Number*:</td>
-              <td><%= f.text_field :issue_no %></td>
+              <td><%= f.text_field :issue_number %></td>
               <td>Issue Supplement* :</td>
               <td><%= f.text_field :issue_supplement %></td>
             </tr>
@@ -50,18 +49,18 @@
               <td>Access Level*:</td>
               <td><%= select_tag(:access_level, options_for_select([['Select',0],['Free',1],['Paid',2]]))  %></td>
                <td>Access Languages*:</td>
-              <td><%= select_tag(:article_lang, options_for_select([['Select',0],['Polish',1],['English',2]]))  %></td>
+              <td><%= select_tag(:article_language, options_for_select([['Select',0],['Polish',1],['English',2]]))  %></td>
             </tr>
             <tr>
               <td>External DRM*:</td>
-              <td><%= f.radio_button :external_DRM, 'Yes'%>Yes
-              <%= f.radio_button :external_DRM, 'No', :checked => true %>No</td>
+              <td><%= f.radio_button :external_drm, 'Yes'%>Yes
+              <%= f.radio_button :external_drm, 'No', :checked => true %>No</td>
                <td>Article Sequence Number:</td>
               <td><%= f.text_field :article_sequence_number %></td>
             </tr>
             <tr>
               <td>Publication Date*:</td>
-              <td><%= f.text_field :pub_date %></td>
+              <td><%= f.text_field :publisher_date %></td>
                <td>Issue Cover Date:</td>
               <td><%= f.text_field :issue_cover_date %></td>
             </tr>
@@ -80,30 +79,31 @@
               <td colspan="4">
             <div style="min-height:100px; max-height:190px; overflow:auto;">
               <table width="97%" border=0 cellPadding="8" cellSpacing="1" id="contributorTable" bgColor="#cccccc">
+                <%= f.fields_for :article_infos do |builder| %>
                <td>Role*:</td>
-              <td><%= h.text_area :role %></td>
+              <td><%= builder.text_area :contributor_info_role %></td>
             </tr>
             <tr>
                <td>Name:</td>
-              <td><%= h.text_area :name %></td>
+              <td><%= builder.text_area :contributor_info_name %></td>
             </tr>
             <tr>
                <td>desc:</td>
-              <td><%= h.text_area :desc %></td>
+              <td><%= builder.text_area :contributor_info_description %></td>
               </table>
-      </div>
+       </div>
       </td>
             </tr>
             <tr>
                <td>Format:</td>
-              <td><%= f.text_area :format %></td>
+              <td><%= builder.text_area :content_format_format %></td>
             </tr>
             <tr>
                <td>DOI:</td>
-              <td><%= f.text_area :DOI %></td>
+              <td><%= builder.text_area :content_format_doi %></td>
             </tr><tr>
                <td>Abstract:</td>
-              <td><%= f.text_area :abstract %></td>
+              <td><%= builder.text_area :content_format_abstract %></td>
             </tr>
             <tr>
             <td colspan="4">
@@ -169,12 +169,12 @@
 												<td width="15" height="25" bgcolor="#fbfbfb"><input type="checkbox"name="selbaseONLPriceDataCK" value="checkbox" />	</td>
 												<td bgcolor="#fbfbfb">
 													<div id="countryOnlineDiv" >
-														<%= h.text_field :BOA_country %>
+														<%= builder.text_field :base_online_access_country %>
 													</div>
 												</td>
 	  										<td bgcolor="#fbfbfb"  >
 	  											<div id="currencyOnlineDiv" >
-														<%= h.select(:BOA_currency, options_for_select([['Select',0],['Polish Zloty Default',1],['US Dollar',2]]))  %>
+														<%= builder.select(:base_online_access_currency, options_for_select([['Select',0],['Polish Zloty Default',1],['US Dollar',2]]))  %>
 													</div>
 	  										</td>
 	  										<td bgcolor="#fbfbfb"  >
@@ -214,33 +214,33 @@
 	<td width="15" height="25" bgcolor="#fbfbfb"><input type="checkbox"name="selbaseONLPriceDataCK" value="checkbox" />	</td>
 	<td bgcolor="#fbfbfb">
 		<div id="countryOnlineDiv" >
-		<%= h.text_field :BDP_country %>
+		<%= builder.text_field :base_download_price_country %>
 		</div>
 	</td>
 	  <td bgcolor="#fbfbfb"  >
 	  	<div id="currencyOnlineDiv" >
-		<%= h.select(:BDP_currency, options_for_select([['Select',0],['Polish Zloty Default',1],['US Dollar',2]]))  %>	</div>
+		<%= builder.select(:base_download_price_currency, options_for_select([['Select',0],['Polish Zloty Default',1],['US Dollar',2]]))  %>	</div>
 	  </td>
-	  <td bgcolor="#fbfbfb"  >
-		<input type="text" name="contentFormatOnlinePrices[0].price" size="10" value="0.0" onchange="validateCurrency(this);" class="text_field">	</td>
+	  <td bgcolor="#fbfbfb">
+    <div id="countryOnlineDiv" >
+    <%= builder.text_field :base_download_price_price %>
+    </div>
+  </td>
 	</tr></table>
 </div>
 	 </td>
 </tr>
 </tr>
+<tr>
+<td>            
 
-            
-
-            <%= f.submit "Submit" %>
-
+          </td>
+</tr>
           <% end %>
+            <%= f.submit "Submit" %>
            <% end %>
         </tbody>
       </table>
     </div>
   </body>
 </html>
-<tr>
-  <td align="center" class="footer_white">
-  Copyright © 2006-2009 MPS Technologies Ltd</td>
-</tr>

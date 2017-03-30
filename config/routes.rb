@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get 'end_user/new'
   get 'journals/search'
+  post 'journals/new_article'
 
   get 'end_user/create'
 
@@ -16,15 +17,21 @@ Rails.application.routes.draw do
   # get 'admin_user/search'
   # # post 'admin_user/search'
 
-  # get 'admin_user/new'
-  # post 'admin_user/new'
+   get 'admin_user/new'
+   post 'admin_user/new'
+   get 'admin_user/create'
+   post 'admin_user/create'
+   get 'admin_user/search'
+   get 'admin_user/index'
+   post 'admin_user/index'
 
-  resources :admin_user do
-    collection do 
-      get 'search'
-      get 'index'
-    end
-  end
+  # resources :admin_user do
+  #   collection do 
+  #     get 'search'
+  #     get 'index'
+  #     post 'index'
+  #   end
+  # end
 
   resources :retailers do
     collection do 
@@ -49,16 +56,23 @@ Rails.application.routes.draw do
  
   post 'publishers/new'
   post 'publishers/create'
+  get 'journals/index'
+  post 'books/new'
   
-  # resources :journals do
-  #   collection do
-  #     get 'index'
-  #     get 'search'  
-  #     get 'upload_article_metadata'
-  #     get 'search_article'
-  #     get 'new_article'
-  #   end
-  # end
+   resources :journals do
+    collection { post :validate }
+      collection do
+      post 'create'
+      get 'new'
+      post 'new'
+      get 'index'
+      get 'new_article'
+      post 'create_article'
+      get 'search'
+      get 'search_article'  
+      get 'upload_article_metadata'
+     end
+   end
 
   get 'books/create'
 
@@ -70,15 +84,14 @@ Rails.application.routes.draw do
       get 'metadata_sheet'
       get 'onix_input'
       get 'onix_supp_sheet'
+      post 'primary_content_info'
+      get 'contributors/new'
+      post 'contributors/create'
+      post 'content_pricing'
+      post 'content_access_rules'
+      post 'seo_config'
     end
   end
-
-# get 'journals/new'
-# post  'journals/create'
-
-resources :journals
-
-post 'journals/new'
 
   resources :content_conversation do
     collection do 
@@ -97,6 +110,4 @@ post 'journals/new'
 
   resources :promo_codes
  
-  root 'csretailers#index'
-
 end

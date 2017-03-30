@@ -19,7 +19,7 @@ class CreateBooksPrimaryContentInfos < ActiveRecord::Migration[5.0]
       t.string :edition
       t.string :binding
       t.string :volume
-      t.string :series_ISBN
+      t.string :series_isbn
       t.string :series_title
       t.string :dimension
 

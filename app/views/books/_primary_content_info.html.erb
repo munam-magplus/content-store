@@ -1,91 +1,84 @@
 <table>
 	<tr>
-		<td align="center" background="images/step_bg_over.gif" bgcolor="#FFFFFF"><strong>Primary Content Information</strong></td>
+		<td align="center" bgcolor="#FFFFFF"><strong>Primary Content Information</strong></td>
 		<td align="center">Contributors</td>
-		<td align="center"  >Content Pricing</td>
-		<td align="center"  >Content Access Rules</td>
-		<td align="center"  >SEO Configuration</td>
+		<td align="center">Content Pricing</td>
+		<td align="center">Content Access Rules</td>
+		<td align="center">SEO Configuration</td>
 	</tr>
 </table>
-<h1> Primary Content Information   </h1>
+<h1> Primary Content Information</h1>
 <table border="0" cellpadding="10" cellspacing="0">
 	<tbody>
-			<%= form_for :books_primary_content_info do |a| %>
-				<tr>
-					<td>Content Code:</td>
-					<td><%= a.text_field :content_code %></td>
-					<td>Publisher*:</td>
-					<td><%= a.text_field :publisher %></td>
-				</tr> 
-				<tr> 
-					<td>Title:</td>
-					<td><%= a.text_field :title %></td>
-					<td>Sub Title</td>
-					<td><%= a.text_field :sub_title %></td>
-				</tr> 
-				<tr> 
-					<td>ISBN *</td>
-					<td><%= f.text_field :ISBN %></td>
-					<td>Language *</td>
-					<td><%= a.text_field :lang %></td>
-				</tr>
-						<tr>
-							<td>Content Classification </td>
-							<td><%= a.select :content_clasification, options_for_select(['Select','Select'],['hello','hello']) %></td>
-							<td>File Name*     </td>
-							<td><%= f.text_field :file_name %></td>
-						</tr> 
-						<tr> 
-							<td>Stock Number   </td>
-							<td><%= a.text_field :stock_number %></td>
-						</tr>
-						<tr>
-							<td>Publisher Site Sales Link     </td>
-							<td><%= a.text_field :pub_site_sales_link %></td>
-						</tr>
-						<tr>
-							<td>Blurb</td>
-							<td><%= a.text_area :blurb, cols: "40", rows: "5" %></td>
-						</tr> 
-						<tr> 
-							<td>Publisher Date </td>
-							<td><%= a.text_field :pub_date %>(dd)</td>
-							<td>Publisher Month </td>
-							<td><%= f.text_field :pub_month %>(mm)</td>
-						</tr>
-						<tr> 
-							<td>Publisher Year </td>
-							<td><%= f.text_field :pub_yesr %>(yyyy)</td>
-							<td>Conversion Required </td>
-							<td><%= f.select(:conversion_req, options_for_select([['Select',0],[' Yes',1],['No',2]]))  %></td>
-						</tr>
-						<tr> 
-							<td>Edition </td>
-							<td><%= f.text_field :edition %></td>
-							<td>Binding </td>
-							<td><%= f.select(:binding, options_for_select([['Select',0],[' Yes',1],['No',2]]))  %></td>
-						</tr>
-						<tr> 
-							<td>Volume </td>
-							<td><%= a.text_field :volume %></td>
-							<td>Dimensions </td>
-							<td><%= f.text_field :dimension %></td>
-						</tr>
-						<tr> 
-							<td>Series ISBN </td>
-							<td><%= f.text_field :series_ISBN %></td>
-							<td>Series Title </td>
-							<td><%= f.text_field :series_title %></td>
-						</tr>
-
-						<td><%= f.submit "Save and Continue" %></td>
-						<td><%= f.button "Finish", type: :reset %></td>
-
-					<% end %>
-					<% end %>
-				</tbody>
-			</table>
-		</div>
-	</body>
-</html>
-
+		<%= form_for @book do |a| %>
+			<tr>
+				<td>Content Code:</td>
+				<td><%= a.text_field :content_code %></td>
+				<td>Publisher*:</td>
+				<td><%= a.text_field :publisher %></td>
+			</tr> 
+			<tr> 
+				<td>Title:</td>
+				<td><%= a.text_field :title %></td>
+				<td>Sub Title</td>
+				<td><%= a.text_field :subject_title %></td>
+			</tr> 
+			<tr> 
+				<td>ISBN *</td>
+				<td><%= a.text_field :isbn %></td>
+				<td>Language *</td>
+				<td><%= a.text_field :language %></td>
+			</tr>
+			<tr>
+				<td>Content Classification </td>
+				<td><%= a.select :content_clasification, options_for_select(['Select','Select'],['hello','hello']) %></td>
+				<td>File Name*</td>
+				<td><%= a.text_field :file_name %></td>
+			</tr> 
+			<tr> 
+				<td>Stock Number   </td>
+				<td><%= a.text_field :stock_number %></td>
+			</tr>
+			<tr>
+				<td>Publisher Site Sales Link     </td>
+				<td><%= a.text_field :publisher_site_sales_link %></td>
+			</tr>
+			<tr>
+				<td>Blurb</td>
+				<td><%= a.text_area :blurb, cols: "40", rows: "5" %></td>
+			</tr> 
+			<tr> 
+				<td>Publisher Date </td>
+				<td><%= a.text_field :publisher_date %>(dd)</td>
+				<td>Publisher Month </td>
+				<td><%= a.text_field :publisher_month %>(mm)</td>
+			</tr>
+			<tr> 
+				<td>Publisher Year</td>
+				<td><%= a.text_field :publisher_year %>(yyyy)</td>
+				<td>Conversion Required</td>
+				<td><%= a.select(:conversion_required, options_for_select([['Select',0],[' Yes',1],['No',2]]))  %></td>
+			</tr>
+			<tr> 
+				<td>Edition </td>
+				<td><%= a.text_field :edition %></td>
+				<td>Binding </td>
+				<td><%= a.select(:binding, options_for_select([['Select',0],[' Yes',1],['No',2]]))  %></td>
+			</tr>
+			<tr> 
+				<td>Volume </td>
+				<td><%= a.text_field :volume %></td>
+				<td>Dimensions </td>
+				<td><%= a.text_field :dimension %></td>
+			</tr>
+			<tr> 
+				<td>Series ISBN </td>
+				<td><%= a.text_field :series_ISBN %></td>
+				<td>Series Title </td>
+				<td><%= a.text_field :series_title %></td>
+			</tr>
+			<td><%= a.submit "Save and Continue" %></td>
+			<td><%= a.button "Finish", type: :reset %></td>
+		<% end %>
+	</tbody>
+</table>

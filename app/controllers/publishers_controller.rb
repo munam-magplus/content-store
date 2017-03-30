@@ -24,8 +24,8 @@ class PublishersController < ApplicationController
       render 'new'
     end
   end
+  
   private 
-
   def publisher_params
     params.require(:publisher).permit(:publisher_code, :publisher_name, 
     :publisher_status, :publisher_type, :end_user_language, :manager_language,

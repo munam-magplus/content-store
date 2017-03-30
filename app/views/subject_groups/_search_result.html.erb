@@ -2,10 +2,8 @@
   <body class = "body1">
     <%= render :partial => '/layouts/header'%>
     <div class="div1">
-      <table border="0" cellpadding="10" cellspacing="0">
-			  <tr>
 			    <h1>Subject Group List</h1>
-			  </tr>
+      <table border="0" cellpadding="10" cellspacing="0">
 		    <tbody>
 		      <tr>
 		        <td.tableheader> Subject Group Name </td>
@@ -14,9 +12,9 @@
 		      </tr>
 		      <% if @subject_group.present? %>
 		        <tr>
-		          <td><%= @subject_group.first.SUG_GROUP_NAME %></td>
-		          <td><%= @subject_group.first.SUG_GROUP_CODE %></td>
-		          <td><%= @subject_group.first.LAN_LANGUAGE_ID %></td>
+		          <td><%= @subject_group.first.subject_group_name %></td>
+		          <td><%= @subject_group.first.subject_group_code %></td>
+		          <td><%= @subject_group.first.subject_group_level %></td>
 	      		</tr>
 	      	<% else %>
 	      	<% end %>

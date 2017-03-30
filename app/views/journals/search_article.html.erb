@@ -14,43 +14,43 @@
           <tbody>
             <tr>
               <td>Journal Title</td>
-              <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :PUB_NAME) %></td>
+              <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :publisher_name) %></td>
             </tr> 
             <tr>
               <td> Title </td>
               <td>
-                <%= text_field_tag :name, params[:name] %>
+                <%= text_field_tag :title, params[:title] %>
               </td>
             </tr> 
             <tr>
               <td> Content Code </td>
               <td>
-                <%= text_field_tag :name, params[:name] %>
+                <%= text_field_tag :code, params[:code] %>
              </td>
             </tr> 
             <tr>
               <td>  DOI </td>
-              <td><%= text_field_tag :name, params[:first_name] %></td>
+              <td><%= text_field_tag :doi, params[:doi] %></td>
             </tr>
             <tr>
               <td>Volume Number </td>
-              <td><%= text_field_tag :name, params[:last_name] %></td>
+              <td><%= text_field_tag :volume, params[:volume] %></td>
             </tr>
              <tr>
               <td>Issue Number </td>
-              <td><%= text_field_tag :name, params[:last_name] %></td>
+              <td><%= text_field_tag :issue, params[:issue] %></td>
             </tr>
              <tr>
               <td>Article Section </td>
-              <td><%= text_field_tag :name, params[:last_name] %></td>
+              <td><%= text_field_tag :article, params[:article] %></td>
             </tr>
              <tr>
               <td>Author First Name </td>
-              <td><%= text_field_tag :name, params[:last_name] %></td>
+              <td><%= text_field_tag :author_first_name, params[:author_first_name] %></td>
             </tr>
              <tr>
               <td>Author Last Name  </td>
-              <td><%= text_field_tag :name, params[:last_name] %></td>
+              <td><%= text_field_tag :author_last_name, params[:author_last_name] %></td>
             </tr> 
             <tr>
               <td>

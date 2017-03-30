@@ -6,27 +6,27 @@
         <tr>
           <h1>Search Subject Group</h1>
         </tr>
-        <%= form_tag search_result_subject_groups_path, :method => 'get' do |f| %>
+        <%= form_tag search_result_subject_groups_path, :method => 'get' do %>
           <tbody>
             <tr>
               <td> Publisher </td>
-              <td><%= f.text_field :publisher %></td>
+              <td><%= text_field_tag :publisher, params[:publisher] %></td>
             </tr> 
             <tr>
               <td> Subject Group Name </td>
-              <td><%= f.text_field :subject_group_name %></td>
+              <td><%= text_field_tag :subject_group_name, params[:subject_group_name] %></td>
             </tr> 
             <tr>
               <td> Subject Group Code </td>
-              <td><%= f.text_field :subject_group_code %></td>
+              <td><%= text_field_tag :subject_group_code, params[:subject_group_code] %></td>
             </tr> 
             <tr>
               <td> Select Language </td>
-              <td><%= f.select_tag(:language, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %></td>
+              <td><%= select_tag(:select_language, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %></td>
             </tr>
             <tr><td></td>
               <td>
-                <%= submit_tag "Submit" %>
+                <%= submit_tag "Search" %>
                 <%= button_tag "Reset", type: :reset %>
               </td>
             </tr>

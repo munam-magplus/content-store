@@ -6,7 +6,7 @@
       <h1>Create Admin Users</h1>
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
-          <%= form_for :admin_user, url: admin_user_index_path do |f| %>
+          <%= form_for @admin_user, url: admin_user_create_path do |f| %>
             <tr>
               <td>Publisher*</td>
               <td><%= f.text_field :publisher %></td>
@@ -16,8 +16,8 @@
               <td><%= f.text_field :email %></td>
                <td>Confirm Email*</td>
               <td><%= f.text_field :confirm_email %></td>
-            </tr> 
-            
+            </tr>
+                        
             <tr> 
               <td>First Name* </td>
               <td><%= f.text_field :first_name %></td>

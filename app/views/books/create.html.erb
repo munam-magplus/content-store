@@ -1,14 +1,5 @@
 <% title "New Book"%>
 
-<% form_for @book do |f| %>
-		<%= render 'primary_content_info'%>
-		<%= render 'contributors'%>
-		<%= render 'content_pricing'%>
-		<%= render 'content_access_rules'%>
-		<%= render 'seo_config'%>
-		<p><%= f.submit "Submit" %></p>
-	<% end %>
-
 <p><%= link_to "Back to list",book_path %></p>
 
 <html>
