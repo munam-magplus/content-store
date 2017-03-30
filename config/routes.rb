@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     end
   end
  
-  resources :access_tokens,:campaigns,:license_groups, :licenses,
+  resources :publishers, :access_tokens, :promo_codes, :campaigns, :license_groups, :licenses,
             :subscriptions, :subject_groups  do 
     collection do 
       get 'search'
@@ -93,8 +93,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :retailers,:institution_account,:publishers,
-            :journals,:promo_codes   
+  resources :retailers,:institution_account,
+            :journals   
 
   resources :reports, :printhouse_setup, :manage_access, 
             :manage_user_account, :publisher_setup, 
