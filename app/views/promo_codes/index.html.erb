@@ -1,2 +1,46 @@
-<h1>PromoCodes#index</h1>
-<p>Find me in app/views/promo_codes/index.html.erb</p>
+<body class = "body1">
+<%= render :partial => '/layouts/header'%>
+<div class= "div1"> 
+  <!-- %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "860"} -->
+  <table border = "0", cellpadding = "0", cellspacing = "0", width = "860", class = "center">
+    <tr>
+      <td class = "page_head"> Search Promo Code </td>
+    </tr>
+    <tr>
+      <%= form_tag search_promo_codes_path, :method => 'get' do %>
+        <td align = "left">
+          <table border = "0", cellpadding = "10", cellspacing = "0">
+            <tbody>
+              <tr>
+                <td align = "left", height = "25"> Publisher Code</td>
+                <td align = "left", height = "25">
+                 <%= collection_select(nil, :publisher_id, Publisher.all, :id, :publisher_name) %>
+                </td>
+              </tr>
+              <tr>
+                <td align = "left", height = "25"> Campaign</td>
+                <td align = "left">
+                  <%= collection_select(nil, :campaign_id, Campaign.all, :id, :campaign_name) %>
+                </td>
+              </tr>
+              <tr>
+                <td align = "left", height = "25"> Access Token ID</td>
+                <td align = "left">
+                  <%= text_field_tag :id %>
+                </td>
+              </tr>
+            <!-- %tbody -->
+              <tr>
+                <td align = "center">   
+                 <%= submit_tag "Search", :name => nil %>
+                </td>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      <% end %>
+    </tr>
+  </table>
+</div>
+</body>

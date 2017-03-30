@@ -1,2 +1,40 @@
-<h1>PromoCodes#search</h1>
-<p>Find me in app/views/promo_codes/search.html.erb</p>
+<body class="body1"></body>
+<%= render :partial => '/layouts/header' %>
+<div class="div1">
+  <table bgcolor="#cccccc" border="0" cellpadding="8" cellspacing="1" width="70%"></table>
+  <table bgcolor="#cccccc" border="0" cellpadding="8" cellspacing="1" class="center" width="100%">
+    <tbody>
+      <tr>
+        <td class="tableheader">Publisher</td>
+        <td class="tableheader">Promo Code ID</td>
+        <td class="tableheader">Campaign Name</td>
+        <td class="tableheader">Promo Code usage Count</td>
+      </tr>
+      <% if @promo_codes.present? %>
+        <% @promo_codes.each do |promo_code| %>
+        <tr>
+          <td bgcolor="#FBFBFB">
+            <%= link_to promo_code.publisher_id%>
+          </td>
+          <td bgcolor="#FBFBFB">
+            <%= promo_code.id %>
+          </td>
+          <td bgcolor="#FBFBFB">
+            <%= promo_code.campaign_id %>
+          </td>
+          <td bgcolor="#FBFBFB">
+            <%= promo_code.number_of_promo_code %>
+          </td>
+        </tr>
+        <% end %>
+        <% else %>
+          <tr>
+            <td bgcolor="#FBFBFB">
+              <p> Record Not Found </p> 
+            </td>
+          </tr>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>

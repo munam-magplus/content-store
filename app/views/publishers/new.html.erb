@@ -1,0 +1,109 @@
+<body class = "body1">
+<%= render :partial => '/layouts/header' %>
+<%= form_for :publisher,url: publishers_create_path do |f| %>
+  <table border =  "0", cellpadding = "0", cellspacing = "0", width = "860", class = "center">
+    <tr>
+      <td class = "page_head"> Create Publisher</td>
+    </tr>
+    <tr>
+      <td>
+        <table border = "0", cellpadding = "6", cellspacing = "0", width = "100%", class = "center">
+          <tr>
+            <td>
+              <table border = "0", cellpadding = "10", cellspacing = "0">
+                <tbody>
+                  <tr>
+                    <td height = "25">
+                      Publisher Code
+                      <span class = "mandtory ">*</span>
+                    </td>
+                    <td height = "25">
+                      <%= f.text_field :publisher_code %>
+                    </td>
+                    <td>
+                      Publisher Name
+                      <span class = "mandtory ">*</span>
+                    </td>
+                    <td>
+                      <%= f.text_field :publisher_name %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td height = "25"> Publisher Status</td>
+                    <td height = "25">
+                      <%= f.select :publisher_status, options_for_select([ "Live", "Staging"]), :class => 'genForm_dropBox' %>
+                    </td>
+                    <td>
+                      Publisher Type
+                      <span class = "mandtory ">*</span>
+                    </td>
+                    <td>
+                      <%= f.select :publisher_type, [['Digital', :digital], ['Academic', :academic], ['Discovery', :discovery]] %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td height = "25"> Default End User Language</td>
+                    <td height = "25">
+                      <%= f.select(:end_user_language, [['Dansk', 'da'],
+                                  ['Polish', 'pl'],
+                                  ['Latvian', 'lv'],
+                                  ['English', 'en']],{ :prompt => "Please select"}) %>
+                    </td>
+                    <td> Default Manager Language </td>
+                    <td height = "25">
+                      <%= f.select(:manager_language,[['Dansk', 'da'],
+                                  ['Polish', 'pl'],
+                                  ['Latvian', 'lv'],
+                                  ['English', 'en']],{ :prompt => "Please select"}) %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td height = "25">
+                      Contact First Name
+                      <span class = "mandtory ">*</span>
+                    </td>
+                    <td height = "25">
+                      <%= f.text_field :contact_first_name %>
+                    </td>
+                    <td>
+                      Contact Last Name
+                      <span class = "mandtory ">*</span>
+                    </td>
+                    <td>
+                      <%= f.text_field :contact_last_name%>
+                    </td>
+                  </tr> 
+                  <tr>
+                    <td height = "25">
+                      Contact Email
+                      <span class = "mandtory ">*</span>
+                    </td>
+                    <td height = "25">
+                      <%= f.text_field :contact_email%>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class = "GBoldText", align = "right", height = "35">
+                      <table border = "0", cellpadding = "0", cellspacing = "0">
+                        <tr>
+                          <td>
+                            <%= submit_tag "Save" %>
+                          </td>
+                          <td>
+                            <input class="submit_btn" type="reset" value="Reset"></input>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+<%= render :partial => '/layouts/footer' %>

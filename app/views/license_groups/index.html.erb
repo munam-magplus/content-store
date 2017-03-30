@@ -3,7 +3,7 @@
 <div class="div1">
   <table border="0" cellpadding="0" cellspacing="0" width="860">
     <tr>
-      <td class="page_head">Search Campaign</td>
+      <td class="page_head">Search License Group</td>
     </tr>
     <tr>
       <td align="left"></td>
@@ -12,9 +12,9 @@
       <td></td>
     </tr>
     <tr>
-      <%= form_tag search_campaigns_path, :id => "search_campaign" ,:method => 'get' do |f|%>
+      <%= form_tag search_license_groups_path, :method => 'get' do  %>
         <td>
-          <table align="left" border="0" cellpadding="10" cellspacing="0">
+          <table border="0" cellpadding="10" cellspacing="0">
             <tbody>
               <tr>
                 <td height="25" width="171">Publisher</td>
@@ -23,35 +23,35 @@
                 </td>
               </tr>
               <tr>
-                <td height="25" width="149">Campaign Name</td>
+                <td height="25" width="149">License Group ID</td>
                 <td height="25">
-                  <%= text_field_tag :campaign_name%>
+                  <%= text_field_tag :license_group_ID %>
+                </td>
+              </tr>
+              <tr>
+                <td height="25">License Group Name</td>
+                <td height="25" width="436">
+                  <%= text_field_tag :license_group_name %>
+                </td>
+              </tr>
+              <tr>
+                <td height="25">License Name</td>
+                <td height="25" width="436">
+                  <%= text_field_tag :license_name %>
                 </td>
               </tr>
               <tr>
                 <td height="25">Created By</td>
-                <td height="25" width="436">
+                <td height="25">
                   <%= text_field_tag :created_by %>
                 </td>
               </tr>
-              <tr>
-                <td height="25">Created On</td>
-                <td height="25" width="430">
-                  From<%= text_field_tag :from %>
+               <tr>
+                <td height = "25">Saleability </td>
+                <td height = "25"> 
+                 <%= select_tag(:license_for_sale, options_for_select([['Select',0],[' For Sale',:y],['Not For Sale',:n]]))%>
                 </td>
-                <td height="25" width="430">
-                 To<%= text_field_tag :to %>
-              </td>
-              </tr>
-              <tr>
-                <td height="25">Access Tokens Generated</td>
-                <td height="25" width="430">
-                  <%= radio_button_tag :access_token_generated, 'email'%> 
-                  <%= label :contactmethod_email, 'Yes' %>
-                  <%= radio_button_tag :access_token_generated, 'sms' %>
-                  <%= label :contactmethod_sms, 'No' %>
-                </td>
-              </tr>
+               </tr>
               <tr>
                 <td align="right" class="GBoldText"></td>
                 <td align="left" class="GBoldText">

@@ -5,22 +5,25 @@
   <table bgcolor="#cccccc" border="0" cellpadding="8" cellspacing="1" class="center" width="100%">
     <tbody>
       <tr>
-        <td class="tableheader">Campaign Name</td>
-        <td class="tableheader">Created By</td>
-        <td class="tableheader">Created At</td>
-        <td class="tableheader"></td>
+        <td class="tableheader">Publisher Code</td>
+        <td class="tableheader">Publisher Name</td>
+        <td class="tableheader">Contact Name</td>
+        <td class="tableheader">Contact Email</td>
       </tr>
-      <% if @campaigns.present? %>
-        <% @campaigns.each do |campaign| %>
+      <% if @publisher.present? %>
+        <% @publisher.each do |pub| %>
         <tr>
           <td bgcolor="#FBFBFB">
-            <%= campaign.campaign_name%>
+            <%= link_to pub.publisher_code %>
           </td>
           <td bgcolor="#FBFBFB">
-            <%= campaign.created_by %>
+            <%= pub.publisher_name %>
           </td>
           <td bgcolor="#FBFBFB">
-            <%= campaign.created_at%>
+            <%= pub.contact_first_name %>
+          </td>
+          <td bgcolor="#FBFBFB">
+            <%= pub.contact_email %>
           </td>
         </tr>
         <% end %>
