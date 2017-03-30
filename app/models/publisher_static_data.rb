@@ -1,2 +1,0 @@
-class PublisherStaticData < ApplicationRecord
-end

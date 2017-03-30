@@ -15,14 +15,14 @@
 	 		</tr>
 	 </thead>
 	 <tbody>
-	 	<tr>
 			<% @res.each do |f| %>
-				<td bgcolor="#ffe5db"><%= f.INS_INSTITUTION_CODE %></td>
-				<td bgcolor="#ffe5db"><%= f.INS_INSTITUTION_NAME %></td>
-				<td bgcolor="#ffe5db"><%= f.INS_LIB_DEPT_NAME %></td>
-				<td bgcolor="#ffe5db"><% @count %></td>
-				<td bgcolor="#ffe5db"><%= f.INS_FIRST_NAME%><%= f.INS_LAST_NAME%></td>
-				<td bgcolor="#ffe5db"><%= f.INS_INSTITUTION_STATUS %></td>
+	 	<tr>
+				<td bgcolor="#ffe5db"><%= f.institution_id %></td>
+				<td bgcolor="#ffe5db"><%= f.institution_name %></td>
+				<td bgcolor="#ffe5db"><%= f.libary_name %></td>
+				<td bgcolor="#ffe5db"><% @country %></td>
+				<td bgcolor="#ffe5db"></td>
+				<td bgcolor="#ffe5db"><%= f.status %></td>
 				<td bgcolor="#ffe5db">
 					<%if @chec.present? %>
 							yes
@@ -38,8 +38,8 @@
 					<%= image_tag("Referral_URL.png")%>
 					<%= image_tag("managins_user.gif")%>
 				</td>
-			<%end%>
 		</tr>
+			<%end%>
 	 </tbody> 
 	</table>
 		</div>

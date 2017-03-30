@@ -1,4 +1,0 @@
-class Csretailer < ApplicationRecord
-end 
-
-

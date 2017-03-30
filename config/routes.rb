@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
   devise_for :users
+
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
   
+  get 'retailers/search'
+
   get 'end_user/search'
   
   post 'subject_groups/new'
@@ -13,11 +19,12 @@ Rails.application.routes.draw do
 
   get 'site_settings/site_setting/index'
 
-  # get 'admin_user/search'
-  # # post 'admin_user/search'
+  post 'journals/new'
 
-  # get 'admin_user/new'
-  # post 'admin_user/new'
+  post 'publishers/new'
+  post 'publishers/create'
+
+  get 'publishers/search'
 
   resources :admin_user do
     collection do 
@@ -25,60 +32,6 @@ Rails.application.routes.draw do
       get 'index'
     end
   end
-
-  resources :retailers do
-    collection do 
-      get 'search'
-    end
-  end
-
-  get 'institution/result'
-
-  resources :institution_user, :institution, :access_tokens, :promo_codes, :campaigns,
-            :publishers,:license_groups, :licenses,:subscriptions, :subject_groups  do 
-    collection do 
-      get 'search'
-      get 'metadata_sheet'
-      get 'search_result'
-    end
-  end
-
-  devise_scope :user do
-    root to: "devise/sessions#new"
-  end
- 
-  post 'publishers/new'
-  post 'publishers/create'
-  
-  # resources :journals do
-  #   collection do
-  #     get 'index'
-  #     get 'search'  
-  #     get 'upload_article_metadata'
-  #     get 'search_article'
-  #     get 'new_article'
-  #   end
-  # end
-
-  get 'books/create'
-
-  resources :books do
-    collection do
-      get 'index'
-      post 'create'
-      get 'search'
-      get 'metadata_sheet'
-      get 'onix_input'
-      get 'onix_supp_sheet'
-    end
-  end
-
-# get 'journals/new'
-# post  'journals/create'
-
-resources :journals
-
-post 'journals/new'
 
   resources :content_conversation do
     collection do 
@@ -89,13 +42,64 @@ post 'journals/new'
       get 'uploaded_errors'
     end
   end
+ 
+  resources :access_tokens,:campaigns,:license_groups, :licenses,
+            :subscriptions, :subject_groups  do 
+    collection do 
+      get 'search'
+      get 'metadata_sheet'
+      get 'search_result'
+      get 'result'
+    end
+  end
 
-  resources :countries, only: [:index, :show]
+  # devise_scope :user do
+  #   root to: "devise/sessions#new"
+  # end
+ 
+  # post 'publishers/new'
+  # post 'publishers/create'
+  
+  # # resources :journals do
+  # #   collection do
+  # #     get 'index'
+  # #     get 'search'  
+  # #     get 'upload_article_metadata'
+  # #     get 'search_article'
+  # #     get 'new_article'
+  # #   end
+  # # end
 
-  resources :reports, :printhouse_setup, :manage_access, 
-            :manage_user_account, :publisher_setup, :end_user, only: [:index]
+  # get 'books/create'
+
+  resources :books do
+    collection do
+      get 'index'
+      post 'create'
+      get 'search'
+      get 'metadata_sheet'
+      get 'onix_input'
+      get 'onix_supp_sheet'
+    end
+  end  
 
  
-  root 'csretailers#index'
+
+  resources :institution_admin_user do 
+    collection do 
+      get 'search_op'
+      post 'create'
+      post 'new'
+    end
+  end
+
+  resources :retailers,:institution_account,:publishers,
+            :journals,:promo_codes   
+
+  resources :reports, :printhouse_setup, :manage_access, 
+            :manage_user_account, :publisher_setup, 
+            :end_user, only: [:index]
+ 
+  root 'retailers#index'
 
 end
