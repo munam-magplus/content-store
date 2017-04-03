@@ -1,0 +1,34 @@
+<%= form_for(:retailer, url: retailers_path)  do |f| %>
+	<table id = "items" border = "1", cellpadding = "0", cellspacing = "0", width = "100%">
+	    <tr>
+	      <td class = "tableheader" align = "center", height = "30"> Retailer Code</td>
+	      <td class = "tableheader" align = "center", height = "30"> Retailer Name</td>
+	      <td class = "tableheader" align = "center", height = "30"> Publisher Id</td>
+	      <td class = "tableheader" align = "center", height = "30"> Low Ip</td>
+	      <td class = "tableheader" align = "center", height = "30"> High Ip</td>
+	      <td class = "tableheader" align = "center", height = "30"> IP List</td>
+	      <td class = "tableheader" align = "center", height = "30"> Operation</td>
+	    </tr>
+	    <tr id="form">
+	      <td align = "left", height = "25">
+	        <%= f.text_field :retailer_code %>
+	      </td>
+	     <td align = "left", height = "25" >
+	        <%=  f.select(:retailer_name, options_for_select([[@re.publisher_code ,@re.publisher_code]])) %>
+	      </td> 
+	      <td align = "left", height = "25">
+	        <%= f.text_field :publisher_id , :value => @re.id%>
+	      </td>
+	      <td align = "left", height = "25">
+	        <%= f.text_field :low_ip %>
+	      </td>
+	      <td align = "left", height = "25">
+	        <%= f.text_field :high_ip %>
+	      </td>
+	      <td align = "left", height = "25">
+	        <%= f.text_field :ip_list %>
+	      </td>
+	    </tr> 
+	</table>
+  <%= f.submit %>
+<% end %>

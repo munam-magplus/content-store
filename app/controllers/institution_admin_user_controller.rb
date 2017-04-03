@@ -19,6 +19,7 @@ class InstitutionAdminUserController < ApplicationController
   end
 
   def create
+    byebug
     # create new institution admin user
     @inst_admin_user = InstitutionAdminUserAcc.new(insti_admin_user_params)
     # get username and role of the admin user

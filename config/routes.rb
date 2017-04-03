@@ -13,14 +13,10 @@ Rails.application.routes.draw do
   post 'subject_groups/new'
 
   get 'end_user/new'
-  get 'journals/search'
-  post 'journals/new_article'
 
   get 'end_user/create'
 
   get 'site_settings/site_setting/index'
-
-  post 'journals/new'
 
   post 'publishers/new'
   post 'publishers/create'
@@ -33,13 +29,6 @@ Rails.application.routes.draw do
    get 'admin_user/index'
    post 'admin_user/index'
 
-  # resources :admin_user do
-  #   collection do 
-  #     get 'search'
-  #     get 'index'
-  #     post 'index'
-  #   end
-  # end
 
   resources :content_conversation do
     collection do 
@@ -60,41 +49,21 @@ Rails.application.routes.draw do
       get 'result'
     end
   end
-
-  # devise_scope :user do
-  #   root to: "devise/sessions#new"
-  # end
  
   post 'books/new'
   
-   resources :journals do
-    collection { post :validate }
-      collection do
-      post 'create'
-      get 'new'
-      post 'new'
+  get 'books/create'
+  
+  resources :journals do
+    collection do
       get 'index'
+      get 'search'  
+      get 'upload_article_metadata'
+      get 'search_article'
       get 'new_article'
       post 'create_article'
-      get 'search'
-      get 'search_article'  
-      get 'upload_article_metadata'
-     end
-   end
-
-  get 'books/create'
-  # post 'publishers/new'
-  # post 'publishers/create'
-  
-  # # resources :journals do
-  # #   collection do
-  # #     get 'index'
-  # #     get 'search'  
-  # #     get 'upload_article_metadata'
-  # #     get 'search_article'
-  # #     get 'new_article'
-  # #   end
-  # # end
+    end
+  end
 
   resources :books do
     collection do
@@ -126,8 +95,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :retailers,:institution_account,
-            :journals   
+  resources :retailers,:institution_account
 
   resources :reports, :printhouse_setup, :manage_access, 
             :manage_user_account, :publisher_setup, 
