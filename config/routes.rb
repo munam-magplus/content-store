@@ -46,6 +46,7 @@ Rails.application.routes.draw do
       get 'search'
       get 'metadata_sheet'
       get 'search_result'
+      get 'apply_discount'
       get 'result'
     end
   end
