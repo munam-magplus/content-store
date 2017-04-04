@@ -30,8 +30,26 @@
               </td>
             </tr>
             <div id = "ret">
-                <%= @retailer.retailer_name %>
-                <%= link_to 'Destroy', @retailer, method: :delete, data: { confirm: 'Are you sure?' }
+              <tr>
+                <td class = "tableheader" align = "center", height = "30"> Retailer Code</td>
+                <td class = "tableheader" align = "center", height = "30"> Retailer Name</td>
+                <td class = "tableheader" align = "center", height = "30"> Publisher Id</td>
+                <td class = "tableheader" align = "center", height = "30"> Low Ip</td>
+                <td class = "tableheader" align = "center", height = "30"> High Ip</td>
+                <td class = "tableheader" align = "center", height = "30"> IP List</td>
+                <td class = "tableheader" align = "center", height = "30"> Operation</td>
+              </tr>
+              <% @retailers.each do |sample| %>
+              <tr>
+                <td align = "left", height = "25"><%= sample.retailer_code %></td>
+                <td align = "left", height = "25"></td>
+                <td align = "left", height = "25"></td>
+                <td align = "left", height = "25"></td>
+                <td align = "left", height = "25"></td>
+                <td align = "left", height = "25"></td>
+                <td><%= link_to image_tag("delete_icon"), sample, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+              <% end %>
             </div>
             <tr id = "items">
               <td>
@@ -65,6 +83,9 @@
                       </td>
                       <td align = "left", height = "25">
                         <%= f.text_field :ip_list %>
+                      </td>
+                      <td id="del">
+                        <%= image_tag("delete_icon.gif")%>
                       </td>
                     </tr> 
                 </table>

@@ -30,7 +30,7 @@ class RetailersController < ApplicationController
 	
 	def search
 	  #get the publisher that have same retailer name
-	  @retailer = Retailer.last
+	  @retailers = Retailer.all
 	  @re = Publisher.find_by_publisher_name(params[:retailer_name])
 	  respond_to do |format|
 	  	format.html
@@ -39,13 +39,12 @@ class RetailersController < ApplicationController
 	end
 
 	def show
-		
 	end
 
 	def destroy
-		byebug
+		@retailer = Retailer.find_by(params[:id])
 		@retailer.destroy
-		redirect_to new_institution_account_path
+		redirect_to retailers_path
 	end
 
 	private 
