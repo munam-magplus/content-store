@@ -19,6 +19,11 @@ class AdminUserController < ApplicationController
     end
   end
 
+  def search_result
+    @admin_user = AdminUser.search(params[:pub_id], params[:name], params[:code], params[:lang_id])
+    render :partial => 'search_result'
+  end
+  
   private 
   def admin_user_params
     params.require(:admin_user).permit(:publisher, :email, 

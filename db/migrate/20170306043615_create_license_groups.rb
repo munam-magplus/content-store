@@ -4,7 +4,6 @@ class CreateLicenseGroups < ActiveRecord::Migration[5.0]
       t.string :license_group_id
       t.string :license_group_name
       t.string :publisher
-      t.string :created_on
       t.string :created_by
       t.string :license_id
       t.string :license_name
@@ -13,6 +12,7 @@ class CreateLicenseGroups < ActiveRecord::Migration[5.0]
       t.string :from
       t.string :to
       t.string :purchase_info_discount
+      t.string :license_for_sale
 
       t.timestamps
     end

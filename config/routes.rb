@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'site_settings/site_setting/index'
 
   post 'journals/new'
+  get 'journals/index'
 
   post 'publishers/new'
   post 'publishers/create'
@@ -68,7 +69,6 @@ Rails.application.routes.draw do
   post 'books/new'
   
    resources :journals do
-    collection { post :validate }
       collection do
       post 'create'
       get 'new'

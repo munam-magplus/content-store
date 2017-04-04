@@ -10,7 +10,7 @@
 <h1> Primary Content Information</h1>
 <table border="0" cellpadding="10" cellspacing="0">
 	<tbody>
-		<%= form_for @book do |a| %>
+		<%= form_for @book, url: {action: "create"} do |a| %>
 			<tr>
 				<td>Content Code:</td>
 				<td><%= a.text_field :content_code %></td>
@@ -31,7 +31,7 @@
 			</tr>
 			<tr>
 				<td>Content Classification </td>
-				<td><%= a.select :content_clasification, options_for_select(['Select','Select'],['hello','hello']) %></td>
+				<td><%= a.select :content_classification, options_for_select(['Select','Select'],['hello','hello']) %></td>
 				<td>File Name*</td>
 				<td><%= a.text_field :file_name %></td>
 			</tr> 
@@ -73,7 +73,7 @@
 			</tr>
 			<tr> 
 				<td>Series ISBN </td>
-				<td><%= a.text_field :series_ISBN %></td>
+				<td><%= a.text_field :series_isbn %></td>
 				<td>Series Title </td>
 				<td><%= a.text_field :series_title %></td>
 			</tr>
