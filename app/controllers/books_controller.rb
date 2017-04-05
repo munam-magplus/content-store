@@ -17,7 +17,7 @@ class BooksController < ApplicationController
 
   private
   def primary_content_info_params
-  	params.require(:primarycontentinfo).permit(:content_code, 
+  	params.permit(:content_code, 
     :publisher, :title, :subject_title, :isbn, :language, 
     :content_classification, :file_name, :stock_number, 
     :publisher_site_sales_link, :blurb, :publisher_date, 

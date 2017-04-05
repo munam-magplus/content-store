@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330104943) do
+ActiveRecord::Schema.define(version: 20170403082303) do
 
   create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "publisher"
@@ -200,6 +200,7 @@ ActiveRecord::Schema.define(version: 20170330104943) do
     t.string   "comments"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "primary_count"
   end
 
   create_table "journals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

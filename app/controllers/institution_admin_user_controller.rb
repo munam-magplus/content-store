@@ -24,6 +24,8 @@ class InstitutionAdminUserController < ApplicationController
     # get username and role of the admin user
     @user = params[:institution_admin_user_acc][:user_name]
     @rol = params[:institution_admin_user_acc][:role]
+    @billing = params[:billing_contact]
+
     # inserting user name with SA prefix only for Institution Administrator
     if @rol == "Institution Administrator"
      @inst_admin_user.user_name = "SA_#{@user}"
@@ -35,13 +37,30 @@ class InstitutionAdminUserController < ApplicationController
       # otherwise primary_count's value is nil.
       @inst_admin_user.primary_count = "#{@pcount}"
     end
-    if @inst_admin_user.save!
-      redirect_to retailers_path
+    #inorder to get institution_account_billing_addresses data
+    if @billing == "1"
+      @insti = InstitutionAccount.find_by(:institution_name => params[:institution_admin_user_acc][:institution_name])
+      @bill_add = @insti.institution_acc_billing_address
+      @inst_admin_user.first_name = @bill_add.first_name
+      @inst_admin_user.last_name = @bill_add.last_name
+      @inst_admin_user.email = @bill_add.email
+      @inst_admin_user.phone = @bill_add.phone
+    end
+
+    @password = params[:institution_admin_user_acc][:password]
+    @confirm_password = params[:institution_admin_user_acc][:confirm_password]
+
+    if @password == @confirm_password
+      if @inst_admin_user.save!
+        redirect_to retailers_path
+      else
+        render 'new'
+      end
     else
       render 'new'
     end
   end
-  
+  # InstitutionAccBillingAddress.find_by(:institution_account_id => params[:institution_id])
   def set_system_generated_username
     # the primary Institution Administrator's role is system generated.inorder to achieve 
     # this,we use primary_count.

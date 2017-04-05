@@ -29,9 +29,13 @@
                 </a>
               </td>
             </tr>
-            <tr>
+            <div id = "ret">
+                <%= @retailer.retailer_name %>
+                <%= link_to 'Destroy', @retailer, method: :delete, data: { confirm: 'Are you sure?' }
+            </div>
+            <tr id = "items">
               <td>
-                <table id = "items" border = "1", cellpadding = "0", cellspacing = "0", width = "100%">
+                <table  border = "1", cellpadding = "0", cellspacing = "0", width = "100%">
                     <tr>
                       <td class = "tableheader" align = "center", height = "30"> Retailer Code</td>
                       <td class = "tableheader" align = "center", height = "30"> Retailer Name</td>
@@ -41,6 +45,7 @@
                       <td class = "tableheader" align = "center", height = "30"> IP List</td>
                       <td class = "tableheader" align = "center", height = "30"> Operation</td>
                     </tr>
+                    
                   <%= form_for(:retailer, url: retailers_path)  do |f| %>
                     <tr id="form">
                       <td align = "left", height = "25">
@@ -74,6 +79,7 @@
       </td>
     </tr>
   </table>
+  <div id = "div3"></div>
 </td> 
 </tr>
 </table>
@@ -83,6 +89,7 @@
             
 <script>
   $(document).ready(function(){
+    $("#ret").hide();
     $("#addAction").hide();
     $("#form").hide();
     $("#addForm").click(function(e) {
@@ -92,19 +99,10 @@
     });
   });
   jQuery('#addAction').click( function () {
-    var $quantity = $('.tableheader').length;
-    var $quants = $('#items tr').length;
-    jQuery("#items").append("<tr></tr>");
-    $("#items tr:last").addClass('tablecount'+$quants);
-    $.each(new Array($quantity - 1 ),
-     function(n){
-      jQuery("#items tr:last").append("<td><select_tag(:retailer_name, options_for_select([[@re.publisher_code ,1]])) ></td>");
-    });
-    jQuery("#items tr:last").append("<td><input type='image' name='delete' onclick ='remove(" + $quants + ");'></td>"); 
+       $("#ret").show();
+       $("#items").hide();
+       $('#div3').append("<%= j render partial: 'retailers/test' %>");
   });
-  function remove(elem) {
-    $('.tablecount'+ elem ).hide();
-  }
 </script>
 
 

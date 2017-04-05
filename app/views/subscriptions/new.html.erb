@@ -44,8 +44,8 @@
             </tr>
             <tr>
               <td>Subscription Type * :</td>
-              <td><%= select_tag(:subscription_type, [
-                ['Fixed Date Range', 1],
+              <td><%= f.collection_select(:subscription_type, 
+                [['Fixed Date Range', 1],
                 ['Relative Date Range', 2]],{ :prompt => "Please select"}) %></td>
               <td>Duration* :</td>
               <td><%= text_field :duration %></td>
@@ -58,13 +58,13 @@
             </tr>
             <tr>
               <td>Subscription Type * :</td>
-              <td><%= select_tag(:subscription_type, [
+              <td><%= f.select(:subscription_type, [
                 ['Fixed Date Range', 1],
                 ['Relative Date Range', 2]],{ :prompt => "Please select"}) %>
               </td>
               <td>Duration* :</td>
               <td><%= f.text_field :duration %>
-                  <%= select_tag(:subscription_type, options_for_select([['Select',0],['Years',1],['Months',2],['Weeks',3]]))  %>
+                  <%= f.select(:subscription_type, options_for_select(['Select',0],['Years',1],['Months',2],['Weeks',3]))  %>
               </td>
             </tr>
             <td>
@@ -83,11 +83,25 @@
   Copyright © 2006-2009 MPS Technologies Ltd</td>
 </tr>
 
-
 <script>   
 $(document).ready(function(){
   $('#primary2').hide();
   $('#institution2').hide();
+   $('input[type="checkbox"]').click(function(){
+      if($('#billing_contact').prop("checked") == true){
+         $("#first").prop('disabled', true);
+         $("#last").prop('disabled', true);
+         $("#mail").prop('disabled', true);
+         $("#phone").prop('disabled', true);
+       }
+      else{
+       $("#first").prop('disabled', false);
+       $("#last").prop('disabled', false);
+       $("#mail").prop('disabled', false);
+       $("#phone").prop('disabled', false);
+      }
+  });
+
   $(':radio').change(function (event) {
       var id = $(this).val();
       console.log(id);
