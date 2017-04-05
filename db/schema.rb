@@ -229,7 +229,7 @@ ActiveRecord::Schema.define(version: 20170403082303) do
   create_table "license_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "license_group_id"
     t.string   "license_group_name"
-    t.string   "publisher"
+    t.string   "publisher_id"
     t.string   "created_by"
     t.string   "license_id"
     t.string   "license_name"
@@ -238,6 +238,7 @@ ActiveRecord::Schema.define(version: 20170403082303) do
     t.string   "from"
     t.string   "to"
     t.string   "purchase_info_discount"
+    t.string   "license_for_sale"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -253,8 +254,9 @@ ActiveRecord::Schema.define(version: 20170403082303) do
     t.string   "from"
     t.string   "to"
     t.string   "discount"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "license_for_sale"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "print_houses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -1,4 +1,4 @@
-class ArticleInfo < ActiveRecord::Migration[5.0]
+class CreateArticleInfo < ActiveRecord::Migration[5.0]
   def change
   	 create_table :article_infos do |t|
       t.string :contributor_info_role

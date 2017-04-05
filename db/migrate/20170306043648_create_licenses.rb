@@ -4,7 +4,6 @@ class CreateLicenses < ActiveRecord::Migration[5.0]
       t.string :license_id
       t.string :license_name
       t.string :publisher
-      t.string :created_on
       t.string :created_by
       t.string :isbn
       t.string :title
@@ -12,6 +11,7 @@ class CreateLicenses < ActiveRecord::Migration[5.0]
       t.string :from
       t.string :to
       t.string :discount
+      t.string :license_for_sale
 
       t.timestamps
     end

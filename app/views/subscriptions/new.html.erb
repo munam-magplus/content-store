@@ -1,2 +1,118 @@
-<h1>Subscriptions#new</h1>
-<p>Find me in app/views/subscriptions/new.html.erb</p>
+<html>
+	<body class = "body1">
+	  <%= render :partial => '/layouts/header'%>
+		<div class="div1">
+
+      <h1> Subscription Setup </h1>
+      <table border="0" cellpadding="10" cellspacing="0">
+        <tbody>
+          <%= form_for @subscription, url: new_subscription_path do |f| %>
+            <h3>Information</h3>
+            <tr>
+              <td>Subscription ID :</td>
+			        <td><%= f.text_field :subscription_id, :class=> 'required'  %></td>
+              <td>Subscription Name * :</td>
+              <td><%= f.text_field :subscription_name %></td>
+            </tr> 
+            <tr> 
+              <td>Publisher * :</td>
+              <td><%= f.text_field :publisher %></td>
+            </tr>
+            <tr>
+              <td>Subscription Description  :</td>
+              <td><%= f.text_area :subscription_description %></td>
+            </tr>
+            <tr>
+              <td>Subscription category :</td>
+              <td><%= f.text_field :subscription_category %>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Content</strong></td>
+            </tr>
+
+            <tr>
+              <td>Subject Group Name:</td>
+              <td><%= f.text_field :subject_group_name %></td>
+            </tr>
+            <tr>
+              <td>Subject Group Code:</td>
+              <td><%= f.text_field :subject_group_code %></td>
+            </tr>
+            <tr>
+              <td><strong>Length of Agreement</strong></td>
+            </tr>
+            <tr>
+              <td>Subscription Type * :</td>
+              <td><%= f.collection_select(:subscription_type, 
+                [['Fixed Date Range', 1],
+                ['Relative Date Range', 2]],{ :prompt => "Please select"}) %></td>
+              <td>Duration* :</td>
+              <td><%= text_field :duration %></td>
+            </tr>
+            <tr>
+              <td><strong>Available for Institutional Accounts</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Purchase Information</strong></td>
+            </tr>
+            <tr>
+              <td>Subscription Type * :</td>
+              <td><%= f.select(:subscription_type, [
+                ['Fixed Date Range', 1],
+                ['Relative Date Range', 2]],{ :prompt => "Please select"}) %>
+              </td>
+              <td>Duration* :</td>
+              <td><%= f.text_field :duration %>
+                  <%= f.select(:subscription_type, options_for_select(['Select',0],['Years',1],['Months',2],['Weeks',3]))  %>
+              </td>
+            </tr>
+            <td>
+              <%= f.submit "Save" %>
+            </td>
+
+          <% end %>
+        </tbody>
+      </table>
+      
+    </div>
+  </body>
+</html>
+<tr>
+  <td align="center" class="footer_white">
+  Copyright © 2006-2009 MPS Technologies Ltd</td>
+</tr>
+
+<script>   
+$(document).ready(function(){
+  $('#primary2').hide();
+  $('#institution2').hide();
+   $('input[type="checkbox"]').click(function(){
+      if($('#billing_contact').prop("checked") == true){
+         $("#first").prop('disabled', true);
+         $("#last").prop('disabled', true);
+         $("#mail").prop('disabled', true);
+         $("#phone").prop('disabled', true);
+       }
+      else{
+       $("#first").prop('disabled', false);
+       $("#last").prop('disabled', false);
+       $("#mail").prop('disabled', false);
+       $("#phone").prop('disabled', false);
+      }
+  });
+
+  $(':radio').change(function (event) {
+      var id = $(this).val();
+      console.log(id);
+      if(id.search("Primary Institution Administrator")!=-1)
+      {
+        $('#institution2').hide();
+        $('#primary2').show();
+      } else{
+        $('#primary2').hide();
+        $('#institution2').show();
+      }
+  });
+});
+</script>

@@ -1,0 +1,128 @@
+<body class="body1"></body>
+<%= render :partial => '/layouts/header' %>
+<div class="div1">
+  <form action="getSubscriptionResult.do" method="post" name="searchSubscription">
+    <table border="0" cellpadding="0" cellspacing="0" width="860">
+      <tr>
+        <td class="page_head">Search Subscription</td>
+        <td align="right" class="page_head" valign="bottom"></td>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <table border="0" cellpadding="6" cellspacing="0">
+            <tr>
+              <td>
+                <table align="left" border="0" cellpadding="10" cellspacing="0">
+                  <tbody>
+                    <tr>
+                      <td>Publisher</td>
+                      <td>
+                        <select id="pubCodeCombo" name="pubCode">
+                          <option value="wtbooks">
+                            World Technology
+                          </option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Subscription Name</td>
+                      <td>
+                        <input class="text_field" name="subscriptionName">/</input>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Subscription Type</td>
+                      <td>
+                        <select id="subscriptionType" name="subscriptionType">
+                          <option selected="selected">Select</option>
+                          <option value="INSTITUTE_FIXED">Fixed Date Range</option>
+                          <option value="INSTITUTE_RELATIVE">Relative Date Range</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td height="12">Subject Group Name</td>
+                      <td height="12">
+                        <input class="text_field" name="subjectGroupName">/</input>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td height="12">Publication Year</td>
+                      <td height="12">
+                        <input class="text_field" name="publicationYear">/</input>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td height="12">Title</td>
+                      <td height="12">
+                        <input class="text_field" name="bookTitle">/</input>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td height="12">Author First Name</td>
+                      <td height="12">
+                        <input class="text_field" name="authorFirstName">/</input>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td height="12">Author Last Name</td>
+                      <td height="12">
+                        <input class="text_field" name="authorLastName">/</input>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td height="12">Available for Institutional Accounts</td>
+                      <td height="12">
+                        <select id="select" name="isAvailableSearch">
+                          <option selected="selected">Select</option>
+                          <option value="Y">Yes</option>
+                          <option value="N">No</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Subscription category</td>
+                      <td>
+                        <table cellpadding="4" cellspacing="0">
+                          <tr>
+                            <td>
+                              <input id="onlineSubs" name="radio2" onclick="setCategoryValue(this.value)" type="radio" value="ONLINE_SUBSCRIPTION">/</input>
+                              Online Subscription for library
+                            </td>
+                            <td nowrap="nowrap">
+                              <input id="indivBorrow" name="radio2" onclick="setCategoryValue(this.value)" type="radio" value="INDIVIDUAL_BORROW">/</input>
+                              Individual Borrow
+                            </td>
+                            <td nowrap="nowrap">
+                              <input id="libBorrow" name="radio2" onclick="setCategoryValue(this.value)" type="radio" value="LIBRARY_BORROW">/</input>
+                              Library Borrow
+                              <input id="licenseCategory" name="licenseCategory" type="hidden">/</input>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tbody>
+                    <tr>
+                      <td align="right"></td>
+                      <td align="left">
+                        <input class="submit_btn" name="search" onclick="return checkPublisher();" type="submit" value="Search">/</input>
+                        \ 
+                        <input class="submit_btn" name="button" type="reset" value="Reset">/</input>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+<%= render :partial => '/layouts/footer' %>

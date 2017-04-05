@@ -5,9 +5,18 @@ Rails.application.routes.draw do
   devise_scope :user do
     root to: "devise/sessions#new"
   end
-  
+
+<<<<<<< HEAD
   get 'retailers/search'
 
+  get 'site_settings/site_setting/index'
+
+  post 'subject_groups/new'
+
+  get 'books/create'
+  post 'books/new'
+
+=======
   get 'end_user/search'
   
   post 'subject_groups/new'
@@ -18,17 +27,24 @@ Rails.application.routes.draw do
 
   get 'site_settings/site_setting/index'
 
+>>>>>>> ab389093892ebcdb42cb156ecb5732b4120be601
   post 'publishers/new'
   post 'publishers/create'
 
-   get 'admin_user/new'
-   post 'admin_user/new'
-   get 'admin_user/create'
-   post 'admin_user/create'
-   get 'admin_user/search'
-   get 'admin_user/index'
-   post 'admin_user/index'
+  get 'end_user/search'
+  get 'end_user/new'
+  get 'end_user/create'
 
+<<<<<<< HEAD
+  get 'admin_user/new'
+  get 'admin_user/create'
+  get 'admin_user/search'
+  get 'admin_user/index'
+  post 'admin_user/index'
+  post 'admin_user/new'
+  post 'admin_user/create'
+=======
+>>>>>>> ab389093892ebcdb42cb156ecb5732b4120be601
 
   resources :content_conversation do
     collection do 
@@ -46,14 +62,19 @@ Rails.application.routes.draw do
       get 'search'
       get 'metadata_sheet'
       get 'search_result'
+      get 'apply_discount'
       get 'result'
     end
   end
+<<<<<<< HEAD
+  
+=======
  
   post 'books/new'
   
   get 'books/create'
   
+>>>>>>> ab389093892ebcdb42cb156ecb5732b4120be601
   resources :journals do
     collection do
       get 'index'
@@ -84,8 +105,6 @@ Rails.application.routes.draw do
 
   resources :content_conversation do
   end  
-
- 
 
   resources :institution_admin_user do 
     collection do 
