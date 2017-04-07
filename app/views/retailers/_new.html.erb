@@ -85,7 +85,7 @@
                         <%= f.text_field :ip_list %>
                       </td>
                       <td id="del">
-                        <%= image_tag("delete_icon.gif")%>
+                        <%= image_tag("delete_icon.gif" , :id => "del") %>
                       </td>
                     </tr> 
                 </table>
@@ -124,7 +124,8 @@
        $("#items").hide();
        $('#div3').append("<%= j render partial: 'retailers/test' %>");
   });
+$('#del').click(function(){
+    $(this).parents('tr').first().remove();
+});
 </script>
 
-
-  

@@ -18,6 +18,7 @@ class RetailersController < ApplicationController
 	end
 	
 	def create
+		byebug
 		@retailers = Retailer.all
 		@retail = Retailer.find_by(params[:id])
 		@ret = @retail.publisher_id

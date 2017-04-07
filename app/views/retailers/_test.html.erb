@@ -35,3 +35,9 @@
 	</table>
   <%= f.submit %>
 <% end %>
+
+<script>
+	$('#del').click(function(){
+    $(this).parents('form').first().remove();
+});
+</script>
