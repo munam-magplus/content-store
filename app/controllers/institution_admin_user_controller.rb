@@ -61,7 +61,20 @@ class InstitutionAdminUserController < ApplicationController
       render 'new'
     end
   end
-  # InstitutionAccBillingAddress.find_by(:institution_account_id => params[:institution_id])
+
+  def edit   
+    @inst_admin_user = InstitutionAdminUserAcc.find_by_id(params[:id])
+  end
+
+  def update
+    @inst_admin_user = InstitutionAdminUserAcc.find_by_id(params[:id])
+   if @inst_admin_user.update(insti_admin_user_params)
+    redirect_to search_op_institution_admin_user_index_path
+    else 
+      render 'index'
+    end
+  end
+
   def set_system_generated_username
     # the primary Institution Administrator's role is system generated.inorder to achieve 
     # this,we use primary_count.

@@ -9,6 +9,7 @@ class InstitutionAccountController < ApplicationController
       # we render the result page that have the search result.
       render 'result', locals: { :res => @res, :chec => @chec , :country => @country}
     else
+      flash[:message] = "select publisher"
       render 'index'
     end  
   end
