@@ -6,6 +6,9 @@ class LicensesController < ApplicationController
   def new
     @license = License.new
   end
+  def search_content
+    
+  end
   
   def search
     search_to_apply_discount = params[:apply_discount] # to differentiate license search and license search to apply discount
