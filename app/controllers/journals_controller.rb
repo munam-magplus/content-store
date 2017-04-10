@@ -65,25 +65,4 @@ class JournalsController < ApplicationController
         :base_online_access_price, :base_download_price_country, 
         :base_download_price_currency, :base_download_price_price]) 
   end
-
-  def validate
-    event = Journal.new(validate_params)
-    event.valid?
-    event_field = validate_params.keys.first.try(:to_sym)
-    validation_response = !event.errors.include?(event_field)
-    respond_to do |format|
-      format.json { render json: {field_name: event_field, valid: validation_response, message: event.errors[event_field]} }
-    end
-  end
-
-  private
-  def validate_params
-    params.permit(:journal_code, :publisher, 
-    :journal_title, :journal_subtitle, :journal_primary_issn, 
-    :journal_electronic_issn, :journal_owner, :language, 
-    :journal_content_classification, :journal_distribution, 
-    :price_in, :journal_publisher_date, :stock_number, 
-    :cover_image, :journal_categories, :journal_description, 
-    :editorial, :instructions_for_authors)
-  end
 end

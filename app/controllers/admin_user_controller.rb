@@ -27,7 +27,7 @@ class AdminUserController < ApplicationController
   private 
   def admin_user_params
     params.require(:admin_user).permit(:publisher, :email, 
-    :confirm_email, :first_name, :last_name, :country,
+    :confirm_email, :password, :confirm_password, :first_name, :last_name, :country,
     :language, :user_type, :role, :publishers)
   end
 end

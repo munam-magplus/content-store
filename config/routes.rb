@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     root to: "devise/sessions#new"
   end
 
-<<<<<<< HEAD
   get 'retailers/search'
 
   get 'site_settings/site_setting/index'
@@ -16,8 +15,8 @@ Rails.application.routes.draw do
   get 'books/create'
   post 'books/new'
 
-=======
   get 'end_user/search'
+  post 'end_user/create'
   
   post 'subject_groups/new'
 
@@ -27,7 +26,6 @@ Rails.application.routes.draw do
 
   get 'site_settings/site_setting/index'
 
->>>>>>> ab389093892ebcdb42cb156ecb5732b4120be601
   post 'publishers/new'
   post 'publishers/create'
 
@@ -35,7 +33,6 @@ Rails.application.routes.draw do
   get 'end_user/new'
   get 'end_user/create'
 
-<<<<<<< HEAD
   get 'admin_user/new'
   get 'admin_user/create'
   get 'admin_user/search'
@@ -43,8 +40,6 @@ Rails.application.routes.draw do
   post 'admin_user/index'
   post 'admin_user/new'
   post 'admin_user/create'
-=======
->>>>>>> ab389093892ebcdb42cb156ecb5732b4120be601
 
   resources :content_conversation do
     collection do 
@@ -66,15 +61,13 @@ Rails.application.routes.draw do
       get 'result'
     end
   end
-<<<<<<< HEAD
-  
-=======
- 
+
   post 'books/new'
   
   get 'books/create'
+
+  post 'journals/create'
   
->>>>>>> ab389093892ebcdb42cb156ecb5732b4120be601
   resources :journals do
     collection do
       get 'index'

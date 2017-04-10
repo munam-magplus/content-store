@@ -25,6 +25,6 @@ class SubscriptionsController < ApplicationController
     :subscription_name, :publisher, :subscription_description, 
     :subscription_category, :subject_group_name, :subject_group_code, 
     :subscription_type, :borrow_time, :number_of_books, 
-    :price, :currency, :discount_percentage)
+    :price, :currency, :discount_percentage, :duration)
 	end
 end

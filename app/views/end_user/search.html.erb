@@ -2,47 +2,46 @@
   <body class = "body1">
     <%= render :partial => '/layouts/header'%>
     <div class="div1">
-
       <h1>Search End Users</h1>
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
-          <%= form_for :subject_group do |f| %>
+          <%= form_tag end_user_search_path, :method => 'get' do  %>
             <tr>
-              <td>Select Publisher*</td>
-              <td><%= f.collection_select(:PUB_PUBLISHER_ID, Publisher.all, :id, :PUB_NAME) %></td>
-             
+              <td>Publisher*</td>
+              <td><%= collection_select(:publisher, 0, Publisher.all, :id, :publisher_name) %></td>
             </tr> 
-            <tr> 
+            <tr>
               <td>Email</td>
-              <td><%= f.text_field :SUG_GROUP_DESC %></td>
+              <td>
+                <%= text_field_tag :email, params[:email] %>
+             </td>
             </tr> 
-            <tr> 
-              <td>Last Name </td>
-              <td><%= f.text_field :SUG_GROUP_CODE %></td>
-            </tr>
+            <tr>
+              <td>Last Name</td>
+              <td>
+                <%= text_field_tag :last_name, params[:last_name] %>
+             </td>
+            </tr> 
             <tr>
               <td>Country</td>
-              <td><%= f.collection_select :COI_COUNTRY_ID, Countryname.all, :id, :CON_COUNTRY_NAME %></td>
+              <td>
+                <%= text_field_tag :country, params[:country] %>
+             </td>
             </tr> 
-            <tr> 
-             <td>License ID</td>
-              <td><%= f.text_field :SUG_GROUP_CODE %></td>
-            </tr>
             <tr>
-            	<td></td>
-            	<td><%= f.submit "Search" %>
-            		<%= f.button "Reset", type: :reset %></td>
-       		</tr>
-
-
+              <td></td>
+              <td><%= submit_tag "Search" %>
+                  <%= button_tag "Reset", type: :reset %></td>
+            </tr>
           <% end %>
         </tbody>
       </table>
-      
     </div>
   </body>
 </html>
+
 <tr>
   <td align="center" class="footer_white">
   Copyright © 2006-2009 MPS Technologies Ltd</td>
 </tr>
+
