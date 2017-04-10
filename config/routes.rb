@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   post 'books/new'
 
   get 'end_user/search'
+  post 'end_user/create'
   
   post 'subject_groups/new'
 
@@ -62,10 +63,12 @@ Rails.application.routes.draw do
     end
   end
 
- 
+
   post 'books/new'
   
   get 'books/create'
+
+  post 'journals/create'
   
   resources :journals do
     collection do

@@ -6,7 +6,7 @@
       <h1> Journal Setup </h1>
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
-          <%= form_for @journal, url: journals_path do |f| %>
+          <%= form_for @journal, url: journals_create_path do |f| %>
             <tr>
               <td>Journal Code:</td>
 			        <td><%= f.text_field :journal_code, :class=> 'required'  %></td>

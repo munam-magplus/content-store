@@ -6,10 +6,10 @@
       <h1>Create Admin Users</h1>
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
-          <%= form_for @admin_user, url: admin_user_create_path do |f| %>
+          <%= form_for(:admin_user, url: admin_user_create_path) do |f| %>
             <tr>
               <td>Publisher*</td>
-              <td><%= f.text_field :publisher %></td>
+              <td><%= f.collection_select :publisher, Publisher.all, :id, :publisher_name %></td>
             </tr> 
             <tr> 
               <td>Email*</td>
@@ -17,7 +17,12 @@
                <td>Confirm Email*</td>
               <td><%= f.text_field :confirm_email %></td>
             </tr>
-                        
+            <tr> 
+              <td>Password*</td>
+              <td><%= f.text_field :password %></td>
+               <td>Confirm Password*</td>
+              <td><%= f.text_field :confirm_password %></td>
+            </tr>       
             <tr> 
               <td>First Name* </td>
               <td><%= f.text_field :first_name %></td>
@@ -30,6 +35,12 @@
               <td>Select Language * </td>
               <td><%= f.select(:language, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %></td>
             </tr> 
+            <tr> 
+             <td>User Type </td>
+              <td><%= f.radio_button :user_type, 'mps' %>MPS
+                  <%= f.radio_button :user_type, 'publisher' %>Publisher
+                  <%= f.radio_button :user_type, 'member_publisher' %>Member Publisher</td>
+            </tr>
             <tr> 
              <td>Role* </td>
               <td><%= f.select(:role, options_for_select([['Please Select',0],[' MPS Admin',1],['Publisher',2],['Member Publisher',3],['Member Publisher Role with QA',4]]))  %></td>
