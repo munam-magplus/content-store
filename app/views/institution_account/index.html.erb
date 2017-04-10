@@ -46,10 +46,16 @@
                   <%= text_field_tag :state %>
                 </td>
                 <td align = "left", height = "25"> Country</td>
+                <td align = "left">
+                  <%= select_tag 'country',options_from_collection_for_select(Country.all, 'country_name', 'country_name')%>
+                </td>
               </tr>
 
               <tr>
                 <td height = "25"> Status</td>
+                <td align = "left">
+                  <%= f.select 'status',options_for_select(['active', 'inactive']) %>
+                </td>
               </tr>
               <tr>
                 <td align = "left", height = "25"> Contact First Name</td>

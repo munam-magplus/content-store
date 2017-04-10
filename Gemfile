@@ -26,6 +26,11 @@ gem 'exception_handler'
 
 gem 'devise'
 
+# gem to display all the countries 
+gem 'countries'
+gem 'country_select'
+
+
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'

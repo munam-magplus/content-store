@@ -8,6 +8,7 @@ class InstitutionAdminUserController < ApplicationController
     # we search admin users by using status,role and first_name.
     # here, we filter the params and get status,role and first_name only.
     @res = InstitutionAdminUserAcc.filter(params.slice(:status,:role, :first_name))
+    byebug
     render 'result', locals: { :res => @res }
   end
 
@@ -52,7 +53,7 @@ class InstitutionAdminUserController < ApplicationController
 
     if @password == @confirm_password
       if @inst_admin_user.save!
-        redirect_to retailers_path
+        redirect_to manage_user_account_index_path
       else
         render 'new'
       end

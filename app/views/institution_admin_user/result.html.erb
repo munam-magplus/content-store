@@ -19,13 +19,14 @@
 	 </thead>
 	 <tbody>
 			<% @res.each do |f| %>
+			<% byebug %>
 	 	<%if f.status == "active"%>
 	 	<tr class="backgroundcolor">
 				<td  class="tabledata"><%= f.first_name %></td>
 				<td  class="tabledata"><%= f.email %></td>
 				<td  class="tabledata"><%= f.status %></td>
-				<td  class="tabledata"><% f.user_name %></td>
-				<td  class="tabledata" ><% f.role %></td>
+				<td  class="tabledata"><%= f.user_name %></td>
+				<td  class="tabledata" ><%= f.role %></td>
 				<td  class="tabledata" ></td>
 				<td  class="tabledata"><%= f.institution_name %></td>
 				<td  class="tabledata">

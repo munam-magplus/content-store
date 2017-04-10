@@ -30,7 +30,7 @@
             <tr>
               <td align = "left", height = "25"> User Status</td>
               <td align = "left">
-                <%= select_tag 'status',options_from_collection_for_select(InstitutionAdminUserAcc.all, 'status', 'status'),{:include_blank => 'select'}%>
+                <%= select_tag 'status',options_for_select(['active', 'inactive']) %>
               </td>
             </tr>
             <tr>

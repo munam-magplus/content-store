@@ -3,7 +3,7 @@ class InstitutionAccountController < ApplicationController
     # we render result page only when we find publisher in params.
     if params[:publisher].present?
       # we perform search operation by slicing the params.
-      @res = InstitutionAccount.filter(params.slice(:publisher,:institution_id))
+      @res = InstitutionAccount.filter(params.slice(:publisher,:institution_id, :status))
       # this is the params of the checkbox that is present in the form.
       @chec = params[:ip_address]
       # we render the result page that have the search result.
