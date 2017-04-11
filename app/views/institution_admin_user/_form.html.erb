@@ -5,7 +5,7 @@
       <h1>Create Institutional User</h1>
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
-          <%= form_for( :institution_admin_user_acc, url: institution_admin_user_index_path) do |f| %>
+          <%= form_for(@inst_admin_user, url: institution_admin_user_index_path ) do |f| %>
             <tr>
               <td>User Role*</td>
               <td>
@@ -22,7 +22,7 @@
             <tr>
               <td height = "25"> Institution name* </td>
               <td align = "left">
-                <%= f.select 'institution_name',options_from_collection_for_select(InstitutionAccount.all, 'institution_name', 'institution_name'), :prompt => "select institution name" %>
+                <%= f.select 'institution_name',options_from_collection_for_select(InstitutionAccount.all, 'institution_name', 'institution_name', :prompt => "select institution name") %>
               </td>
             </tr>
             <tr id="primary2">
@@ -32,7 +32,7 @@
               </td>
               <td height = "25"> Status</td>
               <td align = "left">
-                <%= f.select 'status',options_for_select(['active', 'inactive']), :prompt => "select status" %>
+                <%= f.select 'status',options_for_select(["active","inactive"]), :prompt => "select status" %>
               </td>
             </tr>
             <tr id="institution2">
@@ -42,7 +42,7 @@
               </td>
               <td height = "25"> Status</td>
               <td align = "left">
-                <%= f.select 'status',options_for_select(['active', 'inactive']), :prompt => "select status" %>
+                <%= f.select 'status',options_for_select(["active","inactive"]), :prompt => "select status" %>
               </td>
             </tr>
             <tr>

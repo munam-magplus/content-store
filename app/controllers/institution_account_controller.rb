@@ -3,7 +3,7 @@ class InstitutionAccountController < ApplicationController
     # we render result page only when we find publisher in params.
     if params[:publisher].present?
       # we perform search operation by slicing the params.
-      @res = InstitutionAccount.filter(params.slice(:publisher,:institution_id, :status))
+      @res = InstitutionAccount.filter(params.slice(:publisher, :status))
       # this is the params of the checkbox that is present in the form.
       @chec = params[:ip_address]
       # we render the result page that have the search result.
@@ -22,19 +22,16 @@ class InstitutionAccountController < ApplicationController
   end
 
   def new
-    byebug
     @institution = InstitutionAccount.new
     # @institution.build_institution_acc_billing_address
   end
 
   def create
-    byebug
     @institution = InstitutionAccount.new(institution_params)
     #this is added inorder to build institution_acc_billing_address
     #we use this syntax because the association between institution account
     # and institution_acc_billing_address is has_one
     @institution.build_institution_acc_billing_address
-    # byebug
 
     if @institution.save!
       redirect_to institution_account_index_path
@@ -56,7 +53,6 @@ class InstitutionAccountController < ApplicationController
     #     :postal_code, :comments, :institution_account_id]} ) 
     # params = ActionController::Parameters.new({ institution_account: true })
     params.permit(:institution_account).tap do |whitelisted| 
-          byebug
      whitelisted[:institution_acc_billing_address_attributes] = params[:institution_account][:institution_acc_billing_address] 
     end
   end

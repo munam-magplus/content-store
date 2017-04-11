@@ -19,10 +19,6 @@
                 <td align = "left">
                   <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "Select publisher"%>
                 </td>
-                <td align = "left", height = "25">Institution ID</td>
-                <td align = "left", height = "25">
-                  <%= text_field_tag :institution_id %>
-                </td>
               </tr>
               <tr>
                 <td align = "left", height = "25"> Lib./Dept. Name</td>

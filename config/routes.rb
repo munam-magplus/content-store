@@ -104,8 +104,9 @@ Rails.application.routes.draw do
 
   resources :institution_admin_user do 
     collection do 
-      get 'index'
       get 'search_op'
+      post 'create'
+      get 'new'
     end
   end
 

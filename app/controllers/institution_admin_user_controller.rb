@@ -1,7 +1,8 @@
 class InstitutionAdminUserController < ApplicationController
+  before_action :authenticate_user!
   before_filter :set_system_generated_username
 
-  def index      
+  def index  
   end
 
   def search_op
@@ -13,7 +14,6 @@ class InstitutionAdminUserController < ApplicationController
   end
 
   def show
-    byebug
   end
 
   def new
@@ -60,6 +60,9 @@ class InstitutionAdminUserController < ApplicationController
       end
     else
       render 'new'
+    end
+    if params[:mail] == "1"
+      InstitutionAdminUserMailer.confirm_mail(@inst_admin_user, current_user).deliver
     end
   end
 
