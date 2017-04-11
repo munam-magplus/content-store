@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get 'retailers/search'
 
-  get 'site_settings/site_setting/index'
+  get 'site_settings/index'
 
   post 'subject_groups/new'
 
@@ -24,8 +24,6 @@ Rails.application.routes.draw do
 
   get 'end_user/create'
   get 'end_user/index'
-
-  get 'site_settings/site_setting/index'
 
   post 'publishers/new'
   post 'publishers/create'

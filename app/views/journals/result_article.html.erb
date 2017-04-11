@@ -15,46 +15,42 @@
         <td class="tableheader">Issue/Supplement Number</td>
         <td class="tableheader">Contributors</td>
       </tr>
-		      <% if @article.present? %>
+		  <% if @article.present? %>
 	      <% @article.each do |f| %>
-	      <tr>
-	        <td bgcolor="#FBFBFB">
-	          <%= f.content_code %>
-	        </td>
-	        <td bgcolor="#FBFBFB">
-	          <%= f.journal_title %>
-	        </td>
-	        <td bgcolor="#FBFBFB">
-	          <%= f.doi %>
-	        </td>
-	        <td bgcolor="#FBFBFB">
-	          <%= f.article_type %>
-	        </td>
-	        <td bgcolor="#FBFBFB">
-	          <%= f.volume_number %>
-	        </td>
-	        <td bgcolor="#FBFBFB">
-	          <%= f.issue_type %>
-	        </td>
-	        <td bgcolor="#FBFBFB">
-	          <%= f.issue_number %>
-	        </td>
-	        <td bgcolor="#FBFBFB">
-	          <%= f.issue_type %>
-	        </td>
-	        <td bgcolor="#FBFBFB">
-	          <%= %>
-	        </td>
-	      </tr>
+		      <tr>
+		        <td bgcolor="#FBFBFB">
+		          <%= f.content_code %>
+		        </td>
+		        <td bgcolor="#FBFBFB">
+		          <%= f.journal_title %>
+		        </td>
+		        <td bgcolor="#FBFBFB">
+		          <%= f.doi %>
+		        </td>
+		        <td bgcolor="#FBFBFB">
+		          <%= f.article_type %>
+		        </td>
+		        <td bgcolor="#FBFBFB">
+		          <%= f.volume_number %>
+		        </td>
+		        <td bgcolor="#FBFBFB">
+		          <%= f.issue_type %>
+		        </td>
+		        <td bgcolor="#FBFBFB">
+		          <%= f.issue_number %>
+		        </td>
+		        <td bgcolor="#FBFBFB">
+		          <%=  %>
+		        </td>
+		      </tr>
 	      <% end %>
-	      <% else %>
-	        <tr>
-	          <td bgcolor="#FBFBFB">
-	            <p> Record Not Found </p> 
-	          </td>
-	        </tr>
-	      <% end %>
-      </tr>
+	    <% else %>
+        <tr>
+          <td bgcolor="#FBFBFB">
+            <p> Record Not Found </p> 
+          </td>
+        </tr>
+	    <% end %>
     </tbody>
   </table>
 </div>
