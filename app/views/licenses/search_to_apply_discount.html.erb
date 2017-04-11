@@ -1,0 +1,74 @@
+<body>
+  <%= render :partial => '/layouts/header' %>
+  <div class="div1">
+    Create License Discounts 
+    <div class="div2">
+      Apply Discount % <%= text_field_tag :discount %>
+      <%= button_to "Apply on Selected", apply_discount_licenses_path, :id => "open-contacts-dialog-btn",
+      :class => "inbox-sf-add-btn tip", :method => :get %>
+    </div>
+    <tr>
+      <td colspan="2">
+        <table bgcolor="#cccccc" border="0" cellpadding="10" cellspacing="1" width="100%">
+          <tbody>
+            <tr>
+              <td class="tableheader"><input type="checkbox" name="select-all" id="select-all" /></td>
+              <td class="tableheader">Publisher</td>
+              <td class="tableheader">Id</td>
+              <td class="tableheader">Name</td>
+              <td class="tableheader">Type</td>
+              <td class="tableheader">Saleable</td>
+              <td class="tableheader">Linkable From</td>
+              <td class="tableheader">Linkable To</td>
+              <td class="tableheader">Created By</td>
+            </tr>
+            <% if @license.present? %>
+              <% @license.each do |lic| %>
+                <tr>
+                  <td bgcolor="#FBFBFB">
+                    <input type="checkbox" name="checkbox" id="checkbox" />
+                  </td>
+                  <td bgcolor="#FBFBFB">
+                    <%= lic.PUB_PUBLISHER_ID %>
+                  </td>
+                  <td bgcolor="#FBFBFB" id="40521Code"></td>
+                  <td bgcolor="#FBFBFB">
+                    <%= link_to lic.LIC_LICENSE_NAME,("") %>
+                  </td>
+                  <td bgcolor="#FBFBFB" id="40521Type"></td>
+                  <td bgcolor="#FBFBFB">
+                    <%= lic.LIC_FOR_SALE %>
+                  </td>
+                  <td bgcolor="#FBFBFB">
+                    <%= lic.LIC_LINK_FROM_DATE %>
+                  </td>
+                  <td bgcolor="#FBFBFB">
+                    <%= lic.LIC_LINK_TO_DATE %>
+                  </td>
+                  <td bgcolor="#FBFBFB">
+                    <%= lic.CREATED_BY %>
+                  </td>
+                </tr>
+              <% end %>
+            <% else %>
+              <tr>
+                No Record Found
+              </tr>
+            <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </div>
+</body>
+<script>
+  $('#select-all').click(function(event) {   
+    if(this.checked) {
+        // Iterate each checkbox
+        $(':checkbox').each(function() {
+            this.checked = true;                        
+        });
+    }
+  });
+</script>
