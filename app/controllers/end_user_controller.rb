@@ -1,9 +1,4 @@
 class EndUserController < ApplicationController
-  def search
-    #Call filter method to get search results
-  	@end_user = EndUser.filter(params.slice(:publisher, :email, :last_name, :country, :license_id))
-  end
-
   def new
   	@end_user = EndUser.new
   end
@@ -19,9 +14,12 @@ class EndUserController < ApplicationController
 		end
 	end
 
-  def search_result
-    @end_user = EndUser.search(params[:pub_id], params[:name], params[:code], params[:lang_id])
-    render :partial => 'search_result'
+  def index
+  end
+  
+  def search
+    #Call filter method to get search results
+    @end_user = EndUser.filter(params.slice(:publisher, :email, :last_name, :country))
   end
   
   private 

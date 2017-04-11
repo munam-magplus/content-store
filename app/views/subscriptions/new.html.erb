@@ -62,7 +62,7 @@
             </tr>
             <tr>
               <td>Subscription Type * :</td>
-              <td><%= f.select :subscription_type, [['Select','select'],['Fixed Date Range','fixed date range'],['Relative Date Range','relative date range']] %>
+              <td name="dbType" id="dbType"><%= f.select :subscription_type, [['Select','select'],['Fixed Date Range','fixed date range'],['Relative Date Range','relative date range']] %>
               </td>
             </tr>
             <tr id="fixed">
@@ -135,4 +135,23 @@ $(document).ready(function(){
   });
 });
 
+</script>
+
+<script type="text/javascript"
+    src="jquery-ui-1.10.0/tests/jquery-1.9.0.js"></script>
+<script src="jquery-ui-1.10.0/ui/jquery-ui.js"></script>
+<script>    
+$('#dbType').change(function(){
+
+   selection = $('this').value();
+   switch(selection)
+   {
+       case 'other':
+           $('#otherType').show();
+           break;
+       case 'default':
+           $('#otherType').hide();
+           break;
+   }
+});
 </script>

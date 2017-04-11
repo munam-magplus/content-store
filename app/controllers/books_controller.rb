@@ -17,13 +17,13 @@ class BooksController < ApplicationController
 
   private
   def primary_content_info_params
-  	params.permit(:content_code, 
+  	params.require(:primary_content_info).permit(:content_code, 
     :publisher, :title, :subject_title, :isbn, :language, 
     :content_classification, :file_name, :stock_number, 
     :publisher_site_sales_link, :blurb, :publisher_date, 
     :publisher_month, :publisher_year, :conversion_required, 
-    :edition, :binding, :volume, :series_isbn, :series_title, 
-    :dimension)
+    :edition, :binding, :volume, :dimension, :series_isbn, 
+    :series_title)
 	end
 end
 

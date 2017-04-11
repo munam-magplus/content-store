@@ -1,47 +1,47 @@
-<html>
-  <body class = "body1">
-    <%= render :partial => '/layouts/header'%>
-    <div class="div1">
-      <h1>Search End Users</h1>
-      <table border="0" cellpadding="10" cellspacing="0">
-        <tbody>
-          <%= form_tag end_user_search_path, :method => 'get' do  %>
-            <tr>
-              <td>Publisher*</td>
-              <td><%= collection_select(:publisher, 0, Publisher.all, :id, :publisher_name) %></td>
-            </tr> 
-            <tr>
-              <td>Email</td>
-              <td>
-                <%= text_field_tag :email, params[:email] %>
-             </td>
-            </tr> 
-            <tr>
-              <td>Last Name</td>
-              <td>
-                <%= text_field_tag :last_name, params[:last_name] %>
-             </td>
-            </tr> 
-            <tr>
-              <td>Country</td>
-              <td>
-                <%= text_field_tag :country, params[:country] %>
-             </td>
-            </tr> 
-            <tr>
-              <td></td>
-              <td><%= submit_tag "Search" %>
-                  <%= button_tag "Reset", type: :reset %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </body>
-</html>
-
-<tr>
-  <td align="center" class="footer_white">
-  Copyright © 2006-2009 MPS Technologies Ltd</td>
-</tr>
-
+<body class="body1"></body>
+<%= render :partial => '/layouts/header' %>
+<div class="div1">
+  <table bgcolor="#cccccc" border="0" cellpadding="8" cellspacing="1" width="70%"></table>
+  <table bgcolor="#cccccc" border="0" cellpadding="8" cellspacing="1" class="center" width="100%">
+    <tbody>
+      <tr>
+        <td class="tableheader">Email</td>
+        <td class="tableheader">First Name</td>
+        <td class="tableheader">Last Name</td>
+        <td class="tableheader">Country</td>
+        <td class="tableheader">Actions</td>
+      </tr>
+      <% if @end_user.present? %>
+        <% @end_user.each do |f| %>
+        <tr>
+          <td bgcolor="#FBFBFB">
+            <%= f.email %>
+          </td>
+          <td bgcolor="#FBFBFB">
+            <%= f.first_name %>
+          </td>
+          <td bgcolor="#FBFBFB">
+            <%= f.last_name %>
+          </td>
+          <td bgcolor="#FBFBFB">
+            <%= f.country %>
+          </td>
+          <td bgcolor="#FBFBFB">
+            <%= image_tag("reset_password.gif")%>
+            <%= image_tag("link_license.gif")%>
+            <%= image_tag("view_linked_licenses.gif")%><br>
+            <%= image_tag("delete_icon.gif")%>
+          </td>
+        </tr>
+        <% end %>
+        <% else %>
+          <tr>
+            <td bgcolor="#FBFBFB">
+              <p> Record Not Found </p> 
+            </td>
+          </tr>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>

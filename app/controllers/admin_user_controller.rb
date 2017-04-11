@@ -1,9 +1,4 @@
 class AdminUserController < ApplicationController
-  def search
-    #Call filter method to get search results
-    @admin_user = AdminUser.filter(params.slice(:publisher, :email, :first_name, :country, :user_type))
-  end
-
   def new
     @admin_user = AdminUser.new
   end
@@ -19,9 +14,9 @@ class AdminUserController < ApplicationController
     end
   end
 
-  def search_result
-    @admin_user = AdminUser.search(params[:pub_id], params[:name], params[:code], params[:lang_id])
-    render :partial => 'search_result'
+  def search
+    #Call filter method to get search results
+    @admin_user = AdminUser.filter(params.slice(:publisher, :email, :first_name, :country, :user_type))
   end
   
   private 

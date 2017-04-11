@@ -2,12 +2,12 @@
   <body class = "body1">
     <%= render :partial => '/layouts/header'%>
     <div class="div1">
-      <h1>Search Admin Users</h1>
+      <h1>Search End Users</h1>
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
-          <%= form_tag admin_user_search_path, :method => 'get' do  %>
+          <%= form_tag end_user_search_path, :method => 'get' do  %>
             <tr>
-              <td>Select Publisher*</td>
+              <td>Publisher*</td>
               <td><%= text_field_tag :publisher, params[:publisher] %></td>
             </tr> 
             <tr>
@@ -17,9 +17,9 @@
              </td>
             </tr> 
             <tr>
-              <td>First Name / Last Name</td>
+              <td>Last Name</td>
               <td>
-                <%= text_field_tag :first_name, params[:first_name] %>
+                <%= text_field_tag :last_name, params[:last_name] %>
              </td>
             </tr> 
             <tr>
@@ -27,12 +27,6 @@
               <td>
                 <%= text_field_tag :country, params[:country] %>
              </td>
-            </tr> 
-            <tr>
-              <td>User Type</td>
-              <td><%= radio_button_tag :user_type, 'mps' %>MPS
-                  <%= radio_button_tag :user_type, 'publisher' %>Publisher
-                  <%= radio_button_tag :user_type, 'member_publisher' %>Member Publisher</td>
             </tr> 
             <tr>
               <td></td>

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'end_user/new'
 
   get 'end_user/create'
+  get 'end_user/index'
 
   get 'site_settings/site_setting/index'
 
@@ -69,6 +70,7 @@ Rails.application.routes.draw do
   get 'books/create'
 
   post 'journals/create'
+  get 'journals/result_article'
   
   resources :journals do
     collection do

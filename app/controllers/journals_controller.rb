@@ -29,6 +29,11 @@ class JournalsController < ApplicationController
   def search_article
   end
 
+  def result_article
+    #Call filter method to get search results
+    @article = Article.filter(params.slice(:publisher, :title, :code, :doi, :volume, :issue, :article, :author_first_name, :author_last_name))
+  end
+
   def new_article
     @article = Article.new
   end

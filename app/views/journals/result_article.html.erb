@@ -1,0 +1,61 @@
+<body class="body1"></body>
+<%= render :partial => '/layouts/header' %>
+<div class="div1">
+	<h1>Article Search Results</h1>
+  <table bgcolor="#cccccc" border="0" cellpadding="8" cellspacing="1" width="70%"></table>
+  <table bgcolor="#cccccc" border="0" cellpadding="8" cellspacing="1" class="center" width="100%">
+    <tbody>
+      <tr>
+        <td class="tableheader">Journal Code</td>
+        <td class="tableheader">Title</td>
+        <td class="tableheader">Content Code/DOI</td>
+        <td class="tableheader">Article Type</td>
+        <td class="tableheader">Volume Number</td>
+        <td class="tableheader">Issue Type</td>
+        <td class="tableheader">Issue/Supplement Number</td>
+        <td class="tableheader">Contributors</td>
+      </tr>
+		      <% if @article.present? %>
+	      <% @article.each do |f| %>
+	      <tr>
+	        <td bgcolor="#FBFBFB">
+	          <%= f.content_code %>
+	        </td>
+	        <td bgcolor="#FBFBFB">
+	          <%= f.journal_title %>
+	        </td>
+	        <td bgcolor="#FBFBFB">
+	          <%= f.doi %>
+	        </td>
+	        <td bgcolor="#FBFBFB">
+	          <%= f.article_type %>
+	        </td>
+	        <td bgcolor="#FBFBFB">
+	          <%= f.volume_number %>
+	        </td>
+	        <td bgcolor="#FBFBFB">
+	          <%= f.issue_type %>
+	        </td>
+	        <td bgcolor="#FBFBFB">
+	          <%= f.issue_number %>
+	        </td>
+	        <td bgcolor="#FBFBFB">
+	          <%= f.issue_type %>
+	        </td>
+	        <td bgcolor="#FBFBFB">
+	          <%= %>
+	        </td>
+	      </tr>
+	      <% end %>
+	      <% else %>
+	        <tr>
+	          <td bgcolor="#FBFBFB">
+	            <p> Record Not Found </p> 
+	          </td>
+	        </tr>
+	      <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<%= render :partial => '/layouts/footer'%>

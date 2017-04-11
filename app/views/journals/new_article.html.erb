@@ -19,13 +19,13 @@
             </tr> 
             <tr> 
               <td>Journal Title*:</td>
-              <td><%= select_tag(:journal_title, options_for_select([['Select',0],['Issue',1],['Early Bird',2]]))  %></td>
+              <td><%= f.select(:journal_title, options_for_select([['Select',0],['Issue',1],['Early Bird',2]]))  %></td>
               <td>Article Type*:</td>
-              <td><%= select_tag(:article_type, options_for_select([['Select',0],['Issue',1],['Early Bird',2]]))  %></td>
+              <td><%= f.select(:article_type, options_for_select([['Select',0],['Issue',1],['Early Bird',2]]))  %></td>
             </tr>
             <tr>
               <td>Issue Type*:</td>
-              <td><%= select_tag(:issue_type, options_for_select([['Select',0],['Regular',1],['Supplement',2],['Double',3]]))  %></td>
+              <td><%= f.select(:issue_type, options_for_select([['Select',0],['Regular',1],['Supplement',2],['Double',3]]))  %></td>
             </tr>
             <tr>
               <td>Volume Number*:</td>
@@ -47,9 +47,9 @@
             </tr>
             <tr>
               <td>Access Level*:</td>
-              <td><%= select_tag(:access_level, options_for_select([['Select',0],['Free',1],['Paid',2]]))  %></td>
+              <td><%= f.select(:access_level, options_for_select([['Select',0],['Free',1],['Paid',2]]))  %></td>
                <td>Access Languages*:</td>
-              <td><%= select_tag(:article_language, options_for_select([['Select',0],['Polish',1],['English',2]]))  %></td>
+              <td><%= f.select(:article_language, options_for_select([['Select',0],['Polish',1],['English',2]]))  %></td>
             </tr>
             <tr>
               <td>External DRM*:</td>
