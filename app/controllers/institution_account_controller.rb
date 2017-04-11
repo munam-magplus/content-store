@@ -22,8 +22,9 @@ class InstitutionAccountController < ApplicationController
   end
 
   def new
+    byebug
     @institution = InstitutionAccount.new
-    @institution.build_institution_acc_billing_address
+    # @institution.build_institution_acc_billing_address
   end
 
   def create
@@ -32,7 +33,7 @@ class InstitutionAccountController < ApplicationController
     #this is added inorder to build institution_acc_billing_address
     #we use this syntax because the association between institution account
     # and institution_acc_billing_address is has_one
-    # @institution.build_institution_acc_billing_address
+    @institution.build_institution_acc_billing_address
     # byebug
 
     if @institution.save!
@@ -47,12 +48,16 @@ class InstitutionAccountController < ApplicationController
   private
 
   def institution_params
-    # byebug
-    params.require(:institution_account).permit(:publisher,:institution_id, 
-        :libary_name,:institution_name,:status,:display_name, 
-        { institution_acc_billing_address_attributes: [
-        :first_name, :last_name, :phone, :email, :address, 
-        :address_line2,:address_line3, :city, :state, 
-        :postal_code, :comments, :institution_account_id]} ) 
+    # params.require(:institution_account).permit(:publisher,:institution_id, 
+    #     :libary_name,:institution_name,:status,:display_name, 
+    #     { institution_acc_billing_address_attributes: [
+    #     :first_name, :last_name, :phone, :email, :address, 
+    #     :address_line2,:address_line3, :city, :state, 
+    #     :postal_code, :comments, :institution_account_id]} ) 
+    # params = ActionController::Parameters.new({ institution_account: true })
+    params.permit(:institution_account).tap do |whitelisted| 
+          byebug
+     whitelisted[:institution_acc_billing_address_attributes] = params[:institution_account][:institution_acc_billing_address] 
+    end
   end
 end

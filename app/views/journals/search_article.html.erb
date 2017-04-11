@@ -2,16 +2,10 @@
   <body class = "body1">
     <%= render :partial => '/layouts/header'%>
     <div class="div1">
+      <h1>Article Search</h1>
       <table border="0" cellpadding="10" cellspacing="0">
-  <tr>
-    <td.page_head>Article Search</td>
-  <tr>
-  <tr>
-    <td> 
-  <tr>
-   <%= form_tag journals_result_article_path, :method => 'get' do %>
-      <table border="0" cellpadding="10" cellspacing="0">
-          <tbody>
+        <tbody>
+          <%= form_tag journals_result_article_path, :method => 'get' do %>
             <tr>
               <td>Journal Title</td>
               <td><%= text_field_tag :journal_title, params[:journal_title] %></td>
@@ -52,15 +46,12 @@
               <td>
                 <%= submit_tag "Submit" %>
                 <%= button_tag "Reset", type: :reset %>
-                <% end %>
               </td>
             </tr>
-          </tbody>
+          <% end %>
+        </tbody>
+      </table>
     </div>
+    <%= render :partial => '/layouts/footer'%>
   </body>
 </html>
-
-<tr>
-  <td align="center" class="footer_white">
-  Copyright © 2006-2009 MPS Technologies Ltd</td>
-</tr>
