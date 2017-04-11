@@ -14,15 +14,19 @@ class RetailersController < ApplicationController
 	end 
 	
 	def new
-		byebug
 		@retailer = Retailer.new
 	end
 	
 	def create
 		byebug
+		@retailers = Retailer.all
+		@retail = Retailer.find_by(params[:id])
+		@ret = @retail.publisher_id
+		@re = Publisher.find_by(@ret)
 		@retailer = Retailer.new(retailer_params)
 		if @retailer.save
-			redirect_to retailers_path
+			# redirect_to retailers_path
+			render 'search',locals: { :re => @re }
 		else
 			render 'new'
 		end
@@ -42,9 +46,15 @@ class RetailersController < ApplicationController
 	end
 
 	def destroy
+		@retailers = Retailer.all
 		@retailer = Retailer.find_by(params[:id])
+		@ret = @retailer.publisher_id
+		@re = Publisher.find_by(@ret)
 		@retailer.destroy
-		redirect_to retailers_path
+		 respond_to do |format|
+      format.html { render 'search',locals: { :re => @re }}
+      format.json { head :no_content }
+    end
 	end
 
 	private 
