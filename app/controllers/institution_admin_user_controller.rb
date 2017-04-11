@@ -1,15 +1,15 @@
 class InstitutionAdminUserController < ApplicationController
   before_filter :set_system_generated_username
 
-  def index
+  def index      
   end
 
   def search_op
     # we search admin users by using status,role and first_name.
     # here, we filter the params and get status,role and first_name only.
-    @res = InstitutionAdminUserAcc.filter(params.slice(:status,:role, :first_name))
-    byebug
-    render 'result', locals: { :res => @res }
+    @res = InstitutionAdminUserAcc.filter(params.slice(:institution_name, 
+                    :status,:role, :first_name, :user_name, :last_name, :email))
+    render 'result', locals: { :res => @res, :ins => @ins }
   end
 
   def show
@@ -61,7 +61,20 @@ class InstitutionAdminUserController < ApplicationController
       render 'new'
     end
   end
-  # InstitutionAccBillingAddress.find_by(:institution_account_id => params[:institution_id])
+
+  def edit   
+    @inst_admin_user = InstitutionAdminUserAcc.find_by_id(params[:id])
+  end
+
+  def update
+    @inst_admin_user = InstitutionAdminUserAcc.find_by_id(params[:id])
+   if @inst_admin_user.update(insti_admin_user_params)
+    redirect_to search_op_institution_admin_user_index_path
+    else 
+      render 'index'
+    end
+  end
+
   def set_system_generated_username
     # the primary Institution Administrator's role is system generated.inorder to achieve 
     # this,we use primary_count.

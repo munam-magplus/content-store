@@ -30,7 +30,7 @@
             <tr>
               <td align = "left", height = "25"> User Status</td>
               <td align = "left">
-                <%= select_tag 'status',options_for_select(['active', 'inactive']) %>
+                <%= select_tag 'status',options_for_select(['active', 'inactive']), :prompt => "select status" %>
               </td>
             </tr>
             <tr>
@@ -45,12 +45,12 @@
                 <%= text_field_tag :user_name %>
               </td>
             </tr>
-            <tr>
+            <!-- <tr>
               <td align = "left", height = "25"> Institution Id</td>
-              <!-- <td align = "left">
+              <td align = "left">
                 <%= text_field_tag :institution_name %>
-              </td> -->
-            </tr>
+              </td> 
+            </tr> -->
             <tr>
               <td align = "left", height = "25"> Institution Name</td>
               <td align = "left">
@@ -60,7 +60,7 @@
             <tr>
               <td align = "left">
                 <%= submit_tag "Submit", :name => nil %>
-                <%= submit_tag "Reset", :name => nil %>
+                 <%= button_tag "Reset", type: :reset %>
               </td>
             </tr>
           </tbody>
