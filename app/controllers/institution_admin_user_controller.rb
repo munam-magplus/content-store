@@ -1,15 +1,15 @@
 class InstitutionAdminUserController < ApplicationController
   before_filter :set_system_generated_username
 
-  def index
+  def index      
   end
 
   def search_op
     # we search admin users by using status,role and first_name.
     # here, we filter the params and get status,role and first_name only.
-    @res = InstitutionAdminUserAcc.filter(params.slice(:status,:role, :first_name))
-    byebug
-    render 'result', locals: { :res => @res }
+    @res = InstitutionAdminUserAcc.filter(params.slice(:institution_name, 
+                    :status,:role, :first_name, :user_name, :last_name, :email))
+    render 'result', locals: { :res => @res, :ins => @ins }
   end
 
   def show
