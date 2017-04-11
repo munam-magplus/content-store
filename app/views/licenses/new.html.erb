@@ -1,2 +1,223 @@
-<h1>Licenses#new</h1>
-<p>Find me in app/views/licenses/new.html.erb</p>
+<body class = "body1">
+<%= render :partial => '/layouts/header' %>
+    <%= form_for @license do |f| %>
+  <table border =  "0", cellpadding = "0", cellspacing = "0", width = "860", class = "center">
+    <tr>
+      <td class = "page_head"> Create License</td>
+    </tr>
+    <tr>
+      <td>
+        <table border = "0", cellpadding = "6", cellspacing = "0", width = "100%", class = "center">
+          <tr>
+            <td>
+              <table border = "0", cellpadding = "10", cellspacing = "0">
+                <tbody>
+                 <tr>
+                   <td height = "25" colspan="5" > 
+                    <p class="sub_head">Information
+                    </p>
+                  </tr>
+                  <tr>
+                    <td height = "25">
+                      License ID
+                      <span class = "mandtory ">*</span>
+                    </td>
+                    <td height = "25">
+                     <input value="System Generated" id="licenseId" disabled />
+                    </td>
+                    <td>
+                      License Name
+                      <span class = "mandtory ">*</span>
+                    </td>
+                    <td>
+                      <%= f.text_field :license_name %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td height = "25"> Publisher
+                     <span class="mandtory">*</span>
+                    </td>
+                    <td height = "25">
+                      <%= f.collection_select(:publisher_id, Publisher.all, :id, :publisher_name) %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td height = "25"> Created On</td>
+                    <td height = "25">
+                     <input id="createdOn" value="System Generated" disabled />
+                    </td>
+                    <td> Created By </td>
+                    <td height = "25">
+                      <input id="createdBy" value="ctssuperadmin@bookstore.com" disabled />
+                    </td>
+                  </tr>
+                  <tr>
+                   <td height = "25" colspan="5" > 
+                    <p class="sub_head">Content <span class="mandtory">*</span>
+                    </p>
+                   </tr>
+                  <tr>
+                   <td height = "25" colspan="5">
+                     <input type="radio" name="content_type" value="book"/>Book
+                     <input type="radio" name="content_type" value="chapter"/>Chapter
+                     <input type="radio" name="content_type" value="journal"/>Journal
+                     <input type="radio" name="content_type" value="article"/>Article
+                   </td>
+                  </tr>
+                  <tr>
+                   <td height = "25" colspan="5">
+                    <div id="book">
+                     ISBN<input type="text" name="title"/>
+                     Title<input type="text" name="title"/>
+                    </div>
+                    <div id="chapter">
+                     ISBN<input type="text" name="title"/>
+                     Chapter Title<input type="text" name="title"/>
+                     Content Code<input type="text" name="title"/>
+                    </div>
+                    <div id="journal">
+                     Journal Title<input type="text" name="title"/>
+                     Journal Code<input type="text" name="title"/>
+                    </div>
+                    <div id="article">
+                     Journal Code<input type="text" name="title"/>
+                     Title<input type="text" name="title"/>
+                     Content Code<input type="text" name="title"/>
+                     DOI<input type="text" name="title"/>
+                    </div>
+                   </td>
+                   <td height = "25" colspan="5">
+                    <%= button_to "search", search_content_licenses_path, :id => "open-contacts-dialog-btn",:class => "inbox-sf-add-btn tip", :method =>:get%>
+                   </td>
+                  </tr>
+                  <tr>
+                   <td height = "10" colspan="2" > 
+                    <p class="sub_head">Parameters
+                    </p>
+                  </tr>
+                  <tr>
+                    <td height="25">License Type <span class="mandtory">*</span></td>
+                    <td height="25" colspan="3"><select select id="licenseType">
+                   <option value="" selected>Select</option>
+                    <option value="relative">Relative Date Range</option>
+                    <option value="downloadable">Downloadable Content</option>
+                    <option value="fixed_date_range">Fixed Date Range</option>
+
+                    </select></td>
+                  </tr>
+                  <tr>
+                   <td height = "25" colspan="5">
+                    <div id="relative">
+                      Duration<span class = "mandtory ">*</span><%= f.text_field :license_type %>
+                      <select select id="duration">
+                      <option value="" selected>Select</option>
+                      <option value="minutes">Minutes</option>
+                      <option value="hours">Hours</option>
+                      <option value="days">Days</option>
+                      <option value="months">Months</option>
+                      <option value="years">Years</option>
+                      </select>
+                    </div>
+                    <div id="downloadable">
+                      Downloadable Format<span class="mandtory">*</span>
+                      <select select id="duration">
+                        <option value="" selected>No Downloadable format</option>
+                      </select>
+                  
+                      Number of Days For Download <span class="mandtory">*</span>
+
+                      <%= f.text_field :license_type %>
+                    </div>
+                    <div id="fixed_date_range">
+                      From <%= f.text_field :from, :id => 'from' %>
+                      To <%= f.text_field :to, :id => 'to' %>
+                    </div>
+                  </td>
+                  </tr>
+                  <tr>
+                   <td height = "10" colspan="2" > 
+                    <p class="sub_head">License can be Linked to user:
+                    </p>
+                  </tr>
+                  <tr>
+                    <td height="25" width="430">
+                      From <%= f.text_field :from, :id => 'from1' %>
+                    </td>
+                    <td height="25" width="430">
+                      To <%= f.text_field :to, :id => 'to1' %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td height = "25" colspan="5">
+                     <%= f.radio_button :to, 'Yes'%>Allow License to be linked    
+                     <%= f.radio_button :to, 'No' %>Prevent License from being linked 
+                   </td>
+                  </tr>
+                  <tr>
+                   <td height = "10" colspan="2" > 
+                    <p class="sub_head">Purchase Information
+                      <td height = "25" colspan="5">
+                        <%= link_to "Price From Content" %> |
+                        <%= link_to "Manually Edit Prices"%>
+                      </td>
+                    </p>
+                  </tr>
+                  <tr>
+                    <td height = "25" colspan="5">
+                     <%= f.radio_button :license_for_sale, 'Yes'%>For Sale    
+                     <%= f.radio_button :license_for_sale, 'No' %>Not For Sale
+                     <%= f.check_box(:to) %> Free License
+                     <%= f.check_box(:to) %> Free Shipping
+                   </td>
+                  </tr>
+                  <tr>
+                   <td class = "GBoldText", align = "right", height = "35">
+                     <table border = "0", cellpadding = "0", cellspacing = "0">
+                       <tr>
+                         <td height = "25" colspan="5">
+                            Discount%<%= f.text_field :license_type %>
+                          </td>
+                          <td height = "25" colspan="5">
+                           <%= submit_tag "Save" %>
+                         </td>
+                       </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+<%= render :partial => '/layouts/footer' %>
+<script>
+ $('#chapter').hide();
+ $('#journal').hide();
+ $('#article').hide();
+ $('#relative').hide();
+ $('#downloadable').hide();
+ $('#fixed_date_range').hide();
+ $('input[name="content_type"]').change(function() {
+  var isBook = $('input:checked[name="content_type"]').val() == "book";
+  var isChapter = $('input:checked[name="content_type"]').val() == "chapter";
+  var isJournal = $('input:checked[name="content_type"]').val() == "journal";
+  var isArticle = $('input:checked[name="content_type"]').val() == "article";
+
+  $('#book').toggle(isBook);
+  $('#chapter').toggle(isChapter);
+  $('#journal').toggle(isJournal);
+  $('#article').toggle(isArticle);
+ });
+ $('#licenseType').change(function () {
+   var isRelative = this.value == 'relative';
+   var isDownloadable = this.value == 'downloadable';
+   var isFixed_date_range = this.value == 'fixed_date_range';
+    $('#relative').toggle(isRelative);
+    $("#downloadable").toggle(isDownloadable);
+    $("#fixed_date_range").toggle(isFixed_date_range);
+  });
+</script>

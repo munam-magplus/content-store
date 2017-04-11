@@ -4,6 +4,7 @@ class LicenseGroupsController < ApplicationController
   end
 
   def new
+     @license_group = LicenseGroup.new
   end
 
   def index
