@@ -53,7 +53,7 @@
 						<%= link_to image_tag("search.gif"), license_groups_path %>
 					</td>
 					<td class="gindexborder">
-						<%= image_tag("create.gif")%>
+						<%= link_to image_tag("create.gif"),{action: 'new', controller: 'license_groups'}%>
 					</td>
 				</tr>
 			</table>

@@ -1,20 +1,20 @@
-<body>
-  <%= render :partial => '/layouts/header' %>
-  <div class="div1">
-    <tr>
-      <td colspan="2">
-        <table bgcolor="#cccccc" border="0" cellpadding="10" cellspacing="1" width="100%">
-          <tbody>
-            <tr>
-              <td class="tableheader">Publisher</td>
-              <td class="tableheader">Id</td>
-              <td class="tableheader">Name</td>
-              <td class="tableheader">Type</td>
-              <td class="tableheader">Saleable</td>
-              <td class="tableheader">Linkable From</td>
-              <td class="tableheader">Linkable To</td>
-              <td class="tableheader">Created By</td>
-            </tr>
+<body class="body1"></body>
+<%= render :partial => '/layouts/header' %>
+<div class="div1">
+  <tr>
+    <td colspan="2">
+      <table bgcolor="#cccccc" border="0" cellpadding="10" cellspacing="1" width="100%">
+        <tbody>
+          <tr>
+            <td class="tableheader">Publisher</td>
+            <td class="tableheader">Id</td>
+            <td class="tableheader">Name</td>
+            <td class="tableheader">Type</td>
+            <td class="tableheader">Saleable</td>
+            <td class="tableheader">Linkable From</td>
+            <td class="tableheader">Linkable To</td>
+            <td class="tableheader">Created By</td>
+          </tr>
             <tr>
               <% if @license.present? %>
                 <% @license.each do |lic| %>
