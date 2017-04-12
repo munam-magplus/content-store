@@ -14,7 +14,7 @@
                 <b> Details </b>
                 <td height = "25"> Select Publisher</td>
                 <td align = "left">
-                  <%= f.select 'publisher',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "select publisher" %>
+                  <%= f.select 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "select publisher" %>
                 </td>
               </tr>
               <tr>
