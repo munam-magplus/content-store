@@ -92,12 +92,13 @@ Rails.application.routes.draw do
 
   resources :institution_admin_user do 
     collection do 
-      get 'index'
       get 'search_op'
-      post 'create'
-      post 'new'
+      # post 'create'
+      # get 'new'
     end
   end
+
+  get 'institution_account/search_op'
 
   resources :retailers,:institution_account
 

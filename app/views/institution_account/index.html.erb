@@ -5,18 +5,14 @@
       <td class = "page_head"> Institution Account</td>
     </tr>
     <tr>
-     <%= form_for institution_account_index_path, :method => 'get' do |f| %>
+     <%= form_tag institution_account_search_op_path, :method => 'get' do |f| %>
         <td align =  "left">
           <table border = "0", cellpadding = "10", cellspacing = "0">
             <tbody>
               <tr>
                 <td height = "25"> Select Publisher</td>
                 <td align = "left">
-                  <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name')%>
-                </td>
-                <td align = "left", height = "25">Institution ID</td>
-                <td align = "left", height = "25">
-                  <%= text_field_tag :institution_id %>
+                  <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "Select publisher"%>
                 </td>
               </tr>
               <tr>
@@ -34,7 +30,6 @@
                 <td align = "left">
                   <%= text_field_tag :name,params[:ipadd] %>
                 </td>
-                <%= f.fields_for :institution_acc_billing_address do |ff| %>
                   <td align = "left", height = "25"> City</td>
                   <td align = "left">
                     <%= text_field_tag :city %>
@@ -47,14 +42,14 @@
                 </td>
                 <td align = "left", height = "25"> Country</td>
                 <td align = "left">
-                  <%= select_tag 'country',options_from_collection_for_select(Country.all, 'country_name', 'country_name')%>
+                  <%= country_select("activity", "country", :prompt => "select country" )%>
                 </td>
               </tr>
 
               <tr>
                 <td height = "25"> Status</td>
                 <td align = "left">
-                  <%= f.select 'status',options_for_select(['active', 'inactive']) %>
+                  <%= select_tag 'status',options_for_select(['active', 'inactive']), :prompt => "select status" %>
                 </td>
               </tr>
               <tr>
@@ -77,13 +72,12 @@
                   <%= check_box_tag(:ip_address) %>
                 </td>
               </tr>
-              <% end %>
               <tr>
                 <td align = "left">  
                   <%= submit_tag "Submit"%>
                 </td>
                 <td align = "left">
-                  <%= submit_tag "Reset" %>
+                 <%= button_tag "Reset", type: :reset %>
                 </td>
               </tr>
             </tbody>

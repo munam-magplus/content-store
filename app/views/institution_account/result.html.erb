@@ -4,7 +4,6 @@
 	 <table>
 	 <thead>
 	 		<tr>
-	 			<th width="15%" class="tableheader">Institution ID</th>
 				<th width="15%" class="tableheader">Institution Name</th>
 				<th width="15%" class="tableheader">Lib./Dept. Name</th>
 				<th width="7%" class="tableheader">Country</th>
@@ -17,11 +16,13 @@
 	 <tbody>
 			<% @res.each do |f| %>
 	 	<tr>
-				<td bgcolor="#ffe5db"><%= f.institution_id %></td>
 				<td bgcolor="#ffe5db"><%= f.institution_name %></td>
 				<td bgcolor="#ffe5db"><%= f.libary_name %></td>
 				<td bgcolor="#ffe5db"><% @country %></td>
-				<td bgcolor="#ffe5db"></td>
+				<td bgcolor="#ffe5db">
+						<%= @ins.first_name %>
+				</td>
+				<% byebug %>
 				<td bgcolor="#ffe5db"><%= f.status %></td>
 				<td bgcolor="#ffe5db">
 					<%if @chec.present? %>
@@ -40,6 +41,9 @@
 				</td>
 		</tr>
 			<%end%>
+
+			
+
 	 </tbody> 
 	</table>
 		</div>

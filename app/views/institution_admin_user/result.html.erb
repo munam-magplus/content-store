@@ -12,25 +12,22 @@
 			<th width="15%" class="tableheader">User Status</th>
 			<th width="7%" class="tableheader">User Name</th>
 			<th width="10%" class="tableheader">User Role</th>
-			<th width="10%" class="tableheader">Institution ID</th>
 			<th width="10%" class="tableheader">Institution Name</th>
 			<th width="25%" align="center" class="tableheader">Action</th>
  		</tr>
 	 </thead>
 	 <tbody>
 			<% @res.each do |f| %>
-			<% byebug %>
 	 	<%if f.status == "active"%>
 	 	<tr class="backgroundcolor">
-				<td  class="tabledata"><%= f.first_name %></td>
+				<td  class="tabledata"><%= f.first_name%>&nbsp<%= f.last_name %></td>
 				<td  class="tabledata"><%= f.email %></td>
 				<td  class="tabledata"><%= f.status %></td>
 				<td  class="tabledata"><%= f.user_name %></td>
 				<td  class="tabledata" ><%= f.role %></td>
-				<td  class="tabledata" ></td>
 				<td  class="tabledata"><%= f.institution_name %></td>
 				<td  class="tabledata">
-					<%= image_tag("institutional-user.gif",  size: "17x17")%>
+					<%= link_to image_tag("institutional-user.gif",  size: "17x17", title: "User Details") , edit_institution_admin_user_path(f)%>
 				</td>
 		</tr>
 		<% else %>
@@ -40,10 +37,9 @@
 				<td  class="tabledata"><%= f.status %></td>
 				<td  class="tabledata"><% f.user_name %></td>
 				<td  class="tabledata" ><% f.role %></td>
-				<td  class="tabledata" ></td>
 				<td  class="tabledata"><%= f.institution_name %></td>
 				<td  class="tabledata">
-					<%= image_tag("institutional-user.gif",  size: "17x17")%>
+					<%= link_to image_tag("institutional-user.gif",  size: "17x17", title: "User Details"), edit_institution_admin_user_path(f)%>
 				</td>
 		</tr>
 		<% end %>

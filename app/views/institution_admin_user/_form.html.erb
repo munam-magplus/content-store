@@ -1,0 +1,151 @@
+<html>
+  <body class = "body1">
+    <%= render :partial => '/layouts/header'%>
+    <div class="div1">
+      <h1>Create Institutional User</h1>
+      <table border="0" cellpadding="10" cellspacing="0">
+        <tbody>
+          <%= form_for(@inst_admin_user, url: institution_admin_user_index_path ) do |f| %>
+            <tr>
+              <td>User Role*</td>
+              <td>
+              <%= f.radio_button :role, 'Primary Institution Administrator' %> Primary Institution Administrator
+              <%= f.radio_button :role,'Institution Administrator'%> Institution Administrator<br>
+              </td>
+            </tr>
+            <tr>
+              <td height = "25"> Publisher</td>
+              <td align = "left">
+                <%= f.select 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "select publisher" %>
+              </td>
+            </tr>
+            <tr>
+              <td height = "25"> Institution name* </td>
+              <td align = "left">
+                <%= f.select 'institution_name',options_from_collection_for_select(InstitutionAccount.all, 'institution_name', 'institution_name', :prompt => "select institution name") %>
+              </td>
+            </tr>
+            <tr id="primary2">
+              <td height = "25"> User Name</td>
+              <td align = "left">
+                <%= f.text_field :user_name, :value => "System Generated" %>
+              </td>
+            </tr>
+            <tr id="institution2">
+              <td height = "25"> User Name</td>
+              <td align = "left">SA_
+                <%= f.text_field :user_name %>
+              </td>
+            </tr>
+            <tr>
+              <td height = "25"> Status</td>
+              <td align = "left">
+                <%= f.select 'status',options_for_select(["active","inactive"]), :prompt => "select status" %>
+              </td>
+            </tr>
+            <tr>
+              <td align = "left" height = "25" >
+                <%= check_box_tag :billing_contact%>
+                same as institution billing contact        
+              </td>
+            </tr>
+            <tr id="billing">
+              <td height = "25"> First Name*</td>
+              <td align = "left">
+                <%= f.text_field :first_name, :id => "first" %>
+              </td>
+              <td height = "25"> Last Name*</td>
+              <td align = "left">
+                <%= f.text_field :last_name, :id => "last" %>
+              </td>
+            </tr>
+            <tr>
+              <td height = "25"> Email Address* </td>
+              <td align = "left">
+                <%= f.text_field :email, :id => "mail" %>
+              </td>
+              <td height = "25"> Phone </td>
+              <td align = "left">
+                <%= f.text_field :phone, :id => "phone" %>
+              </td>
+            </tr>
+            <tr>
+              <td height = "25"> Position </td>
+              <td align = "left">
+                <%= f.text_field :position %>
+              </td>
+              <td height = "25"> Fax </td>
+              <td align = "left">
+                <%= f.text_field :fax %>
+              </td>
+            </tr>
+            <tr>
+              <td height = "25"> Password* </td>
+              <td align = "left">
+                <%= f.password_field :password %>
+              </td>
+              <td height = "25"> Confirm Password* </td>
+              <td align = "left">
+                <%= f.password_field :confirm_password %>
+              </td>
+            </tr>
+            <tr>
+              <td height = "25"> Comments </td>
+              <td align = "left">
+                <%= f.text_area :comments %>
+              </td>
+            </tr>
+            <tr>
+              <td height = "25" align = "left" >
+                <%= check_box_tag(:mail) %>
+                Send Email Comfirmation to Email Address above        
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= f.submit "Submit" %>        
+              </td>
+              <td>
+               <%= button_tag "Reset", type: :reset %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+  </body>
+</html>
+
+<script>   
+$(document).ready(function(){
+  $('#primary2').hide();
+  $('#institution2').hide();
+   $('input[type="checkbox"]').click(function(){
+      if($('#billing_contact').prop("checked") == true){
+         $("#first").prop('disabled', true);
+         $("#last").prop('disabled', true);
+         $("#mail").prop('disabled', true);
+         $("#phone").prop('disabled', true);
+       }
+      else{
+       $("#first").prop('disabled', false);
+       $("#last").prop('disabled', false);
+       $("#mail").prop('disabled', false);
+       $("#phone").prop('disabled', false);
+      }
+  });
+
+  $(':radio').change(function (event) {
+      var id = $(this).val();
+      console.log(id);
+      if(id.search("Primary Institution Administrator")!=-1)
+      {
+        $('#institution2').hide();
+        $('#primary2').show();
+      } else{
+        $('#primary2').hide();
+        $('#institution2').show();
+      }
+  });
+});
+</script>
