@@ -4,12 +4,11 @@ class InstitutionAccountController < ApplicationController
   end
   
   def search_op
-    byebug
     # we perform search operation by slicing the params.
     @res = InstitutionAccount.filter(params.slice(:publisher, 
             :status, :libary_name, :institution_name))
     # this is the params of the checkbox that is present in the form.
-    byebug
+    # byebug
     @ins = InstitutionAccBillingAddress.find_by(params[:id])
     @chec = params[:ip_address]
     # we render the result page that have the search result.
