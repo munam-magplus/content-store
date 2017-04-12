@@ -5,5 +5,4 @@ class InstitutionAdminUserAcc < ApplicationRecord
 	validates :confirm_password, :presence => true 
 	validates :user_name, :presence => true 
 	validates :status, :presence => true 
-
 end

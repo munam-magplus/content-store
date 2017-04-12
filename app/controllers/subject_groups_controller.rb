@@ -18,7 +18,6 @@ class SubjectGroupsController < ApplicationController
   
   def search_result
     @subject_group = SubjectGroup.filter(params.slice(:publisher, :subject_group_name, :subject_group_code, :language))
-    render :partial => 'search_result'
   end
 
   def metadata_sheet
