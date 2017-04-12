@@ -4,6 +4,7 @@ class CampaignsController < ApplicationController
 
   def create
     @campaign = Campaign.create!(campaign_params)
+    flash[:success] = "Campaign Created!"
     # redirect_to search path after create
     redirect_to campaigns_path
   end
