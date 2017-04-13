@@ -1,12 +1,11 @@
 <html>
 <body class = "body1">
-  <%= render :partial => '/layouts/header' %>
   <table class = "center">
     <tr>
       <td class = "page_head"> Create Institution</td>
     </tr> 
     <tr> 
-      <%= form_for(:institution_account, url:  institution_account_index_path) do |f| %>
+      <%= form_for(@institution, url:  institution_account_index_path) do |f| %>
         <td align = "left" >
           <table border = "0", cellpadding = "10", cellspacing = "0">
             <tbody>
