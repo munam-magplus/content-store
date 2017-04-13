@@ -23,27 +23,35 @@ Rails.application.routes.draw do
   get 'site_settings/index'
 
   post 'subject_groups/new'
-  get 'subject_groups/search_result'
 
   get 'books/create'
   post 'books/new'
 
-  get 'end_user/new'
-  get 'end_user/index'
   get 'end_user/search'
-  get 'end_user/create'
   post 'end_user/create'
+  
+  post 'subject_groups/new'
+
+  get 'end_user/new'
+
+  get 'end_user/create'
+  get 'end_user/index'
 
   post 'publishers/new'
   post 'publishers/create'
+
+  get 'end_user/search'
+  get 'end_user/new'
+  get 'end_user/create'
 
   get 'admin_user/new'
   get 'admin_user/create'
   get 'admin_user/search'
   get 'admin_user/index'
+  post 'admin_user/index'
   post 'admin_user/new'
   post 'admin_user/create'
-  post 'admin_user/index'
+
 
   resources :content_conversation do
     collection do 
@@ -66,6 +74,11 @@ Rails.application.routes.draw do
       get 'result'
     end
   end
+
+
+  post 'books/new'
+  
+  get 'books/create'
 
   post 'journals/create'
   get 'journals/search_result'

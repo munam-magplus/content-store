@@ -19,6 +19,7 @@ class PublishersController < ApplicationController
   def create
     @publisher = Publisher.new(publisher_params)
     if @publisher.save!
+      flash[:success] = "Publisher Created!"
       # if successfully stored then redirect to publisher's setup path 
       redirect_to publisher_setup_index_path
     else

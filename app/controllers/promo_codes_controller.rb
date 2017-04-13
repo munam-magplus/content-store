@@ -8,6 +8,7 @@ class PromoCodesController < ApplicationController
 
   def create
     @campaign = PromoCode.create!(promo_code_params)
+    flash[:success] = "PromoCode Created!"
   end
 
   def new
