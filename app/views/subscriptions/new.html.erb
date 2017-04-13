@@ -1,4 +1,5 @@
 <html>
+
 	<body class = "body1">
 		<div class="div1">
 
@@ -44,7 +45,7 @@
             <tr id="subject_group">
               <td>Subject Group Name:</td>
               <td><%= f.text_field :subject_group_name %></td>
-              <td onclick="adityaTest();">Subject Group Code:</td>
+              <td>Subject Group Code:</td>
               <td><%= f.text_field :subject_group_code %></td>
             </tr>
             <tr id="book">
@@ -130,23 +131,27 @@ $(document).ready(function(){
   });
 });
 
-</script>
-
-<script type="text/javascript"
-    src="jquery-ui-1.10.0/tests/jquery-1.9.0.js"></script>
-<script src="jquery-ui-1.10.0/ui/jquery-ui.js"></script>
-<script>    
-$('#dbType').change(function(){
-
-   selection = $('this').value();
-   switch(selection)
-   {
-       case 'other':
-           $('#otherType').show();
-           break;
-       case 'default':
-           $('#otherType').hide();
-           break;
-   }
+$(document).ready(function() {
+  $("select").change(function (event) {
+    var color = $(this).val();
+    if (color == "red") {
+      $(".box").not(".red").hide();
+      $(".red").show();
+    } else if (color == "green") {
+      $(".box").not(".green").hide();
+      $(".green").show();
+    } else if (color == "blue") {
+      $(".box").not(".blue").hide();
+      $(".blue").show();
+    } else if (color == "maroon") {
+      $(".box").not(".maroon").hide();
+      $(".maroon").show();
+    } else if (color == "magenta") {
+      $(".box").not(".magenta").hide();
+      $(".magenta").show();
+    } else {
+      $(".box").hide();
+    }
+  });
 });
 </script>

@@ -5,7 +5,7 @@
       <h1>New Article Setup </h1>
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
-          <%= form_for(:article, url:  create_article_journals_path) do |f| %>
+          <%= form_for @article, url: article_create_path do |f| %>
             <tr>
               <td>Publisher*:</td>
 			        <td><%= f.text_field :publisher %></td>
@@ -59,9 +59,9 @@
             </tr>
             <tr>
               <td>Publication Date*:</td>
-              <td><%= f.text_field :publisher_date %></td>
+              <td><%= f.text_field :publisher_date, :id => 'from' %></td>
                <td>Issue Cover Date:</td>
-              <td><%= f.text_field :issue_cover_date %></td>
+              <td><%= f.text_field :issue_cover_date, :id => 'to' %></td>
             </tr>
             <tr>
               <td>Stock Number:</td>
@@ -74,36 +74,7 @@
             <tr>
               <td><strong>Contributor's Information</strong></td>
             </tr>
-            <tr>
-              <td colspan="4">
-            <div style="min-height:100px; max-height:190px; overflow:auto;">
-              <table width="97%" border=0 cellPadding="8" cellSpacing="1" id="contributorTable" bgColor="#cccccc">
-                <%= f.fields_for :article_infos do |builder| %>
-               <td>Role*:</td>
-              <td><%= builder.text_area :contributor_info_role %></td>
-            </tr>
-            <tr>
-               <td>Name:</td>
-              <td><%= builder.text_area :contributor_info_name %></td>
-            </tr>
-            <tr>
-               <td>desc:</td>
-              <td><%= builder.text_area :contributor_info_description %></td>
-              </table>
-       </div>
-      </td>
-            </tr>
-            <tr>
-               <td>Format:</td>
-              <td><%= builder.text_area :content_format_format %></td>
-            </tr>
-            <tr>
-               <td>DOI:</td>
-              <td><%= builder.text_area :content_format_doi %></td>
-            </tr><tr>
-               <td>Abstract:</td>
-              <td><%= builder.text_area :content_format_abstract %></td>
-            </tr>
+            <%= f.fields_for :article_info do |builder| %>    
             <tr>
             <td colspan="4">
             <div style="min-height:100px; max-height:190px; overflow:auto;">
@@ -111,6 +82,11 @@
 				<td align="left" class="tableheader">Role*</td>
 				<td height="25" align="left" class="tableheader">Name*</td>
 				<td align="left" class="tableheader">Description</td>
+      <tr>
+        <td><%= builder.text_field :contributor_info_role %></td>
+        <td><%= builder.text_field :contributor_info_name %></td>
+        <td><%= builder.text_field :contributor_info_description %></td>
+      </tr>
 			</table>
 			</div>
 			</td>
@@ -138,6 +114,11 @@
 </td>
 <td height="25" align="left" class="tableheader">Format</td>
 <td align="left" class="tableheader">DOI</td>
+<tr>
+  <td><input type="checkbox"name="selbaseONLPriceDataCK" value="checkbox" /></td>
+  <td><%= builder.text_field :content_format_format %></td>
+  <td><%= builder.text_field :content_format_doi %></td>
+</tr>
 </tr>
 </table>
 </div>
@@ -236,7 +217,11 @@
           </td>
 </tr>
           <% end %>
+          <tr>
+            <td>
             <%= f.submit "Submit" %>
+            </td>
+          </tr>
            <% end %>
         </tbody>
       </table>

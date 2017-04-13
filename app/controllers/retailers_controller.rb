@@ -1,4 +1,6 @@
 class RetailersController < ApplicationController
+	    before_action :authenticate_user!
+
 	def index
 	 # this is done because the association between
    # retailer and publisher association is through publisher's code.

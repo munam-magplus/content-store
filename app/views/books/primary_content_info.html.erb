@@ -10,7 +10,7 @@
 <h1> Primary Content Information</h1>
 <table border="0" cellpadding="10" cellspacing="0">
 	<tbody>
-		<%= form_for @book, url: {action: "create"} do |f| %>
+		<%= form_for(@book, url: {action: "create"}) do |f| %>
 			<tr>
 				<td>Content Code:</td>
 				<td><%= f.text_field :content_code %></td>

@@ -1,117 +1,139 @@
 <html>
   <body class = "body1">
-    <div class="div1">
-      <h1>Create Institutional User</h1>
-      <table border="0" cellpadding="10" cellspacing="0">
-        <tbody>
-          <%= form_for(@inst_admin_user, url: institution_admin_user_index_path ) do |f| %>
-            <tr>
-              <td>User Role*</td>
-              <td>
-              <%= f.radio_button :role, 'Primary Institution Administrator' %> Primary Institution Administrator
-              <%= f.radio_button :role,'Institution Administrator'%> Institution Administrator<br>
-              </td>
-            </tr>
-            <tr>
-              <td height = "25"> Publisher</td>
-              <td align = "left">
-                <%= f.select 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "select publisher" %>
-              </td>
-            </tr>
-            <tr>
-              <td height = "25"> Institution name* </td>
-              <td align = "left">
-                <%= f.select 'institution_name',options_from_collection_for_select(InstitutionAccount.all, 'institution_name', 'institution_name', :prompt => "select institution name") %>
-              </td>
-            </tr>
-            <tr id="primary2">
-              <td height = "25"> User Name</td>
-              <td align = "left">
-                <%= f.text_field :user_name, :value => "System Generated" %>
-              </td>
-            </tr>
-            <tr id="institution2">
-              <td height = "25"> User Name</td>
-              <td align = "left">SA_
-                <%= f.text_field :user_name %>
-              </td>
-            </tr>
-            <tr>
-              <td height = "25"> Status</td>
-              <td align = "left">
-                <%= f.select 'status',options_for_select(["active","inactive"]), :prompt => "select status" %>
-              </td>
-            </tr>
-            <tr>
-              <td align = "left" height = "25" >
-                <%= check_box_tag :billing_contact%>
-                same as institution billing contact        
-              </td>
-            </tr>
-            <tr id="billing">
-              <td height = "25"> First Name*</td>
-              <td align = "left">
-                <%= f.text_field :first_name, :id => "first" %>
-              </td>
-              <td height = "25"> Last Name*</td>
-              <td align = "left">
-                <%= f.text_field :last_name, :id => "last" %>
-              </td>
-            </tr>
-            <tr>
-              <td height = "25"> Email Address* </td>
-              <td align = "left">
-                <%= f.text_field :email, :id => "mail" %>
-              </td>
-              <td height = "25"> Phone </td>
-              <td align = "left">
-                <%= f.text_field :phone, :id => "phone" %>
-              </td>
-            </tr>
-            <tr>
-              <td height = "25"> Position </td>
-              <td align = "left">
-                <%= f.text_field :position %>
-              </td>
-              <td height = "25"> Fax </td>
-              <td align = "left">
-                <%= f.text_field :fax %>
-              </td>
-            </tr>
-            <tr>
-              <td height = "25"> Password* </td>
-              <td align = "left">
-                <%= f.password_field :password %>
-              </td>
-              <td height = "25"> Confirm Password* </td>
-              <td align = "left">
-                <%= f.password_field :confirm_password %>
-              </td>
-            </tr>
-            <tr>
-              <td height = "25"> Comments </td>
-              <td align = "left">
-                <%= f.text_area :comments %>
-              </td>
-            </tr>
-            <tr>
-              <td height = "25" align = "left" >
-                <%= check_box_tag(:mail) %>
-                Send Email Comfirmation to Email Address above        
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <%= f.submit "Submit" %>        
-              </td>
-              <td>
-               <%= button_tag "Reset", type: :reset %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <div class="row">
+      <div class="col-md-12"><h4 class="borderBottom">Create Institutional User</h4>
       </div>
+    </div>
+    <%= form_for(@inst_admin_user, url: institution_admin_user_index_path ) do |f| %>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="disabledTextInput" class="col-md-12 nopadding">User Role<span class="red">*</span></label>
+            <label class="radio-inline">
+            <%= f.radio_button :role, 'Primary Institution Administrator' %> Primary Institution Administrator</label>
+            <label class="radio-inline"><%= f.radio_button :role,'Institution Administrator'%> Institution Administrator</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="disabledTextInput" > Publisher</label>
+            <%= f.select 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "select publisher" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="disabledTextInput"  >Institution name<span class="red">*</span></label>
+            <%= f.select 'institution_name',options_from_collection_for_select(InstitutionAccount.all, 'institution_name', 'institution_name', :prompt => "select institution name") %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="disabledTextInput" >User Name </label>
+            <%= f.text_field :user_name, :value => "System Generated" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="disabledTextInput"  >User Name  SA_ </label>
+            <%= f.text_field :user_name %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="disabledTextInput" >Status</label>
+            <%= f.select 'status',options_for_select(["active","inactive"]), :prompt => "select status" %>
+            <label class="checkbox-inline">
+              <%= check_box_tag :billing_contact%>
+              same as institution billing contact  
+            </label>      
+          </div>
+        </div>
+      </div>
+      <div class="row" id="billing">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="disabledTextInput">First Name<span class="red">*</span> 
+            </label>
+            <%= f.text_field :first_name, :id => "first" %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="disabledTextInput" >Last Name<span class="red">*</span></label>
+            <%= f.text_field :last_name, :id => "last" %>
+          </div>
+        </div>
+      </div>
+      <div class="row"  >
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="disabledTextInput"  > Email Address<span class="red">*</span>
+            </label>
+            <%= f.text_field :email, :id => "mail" %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="disabledTextInput" >Phone</label>
+            <%= f.text_field :phone, :id => "phone" %>
+         </div>
+        </div>
+      </div>
+      <div class="row"  >
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="disabledTextInput"  > Position</label>
+            <%= f.text_field :position %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="disabledTextInput" >Fax</label>
+            <%= f.text_field :fax %>
+          </div>
+        </div>
+      </div>
+      <div class="row"  >
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="disabledTextInput"  > Password<span class="red">*</span></label>
+            <%= f.password_field :password %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="disabledTextInput" >Confirm Password<span class="red">*</span>
+            </label>
+            <%= f.password_field :confirm_password %>
+          </div>
+        </div>
+      </div>
+       <div class="row"  >
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="disabledTextInput"  > Comments </label>
+            <%= f.text_area :comments %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="disabledTextInput" class="col-md-12" ><br></label>
+            <label class="checkbox-inline"><%= check_box_tag(:mail) %>
+            Send Email Comfirmation to Email Address above</label>
+          </div>
+        </div>
+      </div> 
+      <div class="row"  >
+        <div class="col-md-6">        
+          <%= f.submit "Submit" %>        
+          <%= button_tag "Reset", type: :reset %>
+        </div>
+      </div>
+    <% end %>
   </body>
 </html>
 
