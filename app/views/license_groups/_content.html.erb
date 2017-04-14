@@ -1,0 +1,50 @@
+<tr id="content_a">
+  <td class="tableheader"><input type="checkbox" name="select-all" id="select-all" /></td>
+  <td class="tableheader">License Id</td>
+  <td class="tableheader">License Name</td>
+  <td class="tableheader">License Type</td>
+</tr>
+<% if @license_content.present? %>
+  <% @license_content.each do |lic_group| %>
+    <tr class="current_location">
+      <td bgcolor="#FBFBFB">
+        <input type="checkbox" name="checkbox" id="checkbox" />
+      </td>
+      <td bgcolor="#FBFBFB">
+        <%= lic_group.license_id %>
+      </td>
+      <td bgcolor="#FBFBFB">
+        <%= lic_group.license_name %>
+      </td>
+      <td bgcolor="#FBFBFB">
+        <%= lic_group.license_type %>
+      </td>
+    </tr>
+  <% end %>
+  <tr>
+  <td>&nbsp;</td>
+  <td><input type="button" id="button" value="add" onclick="getAddDetails();" class="submit_btn" /></td>
+</tr>
+<%else%>
+  No Record Found
+<%end%>
+<script>
+  $('#select-all').click(function(event) {   
+    if(this.checked) {
+      // Iterate each checkbox 
+      $(':checkbox').each(function() {
+          this.checked = true;                        
+      });
+    } else {
+    $(':checkbox').each(function() {
+      this.checked = false;                        
+    });
+  }
+
+  });
+
+  function getAddDetails(){
+    $(".current_location").each(function(i, el) {
+    });
+  }
+</script>

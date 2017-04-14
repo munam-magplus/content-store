@@ -83,7 +83,7 @@ Rails.application.routes.draw do
             :subscriptions, :subject_groups  do 
     collection do 
       get 'search'
-      get 'search_content'
+      get 'content_search'
       get 'metadata_sheet'
       get 'search_result'
       get 'apply_discount'
