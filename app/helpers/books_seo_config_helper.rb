@@ -1,0 +1,2 @@
+module BooksSeoConfigHelper
+end

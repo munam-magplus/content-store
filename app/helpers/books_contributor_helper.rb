@@ -1,0 +1,2 @@
+module BooksContributorHelper
+end

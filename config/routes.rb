@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
 
+  get 'books_seo_config/new'
+
+  post 'books_seo_config/create'
+
+  get 'books_content_access_rules/new'
+
+  post 'books_content_access_rules/create'
+
+  get 'books_content_pricing/new'
+
+  post 'books_content_pricing/create'
+
+  get 'books_contributor/new'
+
+  post 'books_contributor/create'
+
   get 'article/new'
 
   get 'article/index'
@@ -98,12 +114,6 @@ Rails.application.routes.draw do
       get 'metadata_sheet'
       get 'onix_input'
       get 'onix_supp_sheet'
-      post 'primary_content_info'
-      get 'contributors/new'
-      post 'contributors/create'
-      post 'content_pricing'
-      post 'content_access_rules'
-      post 'seo_config'
     end
   end
 

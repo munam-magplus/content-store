@@ -1,7 +1,5 @@
 <html>
 	<body class = "body1">
-			<%= render :partial => '/layouts/header'%>
-		<div class="div1">
 <table>
 	<tr>
 		<td align="center"  >Primary Content Information</td>
@@ -28,7 +26,7 @@
           <td colspan="2"><div style="height: 350px; overflow: auto;">
 							<table width="100%" border=0 cellPadding=10 cellSpacing=1 bgColor=#cccccc id="contributorTable">
 								<tbody>
-									<%= form_for @book_contributor, url: {action: "create"} do |f| %>
+									<%= form_for @book_contributor, url: books_contributor_create_path do |f| %>
 									<tr>
 									<td align="center" valign="top" class="tableheader">
 										<input type="checkbox" name="ctrSel" onclick="checkall(this);" />
@@ -57,7 +55,7 @@
 		<td valign="top" bgColor=#fbfbfb > <%= f.text_area :description %></textarea></td>
 					<td valign="top" bgColor=#fbfbfb>
 					<table width="100%" border=0 cellPadding=0 cellSpacing=0><tr><td>
-					<%= f.text_field :DOI %></td><td><img src="images/search_img_blue.gif" width="21"
+					<%= f.text_field :doi %></td><td><img src="images/search_img_blue.gif" width="21"
 															height="18" border="0" id="dob-cal-button[0]"
 															style="cursor:pointer;cursor:hand" /><script type="text/javascript">
 																	            Calendar.setup({
@@ -70,7 +68,7 @@
 															style="cursor:pointer;cursor:hand" /></td></tr></table></td>
 					<td valign="top" bgColor=#fbfbfb >
 					<table width="100%" border=0 cellPadding=0 cellSpacing=0><tr><td>
-					<%= f.text_field :DOD %></td><td><img src="images/search_img_blue.gif" width="21"
+					<%= f.text_field :dod %></td><td><img src="images/search_img_blue.gif" width="21"
 															height="18" border="0" id="dod-cal-button[0]"
 															style="cursor:pointer;cursor:hand" /><script type="text/javascript">
 																	            Calendar.setup({
@@ -93,8 +91,6 @@
 	<% end %>
 		</tbody>
 	</table>
-		</div>
-		<%= render :partial => '/layouts/footer'%>
 	</body>
 </html>
 			
