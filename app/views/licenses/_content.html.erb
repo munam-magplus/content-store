@@ -1,23 +1,21 @@
 <tr class="content_as">
   <td class="tableheader"><input type="checkbox" name="select-all" id="select-all" /></td>
-  <td class="tableheader">License Id</td>
-  <td class="tableheader">License Name</td>
-  <td class="tableheader">License Type</td>
+  <td class="tableheader">ISBN</td>
+  <td class="tableheader">Book Title</td>
 </tr>
-<% if @license_content.present? %>
-  <% @license_content.each do |lic_group| %>
+<% if @content_for_license.present? %>
+  <% @content_for_license.each do |lic_group| %>
     <tr class="current_location">
       <td bgcolor="#FBFBFB">
         <input type="checkbox" name="checkbox" id="chk" />
       </td>
       <td bgcolor="#FBFBFB">
-        <%= lic_group.license_id %>
+        <%= lic_group.title %>
       </td>
       <td bgcolor="#FBFBFB">
-        <%= lic_group.license_name %>
+        <%= lic_group.isbn %>
       </td>
       <td bgcolor="#FBFBFB">
-        <%= lic_group.license_type %>
       </td>
     </tr>
   <% end %>
@@ -42,18 +40,4 @@
   }
 
   });
-
-  function getAddDetails(){
-   var srcrow = $('.current_location').has('input:checked');
-    var lastRow = srcrow.clone();
-    lastRow.each(function(index, row){
-      alert($(row).find('checked'));
-      $(row).find('checked').each(function(idx, el){
-        alert(idx.val());
-          var el = $(el);
-          el.val(srcrow.eq(index).find('select').eq(idx).val())
-      });
-    })
-    $('.current_location').append(lastRow);
-  }
 </script>

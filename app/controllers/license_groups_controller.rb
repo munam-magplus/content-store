@@ -7,9 +7,12 @@ class LicenseGroupsController < ApplicationController
  def new
   @license_group = LicenseGroup.new
  end
+
  def content_search
+  # search for the License at the time of License Group creation
   @license_content = License.filter(params.slice(:publisher_id, :license_id, :license_type, :license_name, :isbn))
  end
+ 
  def index
  end
 
