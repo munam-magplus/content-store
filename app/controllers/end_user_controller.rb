@@ -1,4 +1,6 @@
 class EndUserController < ApplicationController
+    before_action :authenticate_user!
+
   def new
   	@end_user = EndUser.new
   end

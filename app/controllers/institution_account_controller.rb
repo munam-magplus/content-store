@@ -1,5 +1,6 @@
 class InstitutionAccountController < ApplicationController  
-  
+    before_action :authenticate_user!
+
   def index
   end
   
@@ -7,7 +8,7 @@ class InstitutionAccountController < ApplicationController
     # we perform search operation by slicing the params.
     @res = InstitutionAccount.filter(params.slice(:publisher, 
             :status, :libary_name, :institution_name,:country))
-    byebug
+
     # this is the params of the checkbox that is present in the form.
     @chec = params[:ip_address]
     # we render the result page that have the search result.

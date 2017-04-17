@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @contact_u.subject %>
+</p>
+
+<p>
+  <strong>Topic:</strong>
+  <%= @contact_u.topic %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @contact_u.phone_number %>
+</p>
+
+<p>
+  <strong>Fax number:</strong>
+  <%= @contact_u.fax_number %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @contact_u.comments %>
+</p>
+
+<%= link_to 'Edit', edit_contact_u_path(@contact_u) %> |
+<%= link_to 'Back', contact_us_path %>

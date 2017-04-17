@@ -1,4 +1,5 @@
 class SubjectGroupsController < ApplicationController
+    before_action :authenticate_user!
 
   def new
   	@subject_group = SubjectGroup.new

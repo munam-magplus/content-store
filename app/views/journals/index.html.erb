@@ -1,43 +1,67 @@
 <html>
-<body class = "body1">
-<%= render :partial => '/layouts/header' %>
-<div class="div1">
-
-<table>
-  <thead>
-    <th class="page_head">Upload Metadata Home</th>
-  </thead>
- </table>
-
-<div class="center">
-<table style="text-align:center;">
-  <tr>
-    <td class="gindexborder" colspan="2" valign="top">
-      <%= link_to image_tag("create_book.gif"),new_journal_path %><br>
-      Create New Journal
-    </td>
-    <td class="gindexborder" colspan="2" valign="top">
-      <%= link_to image_tag("search_book.gif"),search_journals_path %><br>
-      Search Journals
-    </td>
-    <td class="gindexborder" colspan="2" valign="top">
-      <%= link_to image_tag("book_metadata.gif"),upload_article_metadata_journals_path %><br>
-      Upload Article <br> Metadata Sheet
-    </td>
-  </tr>
-  <tr>
-      <td class="gindexborder" colspan="2" valign="top">
-      <%= link_to image_tag("search_book.gif"),search_article_journals_path %><br>
-      Search Articles
-    </td>
-    <td class="gindexborder" colspan="2" valign="top">
-      <%= link_to image_tag("create_book.gif"),new_article_journals_path %><br>
-      Create New Article
-    </td>
-  </tr>
-</table>
-</div>
-</div>
-</body>
+  <body class = "body1">
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="borderBottom">Journals</h4>  
+      </div>
+    </div>
+    <div class="row mt10">
+      <div class="col-md-3">
+        <div class="custCard">
+          <div class="cardUp dkBlurBg"></div>
+          <div class="aviater"><%= link_to image_tag("create_book.gif"),new_journal_path %></div>
+            <div class="card-block">
+              <!--Name-->
+              <h4 class="card-title">Create New Journal</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="custCard">
+            <div class="cardUp dkBlurBg"></div>
+            <div class="aviater"> <%= link_to image_tag("search_book.gif"),search_journals_path %></div>
+            <div class="card-block">
+              <!--Name-->
+              <h4 class="card-title">Search Journals</h4>
+            </div>
+          </div>
+        </div>
+      <div class="col-md-3">
+        <div class="custCard">
+          <div class="cardUp dkBlurBg"></div>
+          <div class="aviater"><%= link_to image_tag("create_book.gif"),article_new_path %></div>
+          <div class="card-block">
+            <!--Name-->
+            <h4 class="card-title">Create New Article</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="custCard">
+          <div class="cardUp dkBlurBg"></div>
+          <div class="aviater"><%= link_to image_tag("search_book.gif"),article_search_path %></div>
+          <div class="card-block">
+            <!--Name-->
+            <h4 class="card-title">Search Articles</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end of row 1-->
+    <div class="row mt20">
+      <div class="col-md-3">
+        <div class="custCard">
+          <div class="cardUp dkBlurBg"></div>
+          <div class="aviater"><%= link_to image_tag("book_metadata.gif"),article_metadata_sheet_path %></div>
+          <div class="card-block">
+            <!--Name-->
+            <h4 class="card-title">Upload Article <br> Metadata Sheet</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt20">
+      &nbsp;
+    </div>
+  </body>
 </html>
-

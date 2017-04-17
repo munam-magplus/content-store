@@ -1,4 +1,6 @@
 class AdminUserController < ApplicationController
+   before_action :authenticate_user!
+
   def new
     @admin_user = AdminUser.new
   end
@@ -11,6 +13,9 @@ class AdminUserController < ApplicationController
     else
       # If not save in that case render new
       render 'new'
+    end
+    if params[:mail] == "1"
+      AdminUserMailer.confirm_mail(@admin_user, current_user).deliver
     end
   end
 

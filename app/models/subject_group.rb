@@ -1,6 +1,8 @@
 class SubjectGroup < ApplicationRecord
-	include Filterable
-	# def self.search(pub_id,name,code,lang_id)
- #  	 result = where("PUB_PUBLISHER_ID LIKE ? AND SUG_GROUP_NAME LIKE ? AND SUG_GROUP_CODE LIKE ? AND LAN_LANGUAGE_ID LIKE ?", "%#{pub_id}%", "%#{name}%", "%#{code}%", "%#{lang_id}")
-	# end
+	include Filterable # Search Module
+	# Validations
+  	validates_presence_of :publisher
+	validates_presence_of :subject_group_code
+  	validates_presence_of :subject_group_name
+  	validates_presence_of :select_language
 end

@@ -1,5 +1,20 @@
 Rails.application.routes.draw do
 
+  get 'my_account/index'
+
+  resources :contact_us
+  get 'article/new'
+
+  get 'article/index'
+
+  post 'article/create'
+
+  get 'article/search'
+
+  get 'article/result'
+
+  get 'article/metadata_sheet'
+
   devise_for :users
 
   devise_scope :user do
@@ -69,16 +84,12 @@ Rails.application.routes.draw do
   get 'books/create'
 
   post 'journals/create'
-  get 'journals/result_article'
+  get 'journals/search_result'
   
   resources :journals do
     collection do
       get 'index'
       get 'search'  
-      get 'upload_article_metadata'
-      get 'search_article'
-      get 'new_article'
-      post 'create_article'
     end
   end
 

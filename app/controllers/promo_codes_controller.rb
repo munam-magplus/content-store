@@ -1,5 +1,7 @@
 class PromoCodesController < ApplicationController
-  def search
+ 
+     before_action :authenticate_user!
+ def search
   	#call filter method to get search results
   	@promo_codes = PromoCode.filter(params.slice(:publisher_id, :campaign_id, :id))
   end

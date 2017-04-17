@@ -1,3 +1,14 @@
+/*Start Global CSS*/
+
+.whiteBg{background-color:#fff;} 
+.dkBlurBg{background-color:#1f6183;}
+.nopadding{padding:0;}
+.mt10{margin-top:10px;}
+.mt20{margin-top:20px;}
+h1,h2,h3,h4,h5,h6{margin:0;padding:0;}
+h4{font-size:18px;}
+.borderBottom{border-bottom:1px solid #efefef;margin-bottom:5px;padding-bottom:5px;}
+/*End Global CSS*/ 
 .div1 {
     border: 1px solid black;
     margin-right: 150px;
@@ -12,12 +23,7 @@
     background-color: white;
     text-align: left;
 }
-.divfooter {
-    margin-bottom: 100px;
-    margin-right: 150px;
-    margin-left: 180px;
-    text-align:center;
-}
+ 
 /*css for header*/
 .divheader {
     border: 1px solid black;
@@ -88,16 +94,13 @@
     margin-top: 0px;
     margin-right: auto;
     margin-bottom: 0px;
-    background-image: url(books_bg2.jpg);
-    background-size: 250px;
+    /*background-image: url(books_bg2.jpg);
+    background-size: 250px;*/
     font-family: Arial, Helvetica, sans-serif;
     background-color: #3C89BB;
     font-size: 14px;
 }
-.container {
-  max-width: 80%;
-  margin: 0 auto;
-}
+ 
 .center {
     margin: auto;
     width: 60%;
@@ -106,10 +109,10 @@
 .footer_white {
     font-family: arial;
     font-size: 11px;
-    color: #FFFFFF;
+     
     padding-top: 18px;
     padding-right: 0px;
-    padding-bottom: 18px;
+    padding-bottom: 15px;
     padding-left: 0px;
 }
 .tableheader {
@@ -154,25 +157,27 @@
 /*css to display flash messages ends*/
 
 /*css for dropdown list of header start:*/
+#primary_nav_wrap{margin:10px 0 0 0;padding:0;}
 #primary_nav_wrap ul
 {
     list-style:none;
     position:relative;
     float:auto;
     margin:0;
-    padding:0
+    padding:0;
 }
 
 #primary_nav_wrap ul a
 {
     display:table;
-    color:#333;
+    color:#121212;
     text-decoration:none;
     font-weight:700;
     font-size:10px;
     line-height:32px;
-    padding:0 15px;
-    font-family:"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif
+    padding:8px 15px;
+    font-family:"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:14px;
 }
 
 #primary_nav_wrap ul li
@@ -200,7 +205,8 @@
     top:100%;
     left:0;
     background: #ffffff;
-    padding:0
+    padding:0;
+    z-index:2;
 }
 
 #primary_nav_wrap ul ul li
@@ -272,3 +278,11 @@
 .backgroundcolor1 {
     background-color: #ffe5db 
 }
+.wrapper{width:100%;float:left;-webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.75); -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.75);min-height:300px;padding:15px;margin:10px 0;}
+.custCard{box-shadow:0 2px 5px 0 rgba(0,0,0,.16); position: relative;}
+.cardUp{overflow: hidden;height: 60px;}
+.aviater{border-radius: 50%; width: 90px;margin: -35px auto 0; border: 5px solid #fff;background: #FFF;text-align:center;}
+.card-block{text-align: center;    padding: 1.25rem;}
+.card-title { margin-bottom: .75rem; font-weight: 300;color:#121212;}
+.logo{padding:10px 0;margin:0;}

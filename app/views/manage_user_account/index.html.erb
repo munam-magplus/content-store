@@ -1,74 +1,75 @@
 <html>
-<body class = "body1">
-<div class="div1">
-
-	<table>
-	 	<thead>
-	 		<th class="page_head">Manage User Access</th>
-	 	</thead>
-	 </table>
-
-	<table width="100%" class="center">
-	<tr>
-		<td class="gindexborder" colspan="2" valign="top">
-		<%= link_to image_tag("end_user.gif"),retailers_path%><br>
-		Retailer</td>
-		<td class="gindexborder" colspan="2" valign="top">
-			<%= link_to image_tag("end_user.gif"), end_user_index_path %><br>
-			End User
-				<table>
-					<tr>
-						<td class="gindexborder">
-							<%= link_to image_tag("search.gif"), end_user_index_path %>
-						</td>
-						<td class="gindexborder">
-							<%= link_to image_tag("create.gif"), end_user_new_path %>
-						</td>
-					</tr>
-				</table>
-		</td>
-		<td class="gindexborder" colspan="2" valign="top">
-			<%= link_to image_tag("admin_user.gif"), admin_user_index_path %><br>
-			Admin User
-				<table>
-					<tr>
-						<td class="gindexborder">
-							<%= link_to image_tag("search.gif"), admin_user_index_path %>
-						</td>
-						<td class="gindexborder">
-							<%= link_to image_tag("create.gif"), admin_user_new_path %>
-						</td>
-					</tr>
-				</table>
-		</td>
-		<td class="gindexborder" colspan="2" valign="center">
-			<%= link_to image_tag("institution.gif"), institution_account_index_path%><br>
-			Institutional Account
-				<table>
-					<tr>
-						<td class="gindexborder">
-							<%= link_to image_tag("search.gif"), institution_account_index_path%>
-						</td>
-						<td class="gindexborder">
-							<%= link_to image_tag("create.gif"), new_institution_account_path%>
-						</td>
-					</tr>
-				</table>
-		</td>
-		<td class="gindexborder" colspan="2" valign="top">
-			<%= link_to image_tag("institutional-user.gif"), institution_admin_user_index_path%><br>
-			Institutional Admin User Account
-				<table>
-					<tr>
-						<td class="gindexborder">
-							<%= link_to image_tag("search.gif"), institution_admin_user_index_path%>
-						</td>
-						<td class="gindexborder">
-							<%= link_to image_tag("create.gif"), new_institution_admin_user_path %>
-						</td>
-					</tr>
-				</table>
-		</td>
-	</tr>
-	</table>
-</div>
+	<body class = "body1">
+		<div class="row">
+			<div class="col-md-12">
+				<h4 class="borderBottom">Manage User Access</h4>	 
+			</div>
+		</div>
+		<div class="row mt10">
+			<div class="col-md-3">
+				<div class="custCard">
+					<div class="cardUp dkBlurBg"></div>
+					<div class="aviater"><%= link_to image_tag("end_user.gif"),retailers_path%>
+					</div>
+						<div class="card-block">
+              <h4 class="card-title">Retailer</h4>
+          	</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="custCard">
+						<div class="cardUp dkBlurBg"></div>
+						<div class="aviater"><%= link_to image_tag("end_user.gif"), end_user_index_path %></div>
+						<div class="card-block">
+              <!--Name-->
+              <h4 class="card-title">End User</h4>
+              <p><%= link_to image_tag("search.gif"), end_user_index_path %>
+									<%= link_to image_tag("create.gif"), end_user_new_path %></p>		
+          	</div>
+					</div>
+				</div>
+			<div class="col-md-3">
+				<div class="custCard">
+					<div class="cardUp dkBlurBg"></div>
+					<div class="aviater"><%= link_to image_tag("admin_user.gif"), admin_user_index_path %></div>
+					<div class="card-block">
+            <!--Name-->
+            <h4 class="card-title">Admin User</h4>
+            <p><%= link_to image_tag("search.gif"), admin_user_index_path %>
+								<%= link_to image_tag("create.gif"), admin_user_new_path %></p>
+        	</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="custCard">
+					<div class="cardUp dkBlurBg"></div>
+					<div class="aviater"><%= link_to image_tag("institution.gif"), institution_account_index_path%><br></div>
+					<div class="card-block">
+            <!--Name-->
+            <h4 class="card-title">Institutional Account</h4>
+            <p><%= link_to image_tag("search.gif"), institution_account_index_path%>
+								<%= link_to image_tag("create.gif"), new_institution_account_path%></p>
+        	</div>
+				</div>
+			</div>
+		</div>
+		<!--end of row 1-->
+		<div class="row mt20">
+			<div class="col-md-3">
+				<div class="custCard">
+					<div class="cardUp dkBlurBg"></div>
+					<div class="aviater"><%= link_to image_tag("institutional-user.gif"), institution_admin_user_index_path%></div>
+					<div class="card-block">
+            <!--Name-->
+            <h4 class="card-title">Institutional Admin User Account</h4>
+            <p><%= link_to image_tag("search.gif"), institution_admin_user_index_path%>
+								<%= link_to image_tag("create.gif"), new_institution_admin_user_path %></p>
+        	</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mt20">
+			&nbsp;
+		</div>
+	</body>
+</html>

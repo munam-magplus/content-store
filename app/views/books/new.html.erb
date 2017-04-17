@@ -2,7 +2,90 @@
 	<body class = "body1">
 		<%= render :partial => '/layouts/header'%>
 		<div class="div1">
-			<%= render :partial => 'primary_content_info'%>
+			<table>
+	<tr>
+		<td align="center" bgcolor="#FFFFFF"><strong>Primary Content Information</strong></td>
+		<td align="center">Contributors</td>
+		<td align="center">Content Pricing</td>
+		<td align="center">Content Access Rules</td>
+		<td align="center">SEO Configuration</td>
+	</tr>
+</table>
+<h1> Primary Content Information</h1>
+<table border="0" cellpadding="10" cellspacing="0">
+	<tbody>
+		<%= form_for(@book, url: {action: "create"}) do |f| %>
+			<tr>
+				<td>Content Code:</td>
+				<td><%= f.text_field :content_code %></td>
+				<td>Publisher*:</td>
+				<td><%= f.text_field :publisher %></td>
+			</tr> 
+			<tr> 
+				<td>Title:</td>
+				<td><%= f.text_field :title %></td>
+				<td>Sub Title</td>
+				<td><%= f.text_field :subject_title %></td>
+			</tr> 
+			<tr> 
+				<td>ISBN *</td>
+				<td><%= f.text_field :isbn %></td>
+				<td>Language *</td>
+				<td><%= f.text_field :language %></td>
+			</tr>
+			<tr>
+				<td>Content Classification </td>
+				<td><%= f.select :content_classification, options_for_select(['Select','Select'],['hello','hello']) %></td>
+				<td>File Name*</td>
+				<td><%= f.text_field :file_name %></td>
+			</tr> 
+			<tr> 
+				<td>Stock Number   </td>
+				<td><%= f.text_field :stock_number %></td>
+			</tr>
+			<tr>
+				<td>Publisher Site Sales Link     </td>
+				<td><%= f.text_field :publisher_site_sales_link %></td>
+			</tr>
+			<tr>
+				<td>Blurb</td>
+				<td><%= f.text_area :blurb, cols: "40", rows: "5" %></td>
+			</tr> 
+			<tr> 
+				<td>Publisher Date </td>
+				<td><%= f.text_field :publisher_date %>(dd)</td>
+				<td>Publisher Month </td>
+				<td><%= f.text_field :publisher_month %>(mm)</td>
+			</tr>
+			<tr> 
+				<td>Publisher Year</td>
+				<td><%= f.text_field :publisher_year %>(yyyy)</td>
+				<td>Conversion Required</td>
+				<td><%= f.select(:conversion_required, options_for_select([['Select',0],[' Yes',1],['No',2]]))  %></td>
+			</tr>
+			<tr> 
+				<td>Edition </td>
+				<td><%= f.text_field :edition %></td>
+				<td>Binding </td>
+				<td><%= f.select(:binding, options_for_select([['Select',0],[' Yes',1],['No',2]]))  %></td>
+			</tr>
+			<tr> 
+				<td>Volume </td>
+				<td><%= f.text_field :volume %></td>
+				<td>Dimensions </td>
+				<td><%= f.text_field :dimension %></td>
+			</tr>
+			<tr> 
+				<td>Series ISBN </td>
+				<td><%= f.text_field :series_isbn %></td>
+				<td>Series Title </td>
+				<td><%= f.text_field :series_title %></td>
+			</tr>
+			<td><%= f.submit "Save and Continue" %></td>
+			<td><%= f.button "Finish", type: :reset %></td>
+		<% end %>
+	</tbody>
+</table>
 		</div>
 		<%= render :partial => '/layouts/footer'%>
 	</body>

@@ -1,19 +1,18 @@
 <html>
 	<body class = "body1">
-	  <%= render :partial => '/layouts/header'%>
 		<div class="div1">
       <h1> Journal Setup </h1>
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
           <%= form_for @journal, url: journals_create_path do |f| %>
             <tr>
-              <td>Journal Code:</td>
+              <td>Journal Code*:</td>
 			        <td><%= f.text_field :journal_code, :class=> 'required'  %></td>
-              <td>Publisher:</td>
+              <td>Publisher*:</td>
               <td><%= f.text_field :publisher %></td>
             </tr> 
             <tr> 
-              <td>Journal Title:</td>
+              <td>Journal Title*:</td>
               <td><%= f.text_field :journal_title %></td>
               <td>Journal Sub Title:</td>
               <td><%= f.text_field :journal_subtitle %></td>
@@ -27,8 +26,8 @@
             <tr>
               <td>Journal Owner:</td>
               <td><%= f.text_field :journal_owner %></td>
-              <td>Language:</td>
-              <td><%= select_tag(:language, options_for_select([['Select',0],['Polish',1],['English',2]]))  %></td>
+              <td>Language*:</td>
+              <td><%= f.select(:language, options_for_select([['Select',0],['Polish',1],['English',2]]))  %></td>
             </tr>
             <tr>
               <td>Journal Content Classification:</td>
@@ -53,11 +52,11 @@
                   Please upload only a jpg image of (height,width)=(110,74)pixels.</td>
             </tr>
             <tr>
-              <td>Journal Categories:</td>
+              <td>Journal Categories*:</td>
               <td> <%= f.text_area :journal_categories %> </td>
             </tr>
             <tr>
-              <td>Journal Description:</td>
+              <td>Journal Description*:</td>
               <td><%= f.text_area :journal_description %></td>
             </tr>
             <tr>
@@ -81,7 +80,3 @@
     </div>
   </body>
 </html>
-<tr>
-  <td align="center" class="footer_white">
-  Copyright © 2006-2009 MPS Technologies Ltd</td>
-</tr>
