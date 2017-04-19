@@ -6,20 +6,18 @@ class InstitutionAccountController < ApplicationController
   
   def search_op
     # we perform search operation by slicing the params.
-    @res = InstitutionAccount.filter(params.slice(:publisher, 
-            :status, :libary_name, :institution_name,:country))
+    @insti_acc = InstitutionAccount.filter(params.slice(:publisher, 
+            :status, :libary_name, :institution_name))
 
     # this is the params of the checkbox that is present in the form.
     @chec = params[:ip_address]
     # we render the result page that have the search result.
-    render 'result', locals: { :res => @res, :chec => @chec} 
+    render 'result', locals: { :insti_acc => @insti_acc, :chec => @chec} 
   end
 
   def result
   end
 
-  def not_found
-  end
 
   def new
     @institution = InstitutionAccount.new
@@ -30,6 +28,7 @@ class InstitutionAccountController < ApplicationController
   end
 
   def create
+    byebug
     @institution = InstitutionAccount.new(institution_params)
   
     if @institution.save!
@@ -39,6 +38,12 @@ class InstitutionAccountController < ApplicationController
     end
   end
  
+  def edit
+  end
+
+  def update
+    
+  end
 
   private
 
@@ -48,6 +53,6 @@ class InstitutionAccountController < ApplicationController
         institution_acc_billing_address_attributes: [ :id,
         :first_name, :last_name, :phone, :email, :address, 
         :address_line2,:address_line3, :city, :state, 
-        :postal_code, :comments, :institution_account_id]) 
+        :postal_code,:country, :comments, :institution_account_id]) 
   end
 end

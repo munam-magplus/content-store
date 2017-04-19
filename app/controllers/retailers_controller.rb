@@ -20,21 +20,36 @@ class RetailersController < ApplicationController
 	end
 	
 	def create
-		@retailers = Retailer.all
-		@retail = Retailer.find_by(params[:id])
-		@ret = @retail.publisher_id
-		@re = Publisher.find_by(@ret)
+		# @retailers = Retailer.all
+		# @retail = Retailer.find_by(params[:id])
+		# @ret = @retail.publisher_id
+		# @re = Publisher.find_by(@ret)
 		@retailer = Retailer.new(retailer_params)
-		if @retailer.save
-			render 'search',locals: { :re => @re }
+		if @retailer.save!
+			# render 'search',locals: { :re => @re }
+			# redirect_to institution_account_index_path
+			flash[:success] = "retailer created"
+			redirect_to :back		
 		else
 			render 'new'
+		end
+		if @retailer.present?
+			session[:expires_at] = Time.current + 1.minute
+			session[:retailer_code] = @retailer.retailer_code
+			session[:retailer_name] = @retailer.retailer_name
+			session[:publisher_id] = @retailer.publisher_id
+			session[:low_ip] = @retailer.low_ip
+			session[:high_ip] = @retailer.high_ip
+			session[:ip_list] = @retailer.ip_list
+			session[:id] = @retailer.id
+						byebug
 		end
 	end
 	
 	def search
 	  #get the publisher that have same retailer name
-	  @retailers = Retailer.all
+	  # @retailers = Retailer.last
+	  session[:expires_at] = Time.current + 1.minute
 	  @re = Publisher.find_by_publisher_name(params[:retailer_name])
 	  respond_to do |format|
 	  	format.html
@@ -43,18 +58,18 @@ class RetailersController < ApplicationController
 	end
 
 	def show
+		byebug
 	end
 
 	def destroy
-		@retailers = Retailer.all
-		@retailer = Retailer.find_by(params[:id])
-		@ret = @retailer.publisher_id
-		@re = Publisher.find_by(@ret)
+		byebug
+		# @retailers = Retailer.all
+		# @retailer = Retailer.find_by(params[:id])
+		# @ret = @retailer.publisher_id
+		# @re = Publisher.find_by(@ret)
+		@retailer = Retailer.find_by_id(session[:id])
 		@retailer.destroy
-		respond_to do |format|
-      format.html { render 'search',locals: { :re => @re }}
-      format.json { head :no_content }
-    end
+		redirect_to :back
 	end
 
 	private 

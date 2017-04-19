@@ -43,7 +43,13 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="disabledTextInput" >Status</label>
-            <%= f.select 'status',options_for_select(["active","inactive"]), :prompt => "select status" %>
+            <%= f.select 'status',options_for_select(["active","inactive"]), :prompt => "select status" %>      
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
             <label class="checkbox-inline">
               <%= check_box_tag :billing_contact%>
               same as institution billing contact  
