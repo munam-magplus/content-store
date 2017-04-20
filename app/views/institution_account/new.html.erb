@@ -13,7 +13,7 @@
                 <b> Details </b>
                 <td height = "25"> Select Publisher</td>
                 <td align = "left">
-                  <%= f.select 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "select publisher" %>
+                  <%= f.select 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "select publisher" %>
                 </td>
               </tr>
               <tr>
@@ -109,7 +109,7 @@
                 <tr>
                   <td align = "left", height = "25"> Country </td>
                   <td align = "left"> 
-                      <%= builder.country_select :country %>
+                      <%= builder.country_select :country, prompt: "select country" %>
                   </td>
                 </tr>
                 <tr>

@@ -23,35 +23,6 @@
 		            <td class = "tableheader" align = "center", height = "30"> Save</td>
 		            <td class = "tableheader" align = "center", height = "30"> Delete</td>
 		          </tr>
-		          <% if session[:expires_at].to_time > Time.current %>
-			        	<tr>
-			        		
-				        	<td>
-				        	<%= session[:retailer_code] %>
-				        	</td>
-				        	<td>
-				        		<%= session[:retailer_name] %>
-				        	</td>
-				        	<td>
-				        		<%= session[:publisher_id] %>
-				        	</td>
-				        	<td>
-				        		<%= session[:low_ip] %>
-				        	</td>
-				        	<td>
-				        		<%= session[:high_ip] %>
-				        	</td>
-				        	<td>
-				        		<%= session[:ip_list] %>
-				        	</td>
-				        	<td>
-				        		
-				        	</td>
-				        	<td>
-				        		<%= link_to image_tag("delete_icon.gif"), retailer_path(session[:id]), method: :delete %>
-				        	</td>
-			        	</tr>
-			        <%end%>
 		        </table>
 
 	        <% end %>

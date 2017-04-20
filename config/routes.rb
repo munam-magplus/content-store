@@ -56,6 +56,8 @@ Rails.application.routes.draw do
   post 'admin_user/create'
 
 
+  get 'institution_account/inst_admin_result'
+
   resources :content_conversation do
     collection do 
       get 'content_history'

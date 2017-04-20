@@ -17,6 +17,9 @@ class InstitutionAdminUserController < ApplicationController
   end
 
   def new
+    if params[:format].present?
+    @ins = InstitutionAccount.find_by(params[:format])
+    end
     @inst_admin_user = InstitutionAdminUserAcc.new
   end
 
@@ -27,7 +30,12 @@ class InstitutionAdminUserController < ApplicationController
     @user = params[:institution_admin_user_acc][:user_name]
     @rol = params[:institution_admin_user_acc][:role]
     @billing = params[:billing_contact]
-
+    
+    if params[:institution_admin_user_acc][:institution_name2].present?
+    @inst_admin_user.publisher_id = params[:institution_admin_user_acc][:publisher_id2]
+    @inst_admin_user.institution_name = params[:institution_admin_user_acc][:institution_name2]
+    end
+    
     # inserting user name with SA prefix only for Institution Administrator
     if @rol == "Institution Administrator"
      @inst_admin_user.user_name = "SA_#{@user}"
@@ -41,7 +49,11 @@ class InstitutionAdminUserController < ApplicationController
     end
     #inorder to get institution_account_billing_addresses data
     if @billing == "1"
-      @insti = InstitutionAccount.find_by(:institution_name => params[:institution_admin_user_acc][:institution_name])
+      if params[:institution_admin_user_acc][:institution_name2].present?
+        @insti = InstitutionAccount.find_by(:institution_name => params[:institution_admin_user_acc][:institution_name2])  
+      else
+        @insti = InstitutionAccount.find_by(:institution_name => params[:institution_admin_user_acc][:institution_name])
+      end
       @bill_add = @insti.institution_acc_billing_address
       @inst_admin_user.first_name = @bill_add.first_name
       @inst_admin_user.last_name = @bill_add.last_name
@@ -68,10 +80,12 @@ class InstitutionAdminUserController < ApplicationController
 
   def edit   
     @inst_admin_user = InstitutionAdminUserAcc.find_by_id(params[:id])
+    byebug
   end
 
   def update
-    @inst_admin_user = InstitutionAdminUserAcc.find_by_id(params[:id])
+    @inst_admin_user = InstitutionAdminUserAcc.find_by(params[:id])
+    byebug
    if @inst_admin_user.update(insti_admin_user_params)
     redirect_to search_op_institution_admin_user_index_path
     else 
@@ -90,10 +104,11 @@ class InstitutionAdminUserController < ApplicationController
   private
 
   def insti_admin_user_params
-    params.require(:institution_admin_user_acc).permit(:role,  :publisher, 
+    params.require(:institution_admin_user_acc).permit(:role,  :publisher_id, 
       :institution_name,  :user_name,  :status,  :first_name,
       :last_name,  :email,  :phone,  :position,  :fax,  :password,  
       :confirm_password, :comments)    
   end
+
 end
 
