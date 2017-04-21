@@ -18,7 +18,7 @@ class InstitutionAdminUserController < ApplicationController
 
   def new
     if params[:format].present?
-    @ins = InstitutionAccount.find_by(params[:format])
+    @ins = InstitutionAccount.find_by_id(params[:format])
     end
     @inst_admin_user = InstitutionAdminUserAcc.new
   end
@@ -80,12 +80,10 @@ class InstitutionAdminUserController < ApplicationController
 
   def edit   
     @inst_admin_user = InstitutionAdminUserAcc.find_by_id(params[:id])
-    byebug
   end
 
   def update
     @inst_admin_user = InstitutionAdminUserAcc.find_by(params[:id])
-    byebug
    if @inst_admin_user.update(insti_admin_user_params)
     redirect_to search_op_institution_admin_user_index_path
     else 

@@ -8,7 +8,6 @@ class InstitutionAccountController < ApplicationController
     # we perform search operation by slicing the params.
     @insti_acc = InstitutionAccount.filter(params.slice(:publisher_id, 
             :status, :libary_name, :institution_name))
-    byebug
     # this is the params of the checkbox that is present in the form.
     @chec = params[:ip_address]
     # we render the result page that have the search result.
@@ -21,7 +20,6 @@ class InstitutionAccountController < ApplicationController
   def inst_admin_result
    @ins = InstitutionAccount.find_by_id(params[:format]).institution_name
    @ins_admin = InstitutionAdminUserAcc.where(:institution_name => @ins)
-   byebug
   end 
 
   def new
@@ -44,10 +42,16 @@ class InstitutionAccountController < ApplicationController
   end
  
   def edit
+   @institution = InstitutionAccount.find_by(params[:id]) 
   end
 
   def update
-    
+   @institution = InstitutionAccount.find_by(params[:id])
+    if @institution.update(institution_params)  
+      redirect_to institution_account_index_path
+    else
+      render 'index'
+    end
   end
 
   private

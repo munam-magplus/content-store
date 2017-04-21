@@ -3,7 +3,7 @@
 		<table>
 			<thead>
 			 		<tr>
-						<th width="15%" class="tableheader">Publisher</th>	 		
+						<th width="15%" class="tableheader">Institution Id</th>	 		
 						<th width="15%" class="tableheader">Institution Name</th>
 						<th width="15%" class="tableheader">Lib./Dept. Name</th>
 						<th width="7%" class="tableheader">Country</th>
@@ -14,20 +14,21 @@
 			 		</tr>
 			</thead>
 			<tbody>
-			<% byebug %>
 				<% if @insti_acc.present? %>
 					<% @insti_acc.each do |f| %>
+			<% byebug %>
 						<%if f.status == "active"%>
 					 		<tr class="backgroundcolor">
-					 			<td class="tabledata"><%= publisher_name(f.publisher_id).publisher_name %></td>
-								<td class="tabledata"><%= f.institution_name %></td>
+					 			<td class="tabledata"><%= f.id %></td>
+								<td class="tabledata">
+									<%= link_to (f.institution_name), edit_institution_account_path(f.id) %>
+								</td>
 								<td class="tabledata"><%= f.libary_name %></td>
 								<td class="tabledata">
 									<%= ISO3166::Country[f.institution_acc_billing_address.country].translations[I18n.locale.to_s] %>
 								</td>
 								<td class="tabledata">
-										<%= f.institution_acc_billing_address.first_name %>
-										<%= f.institution_acc_billing_address.last_name %>
+										<%= link_to (f.institution_acc_billing_address.first_name + f.institution_acc_billing_address.last_name), edit_institution_account_path(f.id) %>
 								</td>
 								<td class="tabledata"><%= f.status %></td>
 								<td class="tabledata">
@@ -48,15 +49,16 @@
 							</tr>
 						<% else %>
 							<tr>
-					 			<td class="tabledata"><%= publisher_name(f.publisher_id).publisher_name %></td>		
-								<td class="tabledata"><%= f.institution_name %></td>
+					 			<td class="tabledata"><%= f.id %></td>		
+								<td class="tabledata">
+									<%= link_to (f.institution_name), edit_institution_account_path(f.id) %>
+								</td>
 								<td class="tabledata"><%= f.libary_name %></td>
 								<td class="tabledata">
 									<%= ISO3166::Country[f.institution_acc_billing_address.country].translations[I18n.locale.to_s] %>				
 								</td>
 								<td class="tabledata">
-										<%= f.institution_acc_billing_address.first_name  %>
-										<%= f.institution_acc_billing_address.last_name %>
+										<%= link_to (f.institution_acc_billing_address.first_name +  f.institution_acc_billing_address.last_name), edit_institution_account_path(f.id) %>
 								</td>
 								<td class="tabledata"><%= f.status %></td>
 								<td class="tabledata">

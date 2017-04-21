@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :library_users
   get 'my_account/index'
 
   resources :contact_us
