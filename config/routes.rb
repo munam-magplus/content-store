@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   get 'article/result'
 
   get 'article/metadata_sheet'
+  get 'subscriptions/result_subject_group'
+  get 'subscriptions/result_title'
 
   devise_for :users
 

@@ -1,0 +1,34 @@
+<tr>
+  <td>
+    Subject Group Name
+    <span class = "mandtory ">*</span>
+  </td>
+  <td>
+    <input id="subject_group_name" class="text_field"/>
+  </td>
+  <td>
+    Subject Group Code
+    <span class = "mandtory">*</span>
+  </td>
+  <td>
+    <input id="subject_group_code" class="text_field"/>
+  </td>
+</tr>
+<tr>
+  <td>&nbsp;</td>
+  <td><input type="button" name="button2" id="button" value="Search" onclick="getSearchDetails();" class="submit_btn" /></td>
+</tr>
+
+<script type="text/javascript">
+  function getSearchDetails(){
+    var subject_group_name = $('#subject_group_name').val();
+    var subject_group_code = $('#subject_group_code').val();
+    // alert("subject_group_name="+subject_group_name);
+    // alert("subject_group_code="+subject_group_code);
+    $.ajax({
+      type: 'GET',
+      url: '/subscriptions/result_subject_group',
+      data : { subject_group_name: subject_group_name,subject_group_code: subject_group_code }
+    });
+  }
+</script>
