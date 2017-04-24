@@ -16,6 +16,10 @@ Rails.application.routes.draw do
 
   post 'books_contributor/create'
 
+  resources :library_users
+  get 'my_account/index'
+
+
   get 'article/new'
 
   get 'article/index'
@@ -68,6 +72,8 @@ Rails.application.routes.draw do
   post 'admin_user/new'
   post 'admin_user/create'
 
+
+  get 'institution_account/inst_admin_result'
 
   resources :content_conversation do
     collection do 

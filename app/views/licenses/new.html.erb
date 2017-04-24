@@ -54,9 +54,40 @@
                    <td height = "25" colspan="5" > 
                     <p class="sub_head">Content <span class="mandtory">*</span>
                     </p>
+                   </tr>
+                  <tr>
+                   <td height = "25" colspan="5">
+                     <input type="radio" name="content_type" value="book"/>Book
+                     <input type="radio" name="content_type" value="chapter"/>Chapter
+                     <input type="radio" name="content_type" value="journal"/>Journal
+                     <input type="radio" name="content_type" value="article"/>Article
+                   </td>
                   </tr>
-                  <%= render :partial => 'search_content'%>
-                  <tr id ="search_content">
+                  <tr>
+                   <td height = "25" colspan="5">
+                    <div id="book">
+                     ISBN<input type="text" name="title"/>
+                     Title<input type="text" name="title"/>
+                    </div>
+                    <div id="chapter">
+                     ISBN<input type="text" name="title"/>
+                     Chapter Title<input type="text" name="title"/>
+                     Content Code<input type="text" name="title"/>
+                    </div>
+                    <div id="journal">
+                     Journal Title<input type="text" name="title"/>
+                     Journal Code<input type="text" name="title"/>
+                    </div>
+                    <div id="article">
+                     Journal Code<input type="text" name="title"/>
+                     Title<input type="text" name="title"/>
+                     Content Code<input type="text" name="title"/>
+                     DOI<input type="text" name="title"/>
+                    </div>
+                   </td>
+                   <td height = "25" colspan="5">
+                    <%= button_to "search", search_content_licenses_path, :id => "open-contacts-dialog-btn",:class => "inbox-sf-add-btn tip", :method =>:get%>
+                   </td>
                   </tr>
                   <tr>
                    <td height = "10" colspan="2" > 

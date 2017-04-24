@@ -6,21 +6,29 @@ class InstitutionAccountController < ApplicationController
   
   def search_op
     # we perform search operation by slicing the params.
+<<<<<<< HEAD
     @res = InstitutionAccount.filter(params.slice(:publisher, 
             :status, :libary_name, :institution_name,:country))
+=======
+    @insti_acc = InstitutionAccount.filter(params.slice(:publisher_id, 
+            :status, :libary_name, :institution_name))
+>>>>>>> 26bee958376431e2c352c608ba216fec089ddf2a
     # this is the params of the checkbox that is present in the form.
     @chec = params[:ip_address]
     # we render the result page that have the search result.
-    render 'result', locals: { :res => @res, :chec => @chec} 
+    render 'result', locals: { :insti_acc => @insti_acc, :chec => @chec} 
   end
 
   def result
   end
 
-  def not_found
-  end
+  def inst_admin_result
+   @ins = InstitutionAccount.find_by_id(params[:format]).institution_name
+   @ins_admin = InstitutionAdminUserAcc.where(:institution_name => @ins)
+  end 
 
   def new
+    @publishers = Publisher.all
     @institution = InstitutionAccount.new
     #this is added inorder to build institution_acc_billing_address
     #we use this syntax because the association between institution account
@@ -38,15 +46,27 @@ class InstitutionAccountController < ApplicationController
     end
   end
  
+  def edit
+   @institution = InstitutionAccount.find_by(params[:id]) 
+  end
+
+  def update
+   @institution = InstitutionAccount.find_by(params[:id])
+    if @institution.update(institution_params)  
+      redirect_to institution_account_index_path
+    else
+      render 'index'
+    end
+  end
 
   private
 
   def institution_params
-    params.require(:institution_account).permit(:publisher,:institution_id, 
+    params.require(:institution_account).permit(:publisher_id,:institution_id, 
         :libary_name,:institution_name,:status,:display_name, 
         institution_acc_billing_address_attributes: [ :id,
         :first_name, :last_name, :phone, :email, :address, 
         :address_line2,:address_line3, :city, :state, 
-        :postal_code, :comments, :institution_account_id]) 
+        :postal_code,:country, :comments, :institution_account_id]) 
   end
 end

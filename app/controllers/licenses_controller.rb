@@ -17,9 +17,8 @@ class LicensesController < ApplicationController
   def new
     @license = License.new
   end
-  def content_search
-    # search for the Content at the time of License creation
-    @content_for_license = BooksPrimaryContentInfo.filter(params.slice(:title, :isbn))
+  def search_content
+    
   end
   
   def search

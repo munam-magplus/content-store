@@ -1,12 +1,11 @@
 <html>
 <body class = "body1">
-  <%= render :partial => '/layouts/header' %>
   <table class = "center">
     <tr>
       <td class = "page_head"> Create Institution</td>
     </tr> 
     <tr> 
-      <%= form_for(:institution_account, url:  institution_account_index_path) do |f| %>
+      <%= form_for(@institution) do |f| %>
         <td align = "left" >
           <table border = "0", cellpadding = "10", cellspacing = "0">
             <tbody>
@@ -14,27 +13,24 @@
                 <b> Details </b>
                 <td height = "25"> Select Publisher</td>
                 <td align = "left">
-                  <%= f.select 'pub',options_from_collection_for_select(Publisher.all, 'id', 'pub_name') %>
+                  <%= f.select 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "select publisher" %>
                 </td>
               </tr>
               <tr>
-                <td align = "left", height = "25"> Institution ID</td>
-                <td align = "left", height = "25">
-                  <%= f.text_field :inst_ID %>
-                </td>
                 <td align = "left", height = "25"> Lib./Dept. Name</td>
                 <td align = "left">
-                  <%= f.text_field :Lib_name %>
+                  <%= f.text_field :libary_name %>
                 </td>
               </tr>
               <tr>
                 <td align = "left", height = "25"> Institution Name</td>
                 <td align = "left">
-                  <%= f.text_field :inst_name %>
+                  <%= f.text_field :institution_name %>
                 </td>
                 <td height = "25"> Status </td>
                 <td height = "25">
-                 
+                <%= f.select 'status',options_for_select(['active', 'inactive']), :prompt => "select status" %>
+
                 </td>
               </tr>
             </tbody>
@@ -63,11 +59,7 @@
                   <b> Billing Address </b>
                   <td align = "left", height = "25"> Contact First Name</td>
                   <td align = "left">
-                    <%= builder.text_field :first_name%>
-                  </td>
-                  <b> sdbnis </b>
-                  <td align = "left", height = "25"> parent id</td>
-                  <td align = "left">                  
+                    <%= builder.text_field :first_name %>
                   </td>
                   <td align = "left", height = "25"> Contact Last Name</td>
                   <td align = "left">
@@ -91,13 +83,13 @@
                   </td>
                   <td align = "left", height = "25"> Address Line 2</td>
                   <td align = "left">
-                    <%= builder.text_field :add_line2 %>
+                    <%= builder.text_field :address_line2 %>
                   </td>
                 </tr>
                 <tr>
-                  <td align = "left", height => "25"> Address Line 3</td>
+                  <td align = "left", height = "25"> Address Line 3</td>
                   <td align = "left">
-                    <%= builder.text_field :add_line3 %>
+                    <%= builder.text_field :address_line3 %>
                   </td>
                   <td align = "left", height = "25"> City / Town</td>
                   <td align = "left">
@@ -116,7 +108,8 @@
                 </tr>
                 <tr>
                   <td align = "left", height = "25"> Country </td>
-                  <td align = "left">                
+                  <td align = "left"> 
+                      <%= builder.country_select :country, prompt: "select country" %>
                   </td>
                 </tr>
                 <tr>
@@ -127,7 +120,7 @@
               <% end %>
               <tr>
                 <td align = "left">  
-                  <%= f.submit "Submit", :name => nil %>
+                  <%= f.submit "Submit" %>
                 </td>
               </tr>
             </tbody>

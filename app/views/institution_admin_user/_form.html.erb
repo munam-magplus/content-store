@@ -14,20 +14,45 @@
             <label class="radio-inline"><%= f.radio_button :role,'Institution Administrator'%> Institution Administrator</label>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="disabledTextInput" > Publisher</label>
-            <%= f.select 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "select publisher" %>
+      </div>        
+      <% if @ins.present? %>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="disabledTextInput" > Publisher</label>
+              <%= f.hidden_field :publisher_id2, value: publisher_name(@ins.publisher_id).id %>
+              <%= publisher_name(@ins.publisher_id).publisher_name %>
+            </div>
           </div>
         </div>
-      </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="disabledTextInput">Institution name<span class="red">*</span></label>
+              <%= f.hidden_field :institution_name2, value: @ins.institution_name  %>
+              <%= @ins.institution_name %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="row">        
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="disabledTextInput" > Publisher</label>
+              <%= f.select 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "select publisher" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="disabledTextInput">Institution name<span class="red">*</span></label>
+              <%= f.select 'institution_name',options_from_collection_for_select(InstitutionAccount.all, 'institution_name', 'institution_name', :prompt => "select institution name") %>
+            </div>
+          </div>
+        </div>
+      <%end%>
       <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="disabledTextInput"  >Institution name<span class="red">*</span></label>
-            <%= f.select 'institution_name',options_from_collection_for_select(InstitutionAccount.all, 'institution_name', 'institution_name', :prompt => "select institution name") %>
-          </div>
-        </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="disabledTextInput" >User Name </label>
@@ -45,9 +70,15 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="disabledTextInput" >Status</label>
-            <%= f.select 'status',options_for_select(["active","inactive"]), :prompt => "select status" %>
+            <%= f.select 'status',options_for_select(["active","inactive"]), :prompt => "select status" %>      
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
             <label class="checkbox-inline">
-              <%= check_box_tag :billing_contact%>
+              <%= check_box_tag :billing_contact %>
               same as institution billing contact  
             </label>      
           </div>

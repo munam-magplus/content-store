@@ -1,81 +1,92 @@
 <body class = "body1">
-		<div class="div1">
-	 <table>
-	 <thead>
-	 		<tr>
-				<th width="15%" class="tableheader">Publisher</th>	 		
-				<th width="15%" class="tableheader">Institution Name</th>
-				<th width="15%" class="tableheader">Lib./Dept. Name</th>
-				<th width="7%" class="tableheader">Country</th>
-				<th width="10%" class="tableheader">Primary Contact Name</th>
-				<th width="10%" class="tableheader">Status</th>
-				<th width="10%" class="tableheader">New IP Requests</th>
-				<th width="25%" align="center" class="tableheader">Actions</th>
-	 		</tr>
-	 </thead>
-	 <tbody>
-			<% @res.each do |f| %>
-			<%if f.status == "active"%>
-	 	<tr class="backgroundcolor">
-	 			<td class="tabledata"><%= f.publisher %></td>
-				<td class="tabledata"><%= f.institution_name %></td>
-				<td class="tabledata"><%= f.libary_name %></td>
-				<td class="tabledata">
-					<% f.institution_acc_billing_address.country %>
-				</td>
-				<td class="tabledata">
-						<%= f.institution_acc_billing_address.first_name %>
-						<%= f.institution_acc_billing_address.last_name %>
-				</td>
-				<td class="tabledata"><%= f.status %></td>
-				<td class="tabledata">
-					<%if @chec.present? %>
-							yes
-					<%else%>
-						 no
+	<div class="div1">
+		<table>
+			<thead>
+			 		<tr>
+						<th width="15%" class="tableheader">Institution Id</th>	 		
+						<th width="15%" class="tableheader">Institution Name</th>
+						<th width="15%" class="tableheader">Lib./Dept. Name</th>
+						<th width="7%" class="tableheader">Country</th>
+						<th width="10%" class="tableheader">Primary Contact Name</th>
+						<th width="10%" class="tableheader">Status</th>
+						<th width="10%" class="tableheader">New IP Requests</th>
+						<th width="25%" align="center" class="tableheader">Actions</th>
+			 		</tr>
+			</thead>
+			<tbody>
+				<% if @insti_acc.present? %>
+					<% @insti_acc.each do |f| %>
+			<% byebug %>
+						<%if f.status == "active"%>
+					 		<tr class="backgroundcolor">
+					 			<td class="tabledata"><%= f.id %></td>
+								<td class="tabledata">
+									<%= link_to (f.institution_name), edit_institution_account_path(f.id) %>
+								</td>
+								<td class="tabledata"><%= f.libary_name %></td>
+								<td class="tabledata">
+									<%= ISO3166::Country[f.institution_acc_billing_address.country].translations[I18n.locale.to_s] %>
+								</td>
+								<td class="tabledata">
+										<%= link_to (f.institution_acc_billing_address.first_name + f.institution_acc_billing_address.last_name), edit_institution_account_path(f.id) %>
+								</td>
+								<td class="tabledata"><%= f.status %></td>
+								<td class="tabledata">
+									<%if @chec.present? %>
+											yes
+									<%else%>
+										 no
+									<%end%>
+								</td>
+								<td class="tabledata">
+									<%= image_tag("IP.gif")%>
+									<%= image_tag("Library_User.png")%>
+									<%= image_tag("User_Subscription.png")%><br>
+									<%= image_tag("license.gif")%>
+									<%= image_tag("Referral_URL.png")%>
+									<%= link_to image_tag("managins_user.gif"), institution_account_inst_admin_result_path(f) %>
+								</td>
+							</tr>
+						<% else %>
+							<tr>
+					 			<td class="tabledata"><%= f.id %></td>		
+								<td class="tabledata">
+									<%= link_to (f.institution_name), edit_institution_account_path(f.id) %>
+								</td>
+								<td class="tabledata"><%= f.libary_name %></td>
+								<td class="tabledata">
+									<%= ISO3166::Country[f.institution_acc_billing_address.country].translations[I18n.locale.to_s] %>				
+								</td>
+								<td class="tabledata">
+										<%= link_to (f.institution_acc_billing_address.first_name +  f.institution_acc_billing_address.last_name), edit_institution_account_path(f.id) %>
+								</td>
+								<td class="tabledata"><%= f.status %></td>
+								<td class="tabledata">
+									<%if @chec.present? %>
+											yes
+									<%else%>
+										 no
+									<%end%>
+								</td>
+								<td class="tabledata">
+									<%= image_tag("IP.gif")%>
+									<%= image_tag("Library_User.png")%>
+									<%= image_tag("User_Subscription.png")%><br>
+									<%= image_tag("license.gif")%>
+									<%= image_tag("Referral_URL.png")%>
+									<%= link_to image_tag("managins_user.gif"), institution_account_inst_admin_result_path(f) %>
+								</td>
+							</tr>
+						<% end %>
 					<%end%>
-				</td>
-				<td class="tabledata">
-					<%= image_tag("IP.gif")%>
-					<%= image_tag("Library_User.png")%>
-					<%= image_tag("User_Subscription.png")%><br>
-					<%= image_tag("license.gif")%>
-					<%= image_tag("Referral_URL.png")%>
-					<%= image_tag("managins_user.gif")%>
-				</td>
-		</tr>
-		<% else %>
-			<tr class="backgroundcolor1">
-	 			<td class="tabledata"><%= f.publisher %></td>		
-				<td class="tabledata"><%= f.institution_name %></td>
-				<td class="tabledata"><%= f.libary_name %></td>
-				<td class="tabledata">
-					<% f.institution_acc_billing_address.country %>				
-				</td>
-				<td class="tabledata">
-						<%= f.institution_acc_billing_address.first_name  %>
-						<%= f.institution_acc_billing_address.last_name %>
-				</td>
-				<td class="tabledata"><%= f.status %></td>
-				<td class="tabledata">
-					<%if @chec.present? %>
-							yes
-					<%else%>
-						 no
-					<%end%>
-				</td>
-				<td class="tabledata">
-					<%= image_tag("IP.gif")%>
-					<%= image_tag("Library_User.png")%>
-					<%= image_tag("User_Subscription.png")%><br>
-					<%= image_tag("license.gif")%>
-					<%= image_tag("Referral_URL.png")%>
-					<%= image_tag("managins_user.gif")%>
-				</td>
-			</tr>
-		<% end %>
-			<%end%>
-	 </tbody> 
-	</table>
-		</div>
+				<% else %>
+					<tr>
+						<td>
+							Records not found
+						</td>
+					</tr>
+				<% end %>
+			</tbody> 
+		</table>
+	</div>
 </body>
