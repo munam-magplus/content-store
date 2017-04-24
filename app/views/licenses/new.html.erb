@@ -109,16 +109,16 @@
                   </tr>
                   <tr>
                     <td height="25" width="430">
-                      From <%= f.text_field :from, :id => 'from1' %>
+                      From <%= f.text_field :license_link_from_date, :id => 'from1' %>
                     </td>
                     <td height="25" width="430">
-                      To <%= f.text_field :to, :id => 'to1' %>
+                      To <%= f.text_field :license_link_to_date, :id => 'to1' %>
                     </td>
                   </tr>
                   <tr>
                     <td height = "25" colspan="5">
-                     <%= f.radio_button :to, 'Yes'%>Allow License to be linked    
-                     <%= f.radio_button :to, 'No' %>Prevent License from being linked 
+                     <%= f.radio_button :license_is_linkable, 'Yes'%>Allow License to be linked    
+                     <%= f.radio_button :license_is_linkable, 'No' %>Prevent License from being linked 
                    </td>
                   </tr>
                   <tr>
@@ -134,8 +134,8 @@
                     <td height = "25" colspan="5">
                      <%= f.radio_button :license_for_sale, 'Yes'%>For Sale    
                      <%= f.radio_button :license_for_sale, 'No' %>Not For Sale
-                     <%= f.check_box(:to) %> Free License
-                     <%= f.check_box(:to) %> Free Shipping
+                     <%= f.check_box (:license_type) %>Free License
+                     <%= f.check_box(:license_shipping_is_free) %> Free Shipping
                    </td>
                   </tr>
                   <tr>
@@ -143,7 +143,7 @@
                      <table border = "0", cellpadding = "0", cellspacing = "0">
                        <tr>
                          <td height = "25" colspan="5">
-                            Discount%<%= f.text_field :license_type %>
+                            Discount%<%= f.text_field :license_discount_percentage %>
                           </td>
                           <td height = "25" colspan="5">
                            <%= submit_tag "Save" %>
@@ -160,6 +160,7 @@
         </td>
       </tr>
     </table>
+ 
   <% end %>
 <script>
  $('#chapter').hide();

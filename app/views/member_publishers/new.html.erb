@@ -1,0 +1,119 @@
+<body class = "body1">
+<%= form_for :member_publisher,url: save_member_publishers_path do |f| %>
+  <table border =  "0", cellpadding = "0", cellspacing = "0", width = "860", class = "center">
+    <tr>
+      <%if @member_publisher.new_record?%>
+        <td class = "page_head"> Create Member Publisher</td>
+      <%else%>
+        <td class = "page_head"> Edit Member Publisher</td>
+      <%end%>
+    </tr>
+    <tr>
+      <td>
+        <table border = "0", cellpadding = "6", cellspacing = "0", width = "100%", class = "center">
+          <tr>
+            <td>
+              <table border = "0", cellpadding = "10", cellspacing = "0">
+                <tbody>
+                  <tr>
+                    <%= f.hidden_field :id, value: @member_publisher.id %>
+                    <%if @member_publisher.new_record?%>
+                      <%= f.hidden_field :publisher_id, value: params[:publisher_id] %>
+                    <%end%>
+                    <td height = "25">
+                      Member Publisher Code
+                      <span class = "mandtory ">*</span>
+                    </td>
+                    <td height = "25">
+                      <%= f.text_field :member_publisher_code %>
+                    </td>
+                    <td>
+                      Member Publisher Name
+                      <span class = "mandtory ">*</span>
+                    </td>
+                    <td>
+                      <%= f.text_field :member_publisher_name %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td height = "25"> Memeber Publisher Status</td>
+                    <td height = "25">
+                      <%= f.select :member_publisher_status, options_for_select([ "Live", "Staging"]), :class => 'genForm_dropBox' %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td height = "25">
+                      Contact First Name
+                      <span class = "mandtory ">*</span>
+                    </td>
+                    <td height = "25">
+                      <%= f.text_field :contact_first_name %>
+                    </td>
+                    <td>
+                      Contact Last Name
+                      <span class = "mandtory ">*</span>
+                    </td>
+                    <td>
+                      <%= f.text_field :contact_last_name%>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td height = "25">
+                      Publisher Borrow Period (in days)
+                      <span class = "mandtory ">*</span>
+                    </td>
+                    <td height = "25">
+                      <%= f.text_field :publisher_borrow_period %>
+                    </td>
+                    <td height = "25">
+                      Revenue share percentage*
+                      <span class = "mandtory ">*</span>
+                    </td>
+                    <td height = "25">
+                      <%= f.text_field :revenue_share_percentage %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td height = "25">
+                      Contact Email
+                      <span class = "mandtory ">*</span>
+                    </td>
+                    <td height = "25">
+                      <%= f.text_field :contact_email%>
+                    </td>
+                    <td height = "25">
+                      Member Publisher Logo
+                      <span class = "mandtory ">*</span>
+                    </td>
+                    <td height = "25">
+                      <%= f.file_field :file %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <% unless @member_publisher.new_record? %>
+                      <td colspan="2" height = "25">
+                        <font color="red">Note: </font>
+                         Changing this value would lead to repackaging charges for all the title of the Member Publisher
+                      </td>
+                    <%end%>
+                  </tr>
+                  <tr>
+                    <td class = "GBoldText", align = "right", height = "35">
+                      <table border = "0", cellpadding = "0", cellspacing = "0">
+                        <tr>
+                          <td>
+                            <%= f.submit 'Save' %>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  <% end %>

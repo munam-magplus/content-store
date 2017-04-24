@@ -2,6 +2,24 @@ class LicenseGroupsController < ApplicationController
  before_action :authenticate_user!
 
  def create
+ 	@license_group = LicenseGroup.new(license_group_params)
+ 	 @license_group.created_by = current_user.email
+    respond_to do |format|
+      if @license_group.save!
+        format.html {render "new" }
+        format.js   { }
+      else
+        
+      end
+    end
+ 	# if @license_group.save!
+  #     flash[:success] = "License Group Created!"
+  #     # if successfully stored then redirect to license group's setup path 
+  #     redirect_to license_group_path
+  #   else
+  #     # if not save in that case render new
+  #     render 'new'
+  #   end
  end
 
  def new
@@ -20,4 +38,11 @@ class LicenseGroupsController < ApplicationController
   #call filter method to get search results
   @license_group = LicenseGroup.filter(params.slice(:publisher_id, :license_group_id, :license_group_name, :license_name, :created_by, :license_for_sale))
  end
+
+ private 
+
+  def license_group_params
+    params.require(:license_group).permit(:license_group_name, :from, 
+    :to, :license_for_sale, :purchase_info_discount)
+  end
 end

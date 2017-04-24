@@ -1,8 +1,18 @@
 class LicensesController < ApplicationController
     before_action :authenticate_user!
 
-  def create
+ def create
+  @license = License.new(license_params)
+   @license.created_by = current_user.email
+  if @license.save!
+   flash[:success] = "License Created!"
+   # if successfully stored then redirect to license group's setup path 
+   redirect_to licenses_path
+  else
+   # if not save in that case render new
+   render 'new'
   end
+ end
 
   def new
     @license = License.new
@@ -24,5 +34,11 @@ class LicensesController < ApplicationController
   end
 
   def index
+  end
+  private 
+
+  def license_params
+   params.require(:license).permit(:license_name, :from, 
+   :to, :license_for_sale, :license_is_linkable, :license_link_from_date, :license_link_to_date,:license_shipping_is_free,:license_discount_percentage)
   end
 end
