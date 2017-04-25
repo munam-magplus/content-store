@@ -1,0 +1,107 @@
+<html>
+  <body class = "body1">
+      <h1>Create Retailers</h1>
+      <table border="0" cellpadding="10" cellspacing="0">
+        <tbody>
+        <% if @res != nil %>
+          <%= @re.each do |f| %>
+            <%= f.retailer_code %>
+          <% end %>
+          <% else %>
+            <tr>
+              <td align = "right", id= "addAction">
+                <a href = "#">
+                  <%= image_tag("add.gif") %>
+                </a>
+              </td>
+            </tr>
+            <div>
+            <%= form_for(:retailer, url: retailers_path)  do |f| %>
+             <table id = "items" border = "1", cellpadding = "0", cellspacing = "0", width = "100%", id="items">
+              <tr>
+                <td class = "tableheader" align = "center", height = "30"> Retailer Code</td>
+                <td class = "tableheader" align = "center", height = "30"> Retailer Name</td>
+                <td class = "tableheader" align = "center", height = "30"> Publisher Id</td>
+                <td class = "tableheader" align = "center", height = "30"> Low Ip</td>
+                <td class = "tableheader" align = "center", height = "30"> High Ip</td>
+                <td class = "tableheader" align = "center", height = "30"> IP List</td>
+                <td class = "tableheader" align = "center", height = "30"> Operation</td>
+              </tr>
+              <tr>
+                <td align = "left", height = "25">
+                  <%= f.text_field :retailer_code %>
+                </td>
+               <td align = "left", height = "25" >
+                  <%=  f.select(:retailer_name, options_for_select([[@re.publisher_code ,@re.publisher_code]])) %>
+                </td> 
+                <td align = "left", height = "25">
+                  <%= f.text_field :publisher_id , :value => @re.id%>
+                </td>
+                <td align = "left", height = "25">
+                  <%= f.text_field :low_ip %>
+                </td>
+                <td align = "left", height = "25">
+                  <%= f.text_field :high_ip %>
+                </td>
+                <td align = "left", height = "25">
+                  <%= f.text_field :ip_list %>
+                </td>
+                <td>
+                  <%= image_tag("delete_icon.gif")%>
+                </td>
+              </tr> 
+            </table>
+            <table id="addnewrow" , border = "1", cellpadding = "0", cellspacing = "0", width = "1075px">
+              
+            </table>
+              <%= f.submit "submit"%>
+          <% end %>
+          </div>
+        <% end %>
+        </tbody>
+      <div id="test"></div>
+      </table>
+  </body>
+</html>
+
+<script>
+$(document).ready(function() {
+  var submit = $('input[type="submit"]');
+  $('#addAction').prop('disabled', true);
+  $(submit).click( function () {
+    var $submit = $('input[type="submit"]');
+    $('#addAction').prop('disabled', false);
+    $('#addAction').click( function () {
+    // $('#test').append('<%= j render :partial => 'retailers/test'%>');
+      var $quantity = $('.tableheader').length;
+      var $quants = $('#items tr').length;
+      jQuery("#items").append("<tr></tr>");
+      $("#items tr:last").addClass('tablecount'+$quants);
+      $.each(new Array($quantity - 1 ),
+       function(n){
+        alert("success");
+        $("#items tr:last").append("<td><select_tag(:retailer_name, options_for_select([[@re.publisher_id ,1]])) ></td>");
+      });
+  });
+  });
+});
+
+</script>
+
+<!-- 
+:javascript
+  jQuery('#addAction').click( function () {
+      var $quantity = $('.tableheader').length;
+      var $quants = $('#items tr').length;
+      jQuery("#items").append("<tr></tr>");
+      $("#items tr:last").addClass('tablecount'+$quants);
+      $.each(new Array($quantity - 1 ),
+       function(n){
+        jQuery("#items tr:last").append("<td><select_tag(:RETAILER_NAME, options_for_select([[@re.PUB_CODE ,1]])) ></td>");
+      });
+      jQuery("#items tr:last").append("<td><input type='image' name='delete' onclick ='remove(" + $quants + ");'></td>"); 
+  });
+  function remove(elem) {
+    $('.tablecount'+ elem ).hide();
+  }
+ -->

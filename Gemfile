@@ -30,6 +30,8 @@ gem 'devise'
 gem 'countries'
 gem 'country_select'
 
+#used for encrypting password
+gem 'bcrypt-ruby', '~> 3.1.2'
 
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

@@ -1,11 +1,7 @@
 class RetailersController < ApplicationController
-	    before_action :authenticate_user!
+	before_action :authenticate_user!
 
 	def index
-	 # this is done because the association between
-   # retailer and publisher association is through publisher's code.
-	 #here we get the retailers based on the publishers
-	 # @retail = Retailer.pluck(:publisher_id)
 	 #here we get all the publishers that are to be displayed in dropdown list of create page
 	 # @publishers = Publisher.where(:id => @retail).pluck(:publisher_name)
 	 @publishers = Publisher.all.pluck(:publisher_name)
@@ -20,13 +16,16 @@ class RetailersController < ApplicationController
 	end
 	
 	def create
-		@retailers = Retailer.all
-		@retail = Retailer.find_by(params[:id])
-		@ret = @retail.publisher_id
-		@re = Publisher.find_by(@ret)
+		# @retailers = Retailer.all
+		# @retail = Retailer.find_by(params[:id])
+		# @ret = @retail.publisher_id
+		# @re = Publisher.find_by(@ret)
 		@retailer = Retailer.new(retailer_params)
-		if @retailer.save
-			render 'search',locals: { :re => @re }
+		if @retailer.save!
+			# render 'search',locals: { :re => @re }
+			# redirect_to institution_account_index_path
+			flash[:success] = "retailer created"
+			redirect_to :back		
 		else
 			render 'new'
 		end
@@ -34,7 +33,7 @@ class RetailersController < ApplicationController
 	
 	def search
 	  #get the publisher that have same retailer name
-	  @retailers = Retailer.all
+	  # @retailers = Retailer.last
 	  @re = Publisher.find_by_publisher_name(params[:retailer_name])
 	  respond_to do |format|
 	  	format.html
@@ -43,18 +42,18 @@ class RetailersController < ApplicationController
 	end
 
 	def show
+		byebug
 	end
 
 	def destroy
-		@retailers = Retailer.all
-		@retailer = Retailer.find_by(params[:id])
-		@ret = @retailer.publisher_id
-		@re = Publisher.find_by(@ret)
+		byebug
+		# @retailers = Retailer.all
+		# @retailer = Retailer.find_by(params[:id])
+		# @ret = @retailer.publisher_id
+		# @re = Publisher.find_by(@ret)
+		@retailer = Retailer.find_by_id(session[:id])
 		@retailer.destroy
-		respond_to do |format|
-      format.html { render 'search',locals: { :re => @re }}
-      format.json { head :no_content }
-    end
+		redirect_to :back
 	end
 
 	private 

@@ -1,5 +1,5 @@
 <body class = "body1">
-    <%= form_for @license_group do |f| %>
+    <%= form_for @license_group ,:remote => true do |f| %>
   <table border =  "0", cellpadding = "0", cellspacing = "0", width = "860", class = "center">
     <tr>
       <td class = "page_head"> Create License Group</td>
@@ -25,11 +25,11 @@
                      <input value="System Generated" id="licenseId" disabled />
                     </td>
                     <td>
-                      License Name
+                      License  Group Name
                       <span class = "mandtory ">*</span>
                     </td>
                     <td>
-                      <%= f.text_field :license_name %>
+                      <%= f.text_field :license_group_name %>
                     </td>
                   </tr>
                   <tr>
@@ -83,7 +83,7 @@
                      <table border = "0", cellpadding = "0", cellspacing = "0">
                        <tr>
                          <td height = "25" colspan="5">
-                            Discount%<%= f.text_field :license_type %>
+                            Discount%<%= f.text_field :purchase_info_discount %>
                           </td>
                           <td height = "25" colspan="5">
                            <%= submit_tag "Save" %>
@@ -100,4 +100,6 @@
         </td>
       </tr>
     </table>
+
+    <%= hidden_field_tag "ids[]", [], :class => "page_no" %>
   <% end %>

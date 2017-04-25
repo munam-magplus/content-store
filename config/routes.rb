@@ -16,6 +16,10 @@ Rails.application.routes.draw do
 
   post 'books_contributor/create'
 
+  resources :library_users
+  get 'my_account/index'
+
+
   get 'article/new'
 
   get 'article/index'
@@ -71,6 +75,8 @@ Rails.application.routes.draw do
   post 'admin_user/create'
 
 
+  get 'institution_account/inst_admin_result'
+
   resources :content_conversation do
     collection do 
       get 'content_history'
@@ -81,15 +87,17 @@ Rails.application.routes.draw do
     end
   end
  
-  resources :publishers, :access_tokens, :promo_codes, :campaigns, :license_groups, :licenses,
-            :subscriptions, :subject_groups  do 
+  resources :publishers,  :access_tokens, :promo_codes, :campaigns, :license_groups, :licenses,
+            :subscriptions, :subject_groups, :member_publishers do 
     collection do 
+      post 'save'
       get 'search'
       get 'content_search'
       get 'metadata_sheet'
       get 'search_result'
       get 'apply_discount'
       get 'result'
+      get 'linked_member_publisher'
     end
   end
 

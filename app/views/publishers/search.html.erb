@@ -1,39 +1,38 @@
 <body class="body1"></body>
-<div class="div1">
-  <table bgcolor="#cccccc" border="0" cellpadding="8" cellspacing="1" width="70%"></table>
-  <table bgcolor="#cccccc" border="0" cellpadding="8" cellspacing="1" class="center" width="100%">
-    <tbody>
+
+<table bgcolor="#cccccc" border="0" cellpadding="8" cellspacing="1" width="70%"></table>
+<table bgcolor="#cccccc" border="0" cellpadding="8" cellspacing="1" class="center" width="100%">
+  <tbody>
+    <tr>
+      <td class="tableheader">Publisher Code</td>
+      <td class="tableheader">Publisher Name</td>
+      <td class="tableheader">Contact Name</td>
+      <td class="tableheader">Contact Email</td>
+    </tr>
+    <% if @publisher.present? %>
+      <% @publisher.each do |pub| %>
       <tr>
-        <td class="tableheader">Publisher Code</td>
-        <td class="tableheader">Publisher Name</td>
-        <td class="tableheader">Contact Name</td>
-        <td class="tableheader">Contact Email</td>
+        <td bgcolor="#FBFBFB">
+          <%= link_to pub.publisher_code,edit_publisher_path(pub) %>
+        </td>
+        <td bgcolor="#FBFBFB">
+          <%= pub.publisher_name %>
+        </td>
+        <td bgcolor="#FBFBFB">
+          <%= pub.contact_first_name %>
+        </td>
+        <td bgcolor="#FBFBFB">
+          <%= pub.contact_email %>
+        </td>
       </tr>
-      <% if @publisher.present? %>
-        <% @publisher.each do |pub| %>
+      <% end %>
+      <% else %>
         <tr>
           <td bgcolor="#FBFBFB">
-            <%= link_to pub.publisher_code %>
-          </td>
-          <td bgcolor="#FBFBFB">
-            <%= pub.publisher_name %>
-          </td>
-          <td bgcolor="#FBFBFB">
-            <%= pub.contact_first_name %>
-          </td>
-          <td bgcolor="#FBFBFB">
-            <%= pub.contact_email %>
+            <p> Record Not Found </p> 
           </td>
         </tr>
-        <% end %>
-        <% else %>
-          <tr>
-            <td bgcolor="#FBFBFB">
-              <p> Record Not Found </p> 
-            </td>
-          </tr>
-        <% end %>
-      </tr>
-    </tbody>
-  </table>
-</div>
+      <% end %>
+    </tr>
+  </tbody>
+</table>

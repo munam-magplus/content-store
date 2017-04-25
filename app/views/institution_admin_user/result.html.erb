@@ -1,50 +1,57 @@
 <body class = "body1">
-	<%= render :partial => '/layouts/header'%>
-		<div class="div1">
-	 <table>
-	 <thead> 
-	 	<tr>
-    	<td class = "page_head"> Institutional Admin Users</td>
-  	</tr>	 	 	 	 	 	 	
- 		<tr>
- 			<th width="15%" class="tableheader">Contact Name</th>
-			<th width="15%" class="tableheader">Email Id</th>
-			<th width="15%" class="tableheader">User Status</th>
-			<th width="7%" class="tableheader">User Name</th>
-			<th width="10%" class="tableheader">User Role</th>
-			<th width="10%" class="tableheader">Institution Name</th>
-			<th width="25%" align="center" class="tableheader">Action</th>
- 		</tr>
-	 </thead>
-	 <tbody>
-			<% @res.each do |f| %>
-	 	<%if f.status == "active"%>
-	 	<tr class="backgroundcolor">
-				<td  class="tabledata"><%= f.first_name%>&nbsp<%= f.last_name %></td>
-				<td  class="tabledata"><%= f.email %></td>
-				<td  class="tabledata"><%= f.status %></td>
-				<td  class="tabledata"><%= f.user_name %></td>
-				<td  class="tabledata" ><%= f.role %></td>
-				<td  class="tabledata"><%= f.institution_name %></td>
-				<td  class="tabledata">
-					<%= link_to image_tag("institutional-user.gif",  size: "17x17", title: "User Details") , edit_institution_admin_user_path(f)%>
-				</td>
-		</tr>
-		<% else %>
-			<tr class="backgroundcolor1">
-				<td  class="tabledata"><%= f.first_name %></td>
-				<td  class="tabledata"><%= f.email %></td>
-				<td  class="tabledata"><%= f.status %></td>
-				<td  class="tabledata"><% f.user_name %></td>
-				<td  class="tabledata" ><% f.role %></td>
-				<td  class="tabledata"><%= f.institution_name %></td>
-				<td  class="tabledata">
-					<%= link_to image_tag("institutional-user.gif",  size: "17x17", title: "User Details"), edit_institution_admin_user_path(f)%>
-				</td>
-		</tr>
-		<% end %>
-			<%end%>
-	 </tbody> 
-	</table>
-		</div>
+	<div class="div1">
+		<table>
+			<thead> 
+			 	<tr>
+		    	<td class = "page_head"> Institutional Admin Users</td>
+		  	</tr>	 	 	 	 	 	 	
+		 		<tr>
+		 			<th width="15%" class="tableheader">Contact Name</th>
+					<th width="15%" class="tableheader">Email Id</th>
+					<th width="15%" class="tableheader">User Status</th>
+					<th width="7%" class="tableheader">User Name</th>
+					<th width="10%" class="tableheader">User Role</th>
+					<th width="10%" class="tableheader">Institution Name</th>
+					<th width="25%" align="center" class="tableheader">Action</th>
+		 		</tr>
+			</thead>
+			<tbody>
+			  <% if @res.present? %>
+					<% @res.each do |f| %>
+					 	<%if f.status == "active"%>
+						 	<tr class="backgroundcolor">
+									<td  class="tabledata"><%= f.first_name%>&nbsp<%= f.last_name %></td>
+									<td  class="tabledata"><%= f.email %></td>
+									<td  class="tabledata"><%= f.status %></td>
+									<td  class="tabledata"><%= f.user_name %></td>
+									<td  class="tabledata" ><%= f.role %></td>
+									<td  class="tabledata"><%= f.institution_name %></td>
+									<td  class="tabledata">
+										<%= link_to image_tag("institutional-user.gif",  size: "17x17", title: "User Details") , edit_institution_admin_user_path(f)%>
+									</td>
+							</tr>
+						<% else %>
+							<tr>
+								<td  class="tabledata"><%= f.first_name %></td>
+								<td  class="tabledata"><%= f.email %></td>
+								<td  class="tabledata"><%= f.status %></td>
+								<td  class="tabledata"><% f.user_name %></td>
+								<td  class="tabledata" ><% f.role %></td>
+								<td  class="tabledata"><%= f.institution_name %></td>
+								<td  class="tabledata">
+									<%= link_to image_tag("institutional-user.gif",  size: "17x17", title: "User Details"), edit_institution_admin_user_path(f)%>
+								</td>
+							</tr>
+						<% end %>
+					<%end%>
+				<% else %>
+					<tr>
+						<td >
+							Records not found
+						</td>
+					</tr>
+				<% end %>	
+			</tbody> 
+		</table>
+	</div>
 </body>

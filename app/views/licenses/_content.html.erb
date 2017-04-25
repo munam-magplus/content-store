@@ -1,11 +1,11 @@
-<tr class="content_as">
+<tr class="content_head">
   <td class="tableheader"><input type="checkbox" name="select-all" id="select-all" /></td>
   <td class="tableheader">ISBN</td>
   <td class="tableheader">Book Title</td>
 </tr>
 <% if @content_for_license.present? %>
   <% @content_for_license.each do |lic_group| %>
-    <tr class="current_location">
+    <tr class="content_value">
       <td bgcolor="#FBFBFB">
         <input type="checkbox" name="checkbox" id="chk" />
       </td>
@@ -40,4 +40,22 @@
   }
 
   });
+  function getAddDetails(){
+    
+   var srcrow = $('.content_value').has('input:checked');
+    var lastRow = srcrow.clone();
+    lastRow.each(function(index, row){
+      $(row).find('checked').each(function(idx, el){
+          var el = $(el);
+          el.val(srcrow.eq(index).find('select').eq(idx).val())
+      });
+    });
+    $(".content_head").each(function(i, el) {
+      $(this).closest('.content_head').clone().insertAfter(".content_value:last");
+      var cols = '<td><input type="button" id="ibtnDel" class="dele" value="Delete"></td>';
+    });
+    //$('.content_value:last').append(lastRow);
+    lastRow.closest('.content_value').clone().insertAfter(".content_head:last");
+  }
+
 </script>
