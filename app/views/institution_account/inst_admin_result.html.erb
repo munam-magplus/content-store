@@ -44,7 +44,7 @@
 							</tr>
 						<% end %>
 					<%end%>
-					<%= button_to "create new user" , new_institution_admin_user_path(params[:format]), method: "get" %>
+					<%= button_to "create new user" , new_institution_admin_user_path(@ins), method: "get" %>
 				<% else %>
 					<tr>
 						<td >

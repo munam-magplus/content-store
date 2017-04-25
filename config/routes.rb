@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :library_users
+  resources :library_users do 
+    collection do
+      get 'result'
+    end
+  end
+
   get 'my_account/index'
 
   resources :contact_us
@@ -58,6 +63,7 @@ Rails.application.routes.draw do
 
 
   get 'institution_account/inst_admin_result'
+
 
   resources :content_conversation do
     collection do 

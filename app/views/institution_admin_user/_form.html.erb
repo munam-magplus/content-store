@@ -15,13 +15,13 @@
           </div>
         </div>
       </div>        
-      <% if @ins.present? %>
+      <% if @inst.present? %>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label for="disabledTextInput" > Publisher</label>
-              <%= f.hidden_field :publisher_id2, value: publisher_name(@ins.publisher_id).id %>
-              <%= publisher_name(@ins.publisher_id).publisher_name %>
+              <%= f.hidden_field :publisher_id2, value: publisher_name(@inst.publisher_id).id %>
+              <%= publisher_name(@inst.publisher_id).publisher_name %>
             </div>
           </div>
         </div>
@@ -29,8 +29,8 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="disabledTextInput">Institution name<span class="red">*</span></label>
-              <%= f.hidden_field :institution_name2, value: @ins.institution_name  %>
-              <%= @ins.institution_name %>
+              <%= f.hidden_field :institution_name2, value: @inst.institution_name  %>
+              <%= @inst.institution_name %>
             </div>
           </div>
         </div>

@@ -1,4 +1,7 @@
 <body class = "body1">
+	<h6>Export Metadata As :
+		<%= link_to image_tag("xls.gif"), institution_account_search_op_path(format: :xlsx), title: "excel" %>
+	</h6>
 	<div class="div1">
 		<table>
 			<thead>
@@ -16,7 +19,6 @@
 			<tbody>
 				<% if @insti_acc.present? %>
 					<% @insti_acc.each do |f| %>
-			<% byebug %>
 						<%if f.status == "active"%>
 					 		<tr class="backgroundcolor">
 					 			<td class="tabledata"><%= f.id %></td>
@@ -40,11 +42,11 @@
 								</td>
 								<td class="tabledata">
 									<%= image_tag("IP.gif")%>
-									<%= image_tag("Library_User.png")%>
+									<%= link_to image_tag("Library_User.png"), result_library_users_path(id: f.id) , title: "Library users"%>
 									<%= image_tag("User_Subscription.png")%><br>
 									<%= image_tag("license.gif")%>
 									<%= image_tag("Referral_URL.png")%>
-									<%= link_to image_tag("managins_user.gif"), institution_account_inst_admin_result_path(f) %>
+									<%= link_to image_tag("managins_user.gif"), institution_account_inst_admin_result_path(:id => f.id), title: "Institution Admin User" %>
 								</td>
 							</tr>
 						<% else %>
@@ -70,11 +72,11 @@
 								</td>
 								<td class="tabledata">
 									<%= image_tag("IP.gif")%>
-									<%= image_tag("Library_User.png")%>
+									<%= link_to image_tag("Library_User.png"), result_library_users_path(id: f.id), title: "Library users"%>
 									<%= image_tag("User_Subscription.png")%><br>
 									<%= image_tag("license.gif")%>
 									<%= image_tag("Referral_URL.png")%>
-									<%= link_to image_tag("managins_user.gif"), institution_account_inst_admin_result_path(f) %>
+									<%= link_to image_tag("managins_user.gif"), institution_account_inst_admin_result_path(:id => f.id), title: "Institution Admin User" %>
 								</td>
 							</tr>
 						<% end %>
