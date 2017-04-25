@@ -6,9 +6,26 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'books_seo_config/new'
+
+  post 'books_seo_config/create'
+
+  get 'books_content_access_rules/new'
+
+  post 'books_content_access_rules/create'
+
+  get 'books_content_pricing/new'
+
+  post 'books_content_pricing/create'
+
+  get 'books_contributor/new'
+
+  post 'books_contributor/create'
+
+ 
   get 'my_account/index'
 
-  resources :contact_us
+
   get 'article/new'
 
   get 'article/index'
@@ -75,15 +92,17 @@ Rails.application.routes.draw do
     end
   end
  
-  resources :publishers, :access_tokens, :promo_codes, :campaigns, :license_groups, :licenses,
-            :subscriptions, :subject_groups  do 
+  resources :publishers,  :access_tokens, :promo_codes, :campaigns, :license_groups, :licenses,
+            :subscriptions, :subject_groups, :member_publishers do 
     collection do 
+      post 'save'
       get 'search'
-      get 'search_content'
+      get 'content_search'
       get 'metadata_sheet'
       get 'search_result'
       get 'apply_discount'
       get 'result'
+      get 'linked_member_publisher'
     end
   end
 
@@ -110,12 +129,6 @@ Rails.application.routes.draw do
       get 'metadata_sheet'
       get 'onix_input'
       get 'onix_supp_sheet'
-      post 'primary_content_info'
-      get 'contributors/new'
-      post 'contributors/create'
-      post 'content_pricing'
-      post 'content_access_rules'
-      post 'seo_config'
     end
   end
 
