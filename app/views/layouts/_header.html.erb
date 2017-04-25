@@ -1,166 +1,159 @@
-<div class="container-fluid whiteBg">
-<div class="container">
- 
-		<div class="row">
-			<div class="col-md-3">
-				<h1 class="logo"><%= image_tag("logo.gif")%></h1>
-			</div>
-			<div class="col-md-9 text-right"><p>Welcome <b><%= current_user.email %></b>|
-			 <%= link_to('My Account', my_account_index_path)%>|
-			 <%= link_to('Contact Us', new_contact_u_path)%>|
-			 <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-
-			</p></div>
-			
-		</div>
- 
-</div>
-</div>
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-				<nav id="primary_nav_wrap" class="navbar navbar-default">
-				  
-					<ul>
-					  <li>
-					  	<%= link_to "Publisher Setup",publisher_setup_index_path%>
-					  	<ul>
-					      <li><a>Publisher  <span class="caret"></span></a>
-					        <ul>
-					          <li><a><%= link_to "Search", publishers_path%></a></li>
-					          <li><a><%= link_to "Create", new_publisher_path%></a></li>
-					        </ul>
-					      </li>
-					      <li><a>Auto Generation</a></li>
-					      <li><a>Site settings</a></li>
-					    </ul>
-					  </li>
-					  <li> <%= link_to "Manage User Account",manage_user_account_index_path%> 
-					    <ul>
-					      <li><%= link_to "Retailers",retailers_path%></li>
-					      <li><a href="#">End User</a></li>
-					      <li><a href="#">Admin User</a></li>
-					      <li><%= link_to "Institutional Account", institution_account_index_path%>
-					        <ul>
-					          <li><a><%= link_to "Search", institution_account_index_path%></a>
-					          </li>
-					          <li><a><%= link_to "Create", new_institution_account_path%></a></li>
-					        </ul>
-					      </li>
-					      <li><%= link_to "Institutional Admin User Account ", institution_admin_user_index_path%>
-					        <ul>
-					          <li><a><%= link_to "Search", institution_admin_user_index_path%></a>
-					          </li>
-					          <li><a><%= link_to "Create", new_institution_admin_user_path%></a></li>
-					        </ul>
-					      </li>
-					    </ul>
-					  </li>
-
-					  <li> <%= link_to "Content Conversation",content_conversation_index_path%> 
-					    <ul>
-					      <li><%= link_to "Books ",books_path %>
-									<ul>
-					          <li><a href="#">Create</a></li>
-					          <li><a href="#">Search</a></li>
-					          <li><a href="#">Content Store Metadata sheet</a></li>
-					          <li><a href="#">ONIX Inout</a></li>
-					          <li><a href="#">ONIX Suppliment Sheet</a></li>
-					        </ul>
-					      </li>
-					      <li><%= link_to "Journals",journals_path %></li>
-					      <li><%= link_to "Uploaded Errors",uploaded_errors_content_conversation_index_path %></li>
-					      <li><%= link_to "Subject Group ",subject_groups_path %>
-					      	<ul>
-					          <li><a>Upload</a></li>
-					          <li><a>Create</a></li>
-					          <li><a>Search</a></li>
-					        </ul>
-					      </li>
-					      <li><%= link_to "Update Status",update_status_content_conversation_index_path %></li>
-					      <li><%= link_to "Content History",content_history_content_conversation_index_path%></li>
-					      <li><%= link_to "QA Check",qa_check_content_conversation_index_path%></li>
-					      <li><%= link_to "Index Content",index_content_content_conversation_index_path%></li>
-					    </ul>
-					  </li>
-					  <li> <%= link_to "Manage Access",manage_access_index_path%> 
-					    <ul>
-					      <li><a href="#">Subscriptions <span class="caret"></span></a>
-									<ul>
-					          <li><a href="#">Search</a></li>
-					          <li><a href="#">Create</a></li>
-					        </ul>
-					      </li>
-					      <li><a href="#">Licenses <span class="caret"></span></a>
-					        <ul>
-					          <li><a href="#">Search</a></li>
-					          <li><a href="#">Create</a></li>
-					          <li><a href="#">License discount</a></li>      
-					        </ul>
-					      </li>
-					      <li><a href="#">License Groups <span class="caret"></span></a>
-					      	<ul>
-					          <li><a href="#">Search</a></li>
-					          <li><a href="#">Create</a></li>
-					        </ul>
-					      </li>
-					      <li><a href="#">Campaigns <span class="caret"></span></a>
-					      	<ul>
-					          <li><a href="#">Search</a></li>
-					          <li><a href="#">Create</a></li>
-					        </ul>
-					      </li>
-					      <li><a href="#">Access Tokens <span class="caret"></span></a>
-					      	<ul>
-					          <li><a href="#">Search</a></li>
-					          <li><a href="#">Create</a></li>
-					        </ul>
-					      </li>
-					      <li><a href="#">Promo Codes <span class="caret"></span></a>
-					      	<ul>
-					          <li><a href="#">Search</a></li>
-					          <li><a href="#">Create</a></li>
-					        </ul>
-					      </li>
-					    </ul>
-					  </li>
-					  <!-- <li><%= link_to "Reports",reports_path%>
-					    <ul>
-					      <li class="dir"><a href="#">All Title Report</a>
-					      </li>
-					      <li class="dir"><a href="#">Access Token Report</a>
-					      </li>
-					      <li><a href="#">Ecommerce Report</a>
-					      </li>
-					      <li><a href="#">Adobe Download Report</a>
-					      </li>
-					      <li><a href="#">Print On Demand <span class="caret"></span></a>
-					      	<ul>
-					          <li><a href="#">Print Order Report</a></li>
-					          <li><a href="#">Print Order Content Report</a></li>
-					          <li><a href="#">Print House Order Summary Report</a></li>
-					        </ul>
-					      </li>
-					      <li><a href="#">Retailer Report <span class="caret"></span></a>
-					      	<ul>
-					          <li><a href="#">By Publisher</a></li>
-					          <li><a href="#">By Retailer</a></li>
-					        </ul>
-					      </li>
-					      <li><a href="#">Institutional Ecommerce Report</a>
-					      <li><a href="#">Member Publisher Report</a>
-					      <li><a href="#">eBook Usage Report</a>
-					      <li><a href="#">User Marketing Alert Report</a>
-					      <li><a href="#">Stock Report</a>
-					      <li><a href="#">Ecommerce Order Report</a>
-					      <li><a href="#">Borrow Subscription Report</a>
-					      <li><a href="#">Matter Code Report</a>
-					      </li>
-					    </ul>
-					  </li> -->
-					</ul>
-				 
-			</nav>
-			</div>
-	</div>
-</div>
+<aside class="left-panel">
+   <!-- brand -->
+   <div class="logo">
+      <a href="index.html" class="logo-expanded">
+      <%= image_tag("brand-logo.png" , :class => "logo-lg")%>
+      <%= image_tag("brand-logo-sm.png" , :class => "logo-sm")%>
+      </a>
+   </div>
+   <!-- / brand -->
+   <!-- Navbar Start -->
+   <nav class="navigation">
+      <ul class="list-unstyled leftNav">
+        <li>
+          <a href="dashboard.php"><i class="material-icons">av_timer</i> <span class="nav-label">Dashboard</span><span class="badge bg-success">5</span></a>
+        </li>
+        <li>
+          <a href="#" class="topMenu"><i class="ion-ios-book"></i> <span class="nav-label sub-drop">Publisher Setup</span><span class="fa fa-angle-right pull-right"></span></a>
+          <ul class="nav-multi__list nav-multi"  style="display:none">
+              <li>
+                <a class="submenu"><span class="fa fa-angle-right"></span>Publisher</a>
+                  <ul class="nav-multi__list nav-multi" style="display:none">
+                     <li><%= link_to "Create New Publisher", new_publisher_path%></li>
+                     <li><%= link_to "Search Publisher", publishers_path%></li>
+                  </ul>
+              </li>
+		          <li>
+                  <a href="#"> Site Setting</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="topMenu"><i class="ion-ios-book"></i> <span class="nav-label sub-drop">Manage User Account</span><span class="fa fa-angle-right pull-right"></span></a>
+          <ul class="nav-multi__list nav-multi"  style="display:none">
+              <li>
+                <a class="submenu"><span class="fa fa-angle-right"></span>Retailer</a>
+                  <ul class="nav-multi__list nav-multi" style="display:none">
+                     <li><%= link_to "Create New Retailer", retailers_path %></li>
+                     <!-- <li><%= link_to "Search Retailer", publishers_path%></li> -->
+                  </ul>
+              </li>
+              <li>
+                <a class="submenu"><span class="fa fa-angle-right"></span>End User</a>
+                  <!-- <ul class="nav-multi__list nav-multi" style="display:none">
+                     <li><%= link_to "Create New Publisher", new_publisher_path%></li>
+                     <li><%= link_to "Search Publisher", publishers_path%></li>
+                  </ul> -->
+              </li>
+              <li>
+                <a class="submenu"><span class="fa fa-angle-right"></span>Admin User</a>
+                  <!-- <ul class="nav-multi__list nav-multi" style="display:none">
+                     <li><%= link_to "Create New Publisher", new_publisher_path%></li>
+                     <li><%= link_to "Search Publisher", publishers_path%></li>
+                  </ul> -->
+              </li>
+              <li>
+                <a class="submenu"><span class="fa fa-angle-right"></span>Institutional Account</a>
+                  <ul class="nav-multi__list nav-multi" style="display:none">
+                     <li><%= link_to "Create New Account", new_institution_account_path%></li>
+                     <li><%= link_to "Search Institutional Account", institution_account_index_path%></li>
+                  </ul>
+              </li>
+              <li>
+                <a class="submenu"><span class="fa fa-angle-right"></span>Institutional Admin User</a>
+                  <ul class="nav-multi__list nav-multi" style="display:none">
+                     <li><%= link_to "Create New Institutional Admin User", new_institution_admin_user_path%></li>
+                     <li><%= link_to "Search Institutional Admin User", institution_admin_user_index_path%></li>
+                  </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a class="topMenu" href="javascript:;"><i class="ion-document-text"></i> <span class="nav-label sub-drop">Content Conversion</span><span class="fa fa-angle-right pull-right"></span></a>
+            <ul class="nav-multi__list nav-multi"  style="display:none">
+              <li>
+                <a class="submenu"><span class="fa fa-angle-right"></span>Books</a>
+                  <ul class="nav-multi__list nav-multi" style="display:none">
+                    <li><a href="#">Create New Book </a></li>
+                     <li><a href="#">Search Book</a></li>
+                     <li><a href="#">Book Metadata Sheet</a></li>
+                     <li><a href="#">ONIX Input </a></li>
+                     <li><a href="#">ONIX Supplement Sheet  </a></li>
+                  </ul>
+              </li>
+              <li>
+                <a class="submenu"><span class="fa fa-angle-right"></span>Journals</a>
+                  <ul class="nav-multi__list nav-multi" style="display:none">
+                    <li><%= link_to "Create New Journal",new_journal_path %></li>
+                     <li><a href="#">Search Journal</a></li>
+                     <li><a href="#">Article Metadata Sheet</a></li>
+                     <li>
+                      <%= link_to "Create Articles",article_new_path %>
+                     </li>
+                     <li><%= link_to "Search Articles",article_search_path %></li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#" > Uploaded Errors  </a>
+              </li>
+              <li>
+                <%= link_to "Update Status",update_status_content_conversation_index_path %>
+              </li>
+              <li><%= link_to "Content History",content_history_content_conversation_index_path%></li>
+              <li><%= link_to "QA Check",qa_check_content_conversation_index_path%></li>
+              <li><%= link_to "Index Content",index_content_content_conversation_index_path%></li>
+            </ul>
+          </li>
+          <li>
+            <a class="topMenu" href="javascript:;"><i class="flaticon-people"></i> <span class="nav-label sub-drop">Manage Access</span><span class="fa fa-angle-right pull-right"></span></a>
+            <ul class="nav-multi__list nav-multi"  style="display:none">
+              <li>
+                <a class="submenu"><span class="fa fa-angle-right"></span>Subscriptions</a>
+                  <ul class="nav-multi__list nav-multi" style="display:none">
+                    <li><a href="#">Create Subscription </a></li>
+                     <li><a href="#">Search Subscription</a></li>
+                  </ul>
+              </li>
+              <li>
+                <a class="submenu"><span class="fa fa-angle-right"></span>Licenses</a>
+                  <ul class="nav-multi__list nav-multi" style="display:none">
+                    <li><%= link_to "Create Licenses",new_license_path %></li>
+                     <li>
+                       <%= link_to "Search Licenses",licenses_path %>
+                     </li>
+                  </ul>
+              </li>
+              <li>
+                <a class="submenu"><span class="fa fa-angle-right"></span>License Groups</a>
+                  <ul class="nav-multi__list nav-multi" style="display:none">
+                    <li><%= link_to "Create License Groups ",new_license_group_path %></li>
+                     <li><%= link_to "Search License Groups",license_groups_path %></li>
+                  </ul>
+              </li>
+              <li>
+                <a class="submenu"><span class="fa fa-angle-right"></span>Campaigns</a>
+                  <ul class="nav-multi__list nav-multi" style="display:none">
+                    <li><%= link_to "Create Campaigns",new_campaign_path %></li>
+                     <li><%= link_to "Search Campaigns",campaigns_path %></li>
+                  </ul>
+              </li>
+              <li>
+                <a class="submenu"><span class="fa fa-angle-right"></span>Access Token</a>
+                  <ul class="nav-multi__list nav-multi" style="display:none">
+                    <li><a href="#">Create Access Token </a></li>
+                     <li><a href="#">Search Access Token</a></li>
+                  </ul>
+              </li>
+              <li>
+                <a class="submenu"><span class="fa fa-angle-right"></span>Promo Code</a>
+                  <ul class="nav-multi__list nav-multi" style="display:none">
+                    <li><%= link_to "Create Promo Code",new_promo_code_path %></li>
+                     <li><%= link_to "Search Promo Code",promo_codes_path %></li>
+                  </ul>
+              </li>
+            </ul>
+		      </li>          
+      </ul>
+   </nav>
+</aside>
+	  

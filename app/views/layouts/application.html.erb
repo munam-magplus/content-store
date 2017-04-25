@@ -40,9 +40,6 @@
   </script>
 </head>
   <body>
-    <% if current_user.present? %>
-      <%= render :partial => '/layouts/header'%>
-    <%end%>
     <div class="container">
       <div class="wrapper whiteBg">
 
@@ -52,6 +49,5 @@
         <%= yield %>
       </div>
     </div>
-    <%= render :partial => '/layouts/footer'%> 
   </body>
 </html>

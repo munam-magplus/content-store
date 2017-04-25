@@ -30,6 +30,7 @@ gem 'devise'
 gem 'countries'
 gem 'country_select'
 
+gem "font-awesome-rails"
 #used for encrypting password
 gem 'bcrypt-ruby', '~> 3.1.2'
 
