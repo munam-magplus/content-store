@@ -76,6 +76,7 @@
                     <td height = "25" colspan="5">
                      <%= f.radio_button :license_for_sale, 'Yes'%>For Sale    
                      <%= f.radio_button :license_for_sale, 'No' %>Not For Sale
+                     <%= f.hidden_field "role_ids][", { :id => "role_ids", :value => [] } %>
                    </td>
                   </tr>
                   <tr>
@@ -100,6 +101,4 @@
         </td>
       </tr>
     </table>
-
-    <%= hidden_field_tag "ids[]", [], :class => "page_no" %>
   <% end %>

@@ -40,7 +40,7 @@
   }
 
   });
-  function getAddDetails(){
+  function getAddDetails(){ 
     
    var srcrow = $('.content_value').has('input:checked');
     var lastRow = srcrow.clone();
@@ -51,11 +51,27 @@
       });
     });
     $(".content_head").each(function(i, el) {
-      $(this).closest('.content_head').clone().insertAfter(".content_value:last");
-      var cols = '<td><input type="button" id="ibtnDel" class="dele" value="Delete"></td>';
+      $(this).closest('.content_head').clone().removeClass('content_head').addClass('clone_content_head').insertBefore(".content_value:first");
     });
+    $('.clone_content_head').find('td:last').after('<td class="tableheader">Delete</td>');
     //$('.content_value:last').append(lastRow);
-    lastRow.closest('.content_value').clone().insertAfter(".content_head:last");
+    var cloned =lastRow.closest('.content_value').clone().removeClass('content_value').addClass('clone_content_value').insertAfter(".clone_content_head:last");
+    //$(".page_no").append(data)
+    //$('.page_no').Add(cloned);
+     //$(".page_no").css("display", "block")
+    // console.log(lastRow)
+    $('.clone_content_value').find('td:last').after('<td class = "del"><%= image_tag("delete_icon.gif")%></td>');
+    $(':checkbox').each(function() {
+      $('#select-all').remove();
+      $("#chk").remove(); 
+      $(".submit_btn").remove()                      
+    });
+           $('.content_value').remove();
+   $('.content_head').remove();
+
+    $('.del').on('click',function(){
+      $(this).parent().remove();
+    });
   }
 
 </script>
