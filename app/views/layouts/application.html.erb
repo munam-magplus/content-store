@@ -11,6 +11,35 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  >
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
+  <script src="https://use.fontawesome.com/9575fa9c22.js"></script>
+  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <%= stylesheet_link_tag "style.css" %>
+  <%= stylesheet_link_tag "helper.css" %>
+  <%= stylesheet_link_tag "style-old.css" %>
+  <%= stylesheet_link_tag "accessedit.css" %>
+  <%= stylesheet_link_tag "ui.jqgrid-bootstrap.css" %>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <%= stylesheet_link_tag "flaticon.css" %>
+  <!-- Internal CSS -->
+  <!--Animation css-->
+  <%= stylesheet_link_tag "animate.css" %>
+  <!--Icon-fonts css-->
+  <!-- javascript files -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+  <%= javascript_include_tag('jquery.slimscroll.min.js') %>
+  <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script> 
+  <script src="https://www.gstatic.com/charts/loader.js"></script> 
+  <%= javascript_include_tag('pace.min.js') %>
+  <%= javascript_include_tag('modernizr.min.js') %>
+  <%= javascript_include_tag('jquery.app.js') %>
+  <%= javascript_include_tag('grid.locale-en.js') %>
+  <%= javascript_include_tag('jquery.jqGrid.min.js') %>
+
+  <!-- End -->
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -40,14 +69,9 @@
   </script>
 </head>
   <body>
-    <div class="container">
-      <div class="wrapper whiteBg">
-
-        <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %>"><%= value %></div>
-        <% end %>
-        <%= yield %>
-      </div>
-    </div>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+    <%= yield %>
   </body>
 </html>

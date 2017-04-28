@@ -30,7 +30,7 @@ class InstitutionAdminUserController < ApplicationController
     @user = params[:institution_admin_user_acc][:user_name]
     @rol = params[:institution_admin_user_acc][:role]
     @billing = params[:billing_contact]
-    
+    # save institution name from institution account search-> institution details
     if params[:institution_admin_user_acc][:institution_name2].present?
     @inst_admin_user.publisher_id = params[:institution_admin_user_acc][:publisher_id2]
     @inst_admin_user.institution_name = params[:institution_admin_user_acc][:institution_name2]

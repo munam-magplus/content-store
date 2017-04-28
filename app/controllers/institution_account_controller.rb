@@ -2,9 +2,16 @@ class InstitutionAccountController < ApplicationController
     before_action :authenticate_user!
 
   def index
+    # byebug
+    # respond_to do |format|
+    #    format.js { render  }
+    #    format.html
+    # end
   end
   
   def search_op
+    # byebug
+    @insti_acc1 = InstitutionAccount.paginate(:page => params[:page], :per_page => 2)
     # we perform search operation by slicing the params.
     @insti_acc = InstitutionAccount.filter(params.slice(:publisher_id, 
             :status, :libary_name, :institution_name))
@@ -13,6 +20,7 @@ class InstitutionAccountController < ApplicationController
     # we render the result page that have the search result.
     # render 'result', locals: { :insti_acc => @insti_acc, :chec => @chec} 
     respond_to do |format|
+       format.js 
        format.html
        format.xlsx 
     end
@@ -47,6 +55,7 @@ class InstitutionAccountController < ApplicationController
   end
  
   def edit
+    # byebug
    @institution = InstitutionAccount.find_by(params[:id]) 
   end
 

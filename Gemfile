@@ -26,6 +26,9 @@ gem 'exception_handler'
 
 gem 'devise'
 
+#for pagination
+gem 'will_paginate'
+
 # gem to display all the countries 
 gem 'countries'
 gem 'country_select'

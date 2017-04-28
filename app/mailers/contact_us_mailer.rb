@@ -1,7 +1,6 @@
 class ContactUsMailer < ApplicationMailer
-	def contact_details(contact_us , current_user)
-		@current_user = current_user
+	def contact_details(contact_us)
 		@contact_us = contact_us
-		mail(from: @current_user.email  , to: "test@gmail.com",subject:'confirmation mail')
+		mail(from: @contact_us.email  , to: "test@gmail.com",subject:'confirmation mail')
 	end
 end

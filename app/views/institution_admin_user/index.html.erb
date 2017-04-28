@@ -1,74 +1,111 @@
+<!doctype html>
 <html>
-<body class ="body1">
-<table class = "center">
-  <tr>
-    <td class = "page_head"> Search Institutional Users</td>
-  </tr>
-  <tr>
-    <%= form_tag search_op_institution_admin_user_index_path, :method => 'get' do %>
-      <td align = "left">
-        <table border = "0", cellpadding = "10", cellspacing = "0">
-          <tbody>
-            <tr>
-              <td align = "left", height = "25"> First Name</td>
-              <td align = "left", height = "25">
-                <%= text_field_tag :first_name %></td>
-            </tr>
-            <tr>
-              <td align = "left", height = "25"> Last Name</td>
-              <td align = "left">
-                <%= text_field_tag :last_name %>
-              </td>
-            </tr>
-            <tr>
-              <td align = "left", height = "25"> Contact Email </td>
-              <td align = "left">
-                <%= text_field_tag :email%>
-              </td>
-            </tr>
-            <tr>
-              <td align = "left", height = "25"> User Status</td>
-              <td align = "left">
-                <%= select_tag 'status',options_for_select(['active', 'inactive']), :prompt => "select status" %>
-              </td>
-            </tr>
-            <tr>
-              <td align = "left", height = "25"> User Role</td>
-              <td align = "left">
-                <%= text_field_tag :role %>
-              </td>
-            </tr>
-            <tr>
-              <td align = "left", height = "25"> User Name</td>
-              <td align = "left">
-                <%= text_field_tag :user_name %>
-              </td>
-            </tr>
-            <tr>
-              <td align = "left", height = "25"> Institution Id</td>
-              <td align = "left">
-                <%= text_field_tag :institution_id %>
-              </td> 
-            </tr>
-            <tr>
-              <td align = "left", height = "25"> Institution Name</td>
-              <td align = "left">
-                <%= text_field_tag :institution_name  %>
-              </td>
-            </tr>
-            <tr>
-              <td align = "left">
-                <%= submit_tag "Submit", :name => nil %>
-                 <%= button_tag "Reset", type: :reset %>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-    <% end %>
-  </tr>
-</table>
+<head>
+<title>Content Store :: Institutional Account </title>
+<!-- Latest compiled and minified CSS -->
+<%= render :partial => "layouts/header"%>
+
+</head>
+
+<body>
+<!--Main Content Start -->
+  <section class="content"> 
+    <!-- Header -->
+    <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+           <li><a href="#">Home</a></li>
+         <li><a><%= link_to "Manage User Account",manage_user_account_index_path%></a></li>
+         <li><a class="active"><%= link_to "Institutional Admin Account", institution_admin_user_index_path%></a></li>
+      </ol>
+
+      <h2 class="H2-L1">Institutional Account</h2>
+      <%= form_tag search_op_institution_admin_user_index_path, :method => 'get', :remote => true, :class => "form-horizontal form-bg" do %>  
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label"> First Name <sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= text_field_tag :first_name,"",:class => "form-control" %></td>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Last Name</label>
+            <span class="col-sm-8">
+            <%= text_field_tag :last_name,"",:class => "form-control" %>
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Email</label>
+            <span class="col-sm-8">
+            <%= text_field_tag :email,"",:class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Status:</label>
+            <span class="col-sm-8">
+             <%= select_tag 'status',options_for_select(['active', 'inactive', 'pending']), :prompt => "select status", :class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">User Role</label>
+            <span class="col-sm-8">
+              <%= text_field_tag :role,"",:class => "form-control" %>
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">User Name:</label>
+            <span class="col-sm-8">
+              <%= text_field_tag :user_name,"",:class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Institution Id</label>
+            <span class="col-sm-8">
+              <%= text_field_tag :institution_id,"",:class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Institution Name</label>
+            <span class="col-sm-8">
+              <%= text_field_tag :institution_name,"",:class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+
+            <%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Create Institutional Accounts'.html_safe, new_institution_admin_user_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
+
+            <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit, :id => "submit" %>
+
+            <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
+          </div>
+        </div>
+      <% end %>
+      <div class="clearfix"></div>
+      <div class="clearfix m-b-30"></div>
+      <div id="search"></div>
+    </div>  
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+    <!-- Footer Ends --> 
+  </section>
 </body>
 </html>
-
-
