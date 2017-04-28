@@ -4,32 +4,6 @@
 <title>Content Store :: Institutional Account </title>
 <!-- Latest compiled and minified CSS -->
 <%= render :partial => "layouts/header"%>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<%= stylesheet_link_tag "flaticon.css" %>
-<!-- Internal CSS -->
-<!--Animation css-->
-<%= stylesheet_link_tag "animate.css" %>
-<!--Icon-fonts css-->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
-<script src="https://use.fontawesome.com/9575fa9c22.js"></script>
-<link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
-<!-- Custom styles for this template -->
-<%= stylesheet_link_tag "style.css" %>
-<%= stylesheet_link_tag "helper.css" %>
-<%= stylesheet_link_tag "style-old.css" %>
-<%= stylesheet_link_tag "accessedit.css" %>
-<%= stylesheet_link_tag "ui.jqgrid-bootstrap.css" %>
-<!-- javascript files -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-<%= javascript_include_tag('jquery.slimscroll.min.js') %>
-<script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script> 
-<script src="https://www.gstatic.com/charts/loader.js"></script> 
-<%= javascript_include_tag('pace.min.js') %>
-<%= javascript_include_tag('modernizr.min.js') %>
-<%= javascript_include_tag('jquery.app.js') %>
-<%= javascript_include_tag('grid.locale-en.js') %>
-<%= javascript_include_tag('jquery.jqGrid.min.js') %>
 
 </head>
 
@@ -49,12 +23,12 @@
       </ol>
 
       <h2 class="H2-L1">Institutional Account</h2>
-      <%= form_tag institution_account_search_op_path, :method => 'get' do |f| %>
+      <%= form_tag search_op_institution_account_index_path, :method => 'get', :remote => true, :class => "form-horizontal form-bg" do |f| %>
         <div class="col-md-6">
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Select Publisher<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "Select publisher"%>
+              <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "Select publisher", :class => "form-control"%>
             </div>
           </div>
         </div>
@@ -62,7 +36,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Institution ID:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :institution_id %>
+            <%= text_field_tag :institution_id,"",:class => "form-control" %>
             </span> 
           </div>
         </div>
@@ -70,7 +44,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Lib./Dept. Name:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :libary_name %>
+            <%= text_field_tag :libary_name,"",:class => "form-control" %>
             </span>
           </div>
         </div>
@@ -78,7 +52,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Institution Name:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :institution_name %>
+            <%= text_field_tag :institution_name,"",:class => "form-control" %>
             </span> 
           </div>
         </div>
@@ -86,7 +60,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">IP Address:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :name,params[:ipadd] %>
+            <%= text_field_tag :name,params[:ipadd],:class => "form-control" %>
             </span>
           </div>
         </div>
@@ -94,7 +68,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">City:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :city %>
+            <%= text_field_tag :city,"",:class => "form-control" %>
             </span> 
           </div>
         </div>
@@ -102,7 +76,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">State / Province:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :state %>
+            <%= text_field_tag :state,"",:class => "form-control" %>
             </span>
           </div>
         </div>
@@ -110,7 +84,8 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Country:</label>
             <div class="col-sm-8">
-              <%= select_tag "country", options_from_collection_for_select(ISO3166::Country.countries.sort_by(&:name), 'un_locode', 'name'), prompt: "select country" %>
+             <% country_name %>
+              <%= select_tag "country", options_from_collection_for_select(@country, "country_code", "country_name"),prompt: "select country", :class => "form-control" %>
             </div>
           </div>
         </div>
@@ -118,7 +93,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Status:</label>
             <span class="col-sm-8">
-             <%= select_tag 'status',options_for_select(['active', 'inactive', 'pending']), :prompt => "select status" %>
+             <%= select_tag 'status',options_for_select(['active', 'inactive', 'pending']), :prompt => "select status", :class => "form-control" %>
             </span>
           </div>
         </div>
@@ -126,7 +101,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Contact First Name:</label>
             <span class="col-sm-8">
-              <%= text_field_tag :first_name %>
+              <%= text_field_tag :first_name,"",:class => "form-control" %>
             </span> 
           </div>
         </div>
@@ -134,7 +109,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Contact Last Name:</label>
             <span class="col-sm-8">
-              <%= text_field_tag :last_name %>
+              <%= text_field_tag :last_name,"",:class => "form-control" %>
             </span>
           </div>
         </div>
@@ -142,7 +117,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Contact Email:</label>
             <span class="col-sm-8">
-              <%= text_field_tag :email %>
+              <%= text_field_tag :email,"",:class => "form-control" %>
             </span>
           </div>
         </div>
@@ -154,19 +129,21 @@
             </span>
           </div>
         </div>
-        <div class="clearfix"></div>
-        <div class="clearfix m-b-30"></div>
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
 
             <%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Create Institutional Accounts'.html_safe, new_institution_account_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
 
-            <%= button_tag fa_icon("search", text: "Submit"), :class => "btn btn-sm", type: :submit %>
+            <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit, :id => "submit" %>
 
             <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
+
           </div>
         </div>
       <% end %>
+      <div class="clearfix"></div>
+      <div class="clearfix m-b-30"></div>
+      <div id="search"></div>
     </div>  
     <!-- Footer Start -->
     <%= render :partial => "layouts/footer" %>
