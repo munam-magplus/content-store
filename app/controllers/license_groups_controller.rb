@@ -2,15 +2,15 @@ class LicenseGroupsController < ApplicationController
  before_action :authenticate_user!
 
  def create
-  byebug
  	@license_group = LicenseGroup.new(license_group_params)
  	 @license_group.created_by = current_user.email
     respond_to do |format|
       if @license_group.save!
+        add_license_group_id_to_license
         format.html {render "new" }
         format.js   { }
       else
-        
+        render 'new'
       end
     end
  	# if @license_group.save!
@@ -22,7 +22,15 @@ class LicenseGroupsController < ApplicationController
   #     render 'new'
   #   end
  end
-
+ def add_license_group_id_to_license
+    ids = params[:license_group][:role_ids].first
+    ids = ids.split(',').map(&:squish)
+    ids.each do |id|
+     license = License.find_by_license_id(id)
+     license.license_group_id = @license_group.id
+     license.save!
+    end
+ end
  def new
   @license_group = LicenseGroup.new
  end

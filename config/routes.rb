@@ -1,25 +1,4 @@
 Rails.application.routes.draw do
-
-<<<<<<< HEAD
-  get 'books_seo_config/new'
-
-  post 'books_seo_config/create'
-
-  get 'books_content_access_rules/new'
-
-  post 'books_content_access_rules/create'
-
-  get 'books_content_pricing/new'
-
-  post 'books_content_pricing/create'
-
-  get 'books_contributor/new'
-
-  post 'books_contributor/create'
-
-  resources :library_users
-=======
->>>>>>> b34b2e3541ae02eeda17b845856bfab050df0002
   get 'my_account/index'
 
   get 'site_settings/index'

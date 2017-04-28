@@ -5,9 +5,11 @@
  </tr>
 <div class="col-md-6"><div class="form-group">
   <label for="License" class="col-sm-5 control-label">Publisher<sup class="mandatory">*</sup></label>
+  <div class="col-sm-7">
     <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'),:prompt => "select publisher",:class => "form-control", :id=> "publisher_id"%>
-  </td>
-</tr>
+  </div>
+</div></div>
+  
 <div class="col-md-6"><div class="form-group">
   <label for="License" class="col-sm-5 control-label">License ID</label>
   <div class="col-sm-7">
@@ -20,22 +22,23 @@
     <input id="lic_name" class="form-control"/>
   </div>
 </div></div>
-<tr>
-  <td >License Type <span class="mandtory">*</span></td>
-  <td><select id="lic_type">
-    <option value="" selected>Select</option>
-    <option value="relative">Relative Date Range</option>
-    <option value="downloadable">Downloadable Content</option>
-    <option value="fixed_date_range">Fixed Date Range</option>
-  </select></td>
-  <td>
-    Content Identifier
-    <span class = "mandtory ">*</span>
-  </td>
-  <td>
-    <input id="isbn" class="text_field"/>
-  </td>
-</tr>
+<div class="col-md-6"><div class="form-group">
+  <label for="License" class="col-sm-5 control-label">License Type</label>
+   <div class="col-sm-7">
+      <select id="lic_type">
+        <option value="" selected>Select</option>
+        <option value="relative">Relative Date Range</option>
+        <option value="downloadable">Downloadable Content</option>
+        <option value="fixed_date_range">Fixed Date Range</option>
+    </select>
+  </div>
+</div></div>
+<div class="col-md-6"><div class="form-group">
+  <label for="License" class="col-sm-5 control-label">Content Identifier</label>
+  <div class="col-sm-7">
+    <input id="isbn" class="form-control"/>
+  </div>
+</div></div>
 <tr>
   <td>&nbsp;</td>
   <td><input type="button" name="button2" id="button" value="Search" onclick="getSearchDetails();" class="submit_btn" /></td>
