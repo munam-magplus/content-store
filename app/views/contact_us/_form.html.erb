@@ -1,0 +1,58 @@
+<%= form_for(contact_u) do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="disabledTextInput" > Subject </label>
+            <%= f.text_field :subject %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="disabledTextInput" > Topic </label>
+          <%= f.text_field :topic %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="disabledTextInput" >Telephone number</label>
+          <%= f.number_field :phone_number %>
+          (Please include country and city codes)
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="disabledTextInput" >Fax number</label>
+          <%= f.number_field :fax_number %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="disabledTextInput" >Comments</label>
+          <%= f.text_area :comments %>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="row"  >
+    <div class="col-md-6">        
+      <%= f.submit "Submit" %>        
+      <%= button_tag "Reset", type: :reset %>
+    </div>
+  </div>
+<% end %>
+
+
+
+

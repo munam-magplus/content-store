@@ -18,7 +18,7 @@ class PublishersController < ApplicationController
   end
 
   def save
-    if params[:publisher][:id] != ""
+    if params[:publisher][:id] != nil
       @publisher = Publisher.find(params[:publisher][:id])
       if @publisher.update_attributes!(publisher_params)
       # Handle a successful update.

@@ -2,6 +2,7 @@ class LicenseGroupsController < ApplicationController
  before_action :authenticate_user!
 
  def create
+  byebug
  	@license_group = LicenseGroup.new(license_group_params)
  	 @license_group.created_by = current_user.email
     respond_to do |format|

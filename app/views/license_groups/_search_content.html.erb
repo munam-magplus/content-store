@@ -3,30 +3,23 @@
   <p class="sub_head">Licenses <span class="mandtory">*</span>
   </p>
  </tr>
-<tr>
-  <td height = "25"> Publisher
-   <span class="mandtory">*</span>
-  </td>
-  <td height = "25">
-    <%= collection_select :nil,:publisher_id, Publisher.all, :id, :publisher_name, {:prompt => "Select a Publisher"}, {:class=>"publisher_id"} %>
+<div class="col-md-6"><div class="form-group">
+  <label for="License" class="col-sm-5 control-label">Publisher<sup class="mandatory">*</sup></label>
+    <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'),:prompt => "select publisher",:class => "form-control", :id=> "publisher_id"%>
   </td>
 </tr>
-<tr>
-  <td>
-    License ID
-    <span class = "mandtory ">*</span>
-  </td>
-  <td>
-    <input id="lic_id" class="text_field"/>
-  </td>
-  <td>
-    License Name
-    <span class = "mandtory">*</span>
-  </td>
-  <td>
-    <input id="lic_name" class="text_field"/>
-  </td>
-</tr>
+<div class="col-md-6"><div class="form-group">
+  <label for="License" class="col-sm-5 control-label">License ID</label>
+  <div class="col-sm-7">
+    <input id="lic_id" class="form-control"/>
+  </div>
+</div></div>
+<div class="col-md-6"><div class="form-group">
+  <label for="License" class="col-sm-5 control-label">License Name</label>
+  <div class="col-sm-7">
+    <input id="lic_name" class="form-control"/>
+  </div>
+</div></div>
 <tr>
   <td >License Type <span class="mandtory">*</span></td>
   <td><select id="lic_type">
@@ -50,7 +43,7 @@
 
 <script type="text/javascript">
   function getSearchDetails(){
-    var publisher_id = $('.publisher_id option:selected').val();
+    var publisher_id = $('#publisher_id option:selected').val();
     var license_type = $('select#lic_type option:selected').val();
     var license_name = $('#lic_name').val();
     var license_id = $('#lic_id').val();

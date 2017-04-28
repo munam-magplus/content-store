@@ -1,0 +1,47 @@
+<html>
+  <body class = "body1">
+    <div class="div1">
+      <% provide(:title, 'Sign up') %>
+      <h1>Sign up</h1>
+
+      <div class="row">
+        <div class="span6 offset3">
+          <%= form_for(@cdp_user) do |f| %>
+
+            <%= f.label :USE_USER_TYPE %>
+            <%= f.text_field :USE_USER_TYPE %><br>
+
+            <%= f.label :CREATED_BY %>
+            <%= f.text_field :CREATED_BY %><br>
+
+            <%= f.label :LASTUPDATED_BY %>
+            <%= f.text_field :LASTUPDATED_BY %><br>
+
+            <%= f.label :USE_USER_NAME %>
+            <%= f.text_field :USE_USER_NAME %><br>
+
+            <%= f.label :USE_FIRST_NAME %>
+            <%= f.text_field :USE_FIRST_NAME %><br>
+
+             <%= f.label :USE_LAST_NAME %>
+            <%= f.text_field :USE_LAST_NAME %><br>
+
+            <%= f.label :PUY_PUBLISHER_COUNTRY_ID %>
+            <%= f.text_field :PUY_PUBLISHER_COUNTRY_ID %><br>
+
+            <%= f.label :USE_EMAIL %>
+            <%= f.text_field :USE_EMAIL %><br>
+
+            <%= f.label :USE_USER_PASS %>
+            <%= f.password_field :USE_USER_PASS %><br>
+
+           <!--  <%= f.label :password_confirmation, "Confirmation" %>
+            <%= f.password_field :password_confirmation %> --><br>
+
+            <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

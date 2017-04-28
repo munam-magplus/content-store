@@ -13,7 +13,8 @@ class MemberPublishersController < ApplicationController
 		@member_publisher = MemberPublisher.new
 	end
 	def save
-    if params[:member_publisher][:id] != ""
+    byebug
+    if params[:member_publisher][:id] != nil
       @member_publisher = MemberPublisher.find(params[:member_publisher][:id])
       if @member_publisher.update_attributes!(member_publisher_params)
       # Handle a successful update.

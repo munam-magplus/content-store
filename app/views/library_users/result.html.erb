@@ -1,0 +1,41 @@
+<body class = "body1">
+	<div class="div1">
+		<table>
+			<thead>
+			 		<tr>
+						<th width="15%" class="tableheader">Member Id/Username</th>	 	
+						<th width="15%" class="tableheader">First Name</th>
+						<th width="15%" class="tableheader">Last Name</th>
+						<th width="7%" class="tableheader">Email</th>
+			 		</tr>
+			</thead>
+			<tbody>
+				<% if @lib.present? %>
+					<% @lib.each do |f| %>
+ 					<tr>
+						<td class="tabledata" >						
+							<%= link_to (f.user_name), edit_library_user_path(f) %>
+						</td>
+						<td class="tabledata">						
+							<%= f.first_name %>
+						</td>
+						<td class="tabledata">						
+							<%= f.last_name %>
+						</td>
+						<td class="tabledata">						
+							<%= f.email %>
+						</td>
+					</tr>
+					<% end %>
+				<% else %>
+					<tr>
+						<td>
+							Records not found
+						</td>
+					</tr>
+				<% end %>
+				<%= button_to "create new user" , new_library_user_path(@ins_id), method: "get" %>
+ 			</tbody> 
+		</table>
+	</div>
+</body>

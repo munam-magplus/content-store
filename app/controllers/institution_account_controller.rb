@@ -6,14 +6,10 @@ class InstitutionAccountController < ApplicationController
   
   def search_op
     # we perform search operation by slicing the params.
-<<<<<<< HEAD
-    @res = InstitutionAccount.filter(params.slice(:publisher, 
-            :status, :libary_name, :institution_name,:country))
-=======
+
     @insti_acc = InstitutionAccount.filter(params.slice(:publisher_id, 
             :status, :libary_name, :institution_name))
->>>>>>> 26bee958376431e2c352c608ba216fec089ddf2a
-    # this is the params of the checkbox that is present in the form.
+     # this is the params of the checkbox that is present in the form.
     @chec = params[:ip_address]
     # we render the result page that have the search result.
     render 'result', locals: { :insti_acc => @insti_acc, :chec => @chec} 

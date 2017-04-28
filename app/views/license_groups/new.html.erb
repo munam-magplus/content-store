@@ -1,104 +1,147 @@
-<body class = "body1">
-    <%= form_for @license_group ,:remote => true do |f| %>
-  <table border =  "0", cellpadding = "0", cellspacing = "0", width = "860", class = "center">
-    <tr>
-      <td class = "page_head"> Create License Group</td>
-    </tr>
-    <tr>
-      <td>
-        <table border = "0", cellpadding = "6", cellspacing = "0", width = "100%", class = "center">
-          <tr>
-            <td>
-              <table border = "0", cellpadding = "10", cellspacing = "0">
-                <tbody>
-                 <tr>
-                   <td height = "25" colspan="5" > 
-                    <p class="sub_head">Information
-                    </p>
-                  </tr>
-                  <tr>
-                    <td height = "25">
-                      License ID
-                      <span class = "mandtory ">*</span>
-                    </td>
-                    <td height = "25">
-                     <input value="System Generated" id="licenseId" disabled />
-                    </td>
-                    <td>
-                      License  Group Name
-                      <span class = "mandtory ">*</span>
-                    </td>
-                    <td>
-                      <%= f.text_field :license_group_name %>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td height = "25"> Created On</td>
-                    <td height = "25">
-                     <input id="createdOn" value="System Generated" disabled />
-                    </td>
-                    <td> Created By </td>
-                    <td height = "25">
-                      <input id="createdBy" value="ctssuperadmin@bookstore.com" disabled />
-                    </td>
-                  </tr>
-                   <%= render :partial => 'search_content'%>
-                  <tr id ="search_content">
-                  </tr>
-                  <tr>
-                   <td height = "10" colspan="2" > 
-                    <p class="sub_head">License can be Linked to user:
-                    </p>
-                  </tr>
-                  <tr>
-                    <td height="25" width="430">
-                      From <%= f.text_field :from, :id => 'from' %>
-                    </td>
-                    <td height="25" width="430">
-                      To <%= f.text_field :to, :id => 'to' %>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td height = "25" colspan="5">
-                     <%= f.radio_button :to, 'Yes'%>Allow License to be linked    
-                     <%= f.radio_button :to, 'No' %>Prevent License from being linked 
-                   </td>
-                  </tr>
-                  <tr>
-                   <td height = "10" colspan="2" > 
-                    <p class="sub_head">Purchase Information
-                      <td height = "25" colspan="5">
-                        <%= link_to "Manually Edit Prices"%>
-                      </td>
-                    </p>
-                  </tr>
-                  <tr>
-                    <td height = "25" colspan="5">
-                     <%= f.radio_button :license_for_sale, 'Yes'%>For Sale    
-                     <%= f.radio_button :license_for_sale, 'No' %>Not For Sale
-                     <%= f.hidden_field "role_ids][", { :id => "role_ids", :value => [] } %>
-                   </td>
-                  </tr>
-                  <tr>
-                   <td class = "GBoldText", align = "right", height = "35">
-                     <table border = "0", cellpadding = "0", cellspacing = "0">
-                       <tr>
-                         <td height = "25" colspan="5">
-                            Discount%<%= f.text_field :purchase_info_discount %>
-                          </td>
-                          <td height = "25" colspan="5">
-                           <%= submit_tag "Save" %>
-                         </td>
-                       </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
+<!doctype html>
+<html>
+<head><title>Content Store :: License </title>
+<!-- Latest compiled and minified CSS -->
+<%= render :partial => "layouts/header"%>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<%= stylesheet_link_tag "flaticon.css" %>
+<!-- Internal CSS -->
+<!--Animation css-->
+<%= stylesheet_link_tag "animate.css" %>
+<!--Icon-fonts css-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
+<script src="https://use.fontawesome.com/9575fa9c22.js"></script>
+<link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
+<!-- Custom styles for this template -->
+<%= stylesheet_link_tag "style.css" %>
+<%= stylesheet_link_tag "helper.css" %>
+<%= stylesheet_link_tag "style-old.css" %>
+<%= stylesheet_link_tag "accessedit.css" %>
+<%= stylesheet_link_tag "ui.jqgrid-bootstrap.css" %>
+<!-- javascript files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<%= javascript_include_tag('jquery.slimscroll.min.js') %>
+<script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script> 
+<script src="https://www.gstatic.com/charts/loader.js"></script> 
+<%= javascript_include_tag('pace.min.js') %>
+<%= javascript_include_tag('modernizr.min.js') %>
+<%= javascript_include_tag('jquery.app.js') %>
+<%= javascript_include_tag('grid.locale-en.js') %>
+<%= javascript_include_tag('jquery.jqGrid.min.js') %>
+
+</head>
+<body>
+  <section class="content"> 
+    <!-- Header -->
+    <%= render :partial => "layouts/top_header"%>
+   <!-- Header Ends --> 
+    <!-- Page Content Start -->
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+       <li><a href="#">Home</a></li>
+     <li><a href="#">Publisher Setup</a></li>
+     <li><a href="#" class="active">Create License</a></li>
+       <div class="pull-right hidden">
+        <li><a href="#">Browse by Chapter</a></li>
+        <li><a href="#">Browse by Book </a></li>
+       </div>
+      </ol>
+      <%if @license_group.new_record?%>
+        <h2 class="H2-L1">Create License Group</h2>
+      <%else%>
+        <h2 class="H2-L1">License Group Details</h2>
+      <%end%>
+
+      <%= form_for @license_group ,:remote => true do |f| %>
+        <div>
+          Information
+          </div>
+        <div class="col-md-6"><div class="form-group">
+          <label for="Publisher" class="col-sm-5 control-label">License ID<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+            <input value="System Generated" id="licenseId" class="form-control" disabled />
+          </div>
+        </div></div>
+        <div class="col-md-6"><div class="form-group">
+          <label for="License" class="col-sm-5 control-label">License  Group Name<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+             <%= f.text_field :license_group_name , :class => "form-control" %>
+          </div>
+        </div></div>
+        <div class="col-md-6"><div class="form-group">
+          <label for="License" class="col-sm-5 control-label">Created On<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+            <input value="System Generated" id="created_on" class="form-control" disabled />
+          </div>
+        </div></div>
+        <div class="col-md-6"><div class="form-group">
+          <label for="License" class="col-sm-5 control-label">Created By<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+            <input value="System Generated" id="created_by" class="form-control" disabled />
+          </div>
+        </div></div>              
+        <%= render :partial => 'search_content'%>
+        <div id ="search_content">
+        </div>
+
+        <p class="sub_head">License can be Linked to user:</p>
+        <div class="col-md-6"><div class="form-group">
+          <label for="License" class="col-sm-5 control-label">From<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+            <%= f.text_field :from , :class => "form-control",:id => 'from' %>
+          </div>
+        </div></div>
+        <div class="col-md-6"><div class="form-group">
+          <label for="License" class="col-sm-5 control-label">To</label>
+          <div class="col-sm-7">
+            <%= f.text_field :to , :class => "form-control",:id => 'to' %>
+          </div>
+        </div></div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="radio-inline">
+              <%= f.radio_button :to ,'Yes', :class => "form-control" %>Allow License to be linked
+            </label>
+            <label class="radio-inline" >
+              <%= f.radio_button :to ,'no', :class => "form-control" %>Prevent License from being linked
+            </label>
+          </div>
+        </div>
+        
+         <tr>
+            <p class="sub_head">Purchase Information
+              <td height = "25" colspan="5">
+                <%= link_to "Manually Edit Prices"%>
               </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-  <% end %>
+            </p>
+          </tr>
+          <div class="col-md-6"><div class="form-group">
+          <label for="License" class="col-sm-5 control-label">For Sale</label>
+          <div class="col-sm-7">
+            <%= f.radio_button :to ,'Yes', :class => "form-control" %>
+          </div>
+        </div></div>
+        <div class="col-md-6"><div class="form-group">
+          <label for="License" class="col-sm-5 control-label">Not For Sale </label>
+          <div class="col-sm-7">
+            <%= f.radio_button :to ,'no', :class => "form-control" %>
+            <%= f.hidden_field "role_ids][", { :id => "role_ids", :value => [] } %>
+          </div>
+        </div></div>
+        <div class="col-md-6"><div class="form-group">
+          <label for="License" class="col-sm-5 control-label">Discount%</label>
+          <div class="col-sm-7">
+            <%= f.text_field :purchase_info_discount , :class => "form-control" %>
+          </div>
+        </div></div>
+                    <div class="clearfix"></div>
+    
+        <div class="clearfix m-b-30"></div>
+        <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+          <%= button_tag fa_icon("search", text: "Save"), :class => "btn btn-sm", type: :submit %>
+        </div>
+        </div>
+      <% end %>
+</section>

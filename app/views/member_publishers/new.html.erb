@@ -1,119 +1,146 @@
-<body class = "body1">
-<%= form_for :member_publisher,url: save_member_publishers_path do |f| %>
-  <table border =  "0", cellpadding = "0", cellspacing = "0", width = "860", class = "center">
-    <tr>
+<!doctype html>
+<html>
+
+<head>
+  <title>Content Store :: Create Publisher</title>
+  <!-- Latest compiled and minified CSS -->
+<%= render :partial => "layouts/header"%>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/styles/flaticon.css">
+<!-- Internal CSS -->
+<!--Animation css-->
+<link href="assets/css/animate.css" rel="stylesheet">
+<!--Icon-fonts css-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
+<script src="https://use.fontawesome.com/9575fa9c22.js"></script>
+<link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
+<!-- Custom styles for this template -->
+<%= stylesheet_link_tag "style.css" %>
+<%= stylesheet_link_tag "helper.css" %>
+<%= stylesheet_link_tag "style-old.css" %>
+<%= stylesheet_link_tag "accessedit.css" %>
+<%= stylesheet_link_tag "ui.jqgrid-bootstrap.css" %>
+<!-- javascript files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<%= javascript_include_tag('jquery.slimscroll.min.js') %>
+<script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script> 
+<script src="https://www.gstatic.com/charts/loader.js"></script> 
+<%= javascript_include_tag('pace.min.js') %>
+<%= javascript_include_tag('modernizr.min.js') %>
+<%= javascript_include_tag('jquery.app.js') %>
+<%= javascript_include_tag('grid.locale-en.js') %>
+<%= javascript_include_tag('jquery.jqGrid.min.js') %>
+</head>
+
+<body>
+  <!-- Aside Start-->
+<!-- Aside Ends-->
+  <!--Main Content Start -->
+  <section class="content">
+   <!-- Header -->
+   <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+    <!-- Page Content Start -->
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+       <li><a href="#">Home</a></li>
+     <li><a href="#">Publisher Setup</a></li>
+     <li><a href="#" class="active">Create Member Publisher</a></li>
+       <div class="pull-right hidden">
+        <li><a href="#">Browse by Chapter</a></li>
+        <li><a href="#">Browse by Book </a></li>
+       </div>
+      </ol>
       <%if @member_publisher.new_record?%>
-        <td class = "page_head"> Create Member Publisher</td>
+        <h2 class="H2-L1">Create Member Publisher</h2>
       <%else%>
-        <td class = "page_head"> Edit Member Publisher</td>
+        <h2 class="H2-L1">Member Publisher Details</h2>
       <%end%>
-    </tr>
-    <tr>
-      <td>
-        <table border = "0", cellpadding = "6", cellspacing = "0", width = "100%", class = "center">
-          <tr>
-            <td>
-              <table border = "0", cellpadding = "10", cellspacing = "0">
-                <tbody>
-                  <tr>
-                    <%= f.hidden_field :id, value: @member_publisher.id %>
-                    <%if @member_publisher.new_record?%>
-                      <%= f.hidden_field :publisher_id, value: params[:publisher_id] %>
-                    <%end%>
-                    <td height = "25">
-                      Member Publisher Code
-                      <span class = "mandtory ">*</span>
-                    </td>
-                    <td height = "25">
-                      <%= f.text_field :member_publisher_code %>
-                    </td>
-                    <td>
-                      Member Publisher Name
-                      <span class = "mandtory ">*</span>
-                    </td>
-                    <td>
-                      <%= f.text_field :member_publisher_name %>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td height = "25"> Memeber Publisher Status</td>
-                    <td height = "25">
-                      <%= f.select :member_publisher_status, options_for_select([ "Live", "Staging"]), :class => 'genForm_dropBox' %>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td height = "25">
-                      Contact First Name
-                      <span class = "mandtory ">*</span>
-                    </td>
-                    <td height = "25">
-                      <%= f.text_field :contact_first_name %>
-                    </td>
-                    <td>
-                      Contact Last Name
-                      <span class = "mandtory ">*</span>
-                    </td>
-                    <td>
-                      <%= f.text_field :contact_last_name%>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td height = "25">
-                      Publisher Borrow Period (in days)
-                      <span class = "mandtory ">*</span>
-                    </td>
-                    <td height = "25">
-                      <%= f.text_field :publisher_borrow_period %>
-                    </td>
-                    <td height = "25">
-                      Revenue share percentage*
-                      <span class = "mandtory ">*</span>
-                    </td>
-                    <td height = "25">
-                      <%= f.text_field :revenue_share_percentage %>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td height = "25">
-                      Contact Email
-                      <span class = "mandtory ">*</span>
-                    </td>
-                    <td height = "25">
-                      <%= f.text_field :contact_email%>
-                    </td>
-                    <td height = "25">
-                      Member Publisher Logo
-                      <span class = "mandtory ">*</span>
-                    </td>
-                    <td height = "25">
-                      <%= f.file_field :file %>
-                    </td>
-                  </tr>
-                  <tr>
-                    <% unless @member_publisher.new_record? %>
-                      <td colspan="2" height = "25">
-                        <font color="red">Note: </font>
-                         Changing this value would lead to repackaging charges for all the title of the Member Publisher
-                      </td>
-                    <%end%>
-                  </tr>
-                  <tr>
-                    <td class = "GBoldText", align = "right", height = "35">
-                      <table border = "0", cellpadding = "0", cellspacing = "0">
-                        <tr>
-                          <td>
-                            <%= f.submit 'Save' %>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-  <% end %>
+      <%= form_for :member_publisher, url: save_member_publishers_path do |f| %>
+        <%= f.hidden_field :id, value: @member_publisher.id %>
+        <%if @member_publisher.new_record?%>
+          <%= f.hidden_field :publisher_id, value: params[:publisher_id] %>
+        <%end%>
+      <div class="col-md-6"><div class="form-group">
+          <label for="Publisher" class="col-sm-5 control-label">Member Publisher Code<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+             <%= f.text_field :member_publisher_code , :class => "form-control" %>
+          </div>
+        </div></div>
+       <div class="col-md-6"><div class="form-group">
+          <label for="PublisherName" class="col-sm-5 control-label">Member Publisher Name<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+              <%= f.text_field :member_publisher_name , :class => "form-control" %>
+          </div>
+        </div></div>
+         <div class="col-md-6"><div class="form-group">
+          <label for="PublisherStatus" class="col-sm-5 control-label">Member Publisher Status</label>
+          <div class="col-sm-7">
+            <%= f.select 'member_publisher_status', options_for_select([ "Live", "Staging"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
+          </div>
+        </div></div>
+       <div class="col-md-6"><div class="form-group">
+          <label for="DefaultEndUserLanguage" class="col-sm-5 control-label">Publisher Borrow Period (in days)</label>
+          <div class="col-sm-7">
+               <%= f.text_field :publisher_borrow_period, :class => "form-control" %>
+                 
+            </select>
+          </div>
+        </div></div>
+    <div class="col-md-6"><div class="form-group">
+          <label for="ContactFirstName" class="col-sm-5 control-label">Contact First Name<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+             <%= f.text_field :contact_first_name, :class => "form-control" %>
+          </div>
+        </div></div>
+    <div class="col-md-6"><div class="form-group">
+           <label for="ContactlastName" class="col-sm-5 control-label">Contact Last Name<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+                <%= f.text_field :contact_last_name, :class => "form-control" %>
+          </div>
+        </div></div>
+    <div class="col-md-6"><div class="form-group">
+          <label for="ContactEmail" class="col-sm-5 control-label">Contact Email</label>
+          <div class="col-sm-7">
+               <%= f.text_field :contact_email, :class => "form-control" %>
+          </div>
+        </div></div>
+    <div class="col-md-6"><div class="form-group">
+          <label for="DefaultManagerLanguage" class="col-sm-5 control-label">Revenue share percentage*<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+             <%= f.text_field :revenue_share_percentage, :class => "form-control"%>
+          </div>
+        </div></div>
+    <div class="col-md-6"><div class="form-group">
+          <label for="DefaultManagerLanguage" class="col-sm-5 control-label">Member Publisher Logo</label>
+          <div class="col-sm-7">
+             <%= f.file_field :member_publisher_logo, :class => "form-control"%>
+          </div>
+        </div></div> 
+        <% unless @member_publisher.new_record? %>  
+        <div class="col-md-6"><div class="form-group">
+          <font color="red">Note: </font>
+          Changing this value would lead to repackaging charges for all the title of the Member Publisher
+        <%end%>
+      <div class="clearfix"></div>
+    
+      <div class="clearfix m-b-30"></div>
+     <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+        <%= button_tag fa_icon("search", text: "Save"), :class => "btn btn-sm", type: :submit %>
+        <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
+        <%end%>
+      </div>
+    </div>
+    
+    
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+      <!-- Footer Ends --> 
+  </section>
+  
+</body>
+
+</html>
