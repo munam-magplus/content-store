@@ -5,7 +5,7 @@
       <td class = "page_head"> Create Institution</td>
     </tr> 
     <tr> 
-      <%= form_for(@institution) do |f| %>
+      <%= form_for(@institution, url: institution_account_index_path) do |f| %>
         <td align = "left" >
           <table border = "0", cellpadding = "10", cellspacing = "0">
             <tbody>
@@ -47,7 +47,11 @@
               <tr>
                 <td align = "left", height = "25"> Logo</td>
                 <td align = "left">
-                  <%= f.file_field :logo%>
+                <%if @institution.logo? %>
+                       <%= image_tag @institution.logo.url(:thumb) %>
+                <% else %>
+                   <%= f.file_field :logo%>
+                <% end %>
                 </td>
               </tr>
             </tbody>

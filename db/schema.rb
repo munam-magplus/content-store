@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170412064254) do
+ActiveRecord::Schema.define(version: 20170424110948) do
 
   create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "publisher"
@@ -108,9 +108,9 @@ ActiveRecord::Schema.define(version: 20170412064254) do
     t.string   "stock_number"
     t.string   "publisher_site_sales_link"
     t.string   "blurb"
-    t.string   "publisher_date"
-    t.string   "publisher_month"
-    t.integer  "publisher_year"
+    t.string   "publication_date"
+    t.string   "publication_month"
+    t.integer  "publication_year"
     t.string   "conversion_required"
     t.string   "edition"
     t.string   "binding"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20170412064254) do
     t.string   "dimension"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "license_id"
   end
 
   create_table "books_seo_configs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -154,6 +155,16 @@ ActiveRecord::Schema.define(version: 20170412064254) do
     t.string   "created_by"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "contact_us", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "subject"
+    t.string   "topic"
+    t.integer  "phone_number"
+    t.integer  "fax_number"
+    t.string   "comments"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "countries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -195,19 +206,22 @@ ActiveRecord::Schema.define(version: 20170412064254) do
   end
 
   create_table "institution_accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "publisher"
+    t.integer  "publisher_id"
     t.string   "libary_name"
     t.string   "institution_name"
     t.string   "status"
     t.string   "display_name"
-    t.string   "logo"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   create_table "institution_admin_user_accs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "role"
-    t.string   "publisher"
+    t.integer  "publisher_id"
     t.string   "institution_name"
     t.string   "user_name"
     t.string   "status"
@@ -248,6 +262,20 @@ ActiveRecord::Schema.define(version: 20170412064254) do
     t.datetime "updated_at",                     null: false
   end
 
+  create_table "library_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "user_name"
+    t.string   "password"
+    t.string   "password_confirmation"
+    t.string   "country"
+    t.string   "status"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.string   "password_digest"
+  end
+
   create_table "license_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "license_group_id"
     t.string   "license_group_name"
@@ -284,6 +312,22 @@ ActiveRecord::Schema.define(version: 20170412064254) do
     t.date     "license_link_from_date"
     t.string   "license_shipping_is_free"
     t.integer  "license_discount_percentage"
+    t.integer  "license_group_id"
+  end
+
+  create_table "member_publishers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "member_publisher_code"
+    t.string   "member_publisher_name"
+    t.string   "contact_first_name"
+    t.string   "contact_last_name"
+    t.string   "contact_email"
+    t.string   "member_publisher_status"
+    t.string   "member_publisher_logo"
+    t.integer  "publisher_borrow_period"
+    t.integer  "revenue_share_percentage"
+    t.integer  "publisher_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "print_houses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

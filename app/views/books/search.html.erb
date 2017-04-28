@@ -1,5 +1,6 @@
 <html>
   <body class = "body1">
+<<<<<<< HEAD
     <div class="row">
       <div class="col-md-12"><h4 class="borderBottom">Search</h4>
       </div>
@@ -226,3 +227,87 @@ $('#search_batch').hide();
   });
 });
 </script>
+=======
+    <%= render :partial => '/layouts/header'%>
+    <div class="div1">
+      <h1>Search</h1>
+      <table border="0" cellpadding="10" cellspacing="0">
+        <tr>
+           <%= form_tag search_publishers_path, :method => 'get' do %>
+              <table border="0" cellpadding="10" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td>Search By:</td>
+                    <td><%= radio_button_tag :JOC_DESCRIPTION, 'Book', :checked => true %>Book
+                      <%= radio_button_tag :JOC_DESCRIPTION, 'Chapter' %>Chapter
+                      <%= radio_button_tag :JOC_DESCRIPTION, 'Batch' %>Batch
+                    </td>
+                    <td>(Wildcard characters supported: *,+ )</td>
+                  </tr>
+                  <tr>
+                    <td>Publisher Name:</td>
+                    <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :publisher_name) %></td>
+                  </tr> 
+                  <tr>
+                    <td> ISBN </td>
+                    <td>
+                      <%= text_field_tag :isbn, params[:isbn] %>
+                    </td>
+                  </tr> 
+                  <tr>
+                    <td> Title</td>
+                    <td>
+                      <%= text_field_tag :title, params[:title] %>
+                    </td>
+                  </tr> 
+                  <tr>
+                    <td>  Author</td>
+                    <td>First Name </td>
+                    <td><%= text_field_tag :first_name, params[:first_name] %></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>Last Name </td>
+                    <td><%= text_field_tag :last_name, params[:last_name] %></td>
+                  </tr> 
+                  <tr>
+                    <td>Status</td>
+                    <td>
+                     <%= select_tag(:status, options_for_select([['Select',0],[' Content Check Awaited',1],['Content Check Failed',2],['Ready for Conversion',3],['Content cannot be Converted by CCP',4],['Setup to Staging',5],['Content in Staging ',6],['Recreate Index in Staging',7],['Staging to Live',8],['LIVE to Staging',9],['Content is Live',10],['Recreate Index in Live',11]]))  %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Upload Period</td>
+                    <td>from</td>
+                    <td><%= text_field_tag :from, params[:from] %></td>
+                   <td>to</td>
+                    <td><%= text_field_tag :to, params[:to] %></td>
+                  </tr> 
+                  <tr>
+                    <td>Sort Order</td>
+                    <td>
+                      <%= select_tag(:sort_order, options_for_select([['Select',0],[' Title',1],['Publisher Code',2],['Author',3],['Upload Period',4],['Status',5],['ISBN ',6],['Created Date',7]]))  %>
+                   </td>
+                  </tr> 
+                  <tr>
+                    <td>No of search results per page</td>
+                    <td>
+                     <%= select_tag(:search_result, options_for_select([['10',10],['50',50],['100',100],['250',250],['500',500]]))  %>
+                    </td>
+                  </tr>  
+                  <tr>
+                    <td>
+                      <%= submit_tag "Submit" %>
+                      <%= button_tag "Reset", type: :reset %>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            <% end %>
+          </tr>
+      </table>
+    </div>
+  </body>
+</html>
+
+>>>>>>> da2de45ea961236f9f23c602a404e8d68b17ad90

@@ -8,4 +8,17 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-# Rails.application.config.assets.precompile += %w( search.js )
+Rails.application.config.assets.precompile += %w( style.css)
+
+Rails.application.config.assets.precompile += %w( animate.css)
+
+Rails.application.config.assets.precompile += %w( helper.css)
+
+Rails.application.config.assets.precompile += %w( flaticon.css)
+
+Rails.application.config.assets.precompile += %w( ui.jqgrid-bootstrap.css)
+
+Rails.application.config.assets.precompile += %w( style-old.css)
+
+
+Rails.application.config.assets.precompile += %w( accessedit.css)

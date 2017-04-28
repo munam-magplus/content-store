@@ -4,39 +4,27 @@ class PublishersController < ApplicationController
   def index
   end
 
+  def show
+  end
+
   def search
     #call filter method to get search results
     @publisher = Publisher.filter(params.slice(:publisher_code, :publisher_name))
   end
 
-  def edit   
-    @publisher = Publisher.find(params[:id])
-    render 'new'
-  end
   def new
     @publisher = Publisher.new
   end
 
-  def save
-    if params[:publisher][:id] != ""
-      @publisher = Publisher.find(params[:publisher][:id])
-      if @publisher.update_attributes!(publisher_params)
-      # Handle a successful update.
-        flash[:notice] = 'Publisher was successfully updated.'
-        redirect_to publisher_setup_index_path
-      else
-        render 'edit'
-      end
+  def create
+    @publisher = Publisher.new(publisher_params)
+    if @publisher.save!
+      flash[:success] = "Publisher Created!"
+      # if successfully stored then redirect to publisher's setup path 
+      redirect_to publisher_setup_index_path
     else
-      @publisher = Publisher.new(publisher_params)  
-      if @publisher.save!
-        flash[:success] = "Publisher Created!"
-        # if successfully stored then redirect to publisher's setup path 
-        redirect_to publisher_setup_index_path
-      else
-        # if not save in that case render new
-        render 'new'
-      end
+      # if not save in that case render new
+      render 'new'
     end
   end
   

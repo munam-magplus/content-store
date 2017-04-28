@@ -1,88 +1,176 @@
-<body class = "body1">
-  <table class = "center">
-    <tr>
-      <td class = "page_head"> Institution Account</td>
-    </tr>
-    <tr>
-     <%= form_tag institution_account_search_op_path, :method => 'get' do |f| %>
-        <td align =  "left">
-          <table border = "0", cellpadding = "10", cellspacing = "0">
-            <tbody>
-              <tr>
-                <td height = "25"> Select Publisher</td>
-                <td align = "left">
-                  <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "Select publisher"%>
-                </td>
-              </tr>
-              <tr>
-                <td align = "left", height = "25"> Lib./Dept. Name</td>
-                <td align = "left">
-                  <%= text_field_tag :libary_name %>
-                </td>
-                <td align = "left", height = "25"> Institution Name</td>
-                <td align = "left">
-                  <%= text_field_tag :institution_name %>
-                </td>
-              </tr>
-               <tr>
-                <td align = "left", height = "25"> IP Address</td>
-                <td align = "left">
-                  <%= text_field_tag :name,params[:ipadd] %>
-                </td>
-                  <td align = "left", height = "25"> City</td>
-                  <td align = "left">
-                    <%= text_field_tag :city %>
-                  </td>
-              </tr>
-              <tr>
-                <td align = "left", height = "25"> State/Province</td>
-                <td align = "left">
-                  <%= text_field_tag :state %>
-                </td>
-                <td align = "left", height = "25"> Country</td>
-                <td align = "left">
-                <%= select_tag "country", options_from_collection_for_select(ISO3166::Country.countries.sort_by(&:name), 'un_locode', 'name'), prompt: "select country" %>
-                </td>
-              </tr>
+<!doctype html>
+<html>
+<head>
+<title>Content Store :: Institutional Account </title>
+<!-- Latest compiled and minified CSS -->
+<%= render :partial => "layouts/header"%>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<%= stylesheet_link_tag "flaticon.css" %>
+<!-- Internal CSS -->
+<!--Animation css-->
+<%= stylesheet_link_tag "animate.css" %>
+<!--Icon-fonts css-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
+<script src="https://use.fontawesome.com/9575fa9c22.js"></script>
+<link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
+<!-- Custom styles for this template -->
+<%= stylesheet_link_tag "style.css" %>
+<%= stylesheet_link_tag "helper.css" %>
+<%= stylesheet_link_tag "style-old.css" %>
+<%= stylesheet_link_tag "accessedit.css" %>
+<%= stylesheet_link_tag "ui.jqgrid-bootstrap.css" %>
+<!-- javascript files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<%= javascript_include_tag('jquery.slimscroll.min.js') %>
+<script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script> 
+<script src="https://www.gstatic.com/charts/loader.js"></script> 
+<%= javascript_include_tag('pace.min.js') %>
+<%= javascript_include_tag('modernizr.min.js') %>
+<%= javascript_include_tag('jquery.app.js') %>
+<%= javascript_include_tag('grid.locale-en.js') %>
+<%= javascript_include_tag('jquery.jqGrid.min.js') %>
 
-              <tr>
-                <td height = "25"> Status</td>
-                <td align = "left">
-                  <%= select_tag 'status',options_for_select(['active', 'inactive']), :prompt => "select status" %>
-                </td>
-              </tr>
-              <tr>
-                <td align = "left", height = "25"> Contact First Name</td>
-                <td align = "left">
-                  <%= text_field_tag :first_name %>
-                </td>
-                <td align = "left", height = "25"> Contact Last Name</td>
-                <td align = "left">
-                  <%= text_field_tag :last_name %>
-                </td>
-              </tr>
-              <tr>
-                <td align = "left", height = "25"> Contact Email</td>
-                <td align = "left">
-                  <%= text_field_tag :email %>
-                </td>
-                <td align = "left", height = "25"> New IP Request</td>
-                <td align = "left">
-                  <%= check_box_tag(:ip_address) %>
-                </td>
-              </tr>
-              <tr>
-                <td align = "left">  
-                  <%= submit_tag "Submit"%>
-                </td>
-                <td align = "left">
-                 <%= button_tag "Reset", type: :reset %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
+</head>
+
+<body>
+<!--Main Content Start -->
+  <section class="content"> 
+    <!-- Header -->
+    <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+           <li><a href="#">Home</a></li>
+         <li><a><%= link_to "Manage User Account",manage_user_account_index_path%></a></li>
+         <li><a class="active"><%= link_to "Institutional Account", institution_account_index_path%></a></li>
+      </ol>
+
+      <h2 class="H2-L1">Institutional Account</h2>
+      <%= form_tag institution_account_search_op_path, :method => 'get' do |f| %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Select Publisher<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "Select publisher"%>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Institution ID:</label>
+            <span class="col-sm-8">
+            <%= text_field_tag :institution_id %>
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Lib./Dept. Name:</label>
+            <span class="col-sm-8">
+            <%= text_field_tag :libary_name %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Institution Name:</label>
+            <span class="col-sm-8">
+            <%= text_field_tag :institution_name %>
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">IP Address:</label>
+            <span class="col-sm-8">
+            <%= text_field_tag :name,params[:ipadd] %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">City:</label>
+            <span class="col-sm-8">
+            <%= text_field_tag :city %>
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">State / Province:</label>
+            <span class="col-sm-8">
+            <%= text_field_tag :state %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Country:</label>
+            <div class="col-sm-8">
+              <%= select_tag "country", options_from_collection_for_select(ISO3166::Country.countries.sort_by(&:name), 'un_locode', 'name'), prompt: "select country" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Status:</label>
+            <span class="col-sm-8">
+             <%= select_tag 'status',options_for_select(['active', 'inactive', 'pending']), :prompt => "select status" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Contact First Name:</label>
+            <span class="col-sm-8">
+              <%= text_field_tag :first_name %>
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Contact Last Name:</label>
+            <span class="col-sm-8">
+              <%= text_field_tag :last_name %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Contact Email:</label>
+            <span class="col-sm-8">
+              <%= text_field_tag :email %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">New IP Request:</label>
+            <span class="col-sm-8">
+              <label><%= check_box_tag(:ip_address) %></label>
+            </span>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="clearfix m-b-30"></div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+
+            <%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Create Institutional Accounts'.html_safe, new_institution_account_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
+
+            <%= button_tag fa_icon("search", text: "Submit"), :class => "btn btn-sm", type: :submit %>
+
+            <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
+          </div>
+        </div>
       <% end %>
-    </tr>
-  </table>
+    </div>  
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+    <!-- Footer Ends --> 
+  </section>
 </body>
+</html>

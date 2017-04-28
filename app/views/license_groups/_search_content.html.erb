@@ -1,64 +1,51 @@
-<tr>
- <td height = "25" colspan="5" > 
-  <p class="sub_head">Licenses <span class="mandtory">*</span>
-  </p>
- </tr>
-<tr>
-  <td height = "25"> Publisher
-   <span class="mandtory">*</span>
-  </td>
-  <td height = "25">
-    <%= collection_select :nil,:publisher_id, Publisher.all, :id, :publisher_name, {:prompt => "Select a Publisher"}, {:class=>"publisher_id"} %>
-  </td>
-</tr>
-<tr>
-  <td>
-    License ID
-    <span class = "mandtory ">*</span>
-  </td>
-  <td>
-    <input id="lic_id" class="text_field"/>
-  </td>
-  <td>
-    License Name
-    <span class = "mandtory">*</span>
-  </td>
-  <td>
-    <input id="lic_name" class="text_field"/>
-  </td>
-</tr>
-<tr>
-  <td >License Type <span class="mandtory">*</span></td>
-  <td><select id="lic_type">
-    <option value="" selected>Select</option>
-    <option value="relative">Relative Date Range</option>
-    <option value="downloadable">Downloadable Content</option>
-    <option value="fixed_date_range">Fixed Date Range</option>
-  </select></td>
-  <td>
-    Content Identifier
-    <span class = "mandtory ">*</span>
-  </td>
-  <td>
-    <input id="isbn" class="text_field"/>
-  </td>
-</tr>
-<tr>
-  <td>&nbsp;</td>
-  <td><input type="button" name="button2" id="button" value="Search" onclick="getSearchDetails();" class="submit_btn" /></td>
-</tr>
-
-<script type="text/javascript">
-  function getSearchDetails(){
-    var publisher_id = $('.publisher_id option:selected').val();
-    var license_type = $('select#lic_type option:selected').val();
-    var license_name = $('#lic_name').val();
-    var license_id = $('#lic_id').val();
-    var isbn = $('#isbn').val();
-    $.ajax({
-      type: 'GET',
-      url: '/license_groups/content_search',
-      data : { publisher_id: publisher_id,license_type: license_type, license_name: license_name,license_id: license_id,isbn: isbn }
-    });
-  }
-</script>
+<%= form_tag search_content_license_groups_path, :remote => true, :method => 'get' do  %>
+  <tr>
+   <td height = "25" colspan="5" > 
+    <p class="sub_head">Licenses <span class="mandtory">*</span>
+    </p>
+   </tr>
+  <tr>
+    <td height = "25"> Publisher
+     <span class="mandtory">*</span>
+    </td>
+    <td height = "25">
+      <%= collection_select(nil, :publisher_id, Publisher.all, :id, :publisher_name) %>
+    </td>
+  </tr>
+  <tr>
+  	<td>
+      License ID
+      <span class = "mandtory ">*</span>
+    </td>
+    <td>
+      <%= text_field_tag :license_name %>
+    </td>
+    <td>
+      License Name
+      <span class = "mandtory ">*</span>
+    </td>
+    <td>
+      <%= text_field_tag :license_name %>
+    </td>
+  </tr>
+  <tr>
+    <td >License Type <span class="mandtory">*</span></td>
+    <td><select select id="licenseType">
+     	<option value="" selected>Select</option>
+      <option value="relative">Relative Date Range</option>
+      <option value="downloadable">Downloadable Content</option>
+      <option value="fixed_date_range">Fixed Date Range</option>
+    </select></td>
+    <td>
+      Content Identifier
+      <span class = "mandtory ">*</span>
+    </td>
+    <td>
+      <%= text_field_tag :license_name %>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><%= submit_tag "Save" %></td>
+  </tr>
+<%end%>

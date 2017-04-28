@@ -1,0 +1,106 @@
+<html>
+  <body class = "body1">
+      <%= render :partial => '/layouts/header'%>
+    <div class="div1">
+<table width="860" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+      <table border="0" align="center" cellpadding="10" cellspacing="1" bgcolor="#cccccc">
+        <tr>
+          <td align="center" bgcolor="#FFFFFF" background="images/step_bg.gif">Primary Content Information</td>
+		      <td align="center" bgcolor="#FFFFFF" background="images/step_bg.gif">Contributors</td>
+		      <td align="center" background="images/step_bg_over.gif" bgcolor="#FFFFFF"><strong>Content Pricing</strong></td>
+		      <td align="center" bgcolor="#FFFFFF" background="images/step_bg.gif">Content Access Rules</td>
+		      <td align="center" bgcolor="#FFFFFF" background="images/step_bg.gif">SEO Configuration</td>
+        </tr>
+
+        </table></td>
+            </tr>
+	<%= form_for :books_content_pricing do |f| %>
+            <tr>
+              <td class="page_head">Content Pricing Information</td>
+            </tr>
+            <tr>
+              <td align="left"></td>
+            </tr>
+            <tr>
+              <td align="left" class="mandtory">
+      
+      &nbsp;</td>
+            </tr>
+            <tr>
+              <td align="right">Fields marked as&nbsp;<span class="mandtory">*</span>&nbsp;are mandatory</td>
+            </tr>
+            <tr>
+              <td><table align="center" width="90%" border="0" cellpadding="10" cellspacing="0">
+                <!--  tr>
+                  <td>Print ISBN</td>
+                  <td colspan="3"><input type="text" name="printHardBackISBN" size="15" value="" class="text_field" />
+														    (HB)
+				<input type="text" name="printPaperBackISBN" size="15" value="" class="text_field" />
+														    (PB)</td>
+                </tr-->
+                <tr>
+				
+                  <td colspan="3"><strong>Content Format</strong></td>
+                  <td align="right"><a href="Javascript:onClick=validateFormatListandAddRow('formatTable',5,1)"><img src="images/add.gif" width="12" height="12" border="0" /></a>&nbsp;&nbsp;<a href="Javascript:onClick=deleteRowModified('formatTable',5,1,document.getElementById('formContentPrice').selFomatDataCK)"><img src="images/remove.gif" width="12" height="12" border="0" /></a>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td colspan="4"><div style=" min-height:50px; max-height:170px; overflow:auto;">
+	<table width="97%" border=0 cellPadding="8" cellSpacing="1" id="formatTable" bgColor="#cccccc">
+	<tbody>
+	<tr>
+	<td width="3%" height="25" class="tableheader"><input type="checkbox" name="checkboxFormat" value="checkbox" onClick="applyToAllCheckBox('formContentPrice','selFomatDataCK',this);" /></td>
+	<td height="25" align="left" class="tableheader">Format</td>
+	<td align="left" class="tableheader">ISBN</td>
+	<td align="left" class="tableheader">DOI</td>
+	<td align="left" class="tableheader">Weight</td>
+	</tr>
+	
+	<tr>
+	<td height="25" bgcolor="#fbfbfb"><input type="checkbox" name="selFomatDataCK" value="checkbox" /></td>
+	<td bgcolor="#fbfbfb">
+		<%= f.select(:format, options_for_select([['Select',0],[' AER',1],['PRC',2],['LIT',3],['ONL',4],['PDF',5],['EXT',6],['OEB',7],['WMA',8],['AAC',9],['HB',10],['PB',11],['EPUB',12],['CD',13],['CD',14],['EP',15]]))  %>
+	</td>
+	<td bgcolor="#fbfbfb"><%= f.text_field :ISBN %></td>
+	<td bgcolor="#fbfbfb"><%= f.text_field :DOI %></td>
+	<td bgcolor="#fbfbfb"><%= f.text_field :weight %></td>
+	</script></td>
+	</tr>
+	</tbody>
+	</table>
+	</div></td>
+                </tr>
+                 <tr>
+                  <td colspan="3"><strong>Base Online Access</strong></td>
+                </tr>              
+              
+                <tr>
+                  <td>Watermarked DRM</td>
+                  <td><%= f.radio_button :watermarked_DRM, 'Yes', :checked => true %> Yes
+              		<%= f.radio_button :watermarked_DRM, 'No' %> No</td>
+                </tr>
+                <tr>
+                  <td>External DRM</td>
+                  <td><%= f.radio_button :external_DRM, 'Yes', :checked => true %> Yes
+              		<%= f.radio_button :external_DRM, 'No' %> No</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;<input type="hidden" name="action" value="save" id="actionId" /></td>
+                  <td colspan="3" align="right"><input type="submit" value="Save and Continue" onclick="javascript:document.getElementById('actionId').value='save';" class="submit_btn1" />
+	<input type="submit" value="Finish" onclick="javascript:document.getElementById('actionId').value='finish';" class="submit_btn" /></td>
+                </tr>
+                
+              </table></td>
+
+              <% end %>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+  </table>
+    </div>
+    <%= render :partial => '/layouts/footer'%>
+  </body>
+</html>
+

@@ -1,6 +1,12 @@
 <html>
   <body class = "body1">
+<<<<<<< HEAD
       <h1>Create Primary Subject Group</h1>
+=======
+    <%= render :partial => '/layouts/header'%>
+    <div class="div1">
+      <h1> Create Primary Subject Group  </h1>
+>>>>>>> da2de45ea961236f9f23c602a404e8d68b17ad90
       <table border="0" cellpadding="10" cellspacing="0">
         <tbody>
           <%= form_for @subject_group, validate: true do |f| %>
@@ -50,5 +56,7 @@
           <% end %>
         </tbody>
       </table>
+    </div>
+    <%= render :partial => '/layouts/footer'%>
   </body>
 </html>

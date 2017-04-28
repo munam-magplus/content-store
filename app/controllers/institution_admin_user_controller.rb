@@ -17,8 +17,8 @@ class InstitutionAdminUserController < ApplicationController
   end
 
   def new
-    if params[:format].present?
-    @ins = InstitutionAccount.find_by_id(params[:format])
+     if params[:format].present?
+     @inst = InstitutionAccount.find_by_institution_name(params[:format])
     end
     @inst_admin_user = InstitutionAdminUserAcc.new
   end

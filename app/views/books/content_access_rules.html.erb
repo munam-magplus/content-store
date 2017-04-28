@@ -1,0 +1,96 @@
+<html>
+	<body class = "body1">
+			<%= render :partial => '/layouts/header'%>
+		<div class="div1">
+<table width="860" border="0" cellspacing="0" cellpadding="0">
+				
+				<tr>
+					<td colspan="2"><table border="0" align="center" cellpadding="10" cellspacing="1" bgcolor="#cccccc">
+				
+				<tr>
+					<td align="center"  >Primary Content Information</td>
+					<td align="center" 	>Contributors</td>
+					<td align="center"  >Content Pricing</td>
+					<td align="center"  background="images/step_bg_over.gif" bgcolor="#FFFFFF"><strong>Content Access Rules</strong></td>
+					<td align="center"  >SEO Configuration</td>
+				</tr>
+			</table>
+<h1> Content Access Rules   </h1>
+			<table border="0" cellpadding="10" cellspacing="0">
+				<tbody>
+					<%= form_for :journal do |f| %>
+						<tr>
+							<td>Content Code:</td>
+							<td><%= f.text_field :JOC_CODE %></td>
+							<td>Publisher*:</td>
+							<td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :PUB_NAME) %></td>
+						</tr> 
+						<tr> 
+							<td>Title:</td>
+							<td><%= f.text_field :JOC_CODE %></td>
+							<td>Sub Title</td>
+							<td><%= f.text_field :JOC_CODE %></td>
+						</tr> 
+						<tr> 
+							<td>ISBN *</td>
+							<td><%= f.text_field :JOC_CODE %></td>
+							<td>Language *</td>
+							<td><%= f.text_field :JOC_CODE %></td>
+						</tr>
+						<tr>
+							<td>Content Classification </td>
+							<td><%= select_tag(:JOC_CODE, options_for_select(['Select',0]))  %></td>
+							<td>File Name*     </td>
+							<td><%= f.text_field :JOC_JOUR_PISSN %></td>
+						</tr> 
+						<tr> 
+							<td>Stock Number   </td>
+							<td><%= f.text_field :JOC_JOUR_EISSN %></td>
+							<td>Publisher Site Sales Link     </td>
+							<td><%= f.text_field :JOC_JOUR_PISSN %></td>
+						</tr>
+						<tr>
+							<td>Blurb</td>
+							<td><%= f.text_area :JOC_OWNER %></td>
+						</tr> 
+						<tr> 
+							<td>Publisher Date </td>
+							<td><%= f.text_field :JOC_CODE %>(dd)</td>
+							<td>Publisher Month </td>
+							<td><%= f.text_field :JOC_CODE %>(mm)</td>
+						</tr>
+						<tr> 
+							<td>Publisher Year </td>
+							<td><%= f.text_field :JOC_CODE %>(yyyy)</td>
+							<td>Conversion Required </td>
+							<td><%= select_tag(:JOC_CODE, options_for_select([['Select',0],[' Yes',1],['No',2]]))  %></td>
+						</tr>
+						<tr> 
+							<td>Edition </td>
+							<td><%= f.text_field :JOC_CODE %></td>
+							<td>Binding </td>
+							<td><%= select_tag(:JOC_CODE, options_for_select([['Select',0],[' Yes',1],['No',2]]))  %></td>
+						</tr>
+						<tr> 
+							<td>Volume </td>
+							<td><%= f.text_field :JOC_CODE %></td>
+							<td>Dimensions </td>
+							<td><%= f.text_field :JOC_CODE %></td>
+						</tr>
+						<tr> 
+							<td>Series ISBN </td>
+							<td><%= f.text_field :JOC_CODE %></td>
+							<td>Series Title </td>
+							<td><%= f.text_field :JOC_CODE %></td>
+						</tr>
+
+						<td><%= f.submit "Save and Continue" %></td>
+						<td><%= f.button "Finish", type: :reset %></td>
+
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		    <%= render :partial => '/layouts/footer'%>
+	</body>
+</html>

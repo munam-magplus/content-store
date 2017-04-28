@@ -30,8 +30,15 @@ gem 'devise'
 gem 'countries'
 gem 'country_select'
 
+gem "font-awesome-rails"
 #used for encrypting password
 gem 'bcrypt-ruby', '~> 3.1.2'
+
+#used for uploading image
+gem "paperclip", "~> 5.0.0"
+
+#for exporting excel sheet
+gem 'axlsx_rails'
 
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

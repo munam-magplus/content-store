@@ -6,25 +6,25 @@ class InstitutionAccountController < ApplicationController
   
   def search_op
     # we perform search operation by slicing the params.
-<<<<<<< HEAD
-    @res = InstitutionAccount.filter(params.slice(:publisher, 
-            :status, :libary_name, :institution_name,:country))
-=======
     @insti_acc = InstitutionAccount.filter(params.slice(:publisher_id, 
             :status, :libary_name, :institution_name))
->>>>>>> 26bee958376431e2c352c608ba216fec089ddf2a
     # this is the params of the checkbox that is present in the form.
     @chec = params[:ip_address]
     # we render the result page that have the search result.
-    render 'result', locals: { :insti_acc => @insti_acc, :chec => @chec} 
-  end
-
-  def result
+    # render 'result', locals: { :insti_acc => @insti_acc, :chec => @chec} 
+    respond_to do |format|
+       format.html
+       format.xlsx 
+    end
   end
 
   def inst_admin_result
-   @ins = InstitutionAccount.find_by_id(params[:format]).institution_name
+    @ins = InstitutionAccount.find_by_id(params[:id]).institution_name
    @ins_admin = InstitutionAdminUserAcc.where(:institution_name => @ins)
+   respond_to do |format|
+       format.html   
+       format.xlsx { send_data @ins_admin }
+    end
   end 
 
   def new
@@ -63,7 +63,7 @@ class InstitutionAccountController < ApplicationController
 
   def institution_params
     params.require(:institution_account).permit(:publisher_id,:institution_id, 
-        :libary_name,:institution_name,:status,:display_name, 
+        :libary_name,:institution_name,:status,:display_name, :logo, 
         institution_acc_billing_address_attributes: [ :id,
         :first_name, :last_name, :phone, :email, :address, 
         :address_line2,:address_line3, :city, :state, 

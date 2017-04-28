@@ -42,12 +42,10 @@ class RetailersController < ApplicationController
 	end
 
 	def show
-		byebug
-	end
+ 	end
 
 	def destroy
-		byebug
-		# @retailers = Retailer.all
+ 		# @retailers = Retailer.all
 		# @retailer = Retailer.find_by(params[:id])
 		# @ret = @retailer.publisher_id
 		# @re = Publisher.find_by(@ret)

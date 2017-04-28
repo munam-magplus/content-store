@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :library_users do 
+    collection do
+      get 'result'
+    end
+  end
+
   get 'books_seo_config/new'
 
   post 'books_seo_config/create'
@@ -16,7 +22,7 @@ Rails.application.routes.draw do
 
   post 'books_contributor/create'
 
-  resources :library_users
+ 
   get 'my_account/index'
 
 
@@ -77,6 +83,7 @@ Rails.application.routes.draw do
 
   get 'institution_account/inst_admin_result'
 
+
   resources :content_conversation do
     collection do 
       get 'content_history'
@@ -84,6 +91,7 @@ Rails.application.routes.draw do
       get 'qa_check'
       get 'update_status'
       get 'uploaded_errors'
+      get 'dashboard'
     end
   end
  

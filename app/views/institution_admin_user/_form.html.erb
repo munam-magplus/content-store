@@ -7,7 +7,7 @@
     <%= form_for(@inst_admin_user, url: institution_admin_user_index_path ) do |f| %>
       <div class="row">
         <div class="col-md-6">
-          <div class="form-group">
+          <div class="form-group", id="radio">
             <label for="disabledTextInput" class="col-md-12 nopadding">User Role<span class="red">*</span></label>
             <label class="radio-inline">
             <%= f.radio_button :role, 'Primary Institution Administrator' %> Primary Institution Administrator</label>
@@ -15,13 +15,13 @@
           </div>
         </div>
       </div>        
-      <% if @ins.present? %>
+      <% if @inst.present? %>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label for="disabledTextInput" > Publisher</label>
-              <%= f.hidden_field :publisher_id2, value: publisher_name(@ins.publisher_id).id %>
-              <%= publisher_name(@ins.publisher_id).publisher_name %>
+              <%= f.hidden_field :publisher_id2, value: publisher_name(@inst.publisher_id).id %>
+              <%= publisher_name(@inst.publisher_id).publisher_name %>
             </div>
           </div>
         </div>
@@ -29,8 +29,8 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="disabledTextInput">Institution name<span class="red">*</span></label>
-              <%= f.hidden_field :institution_name2, value: @ins.institution_name  %>
-              <%= @ins.institution_name %>
+              <%= f.hidden_field :institution_name2, value: @inst.institution_name  %>
+              <%= @inst.institution_name %>
             </div>
           </div>
         </div>
@@ -54,19 +54,17 @@
       <%end%>
       <div class="row">
         <div class="col-md-6">
-          <div class="form-group">
+          <div class="form-group", id="primary2">
             <label for="disabledTextInput" >User Name </label>
             <%= f.text_field :user_name, :value => "System Generated" %>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="disabledTextInput"  >User Name  SA_ </label>
-            <%= f.text_field :user_name %>
+          <div class="form-group", id="institution2">
+            <label for="disabledTextInput" >User Name  SA_ </label>
+             <%= f.text_field :user_name %>
           </div>
         </div>
+      </div>     
+      <div class="row">
         <div class="col-md-6">
           <div class="form-group">
             <label for="disabledTextInput" >Status</label>

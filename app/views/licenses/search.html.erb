@@ -13,44 +13,41 @@
             <td class="tableheader">Linkable From</td>
             <td class="tableheader">Linkable To</td>
             <td class="tableheader">Created By</td>
-          </tr>    
-          <% if @license .present? %>
-            <% @license.each do |lic| %>
-              <tr>
-                <td bgcolor="#FBFBFB">
-                  <%= lic.publisher_id %>
-                </td>
-                <td bgcolor="#FBFBFB" id="40521Code">wtbooks-LIC-6HRYX1E5P8</td>
-                <td bgcolor="#FBFBFB">
-                  <%= link_to lic.license_name %>
-                </td>
-                <td bgcolor="#FBFBFB" id="40521Type">Downloadable Content</td>
-                <td bgcolor="#FBFBFB">
-                  <%= lic.license_for_sale %>
-                </td>
-                <td bgcolor="#FBFBFB">
-                  <%= lic.from %>
-                </td>
-                <td bgcolor="#FBFBFB">
-                  <%= lic.to%>
-                </td>
-                <td bgcolor="#FBFBFB">
-                  <%= lic.created_by %>
-                </td>
-              </tr>
-            <% end %>
-          <% else %>
+          </tr>
             <tr>
-              <td bgcolor="#FBFBFB">-</td>
-              <td bgcolor="#FBFBFB">-</td>
-              <td bgcolor="#FBFBFB">-</td>
-              <td bgcolor="#FBFBFB">-</td>
-              <td bgcolor="#FBFBFB">-</td>
-              <td bgcolor="#FBFBFB">-</td>
-              <td bgcolor="#FBFBFB">-</td>
-              <td bgcolor="#FBFBFB">-</td>
-            </tr>
-          <% end %>
+              <% if @license.present? %>
+                <% @license.each do |lic| %>
+                  <td bgcolor="#FBFBFB">
+                    <%= lic.PUB_PUBLISHER_ID %>
+                  </td>
+                  <td bgcolor="#FBFBFB" id="40521Code">wtbooks-LIC-6HRYX1E5P8</td>
+                  <td bgcolor="#FBFBFB">
+                    <%= link_to lic.LIC_LICENSE_NAME,("") %>
+                  </td>
+                  <td bgcolor="#FBFBFB" id="40521Type">Downloadable Content</td>
+                  <td bgcolor="#FBFBFB">
+                    <%= lic.LIC_FOR_SALE %>
+                  </td>
+                  <td bgcolor="#FBFBFB">
+                    <%= lic.LIC_LINK_FROM_DATE %>
+                  </td>
+                  <td bgcolor="#FBFBFB">
+                    <%= lic.LIC_LINK_TO_DATE %>
+                  </td>
+                  <td bgcolor="#FBFBFB">
+                    <%= lic.CREATED_BY %>
+                  </td>
+                <% end %>
+              <% else %>
+                <td bgcolor="#FBFBFB">-</td>
+                <td bgcolor="#FBFBFB">-</td>
+                <td bgcolor="#FBFBFB">-</td>
+                <td bgcolor="#FBFBFB">-</td>
+                <td bgcolor="#FBFBFB">-</td>
+                <td bgcolor="#FBFBFB">-</td>
+                <td bgcolor="#FBFBFB">-</td>
+                <td bgcolor="#FBFBFB">-</td>
+              <% end %>
             </tr>
           </tbody>
         </table>
