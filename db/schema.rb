@@ -107,9 +107,9 @@ ActiveRecord::Schema.define(version: 20170424110948) do
     t.string   "stock_number"
     t.string   "publisher_site_sales_link"
     t.string   "blurb"
-    t.string   "publisher_date"
-    t.string   "publisher_month"
-    t.integer  "publisher_year"
+    t.string   "publication_date"
+    t.string   "publication_month"
+    t.integer  "publication_year"
     t.string   "conversion_required"
     t.string   "edition"
     t.string   "binding"
@@ -154,6 +154,16 @@ ActiveRecord::Schema.define(version: 20170424110948) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "created_by"
+  end
+
+  create_table "contact_us", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "subject"
+    t.string   "topic"
+    t.integer  "phone_number"
+    t.integer  "fax_number"
+    t.string   "comments"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "contact_us", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

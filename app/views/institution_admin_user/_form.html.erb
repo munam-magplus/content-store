@@ -1,178 +1,214 @@
+<!doctype html>
 <html>
-  <body class = "body1">
-    <div class="row">
-      <div class="col-md-12"><h4 class="borderBottom">Create Institutional User</h4>
-      </div>
-    </div>
-    <%= form_for(@inst_admin_user, url: institution_admin_user_index_path ) do |f| %>
-      <div class="row">
+<head>
+<title>Content Store :: Institutional Account </title>
+<!-- Latest compiled and minified CSS -->
+<%= render :partial => "layouts/header"%>
+
+</head>
+
+<body>
+<!--Main Content Start -->
+  <section class="content"> 
+    <!-- Header -->
+    <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+           <li><a href="#">Home</a></li>
+         <li><a><%= link_to "Manage User Account",manage_user_account_index_path%></a></li>
+         <li><a class="active"><%= link_to "Institutional Account", institution_account_index_path%></a></li>
+      </ol>
+
+      <h2 class="H2-L1">Institutional Account</h2>
+      <%= form_for(@inst_admin_user, url: institution_admin_user_index_path ) do |f| %>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="disabledTextInput" class="col-md-12 nopadding">User Role<span class="red">*</span></label>
+            <label for="disabledTextInput" class="col-md-12 nopadding">User Role<sup class="mandatory">*</sup> </label>
             <label class="radio-inline">
-            <%= f.radio_button :role, 'Primary Institution Administrator' %> Primary Institution Administrator</label>
-            <label class="radio-inline"><%= f.radio_button :role,'Institution Administrator'%> Institution Administrator</label>
+              <%= f.radio_button :role, 'Primary Institution Administrator', :checked => true %> Primary Institution Administrator
+            </label>
+            <label class="radio-inline" >
+              <%= f.radio_button :role,'Institution Administrator'%> Institution Administrator
+            </label>
           </div>
         </div>
-      </div>        
-      <% if @ins.present? %>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="disabledTextInput" > Publisher</label>
-              <%= f.hidden_field :publisher_id2, value: publisher_name(@ins.publisher_id).id %>
-              <%= publisher_name(@ins.publisher_id).publisher_name %>
-            </div>
+        <% if @inst.present? %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Publisher</label>
+            <span class="col-sm-8">
+            <%= f.hidden_field :publisher_id2, value: publisher_name(@inst.publisher_id).id  , :class => "form-control"%>
+              <%= publisher_name(@inst.publisher_id).publisher_name %>
+            </span> 
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="disabledTextInput">Institution name<span class="red">*</span></label>
-              <%= f.hidden_field :institution_name2, value: @ins.institution_name  %>
-              <%= @ins.institution_name %>
-            </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Institution Name</label>
+            <span class="col-sm-8">
+            <%= f.hidden_field :institution_name2, value: @inst.institution_name  , :class => "form-control" %>
+              <%= @inst.institution_name %>
+            </span> 
           </div>
         </div>
-      <% else %>
-        <div class="row">        
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="disabledTextInput" > Publisher</label>
-              <%= f.select 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "select publisher" %>
-            </div>
+        <% else %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Publisher</label>
+            <span class="col-sm-8">
+            <%= f.select 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), {:prompt => "select publisher" },{ :class => "form-control" }%>
+            </span> 
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="disabledTextInput">Institution name<span class="red">*</span></label>
-              <%= f.select 'institution_name',options_from_collection_for_select(InstitutionAccount.all, 'institution_name', 'institution_name', :prompt => "select institution name") %>
-            </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Institution Name</label>
+            <span class="col-sm-8">
+            <%= f.select 'institution_name',options_from_collection_for_select(InstitutionAccount.all, 'institution_name', 'institution_name'),{ :prompt => "select institution name"},{ :class => "form-control" }%>
+            </span> 
           </div>
         </div>
-      <%end%>
+        <% end %>
+
+        <div class="col-md-6">
+          <div class="form-group", id="primary2">
+            <label for="bookISBN" class="col-sm-4 control-label">User Name:</label>
+            <span class="col-sm-8">
+            <%= f.text_field :user_name, :value => "System Generated", :class => "form-control" %>
+            </span> 
+          </div>
+          <div class="form-group", id="institution2">
+            <label for="bookISBN" class="col-sm-4 control-label">User Name:</label>
+            <label for="disabledTextInput">SA_</label>
+            <span class="col-sm-8">
+           <%= f.text_field :user_name,:class => "form-control" %>
+            </span>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label for="disabledTextInput" >User Name </label>
-            <%= f.text_field :user_name, :value => "System Generated" %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="disabledTextInput"  >User Name  SA_ </label>
-            <%= f.text_field :user_name %>
+            <label for="bookISBN" class="col-sm-4 control-label">Status</label>
+            <span class="col-sm-8">
+              <%= f.select 'status',options_for_select(["active","inactive"]), {:prompt => "select status"}, {:class => "form-control"} %>
+            </span>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="disabledTextInput" >Status</label>
-            <%= f.select 'status',options_for_select(["active","inactive"]), :prompt => "select status" %>      
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="checkbox-inline">
-              <%= check_box_tag :billing_contact %>
-              same as institution billing contact  
-            </label>      
-          </div>
-        </div>
-      </div>
-      <div class="row" id="billing">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="disabledTextInput">First Name<span class="red">*</span> 
-            </label>
-            <%= f.text_field :first_name, :id => "first" %>
+            <label class="checkbox-inline"><%= check_box_tag :billing_contact %>
+              same as institution billing contact</label>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="disabledTextInput" >Last Name<span class="red">*</span></label>
-            <%= f.text_field :last_name, :id => "last" %>
-          </div>
-        </div>
-      </div>
-      <div class="row"  >
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="disabledTextInput"  > Email Address<span class="red">*</span>
-            </label>
-            <%= f.text_field :email, :id => "mail" %>
+            <label for="bookISBN" class="col-sm-4 control-label">First Name</label>
+            <span class="col-sm-8">
+              <%= f.text_field :first_name, :id => "first",:class => "form-control"  %>
+            </span>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="disabledTextInput" >Phone</label>
-            <%= f.text_field :phone, :id => "phone" %>
-         </div>
-        </div>
-      </div>
-      <div class="row"  >
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="disabledTextInput"  > Position</label>
-            <%= f.text_field :position %>
+            <label for="bookISBN" class="col-sm-4 control-label">Last Name</label>
+            <span class="col-sm-8">
+              <%= f.text_field :last_name, :id => "last",:class => "form-control" %>
+            </span>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="disabledTextInput" >Fax</label>
-            <%= f.text_field :fax %>
-          </div>
-        </div>
-      </div>
-      <div class="row"  >
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="disabledTextInput"  > Password<span class="red">*</span></label>
-            <%= f.password_field :password %>
+            <label for="bookISBN" class="col-sm-4 control-label">Email</label>
+            <span class="col-sm-8">
+              <%= f.text_field :email, :id => "mail",:class => "form-control" %>
+            </span>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="disabledTextInput" >Confirm Password<span class="red">*</span>
-            </label>
-            <%= f.password_field :confirm_password %>
-          </div>
-        </div>
-      </div>
-       <div class="row"  >
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="disabledTextInput"  > Comments </label>
-            <%= f.text_area :comments %>
+            <label for="bookISBN" class="col-sm-4 control-label">Phone</label>
+            <span class="col-sm-8">
+              <%= f.text_field :phone, :id => "phone",:class => "form-control" %>
+            </span>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="disabledTextInput" class="col-md-12" ><br></label>
+            <label for="bookISBN" class="col-sm-4 control-label">Position</label>
+            <span class="col-sm-8">
+              <%= f.text_field :position,:class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Fax</label>
+            <span class="col-sm-8">
+              <%= f.text_field :fax,:class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Password</label>
+            <span class="col-sm-8">
+              <%= f.password_field :password,:class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Confirm Password</label>
+            <span class="col-sm-8">
+              <%= f.password_field :confirm_password ,:class => "form-control"%>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Comments</label>
+            <span class="col-sm-8">
+              <%= f.text_area :comments,:class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
             <label class="checkbox-inline"><%= check_box_tag(:mail) %>
             Send Email Comfirmation to Email Address above</label>
           </div>
         </div>
-      </div> 
-      <div class="row"  >
-        <div class="col-md-6">        
-          <%= f.submit "Submit" %>        
-          <%= button_tag "Reset", type: :reset %>
+
+        <div class="clearfix"></div>
+        <div class="clearfix m-b-30"></div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+
+            <%= link_to '<i class="fa fa-search" aria-hidden="true"></i>Search Institutional Accounts'.html_safe, institution_account_index_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
+
+            <%= button_tag fa_icon("plus-square-o", text: "Submit"), :class => "btn btn-sm", type: :submit %>
+
+            <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
+          </div>
         </div>
-      </div>
-    <% end %>
-  </body>
+      <% end %>
+    </div>  
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+    <!-- Footer Ends --> 
+  </section>
+</body>
 </html>
+
 
 <script>   
 $(document).ready(function(){
-  $('#primary2').hide();
   $('#institution2').hide();
-   $('input[type="checkbox"]').click(function(){
+  $('input[type="checkbox"]').click(function(){
       if($('#billing_contact').prop("checked") == true){
          $("#first").prop('disabled', true);
          $("#last").prop('disabled', true);
@@ -189,7 +225,6 @@ $(document).ready(function(){
 
   $(':radio').change(function (event) {
       var id = $(this).val();
-      console.log(id);
       if(id.search("Primary Institution Administrator")!=-1)
       {
         $('#institution2').hide();

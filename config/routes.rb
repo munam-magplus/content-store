@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+<<<<<<< HEAD
   get 'books_seo_config/new'
 
   post 'books_seo_config/create'
@@ -17,63 +18,62 @@ Rails.application.routes.draw do
   post 'books_contributor/create'
 
   resources :library_users
+=======
+>>>>>>> b34b2e3541ae02eeda17b845856bfab050df0002
   get 'my_account/index'
 
+  get 'site_settings/index'
 
-  get 'article/new'
+  get 'books/create'
+  post 'books/new'
 
-  get 'article/index'
+  resources  :contact_us
 
-  post 'article/create'
+  resources :reports, :printhouse_setup, :manage_access, 
+            :manage_user_account, :publisher_setup, 
+             only: [:index]
 
-  get 'article/search'
+  resources :books_seo_config,:books_content_access_rules,
+            :books_content_pricing, :books_contributor, only: [:new, :create]
 
-  get 'article/result'
+  resources :institution_account do
+    collection do 
+      get 'search_op'
+      get 'inst_admin_result'
+    end
+  end
 
-  get 'article/metadata_sheet'
+  resources :library_users do 
+    collection do
+      get 'result'
+    end
+  end
 
+  resources :article do 
+    collection do
+      get 'search'
+      get 'result'
+      get 'metadata_sheet'
+    end
+  end
+ 
   devise_for :users
 
   devise_scope :user do
     root to: "devise/sessions#new"
   end
 
-  get 'retailers/search'
+  resources :retailers do 
+    collection do
+      get 'search'
+    end
+  end
 
-  get 'site_settings/index'
-
-  post 'subject_groups/new'
-
-  get 'books/create'
-  post 'books/new'
-
-  get 'end_user/search'
-  post 'end_user/create'
-  
-  post 'subject_groups/new'
-
-  get 'end_user/new'
-
-  get 'end_user/create'
-  get 'end_user/index'
-
-  post 'publishers/new'
-  post 'publishers/create'
-
-  get 'end_user/search'
-  get 'end_user/new'
-  get 'end_user/create'
-
-  get 'admin_user/new'
-  get 'admin_user/create'
-  get 'admin_user/search'
-  get 'admin_user/index'
-  post 'admin_user/index'
-  post 'admin_user/new'
-  post 'admin_user/create'
-
-
-  get 'institution_account/inst_admin_result'
+  resources :end_user, :admin_user do 
+    collection do
+      get  'search' 
+    end
+  end
 
   resources :content_conversation do
     collection do 
@@ -82,6 +82,7 @@ Rails.application.routes.draw do
       get 'qa_check'
       get 'update_status'
       get 'uploaded_errors'
+      get 'dashboard'
     end
   end
  
@@ -98,19 +99,12 @@ Rails.application.routes.draw do
       get 'linked_member_publisher'
     end
   end
-
-
-  post 'books/new'
-  
-  get 'books/create'
-
-  post 'journals/create'
-  get 'journals/search_result'
   
   resources :journals do
     collection do
       get 'index'
-      get 'search'  
+      get 'search'
+      get 'search_result'  
     end
   end
 
@@ -125,22 +119,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :content_conversation do
-  end  
-
   resources :institution_admin_user do 
     collection do 
       get 'search_op'
-      # post 'create'
-      # get 'new'
     end
   end
 
-  get 'institution_account/search_op'
-
-  resources :retailers,:institution_account
-
-  resources :reports, :printhouse_setup, :manage_access, 
-            :manage_user_account, :publisher_setup, 
-            :end_user, only: [:index]
 end

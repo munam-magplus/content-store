@@ -1,5 +1,5 @@
 class SubscriptionsController < ApplicationController
-      before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def search
   end
@@ -18,6 +18,14 @@ class SubscriptionsController < ApplicationController
   end
 
   def index
+  end
+
+  def result_subject_group
+    @subject_group_search = SubjectGroup.filter(params.slice(:subject_group_name, :subject_group_code))
+  end
+
+  def result_title
+    @title_search = BooksPrimaryContentInfo.filter(params.slice(:isbn, :title))
   end
 
   private
