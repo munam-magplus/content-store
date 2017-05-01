@@ -1,79 +1,105 @@
-<body class="body1"></body>
-<div class="div1">
-  <table border="0" cellpadding="0" cellspacing="0" width="860">
-    <tr>
-      <td class="page_head">Search License</td>
-    </tr>
-    <tr>
-      <td align="left"></td>
-    </tr>
-    <tr>
-      <td></td>
-    </tr>
-    <tr>
-      <%= form_tag search_licenses_path, :id => "search_license" ,:method => 'get' do %>
-        <td>
-          <table align="left" border="0" cellpadding="10" cellspacing="0">
-            <tbody>
-              <tr>
-                <td height="25" width="171">Publisher</td>
-                <td height="25" width="414">
-                 <%= collection_select(nil, :publisher_id, Publisher.all, :id, :publisher_name) %>
-                </td>
-              </tr>
-              <tr>
-                <td height="25" width="149">License ID</td>
-                <td height="25">
-                  <%= text_field_tag :license_id %>
-                </td>
-              </tr>
-              <tr>
-                <td height="25">License Name</td>
-                <td height="25" width="436">
-                 <%= text_field_tag :license_name %>
-                </td>
-              </tr>
-              <tr>
-                <td height="25">License Type</td>
-                <td height="25">
-                 <%= collection_select(nil, :id, License.all, :id, :license_type)%>
-                </td>
-              </tr>
-              <tr>
-                <td height="25">Content Identifier</td>
-                <td height="25">
-                 <%= text_field_tag :isbn %>
-                </td>
-              </tr>
-              <tr>
-                <td height="25">Created By</td>
-                <td height="25">
-                  <%= text_field_tag :created_by %>
-                </td>
-              </tr>
-               <tr>
-                <td height = "25">Saleability </td>
-                <td height = "25"> 
-                 <%= select_tag(:license_for_sale, options_for_select([['Select',0],[' For Sale',:y],['Not For Sale',:n]]))%>
-                </td>
-               </tr>
-              <tr>
-                <td height="25">Search License to Apply Discounts</td>
-                <td height="25">
-                 <%= check_box_tag(:apply_discount) %>
-                </td>
-              </tr>
-              <tr>
-                <td align="right" class="GBoldText"></td>
-                <td align="left" class="GBoldText">
-                 <%= submit_tag "Search" %>
-                 <%= submit_tag "Reset", :type => "reset" %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
+<!doctype html>
+<html>
+<head>
+<title>Content Store :: Search Result</title>
+<!-- Latest compiled and minified CSS -->
+<%= render :partial => "layouts/header"%>
+</head>
+
+<body>
+  <section class="content"> 
+    <!-- Header -->
+   <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+         <li><a href="#">Home</a></li>
+       <li><a><%= link_to "Manage Access",manage_access_index_path%></li>
+       <li><%= link_to "Search Result",licenses_path%></li>
+         <div class="pull-right hidden">
+          <li><a href="#">Browse by Chapter</a></li>
+          <li><a href="#">Browse by Book </a></li>
+         </div>
+        </ol>
+      <h2 class="H2-L1">Search License </h2>
+      <%= form_tag search_licenses_path, :method => 'get', :remote => true, :class => "form-horizontal form-bg" do %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Select Publisher<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "Select publisher", :class => "form-control"%>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">License ID</label>
+            <div class="col-sm-8">
+              <%= text_field_tag :license_id,"",:class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">License Name</label>
+            <div class="col-sm-8">
+              <%= text_field_tag :license_name,"",:class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">License Type</label>
+            <span class="col-sm-8">
+             <%= select_tag 'license_type',options_for_select([['Select',''], ['Relative Date Range',:relative], ['Downloadable Content',:downloadable], ['Fixed date Range',:fixed_date_range]]), :prompt => "select status", :class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Content Identifier</label>
+            <div class="col-sm-8">
+              <%= text_field_tag :isbn,"",:class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Created By</label>
+            <div class="col-sm-8">
+              <%= text_field_tag :created_by,"",:class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Saleability</label>
+            <span class="col-sm-8">
+             <%= select_tag 'license_for_sale',options_for_select([['Select',''], [' For Sale',:y], ['Not For Sale',:n]]), :prompt => "select status", :class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Search License to Apply Discounts</label>
+             <div class="col-sm-8">
+                <%= check_box_tag(:apply_discount, :class => "form-control")%>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+              <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit, :id => "submit" %>
+              <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
+            </div>
+        </div>
       <% end %>
-    </tr>
-  </table>
-</div>
+     <div id="search_result"></div>  
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+    <!-- Footer Ends --> 
+  </section>
+</body>
+</html>
