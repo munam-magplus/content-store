@@ -2,20 +2,17 @@ class InstitutionAccountController < ApplicationController
     before_action :authenticate_user!
 
   def index
-    # byebug
-    # respond_to do |format|
-    #    format.js { render  }
-    #    format.html
-    # end
   end
   
   def search_op
-    # byebug
-    @insti_acc1 = InstitutionAccount.paginate(:page => params[:page], :per_page => 2)
+    # @insti_acc1 = InstitutionAccount.paginate(:page => params[:page], :per_page => 2)
     # we perform search operation by slicing the params.
     @insti_acc = InstitutionAccount.filter(params.slice(:publisher_id, 
             :status, :libary_name, :institution_name))
-    # this is the params of the checkbox that is present in the form.
+    @insti_bill = InstitutionAccBillingAddress.filter(params.slice(:first_name, :last_name,
+                  :phone, :email,:address,:address_line2,:address_line3,:city,:state,
+                  :postal_code,:country))
+     # this is the params of the checkbox that is present in the form.
     @chec = params[:ip_address]
     # we render the result page that have the search result.
     # render 'result', locals: { :insti_acc => @insti_acc, :chec => @chec} 
