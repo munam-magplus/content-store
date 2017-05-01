@@ -1,5 +1,5 @@
 class LicenseGroupsController < ApplicationController
- before_action :authenticate_user!
+    before_action :authenticate_user!
 
  def create
  	@license_group = LicenseGroup.new(license_group_params)
@@ -36,16 +36,12 @@ class LicenseGroupsController < ApplicationController
  def index
  end
 
-  def new
-    @license_group = LicenseGroup.new
+  def search
+    #call filter method to get search results
+    @license_group = LicenseGroup.filter(params.slice(:publisher_id, :license_group_id, :license_group_name, :license_name, :created_by, :license_for_sale))
   end
 
- def search
-  #call filter method to get search results
-  @license_group = LicenseGroup.filter(params.slice(:publisher_id, :license_group_id, :license_group_name, :license_name, :created_by, :license_for_sale))
- end
-
- private 
+  private 
 
   def license_group_params
     params.require(:license_group).permit(:license_group_name, :from, 

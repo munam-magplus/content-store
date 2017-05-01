@@ -1,75 +1,109 @@
+<!doctype html>
 <html>
-  <body class = "body1">
-    <div class="row">
-      <div class="col-md-12"><h4 class="borderBottom">Registration For Library User</h4>
-      </div>
-    </div>
-    <h6>* All Fields are Mandatory</h6>
-    <%= form_for(library_user) do |f| %>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="disabledTextInput" >First Name<span class="red">*</span></label>
-            <%= f.text_field :first_name %>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="disabledTextInput" >Last Name<span class="red">*</span></label>
-            <%= f.text_field :last_name %>
-          </div>
-        </div>
-      </div> 
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="disabledTextInput" >Email<span class="red">*</span></label>
-            <%= f.text_field :email %>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="disabledTextInput">Member Id/User Name<span class="red">*</span></label>
-            <%= f.text_field :user_name %>
-          </div>
-        </div>
-      </div> 
-      <div class="row"  >
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="disabledTextInput"  > Password<span class="red">*</span></label>
-            <%= f.password_field :password %>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="disabledTextInput" >Confirm Password<span class="red">*</span>
-            </label>
-            <%= f.password_field :password_confirmation %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="disabledTextInput" >Country<span class="red">*</span></label>
-            <%= f.country_select :country, prompt: "select country" %>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="disabledTextInput" >Status<span class="red">*</span></label>
-            <%= f.select 'status',options_for_select(['active', 'inactive']), :prompt => "select status" %>
-          </div>
-        </div>
-      </div> 
-      <div class="row"  >
-        <div class="col-md-6">        
-          <%= f.submit "Submit" %>        
-          <%= button_tag "Reset", type: :reset %>
-        </div>
-      </div>
-    <% end %>
-  </body>
-</html>
+<head>
+<title>Content Store :: Library Users </title>
+<!-- Latest compiled and minified CSS -->
+<%= render :partial => "layouts/header"%>
 
+</head>
+
+<body>
+<!--Main Content Start -->
+  <section class="content"> 
+    <!-- Header -->
+    <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+           <li><a href="#">Home</a></li>
+         <li><a><%= link_to "Manage User Account",manage_user_account_index_path%></a></li>
+      </ol>
+
+      <h2 class="H2-L1">Registration For Library User</h2>
+      <h6>* All Fields are Mandatory</h6>
+      <%= form_for(@library_user) do |f| %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">First Name<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= f.text_field :first_name , :class => "form-control"  %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Last Name<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= f.text_field :last_name , :class => "form-control"  %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Email<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= f.text_field :email , :class => "form-control"  %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Member Id/User Name<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= f.text_field :user_name , :class => "form-control"  %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Password<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= f.text_field :password , :class => "form-control"  %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Password Confirmation<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= f.text_field :password_confirmation , :class => "form-control"  %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+             <label for="bookISBN" class="col-sm-4 control-label">Country</label>
+            <span class="col-sm-8">
+              <% country_name %>
+              <%=  f.select "country", options_from_collection_for_select(@country, "country_code", "country_name"),{prompt: "select country"}, {:class => "form-control"} %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Status<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= f.select 'status',options_for_select(['active', 'inactive', 'pending']), {:prompt => "select status"}, {:class => "form-control"} %>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="clearfix m-b-30"></div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+
+            <%= button_tag fa_icon("search", text: "Submit"), :class => "btn btn-sm", type: :submit %>
+
+            <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
+          </div>
+        </div>
+      <% end %>
+    </div>  
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+    <!-- Footer Ends --> 
+  </section>
+</body>
+</html>

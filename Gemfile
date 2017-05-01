@@ -29,12 +29,16 @@ gem 'devise'
 #for pagination
 gem 'will_paginate'
 
-# gem to display all the countries 
-gem 'countries'
-gem 'country_select'
 
+gem "font-awesome-rails"
 #used for encrypting password
 gem 'bcrypt-ruby', '~> 3.1.2'
+
+#used for uploading image
+gem "paperclip", "~> 5.0.0"
+
+#for exporting excel sheet
+gem 'axlsx_rails'
 
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -45,7 +49,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'font-awesome-rails'
+
 # Adding email validation
 gem 'valid_email'
 

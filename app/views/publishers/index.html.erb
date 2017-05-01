@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html>
 <head>
@@ -82,3 +83,46 @@
 <script src="jqgrid/js/jquery.jqGrid.min.js"></script> 
 
 
+=======
+<body class = "body1">
+<div class= "div1"> 
+  <!-- %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "860"} -->
+  <table border = "0", cellpadding = "0", cellspacing = "0", width = "860", class = "center">
+    <tr>
+      <td class = "page_head"> Search Publishers  </td>
+    </tr>
+    <tr>
+      <%= form_tag search_publishers_path, :method => 'get' do %>
+        <td align = "left">
+          <table border = "0", cellpadding = "10", cellspacing = "0">
+            <tbody>
+              <tr>
+                <td align = "left", height = "25"> Publisher Code</td>
+                <td align = "left", height = "25">
+                  <%= text_field_tag :publisher_code %>
+                </td>
+              </tr>
+              <tr>
+                <td align = "left", height = "25"> Publisher Name</td>
+                <td align = "left">
+                  <%= text_field_tag :publisher_name %>
+                </td>
+              </tr>
+            <!-- %tbody -->
+              <tr>
+                <td align = "left">   
+                 <%= submit_tag "Search", :name => nil %>
+                </td>
+                <td align = "left"> 
+                  <%= submit_tag "Reset", :type => "reset" %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      <% end %>
+    </tr>
+  </table>
+</div>
+</body>
+>>>>>>> f696fadf17e9ccf4d437d24518b8b89a17b15422

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'my_account/index'
 
   get 'site_settings/index'
@@ -35,8 +36,10 @@ Rails.application.routes.draw do
       get 'metadata_sheet'
     end
   end
+
  
   devise_for :users
+
 
   devise_scope :user do
     root to: "devise/sessions#new"
@@ -61,7 +64,6 @@ Rails.application.routes.draw do
       get 'qa_check'
       get 'update_status'
       get 'uploaded_errors'
-      get 'dashboard'
     end
   end
  

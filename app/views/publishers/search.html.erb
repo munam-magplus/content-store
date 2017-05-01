@@ -1,36 +1,28 @@
 <body class="body1"></body>
-<%= render :partial => '/layouts/header' %>
 <div class="div1">
   <table bgcolor="#cccccc" border="0" cellpadding="8" cellspacing="1" width="70%"></table>
   <table bgcolor="#cccccc" border="0" cellpadding="8" cellspacing="1" class="center" width="100%">
     <tbody>
       <tr>
-        <td class="tableheader">UserName</td>
-        <td class="tableheader">First Name</td>
-        <td class="tableheader">Last Name</td>
-        <td class="tableheader">Country</td>
+        <td class="tableheader">Publisher Code</td>
         <td class="tableheader">Publisher Name</td>
+        <td class="tableheader">Contact Name</td>
+        <td class="tableheader">Contact Email</td>
       </tr>
-      <% if @admin_user.present? %>
-        <% @admin_user.each do |f| %>
+      <% if @publisher.present? %>
+        <% @publisher.each do |pub| %>
         <tr>
           <td bgcolor="#FBFBFB">
-            <%= f.email %>
+            <%= link_to pub.publisher_code %>
           </td>
           <td bgcolor="#FBFBFB">
-            <%= f.first_name %>
+            <%= pub.publisher_name %>
           </td>
           <td bgcolor="#FBFBFB">
-            <%= f.last_name %>
+            <%= pub.contact_first_name %>
           </td>
           <td bgcolor="#FBFBFB">
-            <%= f.country %>
-          </td>
-          <td bgcolor="#FBFBFB">
-            <%= image_tag("reset_password.gif")%>
-            <%= image_tag("link_license.gif")%>
-            <%= image_tag("view_linked_licenses.gif")%><br>
-            <%= image_tag("delete_icon.gif")%>
+            <%= pub.contact_email %>
           </td>
         </tr>
         <% end %>
@@ -45,4 +37,3 @@
     </tbody>
   </table>
 </div>
-<%= render :partial => '/layouts/footer'%>

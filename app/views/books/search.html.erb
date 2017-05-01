@@ -1,228 +1,84 @@
 <html>
   <body class = "body1">
-    <div class="row">
-      <div class="col-md-12"><h4 class="borderBottom">Search</h4>
-      </div>
+    <%= render :partial => '/layouts/header'%>
+    <div class="div1">
+      <h1>Search</h1>
+      <table border="0" cellpadding="10" cellspacing="0">
+        <tr>
+           <%= form_tag search_publishers_path, :method => 'get' do %>
+              <table border="0" cellpadding="10" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td>Search By:</td>
+                    <td><%= radio_button_tag :JOC_DESCRIPTION, 'Book', :checked => true %>Book
+                      <%= radio_button_tag :JOC_DESCRIPTION, 'Chapter' %>Chapter
+                      <%= radio_button_tag :JOC_DESCRIPTION, 'Batch' %>Batch
+                    </td>
+                    <td>(Wildcard characters supported: *,+ )</td>
+                  </tr>
+                  <tr>
+                    <td>Publisher Name:</td>
+                    <td><%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :publisher_name) %></td>
+                  </tr> 
+                  <tr>
+                    <td> ISBN </td>
+                    <td>
+                      <%= text_field_tag :isbn, params[:isbn] %>
+                    </td>
+                  </tr> 
+                  <tr>
+                    <td> Title</td>
+                    <td>
+                      <%= text_field_tag :title, params[:title] %>
+                    </td>
+                  </tr> 
+                  <tr>
+                    <td>  Author</td>
+                    <td>First Name </td>
+                    <td><%= text_field_tag :first_name, params[:first_name] %></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>Last Name </td>
+                    <td><%= text_field_tag :last_name, params[:last_name] %></td>
+                  </tr> 
+                  <tr>
+                    <td>Status</td>
+                    <td>
+                     <%= select_tag(:status, options_for_select([['Select',0],[' Content Check Awaited',1],['Content Check Failed',2],['Ready for Conversion',3],['Content cannot be Converted by CCP',4],['Setup to Staging',5],['Content in Staging ',6],['Recreate Index in Staging',7],['Staging to Live',8],['LIVE to Staging',9],['Content is Live',10],['Recreate Index in Live',11]]))  %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Upload Period</td>
+                    <td>from</td>
+                    <td><%= text_field_tag :from, params[:from] %></td>
+                   <td>to</td>
+                    <td><%= text_field_tag :to, params[:to] %></td>
+                  </tr> 
+                  <tr>
+                    <td>Sort Order</td>
+                    <td>
+                      <%= select_tag(:sort_order, options_for_select([['Select',0],[' Title',1],['Publisher Code',2],['Author',3],['Upload Period',4],['Status',5],['ISBN ',6],['Created Date',7]]))  %>
+                   </td>
+                  </tr> 
+                  <tr>
+                    <td>No of search results per page</td>
+                    <td>
+                     <%= select_tag(:search_result, options_for_select([['10',10],['50',50],['100',100],['250',250],['500',500]]))  %>
+                    </td>
+                  </tr>  
+                  <tr>
+                    <td>
+                      <%= submit_tag "Submit" %>
+                      <%= button_tag "Reset", type: :reset %>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            <% end %>
+          </tr>
+      </table>
     </div>
-    <%= form_tag search_publishers_path, :method => 'get' do %>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <div height="40" colspan="4" style="border-bottom:#CCCCCC 1px solid">
-              <label><strong>Information</strong></label><br>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="disabledTextInput">Search By:<span class="red">*</span>:</label>
-            <%= radio_button_tag :JOC_DESCRIPTION, 'Book', :checked => true %>Book
-            <%= radio_button_tag :JOC_DESCRIPTION, 'Chapter' %>Chapter
-            <%= radio_button_tag :JOC_DESCRIPTION, 'Batch' %>Batch
-            <label>(Wildcard characters supported: *,+ )</label>
-          </div>
-        </div>
-      </div>
-      <div id="search_book">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="disabledTextInput" >Publisher Name:<span class="red">*</span>:</label>
-              <%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :publisher_name) %>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="disabledTextInput">ISBN <span class="red">*</span>:</label>
-              <%= text_field_tag :isbn, params[:isbn] %>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="disabledTextInput" >Title</label>
-              <%= text_field_tag :title, params[:title] %>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="disabledTextInput">Author</label>
-              First Name:
-              <%= text_field_tag :first_name, params[:first_name] %>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              Last Name:
-              <%= text_field_tag :last_name, params[:last_name] %>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="disabledTextInput">Status <span class="red">*</span>:</label>
-              <%= text_field_tag :status, params[:status] %>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="disabledTextInput">Upload Period</label>
-              from
-              <%= text_field_tag :from, params[:from] %>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              to
-              <%= text_field_tag :to, params[:to] %>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="disabledTextInput">Sort Order<span class="red">*</span>:</label>
-              <%= select_tag(:sort_order, options_for_select([['---','---'],['Title','title'],['Publisher Code','publisher_code'],['Author','author']]))  %>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="disabledTextInput">No. of search results per page<span class="red">*</span>:</label>
-              <%= select_tag(:sort_order, options_for_select([['10','10'],['50','50'],['100','100'],['250','250'],['500','500']]))  %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="search_chapter">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="disabledTextInput" >Publisher Name:<span class="red">*</span>:</label>
-              <%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :publisher_name) %>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="disabledTextInput">Book ISBN <span class="red">*</span>:</label>
-              <%= text_field_tag :isbn, params[:isbn] %>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="disabledTextInput" >Chapter Identifier</label>
-              <%= text_field_tag :identifier, params[:identifier] %>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="disabledTextInput" >Chapter Title</label>
-              <%= text_field_tag :title, params[:title] %>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="disabledTextInput">Author</label>
-              <label>First Name</label>
-              <%= text_field_tag :first_name, params[:first_name] %>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Last Name</label>
-              <%= text_field_tag :last_name, params[:last_name] %>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="disabledTextInput">Sort Order<span class="red">*</span>:</label>
-              <%= select_tag(:sort_order, options_for_select([['---','---'],['Title','title'],['Publisher Code','publisher_code'],['Chapter Identifier','chapter_identifier']]))  %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="search_batch">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Conversion Batch Name</label>
-              <%= text_field_tag :conversion_batch_name, params[:conversion_batch_name] %>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Batch Creation Date</label>
-              <label>from</label>
-              <%= text_field_tag :from, params[:from] %>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>to</label>
-              <%= text_field_tag :to, params[:to] %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row"  >
-        <div class="col-md-6">        
-          <%= submit_tag "Search" %>
-          <%= button_tag "Reset", type: :reset %>
-        </div>
-      </div>
-    <% end %>
   </body>
 </html>
 
-<script>   
-$(document).ready(function(){
-        // $('#book').hide();
-// if(id == "Book")) 
-$('#search_chapter').hide();
-$('#search_batch').hide();
-
-  $(':radio').change(function() {
-      var id = $(this).val();
-      
-      console.log(id);
-      if(id.search("Book")!=-1){
-        $('#search_book').show();
-      } else if(id.search("Chapter")!=-1){
-        $('#search_book').hide();
-        $('#search_chapter').show();
-        $('#search_batch').hide();
-      } else if(id.search("Batch")!=-1){
-        $('#search_book').hide();
-        $('#search_chapter').hide();
-        $('#search_batch').show();
-      } 
-      /*else{
-        $('#book_id').hide();
-        $('#subject_group').show();
-      }*/
-  });
-});
-</script>

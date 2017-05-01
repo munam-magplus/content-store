@@ -10,7 +10,11 @@ class InstitutionAdminUserController < ApplicationController
     # here, we filter the params and get status,role and first_name only.
     @res = InstitutionAdminUserAcc.filter(params.slice(:institution_name, 
                     :status,:role, :first_name, :user_name, :last_name, :email))
-    render 'result', locals: { :res => @res, :ins => @ins }
+    respond_to do |format|
+       format.js 
+       format.html
+       format.xlsx 
+    end
   end
 
   def show

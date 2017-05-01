@@ -8,7 +8,7 @@ class BooksController < ApplicationController
   def create
     @book = BooksPrimaryContentInfo.new(primary_content_info_params)
     if @book.save!
-      redirect_to books_contributor_new_path
+      redirect_to institution_admin_user_index_path
     else
       render 'new'
     end

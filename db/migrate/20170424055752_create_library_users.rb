@@ -6,9 +6,11 @@ class CreateLibraryUsers < ActiveRecord::Migration[5.0]
       t.string :email
       t.string :user_name
       t.string :password
-      t.string :confirm_password
+      t.string :password_confirmation
       t.string :country
       t.string :status
+      t.string :password_digest
+      t.integer :institution_account_id
 
       t.timestamps
     end

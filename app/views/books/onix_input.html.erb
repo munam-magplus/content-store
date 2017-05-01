@@ -1,5 +1,7 @@
 <html>
   <body class = "body1">
+    <%= render :partial => '/layouts/header'%>
+    <div class="div1">
       <table>
         <tr>
           <h1 class="page_head">Upload Onix File (in XML) </h1>
@@ -25,5 +27,7 @@
           </tbody>
         </table>
       <% end %>
+    </div>
+    <%= render :partial => '/layouts/footer'%>
   </body>
 </html>

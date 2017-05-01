@@ -54,9 +54,40 @@
                    <td height = "25" colspan="5" > 
                     <p class="sub_head">Content <span class="mandtory">*</span>
                     </p>
+                   </tr>
+                  <tr>
+                   <td height = "25" colspan="5">
+                     <input type="radio" name="content_type" value="book"/>Book
+                     <input type="radio" name="content_type" value="chapter"/>Chapter
+                     <input type="radio" name="content_type" value="journal"/>Journal
+                     <input type="radio" name="content_type" value="article"/>Article
+                   </td>
                   </tr>
-                  <%= render :partial => 'search_content'%>
-                  <tr id ="search_content">
+                  <tr>
+                   <td height = "25" colspan="5">
+                    <div id="book">
+                     ISBN<input type="text" name="title"/>
+                     Title<input type="text" name="title"/>
+                    </div>
+                    <div id="chapter">
+                     ISBN<input type="text" name="title"/>
+                     Chapter Title<input type="text" name="title"/>
+                     Content Code<input type="text" name="title"/>
+                    </div>
+                    <div id="journal">
+                     Journal Title<input type="text" name="title"/>
+                     Journal Code<input type="text" name="title"/>
+                    </div>
+                    <div id="article">
+                     Journal Code<input type="text" name="title"/>
+                     Title<input type="text" name="title"/>
+                     Content Code<input type="text" name="title"/>
+                     DOI<input type="text" name="title"/>
+                    </div>
+                   </td>
+                   <td height = "25" colspan="5">
+                    <%= button_to "search", search_content_licenses_path, :id => "open-contacts-dialog-btn",:class => "inbox-sf-add-btn tip", :method =>:get%>
+                   </td>
                   </tr>
                   <tr>
                    <td height = "10" colspan="2" > 
@@ -109,16 +140,16 @@
                   </tr>
                   <tr>
                     <td height="25" width="430">
-                      From <%= f.text_field :license_link_from_date, :id => 'from1' %>
+                      From <%= f.text_field :from, :id => 'from1' %>
                     </td>
                     <td height="25" width="430">
-                      To <%= f.text_field :license_link_to_date, :id => 'to1' %>
+                      To <%= f.text_field :to, :id => 'to1' %>
                     </td>
                   </tr>
                   <tr>
                     <td height = "25" colspan="5">
-                     <%= f.radio_button :license_is_linkable, 'Yes'%>Allow License to be linked    
-                     <%= f.radio_button :license_is_linkable, 'No' %>Prevent License from being linked 
+                     <%= f.radio_button :to, 'Yes'%>Allow License to be linked    
+                     <%= f.radio_button :to, 'No' %>Prevent License from being linked 
                    </td>
                   </tr>
                   <tr>
@@ -134,8 +165,8 @@
                     <td height = "25" colspan="5">
                      <%= f.radio_button :license_for_sale, 'Yes'%>For Sale    
                      <%= f.radio_button :license_for_sale, 'No' %>Not For Sale
-                     <%= f.check_box (:license_type) %>Free License
-                     <%= f.check_box(:license_shipping_is_free) %> Free Shipping
+                     <%= f.check_box(:to) %> Free License
+                     <%= f.check_box(:to) %> Free Shipping
                    </td>
                   </tr>
                   <tr>
@@ -143,7 +174,7 @@
                      <table border = "0", cellpadding = "0", cellspacing = "0">
                        <tr>
                          <td height = "25" colspan="5">
-                            Discount%<%= f.text_field :license_discount_percentage %>
+                            Discount%<%= f.text_field :license_type %>
                           </td>
                           <td height = "25" colspan="5">
                            <%= submit_tag "Save" %>
@@ -160,7 +191,6 @@
         </td>
       </tr>
     </table>
- 
   <% end %>
 <script>
  $('#chapter').hide();

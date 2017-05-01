@@ -1,87 +1,141 @@
+<!doctype html>        
 <html>
-  <body class = "body1">
-    <%= render :partial => '/layouts/header'%>
-    <div class="div1">
-      <h1>User Details</h1>
-      <table border="0" cellpadding="10" cellspacing="0">
-        <tbody>
-          <%= form_for(@inst_admin_user, url: institution_admin_user_path) do |f| %>
-            <tr>
-              <td>User Role*</td>
-              <td>
-              <%= @inst_admin_user.role %> <br>
-              </td>
-            </tr>
-            <tr>
-              <td height = "25"> Publisher</td>
-              <td align = "left">
-              <%= @inst_admin_user.publisher_id %>
-              </td>
-            </tr>
+<head>
+<title>Content Store :: Institutional Account </title>
+<!-- Latest compiled and minified CSS -->
+<%= render :partial => "layouts/header"%>
 
-            <tr>
-              <td height = "25"> Institution name* </td>
-              <td align = "left">
-                <%= @inst_admin_user.institution_name %>
-              </td>
-            </tr>
-            <tr>
-              <td height = "25"> First Name*</td>
-              <td align = "left">
-                <%= f.text_field :first_name %>
-              </td>
-              <td height = "25"> Last Name*</td>
-              <td align = "left">
-                <%= f.text_field :last_name %>
-              </td>
-            </tr>
-            <tr>
-              <td height = "25"> User Name</td>
-              <td align = "left">
-                <%= f.text_field :user_name, disabled: true %>
-              </td>
-              <td height = "25"> Status</td>
-              <td align = "left">
-                <%= f.select 'status',options_for_select(['active', 'inactive']) %>
-              </td>
-            </tr>
-            
-            <tr>
-              <td height = "25"> Email Address* </td>
-              <td align = "left">
-                <%= f.text_field :email %>
-              </td>
-              <td height = "25"> Position </td>
-              <td align = "left">
-                <%= f.text_field :position %>
-              </td>
-            </tr>
-            <tr>
-              
-              <td height = "25"> Phone </td>
-              <td align = "left">
-                <%= f.text_field :phone %>
-              </td>
-              <td height = "25"> Fax </td>
-              <td align = "left">
-                <%= f.text_field :fax %>
-              </td>
-            </tr>
-            <tr>
-              <td height = "25"> Comments </td>
-              <td align = "left">
-                <%= f.text_area :comments %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <%= f.submit "Save" %>        
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      </div>
-  </body>
+</head>
+
+<body>
+<!--Main Content Start -->
+  <section class="content"> 
+    <!-- Header -->
+    <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+           <li><a href="#">Home</a></li>
+         <li><a><%= link_to "Manage User Account",manage_user_account_index_path%></a></li>
+         <li><a class="active"><%= link_to "Institutional Account", institution_account_index_path%></a></li>
+      </ol>
+
+      <h2 class="H2-L1">User Details</h2>
+       <%= form_for(@inst_admin_user, url: institution_admin_user_path) do |f| %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="disabledTextInput" class="col-md-12 nopadding">User Role<sup class="mandatory">*</sup> </label>
+            <label class="radio-inline">
+             <%= @inst_admin_user.role %>
+            </label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Publisher</label>
+            <span class="col-sm-8">
+            <%= @inst_admin_user.publisher_id %>
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Institution Name</label>
+            <span class="col-sm-8">
+            <%= @inst_admin_user.institution_name %>
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group" >
+            <label for="bookISBN" class="col-sm-4 control-label">User Name:</label>
+            <span class="col-sm-8">
+            <%= f.text_field :user_name, disabled: true %>
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Status</label>
+            <span class="col-sm-8">
+              <%= f.select 'status',options_for_select(["active","inactive"]), {:prompt => "select status"}, {:class => "form-control"} %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Email</label>
+            <span class="col-sm-8">
+              <%= f.text_field :email, :id => "mail",:class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Position</label>
+            <span class="col-sm-8">
+              <%= f.text_field :position,:class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Phone</label>
+            <span class="col-sm-8">
+              <%= f.text_field :phone, :id => "phone",:class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Fax</label>
+            <span class="col-sm-8">
+              <%= f.text_field :fax,:class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Password</label>
+            <span class="col-sm-8">
+              <%= f.password_field :password,:class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Confirm Password</label>
+            <span class="col-sm-8">
+              <%= f.password_field :confirm_password ,:class => "form-control"%>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Comments</label>
+            <span class="col-sm-8">
+              <%= f.text_area :comments,:class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="clearfix m-b-30"></div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+
+            <%= button_tag fa_icon("plus-square-o", text: "Submit"), :class => "btn btn-sm", type: :submit %>
+
+            <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
+          </div>
+        </div>
+      <% end %>
+    </div>  
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+    <!-- Footer Ends --> 
+  </section>
+</body>
 </html>
 

@@ -21,6 +21,7 @@
          <li><a><%= link_to "Manage User Account",manage_user_account_index_path%></a></li>
          <li><a class="active"><%= link_to "Institutional Admin Account", institution_admin_user_index_path%></a></li>
       </ol>
+
       <h2 class="H2-L1">Institutional Account</h2>
       <%= form_tag search_op_institution_admin_user_index_path, :method => 'get', :remote => true, :class => "form-horizontal form-bg" do %>  
         <div class="col-md-6">
@@ -92,7 +93,7 @@
 
             <%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Create Institutional Accounts'.html_safe, new_institution_admin_user_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
 
-            <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit, :id => "submit" %>
+            <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit %>
 
             <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
           </div>
