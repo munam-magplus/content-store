@@ -1,107 +1,125 @@
-<body class = "body1">
-<%= form_for :publisher,url: publishers_create_path do |f| %>
-  <table border =  "0", cellpadding = "0", cellspacing = "0", width = "860", class = "center">
-    <tr>
-      <td class = "page_head"> Create Publisher</td>
-    </tr>
-    <tr>
-      <td>
-        <table border = "0", cellpadding = "6", cellspacing = "0", width = "100%", class = "center">
-          <tr>
-            <td>
-              <table border = "0", cellpadding = "10", cellspacing = "0">
-                <tbody>
-                  <tr>
-                    <td height = "25">
-                      Publisher Code
-                      <span class = "mandtory ">*</span>
-                    </td>
-                    <td height = "25">
-                      <%= f.text_field :publisher_code %>
-                    </td>
-                    <td>
-                      Publisher Name
-                      <span class = "mandtory ">*</span>
-                    </td>
-                    <td>
-                      <%= f.text_field :publisher_name %>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td height = "25"> Publisher Status</td>
-                    <td height = "25">
-                      <%= f.select :publisher_status, options_for_select([ "Live", "Staging"]), :class => 'genForm_dropBox' %>
-                    </td>
-                    <td>
-                      Publisher Type
-                      <span class = "mandtory ">*</span>
-                    </td>
-                    <td>
-                      <%= f.select :publisher_type, [['Digital', :digital], ['Academic', :academic], ['Discovery', :discovery]] %>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td height = "25"> Default End User Language</td>
-                    <td height = "25">
-                      <%= f.select(:end_user_language, [['Dansk', 'da'],
-                                  ['Polish', 'pl'],
-                                  ['Latvian', 'lv'],
-                                  ['English', 'en']],{ :prompt => "Please select"}) %>
-                    </td>
-                    <td> Default Manager Language </td>
-                    <td height = "25">
-                      <%= f.select(:manager_language,[['Dansk', 'da'],
-                                  ['Polish', 'pl'],
-                                  ['Latvian', 'lv'],
-                                  ['English', 'en']],{ :prompt => "Please select"}) %>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td height = "25">
-                      Contact First Name
-                      <span class = "mandtory ">*</span>
-                    </td>
-                    <td height = "25">
-                      <%= f.text_field :contact_first_name %>
-                    </td>
-                    <td>
-                      Contact Last Name
-                      <span class = "mandtory ">*</span>
-                    </td>
-                    <td>
-                      <%= f.text_field :contact_last_name%>
-                    </td>
-                  </tr> 
-                  <tr>
-                    <td height = "25">
-                      Contact Email
-                      <span class = "mandtory ">*</span>
-                    </td>
-                    <td height = "25">
-                      <%= f.text_field :contact_email%>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class = "GBoldText", align = "right", height = "35">
-                      <table border = "0", cellpadding = "0", cellspacing = "0">
-                        <tr>
-                          <td>
-                            <%= submit_tag "Save" %>
-                          </td>
-                          <td>
-                            <%= submit_tag "Reset", :type => "reset" %>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
+<!doctype html>
+<html>
 
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-  <% end %>
+<head>
+  <title>Content Store :: Create Publisher</title>
+  <!-- Latest compiled and minified CSS -->
+  <%= render :partial => "layouts/header"%>
+</head>
+
+<body>
+  <!-- Aside Start-->
+<!-- Aside Ends-->
+  <!--Main Content Start -->
+  <section class="content">
+   <!-- Header -->
+   <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+    <!-- Page Content Start -->
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+       <li><a href="#">Home</a></li>
+	   <li><a href="#">Publisher Setup</a></li>
+	   <li><a href="#" class="active">Create Publisher</a></li>
+       <div class="pull-right hidden">
+        <li><a href="#">Browse by Chapter</a></li>
+        <li><a href="#">Browse by Book </a></li>
+       </div>
+      </ol>
+      <%if @publisher.new_record?%>
+        <h2 class="H2-L1">Create Publisher</h2>
+      <%else%>
+        <h2 class="H2-L1">Publisher Details</h2>
+      <%end%>
+      <%= form_for :publisher, url: save_publishers_path do |f| %>
+      <div class="col-md-6"><div class="form-group">
+          <label for="Publisher" class="col-sm-5 control-label">Publisher Code<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+            <%= f.hidden_field :id, value: @publisher.id %>
+             <%= f.text_field :publisher_code , :class => "form-control" %>
+          </div>
+        </div></div>
+       <div class="col-md-6"><div class="form-group">
+          <label for="PublisherName" class="col-sm-5 control-label">Publisher Name<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+              <%= f.text_field :publisher_name , :class => "form-control" %>
+          </div>
+        </div></div>
+         <div class="col-md-6"><div class="form-group">
+          <label for="PublisherStatus" class="col-sm-5 control-label">Publisher Status</label>
+          <div class="col-sm-7">
+            <%= f.select 'publisher_status', options_for_select([ "Live", "Staging"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
+          </div>
+        </div></div>
+         <div class="col-md-6"><div class="form-group">
+          <label for="PublisherType" class="col-sm-5 control-label">Publisher Type<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+			     <%= f.select 'publisher_type', options_for_select([ "Digital", "Academic", "Discovery"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
+          </div>
+        </div></div>
+       <div class="col-md-6"><div class="form-group">
+          <label for="DefaultEndUserLanguage" class="col-sm-5 control-label">Default End User Language:</label>
+          <div class="col-sm-7">
+              <%= f.select 'end_user_language', options_for_select([
+                                      ['Dansk', 'dansk'],
+                                      ['Polish', 'polish'],
+                                      ['Latvian', 'latvin'],
+                                      ['English', 'english']]),{ :prompt => "Please select"},{:class =>"form-control"} %>
+                 
+            </select>
+          </div>
+        </div></div>
+		<div class="col-md-6"><div class="form-group">
+          <label for="DefaultManagerLanguage" class="col-sm-5 control-label">Default Manager Language<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+             <%= f.select 'manager_language', options_for_select([
+                                      ['Dansk', 'dansk'],
+                                      ['Polish', 'polish'],
+                                      ['Latvian', 'latvin'],
+                                      ['English', 'english']]),{ :prompt => "Please select"},{:class =>"form-control"} %>
+          </div>
+        </div></div>
+		<div class="col-md-6"><div class="form-group">
+          <label for="ContactFirstName" class="col-sm-5 control-label">Contact First Name<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+             <%= f.text_field :contact_first_name, :class => "form-control" %>
+          </div>
+        </div></div>
+		<div class="col-md-6"><div class="form-group">
+          <label for="ContactlastName" class="col-sm-5 control-label">Contact Last Name<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+                <%= f.text_field :contact_last_name, :class => "form-control" %>
+          </div>
+        </div></div>
+		<div class="col-md-6"><div class="form-group">
+          <label for="ContactEmail" class="col-sm-5 control-label">Contact Email</label>
+          <div class="col-sm-7">
+               <%= f.text_field :contact_email, :class => "form-control" %>
+          </div>
+        </div></div>
+        
+        
+      
+      
+      <div class="clearfix"></div>
+    
+      <div class="clearfix m-b-30"></div>
+     <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+        <%= button_tag fa_icon("search", text: "Save"), :class => "btn btn-sm", type: :submit %>
+        <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
+        <%end%>
+        <%unless @publisher.new_record?%>
+          <%= button_to("View Member Publisher ", linked_member_publisher_member_publishers_path, :class => "btn btn-sm",params:{ publisher_id: @publisher.id }, :method => :get) %>
+          <%= button_to "Create Member Publisher", new_member_publisher_path ,:class => "btn btn-sm", params:{ publisher_id: @publisher.id },:method => :get %>
+        <%end%>
+      </div>
+    </div>
+    
+    
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+      <!-- Footer Ends --> 
+  </section> 
+</body>
+</html>

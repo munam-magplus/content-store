@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Content Store :: Create Publisher</title>
+  <%= render :partial => "layouts/header"%>
+</head>
+
+<body>
+  <!-- Aside Start-->
+<!-- Aside Ends-->
+  <!--Main Content Start -->
+  <section class="content">
+   <!-- Header -->
+   <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+    <!-- Page Content Start -->
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+       <li><a href="#">Home</a></li>
+     <li><a href="#">Publisher Setup</a></li>
+     <li><a href="#" class="active">Create Member Publisher</a></li>
+       <div class="pull-right hidden">
+        <li><a href="#">Browse by Chapter</a></li>
+        <li><a href="#">Browse by Book </a></li>
+       </div>
+      </ol>
+      <%if @member_publisher.new_record?%>
+        <h2 class="H2-L1">Create Member Publisher</h2>
+      <%else%>
+        <h2 class="H2-L1">Member Publisher Details</h2>
+      <%end%>
+      <%= form_for :member_publisher, url: save_member_publishers_path do |f| %>
+        <%= f.hidden_field :id, value: @member_publisher.id %>
+        <%if @member_publisher.new_record?%>
+          <%= f.hidden_field :publisher_id, value: params[:publisher_id] %>
+        <%end%>
+      <div class="col-md-6"><div class="form-group">
+          <label for="Publisher" class="col-sm-5 control-label">Member Publisher Code<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+             <%= f.text_field :member_publisher_code , :class => "form-control" %>
+          </div>
+        </div></div>
+       <div class="col-md-6"><div class="form-group">
+          <label for="PublisherName" class="col-sm-5 control-label">Member Publisher Name<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+              <%= f.text_field :member_publisher_name , :class => "form-control" %>
+          </div>
+        </div></div>
+         <div class="col-md-6"><div class="form-group">
+          <label for="PublisherStatus" class="col-sm-5 control-label">Member Publisher Status</label>
+          <div class="col-sm-7">
+            <%= f.select 'member_publisher_status', options_for_select([ "Live", "Staging"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
+          </div>
+        </div></div>
+       <div class="col-md-6"><div class="form-group">
+          <label for="DefaultEndUserLanguage" class="col-sm-5 control-label">Publisher Borrow Period (in days)</label>
+          <div class="col-sm-7">
+               <%= f.text_field :publisher_borrow_period, :class => "form-control" %>
+                 
+            </select>
+          </div>
+        </div></div>
+    <div class="col-md-6"><div class="form-group">
+          <label for="ContactFirstName" class="col-sm-5 control-label">Contact First Name<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+             <%= f.text_field :contact_first_name, :class => "form-control" %>
+          </div>
+        </div></div>
+    <div class="col-md-6"><div class="form-group">
+           <label for="ContactlastName" class="col-sm-5 control-label">Contact Last Name<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+                <%= f.text_field :contact_last_name, :class => "form-control" %>
+          </div>
+        </div></div>
+    <div class="col-md-6"><div class="form-group">
+          <label for="ContactEmail" class="col-sm-5 control-label">Contact Email</label>
+          <div class="col-sm-7">
+               <%= f.text_field :contact_email, :class => "form-control" %>
+          </div>
+        </div></div>
+    <div class="col-md-6"><div class="form-group">
+          <label for="DefaultManagerLanguage" class="col-sm-5 control-label">Revenue share percentage*<sup class="mandatory">*</sup></label>
+          <div class="col-sm-7">
+             <%= f.text_field :revenue_share_percentage, :class => "form-control"%>
+          </div>
+        </div></div>
+    <div class="col-md-6"><div class="form-group">
+          <label for="DefaultManagerLanguage" class="col-sm-5 control-label">Member Publisher Logo</label>
+          <div class="col-sm-7">
+             <%= f.file_field :member_publisher_logo, :class => "form-control"%>
+          </div>
+        </div></div> 
+        <% unless @member_publisher.new_record? %>  
+        <div class="col-md-6"><div class="form-group">
+          <font color="red">Note: </font>
+          Changing this value would lead to repackaging charges for all the title of the Member Publisher
+        <%end%>
+      <div class="clearfix"></div>
+    
+      <div class="clearfix m-b-30"></div>
+     <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+        <%= button_tag fa_icon("search", text: "Save"), :class => "btn btn-sm", type: :submit %>
+        <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
+        <%end%>
+      </div>
+    </div>
+    
+    
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+      <!-- Footer Ends --> 
+  </section>
+  
+</body>
+
+</html>
