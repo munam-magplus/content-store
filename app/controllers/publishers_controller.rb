@@ -13,6 +13,7 @@ class PublishersController < ApplicationController
     @publisher = Publisher.find(params[:id])
     render 'new'
   end
+  
   def new
     @publisher = Publisher.new
   end

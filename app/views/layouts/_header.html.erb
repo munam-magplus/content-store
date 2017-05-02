@@ -40,17 +40,17 @@
               </li>
               <li>
                 <a class="submenu"><span class="fa fa-angle-right"></span>End User</a>
-                  <!-- <ul class="nav-multi__list nav-multi" style="display:none">
-                     <li><%= link_to "Create New Publisher", new_publisher_path%></li>
-                     <li><%= link_to "Search Publisher", publishers_path%></li>
-                  </ul> -->
+                  <ul class="nav-multi__list nav-multi" style="display:none">
+                    <li><%= link_to "Create End User", new_end_user_path%></li>
+                    <li><%= link_to "Search End User", end_user_index_path %></li>
+                  </ul>
               </li>
               <li>
                 <a class="submenu"><span class="fa fa-angle-right"></span>Admin User</a>
-                  <!-- <ul class="nav-multi__list nav-multi" style="display:none">
-                     <li><%= link_to "Create New Publisher", new_publisher_path%></li>
-                     <li><%= link_to "Search Publisher", publishers_path%></li>
-                  </ul> -->
+                  <ul class="nav-multi__list nav-multi" style="display:none">
+                    <li><%= link_to "Create Admin User", new_admin_user_path%></li>
+                    <li><%= link_to "Search Admin User", admin_user_index_path %></li>
+                  </ul>
               </li>
               <li>
                 <a class="submenu"><span class="fa fa-angle-right"></span>Institutional Account</a>
@@ -74,34 +74,36 @@
               <li>
                 <a class="submenu"><span class="fa fa-angle-right"></span>Books</a>
                   <ul class="nav-multi__list nav-multi" style="display:none">
-                    <li><a href="#">Create New Book </a></li>
-                     <li><a href="#">Search Book</a></li>
-                     <li><a href="#">Book Metadata Sheet</a></li>
-                     <li><a href="#">ONIX Input </a></li>
-                     <li><a href="#">ONIX Supplement Sheet  </a></li>
+                    <li><%= link_to "Create New Book", new_book_path%></li>
+                    <li><%= link_to "Search Book", search_books_path%></li>
+                    <li><%= link_to "Book Metadata Sheet", metadata_sheet_books_path%></li>
+                    <li><%= link_to "ONIX Input", onix_input_books_path%></li>
+                    <li><%= link_to "ONIX Supplement Sheet", onix_supp_sheet_books_path%></li>
                   </ul>
               </li>
               <li>
                 <a class="submenu"><span class="fa fa-angle-right"></span>Journals</a>
                   <ul class="nav-multi__list nav-multi" style="display:none">
-                    <li><%= link_to "Create New Journal",new_journal_path %></li>
-                     <li><a href="#">Search Journal</a></li>
-                     <li><a href="#">Article Metadata Sheet</a></li>
-                     <li>
-                      <%= link_to "Create Articles",new_article_path %>
-                     </li>
-                     <li><%= link_to "Search Articles",search_article_index_path %></li>
+                    <li><%= link_to "Create New Journal", new_journal_path %></li>
+                    <li><%= link_to "Search Journal", search_journals_path%></li>
+                    <li><%= link_to "Article Metadata Sheet", metadata_sheet_article_index_path%></li>
+                    <li><%= link_to "Create Articles", new_article_path %></li>
+                    <li><%= link_to "Search Articles", search_article_index_path %></li>
                   </ul>
               </li>
               <li>
-                <a href="#" > Uploaded Errors  </a>
+                <a class="submenu"><span class="fa fa-angle-right"></span>Subject Group</a>
+                  <ul class="nav-multi__list nav-multi" style="display:none">
+                    <li><%= link_to "Create Subject Group", new_subject_group_path %></li>
+                    <li><%= link_to "Search Subject Group", search_subject_groups_path%></li>
+                    <li><%= link_to "Upload Subject Group Metadata Sheet", metadata_sheet_subject_groups_path %></li>
+                  </ul>
               </li>
-              <li>
-                <%= link_to "Update Status",update_status_content_conversation_index_path %>
-              </li>
-              <li><%= link_to "Content History",content_history_content_conversation_index_path%></li>
-              <li><%= link_to "QA Check",qa_check_content_conversation_index_path%></li>
-              <li><%= link_to "Index Content",index_content_content_conversation_index_path%></li>
+              <li><%= link_to "Uploaded Errors", update_status_content_conversation_index_path %></li>
+              <li><%= link_to "Update Status", update_status_content_conversation_index_path %></li>
+              <li><%= link_to "Content History", content_history_content_conversation_index_path %></li>
+              <li><%= link_to "QA Check", qa_check_content_conversation_index_path %></li>
+              <li><%= link_to "Index Content", index_content_content_conversation_index_path %></li>
             </ul>
           </li>
           <li>
@@ -110,8 +112,8 @@
               <li>
                 <a class="submenu"><span class="fa fa-angle-right"></span>Subscriptions</a>
                   <ul class="nav-multi__list nav-multi" style="display:none">
-                    <li><a href="#">Create Subscription </a></li>
-                     <li><a href="#">Search Subscription</a></li>
+                    <li><%= link_to "Create Subscription",new_subscription_path %></li>
+                     <li><%= link_to "Search Subscription",subscriptions_path %></li>
                   </ul>
               </li>
               <li>

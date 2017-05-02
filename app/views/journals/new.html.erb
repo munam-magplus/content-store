@@ -1,53 +1,135 @@
 <html>
-	<body class = "body1">
-		<div class="div1">
-      <h1> Journal Setup </h1>
-      <table border="0" cellpadding="10" cellspacing="0">
-        <tbody>
-          <%= form_for @journal, url: journals_create_path do |f| %>
-            <tr>
-              <td>Journal Code*:</td>
-			        <td><%= f.text_field :journal_code, :class=> 'required'  %></td>
-              <td>Publisher*:</td>
-              <td><%= f.text_field :publisher %></td>
-            </tr> 
-            <tr> 
-              <td>Journal Title*:</td>
-              <td><%= f.text_field :journal_title %></td>
-              <td>Journal Sub Title:</td>
-              <td><%= f.text_field :journal_subtitle %></td>
-            </tr>
-            <tr>
-              <td>Journal Primary ISSN:</td>
-              <td><%= f.text_field :journal_primary_issn %></td>
-              <td>Journal Electronic ISSN:</td>
-              <td><%= f.text_field :journal_electronic_issn %></td>
-            </tr>
-            <tr>
-              <td>Journal Owner:</td>
-              <td><%= f.text_field :journal_owner %></td>
-              <td>Language*:</td>
-              <td><%= f.select(:language, options_for_select([['Select',0],['Polish',1],['English',2]]))  %></td>
-            </tr>
-            <tr>
-              <td>Journal Content Classification:</td>
-              <td><%= select_tag(:journal_content_classification, options_for_select([['Select',0],['Bestsellers',1],['Comming Soon',2],['New Releases',2]]))  %></td>
-              <td>Journal Distributor :</td>
-              <td><%= f.text_field :journal_distribution %></td>
-            </tr>
-            <tr>
-              <td>Price in:</td>
-              <td><%= f.text_field :price_in %></td>
-              <td>Journal Publication Date:</td>
-              <td><%= f.text_field :journal_publisher_date %></td>
-            </tr>
-            <tr>
-              <td>Stock Number:</td>
-              <td><%= f.text_field :stock_number %></td>
-            </tr>
-            <tr>
-              <td>Cover Image:</td>
-              <td colspan="2"><input type="file" name="coverImage" size="60" value="" id="coverImage" style="background-color: #E8E8E8">
+<title>Content Store :: Create Journal </title>
+<!-- Latest compiled and minified CSS -->
+<%= render :partial => "layouts/header"%>
+</head>
+
+<body>
+<!--Main Content Start -->
+  <section class="content"> 
+    <!-- Header -->
+    <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+           <li><a href="#">Home</a></li>
+         <li><a><%= link_to "Manage User Account",manage_user_account_index_path%></a></li>
+         <li><a class="active"><%= link_to "Create Journal", institution_account_index_path%></a></li>
+      </ol>
+
+      <h2 class="H2-L1">Create Journal</h2>
+      <%= form_for @journal, url: search_result_journals_path do |f| %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Journal Code<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= f.text_field :journal_code, :class => "form-control"   %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Select Publisher<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "Select publisher", :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Journal Title<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= f.text_field :journal_title, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Journal Sub Title</label>
+            <span class="col-sm-8">
+            <%= text_field_tag :journal_subtitle %>
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Journal Primary ISSN</label>
+            <span class="col-sm-8">
+            <%= text_field_tag :journal_primary_issn %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Journal Electronic ISSN</label>
+            <span class="col-sm-8">
+            <%= text_field_tag :journal_electronic_issn %>
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Journal Owner</label>
+            <span class="col-sm-8">
+            <%= text_field_tag :journal_owner %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Language<sup class="mandatory">*</sup> </label>
+            <span class="col-sm-8">
+            <%= f.select(:language, options_for_select([['Select',0],['Polish',1],['English',2]]))  %>
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Journal Content Classification</label>
+            <span class="col-sm-8">
+            <%= select_tag(:journal_content_classification, options_for_select([['Select',0],['Bestsellers',1],['Comming Soon',2],['New Releases',2]]))  %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Journal Distribution</label>
+            <div class="col-sm-8">
+              <%= f.text_field :journal_distribution, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Price In</label>
+            <span class="col-sm-8">
+             <%= f.text_field :price_in, :class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Journal Publisher Date</label>
+            <span class="col-sm-8">
+              <%= f.text_field :journal_publisher_date, :class => "form-control" %>
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Stock Number</label>
+            <span class="col-sm-8">
+              <%= f.text_field :stock_number, :class => "form-control" %>
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Cover Image</label>
+            <span class="col-sm-8">
+              <input type="file" name="coverImage" size="60" value="" id="coverImage" style="background-color: #E8E8E8">
+
               <br />
                   Please upload only a jpg image of (height,width)=(110,74)pixels.</td>
             </tr>
