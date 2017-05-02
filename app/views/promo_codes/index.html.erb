@@ -53,16 +53,15 @@
               <%= text_field_tag :id,"",:class => "form-control" %>
             </div>
           </div>
-        <div>
+        </div>
         <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
-            <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit, :id => "submit" %>
-            <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
-          </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+              <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit, :id => "submit" %>
+              <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
+            </div>
         </div>
       <% end %>
-    </div>
-    <div id="search_result"></div>  
+     <div id="search_result"></div>  
     <!-- Footer Start -->
     <%= render :partial => "layouts/footer" %>
     <!-- Footer Ends --> 

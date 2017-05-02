@@ -39,6 +39,7 @@
             <div class="col-sm-8">
               <%= f.select 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'),{ :prompt => "select publisher"},{:class => "form-control"} %>
             </div>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
@@ -47,6 +48,7 @@
             <div class="col-sm-8">
               <%= f.select 'campaign_id',options_from_collection_for_select(Campaign.all, 'id', 'campaign_name'),{ :prompt => "select campaign"},{:class => "form-control"} %>
             </div>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
@@ -55,6 +57,7 @@
             <span class="col-sm-8">
             <%= f.text_field :number_of_promo_code , :class => "form-control" %>
             </span> 
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
@@ -62,7 +65,8 @@
             <label for="bookISBN" class="col-sm-4 control-label">Applicable Discount%</label>
             <span class="col-sm-8">
             <%= f.text_field :applicable_discount , :class => "form-control" %>
-            </span> 
+            </span>
+            <div class="clearfix"></div> 
           </div>
         </div>
         <div class="col-md-6">
@@ -79,6 +83,7 @@
             <div class="col-sm-7">
               <%= f.text_field :to , :class => "form-control", :id => 'to' %>
             </div>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="clearfix m-b-30"></div>
