@@ -1,6 +1,5 @@
 class ContactUsController < ApplicationController
   before_action :set_contact_u, only: [:show, :edit, :update, :destroy]
-    before_action :authenticate_user!
 
   # GET /contact_us
   # GET /contact_us.json
@@ -15,7 +14,7 @@ class ContactUsController < ApplicationController
 
   # GET /contact_us/new
   def new
-    @contact_u = ContactU.new
+     @contact_u = ContactU.new
   end
 
   # GET /contact_us/1/edit
@@ -25,13 +24,13 @@ class ContactUsController < ApplicationController
   # POST /contact_us
   # POST /contact_us.json
   def create
-    @contact_u = ContactU.new(contact_u_params)
+     @contact_u = ContactU.new(contact_u_params)
 
     respond_to do |format|
       if @contact_u.save
-        format.html { redirect_to content_conversation_index_path, notice: 'Your request was successfully sent.We will contact you soon' }
+        format.html { redirect_to new_user_session_path, notice: 'Your request was successfully sent.We will contact you soon' }
         format.json { render :show, status: :created, location: @contact_u }
-        ContactUsMailer.contact_details(@contact_u, current_user).deliver_now
+        ContactUsMailer.contact_details(@contact_u).deliver_now
       else
         format.html { render :new }
         format.json { render json: @contact_u.errors, status: :unprocessable_entity }

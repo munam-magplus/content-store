@@ -22,154 +22,179 @@
          <li><a class="active"><%= link_to "Institutional Account", institution_account_index_path%></a></li>
       </ol>
 
-      <h2 class="H2-L1">Institutional Account</h2>
+      <h2 class="H2-L1">Create Institutional Account</h2>
+      <div class="col-md-12">
+          <h2 class="H2-L1">Details</h2> 
+        </div>
       <%= form_for(@institution, url: institution_account_index_path) do |f| %>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Select Publisher<sup class="mandatory">*</sup> </label>
+            <label for="taskName" class="col-sm-4 nopadding">Select Publisher<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
               <%= f.select 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'),{ :prompt => "select publisher"},{:class => "form-control"} %>
-             
             </div>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Lib./Dept. Name</label>
+            <label for="bookISBN" class="col-sm-4 nopadding">Lib./Dept. Name<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
             <%= f.text_field :libary_name , :class => "form-control" %>
             </span> 
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Institution Name:</label>
+            <label for="bookISBN" class="col-sm-4 nopadding">Institution Name:<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
             <%= f.text_field :institution_name , :class => "form-control" %>
             </span> 
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Status</label>
+            <label for="bookISBN" class="col-sm-4 nopadding">Status</label>
             <span class="col-sm-8">
            <%= f.select 'status',options_for_select(['active', 'inactive', 'pending']), {:prompt => "select status"}, {:class => "form-control"} %>
             </span>
+            <div class="clearfix"></div>
           </div>
+        </div>
+        <div class="col-md-12">
+          <h2 class="H2-L1">Branding Options</h2> 
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Logo</label>
+            <label for="bookISBN" class="col-sm-4 nopadding">Logo</label>
             <span class="col-sm-8">
               <%= f.file_field :logo , :class => "form-control"%>
             </span>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
-          <b> Branding Options</b>
           <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Display Name</label>
+            <label for="bookISBN" class="col-sm-4 nopadding">Display Name</label>
             <span class="col-sm-8">
               <%= f.text_field :display_name , :class => "form-control"%>
             </span>
+            <div class="clearfix"></div>
           </div>
+        </div>
+        <div class="col-md-12">
+          <h2 class="H2-L1">Billing Address</h2> 
         </div>
         <%= f.fields_for :institution_acc_billing_address do |builder| %> 
         <div class="col-md-6">
           <div class="form-group">
-             <label for="bookISBN" class="col-sm-4 control-label">Contact First Name</label>
+             <label for="bookISBN" class="col-sm-4 nopadding">Contact First Name<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
               <%= builder.text_field :first_name , :class => "form-control" %>
             </span>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-             <label for="bookISBN" class="col-sm-4 control-label">Contact Last Name</label>
+             <label for="bookISBN" class="col-sm-4 nopadding">Contact Last Name<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
               <%= builder.text_field :last_name , :class => "form-control" %>
             </span>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-             <label for="bookISBN" class="col-sm-4 control-label">Phone</label>
+             <label for="bookISBN" class="col-sm-4 nopadding">Phone<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
               <%= builder.text_field :phone , :class => "form-control" %>
             </span>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-             <label for="bookISBN" class="col-sm-4 control-label">Email</label>
+             <label for="bookISBN" class="col-sm-4 nopadding">Email<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
               <%= builder.text_field :email , :class => "form-control" %>
             </span>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-             <label for="bookISBN" class="col-sm-4 control-label">Address</label>
+             <label for="bookISBN" class="col-sm-4 nopadding">Address<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
               <%= builder.text_field :address , :class => "form-control" %>
             </span>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-             <label for="bookISBN" class="col-sm-4 control-label">Address Line 2</label>
+             <label for="bookISBN" class="col-sm-4 nopadding">Address Line 2</label>
             <span class="col-sm-8">
               <%= builder.text_field :address_line2 , :class => "form-control" %>
             </span>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-             <label for="bookISBN" class="col-sm-4 control-label">Address Line 3</label>
+             <label for="bookISBN" class="col-sm-4 nopadding">Address Line 3</label>
             <span class="col-sm-8">
               <%= builder.text_field :address_line3 , :class => "form-control" %>
             </span>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-             <label for="bookISBN" class="col-sm-4 control-label">City</label>
+             <label for="bookISBN" class="col-sm-4 nopadding">City/ Town<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
               <%= builder.text_field :city , :class => "form-control" %>
             </span>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-             <label for="bookISBN" class="col-sm-4 control-label">State / Province</label>
+             <label for="bookISBN" class="col-sm-4 nopadding">State / Province<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
               <%= builder.text_field :state , :class => "form-control" %>
             </span>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-             <label for="bookISBN" class="col-sm-4 control-label">Postal Code</label>
+             <label for="bookISBN" class="col-sm-4 nopadding">Postal Code<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
               <%= builder.text_field :postal_code , :class => "form-control" %>
             </span>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-             <label for="bookISBN" class="col-sm-4 control-label">Country</label>
+             <label for="bookISBN" class="col-sm-4 nopadding">Country<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
               <% country_name %>
               <%=  builder.select "country", options_from_collection_for_select(@country, "country_code", "country_name"),{prompt: "select country"}, {:class => "form-control"} %>
             </span>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-             <label for="bookISBN" class="col-sm-4 control-label">Comments</label>
+             <label for="bookISBN" class="col-sm-4 nopadding">Comments</label>
             <span class="col-sm-8">
               <%= builder.text_area :comments , :class => "form-control" %>
             </span>
+            <div class="clearfix"></div>
           </div>
         </div>
         <% end %>

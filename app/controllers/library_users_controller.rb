@@ -1,74 +1,58 @@
 class LibraryUsersController < ApplicationController
-  before_action :set_library_user, only: [:show, :edit, :update, :destroy]
-
-  # GET /library_users
-  # GET /library_users.json
   def index
-    @library_users = LibraryUser.all
+    @library_user = LibraryUser.all
   end
 
-  # GET /library_users/1
-  # GET /library_users/1.json
-  def show
-  end
-
-  # GET /library_users/new
   def new
     @library_user = LibraryUser.new
-  end
+    @@insti_id = params[:format]
+   end
 
-  # GET /library_users/1/edit
-  def edit
-  end
-
-  # POST /library_users
-  # POST /library_users.json
   def create
-    @library_user = LibraryUser.new(library_user_params)
-
-    respond_to do |format|
-      if @library_user.save
-        format.html { redirect_to @library_user, notice: 'Library user was successfully created.' }
-        format.json { render :show, status: :created, location: @library_user }
-      else
-        format.html { render :new }
-        format.json { render json: @library_user.errors, status: :unprocessable_entity }
-      end
+      @library_user = LibraryUser.new(library_user_params)
+    if @@insti_id.present?
+       @library_user.institution_account_id = @@insti_id
+    end
+    if @library_user.save!
+      redirect_to result_library_users_path 
+    else
+      render 'new'
     end
   end
 
-  # PATCH/PUT /library_users/1
-  # PATCH/PUT /library_users/1.json
+  def result
+    @ins_id = params[:id]
+    @v = @ins_id
+    @lib = LibraryUser.where(institution_account_id: @ins_id)
+  end
+
+  def edit
+     @library_user = LibraryUser.find_by_id(params[:id])
+  end
+
   def update
-    respond_to do |format|
-      if @library_user.update(library_user_params)
-        format.html { redirect_to @library_user, notice: 'Library user was successfully updated.' }
-        format.json { render :show, status: :ok, location: @library_user }
-      else
-        format.html { render :edit }
-        format.json { render json: @library_user.errors, status: :unprocessable_entity }
-      end
+    @library_user = LibraryUser.find_by_id(params[:id])
+    if @library_user.update(library_user_params)
+      redirect_to :back #to render to previous page
+    else
+      render 'new'
     end
   end
 
-  # DELETE /library_users/1
-  # DELETE /library_users/1.json
-  def destroy
-    @library_user.destroy
-    respond_to do |format|
-      format.html { redirect_to library_users_url, notice: 'Library user was successfully destroyed.' }
-      format.json { head :no_content }
+  def delete
+    @library_user = LibraryUser.find_by_id(params[:id])
+    if @library_user.destroy(library_user_params)
+      redirect_to institution_account_index_path
+    else
+      render 'new'
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_library_user
-      @library_user = LibraryUser.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def library_user_params
-      params.require(:library_user).permit(:first_name, :last_name, :email, :user_name, :password, :password_confirmation, :country, :status)
-    end
+  def library_user_params
+    params.require(:library_user).permit(:first_name, :last_name,:email,
+                   :user_name, :password, :password_confirmation, 
+                   :country, :status, :password_digest, :institution_account_id )
+  end
 end

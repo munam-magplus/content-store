@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>Content Store :: Institutional Account </title>
+<title>Content Store :: Institutional Admin User </title>
 <!-- Latest compiled and minified CSS -->
 <%= render :partial => "layouts/header"%>
 
@@ -19,10 +19,10 @@
       <ol class="breadcrumb">
            <li><a href="#">Home</a></li>
          <li><a><%= link_to "Manage User Account",manage_user_account_index_path%></a></li>
-         <li><a class="active"><%= link_to "Institutional Admin Account", institution_admin_user_index_path%></a></li>
+         <li><a class="active"><%= link_to "Institutional Admin User", institution_admin_user_index_path%></a></li>
       </ol>
 
-      <h2 class="H2-L1">Institutional Account</h2>
+      <h2 class="H2-L1">Institutional Admin User</h2>
       <%= form_tag search_op_institution_admin_user_index_path, :method => 'get', :remote => true, :class => "form-horizontal form-bg" do %>  
         <div class="col-md-6">
           <div class="form-group">
@@ -91,7 +91,7 @@
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
 
-            <%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Create Institutional Accounts'.html_safe, new_institution_admin_user_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
+            <%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Create Institutional Admin User'.html_safe, new_institution_admin_user_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
 
             <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit %>
 

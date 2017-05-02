@@ -10,7 +10,13 @@
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 brand-home-left-bg">
           <h1 class="brand-home-title">Content Store AdminTool </h1>
           <ul class="list-unstyled">
-            <li><a href="#">Contact Us</a></li>
+            <li>
+              <div class="form-group">
+              <p class="help-block text-left"><a href="#" data-toggle="modal" data-target=".contact_us">
+                Contact Us<br />
+              </a></p>
+              </div>
+            </li>
             <li><a href="#">Help Desk</a></li>
           </ul>
         </div>
@@ -47,7 +53,7 @@
     </div>
   </div>
 
-  <div class="modal fade forgot-pwd" tabindex="-1" role="dialog">
+<div class="modal fade forgot-pwd" tabindex="-1" role="dialog">
  <div class="modal-dialog" role="document">
   <div class="modal-content">
    <div class="modal-header">
@@ -65,6 +71,20 @@
         <%= button_tag  ("Submit"), :class => "btn btn-primary" ,type: :submit%>
       </div>
     <% end %>
+   </div>
+   <div class="modal-body">
+  </div><!-- /.modal-content -->
+ </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade contact_us" tabindex="-1" role="dialog">
+ <div class="modal-dialog" role="document">
+  <div class="modal-content">
+   <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">Contact Us</h4>
+    </div>
+    <%= render partial: "contact_us/form", locals: { :contact_u => ContactU.new } %>
    </div>
    <div class="modal-body">
   </div><!-- /.modal-content -->

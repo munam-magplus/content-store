@@ -75,7 +75,6 @@
 							</tr>
 						<% end %>
 					<%end%>
-					<%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Create New Admin User'.html_safe, new_institution_admin_user_path(@ins) , :class => "btn btn-sm pull-left" , method: "get"  %>
 				<% else %>
 					<tr>
 						<td >
@@ -85,6 +84,7 @@
 				<% end %>	
     		</tbody>
       </table>
+			<%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Create New Admin User'.html_safe, new_institution_admin_user_path(@ins) , :class => "btn btn-sm pull-left" , method: "get"  %>
     </div>
   </div>
   <div class="col-sm-12"> </div>
