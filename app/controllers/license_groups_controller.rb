@@ -2,8 +2,8 @@ class LicenseGroupsController < ApplicationController
     before_action :authenticate_user!
 
  def create
- 	@license_group = LicenseGroup.new(license_group_params)
- 	 @license_group.created_by = current_user.email
+  @license_group = LicenseGroup.new(license_group_params)
+   @license_group.created_by = current_user.email
     respond_to do |format|
       if @license_group.save!
         add_license_group_id_to_license
@@ -13,14 +13,6 @@ class LicenseGroupsController < ApplicationController
         render 'new'
       end
     end
- 	# if @license_group.save!
-  #     flash[:success] = "License Group Created!"
-  #     # if successfully stored then redirect to license group's setup path 
-  #     redirect_to license_group_path
-  #   else
-  #     # if not save in that case render new
-  #     render 'new'
-  #   end
  end
  def add_license_group_id_to_license
     ids = params[:license_group][:role_ids].first

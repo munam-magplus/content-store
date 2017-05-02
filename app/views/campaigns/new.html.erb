@@ -1,38 +1,60 @@
-<body class="body1"></body>
-<div class="div1">
-  <table border="0" cellpadding="0" cellspacing="0" width="860">
-    <tr>
-      <td class="page_head">Create Campaign</td>
-    </tr>
-    <tr>
-      <td align="left"></td>
-    </tr>
-    <tr>
-      <td></td>
-    </tr>
-    <tr>
-    	<%= form_for @campaign do |f|%>
-    		<td>
-          <table align="left" border="0" cellpadding="10" cellspacing="0">
-            <tbody>
-              <tr>
-                <td height="25" width="171">Publisher</td>
-                <td height="25" width="414">
-                  <%= f.collection_select(:publisher_id, Publisher.all, :id, :publisher_name) %>
-                </td>
-              </tr>
-              <tr>
-                <td height="25" width="149">Campaign Name</td>
-                <td height="25">
-                  <%= f.text_field :campaign_name%>
-                </td>
-              </tr>
-          		<tr>
-                <td height="25" width="149"></td>
-                <td height="25">
-                  <%= f.submit "Save" %>
-                </td>
-              </tr>
-    	<%end%>
-    </tr>
+<!doctype html>
+<html>
+
+<head>
+  <title>Content Store :: Create Campaign</title>
+  <!-- Latest compiled and minified CSS -->
+  <%= render :partial => "layouts/header"%>
+</head>
+
+<body>
+  <!-- Aside Start-->
+<!-- Aside Ends-->
+  <!--Main Content Start -->
+  <section class="content">
+   <!-- Header -->
+   <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+    <!-- Page Content Start -->
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+       <li><a href="#">Home</a></li>
+     <li><a href="#">Manage Access</a></li>
+     <li><a href="#" class="active">Create Publisher</a></li>
+       <div class="pull-right hidden">
+        <li><a href="#">Browse by Chapter</a></li>
+        <li><a href="#">Browse by Book </a></li>
+       </div>
+      </ol>
+      <%if @campaign.new_record?%>
+        <h2 class="H2-L1">Create Campaign</h2>
+      <%else%>
+        <h2 class="H2-L1">Publisher Details</h2>
+      <%end%>
+      <%= form_for @campaign, :class => "form-horizontal form-bg" do |f|%>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Select Publisher<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= f.select 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'),{ :prompt => "select publisher"},{:class => "form-control"} %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Campaign Name</label>
+            <span class="col-sm-8">
+            <%= f.text_field :campaign_name , :class => "form-control" %>
+            </span> 
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      <div class="clearfix m-b-30"></div>
+      <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+        <%= button_tag fa_icon("save", text: "Save"), :class => "btn btn-sm", type: :submit %>
+        <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
+      <%end%>
+      </div>
+    </div>
 </div>
