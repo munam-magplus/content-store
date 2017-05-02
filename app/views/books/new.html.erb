@@ -1,92 +1,611 @@
 <html>
-	<body class = "body1">
-		<%= render :partial => '/layouts/header'%>
-		<div class="div1">
-			<table>
-	<tr>
-		<td align="center" bgcolor="#FFFFFF"><strong>Primary Content Information</strong></td>
-		<td align="center">Contributors</td>
-		<td align="center">Content Pricing</td>
-		<td align="center">Content Access Rules</td>
-		<td align="center">SEO Configuration</td>
-	</tr>
-</table>
-<h1> Primary Content Information</h1>
-<table border="0" cellpadding="10" cellspacing="0">
-	<tbody>
-		<%= form_for(@book, url: {action: "create"}) do |f| %>
-			<tr>
-				<td>Content Code:</td>
-				<td><%= f.text_field :content_code %></td>
-				<td>Publisher*:</td>
-				<td><%= f.text_field :publisher %></td>
-			</tr> 
-			<tr> 
-				<td>Title:</td>
-				<td><%= f.text_field :title %></td>
-				<td>Sub Title</td>
-				<td><%= f.text_field :subject_title %></td>
-			</tr> 
-			<tr> 
-				<td>ISBN *</td>
-				<td><%= f.text_field :isbn %></td>
-				<td>Language *</td>
-				<td><%= f.text_field :language %></td>
-			</tr>
-			<tr>
-				<td>Content Classification </td>
-				<td><%= f.select :content_classification, options_for_select(['Select','Select'],['hello','hello']) %></td>
-				<td>File Name*</td>
-				<td><%= f.text_field :file_name %></td>
-			</tr> 
-			<tr> 
-				<td>Stock Number   </td>
-				<td><%= f.text_field :stock_number %></td>
-			</tr>
-			<tr>
-				<td>Publisher Site Sales Link     </td>
-				<td><%= f.text_field :publisher_site_sales_link %></td>
-			</tr>
-			<tr>
-				<td>Blurb</td>
-				<td><%= f.text_area :blurb, cols: "40", rows: "5" %></td>
-			</tr> 
-			<tr> 
-				<td>Publisher Date </td>
-				<td><%= f.text_field :publisher_date %>(dd)</td>
-				<td>Publisher Month </td>
-				<td><%= f.text_field :publisher_month %>(mm)</td>
-			</tr>
-			<tr> 
-				<td>Publisher Year</td>
-				<td><%= f.text_field :publisher_year %>(yyyy)</td>
-				<td>Conversion Required</td>
-				<td><%= f.select(:conversion_required, options_for_select([['Select',0],[' Yes',1],['No',2]]))  %></td>
-			</tr>
-			<tr> 
-				<td>Edition </td>
-				<td><%= f.text_field :edition %></td>
-				<td>Binding </td>
-				<td><%= f.select(:binding, options_for_select([['Select',0],[' Yes',1],['No',2]]))  %></td>
-			</tr>
-			<tr> 
-				<td>Volume </td>
-				<td><%= f.text_field :volume %></td>
-				<td>Dimensions </td>
-				<td><%= f.text_field :dimension %></td>
-			</tr>
-			<tr> 
-				<td>Series ISBN </td>
-				<td><%= f.text_field :series_isbn %></td>
-				<td>Series Title </td>
-				<td><%= f.text_field :series_title %></td>
-			</tr>
-			<td><%= f.submit "Save and Continue" %></td>
-			<td><%= f.button "Finish", type: :reset %></td>
-		<% end %>
-	</tbody>
-</table>
-		</div>
-		<%= render :partial => '/layouts/footer'%>
-	</body>
+<head>
+<title>Content Store :: Create New Book  </title>
+<%= render :partial => "layouts/header"%>
+<!-- Latest compiled and minified CSS -->
+</head>
+
+<body>
+<!-- Aside Start-->
+<!-- Aside Ends--> 
+<!--Main Content Start -->
+<section class="content"> 
+  <!-- Header -->
+    <%= render :partial => "layouts/top_header"%>
+  <!-- Header Ends --> 
+  <!-- Page Content Start --> 
+  <!-- ================== -->
+  <div class="wrapper container-fluid">
+  <ol class="breadcrumb">
+       <li><a href="#">Home</a></li>
+	   <li><a href="#">Content Conversion</a></li>
+	   <li><a href="#" class="active">Create New Book</a></li>
+        
+      </ol>
+    
+    <h2 class="H2-L1">Create New Book</h2>
+    
+	
+	 
+	<form class="form-horizontal  " role="form">
+                    <div id="accordion" class="checkout">
+					<div class="clearfix"></div>
+                        <div class="panel checkout-step">
+                            <div> <span class="checkout-step-number">1</span>
+                                <h4 class="checkout-step-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" > Primary Content Information</a></h4>
+                            </div>
+							
+                            <div id="collapseOne" class="collapse in">
+                                <div class="checkout-step-body">
+                                	<%= form_for(@book, url: {action: "create"}) do |f| %>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label class="control-label col-sm-4" for="email">Content Code</label>
+										  <div class="col-sm-8">
+											<%= f.text_field :content_code, :class => "form-control", :placeholder => "Content Code" %>
+										  </div>
+										</div>
+									</div>
+									
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label class="control-label col-sm-4" for="email">Publisher</label>
+										  <div class="col-sm-8">
+												<%= f.text_field :publisher, :class => "form-control", :placeholder => "Publisher" %>	  
+										  </div>
+										</div>
+									</div>
+									
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label class="control-label col-sm-4" for="email">Title<sup class="mandatory">*</sup></label>
+										  <div class="col-sm-8">
+											<%= f.text_field :title, :class => "form-control", :placeholder => "Title" %>
+										  </div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label class="control-label col-sm-4" for="email">Sub Title</label>
+										  <div class="col-sm-8">
+											<%= f.text_field :subject_title, :class => "form-control", :placeholder => "Sub Title" %>
+										  </div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label class="control-label col-sm-4" for="email">ISBN<sup class="mandatory">*</sup></label>
+										  <div class="col-sm-8">
+											<%= f.text_field :isbn, :class => "form-control", :placeholder => "ISBN" %>
+										  </div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label class="control-label col-sm-4" for="email">Language<sup class="mandatory">*</sup></label>
+										  <div class="col-sm-8">
+										  	<%= f.text_field :language, :class => "form-control" %>
+										  </div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label class="control-label col-sm-4" for="email">Content Classification </label>
+										  <div class="col-sm-8">
+												<%= f.select :content_classification, options_for_select([['Select','Select'],['Bestsellers','Bestsellers'],['Coming Soon','Coming Soon'],['Featured Books','Featured Books'],['New Releases','New Releases']]), :class => "form-control" %>
+										  </div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label class="control-label col-sm-4" for="email">File Name<sup class="mandatory">*</sup> </label>
+										  <div class="col-sm-8">
+										  	<%= f.text_field :file_name, :class => "form-control", :placeholder => "File Name" %>
+										  </div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label class="control-label col-sm-4" for="email">Stock Number<sup class="mandatory">*</sup> </label>
+										  <div class="col-sm-8">
+										  	<%= f.text_field :stock_number, :class => "form-control", :placeholder => "Stock Number" %>
+										  </div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label class="control-label col-sm-4" for="email">Publisher Site Sales Link  </label>
+										  <div class="col-sm-8">
+										  	<%= f.text_field :publisher_site_sales_link, :class => "form-control", :placeholder => "Publisher Site Sales Link" %>
+										  </div>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+										  <label class="control-label col-sm-2" for="email">Blurb</label>
+										  <div class="col-sm-10">
+											 <%= f.text_area :blurb, cols: "10", rows: "5", :class => "form-control" %>
+										  </div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label class="control-label col-sm-4" for="email">Publication Date  </label>
+										  <div class="col-sm-8">
+											 <div class="input-group date" id="datetimepicker1">
+												<%= f.text_field :publication_date, :class => "form-control", :placeholder => "DD/MM/YYYY" %>
+												 <span class="input-group-addon">
+													<span class="glyphicon glyphicon-calendar"></span>
+												</span>
+											  </div>
+										  </div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label class="control-label col-sm-4" for="email">Conversion Required </label>
+										  <div class="col-sm-8">
+												<%= f.select :conversion_required, options_for_select([['Select',0],[' Yes',1],['No',2]]), :class => "form-control"  %>
+										  </div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label class="control-label col-sm-4" for="email">Edition</label>
+										  <div class="col-sm-8">
+										  	<%= f.text_field :edition, :class => "form-control", :placeholder => "Edition" %>
+										  </div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label class="control-label col-sm-4" for="email">Binding</label>
+										  <div class="col-sm-8">
+												<%= f.select :binding, options_for_select([['Select',0],['Board book',1],[' Audio',2],[' Audio cassette',3],[' CD-Audio',4],[' DAT',5],[' Audio disc',6],['Audio tape',7],['MiniDisc',8],['CD-Extra',9],['DVD Audio',10],['Downloadable audio file',11],['Other audio format',12],['Book',13],['Hardback',14],['Paperback',15]]) %>
+										  </div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label class="control-label col-sm-4" for="email">Volume</label>
+										  <div class="col-sm-8">
+										  	<%= f.text_field :volume, :class => "form-control", :placeholder => "Volume" %>
+										  </div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label class="control-label col-sm-4" for="email">Dimensions</label>
+										  <div class="col-sm-8">
+										  	<%= f.text_field :dimension, :class => "form-control", :placeholder => "Dimensions" %>
+										  </div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label class="control-label col-sm-4" for="email">Series ISBN</label>
+										  <div class="col-sm-8">
+										  	<%= f.text_field :series_isbn, :class => "form-control", :placeholder => "Series ISBN" %>
+										  </div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label class="control-label col-sm-4" for="email">Series Title</label>
+										  <div class="col-sm-8">
+										  	<%= f.text_field :series_title, :class => "form-control", :placeholder => "Series Title" %>
+										  </div>
+										</div>
+									</div>
+							</div>
+                                   <!--Next  Button -->
+								<div class="form-group">
+									<div class="col-md-12">
+										<%= f.submit "Save and Continue", :class => "collapsed btn btn-sm" %>
+										<%= f.button "Finish", type: :reset, :class => "collapsed btn btn-sm" %>
+										<span class="pull-right">
+										<a class="btn btn-sm" href="#collapseTwo">Upload Content Files</a>
+										<a class="btnBlack btn btn-sm" href="#collapseTwo">Upload Content Files</a>
+										<% end %>
+										</span>
+									</div>
+								</div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+						<div class="clearfix"></div>
+                        <div class="panel checkout-step">
+                            <div role="tab" id="headingTwo"> <span class="checkout-step-number">2</span>
+                                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" > Contributor's Information </a> </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="checkout-step-body">
+                                    <div class="checout-address-step">
+                                        <div class="row">
+                                                <div class="table-responsive" style="overflow-x: inherit;">
+												  <table class="table table-bordered" id="participantTable">
+													<thead>
+														<%= form_for @book_contributor, url: {action: "create"} do |f| %>
+													  <tr  >
+														
+														<th>Role<sup class="mandatory">*</sup></th>
+														<th>Name<sup class="mandatory">*</sup></th>
+														<th>Description</th>
+														<th> 	Date of Birth</th>
+														<th>Date of Death </th>
+														<th>Professional Position</th>
+														 <th>Professional Affiliation</th>
+														 <th>Website</th>
+														 <th> 	Website Description</th>
+														 <th>Action</th>
+													  </tr>
+													</thead>
+													<tbody>
+													<tr class="participantRow">
+														  
+														  <td ><%= f.select(:role, options_for_select([['By (author)',0],['Screenplay by',1],['Libretto by',2],['Lyrics by',3],['By (composer)',4],['By (artist)',5],['By (photographer)',6],['From an idea by',7],['Designed by',8],['Photographs by',9],['Text by',10],['Preface by',11],['Prologue by',12],['Summary by',13],['Supplement by',14],['Afterword by',15],['Notes by',16],['Commentaries by',17],['Foreword by',18],['Introduction by',19],['Footnotes by',20],['Memoir by',21],['Software written by',22],['Contributions by',23],['Cover design or artwork by',24],['Other primary creator',25],['Edited by',26],['Revised by',27],['Retold by',28],['Abridged by',29],['Adapted by',30],['Translated by',31],['As told by',32],['Series edited by',33],['Editor-in-chief',34],['Guest editor',35],['Editorial board member',0],['Founded by',0],['Associate editor',0],['Consultant editor',0],['General editor',0],['Other adaptation by',0],['Compiled by',0],['Selected by',0],['Other compilation by',0],['Producer',0],['Director',0],['Conductor',0],['Other direction by',0],['Actor',0],['Narrator',0],['Vocal soloist',0],['Instrumental soloist',0],['Read by',0],['Performed by (orchestra, band, ensemble)',0],['Performed by',0],['Filmed/photographed by',0],['Other recording by',0],['Other',0]]))  %></select></td>
+														  <td ><%= f.text_field :name , :placeholder => "Enter Name", :class => "form-control" %> </td>
+														  <td ><%= f.text_area :description, :class => "form-control", :placeholder => "Description" %> </td>
+														  <td ><div class="input-group date datetimepicker3" >
+														  		<%= f.text_field :doi, :class => "form-control", :placeholder => "DD/MM/YYYY" %>
+																	 <span class="input-group-addon">
+																		<span class="glyphicon glyphicon-calendar"></span>
+																	</span>
+																  </div>                 
+														 </td>
+														  <td ><div class="input-group date " id="datetimepicker2">
+														  			<%= f.text_field :dod, :class => "form-control", :placeholder => "DD/MM/YYYY" %>
+																	 <span class="input-group-addon">
+																		<span class="glyphicon glyphicon-calendar"></span>
+																	</span>
+																  </div> </td>
+														  <td ><%= f.text_field :professional_position, :placeholder => "Position", :class => "form-control" %></td>
+														  <td ><%= f.text_field :professional_affiliation, :placeholder => "Affiliation", :class => "form-control" %></td>
+														  <td><%= f.text_field :website, :placeholder => "Website", :class => "form-control" %></td>
+														  <td><%= f.text_area :website_description, :class => "form-control", :placeholder => "Description" %></td>
+														  <td><a class=" remove" href="javascript:;" ><i class="fa fa-trash-o" ></i></a> &nbsp;<a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+														</tr>
+														 
+													  
+													</tbody>
+												  </table>
+												</div> 
+		                                   
+                                                
+                                                <!-- Button -->
+                                                    <div class="col-md-12 nopadding">
+                                                    	<%= f.submit "Save and Continue", :class => "collapsed btn btn-sm" %>
+																											<%= f.button "Finish", type: :reset, :class => "btn btn-sm" %>
+																											<% end %>
+                                                         <a class="collapsed btn btn-sm" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"> Save & Continue</a>
+														<span class="pull-right" id="addButtonRow">
+														 <button id="singlebutton" name="singlebutton" class="btn btn-sm">Finish</button>
+															<button class="btnBlack btn btn-sm add" type="button">Add</button>
+														</span>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                        </div>
+						<div class="clearfix"></div>
+                        <div class="panel checkout-step">
+                            <div role="tab" id="headingThree"> <span class="checkout-step-number">3</span>
+                            	<%= form_for :books_content_pricing do |f| %>
+                                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"  > Content Pricing Information </a> </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="checkout-step-body">
+								<h4>Content Format</h4>
+                                      <div class="table-responsive" style="overflow-x: inherit;">
+												  <table class="table table-bordered" id="participantTable">
+													<thead>
+													  <tr  >
+														
+														<th>Format </th>
+														<th>ISBN<sup class="mandatory">*</sup></th>
+														<th>DOI</th>
+														<th>Weight</th>
+														 <th>Action</th>
+													  </tr>
+													</thead>
+													<tbody>
+													<tr class="participantRow">
+														  <td><%= f.select(:format, options_for_select([['Select',0],[' AER',1],['PRC',2],['LIT',3],['ONL',4],['PDF',5],['EXT',6],['OEB',7],['WMA',8],['AAC',9],['HB',10],['PB',11],['EPUB',12],['CD',13],['CD',14],['EP',15]]))  %></td>
+														   <td><%= f.text_field :isbn, :class => "form-control", :placeholder => "ISBN" %></td>
+														   <td><%= f.text_field :doi, :class => "form-control", :placeholder => "DOI" %></td>
+														   <td><%= f.text_field :weight, :class => "form-control", :placeholder => "Weight" %></td>
+														  <td><a class=" remove" href="javascript:;" ><i class="fa fa-trash-o" ></i></a> &nbsp;<a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+														</tr>
+														 
+													  
+													</tbody>
+												  </table>
+												</div>
+												<div class="col-md-12 nopadding" >
+													<h4>Base Online Access</h4>
+													<div class="form-group">
+														<label class="col-md-2">Watermarked DRM</label>
+														<label class="radio-inline"><%= f.radio_button :watermarked_DRM, 'Yes', :checked => true %> Yes</label>
+														<label class="radio-inline"><%= f.radio_button :watermarked_DRM, 'No' %> No</label>
+													</div>
+													<div class="form-group">
+														<label class="col-md-2">External DRM</label>
+														<label class="radio-inline"><%= f.radio_button :external_DRM, 'Yes', :checked => true %> Yes</label>
+														<label class="radio-inline"><%= f.radio_button :external_DRM, 'No' %> No</label>
+													</div>
+												</div>
+												 <!-- Button -->
+                                                    <div class="col-md-12 nopadding" >
+                                                        <a class="collapsed btn btn-sm" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"> Save & Continue</a>
+														<span class="pull-right" id="addButtonRow">
+														 <button id="singlebutton" name="singlebutton" class="btn btn-sm">Finish</button>
+															<button class="btnBlack btn btn-sm add" type="button">Add</button>
+														</span>
+                                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                                      <% end %>
+						<div class="clearfix"></div>
+                        <div class="panel checkout-step">
+                            <div role="tab" id="headingFour"> <span class="checkout-step-number">4</span>
+                                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"  > Content Access Rules </a> </h4>
+                            </div>
+                            <%= form_for :books_seo_config do |f| %>
+                            <div id="collapseFour" class="panel-collapse collapse">
+                                <div class="checkout-step-body">
+								<div class="row">
+								<div class="col-md-6">
+										<div class="form-group">
+										<label class="col-md-4">Territorial List Type</label>
+										<div class="col-md-8">
+											<select class="form-control" name="territorialListType"><option>INC</option>
+                            <option>EXC</option></select>
+										</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										<label class="col-md-4">Territorial List</label>
+										<select id="demo" multiple="multiple">
+											<option value="Javascript">Javascript</option>
+											<option value="Python">Python</option>
+											<option value="LISP">LISP</option>
+											<option value="C++">C++</option>
+											<option value="jQuery">jQuery</option>
+											<option value="Ruby">Ruby</option>
+										</select>
+										</div>
+									</div>
+									<div class="col-md-12"><h4>ContentStore Viewing Rules</h4></div>
+									<div class="col-md-6">
+										<div class="form-group">
+										<label class="col-md-4">Landing Page</label>
+										<div class="col-md-8">
+											<input name="landingPage" placeholder="Landing Page"  class="form-control" type="text">
+										</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										<label class="col-md-4">Viewability Percentage</label>
+										<div class="col-md-8">
+											<input name="landingPage" placeholder="Viewability Percentage"  class="form-control" type="text">
+										</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										<label class="col-md-4">Exclude Pages from Display</label>
+										<div class="col-md-8">
+											<input name="landingPage" placeholder="Exclude Pages from Display"  class="form-control" type="text">
+										</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										<label class="col-md-4">Total Free Page Before Purchase</label>
+										<div class="col-md-8">
+											<input name="landingPage" placeholder="Total Free Page Before Purchase"  class="form-control" type="text">
+										</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										<label class="col-md-4">Total Free Page Before Login</label>
+										<div class="col-md-8">
+											<input name="landingPage" placeholder="Total Free Page Before Login"  class="form-control" type="text">
+										</div>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<h4>Book Search Index Rules</h4>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										<label class="col-md-4">Exclude Pages from External Index</label>
+										<div class="col-md-8">
+											<input name="landingPage" placeholder="Exclude Pages from External Index"  class="form-control" type="text">
+										</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										<label class="col-md-4">Percentage of Pages or Actual Pages Index-able</label>
+										<div class="col-md-8">
+											<input name="landingPage" placeholder="Percentage of Pages or Actual Pages Index-able"  class="form-control" type="text">
+										</div>
+										</div>
+									</div>
+									<div class="col-md-12"><h4>ContentStore Search Partner Rules</h4></div>
+									<div class="col-md-6">
+										<div class="form-group">
+										<label class="col-md-4">Percentage of Pages or Actual Browsable Pages</label>
+										<div class="col-md-8">
+											<input name="landingPage" placeholder="Percentage of Pages or Actual Browsable Pages"  class="form-control" type="text">
+										</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										<label class="col-md-4">Percentage of Pages or Actual Printable Pages</label>
+										<div class="col-md-8">
+											<input name="landingPage" placeholder="Percentage of Pages or Actual Printable Pages"  class="form-control" type="text">
+										</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										<label class="col-md-4">Percentage of Pages or Actual Allowed Copying Pages</label>
+										<div class="col-md-8">
+											<input name="landingPage" placeholder="Percentage of Pages or Actual Allowed Copying Pages"  class="form-control" type="text">
+										</div>
+										</div>
+									</div>
+									<div class="col-md-12"><h4>Related Content</h4></div>
+									<div class="col-md-6">
+										<div class="form-group">
+										<label class="col-md-4">Internal Related Content</label>
+										<div class="col-md-8">
+											<input name="landingPage" placeholder="Percentage of Pages or Actual Allowed Copying Pages"  class="form-control" type="text">
+										</div>
+										</div>
+									</div>
+								<div class="col-md-12">
+                                    <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefive"> Next </a>
+									</div>
+									</div>
+                                </div>
+                            </div>
+                        </div>
+                        <% end %>
+						<div class="clearfix"></div>
+                        <div class="panel checkout-step">
+                            <div role="tab" id="headingFour"> <span class="checkout-step-number">5</span>
+                                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefive"  > SEO Configuration </a> </h4>
+                            </div>
+                            <div id="collapsefive" class="panel-collapse collapse">
+                                <div class="checkout-step-body">
+                                    <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> Proccess to payment </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					</form>
+               
+		 <div class="clearfix"></div>
+    
+  </div>
+  <!-- Page Content Ends --> 
+  <!-- ================== --> 
+  
+  <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+  <!-- Footer Ends --> 
+</section>
+
+<!--for popup page all popup comes from this page-->
+<!-- Main Content Ends --> 
+<!-- Latest compiled and minified JavaScript --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+
+<script src="assets/scripts/jquery.slimscroll.min.js"></script> 
+<script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script> 
+<script src="https://www.gstatic.com/charts/loader.js"></script> 
+<script src="assets/scripts/js/pace.min.js"></script> 
+<script src="assets/scripts/modernizr.min.js"></script> 
+<script src="assets/scripts/jquery.app.js"></script> 
+<script src="jqgrid/js/i18n/grid.locale-en.js"></script> 
+<script src="jqgrid/js/jquery.jqGrid.min.js"></script> 
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+<script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+<!--Chart code start--> 
+<script src="https://code.highcharts.com/highcharts.js"></script> 
+<script src="https://code.highcharts.com/modules/exporting.js"></script>  
+<!--Chart code end-->
+<script type="text/javascript">
+	$(document).ready(function() {
+	$('#demo').multiselect({
+			numberDisplayed: 1,
+			buttonClass: 'multiselectBtn form-control col-md-12',
+			inheritClass: false,
+			buttonWidth: 'auto',
+			buttonContainer: '<div class="col-sm-8" />',
+		
+	});
+	});
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+				$('#datetimepicker2').datetimepicker();
+				$('.datetimepicker3').datetimepicker({ format: 'DD/MM/YYYY'  });
+		   });
+			
+			/* Variables */
+var p = $("#participants").val();
+var row = $(".participantRow");
+
+/* Functions */
+function getP(){
+  p = $("#participants").val();
+}
+
+function addRow() {
+  row.clone(true, true).appendTo("#participantTable");
+}
+
+function removeRow(button) {
+  button.closest("tr").remove();
+}
+/* Doc ready */
+$(".add").on('click', function () {
+  getP();
+  if($("#participantTable tr").length < 17) {
+    addRow();
+    var i = Number(p)+1;
+    $("#participants").val(i);
+  }
+  $(this).closest("tr").appendTo("#participantTable");
+  if ($("#participantTable tr").length === 3) {
+    $(".remove").hide();
+  } else {
+    $(".remove").show();
+  }
+});
+$(".remove").on('click', function () {
+  getP();
+  if($("#participantTable tr").length === 3) {
+    //alert("Can't remove row.");
+    $(".remove").hide();
+  } else if($("#participantTable tr").length - 1 ==3) {
+    $(".remove").hide();
+    removeRow($(this));
+    var i = Number(p)-1;
+    $("#participants").val(i);
+  } else {
+    removeRow($(this));
+    var i = Number(p)-1;
+    $("#participants").val(i);
+  }
+});
+$("#participants").change(function () {
+  var i = 0;
+  p = $("#participants").val();
+  var rowCount = $("#participantTable tr").length - 2;
+  if(p > rowCount) {
+    for(i=rowCount; i<p; i+=1){
+      addRow();
+    }
+    $("#participantTable #addButtonRow").appendTo("#participantTable");
+  } else if(p < rowCount) {
+  }
+});
+        </script>
+</body>
 </html>

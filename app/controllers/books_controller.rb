@@ -3,6 +3,7 @@ class BooksController < ApplicationController
 
   def new
     @book = BooksPrimaryContentInfo.new
+    @book_contributor = BooksContributor.new
   end
 
   def create

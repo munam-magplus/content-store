@@ -1,53 +1,108 @@
+<!doctype html>
 <html>
-  <body class = "body1">
-    <%= render :partial => '/layouts/header'%>
-    <div class="div1">
+<title>Content Store :: Create End Users </title>
+<!-- Latest compiled and minified CSS -->
+<%= render :partial => "layouts/header"%>
+</head>
 
-      <h1>Create End Users</h1>
-      <table border="0" cellpadding="10" cellspacing="0">
-        <tbody>
-          <%= form_for(:end_user, url: end_user_create_path) do |f| %>
-            <tr>
-              <td>Publisher*</td>
-              <td><%= f.collection_select :publisher, Publisher.all, :id, :publisher_name %></td>
-            </tr> 
-            <tr> 
-              <td>Email*</td>
-              <td><%= f.text_field :email %></td>
-               <td>Confirm Email*</td>
-              <td><%= f.text_field :confirm_email %></td>
-            </tr>
-            <tr> 
-              <td>Password*</td>
-              <td><%= f.text_field :password %></td>
-               <td>Confirm Password*</td>
-              <td><%= f.text_field :confirm_password %></td>
-            </tr>       
-            <tr> 
-              <td>First Name* </td>
-              <td><%= f.text_field :first_name %></td>
-              <td>Last Name* </td>
-              <td><%= f.text_field :last_name %></td>
-            </tr>
-            <tr>
-              <td>Country</td>
-              <td><%= f.text_field :country %></td>
-            </tr> 
-            <tr> 
-              <td></td>
-            <tr>
-              <td></td>
-              <td><%= f.submit "Submit" %>
-                <%= f.button "Reset", type: :reset %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-      
-    </div>
-  </body>
+<body>
+<!--Main Content Start -->
+  <section class="content"> 
+    <!-- Header -->
+    <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+           <li><a href="#">Home</a></li>
+         <li><a><%= link_to "Manage User Account",manage_user_account_index_path%></a></li>
+         <li><a class="active"><%= link_to "Create End User", institution_account_index_path%></a></li>
+      </ol>
+
+      <h2 class="H2-L1">Create End Users</h2>
+      <%= form_for(:end_user, url: end_user_index_path) do |f| %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Publisher<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= f.collection_select :publisher, Publisher.all, :id, :publisher_name, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Email<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= f.text_field :email, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Confirm Email<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= f.text_field :confirm_email, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Password</label>
+            <span class="col-sm-8">
+            <%= f.text_field :password, :class => "form-control" %>
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Confirm Password</label>
+            <span class="col-sm-8">
+            <%= f.text_field :confirm_password, :class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">First Name</label>
+            <span class="col-sm-8">
+            <%= f.text_field :first_name, :class => "form-control" %>
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Last Name</label>
+            <span class="col-sm-8">
+            <%= f.text_field :last_name, :class => "form-control" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Country<sup class="mandatory">*</sup> </label>
+            <span class="col-sm-8">
+            <%= f.text_field :country, :class => "form-control" %>
+            </span> 
+          </div>
+        </div>
+        
+
+        <div class="clearfix"></div>
+        <div class="clearfix m-b-30"></div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+
+            <%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Search End User'.html_safe, end_user_index_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
+            <%= f.submit "Submit", :class => "btn btn-sm" %>
+            <%= f.button "Reset", :class => "btn btn-sm", type: :reset %>
+          </div>
+        </div>
+      <% end %>
+    </div>  
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+    <!-- Footer Ends --> 
+  </section>
+</body>
 </html>
-<tr>
-  <td align="center" class="footer_white">
-  Copyright © 2006-2009 MPS Technologies Ltd</td>
-</tr>
