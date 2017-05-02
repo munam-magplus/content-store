@@ -32,7 +32,7 @@
       <%else%>
         <h2 class="H2-L1">Publisher Details</h2>
       <%end%>
-      <%= form_for :publisher, url: save_publishers_path,:class => "form-horizontal form-bg" do |f| %>
+      <%= form_for :publisher, url: save_publishers_path do |f| %>
       <div class="col-md-6"><div class="form-group">
           <label for="Publisher" class="col-sm-5 control-label">Publisher Code<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
@@ -97,13 +97,16 @@
           <div class="col-sm-7">
                <%= f.text_field :contact_email, :class => "form-control" %>
           </div>
-        </div></div> 
+        </div></div>
+        
+        
+      
       
       <div class="clearfix"></div>
     
       <div class="clearfix m-b-30"></div>
      <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
-        <%= button_tag fa_icon("save", text: "Save"), :class => "btn btn-sm", type: :submit %>
+        <%= button_tag fa_icon("search", text: "Save"), :class => "btn btn-sm", type: :submit %>
         <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
         <%end%>
         <%unless @publisher.new_record?%>

@@ -13,12 +13,19 @@ class LicenseGroupsController < ApplicationController
         render 'new'
       end
     end
+ 	# if @license_group.save!
+  #     flash[:success] = "License Group Created!"
+  #     # if successfully stored then redirect to license group's setup path 
+  #     redirect_to license_group_path
+  #   else
+  #     # if not save in that case render new
+  #     render 'new'
+  #   end
  end
  def add_license_group_id_to_license
     ids = params[:license_group][:role_ids].first
     ids = ids.split(',').map(&:squish)
     ids.each do |id|
-      # for each Content ID
      license = License.find_by_license_id(id)
      license.license_group_id = @license_group.id
      license.save!

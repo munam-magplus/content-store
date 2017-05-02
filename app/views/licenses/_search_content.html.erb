@@ -1,43 +1,11 @@
-<div class="col-md-6"><div class="form-group">
-  <label for="License" class="col-sm-5 control-label">Publisher<sup class="mandatory">*</sup></label>
-  <div class="col-sm-7">
-    <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'),:prompt => "select publisher",:class => "form-control", :id=> "publisher_id"%>
-  </div>
-</div></div>
-<div class="col-md-6">
-  <div class="form-group">
-    <div class="col-sm-7">
-      <input type="radio" name="content_type" value="book" class ="form-control" />Book
-      <input type="radio" name="content_type" value="book" class ="form-control" />Chapter
-      <input type="radio" name="content_type" value="book" class ="form-control" />Journal
-      <input type="radio" name="content_type" value="book" class ="form-control" />Article
-    </div>
-  </div>
-</div>
-<div class="col-md-6">
-  <div class="form-group">
-    <label for="License" class="col-sm-5 control-label">ISBN<sup class="mandatory">*</sup></label>
-    <div class="col-sm-7">
-      <input type="text" name="title" class ="form-control" id ="isbn"/>
-    </div>
-  </div>
-</div>
-<div class="col-md-6">
-  <div class="form-group">
-    <label for="License" class="col-sm-5 control-label">title<sup class="mandatory">*</sup></label>
-    <div class="col-sm-7">
-      <input type="text" name="title" class ="form-control" id ="title"/>
-    </div>
-  </div>
-</div>
-<!-- <tr>
+<tr>
  <td height = "25" colspan="5">
    <input type="radio" name="content_type" value="book"/>Book
    <input type="radio" name="content_type" value="chapter"/>Chapter
    <input type="radio" name="content_type" value="journal"/>Journal
    <input type="radio" name="content_type" value="article"/>Article
  </td>
-</tr> -->
+</tr>
 <tr>
  <td height = "25" colspan="5">
   <div id="book">
