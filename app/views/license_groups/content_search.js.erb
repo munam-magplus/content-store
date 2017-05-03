@@ -1,1 +1,1 @@
-$("#search_content").append("<tr><%= escape_javascript(render(:partial => "content", :object => @license_content))%></tr>");
+$("#search_content").html("<tr><%= escape_javascript(render(:partial => "content", :object => @license_content))%></tr>");

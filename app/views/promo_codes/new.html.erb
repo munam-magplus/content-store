@@ -1,78 +1,101 @@
-<body class="body1"></body>
-<div class="div1">
-  <table border="0" cellpadding="0" cellspacing="0" width="860">
-    <tr>
-      <td class="page_head">Create Promo Codes</td>
-    </tr>
-    <tr>
-      <td align="left"></td>
-    </tr>
-    <tr>
-      <td></td>
-    </tr>
-    <tr>
-      <%= form_for @promo_codes do |f|%>
-        <td>
-          <table align="left" border="0" cellpadding="10" cellspacing="0">
-            <tbody>
-              <tr>
-                <td height="25" width="171">
-                  Publisher
-                  <span class = "mandtory ">*</span>
-                </td>
-                <td height="25" width="414">
-                  <%= f.collection_select(:publisher_id, Publisher.all, :id, :publisher_name) %>
-                </td>
-              </tr>
-              <tr>
-                <td height="25" width="149">
-                  Campaign Name
-                  <span class = "mandtory ">*</span>
-                </td>
-                <td height="25">
-                 <%= f.collection_select(:campaign_id, Campaign.all, :id, :campaign_name) %>
-                </td>
-              </tr>
-              <tr>
-                <td height="25">
-                  Number Of Promo Codes
-                  <span class = "mandtory ">*</span>
-                </td>
-                <td height="25" width="436">
-                  <%= f.text_field :number_of_promo_code %>
-                </td>
-              </tr>
-              <tr>
-                <td height="25">
-                  Applicable Discount%
-                  <span class = "mandtory ">*</span>
-                </td>
-                <td height="25" width="436">
-                  <%= f.text_field :applicable_discount %>
-                </td>
-              </tr>
-              <tr>
-                <td height="25">
-                  Promo Code Date Range
-                  <span class = "mandtory ">*</span>
-                </td>
-                <td height="25" width="430">
-                  From <%= f.text_field :from, :id => 'from' %>
-                </td>
-                <td height="25" width="430">
-                  To <%= f.text_field :to, :id => 'to' %>
-                </td>
-              </tr>
-              <tr>
-                <td align="right" class="GBoldText"></td>
-                <td align="left" class="GBoldText">
-                  <%= f.submit "Submit" %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
+<!doctype html>
+<html>
+
+<head>
+  <title>Content Store :: Create PromoCode</title>
+  <!-- Latest compiled and minified CSS -->
+  <%= render :partial => "layouts/header"%>
+</head>
+
+<body>
+  <!-- Aside Start-->
+<!-- Aside Ends-->
+  <!--Main Content Start -->
+  <section class="content">
+   <!-- Header -->
+   <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+    <!-- Page Content Start -->
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+       <li><a href="#">Home</a></li>
+     <li><a><%= link_to "Manage Access",manage_access_index_path%></li>
+      <li><%= link_to "Create Publisher",promo_codes_path%></li>
+       <div class="pull-right hidden">
+        <li><a href="#">Browse by Chapter</a></li>
+        <li><a href="#">Browse by Book </a></li>
+       </div>
+      </ol>
+      <%if @promo_codes.new_record?%>
+        <h2 class="H2-L1">Create PromoCode</h2>
+      <%else%>
+        <h2 class="H2-L1">Create PromoCode Details</h2>
       <%end%>
-    </tr>
-  </table>
-</div>
+      <%= form_for @promo_codes, :class => "form-horizontal form-bg" do |f|%>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Select Publisher<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= f.select 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'),{ :prompt => "select publisher"},{:class => "form-control"} %>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Select Campaign<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= f.select 'campaign_id',options_from_collection_for_select(Campaign.all, 'id', 'campaign_name'),{ :prompt => "select campaign"},{:class => "form-control"} %>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Number Of Promo Codes</label>
+            <span class="col-sm-8">
+            <%= f.text_field :number_of_promo_code , :class => "form-control" %>
+            </span> 
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Applicable Discount%</label>
+            <span class="col-sm-8">
+            <%= f.text_field :applicable_discount , :class => "form-control" %>
+            </span>
+            <div class="clearfix"></div> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="License" class="col-sm-5 control-label">Valid From<sup class="mandatory">*</sup></label>
+            <div class="col-sm-7">
+              <%= f.text_field :from , :class => "form-control", :id => 'from' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="License" class="col-sm-5 control-label">Valid To</label>
+            <div class="col-sm-7">
+              <%= f.text_field :to , :class => "form-control", :id => 'to' %>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="clearfix m-b-30"></div>
+        <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+          <%= button_tag fa_icon("save", text: "Save"), :class => "btn btn-sm", type: :submit %>
+          <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
+        </div>
+      <%end%>
+    </div>
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+      <!-- Footer Ends --> 
+  </section> 
+</body>
+</html>

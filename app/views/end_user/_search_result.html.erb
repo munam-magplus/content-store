@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="mt10 table-demo">Search Result 
+      <span class="pull-right">
+        <div class="dropdown">
+          <ul class="nav">
+            <li class="drop"><i style="cursor: pointer;width: 12px;" class="fa fa-ellipsis-v" aria-hidden="true"></i>
+              <ul class="dropdown-menu-right">
+                <li><a href="#"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</a></li>
+                <li><a href="#"><i class="fa fa-file-o" aria-hidden="true"></i> CSV</a></li>
+                <li><a href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </span>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr style="font-size:13px">
+            <th>Email</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Country</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @end_user.present? %>
+            <% @end_user.each do |f| %>
+              <tr>
+                <td><%= f.email %></td>
+                <td ><%= f.first_name %></td>
+                <td ><%= f.last_name %></td>
+                <td ><%= f.country %></td>
+                <td><%= image_tag("reset_password.gif")%>
+                    <%= image_tag("link_license.gif")%>
+                    <%= image_tag("view_linked_licenses.gif")%><br>
+                    <%= image_tag("delete_icon.gif")%>
+                </td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td bgcolor="#FBFBFB">
+                <p> Record Not Found </p> 
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-sm-12"> </div>
+</div>

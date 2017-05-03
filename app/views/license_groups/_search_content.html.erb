@@ -1,8 +1,6 @@
-<tr>
- <td height = "25" colspan="5" > 
-  <p class="sub_head">Licenses <span class="mandtory">*</span>
-  </p>
- </tr>
+<div class="col-md-12">
+  <h3 class="H2-L1"> Licenses</h3>   
+</div>
 <div class="col-md-6"><div class="form-group">
   <label for="License" class="col-sm-5 control-label">Publisher<sup class="mandatory">*</sup></label>
   <div class="col-sm-7">
@@ -15,12 +13,14 @@
   <div class="col-sm-7">
     <input id="lic_id" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
 </div></div>
 <div class="col-md-6"><div class="form-group">
   <label for="License" class="col-sm-5 control-label">License Name</label>
   <div class="col-sm-7">
     <input id="lic_name" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
 </div></div>
 <div class="col-md-6"><div class="form-group">
   <label for="License" class="col-sm-5 control-label">License Type</label>
@@ -32,18 +32,20 @@
         <option value="fixed_date_range">Fixed Date Range</option>
     </select>
   </div>
+  <div class="clearfix"></div>
 </div></div>
 <div class="col-md-6"><div class="form-group">
   <label for="License" class="col-sm-5 control-label">Content Identifier</label>
   <div class="col-sm-7">
     <input id="isbn" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
 </div></div>
-<tr>
-  <td>&nbsp;</td>
-  <td><input type="button" name="button2" id="button" value="Search" onclick="getSearchDetails();" class="submit_btn" /></td>
-</tr>
-
+<div class="clearfix m-b-30"></div>
+  <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+    <input type="button" name="button2" id="button" value="Search" onclick="getSearchDetails();" class="submit_btn" />
+  </div>
+</div>
 <script type="text/javascript">
   function getSearchDetails(){
     var publisher_id = $('#publisher_id option:selected').val();

@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Content Store :: Create Publisher</title>
+  <!-- Latest compiled and minified CSS -->
+  <%= render :partial => "layouts/header"%>
+</head>
+
+<body >
+  <section class="content"> 
+    <!-- Header -->
+   <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+         <li><a href="#">Home</a></li>
+       <li><a><%= link_to "Publisher Setup"%></li>
+       <li><%= link_to "Publisher Details"%></li>
+         <div class="pull-right hidden">
+          <li><a href="#">Browse by Chapter</a></li>
+          <li><a href="#">Browse by Book </a></li>
+         </div>
+        </ol>
+      <h2 class="H2-L1"> Linked Member Publisher </h2>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+          <tr style="font-size:13px">
+            <th class="tableheader">Member Publisher Code</td>
+            <th class="tableheader">Member Publisher Name</td>
+         </tr>
+          </thead>
+          <tbody>
+          <% if @member_publishers.present? %>
+            <% @member_publishers.each do |member_publisher| %>
+              <tr>
+                <td bgcolor="#FBFBFB">
+                  <%= link_to member_publisher.member_publisher_code,edit_member_publisher_path(member_publisher) %>
+                </td>
+                <td bgcolor="#FBFBFB">
+                  <%= member_publisher.member_publisher_name %>
+                </td>
+              </tr>
+            <%end%>
+          <% else %>
+            <tr>
+              <td bgcolor="#FBFBFB">
+                <p> No Member Publishers Found </p> 
+              </td>
+            </tr>
+          <% end %>
+      </tbody>
+    </table>
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+      <!-- Footer Ends --> 
+  </section>
+</body>

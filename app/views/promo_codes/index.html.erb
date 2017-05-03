@@ -1,45 +1,70 @@
-<body class = "body1">
-<div class= "div1"> 
-  <!-- %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "860"} -->
-  <table border = "0", cellpadding = "0", cellspacing = "0", width = "860", class = "center">
-    <tr>
-      <td class = "page_head"> Search Promo Code </td>
-    </tr>
-    <tr>
-      <%= form_tag search_promo_codes_path, :method => 'get' do %>
-        <td align = "left">
-          <table border = "0", cellpadding = "10", cellspacing = "0">
-            <tbody>
-              <tr>
-                <td align = "left", height = "25"> Publisher Code</td>
-                <td align = "left", height = "25">
-                 <%= collection_select(nil, :publisher_id, Publisher.all, :id, :publisher_name) %>
-                </td>
-              </tr>
-              <tr>
-                <td align = "left", height = "25"> Campaign</td>
-                <td align = "left">
-                  <%= collection_select(nil, :campaign_id, Campaign.all, :id, :campaign_name) %>
-                </td>
-              </tr>
-              <tr>
-                <td align = "left", height = "25"> Access Token ID</td>
-                <td align = "left">
-                  <%= text_field_tag :id %>
-                </td>
-              </tr>
-            <!-- %tbody -->
-              <tr>
-                <td align = "center">   
-                 <%= submit_tag "Search", :name => nil %>
-                </td>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
+<!doctype html>
+<html>
+<head>
+<title>Content Store :: Search Result</title>
+<!-- Latest compiled and minified CSS -->
+<%= render :partial => "layouts/header"%>
+</head>
+
+<body>
+  <!-- Aside Start-->
+
+  <!-- Aside Ends--> 
+  <!--Main Content Start -->
+  <section class="content"> 
+    <!-- Header -->
+   <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+         <li><a href="#">Home</a></li>
+       <li><a><%= link_to "Manage Access",manage_access_index_path%></li>
+       <li><%= link_to "Search Result",promo_codes_path%></li>
+         <div class="pull-right hidden">
+          <li><a href="#">Browse by Chapter</a></li>
+          <li><a href="#">Browse by Book </a></li>
+         </div>
+        </ol>
+      
+      <h2 class="H2-L1">Search PromoCodes</h2>
+      <%= form_tag search_promo_codes_path,:method => 'get',:remote => true, :class => "form-horizontal form-bg" do %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Select Publisher</label>
+            <div class="col-sm-8">
+              <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "Select publisher", :class => "form-control"%>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Select Campaign </label>
+            <div class="col-sm-8">
+              <%= select_tag 'publisher',options_from_collection_for_select(Campaign.all, 'campaign_name', 'campaign_name'), :prompt => "Select campaign", :class => "form-control"%>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">PromoCode ID</label>
+            <div class="col-sm-8">
+              <%= text_field_tag :id,"",:class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+              <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit, :id => "submit" %>
+              <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
+            </div>
+        </div>
       <% end %>
-    </tr>
-  </table>
-</div>
+     <div id="search_result"></div>  
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+    <!-- Footer Ends --> 
+  </section>
 </body>
+</html>

@@ -1,0 +1,77 @@
+<tr class="content_head">
+  <td class="tableheader"><input type="checkbox" name="select-all" id="select-all" /></td>
+  <td class="tableheader">License Name</td>
+  <td class="tableheader">License Type</td>
+  <td class="tableheader">License Id</td>
+</tr>
+<% if @license_content.present? %>
+  <% @license_content.each do |lic_group| %>
+    <tr class="content_value">
+      <td bgcolor="#FBFBFB">
+        <input type="checkbox" name="checkbox" id="chk" />
+      </td>
+      <td bgcolor="#FBFBFB">
+        <%= lic_group.license_name %>
+      </td>
+      <td bgcolor="#FBFBFB">
+        <%= lic_group.license_type %>
+      </td>
+      <td bgcolor="#FBFBFB">
+        <%= lic_group.license_id %>  
+      </td>
+    </tr>
+  <% end %>
+  <tr>
+  <td>&nbsp;</td>
+  <td><input type="button" value="add" onclick="getAddDetails();" class="submit_btn" /></td>
+</tr>
+<%else%>
+  No Record Found
+<%end%>
+<script>
+  $('#select-all').click(function(event) {   
+    if(this.checked) {
+      // Iterate each checkbox 
+      $(':checkbox').each(function() {
+          this.checked = true;                        
+      });
+    } else {
+    $(':checkbox').each(function() {
+      this.checked = false;                        
+    });
+  }
+  });
+  function getAddDetails(){   
+   var srcrow = $('.content_value').has('input:checked');
+   console.log(srcrow)
+    var lastRow = srcrow.clone();
+    lastRow.each(function(index, row){
+      $(row).find('checked').each(function(idx, el){
+          var el = $(el);
+          el.val(srcrow.eq(index).find('select').eq(idx).val())
+      });
+    });
+    $(".content_head").each(function(i, el) {
+      $(this).closest('.content_head').clone().removeClass('content_head').addClass('clone_content_head').insertBefore(".content_value:first");
+    });
+    $('.clone_content_head').find('td:last').after('<td class="tableheader">Delete</td>');
+    var cloned =lastRow.closest('.content_value').clone().removeClass('content_value').addClass('clone_content_value').insertAfter(".clone_content_head:last");
+    var arr = []
+    lastRow.closest('.content_value').find("td:last").each(function(){
+      arr.push($(this).text())
+    });
+    $('#role_ids').val(arr)
+    $('.clone_content_value').find('td:last').after('<td class = "del"><%= image_tag("delete_icon.gif")%></td>');
+    $(':checkbox').each(function() {
+      $('#select-all').remove();
+      $("#chk").remove(); 
+      $(".submit_btn").remove()                      
+    });
+           $('.content_value').remove();
+   $('.content_head').remove();
+   $('.submit_btn1').show();
+    $('.del').on('click',function(){
+      $(this).parent().remove();
+    });
+  }
+</script>

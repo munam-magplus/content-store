@@ -54,8 +54,10 @@ Rails.application.routes.draw do
   resources :end_user, :admin_user do 
     collection do
       get  'search' 
+      # post 'create'
     end
   end
+
 
   resources :content_conversation do
     collection do 
@@ -65,6 +67,11 @@ Rails.application.routes.draw do
       get 'update_status'
       get 'uploaded_errors'
       get 'dashboard'
+      get 'download_books'
+      get 'download_article'
+      get 'download_update_status'
+      get 'download_index_content'
+      get 'download_subject_group'
     end
   end
  
@@ -106,5 +113,4 @@ Rails.application.routes.draw do
       get 'search_op'
     end
   end
-
 end
