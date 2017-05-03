@@ -70,7 +70,7 @@ class InstitutionAdminUserController < ApplicationController
 
     if @password == @confirm_password
       if @inst_admin_user.save!
-        redirect_to manage_user_account_index_path
+        redirect_to institution_admin_user_index_path
       else
         render 'new'
       end

@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Content Store :: Dashboard</title>
+  <!-- Latest compiled and minified CSS -->
+   <%= render :partial => "layouts/header"%>
+</head>
+
+<body>
+
+  <!--Main Content Start -->
+  <section class="content">
+<!-- Header -->
+    <%= render :partial => "layouts/top_header"%>
+<!-- Header Ends -->
+
+
+
+    <!-- Page Content Start -->
+    <!-- ================== -->
+
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+       <li><a href="#">Home</a></li>
+       <li class="active">Dashboard</li>
+       <div class="pull-right hidden">
+        <li><a href="#">Browse by Chapter</a></li>
+        <li><a href="#">Browse by Book </a></li>
+       </div>
+      </ol>
+      <h2 class="H2-L1">Manager's Dashboard</h2>
+      <div class="row m-b-30">
+        <div class="col-sm-6">
+          <div class="card card-min-height">
+            <div class="card-header">
+              Quick Inbox
+            </div>
+            <div class="card-block">
+              <form>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> The Biogenesis of Membranes and Organelles
+                  </label>
+                  </div>
+                  <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> Advancing the Quality & Safety of Care
+                  </label>
+                  </div>
+                  <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> Acute Lymphoblastic Leukemia
+                  </label>
+                </div>
+                <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Personalized Pulmonary Medicine
+                </label>
+              </div>
+              <div class="checkbox">
+              <label>
+                <input type="checkbox"> Electrolyte & Acid-Base Disorders
+              </label>
+            </div>
+              </form>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="flat-btn pull-right">SEND FORWARD</a>
+              <a href="#" class="flat-btn pull-right">SEND BACKWARD</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+
+          <div class="card">
+            <div class="card-header">
+              Tasks at Glance
+            </div>
+           <div class="card-block">
+              <form>
+                <select class="form-control">
+                  <option>Balch/Morita: Textbook of Surgical Oncology</option>
+                  <option>Hay - Current Diagnosis & Treatment Pediatrics</option>
+                  <option>Kaushansky/Williams Hematology</option>
+                  <option>Tintinalli's Emergency Medicine Manual</option>
+                  <option>Tintinalli's Emergency Medicine: A Comprehensive Study Guide</option>
+                </select>
+              </form>
+             <div id="piechart" style="width: 100%; height: 213px;"></div>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="flat-btn pull-right">Manage Tasks</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card card-min-height">
+            <div class="card-header">
+              Available Titles
+            </div>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Book/Title Name</th>
+                  <th>Chapter Count</th>
+                  <th>Export</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Balch/Morita: Textbook of Surgical Oncology</td>
+                  <td><a href="#">164</a></td>
+                  <td><i class="fa fa-download  font-b-icon"></i></td>
+                </tr>
+                <tr>
+                  <td>Hay - Current Diagnosis & Treatment Pediatrics</td>
+                  <td><a href="#">46</a></td>
+                  <td><i class="fa fa-download  font-b-icon"></i></td>
+                </tr>
+                <tr>
+                  <td>Kaushansky/Williams Hematology</td>
+                  <td><a href="#">139</a></td>
+                  <td><i class="fa fa-download  font-b-icon"></i></td>
+                </tr>
+                <tr>
+                  <td>OMMBID</td>
+                  <td><a href="#">308</a></td>
+                  <td><i class="fa fa-download  font-b-icon"></i></td>
+                </tr>
+                <tr>
+                  <td>Kaushansky/Williams Hematology</td>
+                  <td><a href="#">305</a></td>
+                  <td><i class="fa fa-download  font-b-icon"></i></td>
+                </tr>
+                <tr>
+                  <td>Tintinalli's Emergency Medicine Manual</td>
+                  <td><a href="#">184</a></td>
+                  <td><i class="fa fa-download  font-b-icon"></i></td>
+                </tr>
+				<tr>
+                  <td>Tintinalli's Emergency Medicine Manual</td>
+                  <td><a href="#">184</a></td>
+                  <td><i class="fa fa-download  font-b-icon"></i></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="card-footer">
+              <a href="#" class="flat-btn pull-right">BROWSE ALL TITLES</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-header">
+              Tasks at Risk
+            </div>
+            <div id="overDueTasks" style="width: 500px; heigth:267px"></div>
+           
+           <div class="clearfix"></div>
+            <div class="card-footer">
+              <a href="#" class="flat-btn pull-right">View All Tasks</a>
+              <a href="#" data-toggle="modal" data-target="#sendReminder" class="flat-btn pull-right">Send Reminder</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page Content Ends -->
+    <!-- ================== -->
+
+   <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+<!-- Footer Ends -->
+  </section>
+ </body>
+
+</html>

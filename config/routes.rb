@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'books/create'
   post 'books/new'
 
-  resources  :contact_us
+  resources :contacts
 
   resources :reports, :printhouse_setup, :manage_access, 
             :manage_user_account, :publisher_setup, 
@@ -64,6 +64,7 @@ Rails.application.routes.draw do
       get 'qa_check'
       get 'update_status'
       get 'uploaded_errors'
+      get 'dashboard'
     end
   end
  

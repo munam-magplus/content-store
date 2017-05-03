@@ -1,7 +1,7 @@
 <!doctype html>        
 <html>
 <head>
-<title>Content Store :: Institutional Account </title>
+<title>Content Store :: Retailers </title>
 <!-- Latest compiled and minified CSS -->
 <%= render :partial => "layouts/header"%>
 
@@ -33,8 +33,8 @@
         </div>
       </span>
     </div>
-    <div class="table-responsive" id="items">
-      <table class="table table-bordered">
+    <div class="table-responsive" >
+      <table class="table table-bordered" id="items">
         <thead>
 	      	<tr>
 	          <td align = "right", id= "addAction">
@@ -72,7 +72,7 @@
 $(document).ready(function() {
   
 $("#addAction").click(function () {
-  var appendform = "<%= j render :partial => "retailers/form" %>";
+  var appendform = "<%= j render :partial => "retailers/form" , locals: { :retailer => Retailer.new } %>";
   $("#items").after(appendform);
 });
 
