@@ -19,7 +19,7 @@ class CampaignsController < ApplicationController
   end
   def search
     #call filter method to get search reults.
-   @campaigns = Campaign.filter(params.slice(:publisher_id, :campaign_name,:created_by,:from, :to))
+   @campaigns = Campaign.filter(params.slice(:publisher_id, :campaign_name, :created_by, :from, :to))
   end
 
   private 

@@ -41,6 +41,7 @@
     });
   }
   });
+  
   function getAddDetails(){   
    var srcrow = $('.content_value').has('input:checked');
    console.log(srcrow)
@@ -60,6 +61,7 @@
     lastRow.closest('.content_value').find("td:last").each(function(){
       arr.push($(this).text())
     });
+
     $('#role_ids').val(arr)
     $('.clone_content_value').find('td:last').after('<td class = "del"><%= image_tag("delete_icon.gif")%></td>');
     $(':checkbox').each(function() {
@@ -70,8 +72,15 @@
            $('.content_value').remove();
    $('.content_head').remove();
    $('.submit_btn1').show();
-    $('.del').on('click',function(){
-      $(this).parent().remove();
-    });
-  }
+    
+   $('.del').on('click',function(){
+    $(this).parent().remove();
+    arr.pop($(this).text())
+      $('#role_ids').val(arr)
+   });
+
+
+
+
+   }
 </script>
