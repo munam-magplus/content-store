@@ -37,13 +37,21 @@
           <label for="Publisher" class="col-sm-5 control-label">Publisher Code<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
             <%= f.hidden_field :id, value: @publisher.id %>
-             <%= f.text_field :publisher_code , :class => "form-control" %>
+           <%if @publisher.new_record?%>
+            <%= f.text_field :publisher_code , :class => "form-control" %>
+          <%else%>
+            <%= f.text_field :publisher_code , :class => "form-control",disabled: true %>
+          <%end%>
           </div>
         </div></div>
        <div class="col-md-6"><div class="form-group">
           <label for="PublisherName" class="col-sm-5 control-label">Publisher Name<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
+            <%if @publisher.new_record?%>
               <%= f.text_field :publisher_name , :class => "form-control" %>
+            <%else%>
+              <%= f.text_field :publisher_name , :class => "form-control",disabled: true %>
+            <%end%>
           </div>
         </div></div>
          <div class="col-md-6"><div class="form-group">
@@ -55,52 +63,78 @@
          <div class="col-md-6"><div class="form-group">
           <label for="PublisherType" class="col-sm-5 control-label">Publisher Type<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
-			     <%= f.select 'publisher_type', options_for_select([ "Digital", "Academic", "Discovery"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
+            <%if @publisher.new_record?%>
+              <%= f.select 'publisher_type', options_for_select([ "Digital", "Academic", "Discovery"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
+            <%else%>
+              <%= f.select 'publisher_type', options_for_select([ "Digital", "Academic", "Discovery"]),{ :prompt => "Please select"},{:class =>"form-control", :disabled => true} %>
+            <%end%>
+			     
           </div>
         </div></div>
        <div class="col-md-6"><div class="form-group">
           <label for="DefaultEndUserLanguage" class="col-sm-5 control-label">Default End User Language:</label>
           <div class="col-sm-7">
+            <%if @publisher.new_record?%>
               <%= f.select 'end_user_language', options_for_select([
                                       ['Dansk', 'dansk'],
                                       ['Polish', 'polish'],
                                       ['Latvian', 'latvin'],
                                       ['English', 'english']]),{ :prompt => "Please select"},{:class =>"form-control"} %>
-                 
+            <%else%>
+              <%= f.select 'end_user_language', options_for_select([
+                                      ['Dansk', 'dansk'],
+                                      ['Polish', 'polish'],
+                                      ['Latvian', 'latvin'],
+                                      ['English', 'english']]),{ :prompt => "Please select"},{:class =>"form-control", :disabled => true} %>
+            <%end%>      
             </select>
           </div>
         </div></div>
 		<div class="col-md-6"><div class="form-group">
-          <label for="DefaultManagerLanguage" class="col-sm-5 control-label">Default Manager Language<sup class="mandatory">*</sup></label>
-          <div class="col-sm-7">
-             <%= f.select 'manager_language', options_for_select([
-                                      ['Dansk', 'dansk'],
-                                      ['Polish', 'polish'],
-                                      ['Latvian', 'latvin'],
-                                      ['English', 'english']]),{ :prompt => "Please select"},{:class =>"form-control"} %>
-          </div>
-        </div></div>
+      <label for="DefaultManagerLanguage" class="col-sm-5 control-label">Default Manager Language<sup class="mandatory">*</sup></label>
+      <div class="col-sm-7">
+        <%if @publisher.new_record?%>
+              <%= f.select 'manager_language', options_for_select([
+                                  ['Dansk', 'dansk'],
+                                  ['Polish', 'polish'],
+                                  ['Latvian', 'latvin'],
+                                  ['English', 'english']]),{ :prompt => "Please select"},{:class =>"form-control"} %>
+            <%else%>
+              <%= f.select 'manager_language', options_for_select([
+                                  ['Dansk', 'dansk'],
+                                  ['Polish', 'polish'],
+                                  ['Latvian', 'latvin'],
+                                  ['English', 'english']]),{ :prompt => "Please select"},{:class =>"form-control", :disabled => true} %>
+            <%end%>    
+         
+      </div>
+    </div></div>
 		<div class="col-md-6"><div class="form-group">
-          <label for="ContactFirstName" class="col-sm-5 control-label">Contact First Name<sup class="mandatory">*</sup></label>
-          <div class="col-sm-7">
-             <%= f.text_field :contact_first_name, :class => "form-control" %>
-          </div>
-        </div></div>
+      <label for="ContactFirstName" class="col-sm-5 control-label">Contact First Name<sup class="mandatory">*</sup></label>
+      <div class="col-sm-7">
+         <%= f.text_field :contact_first_name, :class => "form-control" %>
+      </div>
+    </div></div>
 		<div class="col-md-6"><div class="form-group">
-          <label for="ContactlastName" class="col-sm-5 control-label">Contact Last Name<sup class="mandatory">*</sup></label>
-          <div class="col-sm-7">
-                <%= f.text_field :contact_last_name, :class => "form-control" %>
-          </div>
-        </div></div>
+      <label for="ContactlastName" class="col-sm-5 control-label">Contact Last Name<sup class="mandatory">*</sup></label>
+      <div class="col-sm-7">
+            <%= f.text_field :contact_last_name, :class => "form-control" %>
+      </div>
+    </div></div>
 		<div class="col-md-6"><div class="form-group">
-          <label for="ContactEmail" class="col-sm-5 control-label">Contact Email</label>
-          <div class="col-sm-7">
-               <%= f.text_field :contact_email, :class => "form-control" %>
-          </div>
-        </div></div>
-        
-        
-      
+      <label for="ContactEmail" class="col-sm-5 control-label">Contact Email</label>
+      <div class="col-sm-7">
+           <%= f.text_field :contact_email, :class => "form-control" %>
+      </div>
+    </div></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="taskName" class="col-sm-5 control-label">Country<sup class="mandatory">*</sup> </label>
+        <div class="col-sm-7">
+          <%= f.select 'country_code',options_from_collection_for_select(Country.all, 'country_code', 'country_name'),{ :prompt => "please select"},{:class => "form-control"} %>
+        </div>
+      </div>
+    </div>
       
       <div class="clearfix"></div>
     
