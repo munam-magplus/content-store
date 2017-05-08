@@ -93,7 +93,7 @@
 										<div class="form-group">
 										  <label class="control-label col-sm-4" for="email">Content Classification </label>
 										  <div class="col-sm-8">
-												<%= f.select :content_classification, options_for_select([['Select','Select'],['Bestsellers','Bestsellers'],['Coming Soon','Coming Soon'],['Featured Books','Featured Books'],['New Releases','New Releases']]), :class => "form-control" %>
+										  	<%= f.select 'content_classification', options_for_select([ "Bestsellers", "Coming Soon", "Featured Books", "New Releases"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
 										  </div>
 										</div>
 									</div>
@@ -146,7 +146,7 @@
 										<div class="form-group">
 										  <label class="control-label col-sm-4" for="email">Conversion Required </label>
 										  <div class="col-sm-8">
-												<%= f.select :conversion_required, options_for_select([['Select',0],[' Yes',1],['No',2]]), :class => "form-control"  %>
+										  	<%= f.select 'conversion_required', options_for_select([ "Yes", "No"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
 										  </div>
 										</div>
 									</div>
@@ -162,7 +162,7 @@
 										<div class="form-group">
 										  <label class="control-label col-sm-4" for="email">Binding</label>
 										  <div class="col-sm-8">
-												<%= f.select :binding, options_for_select([['Select',0],['Board book',1],[' Audio',2],[' Audio cassette',3],[' CD-Audio',4],[' DAT',5],[' Audio disc',6],['Audio tape',7],['MiniDisc',8],['CD-Extra',9],['DVD Audio',10],['Downloadable audio file',11],['Other audio format',12],['Book',13],['Hardback',14],['Paperback',15]]) %>
+										  	<%= f.select 'binding', options_for_select([ "Board book", "Audio", "Audio cassette", "CD-Audio", "DAT", "Audio disc", "Audio tape", "MiniDisc", "CD-Extra", "DVD Audio", "Downloadable audio file", "Other audio format", "Book", "Hardback", "Paperback"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
 										  </div>
 										</div>
 									</div>
@@ -245,7 +245,8 @@
 													<tbody>
 													<tr class="participantRow">
 														  
-														  <td ><%= f.select(:role, options_for_select([['By (author)',0],['Screenplay by',1],['Libretto by',2],['Lyrics by',3],['By (composer)',4],['By (artist)',5],['By (photographer)',6],['From an idea by',7],['Designed by',8],['Photographs by',9],['Text by',10],['Preface by',11],['Prologue by',12],['Summary by',13],['Supplement by',14],['Afterword by',15],['Notes by',16],['Commentaries by',17],['Foreword by',18],['Introduction by',19],['Footnotes by',20],['Memoir by',21],['Software written by',22],['Contributions by',23],['Cover design or artwork by',24],['Other primary creator',25],['Edited by',26],['Revised by',27],['Retold by',28],['Abridged by',29],['Adapted by',30],['Translated by',31],['As told by',32],['Series edited by',33],['Editor-in-chief',34],['Guest editor',35],['Editorial board member',0],['Founded by',0],['Associate editor',0],['Consultant editor',0],['General editor',0],['Other adaptation by',0],['Compiled by',0],['Selected by',0],['Other compilation by',0],['Producer',0],['Director',0],['Conductor',0],['Other direction by',0],['Actor',0],['Narrator',0],['Vocal soloist',0],['Instrumental soloist',0],['Read by',0],['Performed by (orchestra, band, ensemble)',0],['Performed by',0],['Filmed/photographed by',0],['Other recording by',0],['Other',0]]))  %></select></td>
+														  <td >
+														  	<%= f.select 'role', options_for_select([ "By (author)", "Screenplay by", "Libretto by", "Lyrics by", "By (composer)", "By (artist)", "By (photographer)", "From an idea by", "Designed by", "Photographs by", "Text by", "Preface by", "Prologue by", "Summary by", "Supplement by", "Afterword by", "Notes by", "Commentaries by", "Foreword by", "Introduction by", "Footnotes by", "Memoir by", "Software written by"]),{ :prompt => "Please select"},{:class =>"form-control"} %></select></td>
 														  <td ><%= f.text_field :name , :placeholder => "Enter Name", :class => "form-control" %> </td>
 														  <td ><%= f.text_area :description, :class => "form-control", :placeholder => "Description" %> </td>
 														  <td ><div class="input-group date datetimepicker3" >
@@ -314,7 +315,7 @@
 													</thead>
 													<tbody>
 													<tr class="participantRow">
-														  <td><%= f.select(:format, options_for_select([['Select',0],[' AER',1],['PRC',2],['LIT',3],['ONL',4],['PDF',5],['EXT',6],['OEB',7],['WMA',8],['AAC',9],['HB',10],['PB',11],['EPUB',12],['CD',13],['CD',14],['EP',15]]))  %></td>
+														  <td><%= f.select 'format', options_for_select([ "AER", "PRC", "LIT", "ONL", "PDF", "EXT", "OEB", "WMA", "AAC", "HB", "PB", "EPUB", "CD", "EP"]),{ :prompt => "Please select"},{:class =>"form-control"} %></td>
 														   <td><%= f.text_field :isbn, :class => "form-control", :placeholder => "ISBN" %></td>
 														   <td><%= f.text_field :doi, :class => "form-control", :placeholder => "DOI" %></td>
 														   <td><%= f.text_field :weight, :class => "form-control", :placeholder => "Weight" %></td>
@@ -364,8 +365,7 @@
 										<div class="form-group">
 										<label class="col-md-4">Territorial List Type</label>
 										<div class="col-md-8">
-											<select class="form-control" name="territorialListType"><option>INC</option>
-                            <option>EXC</option></select>
+											<%= f.select 'territorial_list_type', options_for_select([ "INC", "EXC"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
 										</div>
 										</div>
 									</div>

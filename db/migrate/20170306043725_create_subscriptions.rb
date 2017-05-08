@@ -14,6 +14,7 @@ class CreateSubscriptions < ActiveRecord::Migration[5.0]
       t.string :price
       t.string :currency
       t.string :discount_percentage
+      t.integer :duration
 
       t.timestamps
     end

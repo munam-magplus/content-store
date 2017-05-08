@@ -5,8 +5,8 @@ class CreatePromoCodes < ActiveRecord::Migration[5.0]
       t.string :campaign
       t.string :number_of_promo_code
       t.string :applicable_discount
-      t.string :from
-      t.string :to
+      t.date :valid_from
+      t.date :valid_to
 
       t.timestamps
     end

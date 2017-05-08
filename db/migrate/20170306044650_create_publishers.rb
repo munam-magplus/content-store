@@ -10,6 +10,7 @@ class CreatePublishers < ActiveRecord::Migration[5.0]
       t.string :contact_first_name
       t.string :contact_last_name
       t.string :contact_email
+      t.string :country_code
 
       t.timestamps
     end

@@ -11,6 +11,8 @@ class CreateAdminUsers < ActiveRecord::Migration[5.0]
       t.string :user_type
       t.string :role
       t.string :publishers
+      t.string :password
+      t.string :confirm_password
 
       t.timestamps
     end

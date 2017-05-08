@@ -75,34 +75,85 @@
                 <a class="submenu"><span class="fa fa-angle-right"></span>Books</a>
                   <ul class="nav-multi__list nav-multi" style="display:none">
                     <li><%= link_to "Create New Book", new_book_path%></li>
-                    <!-- <li><%= link_to "Search Book", search_books_path%></li> -->
+                    <li>
+                      <a href="#"> Search Book</a>
+                    </li>
+                    <li>
+                      <a href="#"> Book Metadata Sheet</a>
+                    </li>
+                    <li>
+                      <a href="#">ONIX Input</a>
+                    </li>
+                    <li>
+                      <a href="#">ONIX Supplement Sheet</a>
+                    </li>
+                   <!--  <li><%= link_to "Search Book", search_books_path%></li>
                     <li><%= link_to "Book Metadata Sheet", metadata_sheet_books_path%></li>
-                    <!-- <li><%= link_to "ONIX Input", onix_input_books_path%></li>
+                    <li><%= link_to "ONIX Input", onix_input_books_path%></li>
                     <li><%= link_to "ONIX Supplement Sheet", onix_supp_sheet_books_path%></li> -->
                   </ul>
               </li>
               <li>
                 <a class="submenu"><span class="fa fa-angle-right"></span>Journals</a>
                   <ul class="nav-multi__list nav-multi" style="display:none">
-                    <li><%= link_to "Create New Journal", new_journal_path %></li>
+                    <li>
+                      <a href="#">Create New Journal</a>
+                    </li>
+                    <li>
+                      <a href="#">Search Journal</a>
+                    </li>
+                    <li>
+                      <a href="#">Article Metadata Sheet</a>
+                    </li>
+                    <li>
+                      <a href="#">Create Articles</a>
+                    </li>
+                    <li>
+                      <a href="#">Search Articles</a>
+                    </li>
+                    <!-- <li><%= link_to "Create New Journal", new_journal_path %></li>
                     <li><%= link_to "Search Journal", journals_path%></li>
                     <li><%= link_to "Article Metadata Sheet", metadata_sheet_article_index_path%></li>
                     <li><%= link_to "Create Articles", new_article_path %></li>
-                    <li><%= link_to "Search Articles", search_article_index_path %></li>
+                    <li><%= link_to "Search Articles", search_article_index_path %></li> -->
                   </ul>
               </li>
-              <!-- <li>
+              <li>
                 <a class="submenu"><span class="fa fa-angle-right"></span>Subject Group</a>
                   <ul class="nav-multi__list nav-multi" style="display:none">
-                    <li><%= link_to "Create Subject Group", new_subject_group_path %></li>
+                    <li>
+                      <a href="#">Create Subject Group</a>
+                    </li>
+                    <li>
+                      <a href="#">Search Subject Group</a>
+                    </li>
+                    <li>
+                      <a href="#">Upload Subject Group Metadata Sheet</a>
+                    </li>
+                    <!-- <li><%= link_to "Create Subject Group", new_subject_group_path %></li>
                     <li><%= link_to "Search Subject Group", subject_groups_path%></li>
-                    <li><%= link_to "Upload Subject Group Metadata Sheet", metadata_sheet_subject_groups_path %></li>
+                    <li><%= link_to "Upload Subject Group Metadata Sheet", metadata_sheet_subject_groups_path %></li> -->
                   </ul>
-              </li> -->
-              <!-- <li><%= link_to "Uploaded Errors", update_status_content_conversation_index_path %></li> -->
-              <!-- <li><%= link_to "Update Status", update_status_content_conversation_index_path %></li> -->
-              <!-- <li><%= link_to "Content History", content_history_content_conversation_index_path %></li> -->
-              <!-- <li><%= link_to "QA Check", qa_check_content_conversation_index_path %></li>
+              </li>
+              <li>
+                <a href="#">Uploaded Errors</a>
+              </li>
+              <li>
+                <a href="#">Update Status</a>
+              </li>
+              <li>
+                <a href="#">Content History</a>
+              </li>
+              <li>
+                <a href="#">QA Check</a>
+              </li>
+              <li>
+                <a href="#">Index Content</a>
+              </li>
+              <!-- <li><%= link_to "Uploaded Errors", update_status_content_conversation_index_path %></li>
+              <li><%= link_to "Update Status", update_status_content_conversation_index_path %></li>
+              <li><%= link_to "Content History", content_history_content_conversation_index_path %></li>
+              <li><%= link_to "QA Check", qa_check_content_conversation_index_path %></li>
               <li><%= link_to "Index Content", index_content_content_conversation_index_path %></li> -->
             </ul>
           </li>
@@ -158,7 +209,7 @@
       </ul>
       <ul class="list-unstyled leftNav">
         <li>
-          <%= link_to '<i class="material-icons">av_timer</i>Sign Out'.html_safe, destroy_user_session_path, :method => "delete", :id => "button_id", :class => "nav-label" %>
+          <%= link_to '<i class="material-icons">power_settings_new</i>Sign Out'.html_safe, destroy_user_session_path, :method => "delete", :id => "button_id", :class => "nav-label" %>
         </li>
       </ul>
    </nav>

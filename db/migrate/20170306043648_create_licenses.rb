@@ -12,6 +12,11 @@ class CreateLicenses < ActiveRecord::Migration[5.0]
       t.string :to
       t.string :discount
       t.string :license_for_sale
+      t.string :license_is_linkable
+      t.date :license_link_to_date
+      t.date :license_link_from_date
+      t.string :license_shipping_is_free
+      t.integer :license_discount_percentage
 
       t.timestamps
     end

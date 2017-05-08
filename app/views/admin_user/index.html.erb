@@ -32,15 +32,16 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Publisher</label>
-            <div class="col-sm-8">
-            </div>
+            <span class="col-sm-8">
+              <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "Select publisher", :class => "form-control"%>
+            </span>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Email:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :email, params[:email] %>
+            <%= text_field_tag :email, params[:email], :class => "form-control" %>
             </span> 
           </div>
         </div>
@@ -48,7 +49,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">First Name / Last Name</label>
             <span class="col-sm-8">
-            <%= text_field_tag :first_name, params[:first_name] %>
+            <%= text_field_tag :first_name, params[:first_name], :class => "form-control" %>
             </span> 
           </div>
         </div>
@@ -56,7 +57,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Country:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :country, params[:country] %>
+            <%= text_field_tag :country, params[:country], :class => "form-control" %>
             </span> 
           </div>
         </div>
