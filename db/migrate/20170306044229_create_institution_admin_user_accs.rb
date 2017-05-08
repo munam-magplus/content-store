@@ -2,7 +2,7 @@ class CreateInstitutionAdminUserAccs < ActiveRecord::Migration[5.0]
   def change
     create_table :institution_admin_user_accs do |t|
       t.string :role
-      t.string :publisher
+      t.integer :publisher_id
       t.string :institution_name
       t.string :user_name
       t.string :status
