@@ -3,20 +3,16 @@ class InstitutionAccountController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    byebug
   end
   # (params[:institution_name].present?)||(params[:publisher_id].present?)||(params[:status].present?)||(params[:libary_name].present?)
   def search_op
     # @insti_acc1 = InstitutionAccount.paginate(:page => params[:page], :per_page => 2)
     # we perform search operation by slicing the params.
-     # byebug
-    # if ((params[:institution_name].present?)||(params[:publisher_id].present?)||(params[:status].present?)||(params[:libary_name].present?)) 
+     # if ((params[:institution_name].present?)||(params[:publisher_id].present?)||(params[:status].present?)||(params[:libary_name].present?)) 
     # @id = InstitutionAccount.find_by_id(params[:institution_id])
-      # byebug
-    @insti_acc = InstitutionAccount.filter(params.slice(:publisher_id, 
+     @insti_acc = InstitutionAccount.filter(params.slice(:publisher_id, 
             :status, :libary_name, :institution_name, :id))
     # else
-     byebug
     # @insti_bill = InstitutionAccBillingAddress.filter(params.slice(:first_name, :last_name,
     #               :phone, :email,:address,:address_line2,:address_line3,:city,:state,
     #               :postal_code,:country))
@@ -49,7 +45,6 @@ class InstitutionAccountController < ApplicationController
   end
 
   def create
-    byebug
     @institution = InstitutionAccount.new(institution_params)
   
     if @institution.save!

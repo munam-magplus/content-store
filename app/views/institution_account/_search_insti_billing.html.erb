@@ -29,11 +29,9 @@
 		 				<th>Actions</th>
           </tr>
         </thead>
-        <% byebug %>
-        <tbody>
+         <tbody>
 					<% if @insti_bill.present?   %>
-					<% byebug %>
-						<% @insti_bill.each do |f| %>
+ 						<% @insti_bill.each do |f| %>
  						 		<tr>
  						 			<% institution_account(f.institution_account_id) %>
 						 			<td class="tabledata"><%= f.id %></td>

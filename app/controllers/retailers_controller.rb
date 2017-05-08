@@ -2,8 +2,7 @@ class RetailersController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		byebug
-	 #here we get all the publishers that are to be displayed in dropdown list of create page
+ 	 #here we get all the publishers that are to be displayed in dropdown list of create page
 	 # @publishers = Publisher.where(:id => @retail).pluck(:publisher_name)
 	 @publishers = Publisher.all.pluck(:publisher_name)
 	 respond_to do |format|
@@ -17,8 +16,7 @@ class RetailersController < ApplicationController
 	end
 	
 	def create
-		byebug
-		# @retailers = Retailer.all
+ 		# @retailers = Retailer.all
 		# @retail = Retailer.find_by(params[:id])
 		# @ret = @retail.publisher_id
 		# @re = Publisher.find_by(@ret)
@@ -34,8 +32,7 @@ class RetailersController < ApplicationController
 	end
 	
 	def search
-		byebug
-	  #get the publisher that have same retailer name
+ 	  #get the publisher that have same retailer name
 	  # @retailers = Retailer.last
 	  @re = Publisher.find_by_publisher_name(params[:retailer_name])
 	  respond_to do |format|
@@ -60,8 +57,7 @@ class RetailersController < ApplicationController
 	private 
  
 	def retailer_params
-		byebug
-		params.require(:retailer).permit(:retailer_code, :retailer_name,	
+ 		params.require(:retailer).permit(:retailer_code, :retailer_name,	
 			:publisher_id, :low_ip,	:high_ip,	:ip_list)
 	end
 end	
