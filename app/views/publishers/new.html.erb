@@ -37,81 +37,127 @@
           <label for="Publisher" class="col-sm-5 control-label">Publisher Code<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
             <%= f.hidden_field :id, value: @publisher.id %>
-             <%= f.text_field :publisher_code , :class => "form-control" %>
+           <%if @publisher.new_record?%>
+            <%= f.text_field :publisher_code , :class => "form-control" %>
+          <%else%>
+            <%= f.text_field :publisher_code , :class => "form-control",disabled: true %>
+          <%end%>
           </div>
         </div></div>
        <div class="col-md-6"><div class="form-group">
           <label for="PublisherName" class="col-sm-5 control-label">Publisher Name<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
+            <%if @publisher.new_record?%>
               <%= f.text_field :publisher_name , :class => "form-control" %>
+            <%else%>
+              <%= f.text_field :publisher_name , :class => "form-control",disabled: true %>
+            <%end%>
           </div>
+          <div class="clearfix"></div>
         </div></div>
          <div class="col-md-6"><div class="form-group">
           <label for="PublisherStatus" class="col-sm-5 control-label">Publisher Status</label>
           <div class="col-sm-7">
             <%= f.select 'publisher_status', options_for_select([ "Live", "Staging"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
           </div>
+          <div class="clearfix"></div>
         </div></div>
          <div class="col-md-6"><div class="form-group">
           <label for="PublisherType" class="col-sm-5 control-label">Publisher Type<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
-			     <%= f.select 'publisher_type', options_for_select([ "Digital", "Academic", "Discovery"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
+            <%if @publisher.new_record?%>
+              <%= f.select 'publisher_type', options_for_select([ "Digital", "Academic", "Discovery"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
+            <%else%>
+              <%= f.select 'publisher_type', options_for_select([ "Digital", "Academic", "Discovery"]),{ :prompt => "Please select"},{:class =>"form-control", :disabled => true} %>
+            <%end%>
+			     
           </div>
+          <div class="clearfix"></div>
         </div></div>
        <div class="col-md-6"><div class="form-group">
           <label for="DefaultEndUserLanguage" class="col-sm-5 control-label">Default End User Language:</label>
           <div class="col-sm-7">
+            <%if @publisher.new_record?%>
               <%= f.select 'end_user_language', options_for_select([
                                       ['Dansk', 'dansk'],
                                       ['Polish', 'polish'],
                                       ['Latvian', 'latvin'],
                                       ['English', 'english']]),{ :prompt => "Please select"},{:class =>"form-control"} %>
-                 
-            </select>
-          </div>
-        </div></div>
-		<div class="col-md-6"><div class="form-group">
-          <label for="DefaultManagerLanguage" class="col-sm-5 control-label">Default Manager Language<sup class="mandatory">*</sup></label>
-          <div class="col-sm-7">
-             <%= f.select 'manager_language', options_for_select([
+            <%else%>
+              <%= f.select 'end_user_language', options_for_select([
                                       ['Dansk', 'dansk'],
                                       ['Polish', 'polish'],
                                       ['Latvian', 'latvin'],
-                                      ['English', 'english']]),{ :prompt => "Please select"},{:class =>"form-control"} %>
+                                      ['English', 'english']]),{ :prompt => "Please select"},{:class =>"form-control", :disabled => true} %>
+            <%end%>      
+            </select>
           </div>
+          <div class="clearfix"></div>
         </div></div>
 		<div class="col-md-6"><div class="form-group">
-          <label for="ContactFirstName" class="col-sm-5 control-label">Contact First Name<sup class="mandatory">*</sup></label>
-          <div class="col-sm-7">
-             <%= f.text_field :contact_first_name, :class => "form-control" %>
-          </div>
-        </div></div>
+      <label for="DefaultManagerLanguage" class="col-sm-5 control-label">Default Manager Language<sup class="mandatory">*</sup></label>
+      <div class="col-sm-7">
+        <%if @publisher.new_record?%>
+              <%= f.select 'manager_language', options_for_select([
+                                  ['Dansk', 'dansk'],
+                                  ['Polish', 'polish'],
+                                  ['Latvian', 'latvin'],
+                                  ['English', 'english']]),{ :prompt => "Please select"},{:class =>"form-control"} %>
+            <%else%>
+              <%= f.select 'manager_language', options_for_select([
+                                  ['Dansk', 'dansk'],
+                                  ['Polish', 'polish'],
+                                  ['Latvian', 'latvin'],
+                                  ['English', 'english']]),{ :prompt => "Please select"},{:class =>"form-control", :disabled => true} %>
+            <%end%>    
+         
+      </div>
+      <div class="clearfix"></div>
+    </div></div>
 		<div class="col-md-6"><div class="form-group">
-          <label for="ContactlastName" class="col-sm-5 control-label">Contact Last Name<sup class="mandatory">*</sup></label>
-          <div class="col-sm-7">
-                <%= f.text_field :contact_last_name, :class => "form-control" %>
-          </div>
-        </div></div>
+      <label for="ContactFirstName" class="col-sm-5 control-label">Contact First Name<sup class="mandatory">*</sup></label>
+      <div class="col-sm-7">
+         <%= f.text_field :contact_first_name, :class => "form-control" %>
+      </div>
+      <div class="clearfix"></div>
+    </div></div>
 		<div class="col-md-6"><div class="form-group">
-          <label for="ContactEmail" class="col-sm-5 control-label">Contact Email</label>
-          <div class="col-sm-7">
-               <%= f.text_field :contact_email, :class => "form-control" %>
-          </div>
-        </div></div>
-        
-        
-      
+      <label for="ContactlastName" class="col-sm-5 control-label">Contact Last Name<sup class="mandatory">*</sup></label>
+      <div class="col-sm-7">
+            <%= f.text_field :contact_last_name, :class => "form-control" %>
+      </div>
+      <div class="clearfix"></div>
+    </div></div>
+		<div class="col-md-6"><div class="form-group">
+      <label for="ContactEmail" class="col-sm-5 control-label">Contact Email</label>
+      <div class="col-sm-7">
+           <%= f.text_field :contact_email, :class => "form-control" %>
+      </div>
+      <div class="clearfix"></div>
+    </div></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="taskName" class="col-sm-5 control-label">Country<sup class="mandatory">*</sup> </label>
+        <div class="col-sm-7">
+          <%= f.select 'country_code',options_from_collection_for_select(Country.all.order('country_name asc'), 'country_code', 'country_name'),{ :prompt => "please select"},{:class => "form-control"} %>
+        </div>
+      </div>
+    </div>
       
       <div class="clearfix"></div>
     
       <div class="clearfix m-b-30"></div>
-     <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right pull-right">
         <%= button_tag fa_icon("save", text: "Save"), :class => "btn btn-sm", type: :submit %>
         <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
-        <%end%>
-        <%unless @publisher.new_record?%>
-          <%= button_to("View Member Publisher ", linked_member_publisher_member_publishers_path, :class => "btn btn-sm",params:{ publisher_id: @publisher.id }, :method => :get) %>
-          <%= button_to "Create Member Publisher", new_member_publisher_path ,:class => "btn btn-sm", params:{ publisher_id: @publisher.id },:method => :get %>
+        
+       
+      </div>
+      <%end%>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pull-left">
+         <%unless @publisher.new_record?%>
+          <%= button_to("View Member Publisher ", linked_member_publisher_member_publishers_path, :class => "btn btn-sm",params:{ publisher_id: @publisher.id }, :method => :get, :style=>"float:left;margin-right:5px;") %>
+          <%= button_to "Create Member Publisher", new_member_publisher_path ,:class => "btn btn-sm", params:{ publisher_id: @publisher.id },:method => :get, :style=>"float:left" %>
         <%end%>
       </div>
     </div>

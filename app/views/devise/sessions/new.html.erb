@@ -12,7 +12,7 @@
           <ul class="list-unstyled">
             <li>
               <div class="form-group">
-              <p class="help-block text-left"><a href="#" data-toggle="modal" data-target=".contact_us">
+              <p class="help-block text-left"><a href="#" data-toggle="modal" data-target=".contact">
                 Contact Us<br />
               </a></p>
               </div>
@@ -77,21 +77,23 @@
  </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="modal fade contact_us" tabindex="-1" role="dialog">
- <div class="modal-dialog" role="document">
-  <div class="modal-content">
-   <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <h4 class="modal-title">Contact Us</h4>
+<div class="modal fade contact " tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Contact Us</h4>
+      </div>
+      <div class="modal-body">
+        <%= render partial: "contacts/form", locals: { :contact => Contact.new } %>
+        <div class="clearfix"></div>
+      </div>
+      
     </div>
-    <%= render partial: "contact_us/form", locals: { :contact_u => ContactU.new } %>
-   </div>
-   <div class="modal-body">
-  </div><!-- /.modal-content -->
- </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+  </div>
+</div>   
+
 </body>
 
 </html>
       
-   

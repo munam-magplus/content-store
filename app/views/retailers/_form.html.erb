@@ -1,43 +1,42 @@
-    <div class="table-responsive">
-      <table class="table table-bordered">
-        <tbody>
-            <%= form_for(:retailer, url: retailers_path)  do |f| %>
-          <tr>
-            <td class="tabledata" >           
-              <%= f.text_field :retailer_code %>
-            </td>
-            <td class="tabledata">            
-              <%=  f.select(:retailer_name, options_for_select([[@re.publisher_code ,@re.publisher_code]])) %>
-            </td>
-            <td class="tabledata">            
-              <%= f.text_field :publisher_id , :value => @re.id%>
-            </td>
-            <td class="tabledata">            
-              <%= f.text_field :low_ip %>
-            </td>
-            <td class="tabledata">            
-              <%= f.text_field :high_ip %>
-            </td>
-            <td class="tabledata">            
-              <%= f.text_field :ip_list %>
-            </td>
-            <td class="tabledata">
-              <%= button_tag fa_icon("plus-square-o", text: "Submit"), :class => "btn btn-sm", type: :submit %>
-            </td>
-            <td  id = "del">
-              <%= image_tag("delete_icon.gif")%>
-            </td>
-          </tr>
-          <% end %>
-         </tbody>
-      </table>
-     </div>
-  </div>
-  <div class="col-sm-12"> </div>
-</div>
+<% byebug %>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <tbody>
+        <%= form_for(:retailer, url: retailers_path)  do |f| %>
+      <tr>
+        <td class="tabledata" >           
+          <%= f.text_field :retailer_code %>
+        </td>
+        <td class="tabledata">            
+          <%=  f.select(:retailer_name, options_for_select([[@re.publisher_code ,@re.publisher_code]])) %>
+        </td>
+        <td class="tabledata">            
+          <%= f.text_field :publisher_id , :value => @re.id%>
+        </td>
+        <td class="tabledata">            
+          <%= f.text_field :low_ip %>
+        </td>
+        <td class="tabledata">            
+          <%= f.text_field :high_ip %>
+        </td>
+        <td class="tabledata">            
+          <%= f.text_field :ip_list %>
+        </td>
+        <td class="tabledata">
+         <%= button_tag fa_icon("plus-square-o", text: "Submit"), :class => "btn btn-sm", type: :submit %>
+        </td>
+        <td  id = "del">
+          <%= image_tag("delete_icon.gif")%>
+        </td>
+      </tr>
+      <% end %>
+     </tbody>
+  </table>
+ </div>
+<div class="col-sm-12"> </div>
 
 <script>
-  $(document).on('click', '#del', function(){
-    $(this).parent('tr').remove();
-  });
+$(document).on('click', '#del', function(){
+$(this).parent('tr').remove();
+});
 </script>

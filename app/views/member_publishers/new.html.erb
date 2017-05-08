@@ -39,14 +39,22 @@
       <div class="col-md-6"><div class="form-group">
           <label for="Publisher" class="col-sm-5 control-label">Member Publisher Code<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
-             <%= f.text_field :member_publisher_code , :class => "form-control" %>
+            <%if @member_publisher.new_record?%>
+              <%= f.text_field :member_publisher_code , :class => "form-control" %>
+            <%else%>
+              <%= f.text_field :member_publisher_code , :class => "form-control",disabled: true %>
+            <%end%>
           </div>
           <div class="clearfix"></div>
         </div></div>
        <div class="col-md-6"><div class="form-group">
           <label for="PublisherName" class="col-sm-5 control-label">Member Publisher Name<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
+            <%if @member_publisher.new_record?%>
               <%= f.text_field :member_publisher_name , :class => "form-control" %>
+            <%else%>
+              <%= f.text_field :member_publisher_name , :class => "form-control",disabled: true %>
+            <%end%>
           </div>
           <div class="clearfix"></div>
         </div></div>
@@ -97,7 +105,15 @@
           <div class="col-sm-7">
              <%= f.file_field :member_publisher_logo, :class => "form-control"%>
           </div>
-        </div></div> 
+        </div></div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-5 control-label">Country<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-7">
+              <%= f.select 'country_code',options_from_collection_for_select(Country.all, 'country_code', 'country_name'),{ :prompt => "please select"},{:class => "form-control"} %>
+            </div>
+          </div>
+        </div> 
         <% unless @member_publisher.new_record? %>  
       <div class="col-md-6"><div class="form-group">
         <font color="red">Note: </font>

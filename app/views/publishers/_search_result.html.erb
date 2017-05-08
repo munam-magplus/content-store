@@ -19,6 +19,7 @@
             <tr style="font-size:13px">
               <th>Publisher Code</th>
               <th>Publisher Name</th>
+              <th>Publisher Country</th>
               <th>Contact Name</th>
               <th>Contact Email</th>
                
@@ -30,6 +31,7 @@
   	  <tr>
                 <td><%= link_to pub.publisher_code,edit_publisher_path(pub) %></td>
                 <td ><%= pub.publisher_name %></td>
+                <td ><%= pub.country_code %></td>
                 <td ><%= pub.contact_first_name %></td>
                 <td ><%= pub.contact_email %></td>
              </tr>

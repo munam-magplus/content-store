@@ -38,7 +38,7 @@ class MemberPublishersController < ApplicationController
   private 
   def member_publisher_params
     params.require(:member_publisher).permit(:publisher_id, :member_publisher_code, :member_publisher_name, 
-    :member_publisher_status, :contact_first_name, :contact_last_name, :contact_email, :publisher_borrow_period, :revenue_share_percentage, :file)
+    :member_publisher_status, :contact_first_name, :contact_last_name, :contact_email, :publisher_borrow_period, :revenue_share_percentage,:country_code, :file)
   end
 
 end
