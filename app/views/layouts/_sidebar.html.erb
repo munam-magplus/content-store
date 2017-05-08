@@ -75,10 +75,10 @@
                 <a class="submenu"><span class="fa fa-angle-right"></span>Books</a>
                   <ul class="nav-multi__list nav-multi" style="display:none">
                     <li><%= link_to "Create New Book", new_book_path%></li>
-                    <li><%= link_to "Search Book", search_books_path%></li>
+                    <!-- <li><%= link_to "Search Book", search_books_path%></li> -->
                     <li><%= link_to "Book Metadata Sheet", metadata_sheet_books_path%></li>
-                    <li><%= link_to "ONIX Input", onix_input_books_path%></li>
-                    <li><%= link_to "ONIX Supplement Sheet", onix_supp_sheet_books_path%></li>
+                    <!-- <li><%= link_to "ONIX Input", onix_input_books_path%></li>
+                    <li><%= link_to "ONIX Supplement Sheet", onix_supp_sheet_books_path%></li> -->
                   </ul>
               </li>
               <li>
@@ -99,11 +99,11 @@
                     <li><%= link_to "Upload Subject Group Metadata Sheet", metadata_sheet_subject_groups_path %></li>
                   </ul>
               </li> -->
-              <li><%= link_to "Uploaded Errors", update_status_content_conversation_index_path %></li>
+              <!-- <li><%= link_to "Uploaded Errors", update_status_content_conversation_index_path %></li> -->
               <!-- <li><%= link_to "Update Status", update_status_content_conversation_index_path %></li> -->
-              <li><%= link_to "Content History", content_history_content_conversation_index_path %></li>
-              <li><%= link_to "QA Check", qa_check_content_conversation_index_path %></li>
-              <li><%= link_to "Index Content", index_content_content_conversation_index_path %></li>
+              <!-- <li><%= link_to "Content History", content_history_content_conversation_index_path %></li> -->
+              <!-- <li><%= link_to "QA Check", qa_check_content_conversation_index_path %></li>
+              <li><%= link_to "Index Content", index_content_content_conversation_index_path %></li> -->
             </ul>
           </li>
           <li>
@@ -113,7 +113,7 @@
                 <a class="submenu"><span class="fa fa-angle-right"></span>Subscriptions</a>
                   <ul class="nav-multi__list nav-multi" style="display:none">
                     <li><%= link_to "Create Subscription",new_subscription_path %></li>
-                     <li><%= link_to "Search Subscription",subscriptions_path %></li>
+                     <!-- <li><%= link_to "Search Subscription",subscriptions_path %></li> -->
                   </ul>
               </li>
               <li>
@@ -156,7 +156,11 @@
             </ul>
 		      </li>          
       </ul>
-    <%= link_to "sign out", destroy_user_session_path, :method => "delete"%>
+      <ul class="list-unstyled leftNav">
+        <li>
+          <%= link_to '<i class="material-icons">av_timer</i>Sign Out'.html_safe, destroy_user_session_path, :method => "delete", :id => "button_id", :class => "nav-label" %>
+        </li>
+      </ul>
    </nav>
 </aside>
 	  

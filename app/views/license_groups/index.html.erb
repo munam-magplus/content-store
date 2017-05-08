@@ -3,21 +3,23 @@
 <head>
 <title>Content Store :: Search Result</title>
 <!-- Latest compiled and minified CSS -->
-<%= render :partial => "layouts/header"%>
-</head>
-
-<body>
-  <section class="content"> 
     <!-- Header -->
    <%= render :partial => "layouts/top_header"%>
     <!-- Header Ends --> 
+</head>
+
+<body>
+<!-- Aside Start-->
+    <%= render :partial => "layouts/sidebar"%>
+    <!-- Aside Ends-->
+  <section class="content"> 
     <!-- Page Content Start --> 
     <!-- ================== -->
     <div class="wrapper container-fluid">
       <ol class="breadcrumb">
          <li><a href="#">Home</a></li>
-       <li><a><%= link_to "Manage Access",manage_access_index_path%></li>
-       <li><%= link_to "Search Result",license_groups_path%></li>
+       <li><a> Manage Access </a></li>
+       <li><a> Search Result</a></li>
          <div class="pull-right hidden">
           <li><a href="#">Browse by Chapter</a></li>
           <li><a href="#">Browse by Book </a></li>

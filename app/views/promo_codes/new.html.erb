@@ -4,24 +4,24 @@
 <head>
   <title>Content Store :: Create PromoCode</title>
   <!-- Latest compiled and minified CSS -->
-  <%= render :partial => "layouts/header"%>
-</head>
-
-<body>
-  <!-- Aside Start-->
-<!-- Aside Ends-->
-  <!--Main Content Start -->
-  <section class="content">
    <!-- Header -->
    <%= render :partial => "layouts/top_header"%>
     <!-- Header Ends --> 
+ </head>
+
+<body>
+  <!-- Aside Start-->
+    <%= render :partial => "layouts/sidebar"%>
+    <!-- Aside Ends-->
+  <!--Main Content Start -->
+  <section class="content">
     <!-- Page Content Start -->
     <!-- ================== -->
     <div class="wrapper container-fluid">
       <ol class="breadcrumb">
        <li><a href="#">Home</a></li>
-     <li><a><%= link_to "Manage Access",manage_access_index_path%></li>
-      <li><%= link_to "Create Publisher",promo_codes_path%></li>
+     <li><a> Manage Access</a></li>
+      <li><a>Create Publisher</a></li>
        <div class="pull-right hidden">
         <li><a href="#">Browse by Chapter</a></li>
         <li><a href="#">Browse by Book </a></li>

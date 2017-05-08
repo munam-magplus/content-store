@@ -1,5 +1,34 @@
-<body class = "body1">
-    <%= form_for @license do |f| %>
+<!doctype html>
+<html>
+<head>
+<title>Content Store :: Search End Users</title>
+<!-- Latest compiled and minified CSS -->
+    <!-- Header -->
+   <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+</head>
+
+<body>
+  <!-- Aside Start-->
+    <%= render :partial => "layouts/sidebar"%>
+    <!-- Aside Ends-->
+  <!--Main Content Start -->
+  <section class="content"> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+         <li><a href="#">Home</a></li>
+       <li><a> Manage Access </a></li>
+       <li> <a> Create License </a></li>
+         <div class="pull-right hidden">
+          <li><a href="#">Browse by Chapter</a></li>
+          <li><a href="#">Browse by Book </a></li>
+         </div>
+        </ol>
+      
+      <h2 class="H2-L1">Search End Users</h2>
+       <%= form_for @license do |f| %>
   <table border =  "0", cellpadding = "0", cellspacing = "0", width = "860", class = "center">
     <tr>
       <td class = "page_head"> Create License</td>
@@ -192,6 +221,17 @@
       </tr>
     </table>
   <% end %>
+    </div>
+      <!-- Page Content Ends --> 
+      <!-- ================== --> 
+    
+      <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+      <!-- Footer Ends --> 
+  </section>
+</body>
+</html>
+    
 <script>
  $('#chapter').hide();
  $('#journal').hide();

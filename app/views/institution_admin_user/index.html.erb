@@ -3,23 +3,25 @@
 <head>
 <title>Content Store :: Institutional Admin User </title>
 <!-- Latest compiled and minified CSS -->
-<%= render :partial => "layouts/header"%>
 
-</head>
-
-<body>
-<!--Main Content Start -->
-  <section class="content"> 
     <!-- Header -->
     <%= render :partial => "layouts/top_header"%>
     <!-- Header Ends --> 
+</head>
+
+<body>
+<!-- Aside Start-->
+    <%= render :partial => "layouts/sidebar"%>
+    <!-- Aside Ends-->
+<!--Main Content Start -->
+  <section class="content"> 
     <!-- Page Content Start --> 
     <!-- ================== -->
     <div class="wrapper container-fluid">
       <ol class="breadcrumb">
            <li><a href="#">Home</a></li>
-         <li><a><%= link_to "Manage User Account",manage_user_account_index_path%></a></li>
-         <li><a class="active"><%= link_to "Institutional Admin User", institution_admin_user_index_path%></a></li>
+         <li><a>Manage User Account</a></li>
+         <li><a>Institutional Admin User</a></li>
       </ol>
 
       <h2 class="H2-L1">Institutional Admin User</h2>

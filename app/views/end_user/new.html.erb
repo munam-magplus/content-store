@@ -2,22 +2,24 @@
 <html>
 <title>Content Store :: Create End Users </title>
 <!-- Latest compiled and minified CSS -->
-<%= render :partial => "layouts/header"%>
-</head>
-
-<body>
-<!--Main Content Start -->
-  <section class="content"> 
     <!-- Header -->
     <%= render :partial => "layouts/top_header"%>
     <!-- Header Ends --> 
+</head>
+
+<body>
+<!-- Aside Start-->
+    <%= render :partial => "layouts/sidebar"%>
+    <!-- Aside Ends-->
+<!--Main Content Start -->
+  <section class="content"> 
     <!-- Page Content Start --> 
     <!-- ================== -->
     <div class="wrapper container-fluid">
       <ol class="breadcrumb">
            <li><a href="#">Home</a></li>
-         <li><a><%= link_to "Manage User Account",manage_user_account_index_path%></a></li>
-         <li><a class="active"><%= link_to "Create End User", institution_account_index_path%></a></li>
+         <li><a>Manage User Account</a></li>
+         <li><a>Create End User</a></li>
       </ol>
 
       <h2 class="H2-L1">Create End Users</h2>
@@ -26,8 +28,9 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Publisher<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.collection_select :publisher, Publisher.all, :id, :publisher_name, :class => "form-control" %>
+              <%= f.select 'publisher',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'),{ :prompt => "select publisher"},{:class => "form-control"} %>
             </div>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
@@ -36,6 +39,7 @@
             <div class="col-sm-8">
               <%= f.text_field :email, :class => "form-control" %>
             </div>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
@@ -44,6 +48,7 @@
             <div class="col-sm-8">
               <%= f.text_field :confirm_email, :class => "form-control" %>
             </div>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
@@ -52,6 +57,7 @@
             <span class="col-sm-8">
             <%= f.text_field :password, :class => "form-control" %>
             </span> 
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
@@ -60,6 +66,7 @@
             <span class="col-sm-8">
             <%= f.text_field :confirm_password, :class => "form-control" %>
             </span>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
@@ -68,6 +75,7 @@
             <span class="col-sm-8">
             <%= f.text_field :first_name, :class => "form-control" %>
             </span> 
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
@@ -76,6 +84,7 @@
             <span class="col-sm-8">
             <%= f.text_field :last_name, :class => "form-control" %>
             </span>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
@@ -84,6 +93,7 @@
             <span class="col-sm-8">
             <%= f.text_field :country, :class => "form-control" %>
             </span> 
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="clearfix"></div>

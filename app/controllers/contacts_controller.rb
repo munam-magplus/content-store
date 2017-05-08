@@ -27,11 +27,11 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
      respond_to do |format|
       if @contact.save
-        format.html { redirect_to :back, notice: 'We will contact you soon.' }
+        format.html { redirect_to new_user_session_path }
         format.json { render :show, status: :created, location: @contact }
         ContactMailer.contact_details(@contact).deliver_now      
       else
-        format.html { render :new }
+        format.html { redirect_to :back}
         format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end

@@ -3,4 +3,5 @@ class IndexContentController < ApplicationController
   end
 
   def publisher_code
+  end
 end

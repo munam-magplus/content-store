@@ -3,25 +3,24 @@
 <head>
 <title>Content Store :: Search Journal</title>
 <!-- Latest compiled and minified CSS -->
-<%= render :partial => "layouts/header"%>
+    <!-- Header -->
+   <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
 </head>
 
 <body>
   <!-- Aside Start-->
-
-  <!-- Aside Ends--> 
+    <%= render :partial => "layouts/sidebar"%>
+    <!-- Aside Ends-->
   <!--Main Content Start -->
   <section class="content"> 
-    <!-- Header -->
-   <%= render :partial => "layouts/top_header"%>
-    <!-- Header Ends --> 
     <!-- Page Content Start --> 
     <!-- ================== -->
     <div class="wrapper container-fluid">
       <ol class="breadcrumb">
          <li><a href="#">Home</a></li>
-       <li><a><%= link_to "Publisher Setup",publisher_setup_index_path%></li>
-       <li><%= link_to "Search Journal",publishers_path%></li>
+       <li><a> Publisher Setup </li>
+       <li><a> Search Journal</a></li>
         </ol>
       
       <h2 class="H2-L1">Search Journal</h2>
@@ -30,40 +29,45 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Publisher</label>
             <div class="col-sm-8">
-             <%= text_field_tag :publisher, params[:publisher] %>
+             <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "Select publisher", :class => "form-control"%>
             </div>
+             <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Journal Code</label>
             <span class="col-sm-8">
-              <%= text_field_tag :code, params[:code] %>
+              <%= text_field_tag :code, params[:code], :class => "form-control" %>
             </span> 
+             <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Journal Title</label>
             <span class="col-sm-8">
-              <%= text_field_tag :title, params[:title] %>
+              <%= text_field_tag :title, params[:title], :class => "form-control" %>
             </span> 
+             <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Journal Primary ISSN</label>
             <span class="col-sm-8">
-              <%= text_field_tag :primary_issn, params[:primary_issn] %>
+              <%= text_field_tag :primary_issn, params[:primary_issn], :class => "form-control" %>
             </span> 
+             <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Journal Electronic ISSN</label>
             <span class="col-sm-8">
-              <%= text_field_tag :electronic_issn, params[:electronic_issn] %>
+              <%= text_field_tag :electronic_issn, params[:electronic_issn], :class => "form-control" %>
             </span> 
+             <div class="clearfix"></div>
           </div>
         </div>
         <div class="clearfix"></div>
