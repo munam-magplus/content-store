@@ -18,11 +18,7 @@ class JournalsController < ApplicationController
   end
 
   def search
-  end
-
-  def search_result
-    @journal = Journal.search(params[:pub_id], params[:name], params[:code], params[:lang_id])
-    render :partial => 'search_result'
+    @journal = Journal.filter(params.slice(:publisher, :journal_code, :journal_title, :journal_primary_issn, :journal_electronic_issn))
   end
 
   private

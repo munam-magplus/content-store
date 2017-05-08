@@ -1,23 +1,23 @@
 <tr class="content_head">
   <th><input type="checkbox" name="select-all" id="select-all" /></th>
-  <th>License Name</th>
-  <th>License Type</th>
-  <th>License Id</th>
+  <th>Title</th>
+  <th>Content Identifier</th>
+  <th>Status</th>
 </tr>
-<% if @license_content.present? %>
-  <% @license_content.each do |lic_group| %>
+<% if @title.present? %>
+  <% @title.each do |title_group| %>
     <tr class="content_value">
       <td>
         <input type="checkbox" name="checkbox" id="chk" />
       </td>
       <td>
-        <%= lic_group.license_name %>
+        <%= title_group.subject_group_name %>
       </td>
       <td>
-        <%= lic_group.license_type %>
+        <%= title_group.subejct_group_code %>
       </td>
       <td>
-        <%= lic_group.license_id %>  
+        <%= title_group.subject_group_level %>  
       </td>
     </tr>
   <% end %>

@@ -1,4 +1,5 @@
 <html>
+<head>
 <title>Content Store :: Create Journal </title>
 <!-- Latest compiled and minified CSS -->
 <%= render :partial => "layouts/header"%>
@@ -49,7 +50,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Journal Sub Title</label>
             <span class="col-sm-8">
-            <%= text_field_tag :journal_subtitle %>
+            <%= f.text_field :journal_subtitle, :class => "form-control" %>
             </span> 
           </div>
         </div>
@@ -57,7 +58,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Journal Primary ISSN</label>
             <span class="col-sm-8">
-            <%= text_field_tag :journal_primary_issn %>
+            <%= f.text_field :journal_primary_issn, :class => "form-control" %>
             </span>
           </div>
         </div>
@@ -65,7 +66,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Journal Electronic ISSN</label>
             <span class="col-sm-8">
-            <%= text_field_tag :journal_electronic_issn %>
+            <%= f.text_field :journal_electronic_issn, :class => "form-control" %>
             </span> 
           </div>
         </div>
@@ -73,7 +74,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Journal Owner</label>
             <span class="col-sm-8">
-            <%= text_field_tag :journal_owner %>
+            <%= f.text_field :journal_owner, :class => "form-control" %>
             </span>
           </div>
         </div>
@@ -129,36 +130,61 @@
             <label for="bookISBN" class="col-sm-4 control-label">Cover Image</label>
             <span class="col-sm-8">
               <input type="file" name="coverImage" size="60" value="" id="coverImage" style="background-color: #E8E8E8">
-
-              <br />
-                  Please upload only a jpg image of (height,width)=(110,74)pixels.</td>
-            </tr>
-            <tr>
-              <td>Journal Categories*:</td>
-              <td> <%= f.text_area :journal_categories %> </td>
-            </tr>
-            <tr>
-              <td>Journal Description*:</td>
-              <td><%= f.text_area :journal_description %></td>
-            </tr>
-            <tr>
-              <td>Editorial:</td>
-              <td><%= f.radio_button :editorial, 'Internal', :checked => true %> Internal
+                  Please upload only a jpg image of (height,width)=(110,74)pixels.
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Journal Categories</label>
+            <span class="col-sm-8">
+              <%= f.text_area :journal_categories, :class => "form-control" %>
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Journal Description</label>
+            <span class="col-sm-8">
+              <%= f.text_area :journal_description, :class => "form-control" %>
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Editorial</label>
+            <span class="col-sm-8">
+              <%= f.radio_button :editorial, 'Internal', :checked => true %> Internal
               <%= f.radio_button :editorial, 'External' %> External<br>
-            </tr>
-            <tr>
-              <td>Instructions for Authors:</td>
-              <td><%= f.text_area :instructions_for_authors %></td>
-            </tr>
+              <%= f.text_area :editorial, :class => "form-control" %>
+            </span> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Instructions for Authors</label>
+            <span class="col-sm-8">
+              <%= f.radio_button :instructions_for_authors, 'Internal', :checked => true %> Internal
+              <%= f.radio_button :instructions_for_authors, 'External' %> External<br>
+              <%= f.text_area :instructions_for_authors, :class => "form-control" %>
+            </span> 
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="clearfix m-b-30"></div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
 
-            <td>
-              <%= f.submit "Save" %>
-            </td>
-
-          <% end %>
-        </tbody>
-      </table>
-      
-    </div>
-  </body>
-</html>
+            <%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Search Journal'.html_safe, journals_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
+            <%= f.submit "Submit", :class => "btn btn-sm" %>
+            <%= f.button "Reset", :class => "btn btn-sm", type: :reset %>
+          </div>
+        </div>
+      <% end %>
+    </div>  
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+    <!-- Footer Ends --> 
+  </section>
+</body>
+</html>      

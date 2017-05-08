@@ -1,57 +1,130 @@
 <html>
-  <body class = "body1">
-    <%= render :partial => '/layouts/header'%>
-    <div class="div1">
-      <h1>Article Search</h1>
-      <table border="0" cellpadding="10" cellspacing="0">
-        <tbody>
-          <%= form_tag journals_result_article_path, :method => 'get' do %>
-            <tr>
-              <td>Journal Title</td>
-              <td><%= text_field_tag :journal_title, params[:journal_title] %></td>
-            </tr> 
-            <tr>
-              <td> Title </td>
-              <td><%= text_field_tag :title, params[:title] %></td>
-            </tr> 
-            <tr>
-              <td> Content Code </td>
-              <td><%= text_field_tag :code, params[:code] %></td>
-            </tr> 
-            <tr>
-              <td>  DOI </td>
-              <td><%= text_field_tag :doi, params[:doi] %></td>
-            </tr>
-            <tr>
-              <td>Volume Number </td>
-              <td><%= text_field_tag :volume, params[:volume] %></td>
-            </tr>
-             <tr>
-              <td>Issue Number </td>
-              <td><%= text_field_tag :issue, params[:issue] %></td>
-            </tr>
-             <tr>
-              <td>Article Section </td>
-              <td><%= text_field_tag :article, params[:article] %></td>
-            </tr>
-             <tr>
-              <td>Author First Name </td>
-              <td><%= text_field_tag :author_first_name, params[:author_first_name] %></td>
-            </tr>
-             <tr>
-              <td>Author Last Name  </td>
-              <td><%= text_field_tag :author_last_name, params[:author_last_name] %></td>
-            </tr> 
-            <tr>
-              <td>
-                <%= submit_tag "Submit" %>
-                <%= button_tag "Reset", type: :reset %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <%= render :partial => '/layouts/footer'%>
+  <head>
+    <title>Content Store :: Search Articles</title>
+    <%= render :partial => "layouts/header"%>
+  </head>
+
+  <body>
+    <!-- Aside Start-->
+
+    <!-- Aside Ends--> 
+    <!--Main Content Start -->
+    <section class="content"> 
+      <!-- Header -->
+      <%= render :partial => "layouts/top_header"%>
+      <!-- Header Ends --> 
+      <!-- Page Content Start --> 
+      <!-- ================== -->
+      <div class="wrapper container-fluid">
+        <ol class="breadcrumb">
+          <li><a href="#">Home</a></li>
+          <li><%= link_to "Publisher Setup",publisher_setup_index_path%></li>
+          <li><%= link_to "Search Articles",publishers_path%></li>
+        </ol>
+        
+      <h2 class="H2-L1">Search Articles</h2>
+      <%= form_tag search_article_index_path, :method => 'get', :remote => true do %>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label">Journal Title<span class="red">*</span>:</label>
+              <span class="col-sm-8">
+              <%= text_field_tag :journal_title, params[:journal_title] %>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label" >Title<span class="red">*</span>:</label>
+              <span class="col-sm-8">
+              <%= text_field_tag :title, params[:title] %>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label">Content Code<span class="red">*</span>:</label>
+              <span class="col-sm-8">
+              <%= text_field_tag :code, params[:code] %>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label" >DOI</label>
+              <span class="col-sm-8">
+              <%= text_field_tag :doi, params[:doi] %>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label" >Volume Number</label>
+              <span class="col-sm-8">
+              <%= text_field_tag :volume, params[:volume] %>
+            </span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label" >Issue Number</label>
+              <span class="col-sm-8">
+              <%= text_field_tag :issue, params[:issue] %>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label" >Article Section <span class="red">*</span>:</label>
+              <span class="col-sm-8">
+              <%= text_field_tag :article, params[:article] %>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label" >Author First Name</label>
+              <span class="col-sm-8">
+              <%= text_field_tag :author_first_name, params[:author_first_name] %>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label" >Author Last Name</label>
+              <span class="col-sm-8">
+              <%= text_field_tag :author_last_name, params[:author_last_name] %>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="clearfix m-b-30"></div>
+        <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+          <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit %>
+          <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
+        </div>
+      <%end%>
+      <div class="clearfix m-b-30"></div>
+      <div id="search_result"></div>
+      <!-- Page Content Ends --> 
+      <!-- ================== --> 
+    
+      <!-- Footer Start -->
+      <%= render :partial => "layouts/footer" %>
+      <!-- Footer Ends --> 
+    </section>
   </body>
 </html>

@@ -29,7 +29,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Select Publisher<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "Select publisher", :class => "form-control"%>
+              <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "Select publisher", :class => "form-control"%>
             </div>
           </div>
         </div>
@@ -37,20 +37,20 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Campaign Name</label>
             <div class="col-sm-8">
-              <%= text_field_tag :campaign_nam,"",:class => "form-control" %>
+              <%= text_field_tag :campaign_name,"",:class => "form-control" %>
             </div>
           </div>
         </div>
         <div class="col-md-6"><div class="form-group">
-          <label for="License" class="col-sm-5 control-label">From<sup class="mandatory">*</sup></label>
-          <div class="col-sm-7">
-            <%= text_field_tag :from , :class => "form-control",:id => 'from' %>
+          <label for="License" class="col-sm-4 control-label">From<sup class="mandatory">*</sup></label>
+          <div class="col-sm-8">
+            <%= text_field_tag :from,"",:class => "form-control"  %>
           </div>
         </div></div>
         <div class="col-md-6"><div class="form-group">
-          <label for="License" class="col-sm-5 control-label">To</label>
-          <div class="col-sm-7">
-            <%= text_field_tag :to , :class => "form-control",:id => 'to' %>
+          <label for="License" class="col-sm-4 control-label">To</label>
+          <div class="col-sm-8">
+            <%= text_field_tag :to,"",:class => "form-control" %>
           </div>
         </div></div>
         <div class="col-md-6">
@@ -73,10 +73,10 @@
           </div>
         </div>
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
-              <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit, :id => "submit" %>
-              <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
-            </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+            <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit, :id => "submit" %>
+            <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
+          </div>
         </div>
       <% end %>
      <div id="search_result"></div>  

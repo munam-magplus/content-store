@@ -1,43 +1,36 @@
-<html>
-  <body class = "body1">
-    <%= render :partial => '/layouts/header'%>
-    <div class="div1">
-      <table border="0" cellpadding="10" cellspacing="0">
+<body class="body1"></body>
+<div class="div1">
+  <h1>Subject Group List</h1>
+  <table bgcolor="#cccccc" border="0" cellpadding="8" cellspacing="1" width="70%"></table>
+  <table bgcolor="#cccccc" border="0" cellpadding="8" cellspacing="1" class="center" width="100%">
+    <tbody>
+      <tr>
+        <td class="tableheader"> Subject Group Name </td>
+        <td class="tableheader"> Subject Group Code </td>
+        <td class="tableheader"> Subject Group Level </td>
+      </tr>
+          <% if @subject_group.present? %>
+        <% @subject_group.each do |f| %>
         <tr>
-          <h1>Search Subject Group</h1>
+          <td bgcolor="#FBFBFB">
+            <%= f.subject_group_name %>
+          </td>
+          <td bgcolor="#FBFBFB">
+            <%= f.subject_group_code %>
+          </td>
+          <td bgcolor="#FBFBFB">
+            <%= f.subject_group_level %>
+          </td>
         </tr>
-        <%= form_tag search_result_subject_groups_path, :method => 'get' do %>
-          <tbody>
-            <tr>
-              <td> Publisher </td>
-              <td><%= text_field_tag :publisher, params[:publisher] %></td>
-            </tr> 
-            <tr>
-              <td> Subject Group Name </td>
-              <td><%= text_field_tag :subject_group_name, params[:subject_group_name] %></td>
-            </tr> 
-            <tr>
-              <td> Subject Group Code </td>
-              <td><%= text_field_tag :subject_group_code, params[:subject_group_code] %></td>
-            </tr> 
-            <tr>
-              <td> Select Language </td>
-              <td><%= select_tag(:select_language, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %></td>
-            </tr>
-            <tr><td></td>
-              <td>
-                <%= submit_tag "Search" %>
-                <%= button_tag "Reset", type: :reset %>
-              </td>
-            </tr>
-          </tbody>
         <% end %>
-      </table>
-    </div>
-  </body>
-</html>
-
-<tr>
-  <td align="center" class="footer_white">
-  Copyright © 2006-2009 MPS Technologies Ltd</td>
-</tr>
+        <% else %>
+          <tr>
+            <td bgcolor="#FBFBFB">
+              <p> Record Not Found </p> 
+            </td>
+          </tr>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>

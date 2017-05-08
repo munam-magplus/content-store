@@ -19,18 +19,20 @@
       <table class="table table-bordered">
         <thead>
           <tr style="font-size:13px">
-            <th>Subject Group Name</th>
-            <th>Subject Group Code</th>
-            <th>Subject Group Level</th>
+            <th>Journal Code</th>
+            <th>Journal Title</th>
+            <th>Journal Primary ISSN</th>
+            <th>Journal Electronic ISSN</th>
           </tr>
         </thead>
         <tbody>
-          <% if @subject_group.present? %>
-	      		<% @subject_group.each do |f| %>
+          <% if @journal.present? %>
+            <% @journal.each do |f| %>
               <tr>
-                <td><%= f.subject_group_name %></td>
-                <td><%= f.subject_group_code %></td>
-                <td><%= f.subject_group_level %></td>
+                <td><%= f.journal_code %></td>
+                <td ><%= f.journal_title %></td>
+                <td ><%= f.journal_primary_issn %></td>
+                <td ><%= f.journal_electronic_issn %></td>
               </tr>
             <% end %>
           <% else %>

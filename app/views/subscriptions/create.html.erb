@@ -1,2 +1,425 @@
-<h1>Subscriptions#create</h1>
-<p>Find me in app/views/subscriptions/create.html.erb</p>
+<!doctype html>
+<html>
+<head>
+<title>Content Store :: Create Subscription </title>
+</head>
+
+<body>
+  <%= render :partial => '/layouts/header'%>
+<section class="content"> 
+  <%= render :partial => '/layouts/top_header'%>
+  <div class="wrapper container-fluid">
+  <ol class="breadcrumb">
+       <li><a href="#">Home</a></li>
+	   <li><a href="#">Manage User Account</a></li>
+	   <li><a href="#" class="active">End Users</a></li>
+      </ol>
+    
+    <h2 class="H2-L1"> Create Subscription </h2>
+	<h4>Information</h4>
+    <form class="form-horizontal form-bg" role="form">
+		
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="taskName" class="col-sm-4 control-label">Subscription ID:</label>
+          <div class="col-sm-8">
+            <input id="subscriptionId" class="form-control" value="System Generated" disabled="">
+  		  </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="bookISBN" class="col-sm-4 control-label">Subscription Name:</label>
+          <span class="col-sm-8">
+          <input id="subscriptionName" maxlength="100" value="" placeholder="Subscription Name" class="form-control">
+          </span> </div>
+      </div>
+	  <div class="col-md-6">
+        <div class="form-group">
+          <label for="bookISBN" class="col-sm-4 control-label">Publisher:</label>
+          <span class="col-sm-8">
+          <select name="pubCodeCombo" id="pubCodeCombo" class="form-control" onchange="publisherSelected(this.value);">
+                      
+                      <option value="wtbooks"> World Technology </option>
+                      
+                      <script language="javascript" type="text/javascript">
+												publisherSelected('wtbooks');
+									</script>
+                      
+                    </select>
+          </span> </div>
+      </div>
+	  <div class="col-md-6">
+	  <div class="form-group">
+          <label for="taskName" class="col-sm-4 control-label">Subscription Description:</label>
+          <div class="col-sm-8">
+            <textarea name="subscriptionDesc" cols="50" rows="3" style="resize:none;" id="subscriptionDesc" class="form-control"></textarea>
+  		  </div>
+        </div>
+		</div>
+		<div class="col-md-12">
+        <div class="form-group">
+          <label for="bookISBN" class="col-sm-2 control-label">Subscription category:</label>
+          <span class="col-sm-8">
+          <label class="radio-inline">
+			  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Online Subscription for library
+			</label>
+			<label class="radio-inline">
+			  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Individual Borrow
+			</label>
+			<label class="radio-inline">
+			  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Library Borrow
+			</label>
+          </span> </div>
+      </div>
+      <div class="clearfix"></div>
+    </form>
+	<p>&nbsp;</p>
+	 <div class="card">
+          <div class="tabContainer">
+            <div class="tabs" data-max-width="1024"> 
+				<span class="tab" data-tab="bookDetails"> <span class="text">Book</span> </span> 
+				<span class="tab" data-tab="editorDetails"> <span class="text">Subject Group</span> </span> 
+			</div>
+          </div>
+          <div class="sectionsContainer tabbingSection">
+            <div class="sections ">
+              <div class="section " data-section="bookDetails">
+                <div class="col-md-12 form-bg">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="col-md-12">
+                        <label class="radio-inline"><input type="radio" name="optradio"> All Publishers </label>
+						
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="col-md-12">
+                        <label class="radio-inline"><input type="radio" name="optradio">Select Publisher</label>
+                      </div>
+                    </div>
+					<div class="col-md-12">
+						<div class="col-md-12">
+							<label>Publisher </label>
+							<select multiple="multiple" style="height:100px;" disabled class="form-control">
+								<option>option 1</option>
+								<option>option 1</option>
+								<option>option 1</option>
+							</select>
+						</div>
+					</div>
+                  </div>
+				   <div class="row">
+                    <div class="col-md-6">
+                      <div class="col-md-12">
+                        <label class="radio-inline"><input type="radio" name="optradio1">  All Titles </label>
+						
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="col-md-12">
+                        <label class="radio-inline"><input type="radio" name="optradio1">Select Titles</label>
+                      </div>
+                    </div>
+					<div class="col-md-12">
+						 <div class="col-md-6">
+							<label for="">ISBN</label>
+						   <input type="text" placeholder="" class="form-control" >
+						</div>
+						<div class="col-md-6">
+							<label for="">Title</label>
+						   <input type="text" placeholder="" class="form-control" >
+						</div>
+						<div class="col-md-6">
+							<label for="">Author First Name</label>
+						   <input type="text" placeholder="" class="form-control" >
+						</div>
+						<div class="col-md-6">
+							<label for="">Author Last Name</label>
+						   <input type="text" placeholder="" class="form-control" >
+						</div>
+						<div class="col-md-6">
+							<label for="">Publication Year</label>
+						   <input type="text" placeholder="" class="form-control" >
+						</div>
+						<div class="col-md-12">
+						 
+							<br>
+							<button type="submit" class="btn btn-sm" onclick="javascript:showDiv();"><i class="fa fa-search" aria-hidden="true"></i> &nbsp;Search</button>
+						</div>
+						
+					</div>
+                  </div>
+				</div>
+                <div class="row">
+					<div class="col-md-12">
+					<p>&nbsp;</p>
+						<div class="col-md-12"><h4>Length of Agreement</h4></div>
+						<div class="col-md-6">
+							<label for="">Subscription Type</label>
+						  <select name="subscriptionType" class="form-control" id="subscriptionType" onchange="showSubscriptionTypeRow(this.value);">
+							<option value="" selected="">Select</option>
+							<option value="INSTITUTE_FIXED">Fixed Date Range</option>
+							<option value="INSTITUTE_RELATIVE">Relative Date Range</option>
+						  </select>
+						</div>
+						<div class="hidden">
+						<div class="col-md-3">
+							<label>From</label>
+							 <div class="input-group">
+							  <input type="text" class="form-control" placeholder="Date From">
+							  <span class="input-group-btn">
+								<button class="btn btn-default" style="padding:4px 12px;" type="button"><i class="fa fa-calendar"></i></button>
+							  </span>
+							</div><!-- /input-group -->
+						</div>
+						<div class="col-md-3">
+							<label>To</label>
+							 <div class="input-group">
+								  <input type="text" class="form-control" placeholder="Date To">
+								  <span class="input-group-btn">
+									<button class="btn btn-default" style="padding:4px 12px;" type="button"><i class="fa fa-calendar"></i></button>
+								  </span>
+								</div><!-- /input-group -->
+						</div>
+						</div>
+						<div class=" ">
+							<div class="col-md-3">
+								<label>Duration</label>
+								<input type="text" class="form-control" placeholder="Duration">
+							</div>
+							<div class="col-md-3">
+								<label>Year</label>
+								<select name="durationUnit" class="form-control" id="durationUnit">
+								<option value="">Select</option>
+								<option value="YEARS">Years</option>
+								<option value="MONTHS">Months</option>
+								<option value="WEEKS">Weeks</option>
+							  </select>
+							</div>
+						</div>
+						<p>&nbsp;</p>
+						<div class="col-md-12">
+							<h4>Available for Institutional Accounts </h4>
+							
+						</div>
+						 <div class="col-md-6">
+							  <div class="col-md-12">
+								<label class="radio-inline"><input type="radio" name="optradio2">  Yes </label>
+							   
+								<label class="radio-inline"><input type="radio" name="optradio2">No</label>
+							  </div>
+							</div>
+						
+					</div>
+				</div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="section" data-section="editorDetails">
+				<div class="row">
+				<div class="col-md-12">
+					<div class="form-bg">
+					<div class="col-md-5">
+                      <div class="form-group">
+                        <label for="Proofreader" class="control-label">Subject Group Name  </label>
+                        <input type="text" class="form-control" id="SubjectName">
+                      </div>
+                    </div>
+					<div class="col-md-5">
+                      <div class="form-group">
+                        <label for="Proofreader" class="control-label">Subject Group Code </label>
+                        <input type="text" class="form-control" id="SubjectCode">
+                      </div>
+                    </div>
+					<div class="col-md-2">
+						<div class="form-group">
+							<label   class="control-label col-md-12"> &nbsp;</label>
+							<button type="submit" class="btn btn-sm btn-block"><i class="fa fa-search" aria-hidden="true"></i> &nbsp;Search </button>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					</div>
+					</div>
+				</div>
+                  <div class="row">
+                    <div class="clearfix"></div>
+                    <div class="col-md-12">
+                      <div class="mt10 table-demo"> Search Result <span class="pull-right">
+                        <div class="dropdown">
+                          <ul class="nav">
+                            <li class="drop"><i style="cursor: pointer;width: 12px;" class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                              <ul class="dropdown-menu-right">
+                                <li><a href="#"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</a></li>
+                                <li><a href="#"> <i class="fa fa-file-word-o" aria-hidden="true"></i> Word</a></li>
+                                <li><a href="#"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a></li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </div>
+                        </span> </div>
+                      <div class="table-responsive">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr style="font-size:13px">
+                              <th>Subject Group Name  </th>
+                              <th> Subject Group Code </th>
+                              <th>Subject Group Level </th>
+                              <th>Action</th>
+                               
+                            </tr>
+                          </thead>
+                          <tbody>
+                           
+                           
+                            <tr>
+                              <td>History</td>
+                              <td>90</td>
+                              <td>2</td>
+                              
+                              <td><span class="pull-right"><a href="#"><i class="fa fa-plus font-b-icon" data-toggle="modal" data-target="#editBook"></i> </a> &nbsp;<a href="#"><i class="fa fa-trash font-b-icon"></i></a> </span></td>
+                            </tr>
+                          
+                            <tr>
+                              <td>Knowledge</td>
+                              <td>001</td>
+                              <td>3</td>
+                               
+                              <td><span class="pull-right"><a href="#"><i class="fa fa-plus font-b-icon" data-toggle="modal" data-target="#editBook"></i> </a> &nbsp;<a href="#"><i class="fa fa-trash font-b-icon"></i></a> </span></td>
+                            </tr>
+							 <tr>
+                              <td>Language</td>
+                              <td>40</td>
+                              <td>2</td>
+                               
+                              <td><span class="pull-right"><a href="#"><i class="fa fa-plus font-b-icon" data-toggle="modal" data-target="#editBook"></i> </a> &nbsp;<a href="#"><i class="fa fa-trash font-b-icon"></i></a> </span></td>
+                            </tr>
+							<tr>
+                              <td>Philosophy</td>
+                              <td>10</td>
+                              <td>2</td>
+                               
+                              <td><span class="pull-right"><a href="#"><i class="fa fa-plus font-b-icon" data-toggle="modal" data-target="#editBook"></i> </a> &nbsp;<a href="#"><i class="fa fa-trash font-b-icon"></i></a> </span></td>
+                            </tr>
+							<tr>
+                              <td>Religion</td>
+                              <td>20</td>
+                              <td>2</td>
+                               
+                              <td><span class="pull-right"><a href="#"><i class="fa fa-plus font-b-icon" data-toggle="modal" data-target="#editBook"></i> </a> &nbsp;<a href="#"><i class="fa fa-trash font-b-icon"></i></a> </span></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+					<div class="col-md-12 text-right"><button type="submit" class="btn btn-sm"  ><i class="fa fa-object-group" aria-hidden="true"></i> &nbsp;Add All</button></div>
+                  </div>
+                <div class="clearfix"></div>
+              </div>
+             <div class="clearfix"></div>
+             </div>
+          </div>
+          <!--Material Tabs End--> 
+ </div>
+    <div class="clearfix m-b-30"></div>
+	<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+ 
+		<button type="submit" class="btn btn-sm" onclick="javascript:showDiv();"><i class="fa fa-check" aria-hidden="true"></i> &nbsp;Save</button>
+        <button type="reset" class="btnBlack btn-sm" onclick="javascript:hideDiv();"><i class="fa fa-refresh" aria-hidden="true"></i> &nbsp;Clear</button>
+      </div>
+	  </div>
+	  <div class="clearfix m-b-30"></div>
+    <div class="row" id="searchResultGrid" style="display:none;">
+      <div class="col-md-12">
+        <div class="mt10 table-demo">Search Result <span class="pull-right">
+                        <div class="dropdown">
+                          <ul class="nav">
+                            <li class="drop"><i style="cursor: pointer;width: 12px;" class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                              <ul class="dropdown-menu-right">
+                                <li><a href="#"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</a></li>
+                                <li><a href="#"> <i class="fa fa-file-o" aria-hidden="true"></i> CSV</a></li>
+                                <li><a href="#"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a></li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </div>
+                        </span></div>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr style="font-size:13px">
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Country</th>
+				<th>Actions</th>
+                 
+              </tr>
+            </thead>
+            <tbody>
+			  <tr>
+				  <td >aaa@aaa.aaa</td>
+				  <td >aaa</td>
+				  <td >aaa</td>
+				  <td >India</td>
+				  <td ><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a> </td>
+			  </tr>
+			  <tr>
+				  <td >abejeromaryrose@yahoo.com</td>
+				  <td >Mary rose</td>
+				  <td >abejero</td>
+				  <td >Philippines</td>
+				  <td >  </td>
+				</tr>
+				<tr>
+				  <td >adarshinbox.anurag@gmail.com</td>
+				  <td >Adarsh</td>
+				  <td >Raj</td>
+				  <td >India</td>
+				  <td ></td>
+				</tr>
+				<tr>
+				  <td >adarshinbox@hotmail.com</td>
+				  <td >Adarsh</td>
+				  <td >Raj</td>
+				  <td >India</td>
+				  <td > </td>
+				</tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-sm-12"> </div>
+    </div>
+  </div>
+  <%= render :partial => '/layouts/footer'%>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js'></script> 
+ <script src="assets/scripts/tab.js"></script> 
+<script src="assets/scripts/jquery.slimscroll.min.js"></script> 
+<script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script> 
+<script src="https://www.gstatic.com/charts/loader.js"></script> 
+<script src="assets/scripts/js/pace.min.js"></script> 
+<script src="assets/scripts/modernizr.min.js"></script> 
+<script src="assets/scripts/jquery.app.js"></script> 
+<script src="jqgrid/js/i18n/grid.locale-en.js"></script> 
+<script src="jqgrid/js/jquery.jqGrid.min.js"></script> 
+
+<script src="https://code.highcharts.com/highcharts.js"></script> 
+<script src="https://code.highcharts.com/modules/exporting.js"></script> 
+
+<script type="text/javascript">
+        function showDiv() {
+            div = document.getElementById('searchResultGrid');
+            div.style.display = "block";
+        }
+		function hideDiv() {
+            div = document.getElementById('searchResultGrid');
+            div.style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
