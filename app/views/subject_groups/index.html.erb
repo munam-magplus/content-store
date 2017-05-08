@@ -1,48 +1,80 @@
+<!doctype html>
 <html>
-  <body class = "body1">
-    <div class="row">
-      <div class="col-md-12">
-        <h4 class="borderBottom">Subject Group</h4>  
-      </div>
-    </div>
-    <div class="row mt10">
-      <div class="col-md-3">
-        <div class="custCard">
-          <div class="cardUp dkBlurBg"></div>
-          <div class="aviater"><%= link_to image_tag("create_book.gif"),new_subject_group_path %>
-          </div>
-            <div class="card-block">
-              <!--Name-->
-              <h4 class="card-title">Create Primary <br> Subject Group</h4>
-              <!--<hr>-->
-              <!--Quotation-->
-              <!--<p><i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci</p>-->
+<head>
+<title>Content Store :: Search Subject Group</title>
+<!-- Latest compiled and minified CSS -->
+<%= render :partial => "layouts/header"%>
+</head>
+
+<body>
+  <!-- Aside Start-->
+
+  <!-- Aside Ends--> 
+  <!--Main Content Start -->
+  <section class="content"> 
+    <!-- Header -->
+   <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+         <li><a href="#">Home</a></li>
+       <li><a><%= link_to "Publisher Setup",publisher_setup_index_path%></li>
+       <li><%= link_to "Search Subject Group",publishers_path%></li>
+      </ol>
+      
+      <h2 class="H2-L1">Search Subject Group</h2>
+      <%= form_tag search_subject_groups_path, :method => 'get', :remote => true do %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Publisher</label>
+            <div class="col-sm-8">
+             <%= text_field_tag :publisher, params[:publisher] %>
             </div>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="custCard">
-            <div class="cardUp dkBlurBg"></div>
-            <div class="aviater"><%= link_to image_tag("search_book.gif"),search_subject_groups_path %></div>
-            <div class="card-block">
-              <!--Name-->
-              <h4 class="card-title">Search Subject <br> Group</h4>
-            </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Subject Group Name</label>
+            <span class="col-sm-8">
+            <%= text_field_tag :subject_group_name, params[:subject_group_name] %>
+            </span> 
           </div>
         </div>
-      <div class="col-md-3">
-        <div class="custCard">
-          <div class="cardUp dkBlurBg"></div>
-          <div class="aviater"> <%= link_to image_tag("book_metadata.gif"),metadata_sheet_subject_groups_path %></div>
-          <div class="card-block">
-            <!--Name-->
-            <h4 class="card-title">Upload Subject <br> Group Metadata Sheet</h4>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Subject Group Code</label>
+            <span class="col-sm-8">
+            <%= text_field_tag :subject_group_code, params[:subject_group_code] %>
+            </span> 
           </div>
         </div>
-      </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Select Language</label>
+            <span class="col-sm-8">
+            <%= select_tag(:select_language, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %>
+            </span> 
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="clearfix m-b-30"></div>
+          <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+            <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit %>
+            <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
+          </div>
+          <div class="clearfix m-b-30"></div>
+          <div id="search_result"></div>
+        </div>
+      <%end%>
     </div>
-    <div class="row mt20">
-      &nbsp;
-    </div>
-  </body>
+    <!-- Page Content Ends --> 
+    <!-- ================== --> 
+  
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+    <!-- Footer Ends --> 
+  </section>
+</body>
 </html>

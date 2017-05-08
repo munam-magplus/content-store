@@ -39,6 +39,7 @@ gem "paperclip", "~> 5.0.0"
 
 #for exporting excel sheet
 gem 'axlsx_rails'
+gem 'roo'
 
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

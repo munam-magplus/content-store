@@ -19,9 +19,6 @@ class ArticleController < ApplicationController
   end
 
   def search
-  end
-
-  def result
     #Call filter method to get search results
     @article = Article.filter(params.slice(:publisher, :title, :code, :doi, :volume, :issue, :article, :author_first_name, :author_last_name))
   end

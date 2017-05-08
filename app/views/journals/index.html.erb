@@ -1,67 +1,89 @@
+<!doctype html>
 <html>
-  <body class = "body1">
-    <div class="row">
-      <div class="col-md-12">
-        <h4 class="borderBottom">Journals</h4>  
-      </div>
-    </div>
-    <div class="row mt10">
-      <div class="col-md-3">
-        <div class="custCard">
-          <div class="cardUp dkBlurBg"></div>
-          <div class="aviater"><%= link_to image_tag("create_book.gif"),new_journal_path %></div>
-            <div class="card-block">
-              <!--Name-->
-              <h4 class="card-title">Create New Journal</h4>
+<head>
+<title>Content Store :: Search Journal</title>
+<!-- Latest compiled and minified CSS -->
+<%= render :partial => "layouts/header"%>
+</head>
+
+<body>
+  <!-- Aside Start-->
+
+  <!-- Aside Ends--> 
+  <!--Main Content Start -->
+  <section class="content"> 
+    <!-- Header -->
+   <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+         <li><a href="#">Home</a></li>
+       <li><a><%= link_to "Publisher Setup",publisher_setup_index_path%></li>
+       <li><%= link_to "Search Journal",publishers_path%></li>
+        </ol>
+      
+      <h2 class="H2-L1">Search Journal</h2>
+      <%= form_tag search_journals_path, :method => 'get', :remote => true do %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Publisher</label>
+            <div class="col-sm-8">
+             <%= text_field_tag :publisher, params[:publisher] %>
             </div>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="custCard">
-            <div class="cardUp dkBlurBg"></div>
-            <div class="aviater"> <%= link_to image_tag("search_book.gif"),search_journals_path %></div>
-            <div class="card-block">
-              <!--Name-->
-              <h4 class="card-title">Search Journals</h4>
-            </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Journal Code</label>
+            <span class="col-sm-8">
+              <%= text_field_tag :code, params[:code] %>
+            </span> 
           </div>
         </div>
-      <div class="col-md-3">
-        <div class="custCard">
-          <div class="cardUp dkBlurBg"></div>
-          <div class="aviater"><%= link_to image_tag("create_book.gif"),article_new_path %></div>
-          <div class="card-block">
-            <!--Name-->
-            <h4 class="card-title">Create New Article</h4>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Journal Title</label>
+            <span class="col-sm-8">
+              <%= text_field_tag :title, params[:title] %>
+            </span> 
           </div>
         </div>
-      </div>
-      <div class="col-md-3">
-        <div class="custCard">
-          <div class="cardUp dkBlurBg"></div>
-          <div class="aviater"><%= link_to image_tag("search_book.gif"),article_search_path %></div>
-          <div class="card-block">
-            <!--Name-->
-            <h4 class="card-title">Search Articles</h4>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Journal Primary ISSN</label>
+            <span class="col-sm-8">
+              <%= text_field_tag :primary_issn, params[:primary_issn] %>
+            </span> 
           </div>
         </div>
-      </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Journal Electronic ISSN</label>
+            <span class="col-sm-8">
+              <%= text_field_tag :electronic_issn, params[:electronic_issn] %>
+            </span> 
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      
+      <div class="clearfix m-b-30"></div>
+        <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+          <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit %>
+          <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
+        </div>
+      <%end%>
+      <div class="clearfix m-b-30"></div>
+      
+      <div id="search_result"></div>
     </div>
-    <!--end of row 1-->
-    <div class="row mt20">
-      <div class="col-md-3">
-        <div class="custCard">
-          <div class="cardUp dkBlurBg"></div>
-          <div class="aviater"><%= link_to image_tag("book_metadata.gif"),article_metadata_sheet_path %></div>
-          <div class="card-block">
-            <!--Name-->
-            <h4 class="card-title">Upload Article <br> Metadata Sheet</h4>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row mt20">
-      &nbsp;
-    </div>
-  </body>
+      <!-- Page Content Ends --> 
+      <!-- ================== --> 
+    
+      <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+      <!-- Footer Ends --> 
+  </section>
+</body>
 </html>

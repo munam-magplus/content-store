@@ -11,7 +11,7 @@
    <nav class="navigation">
       <ul class="list-unstyled leftNav">
         <li>
-          <a href="#"><i class="material-icons">av_timer</i> <span class="nav-label">Dashboard</span><span class="badge bg-success">5</span></a>
+          <%= link_to '<i class="material-icons">av_timer</i>Dashboard'.html_safe, dashboard_content_conversation_index_path, :id => "button_id", :class => "nav-label" %>
         </li>
         <li>
           <a href="#" class="topMenu"><i class="ion-ios-book"></i> <span class="nav-label sub-drop">Publisher Setup</span><span class="fa fa-angle-right pull-right"></span></a>
@@ -24,7 +24,7 @@
                   </ul>
               </li>
 		          <li>
-                  <a href="#"> Site Setting</a>
+                <a href="#"> Site Setting</a>
               </li>
             </ul>
           </li>
@@ -85,7 +85,7 @@
                 <a class="submenu"><span class="fa fa-angle-right"></span>Journals</a>
                   <ul class="nav-multi__list nav-multi" style="display:none">
                     <li><%= link_to "Create New Journal", new_journal_path %></li>
-                    <li><%= link_to "Search Journal", search_journals_path%></li>
+                    <li><%= link_to "Search Journal", journals_path%></li>
                     <li><%= link_to "Article Metadata Sheet", metadata_sheet_article_index_path%></li>
                     <li><%= link_to "Create Articles", new_article_path %></li>
                     <li><%= link_to "Search Articles", search_article_index_path %></li>
@@ -95,12 +95,12 @@
                 <a class="submenu"><span class="fa fa-angle-right"></span>Subject Group</a>
                   <ul class="nav-multi__list nav-multi" style="display:none">
                     <li><%= link_to "Create Subject Group", new_subject_group_path %></li>
-                    <li><%= link_to "Search Subject Group", search_subject_groups_path%></li>
+                    <li><%= link_to "Search Subject Group", subject_groups_path%></li>
                     <li><%= link_to "Upload Subject Group Metadata Sheet", metadata_sheet_subject_groups_path %></li>
                   </ul>
               </li>
               <li><%= link_to "Uploaded Errors", update_status_content_conversation_index_path %></li>
-              <li><%= link_to "Update Status", update_status_content_conversation_index_path %></li>
+              <!-- <li><%= link_to "Update Status", update_status_content_conversation_index_path %></li> -->
               <li><%= link_to "Content History", content_history_content_conversation_index_path %></li>
               <li><%= link_to "QA Check", qa_check_content_conversation_index_path %></li>
               <li><%= link_to "Index Content", index_content_content_conversation_index_path %></li>

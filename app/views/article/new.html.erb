@@ -1,231 +1,311 @@
+<!doctype html>
 <html>
-	<body class = "body1">
-	  <%= render :partial => '/layouts/header'%>
-		<div class="div1">
+  <head>
+  <title>Content Store :: Create Article </title>
+  <!-- Latest compiled and minified CSS -->
+  <%= render :partial => "layouts/header"%>
+  </head>
 
-      <h1>New Article Setup </h1>
-      <table border="0" cellpadding="10" cellspacing="0">
-        <tbody>
-          <%= form_for @article, url: article_create_path do |f| %>
-            <tr>
-              <td>Publisher*:</td>
-			        <td><%= f.text_field :publisher %></td>
-          	</tr>
-            <tr>
-              <td>DOI:</td>
-              <td><%= f.text_field :doi %></td>
-              <td>Content Code*:</td>
-              <td><%= f.text_field :content_code %></td>
-            </tr> 
-            <tr> 
-              <td>Journal Title*:</td>
-              <td><%= f.select(:journal_title, options_for_select([['Select',0],['Issue',1],['Early Bird',2]]))  %></td>
-              <td>Article Type*:</td>
-              <td><%= f.select(:article_type, options_for_select([['Select',0],['Issue',1],['Early Bird',2]]))  %></td>
-            </tr>
-            <tr>
-              <td>Issue Type*:</td>
-              <td><%= f.select(:issue_type, options_for_select([['Select',0],['Regular',1],['Supplement',2],['Double',3]]))  %></td>
-            </tr>
-            <tr>
-              <td>Volume Number*:</td>
-              <td><%= f.text_field :volume_number %></td>
-              <td>Volume Title:</td>
-              <td><%= f.text_field :volume_title %></td>
-            </tr>
-            <tr>
-              <td>Issue Number*:</td>
-              <td><%= f.text_field :issue_number %></td>
-              <td>Issue Supplement* :</td>
-              <td><%= f.text_field :issue_supplement %></td>
-            </tr>
-            <tr>
-              <td>Issue Number Begin*:</td>
-              <td><%= f.text_field :issue_number_begin %></td>
-              <td>Issue Number End*:</td>
-              <td><%= f.text_field :issue_number_end %></td>
-            </tr>
-            <tr>
-              <td>Access Level*:</td>
-              <td><%= f.select(:access_level, options_for_select([['Select',0],['Free',1],['Paid',2]]))  %></td>
-               <td>Access Languages*:</td>
-              <td><%= f.select(:article_language, options_for_select([['Select',0],['Polish',1],['English',2]]))  %></td>
-            </tr>
-            <tr>
-              <td>External DRM*:</td>
-              <td><%= f.radio_button :external_drm, 'Yes'%>Yes
-              <%= f.radio_button :external_drm, 'No', :checked => true %>No</td>
-               <td>Article Sequence Number:</td>
-              <td><%= f.text_field :article_sequence_number %></td>
-            </tr>
-            <tr>
-              <td>Publication Date*:</td>
-              <td><%= f.text_field :publisher_date, :id => 'from' %></td>
-               <td>Issue Cover Date:</td>
-              <td><%= f.text_field :issue_cover_date, :id => 'to' %></td>
-            </tr>
-            <tr>
-              <td>Stock Number:</td>
-              <td><%= f.text_field :stock_number %></td>
-            </tr>
-            <tr>
-               <td>Abstract:</td>
-              <td><%= f.text_area :abstract %></td>
-            </tr>
-            <tr>
-              <td><strong>Contributor's Information</strong></td>
-            </tr>
-            <%= f.fields_for :article_info do |builder| %>    
-            <tr>
-            <td colspan="4">
-            <div style="min-height:100px; max-height:190px; overflow:auto;">
-			<table width="97%" border=0 cellPadding="8" cellSpacing="1" id="contributorTable" bgColor="#cccccc">
-				<td align="left" class="tableheader">Role*</td>
-				<td height="25" align="left" class="tableheader">Name*</td>
-				<td align="left" class="tableheader">Description</td>
-      <tr>
-        <td><%= builder.text_field :contributor_info_role %></td>
-        <td><%= builder.text_field :contributor_info_name %></td>
-        <td><%= builder.text_field :contributor_info_description %></td>
-      </tr>
-			</table>
-			</div>
-			</td>
-			</tr>
-          <tr>
-          	<td><strong>Content Format</strong></td>
-            <td> 
-            	<td align="right">
-            		<a href="Javascript:onClick=validateFormatListandAddRow('formatTable',3,1)">
-            			<%= image_tag("add.gif")%>
-            		</a>&nbsp;&nbsp;
-            		<a href="Javascript:onClick=deleteRowModified('formatTable',3,1,document.getElementById('formContentPrice').selFomatDataCK)">
-            			<%= image_tag("remove.gif")%>
-            		</a>&nbsp;
-            	</td>
-            </td>
-              <tr>
-                <td colspan="4">
-                	<div style="min-height:90px; max-height:200px; overflow:auto;">
-<table width="97%" border=0 cellPadding="8" cellSpacing="1" id="formatTable" bgColor="#cccccc">
-<tbody>
-<tr>
-<td width="3%" height="25" class="tableheader">
-	<input type="checkbox" name="checkboxFormat" value="checkbox" onClick="applyToAllCheckBox('formContentPrice','selFomatDataCK',this);" />
-</td>
-<td height="25" align="left" class="tableheader">Format</td>
-<td align="left" class="tableheader">DOI</td>
-<tr>
-  <td><input type="checkbox"name="selbaseONLPriceDataCK" value="checkbox" /></td>
-  <td><%= builder.text_field :content_format_format %></td>
-  <td><%= builder.text_field :content_format_doi %></td>
-</tr>
-</tr>
-</table>
-</div>
- </td>
-            </tr>
-            <tr>
-              <td><strong>Base Online Access</strong></td>
-              <td align="right">
-              	<a href="Javascript:onClick=validateBOAListandAddRow('baseONLPriceTable',4,1)"><%= image_tag("add.gif")%>
-              	<a href="Javascript:onClick=deleteRowModified('baseONLPriceTable',4,1,document.getElementById('formContentPrice').selbaseONLPriceDataCK)"><%= image_tag("remove.gif")%>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="4">
-              	<div style="min-height:90px; max-height:200px; 		overflow:auto;" id="onlinePriceDiv">
-									<table width="97%" border=0 cellPadding="8"
-										cellSpacing=1 bgcolor="#cccccc"  id="baseONLPriceTable">
-										<tbody>
-											<tr>
-												<td height="25" class="tableheader">
-													<input type="checkbox" name="checkbox5" value="checkbox" onclick="applyToAllCheckBox('formContentPrice','selbaseONLPriceDataCK',this);" />
-												</td>
-												<td height="25" align="left" class="tableheader">Country</td>
-												<td align="left" class="tableheader">Currency</td>
-												<td align="left" class="tableheader">Price</td>
-											</tr>
-											<tr>
-												<td width="15" height="25" bgcolor="#fbfbfb"><input type="checkbox"name="selbaseONLPriceDataCK" value="checkbox" />	</td>
-												<td bgcolor="#fbfbfb">
-													<div id="countryOnlineDiv" >
-														<%= builder.text_field :base_online_access_country %>
-													</div>
-												</td>
-	  										<td bgcolor="#fbfbfb"  >
-	  											<div id="currencyOnlineDiv" >
-														<%= builder.select(:base_online_access_currency, options_for_select([['Select',0],['Polish Zloty Default',1],['US Dollar',2]]))  %>
-													</div>
-	  										</td>
-	  										<td bgcolor="#fbfbfb"  >
-													<input type="text" name="contentFormatOnlinePrices[0].price" size="10" value="0.0" onchange="validateCurrency(this);" class="text_field">	
-												</td>
-											</tr>
-										</tbody>
-            			</table>
-								</div>
-	 						</td>
-            </tr>
-            <td><strong>Base Download Price</strong></td>
-            <td align="right">
-            	<a href="Javascript:onClick=validateBOAListandAddRow('baseONLPriceTable',4,1)"><%= image_tag("add.gif")%>
-            		<a href="Javascript:onClick=deleteRowModified('baseONLPriceTable',4,1,document.getElementById('formContentPrice').selbaseONLPriceDataCK)"><%= image_tag("remove.gif")%>
-            </td>
-                </tr>
-                <tr>
-                  <td colspan="4"><div style="min-height:90px; max-height:200px; overflow:auto;" id="onlinePriceDiv">
-	<table width="97%" border=0 cellPadding="8"
-	cellSpacing=1 bgcolor="#cccccc"  id="baseONLPriceTable">
-	
-	<tbody>
-	
-	<tr>
-	<td height="25" class="tableheader"><input type="checkbox" name="checkbox5" value="checkbox" onclick="applyToAllCheckBox('formContentPrice','selbaseONLPriceDataCK',this);" />	</td>
-	<td height="25" align="left" class="tableheader">Country</td>
-	<td align="left" class="tableheader">Currency</td>
-	<td align="left" class="tableheader">Price</td>
-	</tr>
-	
-	
-	
-	
-	
-	<tr>
-	<td width="15" height="25" bgcolor="#fbfbfb"><input type="checkbox"name="selbaseONLPriceDataCK" value="checkbox" />	</td>
-	<td bgcolor="#fbfbfb">
-		<div id="countryOnlineDiv" >
-		<%= builder.text_field :base_download_price_country %>
-		</div>
-	</td>
-	  <td bgcolor="#fbfbfb"  >
-	  	<div id="currencyOnlineDiv" >
-		<%= builder.select(:base_download_price_currency, options_for_select([['Select',0],['Polish Zloty Default',1],['US Dollar',2]]))  %>	</div>
-	  </td>
-	  <td bgcolor="#fbfbfb">
-    <div id="countryOnlineDiv" >
-    <%= builder.text_field :base_download_price_price %>
-    </div>
-  </td>
-	</tr></table>
-</div>
-	 </td>
-</tr>
-</tr>
-<tr>
-<td>            
+  <body>
+  <!--Main Content Start -->
+    <section class="content"> 
+      <!-- Header -->
+      <%= render :partial => "layouts/top_header"%>
+      <!-- Header Ends --> 
+      <!-- Page Content Start --> 
+      <!-- ================== -->
+      <div class="wrapper container-fluid">
+        <ol class="breadcrumb">
+             <li><a href="#">Home</a></li>
+           <li><a><%= link_to "Manage User Account",manage_user_account_index_path%></a></li>
+           <li><a class="active"><%= link_to "Search Article", institution_account_index_path%></a></li>
+        </ol>
 
-          </td>
-</tr>
+        <h2 class="H2-L1">Create Article</h2>
+        <%= form_for @article, url: article_index_path do |f| %>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="taskName" class="col-sm-4 control-label">Publisher<sup class="mandatory">*</sup> </label>
+              <div class="col-sm-8">
+                <%= f.collection_select :publisher, Publisher.all, :id, :publisher_name, :class => "form-control" %>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="taskName" class="col-sm-4 control-label">DOI<sup class="mandatory">*</sup> </label>
+              <div class="col-sm-8">
+                <%= f.text_field :doi, :class => "form-control" %>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="taskName" class="col-sm-4 control-label">Content Code<sup class="mandatory">*</sup> </label>
+              <div class="col-sm-8">
+                <%= f.text_field :content_code, :class => "form-control" %>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label">Journal Title</label>
+              <span class="col-sm-8">
+              <%= f.select(:journal_title, options_for_select([['Select',0],['Issue',1],['Early Bird',2]]))  %>
+              </span> 
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label">Article Type</label>
+              <span class="col-sm-8">
+              <%= f.select(:article_type, options_for_select([['Select',0],['Issue',1],['Early Bird',2]]))  %>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label">Issue Type</label>
+              <span class="col-sm-8">
+              <%= f.select(:issue_type, options_for_select([['Select',0],['Regular',1],['Supplement',2],['Double',3]]))  %>
+              </span> 
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label">Volume Number</label>
+              <span class="col-sm-8">
+              <%= f.text_field :volume_number, :class => "form-control"  %>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label">Volume Title</label>
+              <span class="col-sm-8">
+              <%= f.text_field :volume_title, :class => "form-control"  %>
+              </span> 
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label">Issue Number</label>
+              <span class="col-sm-8">
+               <%= f.text_field :issue_number, :class => "form-control"  %>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label">Issue Supplement</label>
+              <span class="col-sm-8">
+              <%= f.text_field :issue_supplement, :class => "form-control"  %>
+              </span> 
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label">Issue Number Begin</label>
+              <span class="col-sm-8">
+              <%= f.text_field :issue_number_begin, :class => "form-control"  %>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label">Issue Number End</label>
+              <span class="col-sm-8">
+              <%= f.text_field :issue_number_end, :class => "form-control"  %>
+              </span> 
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label">Access Level</label>
+              <span class="col-sm-8">
+              <%= f.select(:access_level, options_for_select([['Select',0],['Free',1],['Paid',2]]))  %>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="taskName" class="col-sm-4 control-label">Access Languages<sup class="mandatory">*</sup> </label>
+              <span class="col-sm-8">
+              <%= f.select(:article_language, options_for_select([['Select',0],['Polish',1],['English',2]]))  %>
+              </span> 
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="taskName" class="col-sm-4 control-label">External DRM<sup class="mandatory">*</sup> </label>
+              <span class="col-sm-8">
+              <%= f.radio_button :external_drm, 'Yes'%>Yes
+              <%= f.radio_button :external_drm, 'No', :checked => true %>No
+              </span> 
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="taskName" class="col-sm-4 control-label">Article Sequence Number<sup class="mandatory">*</sup> </label>
+              <span class="col-sm-8">
+              <%= f.text_field :article_sequence_number, :class => "form-control" %>
+              </span> 
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="taskName" class="col-sm-4 control-label">Publication Date<sup class="mandatory">*</sup> </label>
+              <span class="col-sm-8">
+              <%= f.text_field :publisher_date, :id => 'from', :class => "form-control" %>
+              </span> 
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="taskName" class="col-sm-4 control-label">Issue Cover Date<sup class="mandatory">*</sup> </label>
+              <span class="col-sm-8">
+              <%= f.text_field :issue_cover_date, :id => 'to', :class => "form-control" %>
+              </span> 
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="taskName" class="col-sm-4 control-label">Stock Number<sup class="mandatory">*</sup> </label>
+              <span class="col-sm-8">
+              <%= f.text_field :stock_number, :class => "form-control" %>
+              </span> 
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="taskName" class="col-sm-4 control-label">Abstract<sup class="mandatory">*</sup> </label>
+              <span class="col-sm-8">
+              <%= f.text_area :abstract, :class => "form-control" %>
+              </span> 
+            </div>
+          </div>
+          <%= f.fields_for :article_info do |builder| %>
+            <h4>Contributor's Information</h4>
+            <div class="row">
+              <div class="table-responsive" style="overflow-x: inherit;">
+                <table class="table table-bordered" id="participantTable">
+                  <thead>
+                    <tr>
+                    <th>Role<sup class="mandatory">*</sup></th>
+                    <th>Name<sup class="mandatory">*</sup></th>
+                    <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="participantRow">
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                    </tr>                            
+                  </tbody>
+                </table>
+              </div>                                           
+            </div>
+            <h4>Content Format</h4>
+            <a href="Javascript:onClick=validateFormatListandAddRow('formatTable',3,1)">
+                              <%= image_tag("add.gif")%>
+                            </a>&nbsp;&nbsp;
+                            <a href="Javascript:onClick=deleteRowModified('formatTable',3,1,document.getElementById('formContentPrice').selFomatDataCK)">
+                              <%= image_tag("remove.gif")%>
+                            </a>&nbsp;
+            <div class="row">
+              <div class="table-responsive" style="overflow-x: inherit;">
+                <table class="table table-bordered" id="participantTable">
+                  <thead>
+                    <tr>
+                    <th><input type="checkbox" name="checkboxFormat" value="checkbox" onClick="applyToAllCheckBox('formContentPrice','selFomatDataCK',this);" /></th>
+                    <th>Format<sup class="mandatory">*</sup></th>
+                    <th>DOI</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="participantRow">
+                      <th><input type="checkbox"name="selbaseONLPriceDataCK" value="checkbox" /></th>
+                      <th><%= builder.text_field :content_format_format %></th>
+                      <th><%= builder.text_field :content_format_doi %></th>
+                    </tr>                            
+                  </tbody>
+                </table>
+              </div>                                           
+            </div>
+            <h4>Base Online Access</h4>
+            <a href="Javascript:onClick=validateFormatListandAddRow('formatTable',3,1)">
+                              <%= image_tag("add.gif")%>
+                            </a>&nbsp;&nbsp;
+                            <a href="Javascript:onClick=deleteRowModified('formatTable',3,1,document.getElementById('formContentPrice').selFomatDataCK)">
+                              <%= image_tag("remove.gif")%>
+                            </a>&nbsp;
+            <div class="row">
+              <div class="table-responsive" style="overflow-x: inherit;">
+                <table class="table table-bordered" id="participantTable">
+                  <thead>
+                    <tr>
+                    <th><input type="checkbox" name="checkboxFormat" value="checkbox" onClick="applyToAllCheckBox('formContentPrice','selFomatDataCK',this);" /></th>
+                    <th>Country<sup class="mandatory">*</sup></th>
+                    <th>Currency</th>
+                    <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="participantRow">
+                      <th><input type="checkbox"name="selbaseONLPriceDataCK" value="checkbox" /></th>
+                      <th><%= builder.text_field :base_online_access_country %></th>
+                      <th><%= builder.select(:base_online_access_currency, options_for_select([['Select',0],['Polish Zloty Default',1],['US Dollar',2]]))  %></th>
+                      <th><input type="text" name="contentFormatOnlinePrices[0].price" size="10" value="0.0" onchange="validateCurrency(this);" class="text_field"></th>
+                    </tr>                            
+                  </tbody>
+                </table>
+              </div>                                           
+            </div>
+            <h4>Base Download Price</h4>
+            <a href="Javascript:onClick=validateFormatListandAddRow('formatTable',3,1)">
+                              <%= image_tag("add.gif")%>
+                            </a>&nbsp;&nbsp;
+                            <a href="Javascript:onClick=deleteRowModified('formatTable',3,1,document.getElementById('formContentPrice').selFomatDataCK)">
+                              <%= image_tag("remove.gif")%>
+                            </a>&nbsp;
+            <div class="row">
+              <div class="table-responsive" style="overflow-x: inherit;">
+                <table class="table table-bordered" id="participantTable">
+                  <thead>
+                    <tr>
+                    <th><input type="checkbox" name="checkboxFormat" value="checkbox" onClick="applyToAllCheckBox('formContentPrice','selFomatDataCK',this);" /></th>
+                    <th>Country<sup class="mandatory">*</sup></th>
+                    <th>Currency</th>
+                    <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="participantRow">
+                      <th><input type="checkbox"name="selbaseONLPriceDataCK" value="checkbox" /></th>
+                      <th><%= builder.text_field :base_download_price_country %></th>
+                      <th><%= builder.select(:base_download_price_currency, options_for_select([['Select',0],['Polish Zloty Default',1],['US Dollar',2]]))  %>  </div></th>
+                      <th><%= builder.text_field :base_download_price_price %></th>
+                    </tr>                            
+                  </tbody>
+                </table>
+              </div>                                           
+            </div>        
           <% end %>
-          <tr>
-            <td>
-            <%= f.submit "Submit" %>
-            </td>
-          </tr>
-           <% end %>
-        </tbody>
-      </table>
-    </div>
+          <div class="clearfix"></div>
+          <div class="clearfix m-b-30"></div>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+              <%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Search Article'.html_safe, search_article_index_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
+              <%= f.submit "Submit", :class => "btn btn-sm" %>
+              <%= f.button "Reset", :class => "btn btn-sm", type: :reset %>
+            </div>
+          </div>
+        <% end %>
+      </div>  
+      <!-- Footer Start -->
+      <%= render :partial => "layouts/footer" %>
+      <!-- Footer Ends --> 
+    </section>
   </body>
 </html>

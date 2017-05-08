@@ -1,6 +1,5 @@
-<!doctype html>
 <html>
-<title>Content Store :: Create Primary Subject Group</title>
+<title>Content Store :: Create Subject Group</title>
 <!-- Latest compiled and minified CSS -->
 <%= render :partial => "layouts/header"%>
 </head>
@@ -17,10 +16,10 @@
       <ol class="breadcrumb">
            <li><a href="#">Home</a></li>
          <li><a><%= link_to "Manage User Account",manage_user_account_index_path%></a></li>
-         <li><a class="active"><%= link_to "Create Primary Subject Group", institution_account_index_path%></a></li>
+         <li><a class="active"><%= link_to "Create Subject Group", institution_account_index_path%></a></li>
       </ol>
 
-      <h2 class="H2-L1">Create Primary Subject Group</h2>
+      <h2 class="H2-L1">Create Subject Group</h2>
       <%= form_for @subject_group, validate: true do |f| %>
         <div class="col-md-6">
           <div class="form-group">
@@ -34,7 +33,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Subject Group Level<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :subject_group_level %>
+              <%= f.text_field :subject_group_level, :class => "form-control" %>
             </div>
           </div>
         </div>
@@ -42,7 +41,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Subject Group Code<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :subject_group_code %>
+              <%= f.text_field :subject_group_code, :class => "form-control" %>
             </div>
           </div>
         </div>
@@ -50,21 +49,21 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Subject Group Name</label>
             <span class="col-sm-8">
-            <%= f.text_field :subject_group_name %>
+            <%= f.text_field :subject_group_name, :class => "form-control" %>
             </span> 
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Confirm Password</label>
+            <label for="bookISBN" class="col-sm-4 control-label">Guest User View Limit</label>
             <span class="col-sm-8">
-            <%= f.text_field :guest_user_view_limit %>
+            <%= f.text_field :guest_user_view_limit, :class => "form-control" %>
             </span>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">First Name</label>
+            <label for="bookISBN" class="col-sm-4 control-label">Auth User View Limit</label>
             <span class="col-sm-8">
             <%= f.text_field :authentication_user_view_limit, :class => "form-control" %>
             </span> 
@@ -72,7 +71,7 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Last Name</label>
+            <label for="bookISBN" class="col-sm-4 control-label">Discount Percentage</label>
             <span class="col-sm-8">
             <%= f.text_field :discount_percentage, :class => "form-control" %>
             </span>
@@ -80,7 +79,7 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Country<sup class="mandatory">*</sup> </label>
+            <label for="taskName" class="col-sm-4 control-label">Viewability Percentage<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
             <%= f.text_field :viewability_percentage, :class => "form-control" %>
             </span> 
@@ -88,42 +87,17 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Select Language * <sup class="mandatory">*</sup> </label>
+            <label for="taskName" class="col-sm-4 control-label">Select Language<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-            <%= f.select(:language, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %>
+            <%= f.select(:select_language, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %>
             </span> 
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">User Type<sup class="mandatory">*</sup> </label>
+            <label for="taskName" class="col-sm-4 control-label">Description<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= f.radio_button :user_type, 'mps' %>MPS
-              <%= f.radio_button :user_type, 'publisher' %>Publisher
-              <%= f.radio_button :user_type, 'member_publisher' %>Member Publisher
-            </span> 
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Role<sup class="mandatory">*</sup> </label>
-            <span class="col-sm-8">
-              <%= f.select(:role, options_for_select([['Please Select',0],[' MPS Admin',1],['Publisher',2],['Member Publisher',3],['Member Publisher Role with QA',4]]))  %>
-            </span> 
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Publisher (s)<sup class="mandatory">*</sup> </label>
-            <div class="col-sm-8">
-              <%= f.text_field :publishers, :class => "form-control" %>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <span class="col-sm-8">
-             <%= check_box_tag(:mail) %>Send Email Comfirmation to Email Address above 
+              <%= f.text_field :description, :class => "form-control" %>
             </span> 
           </div>
         </div>
@@ -131,8 +105,7 @@
         <div class="clearfix m-b-30"></div>
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
-
-            <%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Search Admin User'.html_safe, admin_user_index_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
+            <%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Search Subject Group'.html_safe, subject_groups_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
             <%= f.submit "Submit", :class => "btn btn-sm" %>
             <%= f.button "Reset", :class => "btn btn-sm", type: :reset %>
           </div>
@@ -144,79 +117,4 @@
     <!-- Footer Ends --> 
   </section>
 </body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<html>
-  <body class = "body1">
-    <%= render :partial => '/layouts/header'%>
-    <div class="div1">
-      <h1> Create Primary Subject Group  </h1>
-      <table border="0" cellpadding="10" cellspacing="0">
-        <tbody>
-          <%= form_for @subject_group, validate: true do |f| %>
-            <tr>
-              <td>Publisher*:</td>
-              <td><%= f.text_field :publisher, validate: { presence: true } %></td>
-            </tr> 
-            <tr> 
-              <td>Subject Group Level </td>
-              <td><%= f.text_field :subject_group_level %></td>
-            </tr> 
-            <tr> 
-              <td>Subject Group Code *  </td>
-              <td><%= f.text_field :subject_group_code %></td>
-            </tr>
-            <tr>
-              <td>Subject Group Name* </td>
-              <td><%= f.text_field :subject_group_name %></td>
-            </tr> 
-            <tr> 
-              <td>Guest User View Limit </td>
-              <td><%= f.text_field :guest_user_view_limit %></td>
-            </tr>
-            <tr>
-              <td>Auth User View Limit  </td>
-              <td><%= f.text_field :authentication_user_view_limit %></td>
-            </tr> 
-            <tr> 
-              <td>Discount Percentage </td>
-              <td><%= f.text_field :discount_percentage %></td>
-            </tr>
-            <tr>
-              <td>Viewability Percentage  </td>
-              <td><%= f.text_field :viewability_percentage %></td>
-            </tr>
-            <tr> 
-              <td>Select Language * </td>
-              <td><%= f.select(:select_language, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %>
-              </td>
-            </tr>
-            <tr>
-              <td>Description </td>
-              <td><%= f.text_area :description %></td>
-            </tr> 
-            <td><%= f.submit "Save" %></td>
-            <td><%= f.button "Reset", type: :reset %></td>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <%= render :partial => '/layouts/footer'%>
-  </body>
 </html>

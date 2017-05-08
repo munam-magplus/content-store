@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'index_content/content_code'
+
+  get 'index_content/publisher_code'
+
   get 'my_account/index'
 
   get 'site_settings/index'
@@ -32,14 +36,11 @@ Rails.application.routes.draw do
   resources :article do 
     collection do
       get 'search'
-      get 'result'
       get 'metadata_sheet'
     end
   end
 
- 
   devise_for :users
-
 
   devise_scope :user do
     root to: "devise/sessions#new"
@@ -57,7 +58,6 @@ Rails.application.routes.draw do
       # post 'create'
     end
   end
-
 
   resources :content_conversation do
     collection do 

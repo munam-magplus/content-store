@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-    <div class="mt10 table-demo">Search Result 
+    <div class="mt10 table-demo">Article Search Results 
       <span class="pull-right">
         <div class="dropdown">
           <ul class="nav">
@@ -19,18 +19,28 @@
       <table class="table table-bordered">
         <thead>
           <tr style="font-size:13px">
-            <th>Subject Group Name</th>
-            <th>Subject Group Code</th>
-            <th>Subject Group Level</th>
+            <th>Journal Code</th>
+            <th>Title</td>
+            <th>Content Code/DOI</th>
+            <th>Article Type</th>
+            <th>Volume Number</th>
+            <th>Issue Type</th>
+            <th>Issue/Supplement Number</th>
+            <th>Contributors</th>
           </tr>
         </thead>
         <tbody>
-          <% if @subject_group.present? %>
-	      		<% @subject_group.each do |f| %>
+          <% if @article.present? %>
+            <% @article.each do |f| %>
               <tr>
-                <td><%= f.subject_group_name %></td>
-                <td><%= f.subject_group_code %></td>
-                <td><%= f.subject_group_level %></td>
+                <td><%= f.content_code %></td>
+                <td><%= f.journal_title %></td>
+                <td><%= f.doi %></td>
+                <td><%= f.article_type %></td>
+                <td><%= f.volume_number %></td>
+                <td><%= f.issue_type %></td>
+                <td><%= f.issue_number %></td>
+                <td></td>
               </tr>
             <% end %>
           <% else %>

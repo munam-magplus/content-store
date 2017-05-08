@@ -1,0 +1,2 @@
+class IndexContent < ApplicationRecord
+end

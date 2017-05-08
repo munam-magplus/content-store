@@ -2,6 +2,7 @@ class SubscriptionsController < ApplicationController
       before_action :authenticate_user!
 
   def search
+    @subscription = Subscription.new
   end
 
   def new
