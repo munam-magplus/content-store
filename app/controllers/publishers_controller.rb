@@ -24,7 +24,7 @@ class PublishersController < ApplicationController
       if @publisher.update_attributes!(publisher_params)
       # Handle a successful update.
         flash[:notice] = 'Publisher was successfully updated.'
-        redirect_to publisher_setup_index_path
+        redirect_to publishers_path
       else
         render 'edit'
       end
@@ -33,7 +33,7 @@ class PublishersController < ApplicationController
       if @publisher.save!
         flash[:success] = "Publisher Created!"
         # if successfully stored then redirect to publisher's setup path 
-        redirect_to publisher_setup_index_path
+        redirect_to publishers_path
       else
         # if not save in that case render new
         render 'new'

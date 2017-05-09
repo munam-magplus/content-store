@@ -13,8 +13,7 @@ Rails.application.routes.draw do
 
   resources :contacts
 
-  resources :reports, :printhouse_setup, :manage_access, 
-            :manage_user_account, :publisher_setup, 
+  resources :reports, :printhouse_setup, 
              only: [:index]
 
   resources :books_seo_config,:books_content_access_rules,
