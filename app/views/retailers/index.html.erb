@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>Content Store :: Institutional Account </title>
+<title>Content Store :: Retailers </title>
 <!-- Latest compiled and minified CSS -->
     <!-- Header -->
     <%= render :partial => "layouts/top_header"%>
@@ -24,9 +24,9 @@
          <li><a>Retailers </a></li>
       </ol>
 
-      <h2 class="H2-L1">Create Institutional Account</h2>
+      <h2 class="H2-L1">Create Retailers</h2>
        
-      <%= form_tag search_retailers_path, :method => 'get' do%>
+      <%= form_tag search_op_retailers_path, :method => 'get', :remote => true do%>
         <div class="col-md-6">
           <div class="form-group">
             <label for="taskName" class="col-sm-4 nopadding">Select Publisher<sup class="mandatory">*</sup> </label>
@@ -48,6 +48,7 @@
           </div>
         </div>
       <% end %>
+    <div id="search"></div>
     </div>  
     <!-- Footer Start -->
     <%= render :partial => "layouts/footer" %>

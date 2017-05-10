@@ -5,10 +5,6 @@ class RetailersController < ApplicationController
  	 #here we get all the publishers that are to be displayed in dropdown list of create page
 	 # @publishers = Publisher.where(:id => @retail).pluck(:publisher_name)
 	 @publishers = Publisher.all.pluck(:publisher_name)
-	 respond_to do |format|
-  	format.html
-  	format.js
-   end
 	end 
 	
 	def new
@@ -31,14 +27,11 @@ class RetailersController < ApplicationController
 		end
 	end
 	
-	def search
+	def search_op
  	  #get the publisher that have same retailer name
 	  # @retailers = Retailer.last
-	  @re = Publisher.find_by_publisher_name(params[:retailer_name])
-	  respond_to do |format|
-	  	format.html
-	  	format.js
-	  end
+ 	  @re = Publisher.find_by_publisher_name(params[:retailer_name])
+	  
 	end
 
 	def show
