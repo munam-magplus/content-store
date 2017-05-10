@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   resources :retailers do 
     collection do
       get 'search_op'
+      get 'result'
     end
   end
 

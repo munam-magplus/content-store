@@ -1,97 +1,41 @@
-<!doctype html>
-<html>
-<head>
-<title>Content Store :: Institutional Account </title>
-<!-- Latest compiled and minified CSS -->
-    <!-- Header -->
-<%= render :partial => "layouts/top_header"%>
-    <!-- Header Ends --> 
-
-</head>
-
-<body>
-<!-- Aside Start-->
-    <%= render :partial => "layouts/sidebar"%>
-    <!-- Aside Ends-->
-<!--Main Content Start -->
-  <section class="content"> 
-    <!-- Page Content Start --> 
-    <!-- ================== -->
-    <div class="wrapper container-fluid">
-      <ol class="breadcrumb">
-           <li><a href="#">Home</a></li>
-         <li><a> Manage User Account </a></li>
-         <li><a>Institutional Account </a></li>
-      </ol>
-
-      <h2 class="H2-L1">Institutional Account</h2>
-      <%= form_for(:retailer, url: retailers_path , :remote => true, :class => "form-horizontal form-bg")  do |f| %>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Retailer Code</label>
-            <div class="col-sm-8">
-              <%= f.text_field :retailer_code,:class => "form-control"  %>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Retailer Name</label>
-            <span class="col-sm-8">
-            <%=  f.select(:retailer_name, options_for_select([[@re.publisher_code ,@re.publisher_code]]),:class => "form-control") %>
-            </span> 
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Lib./Dept. Name:</label>
-            <span class="col-sm-8">
-            <%= f.text_field :publisher_id , :value => @re.id ,:class => "form-control" %>
-            </span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Institution Name:</label>
-            <span class="col-sm-8">
-            <%= f.text_field :low_ip ,:class => "form-control" %>
-            </span> 
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">IP Address:</label>
-            <span class="col-sm-8">
-            <%= f.text_field :high_ip ,:class => "form-control" %>
-            </span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">City:</label>
-            <span class="col-sm-8">
-            <%= f.text_field :ip_list ,:class => "form-control" %>
-            </span> 
-          </div>
-        </div>
-        
-        <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
-            
-            <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit, :id => "submit" %>
-
-            <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
-
-          </div>
-        </div>
+ <div class="table-responsive">
+  <table class="table table-bordered">
+    <tbody>
+        <%= form_for(:retailer, url: retailers_path)  do |f| %>
+      <tr>
+        <td class="tabledata" >           
+          <%= f.text_field :retailer_code %>
+        </td>
+        <td class="tabledata">            
+          <%=  f.select(:retailer_name, options_for_select([[@re.publisher_code ,@re.publisher_code]])) %>
+        </td>
+        <td class="tabledata">            
+          <%= f.text_field :publisher_id , :value => @re.id%>
+        </td>
+        <td class="tabledata">            
+          <%= f.text_field :low_ip %>
+        </td>
+        <td class="tabledata">            
+          <%= f.text_field :high_ip %>
+        </td>
+        <td class="tabledata">            
+          <%= f.text_field :ip_list %>
+        </td>
+        <td class="tabledata">
+         <%= button_tag fa_icon("plus-square-o", text: "Submit"), :class => "btn btn-sm", type: :submit %>
+        </td>
+        <td  id = "del">
+          <%= image_tag("delete_icon.gif")%>
+        </td>
+      </tr>
       <% end %>
-      <div class="clearfix"></div>
-      <div class="clearfix m-b-30"></div>
-      <div id="search"></div>
-    </div>  
-    <!-- Footer Start -->
-    <%= render :partial => "layouts/footer" %>
-    <!-- Footer Ends --> 
-  </section>
-</body>
-</html>
+     </tbody>
+  </table>
+ </div>
+<div class="col-sm-12"> </div>
+
+<script>
+$(document).on('click', '#del', function(){
+$(this).parent('tr').remove();
+});
+</script>
