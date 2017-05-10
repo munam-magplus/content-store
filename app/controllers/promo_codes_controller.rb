@@ -1,6 +1,6 @@
 class PromoCodesController < ApplicationController
- 
-     before_action :authenticate_user!
+  before_action :authenticate_user!
+
  def search
   	#call filter method to get search results
   	@promo_codes = PromoCode.filter(params.slice(:publisher_id, :campaign_id, :id))
@@ -20,6 +20,6 @@ class PromoCodesController < ApplicationController
   private 
   def promo_code_params
     params.require(:promo_code).permit(:publisher_id, :campaign_id, 
-    :number_of_promo_code, :applicable_discount, :from, :to)
+    :number_of_promo_code, :applicable_discount, :valid_from, :valid_to)
   end
 end

@@ -1,33 +1,35 @@
-<tr class="content_head">
-  <th><input type="checkbox" name="select-all" id="select-all" /></th>
-  <th>License Name</th>
-  <th>License Type</th>
-  <th>License Id</th>
-</tr>
-<% if @license_content.present? %>
-  <% @license_content.each do |lic_group| %>
-    <tr class="content_value">
-      <td>
-        <input type="checkbox" name="checkbox" id="chk" />
-      </td>
-      <td>
-        <%= lic_group.license_name %>
-      </td>
-      <td>
-        <%= lic_group.license_type %>
-      </td>
-      <td>
-        <%= lic_group.license_id %>  
-      </td>
+<div class="table-responsive">
+    <tr class="content_head">
+      <th><input type="checkbox" name="select-all" id="select-all" /></th>
+      <th>License Name</th>
+      <th>License Type</th>
+      <th>License Id</th>
     </tr>
-  <% end %>
-  <tr>
-  <td>&nbsp;</td>
-  <td><input type="button" value="add" onclick="getAddDetails();" class="submit_btn" /></td>
-</tr>
-<%else%>
-  No Record Found
-<%end%>
+    <% if @license_content.present? %>
+      <% @license_content.each do |lic_group| %>
+        <tr class="content_value">
+          <td>
+            <input type="checkbox" name="checkbox" id="chk" />
+          </td>
+          <td>
+            <%= lic_group.license_name %>
+          </td>
+          <td>
+            <%= lic_group.license_type %>
+          </td>
+          <td>
+            <%= lic_group.license_id %>  
+          </td>
+        </tr>
+      <% end %>
+      
+      <tr>
+      <td><div class="col-md-12 text-right"><button type="submit" class="btn btn-sm" onclick="getAddDetails();" id="submit_btn" ><i class="fa fa-object-group" aria-hidden="true"></i> &nbsp;Add</button></div></td>
+    </tr>
+    <%else%>
+      No Record Found
+    <%end%>
+</div>
 <script>
   $('#select-all').click(function(event) {   
     if(this.checked) {
@@ -67,7 +69,7 @@
     $(':checkbox').each(function() {
       $('#select-all').remove();
       $("#chk").remove(); 
-      $(".submit_btn").remove()                      
+      $("#submit_btn").remove()                      
     });
            $('.content_value').remove();
    $('.content_head').remove();
