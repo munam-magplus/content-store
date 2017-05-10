@@ -1,0 +1,57 @@
+<div class="col-md-12">
+  <h3 class="H2-L1">Title</h3>   
+</div>
+<div class="col-md-6"><div class="form-group">
+  <label for="License" class="col-sm-5 control-label">ISBN<sup class="mandatory">*</sup></label>
+  <div class="col-sm-7">
+    <input id="isbn" class="form-control"/>
+  </div>
+</div></div>
+  
+<div class="col-md-6"><div class="form-group">
+  <label for="License" class="col-sm-5 control-label">Title</label>
+  <div class="col-sm-7">
+    <input id="title" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
+</div></div>
+<div class="col-md-6"><div class="form-group">
+  <label for="License" class="col-sm-5 control-label">Author First Name</label>
+  <div class="col-sm-7">
+    <input id="author_first_name" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
+</div></div>
+<div class="col-md-6"><div class="form-group">
+  <label for="License" class="col-sm-5 control-label">Author Last Name</label>
+   <div class="col-sm-7">
+        <input id="author_last_name" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
+</div></div>
+<div class="col-md-6"><div class="form-group">
+  <label for="License" class="col-sm-5 control-label">Publication Year</label>
+  <div class="col-sm-7">
+    <input id="publication_year" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
+</div></div>
+<div class="clearfix m-b-30"></div>
+  <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+    <input type="button" name="button2" id="button" value="Search" onclick="getSearchDetails();" class="submit_btn" />
+  </div>
+</div>
+<script type="text/javascript">
+  function getSearchDetails(){
+    var isbn = $('#isbn').val();
+    var title = $('#title').val();
+    var author_first_name = $('#author_first_name').val();
+    var author_last_name = $('#author_last_name').val();
+    var publisher_year = $('#publisher_year').val();
+    $.ajax({
+      type: 'GET',
+      url: '/subscriptions/search_title',
+      data : { isbn: isbn,title: title, author_first_name: author_first_name,author_last_name: author_last_name,publication_year: publication_year }
+    });
+  }
+</script>

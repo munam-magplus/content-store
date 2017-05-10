@@ -1,23 +1,23 @@
 <tr class="content_head">
   <th><input type="checkbox" name="select-all" id="select-all" /></th>
-  <th>License Name</th>
-  <th>License Type</th>
-  <th>License Id</th>
+  <th>Subject Group Name</th>
+  <th>Subject Group Code</th>
+  <th>Subject Group Level</th>
 </tr>
-<% if @license_content.present? %>
-  <% @license_content.each do |lic_group| %>
+<% if @subject_group.present? %>
+  <% @subject_group.each do |sub_group| %>
     <tr class="content_value">
       <td>
         <input type="checkbox" name="checkbox" id="chk" />
       </td>
       <td>
-        <%= lic_group.license_name %>
+        <%= sub_group.subject_group_name %>
       </td>
       <td>
-        <%= lic_group.license_type %>
+        <%= sub_group.subject_group_code %>
       </td>
       <td>
-        <%= lic_group.license_id %>  
+        <%= sub_group.subject_group_level %>  
       </td>
     </tr>
   <% end %>
@@ -78,9 +78,5 @@
     arr.pop($(this).text())
       $('#role_ids').val(arr)
    });
-
-
-
-
    }
 </script>

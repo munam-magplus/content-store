@@ -3,21 +3,6 @@
 <head>
 <title>Content Store :: Create Subscription </title>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="assets/styles/flaticon.css">
-<!-- Internal CSS -->
-<!--Animation css-->
-<link href="assets/css/animate.css" rel="stylesheet">
-<!--Icon-fonts css-->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
-<script src="https://use.fontawesome.com/9575fa9c22.js"></script>
-<link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
-<!-- Custom styles for this template -->
-<link href="assets/styles/style.css" rel="stylesheet">
-<link href="assets/styles/helper.css" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles/accessedit.css">
-<link rel="stylesheet" href="jqgrid/css/ui.jqgrid-bootstrap.css" />
 </head>
 
 <body>
@@ -44,15 +29,14 @@
     
     <h2 class="H2-L1"> Create Subscription </h2>
   <h4>Information</h4>
-  <%= form_for @subscription, url: {action: "create"} do |f| %>
-    <form class="form-horizontal form-bg" role="form">
-    
+    <%= form_for @subscription, url: {action: "create"} do |f| %>
+     <form class="form-horizontal form-bg" role="form">
       <div class="col-md-6">
         <div class="form-group">
           <label for="taskName" class="col-sm-4 control-label">Subscription ID:</label>
           <div class="col-sm-8">
-            <%= f.text_field :subscription_id, :class=> 'required'  %>
-        </div>
+            <%= f.text_field :subscription_id, :value => "System Generated" %>
+         </div>
         </div>
       </div>
       <div class="col-md-6">
@@ -60,174 +44,126 @@
           <label for="bookISBN" class="col-sm-4 control-label">Subscription Name:</label>
           <span class="col-sm-8">
             <%= f.text_field :subscription_name %>
-          </span> </div>
+           </span> 
+         </div>
       </div>
-    <div class="col-md-6">
+      <div class="col-md-6">
         <div class="form-group">
           <label for="bookISBN" class="col-sm-4 control-label">Publisher:</label>
           <span class="col-sm-8">
             <%= f.collection_select :publisher, Publisher.all, :id, :publisher_name %>
-          </span> </div>
-      </div>
-    <div class="col-md-6">
-    <div class="form-group">
+           </span>
+           </div>
+        </div>
+      <div class="col-md-6">
+        <div class="form-group">
           <label for="taskName" class="col-sm-4 control-label">Subscription Description:</label>
           <div class="col-sm-8">
-            <%= f.text_area :subscription_description %>
+              <%= f.text_area :subscription_description %>
+          </div>
         </div>
-        </div>
-    </div>
-    <div class="col-md-12">
+      </div>
+      <div class="col-md-12">
         <div class="form-group">
           <label for="bookISBN" class="col-sm-2 control-label">Subscription category:</label>
           <span class="col-sm-8">
             <%= f.radio_button :subscription_category, 'Online Subscription for library' %>Online Subscription for library
-            <%= f.radio_button :subscription_category, 'Individual Borrow' %>       Individual Borrow
+            <%= f.radio_button :subscription_category, 'Individual Borrow' %> Individual Borrow
             <%= f.radio_button :subscription_category, 'Library Borrow' %> Library Borrow
-          </span> </div>
-      </div>
-      <div class="clearfix"></div>
-    </form>
-  <p>&nbsp;</p>
-   <div class="card">
-          <div class="tabContainer">
-            <div class="tabs" data-max-width="1024"> 
-        <span class="tab" data-tab="bookDetails"> <span class="text">Book</span> <%= f.radio_button :currency , 'Subject Group' %> Subject Group
-              
-            <tr id="subject_group">
-              Subject Group Name:
-              <%= f.text_field :subject_group_name %>
-              Subject Group Code:
-              <%= f.text_field :subject_group_code %>
-            </tr>
-            <tr id="book">
-              
-              <td height="40" colspan="4" style="border-bottom:#CCCCCC 1px solid">
-                <strong>Length of Agreement</strong>
-              <td>Subscription Type * :</td>
-              <td name="dbType" id="dbType"><%= f.select :subscription_type, [['Select','select'],['Fixed Date Range','fixed date range'],['Relative Date Range','relative date range']] %>
-           
-              <td height="40" colspan="4" style="border-bottom:#CCCCCC 1px solid">
-                <strong>Available for Institutional Accounts</strong>
-              <%= f.radio_button :currency, 'yes' %>Yes
-                  </span> 
-        <span class="tab" data-tab="editorDetails"> <span class="text">Subject Group</span><%= f.radio_button :currency, 'Book' %> Book </span> 
-      </div>
           </div>
-          <div id="book" >
-          <div class="sectionsContainer tabbingSection">
-            <div class="sections ">
-              <div class="section " data-section="bookDetails">
-                <div class="col-md-12 form-bg">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="col-md-12">
-                        <label class="radio-inline"><%= f.radio_button :currency , ' All Publishers', checked: true %>  All Publishers </label>
-            
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="col-md-12">
-                        <label class="radio-inline"><%= f.radio_button :currency, ' Select Publisher' %>  Select Publisher</label>
-                      </div>
-                    </div>
-          <div class="col-md-12">
-            <div class="col-md-12">
-              <label>Publisher </label>
-              <select multiple="multiple" style="height:100px;" disabled class="form-control">
-                <option>option 1</option>
-                <option>option 1</option>
-                <option>option 1</option>
-              </select>
-            </div>
-          </div>
-                  </div>
-           <div class="row">
-                    <div class="col-md-6">
-                      <div class="col-md-12">
-                        <label class="radio-inline"><%= f.radio_button :currency , ' All Titles ', checked: true %>All Titles</label>
-            
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="col-md-12">
-                        <label class="radio-inline"><%= f.radio_button :currency, ' Select Titles' %>  Select Titles</label>
-                      </div>
-                    </div>
-                  </div>
-          <div class="col-md-12">
-             <div class="col-md-6">
-              <label for="">ISBN</label>
-               <input type="text" placeholder="" class="form-control" >
-            </div>
-            <div class="col-md-6">
-              <label for="">Title</label>
-               <input type="text" placeholder="" class="form-control" >
-            </div>
-            <div class="col-md-6">
-              <label for="">Author First Name</label>
-               <input type="text" placeholder="" class="form-control" >
-            </div>
-            <div class="col-md-6">
-              <label for="">Author Last Name</label>
-               <input type="text" placeholder="" class="form-control" >
-            </div>
-            <div class="col-md-6">
-              <label for="">Publication Year</label>
-               <input type="text" placeholder="" class="form-control" >
-            </div>
-            <div class="col-md-12">
-             
-              <br>
-              <button type="submit" class="btn btn-sm" onclick="javascript:showDiv();"><i class="fa fa-search" aria-hidden="true"></i> &nbsp;Search</button>
-            </div>
-            
-          </div>
-                  </div>
         </div>
-                <div class="row">
-          <div class="col-md-12">
-          <p>&nbsp;</p>
-            <div class="col-md-12"><h4>Length of Agreement</h4></div>
-            <div class="col-md-6">
-              <label for="">Subscription Type</label>
-              <div id="dbType">
-              <%= f.select :subscription_type, [['Select','select'],['Fixed Date Range','fixed date range'],['Relative Date Range','relative date range']] %>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <div height="40" colspan="4" style="border-bottom:#CCCCCC 1px solid">
+              <label for="disabledTextInput" ><strong>Content</strong></label>
+            </div>
+            <%= f.radio_button :currency , 'Subject Group', checked: true %>Subject Group
+            <%= f.radio_button :currency, 'Book' %>Book<br/>
+          </div>
+        </div>
+      </div>
+      <div class="row", id="subject_group">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= render :partial => 'search_subject_group'%>
+            <div class="subject"> </div>
+          </div>
+        </div>
+      </div>
+      <div id="book_id">
+        <div class="row" >
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.radio_button :price, 'All Publishers', checked: true %>All Publishers
+              <%= f.radio_button :price, 'Select Publisher' %>Select Publisher<br>
             </div>
           </div>
-           <div id="fixed">
-            <div class="hidden">
-            <div class="col-md-3">
-              <label>From</label>
-               <div class="input-group">
-                <%= f.text_field :duration %>
-                <span class="input-group-btn">
-                <button class="btn btn-default" style="padding:4px 12px;" type="button"><i class="fa fa-calendar"></i></button>
-                </span>
-              </div><!-- /input-group -->
+          <div class="col-md-6" id="select_publisher">
+            <div class="form-group">
+              <%= f.collection_select :publisher, Publisher.all, :id, :publisher_name %>
             </div>
+          </div>
+        </div>
+        <div class="row" >
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.radio_button :number_of_books , 'All Titles', checked: true %>All Titles
+              <%= f.radio_button :number_of_books, 'Select Title' %>Select Title<br>
             </div>
-            <div class="col-md-3">
-              <label>To</label>
-               <div class="input-group">
-                  <%= f.text_field :duration %>
-                  <span class="input-group-btn">
-                  <button class="btn btn-default" style="padding:4px 12px;" type="button"><i class="fa fa-calendar"></i></button>
-                  </span>
-                </div><!-- /input-group -->
+          </div>
+        </div>
+        <div class="row" id="select_title">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= render :partial => 'search_title'%>
+              <div class="title"> </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <div height="40" colspan="4" style="border-bottom:#CCCCCC 1px solid">
+              <label><strong>Length of Agreement</strong></label><br>
             </div>
-            <div id="relative">
-              <div class="col-md-3">
-                <label>Duration</label>
-                <%= f.text_field :duration %>
-              </div>
-              <div class="col-md-3">
-                <label>Year</label>
-                <%= f.select :subscription_type, [['Select','select'],['Years','years'],['Months','months'],['Weeks','weeks']] %>
-              </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <select select id="AgreementLength">
+              <option value="" selected>Select</option>
+              <option value="fixed">Fixed Date Range</option>
+              <option value="relative">Relative Date Range</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div id="fixed">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              From<%= f.text_field :duration %>
+              To<%= f.text_field :duration %>
             </div>
-            <p>&nbsp;</p>
+          </div>
+        </div>
+      </div>
+      <div id="relative">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Duration* :</label>
+              <%= f.text_field :duration %>
+              <%= f.select :subscription_type, [['Select','select'],['Years','years'],['Months','months'],['Weeks','weeks']] %>
+            </div>
+          </div>
+        </div>
+      </div>
+   <p>&nbsp;</p>
             <div class="col-md-12">
               <h4>Available for Institutional Accounts </h4>
               
@@ -243,109 +179,8 @@
             
           </div>
         </div>
-                <div class="clearfix"></div>
+               
               </div>
-              <div class="section" data-section="editorDetails">
-        <div class="row">
-        <div class="col-md-12">
-          <div class="form-bg">
-          <div class="col-md-5">
-                      <div class="form-group">
-                        <label for="Proofreader" class="control-label">Subject Group Name  </label>
-                        <input type="text" class="form-control" id="SubjectName">
-                      </div>
-                    </div>
-          <div class="col-md-5">
-                      <div class="form-group">
-                        <label for="Proofreader" class="control-label">Subject Group Code </label>
-                        <input type="text" class="form-control" id="SubjectCode">
-                      </div>
-                    </div>
-          <div class="col-md-2">
-            <div class="form-group">
-              <label   class="control-label col-md-12"> &nbsp;</label>
-              <button type="submit" class="btn btn-sm btn-block"><i class="fa fa-search" aria-hidden="true"></i> &nbsp;Search </button>
-            </div>
-          </div>
-          <div class="clearfix"></div>
-          </div>
-          </div>
-        </div>
-                  <div class="row">
-                    <div class="clearfix"></div>
-                    <div class="col-md-12">
-                      <div class="mt10 table-demo"> Search Result <span class="pull-right">
-                        <div class="dropdown">
-                          <ul class="nav">
-                            <li class="drop"><i style="cursor: pointer;width: 12px;" class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                              <ul class="dropdown-menu-right">
-                                <li><a href="#"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</a></li>
-                                <li><a href="#"> <i class="fa fa-file-word-o" aria-hidden="true"></i> Word</a></li>
-                                <li><a href="#"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a></li>
-                              </ul>
-                            </li>
-                          </ul>
-                        </div>
-                        </span> </div>
-                      <div class="table-responsive">
-                        <table class="table table-bordered">
-                          <thead>
-                            <tr style="font-size:13px">
-                              <th>Subject Group Name  </th>
-                              <th> Subject Group Code </th>
-                              <th>Subject Group Level </th>
-                              <th>Action</th>
-                               
-                            </tr>
-                          </thead>
-                          <tbody>
-                           
-                           
-                            <tr>
-                              <td>History</td>
-                              <td>90</td>
-                              <td>2</td>
-                              
-                              <td><span class="pull-right"><a href="#"><i class="fa fa-plus font-b-icon" data-toggle="modal" data-target="#editBook"></i> </a> &nbsp;<a href="#"><i class="fa fa-trash font-b-icon"></i></a> </span></td>
-                            </tr>
-                          
-                            <tr>
-                              <td>Knowledge</td>
-                              <td>001</td>
-                              <td>3</td>
-                               
-                              <td><span class="pull-right"><a href="#"><i class="fa fa-plus font-b-icon" data-toggle="modal" data-target="#editBook"></i> </a> &nbsp;<a href="#"><i class="fa fa-trash font-b-icon"></i></a> </span></td>
-                            </tr>
-               <tr>
-                              <td>Language</td>
-                              <td>40</td>
-                              <td>2</td>
-                               
-                              <td><span class="pull-right"><a href="#"><i class="fa fa-plus font-b-icon" data-toggle="modal" data-target="#editBook"></i> </a> &nbsp;<a href="#"><i class="fa fa-trash font-b-icon"></i></a> </span></td>
-                            </tr>
-              <tr>
-                              <td>Philosophy</td>
-                              <td>10</td>
-                              <td>2</td>
-                               
-                              <td><span class="pull-right"><a href="#"><i class="fa fa-plus font-b-icon" data-toggle="modal" data-target="#editBook"></i> </a> &nbsp;<a href="#"><i class="fa fa-trash font-b-icon"></i></a> </span></td>
-                            </tr>
-              <tr>
-                              <td>Religion</td>
-                              <td>20</td>
-                              <td>2</td>
-                               
-                              <td><span class="pull-right"><a href="#"><i class="fa fa-plus font-b-icon" data-toggle="modal" data-target="#editBook"></i> </a> &nbsp;<a href="#"><i class="fa fa-trash font-b-icon"></i></a> </span></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-          <div class="col-md-12 text-right"><button type="submit" class="btn btn-sm"  ><i class="fa fa-object-group" aria-hidden="true"></i> &nbsp;Add All</button></div>
-                  </div>
-                <div class="clearfix"></div>
-              </div>
-             <div class="clearfix"></div>
              </div>
           </div>
           <!--Material Tabs End--> 
@@ -361,69 +196,6 @@
               <% end %>
 
     <div class="clearfix m-b-30"></div>
-    <div class="row" id="searchResultGrid" style="display:none;">
-      <div class="col-md-12">
-        <div class="mt10 table-demo">Search Result <span class="pull-right">
-                        <div class="dropdown">
-                          <ul class="nav">
-                            <li class="drop"><i style="cursor: pointer;width: 12px;" class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                              <ul class="dropdown-menu-right">
-                                <li><a href="#"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</a></li>
-                                <li><a href="#"> <i class="fa fa-file-o" aria-hidden="true"></i> CSV</a></li>
-                                <li><a href="#"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a></li>
-                              </ul>
-                            </li>
-                          </ul>
-                        </div>
-                        </span></div>
-        <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead>
-              <tr style="font-size:13px">
-                <th>Email</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Country</th>
-        <th>Actions</th>
-                 
-              </tr>
-            </thead>
-            <tbody>
-              
-        <tr>
-          <td >aaa@aaa.aaa</td>
-          <td >aaa</td>
-          <td >aaa</td>
-          <td >India</td>
-          <td ><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a> </td>
-        </tr>
-        <tr>
-          <td >abejeromaryrose@yahoo.com</td>
-          <td >Mary rose</td>
-          <td >abejero</td>
-          <td >Philippines</td>
-          <td >  </td>
-        </tr>
-        <tr>
-          <td >adarshinbox.anurag@gmail.com</td>
-          <td >Adarsh</td>
-          <td >Raj</td>
-          <td >India</td>
-          <td ></td>
-        </tr>
-        <tr>
-          <td >adarshinbox@hotmail.com</td>
-          <td >Adarsh</td>
-          <td >Raj</td>
-          <td >India</td>
-          <td > </td>
-        </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="col-sm-12"> </div>
-    </div>
   </div>
   <!-- Page Content Ends --> 
   <!-- ================== --> 
@@ -432,38 +204,47 @@
     <%= render :partial => "layouts/top_header"%>
   <!-- Footer Ends --> 
 </section>
-
-<!--for popup page all popup comes from this page-->
-<!-- Main Content Ends --> 
-<!-- Latest compiled and minified JavaScript --> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-<script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js'></script> 
- <script src="assets/scripts/tab.js"></script> 
-<script src="assets/scripts/jquery.slimscroll.min.js"></script> 
-<script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script> 
-<script src="https://www.gstatic.com/charts/loader.js"></script> 
-<script src="assets/scripts/js/pace.min.js"></script> 
-<script src="assets/scripts/modernizr.min.js"></script> 
-<script src="assets/scripts/jquery.app.js"></script> 
-<script src="jqgrid/js/i18n/grid.locale-en.js"></script> 
-<script src="jqgrid/js/jquery.jqGrid.min.js"></script> 
-
-<!--Chart code start--> 
-<script src="https://code.highcharts.com/highcharts.js"></script> 
-<script src="https://code.highcharts.com/modules/exporting.js"></script> 
-
-<script type="text/javascript">
-        function showDiv() {
-            div = document.getElementById('searchResultGrid');
-            div.style.display = "block";
-        }
-    function hideDiv() {
-            div = document.getElementById('searchResultGrid');
-            div.style.display = "none";
-        }
-    </script>
-<!--Chart code end-->
-
 </body>
 </html>
+<script>   
+$(document).ready(function(){
+        // $('#book').hide();
+// if(id == "Book")) 
+$('#book_id').hide();
+$('#fixed').hide();
+$('#relative').hide();
+$('#select_publisher').hide();
+$('#select_title').hide();
+
+  $(':radio').change(function() {
+      var id = $(this).val();
+      
+      console.log(id);
+      if(id.search("Subject Group")!=-1){
+        $('#book_id').hide();
+        $('#subject_group').show();
+      } else if(id.search("Book")!=-1){
+        $('#subject_group').hide();
+        $('#book_id').show();
+      } else if(id.search("All Publishers")!=-1){
+        $('#select_publisher').hide();
+      } else if(id.search("All Titles")!=-1){
+        $('#select_title').hide();    
+      } else if(id.search("Select Publisher")!=-1){
+        $('#select_publisher').show();
+      } else if(id.search("Select Title")!=-1){
+        $('#select_title').show();
+      }
+      /*else{
+        $('#book_id').hide();
+        $('#subject_group').show();
+      }*/
+  });
+  $('#AgreementLength').change(function () {
+   var isFixed = this.value == 'fixed';
+   var isRelative = this.value == 'relative';
+    $('#fixed').toggle(isFixed);
+    $("#relative").toggle(isRelative);
+  });
+});
+</script>
