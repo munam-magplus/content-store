@@ -11,13 +11,13 @@
         <input type="checkbox" name="checkbox" id="chk" />
       </td>
       <td>
-        <%= title_group.subject_group_name %>
+        <%= title_group.title %>
       </td>
       <td>
-        <%= title_group.subejct_group_code %>
+        <%= title_group.isbn %>
       </td>
       <td>
-        <%= title_group.subject_group_level %>  
+        <%= title_group.language %>  
       </td>
     </tr>
   <% end %>
@@ -78,9 +78,5 @@
     arr.pop($(this).text())
       $('#role_ids').val(arr)
    });
-
-
-
-
    }
 </script>

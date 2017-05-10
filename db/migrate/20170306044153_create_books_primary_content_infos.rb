@@ -12,9 +12,7 @@ class CreateBooksPrimaryContentInfos < ActiveRecord::Migration[5.0]
       t.string :stock_number
       t.string :publisher_site_sales_link
       t.string :blurb
-      t.string :publisher_date
-      t.string :publisher_month
-      t.integer :publisher_year
+      t.date :publication_date
       t.string :conversion_required
       t.string :edition
       t.string :binding
