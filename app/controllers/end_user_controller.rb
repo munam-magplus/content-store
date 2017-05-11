@@ -9,7 +9,7 @@ class EndUserController < ApplicationController
   	@end_user = EndUser.new(end_user_params)
 		if @end_user.save!
 			# If successfully stored then redirect to  setup path 
-    	redirect_to new_end_user_path
+    	redirect_to end_user_index_path
   	else
     	# If not save in that case render new
     	render 'new'  			

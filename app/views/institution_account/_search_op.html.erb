@@ -54,12 +54,14 @@
 										<%end%>
 									</td>
 									<td class="tabledata">
-										<%= image_tag("IP.gif")%>
-										<%= link_to image_tag("Library_User.png"), result_library_users_path(id: f.id) , title: "Library users"%>
-										<%= image_tag("User_Subscription.png")%><br>
-										<%= image_tag("license.gif")%>
+									<!-- 
+										<%= image_tag("IP.png")%>
+										<%= image_tag("subscription.png")%><br>
+										<%= image_tag("view_linked_licenses.gif")%>
 										<%= image_tag("Referral_URL.png")%>
-										<%= link_to image_tag("managins_user.gif"), inst_admin_result_institution_account_index_path(:id => f.id), title: "Institution Admin User" %>
+									 -->
+										<%= link_to image_tag("Library_User.png"), result_library_users_path(id: f.id) , title: "Library users"%>
+										<%= link_to image_tag("institution.png"), inst_admin_result_institution_account_index_path(:id => f.id), title: "Institution Admin User" %>
 									</td>
 								</tr>
 							<% else %>
@@ -84,12 +86,14 @@
 										<%end%>
 									</td>
 									<td class="tabledata">
-										<%= image_tag("IP.gif")%>
-										<%= link_to image_tag("Library_User.png"), result_library_users_path(id: f.id), title: "Library users"%>
-										<%= image_tag("User_Subscription.png")%><br>
-										<%= image_tag("license.gif")%>
+									<!-- 
+										<%= image_tag("IP.png")%>
+										<%= image_tag("subscription.png")%><br>
+										<%= image_tag("view_linked_licenses.gif")%>
 										<%= image_tag("Referral_URL.png")%>
-										<%= link_to image_tag("managins_user.gif"), inst_admin_result_institution_account_index_path(:id => f.id), title: "Institution Admin User" %>
+									 -->
+										<%= link_to image_tag("Library_User.png"), result_library_users_path(id: f.id), title: "Library users"%>
+										<%= link_to image_tag("institution.png"), inst_admin_result_institution_account_index_path(:id => f.id), title: "Institution Admin User" %>
 									</td>
 								</tr>
 							<% end %>

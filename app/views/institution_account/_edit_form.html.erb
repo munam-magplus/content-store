@@ -33,7 +33,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 nopadding">Select Publisher<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.select 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'),{ :prompt => "select publisher"},{:class => "form-control"} %>
+              <%= f.select 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'),{ :prompt => "Select Publisher"},{:class => "form-control", style: "background-color: #eee;"} %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -42,7 +42,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Lib./Dept. Name<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-            <%= f.text_field :libary_name , :class => "form-control" %>
+            <%= f.text_field :libary_name , :class => "form-control", :placeholder => "Library Name" %>
             </span> 
             <div class="clearfix"></div>
           </div>
@@ -51,7 +51,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Institution Name:<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-            <%= f.text_field :institution_name , :class => "form-control" %>
+            <%= f.text_field :institution_name , :class => "form-control", :placeholder => "Institution Name" %>
             </span> 
             <div class="clearfix"></div>
           </div>
@@ -60,7 +60,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Status</label>
             <span class="col-sm-8">
-           <%= f.select 'status',options_for_select(['active', 'inactive', 'pending']), {:prompt => "select status"}, {:class => "form-control"} %>
+           <%= f.select 'status',options_for_select(['active', 'inactive', 'pending']), {:prompt => "Select Status"}, {:class => "form-control", style: "background-color: #eee;"} %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -81,7 +81,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Display Name</label>
             <span class="col-sm-8">
-              <%= f.text_field :display_name , :class => "form-control"%>
+              <%= f.text_field :display_name , :class => "form-control", :placeholder => "Display Name"%>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -94,7 +94,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">Contact First Name<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= builder.text_field :first_name , :class => "form-control" %>
+              <%= builder.text_field :first_name , :class => "form-control", :placeholder => "First Name" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -103,7 +103,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">Contact Last Name<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= builder.text_field :last_name , :class => "form-control" %>
+              <%= builder.text_field :last_name , :class => "form-control", :placeholder => "Last Name" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -112,7 +112,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">Phone<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= builder.text_field :phone , :class => "form-control" %>
+              <%= builder.text_field :phone , :class => "form-control", :placeholder => "Phone" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -121,7 +121,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">Email<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= builder.text_field :email , :class => "form-control" %>
+              <%= builder.text_field :email , :class => "form-control", :placeholder => "Email" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -130,7 +130,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">Address<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= builder.text_field :address , :class => "form-control" %>
+              <%= builder.text_field :address , :class => "form-control", :placeholder => "Address" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -139,7 +139,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">Address Line 2</label>
             <span class="col-sm-8">
-              <%= builder.text_field :address_line2 , :class => "form-control" %>
+              <%= builder.text_field :address_line2 , :class => "form-control", :placeholder => "Address" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -148,7 +148,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">Address Line 3</label>
             <span class="col-sm-8">
-              <%= builder.text_field :address_line3 , :class => "form-control" %>
+              <%= builder.text_field :address_line3 , :class => "form-control", :placeholder => "Address" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -157,7 +157,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">City/ Town<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= builder.text_field :city , :class => "form-control" %>
+              <%= builder.text_field :city , :class => "form-control", :placeholder => "City" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -166,7 +166,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">State / Province<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= builder.text_field :state , :class => "form-control" %>
+              <%= builder.text_field :state , :class => "form-control", :placeholder => "State" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -175,7 +175,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">Postal Code<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= builder.text_field :postal_code , :class => "form-control" %>
+              <%= builder.text_field :postal_code , :class => "form-control", :placeholder => "Postal Code" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -185,7 +185,7 @@
              <label for="bookISBN" class="col-sm-4 nopadding">Country<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
               <% country_name %>
-              <%=  builder.select "country", options_from_collection_for_select(@country, "country_code", "country_name"),{prompt: "select country"}, {:class => "form-control"} %>
+              <%=  builder.select "country", options_from_collection_for_select(@country, "country_code", "country_name"),{prompt: "Select Country"}, {:class => "form-control", style: "background-color: #eee;"} %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -194,7 +194,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">Comments</label>
             <span class="col-sm-8">
-              <%= builder.text_area :comments , :class => "form-control" %>
+              <%= builder.text_area :comments , :class => "form-control", :placeholder => "Comments" %>
             </span>
             <div class="clearfix"></div>
           </div>

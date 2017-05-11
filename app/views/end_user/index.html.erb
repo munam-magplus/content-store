@@ -33,7 +33,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Publisher</label>
             <div class="col-sm-8">
-            <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "Select publisher", :class => "form-control"%>
+            <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "Select publisher", :class => "form-control", :style => "background-color: #eee"%>
             </div>
             <div class="clearfix"></div>            
           </div>
@@ -42,7 +42,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Email:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :email, params[:email], :class => "form-control" %>
+            <%= text_field_tag :email, params[:email], :class => "form-control", :placeholder => "Email" %>
             </span> 
             <div class="clearfix"></div>
           </div>
@@ -51,7 +51,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Last Name:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :last_name, params[:last_name], :class => "form-control" %>
+            <%= text_field_tag :last_name, params[:last_name], :class => "form-control", :placeholder => "Last Name" %>
             </span> 
             <div class="clearfix"></div>
           </div>
@@ -60,7 +60,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Country:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :country, params[:country], :class => "form-control" %>
+            <%= text_field_tag :country, params[:country], :class => "form-control", :placeholder => "Country" %>
             </span> 
             <div class="clearfix"></div>
           </div>
@@ -69,7 +69,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">License ID:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :license_id, params[:license_id], :class => "form-control" %>
+            <%= text_field_tag :license_id, params[:license_id], :class => "form-control", :placeholder => "License ID" %>
             </span>
             <div class="clearfix"></div> 
           </div>
@@ -95,18 +95,4 @@
   </section>
 </body>
 </html>
-<!--for popup page all popup comes from this page-->
-
-<!-- Main Content Ends --> 
-<!-- Latest compiled and minified JavaScript --> 
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-<script src="assets/scripts/jquery.slimscroll.min.js"></script> 
-<script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script> 
-<script src="https://www.gstatic.com/charts/loader.js"></script> 
-<script src="assets/scripts/js/pace.min.js"></script> 
-<script src="assets/scripts/modernizr.min.js"></script> 
-<script src="assets/scripts/jquery.app.js"></script> 
-<script src="jqgrid/js/i18n/grid.locale-en.js"></script> 
-<script src="jqgrid/js/jquery.jqGrid.min.js"></script> 
->>>>>>> UI updation
+ 

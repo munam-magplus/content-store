@@ -66,7 +66,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Status</label>
             <span class="col-sm-8">
-              <%= f.select 'status',options_for_select(["active","inactive"]), {:prompt => "select status"}, {:class => "form-control"} %>
+              <%= f.select 'status',options_for_select(["active","inactive"]), {:prompt => "Select Status"}, {:class => "form-control", style: "background-color: #eee;"} %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -75,7 +75,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Email</label>
             <span class="col-sm-8">
-              <%= f.text_field :email, :id => "mail",:class => "form-control" %>
+              <%= f.text_field :email, :id => "mail",:class => "form-control", :placeholder => "Email" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -84,7 +84,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Position</label>
             <span class="col-sm-8">
-              <%= f.text_field :position,:class => "form-control" %>
+              <%= f.text_field :position,:class => "form-control", :placeholder => "Position" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -93,7 +93,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Phone</label>
             <span class="col-sm-8">
-              <%= f.text_field :phone, :id => "phone",:class => "form-control" %>
+              <%= f.text_field :phone, :id => "phone",:class => "form-control", :placeholder => "Phone" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -102,7 +102,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Fax</label>
             <span class="col-sm-8">
-              <%= f.text_field :fax,:class => "form-control" %>
+              <%= f.text_field :fax,:class => "form-control", :placeholder => "Fax" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -111,7 +111,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Password</label>
             <span class="col-sm-8">
-              <%= f.password_field :password,:class => "form-control" %>
+              <%= f.password_field :password,:class => "form-control", :placeholder => "Password" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -120,7 +120,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Confirm Password</label>
             <span class="col-sm-8">
-              <%= f.password_field :confirm_password ,:class => "form-control"%>
+              <%= f.password_field :confirm_password ,:class => "form-control", :placeholder => "Confirm Password"%>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -129,7 +129,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Comments</label>
             <span class="col-sm-8">
-              <%= f.text_area :comments,:class => "form-control" %>
+              <%= f.text_area :comments,:class => "form-control", :placeholder => "Comments" %>
             </span>
             <div class="clearfix"></div>
           </div>

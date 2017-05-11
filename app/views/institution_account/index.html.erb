@@ -30,7 +30,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Select Publisher</label>
             <div class="col-sm-8">
-              <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "Select publisher", :class => "form-control"%>
+              <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "Select Publisher", :class => "form-control", style: "background-color: #eee;"%>
             </div>
           </div>
         </div>
@@ -38,7 +38,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Institution ID:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :institution_id,"",:class => "form-control" %>
+            <%= text_field_tag :institution_id,"",:class => "form-control", :placeholder => "Institution ID" %>
             </span> 
           </div>
         </div>
@@ -46,7 +46,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Lib./Dept. Name:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :libary_name,"",:class => "form-control" %>
+            <%= text_field_tag :libary_name,"",:class => "form-control", :placeholder => "Library Name" %>
             </span>
           </div>
         </div>
@@ -54,7 +54,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Institution Name:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :institution_name,"",:class => "form-control" %>
+            <%= text_field_tag :institution_name,"",:class => "form-control", :placeholder => "Institution Name" %>
             </span> 
           </div>
         </div>
@@ -62,7 +62,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">IP Address:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :name,params[:ipadd],:class => "form-control" %>
+            <%= text_field_tag :name,params[:ipadd],:class => "form-control", :placeholder => "IP Address" %>
             </span>
           </div>
         </div>
@@ -70,7 +70,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">City:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :city,"",:class => "form-control" %>
+            <%= text_field_tag :city,"",:class => "form-control", :placeholder => "City" %>
             </span> 
           </div>
         </div>
@@ -78,7 +78,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">State / Province:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :state,"",:class => "form-control" %>
+            <%= text_field_tag :state,"",:class => "form-control", :placeholder => "State" %>
             </span>
           </div>
         </div>
@@ -87,7 +87,7 @@
             <label for="taskName" class="col-sm-4 control-label">Country:</label>
             <div class="col-sm-8">
              <% country_name %>
-              <%= select_tag "country", options_from_collection_for_select(@country, "country_code", "country_name"),prompt: "select country", :class => "form-control" %>
+              <%= select_tag "country", options_from_collection_for_select(@country, "country_code", "country_name"),prompt: "Select Country", :class => "form-control", style: "background-color: #eee;" %>
             </div>
           </div>
         </div>
@@ -95,7 +95,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Status:</label>
             <span class="col-sm-8">
-             <%= select_tag 'status',options_for_select(['active', 'inactive', 'pending']), :prompt => "select status", :class => "form-control" %>
+             <%= select_tag 'status',options_for_select(['active', 'inactive', 'pending']), :prompt => "select status", :class => "form-control", style: "background-color: #eee;" %>
             </span>
           </div>
         </div>
@@ -103,7 +103,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Contact First Name:</label>
             <span class="col-sm-8">
-              <%= text_field_tag :first_name,"",:class => "form-control" %>
+              <%= text_field_tag :first_name,"",:class => "form-control", :placeholder => "First Name" %>
             </span> 
           </div>
         </div>
@@ -111,7 +111,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Contact Last Name:</label>
             <span class="col-sm-8">
-              <%= text_field_tag :last_name,"",:class => "form-control" %>
+              <%= text_field_tag :last_name,"",:class => "form-control", :placeholder => "Last Name" %>
             </span>
           </div>
         </div>
@@ -119,7 +119,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Contact Email:</label>
             <span class="col-sm-8">
-              <%= text_field_tag :email,"",:class => "form-control" %>
+              <%= text_field_tag :email,"",:class => "form-control", :placeholder => "Email" %>
             </span>
           </div>
         </div>

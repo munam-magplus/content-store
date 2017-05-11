@@ -17,8 +17,8 @@
       <div class="wrapper container-fluid">
         <ol class="breadcrumb">
           <li><a href="#">Home</a></li>
-          <li><%= link_to "Publisher Setup",publisher_setup_index_path%></li>
-          <li><%= link_to "Search Articles",publishers_path%></li>
+          <li> <a> Publisher Setup</a></li>
+          <li><a> Search Articles</a></li>
         </ol>
         
       <h2 class="H2-L1">Search Articles</h2>
@@ -28,8 +28,9 @@
             <div class="form-group">
               <label for="bookISBN" class="col-sm-4 control-label">Journal Title<span class="red">*</span>:</label>
               <span class="col-sm-8">
-              <%= text_field_tag :journal_title, params[:journal_title] %>
+              <%= text_field_tag :journal_title, params[:journal_title] , placeholder: "Journal Title"%>
             </span>
+            <div class="clearfix"></div>
             </div>
           </div>
         </div>
@@ -38,8 +39,9 @@
             <div class="form-group">
               <label for="bookISBN" class="col-sm-4 control-label" >Title<span class="red">*</span>:</label>
               <span class="col-sm-8">
-              <%= text_field_tag :title, params[:title] %>
+              <%= text_field_tag :title, params[:title], placeholder: "Title" %>
             </span>
+            <div class="clearfix"></div>
             </div>
           </div>
         </div>
@@ -48,8 +50,9 @@
             <div class="form-group">
               <label for="bookISBN" class="col-sm-4 control-label">Content Code<span class="red">*</span>:</label>
               <span class="col-sm-8">
-              <%= text_field_tag :code, params[:code] %>
+              <%= text_field_tag :code, params[:code], placeholder: "Content Code" %>
             </span>
+            <div class="clearfix"></div>
             </div>
           </div>
         </div>
@@ -58,8 +61,9 @@
             <div class="form-group">
               <label for="bookISBN" class="col-sm-4 control-label" >DOI</label>
               <span class="col-sm-8">
-              <%= text_field_tag :doi, params[:doi] %>
+              <%= text_field_tag :doi, params[:doi], placeholder: "DOI" %>
             </span>
+            <div class="clearfix"></div>
             </div>
           </div>
         </div>
@@ -68,16 +72,18 @@
             <div class="form-group">
               <label for="bookISBN" class="col-sm-4 control-label" >Volume Number</label>
               <span class="col-sm-8">
-              <%= text_field_tag :volume, params[:volume] %>
+              <%= text_field_tag :volume, params[:volume], placeholder: "Volume Number" %>
             </span>
+            <div class="clearfix"></div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <label for="bookISBN" class="col-sm-4 control-label" >Issue Number</label>
               <span class="col-sm-8">
-              <%= text_field_tag :issue, params[:issue] %>
+              <%= text_field_tag :issue, params[:issue], placeholder: "Issue Number" %>
             </span>
+            <div class="clearfix"></div>
             </div>
           </div>
         </div>
@@ -86,8 +92,9 @@
             <div class="form-group">
               <label for="bookISBN" class="col-sm-4 control-label" >Article Section <span class="red">*</span>:</label>
               <span class="col-sm-8">
-              <%= text_field_tag :article, params[:article] %>
+              <%= text_field_tag :article, params[:article], placeholder: "Article" %>
               </span>
+              <div class="clearfix"></div>
             </div>
           </div>
         </div>
@@ -96,16 +103,18 @@
             <div class="form-group">
               <label for="bookISBN" class="col-sm-4 control-label" >Author First Name</label>
               <span class="col-sm-8">
-              <%= text_field_tag :author_first_name, params[:author_first_name] %>
+              <%= text_field_tag :author_first_name, params[:author_first_name], placeholder: "First Name" %>
               </span>
+              <div class="clearfix"></div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <label for="bookISBN" class="col-sm-4 control-label" >Author Last Name</label>
               <span class="col-sm-8">
-              <%= text_field_tag :author_last_name, params[:author_last_name] %>
+              <%= text_field_tag :author_last_name, params[:author_last_name], placeholder: "Last Name" %>
             </span>
+            <div class="clearfix"></div>
             </div>
           </div>
         </div>

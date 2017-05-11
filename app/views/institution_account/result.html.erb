@@ -38,12 +38,12 @@
 									<%end%>
 								</td>
 								<td class="tabledata">
-									<%= image_tag("IP.gif")%>
-									<%= image_tag("Library_User.png")%>
-									<%= image_tag("User_Subscription.png")%><br>
-									<%= image_tag("license.gif")%>
+<!-- 									<%= image_tag("IP.png")%>
+									<%= image_tag("subscription.png")%><br>
+									<%= image_tag("view_linked_licenses.gif")%>
 									<%= image_tag("Referral_URL.png")%>
-									<%= link_to image_tag("managins_user.gif"), institution_account_inst_admin_result_path(f) %>
+ -->									<%= image_tag("Library_User.png")%>
+									<%= link_to image_tag("institution.png"), institution_account_inst_admin_result_path(f) %>
 								</td>
 							</tr>
 						<% else %>
@@ -68,12 +68,13 @@
 									<%end%>
 								</td>
 								<td class="tabledata">
-									<%= image_tag("IP.gif")%>
-									<%= image_tag("Library_User.png")%>
-									<%= image_tag("User_Subscription.png")%><br>
-									<%= image_tag("license.gif")%>
+								<!-- 
+									<%= image_tag("subscription.png")%><br>
+									<%= image_tag("view_linked_licenses.gif")%>
 									<%= image_tag("Referral_URL.png")%>
-									<%= link_to image_tag("managins_user.gif"), institution_account_inst_admin_result_path(f) %>
+								 	<%= image_tag("IP.png")%>-->
+									<%= image_tag("Library_User.png")%>
+									<%= link_to image_tag("institution.png"), institution_account_inst_admin_result_path(f) %>
 								</td>
 							</tr>
 						<% end %>
