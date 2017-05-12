@@ -1,0 +1,10 @@
+<%if @form == "form1" %>
+	$("#collapseOne").collapse('hide');
+	$("#collapseTwo").collapse('show');
+<%elsif @form == "form2"%>
+	$("#collapseTwo").collapse('hide');
+	$("#collapseThree").collapse('show');
+<%else%>
+	$("#collapseFour").collapse('hide');
+	$("#collapsefive").collapse('show');
+<%end%>

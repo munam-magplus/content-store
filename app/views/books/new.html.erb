@@ -21,17 +21,16 @@
 	   <li><a href="#" class="active">Create New Book</a></li>
       </ol>
     <h2 class="H2-L1">Create New Book</h2>
-	<form class="form-horizontal  " role="form">
                     <div id="accordion" class="checkout">
 					<div class="clearfix"></div>
                         <div class="panel checkout-step">
                             <div> <span class="checkout-step-number">1</span>
-                                <h4 class="checkout-step-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" > Primary Content Information</a></h4>
+                                <h4 class="checkout-step-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="" > Primary Content Information</a></h4>
                             </div>
 							
                             <div id="collapseOne" class="collapse in">
                                 <div class="checkout-step-body">
-                                	<%= form_for(@book, url: {action: "create"}) do |f| %>
+              <%= form_for(@book, url: {:controller => "books",action: "create"}, remote: true) do |f| %>
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
@@ -140,7 +139,7 @@
 										<div class="form-group">
 										  <label class="control-label col-sm-4" for="email">Conversion Required </label>
 										  <div class="col-sm-8">
-										  	<%= f.select 'conversion_required', options_for_select([ "Yes", "No"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
+										  	<%= f.select 'conversion_required', options_for_select([ "Yes", "No"]),{ :prompt => "Please select"},{:class =>"form-control" , style: "background-color: #eee;"} %>
 										  </div>
 										</div>
 									</div>
@@ -156,7 +155,7 @@
 										<div class="form-group">
 										  <label class="control-label col-sm-4" for="email">Binding</label>
 										  <div class="col-sm-8">
-										  	<%= f.select 'binding', options_for_select([ "Board book", "Audio", "Audio cassette", "CD-Audio", "DAT", "Audio disc", "Audio tape", "MiniDisc", "CD-Extra", "DVD Audio", "Downloadable audio file", "Other audio format", "Book", "Hardback", "Paperback"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
+										  	<%= f.select 'binding', options_for_select([ "Board book", "Audio", "Audio cassette", "CD-Audio", "DAT", "Audio disc", "Audio tape", "MiniDisc", "CD-Extra", "DVD Audio", "Downloadable audio file", "Other audio format", "Book", "Hardback", "Paperback"]),{ :prompt => "Please select"},{:class =>"form-control" , style: "background-color: #eee;"} %>
 										  </div>
 										</div>
 									</div>
@@ -180,7 +179,7 @@
 										<div class="form-group">
 										  <label class="control-label col-sm-4" for="email">Series ISBN</label>
 										  <div class="col-sm-8">
-										  	<%= f.text_field :series_isbn, :class => "form-control", :placeholder => "Series ISBN" %>
+										  	<%= f.text_field :series_ISBN, :class => "form-control", :placeholder => "Series ISBN" %>
 										  </div>
 										</div>
 									</div>
@@ -196,12 +195,8 @@
                                    <!--Next  Button -->
 								<div class="form-group">
 									<div class="col-md-12">
-										<%= f.submit "Save and Continue", :class => "collapsed btn btn-sm" %>
-										<%= f.button "Finish", type: :reset, :class => "collapsed btn btn-sm" %>
-										<span class="pull-right">
-										<a class="btn btn-sm" href="#collapseTwo">Upload Content Files</a>
-										<a class="btnBlack btn btn-sm" href="#collapseTwo">Upload Content Files</a>
-										<% end %>
+										<%= button_tag fa_icon("save", text: "Save And Continue"), :class => "btn btn-sm", type: :submit %>
+						<% end %>
 										</span>
 									</div>
 								</div>
@@ -212,7 +207,7 @@
 						<div class="clearfix"></div>
                         <div class="panel checkout-step">
                             <div role="tab" id="headingTwo"> <span class="checkout-step-number">2</span>
-                                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" > Contributor's Information </a> </h4>
+                                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href= "#collapseTwo" > Contributor's Information </a> </h4>
                             </div>
                             <div id="collapseTwo" class="panel-collapse collapse">
                                 <div class="checkout-step-body">
@@ -221,7 +216,7 @@
                                                 <div class="table-responsive" style="overflow-x: inherit;">
 												  <table class="table table-bordered" id="participantTable">
 													<thead>
-														<%= form_for @book_contributor, url: {action: "create"} do |f| %>
+              <%#= form_for(:books_contributor, url: {:controller => "books",action: "create"}, remote: true) do |f| %>
 													  <tr  >
 														
 														<th>Role<sup class="mandatory">*</sup></th>
@@ -237,46 +232,49 @@
 													  </tr>
 													</thead>
 													<tbody>
+												<%= form_for :books_contributor, url: {:controller => "books",action: "create"}, remote: true  do |f| %>
 													<tr class="participantRow">
 														  
-														  <td >
-														  	<%= f.select 'role', options_for_select([ "By (author)", "Screenplay by", "Libretto by", "Lyrics by", "By (composer)", "By (artist)", "By (photographer)", "From an idea by", "Designed by", "Photographs by", "Text by", "Preface by", "Prologue by", "Summary by", "Supplement by", "Afterword by", "Notes by", "Commentaries by", "Foreword by", "Introduction by", "Footnotes by", "Memoir by", "Software written by"]),{ :prompt => "Please select"},{:class =>"form-control"} %></select></td>
-														  <td ><%= f.text_field :name , :placeholder => "Enter Name", :class => "form-control" %> </td>
-														  <td ><%= f.text_area :description, :class => "form-control", :placeholder => "Description" %> </td>
-														  <td ><div class="input-group date datetimepicker3" >
-														  		<%= f.text_field :doi, :class => "form-control", :placeholder => "DD/MM/YYYY" %>
-																	 <span class="input-group-addon">
-																		<span class="glyphicon glyphicon-calendar"></span>
-																	</span>
-																  </div>                 
-														 </td>
-														  <td ><div class="input-group date " id="datetimepicker2">
-														  			<%= f.text_field :dod, :class => "form-control", :placeholder => "DD/MM/YYYY" %>
-																	 <span class="input-group-addon">
-																		<span class="glyphicon glyphicon-calendar"></span>
-																	</span>
-																  </div> </td>
-														  <td ><%= f.text_field :professional_position, :placeholder => "Position", :class => "form-control" %></td>
-														  <td ><%= f.text_field :professional_affiliation, :placeholder => "Affiliation", :class => "form-control" %></td>
-														  <td><%= f.text_field :website, :placeholder => "Website", :class => "form-control" %></td>
-														  <td><%= f.text_area :website_description, :class => "form-control", :placeholder => "Description" %></td>
-														  <td><a class=" remove" href="javascript:;" ><i class="fa fa-trash-o" ></i></a> &nbsp;<a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-														</tr>
-														 
+													  <td >
+													  	<%= f.select 'role', options_for_select([ "By (author)", "Screenplay by", "Libretto by", "Lyrics by", "By (composer)", "By (artist)", "By (photographer)", "From an idea by", "Designed by", "Photographs by", "Text by", "Preface by", "Prologue by", "Summary by", "Supplement by", "Afterword by", "Notes by", "Commentaries by", "Foreword by", "Introduction by", "Footnotes by", "Memoir by", "Software written by"]),{ :prompt => "Please select"},{:class =>"form-control" , style: "background-color: #eee;"} %></select></td>
+													  <td ><%= f.text_field :name , :placeholder => "Enter Name", :class => "form-control" %> </td>
+													  <td ><%= f.text_area :description, :class => "form-control", :placeholder => "Description" %> </td>
+													  <td ><div class="input-group date datetimepicker3" >
+													  		<%= f.text_field :doi , :class => "form-control",:id => 'to' %>
+																 <span class="input-group-addon">
+																	<span class="glyphicon glyphicon-calendar"></span>
+																</span>
+															  </div>                 
+													 </td>
+													  <td ><div class="input-group date " id="datetimepicker2">
+													  		<%= f.text_field :dod , :class => "form-control",:id => 'from' %>
+																 <span class="input-group-addon">
+																	<span class="glyphicon glyphicon-calendar"></span>
+																</span>
+															  </div> </td>
+													  <td ><%= f.text_field :professional_position, :placeholder => "Position", :class => "form-control" %></td>
+													  <td ><%= f.text_field :professional_affiliation, :placeholder => "Affiliation", :class => "form-control" %></td>
+													  <td><%= f.text_field :website, :placeholder => "Website", :class => "form-control" %></td>
+													  <td><%= f.text_area :website_description, :class => "form-control", :placeholder => "Description" %></td>
+													  <td><a class=" remove" href="javascript:;" ><i class="fa fa-trash-o" ></i></a> &nbsp;<a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+													</tr>
+													 
 													  
 													</tbody>
 												  </table>
 												</div> 
-		                                   
+		                                
                                                 
                                                 <!-- Button -->
-                                                    <div class="col-md-12 nopadding">
-                                                    	<%= f.submit "Save and Continue", :class => "collapsed btn btn-sm" %>
-																											<%= f.button "Finish", type: :reset, :class => "btn btn-sm" %>
-																											<% end %>
-                                                         <a class="collapsed btn btn-sm" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"> Save & Continue</a>
+                        <div class="col-md-12 nopadding">
+                        	<%= button_tag fa_icon("save", text: "Save"), :class => "btn btn-sm", :id=>"submit_btn" ,type: :submit %>
+                     		
+                     		<% end %>
+                 						<!-- <button class="btn btn-sm" id="submit_btn"><i class="fa fa-search" aria-hidden="true"></i> type: :submit &nbsp;Save</button> -->
+							
+                                                         <!-- <a class="collapsed btn btn-sm" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"> Save & Continue</a> -->
 														<span class="pull-right" id="addButtonRow">
-														 <button id="singlebutton" name="singlebutton" class="btn btn-sm">Finish</button>
+														 <!-- <button id="singlebutton" name="singlebutton" class="btn btn-sm">Finish</button> -->
 															<button class="btnBlack btn btn-sm add" type="button">Add</button>
 														</span>
                                                     </div>
@@ -308,8 +306,8 @@
 													  </tr>
 													</thead>
 													<tbody>
-													<tr class="participantRow">
-														  <td><%= f.select 'format', options_for_select([ "AER", "PRC", "LIT", "ONL", "PDF", "EXT", "OEB", "WMA", "AAC", "HB", "PB", "EPUB", "CD", "EP"]),{ :prompt => "Please select"},{:class =>"form-control"} %></td>
+													<tr class="participantRow1">
+														  <td><%= f.select 'format', options_for_select([ "AER", "PRC", "LIT", "ONL", "PDF", "EXT", "OEB", "WMA", "AAC", "HB", "PB", "EPUB", "CD", "EP"]),{ :prompt => "Please select"},{:class =>"form-control" , style: "background-color: #eee;"} %></td>
 														   <td><%= f.text_field :isbn, :class => "form-control", :placeholder => "ISBN" %></td>
 														   <td><%= f.text_field :doi, :class => "form-control", :placeholder => "DOI" %></td>
 														   <td><%= f.text_field :weight, :class => "form-control", :placeholder => "Weight" %></td>
@@ -349,17 +347,17 @@
 						<div class="clearfix"></div>
                         <div class="panel checkout-step">
                             <div role="tab" id="headingFour"> <span class="checkout-step-number">4</span>
-                                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"  > Content Access Rules </a> </h4>
+                                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href=""  > Content Access Rules </a> </h4>
                             </div>
                             <div id="collapseFour" class="panel-collapse collapse">
                                 <div class="checkout-step-body">
-                            <%= form_for :books_seo_config do |f| %>
+                            <%= form_for :book_seo_config ,url: {:controller => "books",action: "create"}, remote: true do |f| %>
 								<div class="row">
 								<div class="col-md-6">
 										<div class="form-group">
 										<label class="col-md-4">Territorial List Type</label>
 										<div class="col-md-8">
-											<%= f.select 'territorial_list_type', options_for_select([ "INC", "EXC"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
+											<%= f.select 'territorial_list_type', options_for_select([ "INC", "EXC"]),{ :prompt => "Please select"},{:class =>"form-control" , style: "background-color: #eee;"} %>
 										</div>
 										</div>
 									</div>
@@ -407,7 +405,7 @@
 										<div class="form-group">
 										<label class="col-md-4">Total Free Page Before Login</label>
 										<div class="col-md-8">
-											<input name="landingPage" placeholder="Total Free Page Before Login"  class="form-control" type="text">
+											<%= f.text_field :total_free_page_before_login, :class => "form-control"%>
 										</div>
 										</div>
 									</div>
@@ -418,7 +416,7 @@
 										<div class="form-group">
 										<label class="col-md-4">Exclude Pages from External Index</label>
 										<div class="col-md-8">
-											<input name="landingPage" placeholder="Exclude Pages from External Index"  class="form-control" type="text">
+											<%= f.text_field :exclude_pages_from_external_index, :class => "form-control" %>
 										</div>
 										</div>
 									</div>
@@ -426,7 +424,7 @@
 										<div class="form-group">
 										<label class="col-md-4">Percentage of Pages or Actual Pages Index-able</label>
 										<div class="col-md-8">
-											<input name="landingPage" placeholder="Percentage of Pages or Actual Pages Index-able"  class="form-control" type="text">
+											<%= f.text_field :actual_pages_indexable, :class => "form-control" %>
 										</div>
 										</div>
 									</div>
@@ -435,7 +433,7 @@
 										<div class="form-group">
 										<label class="col-md-4">Percentage of Pages or Actual Browsable Pages</label>
 										<div class="col-md-8">
-											<input name="landingPage" placeholder="Percentage of Pages or Actual Browsable Pages"  class="form-control" type="text">
+											<%= f.text_field :actual_browsable_pages, :class => "form-control" %>
 										</div>
 										</div>
 									</div>
@@ -443,7 +441,7 @@
 										<div class="form-group">
 										<label class="col-md-4">Percentage of Pages or Actual Printable Pages</label>
 										<div class="col-md-8">
-											<input name="landingPage" placeholder="Percentage of Pages or Actual Printable Pages"  class="form-control" type="text">
+											<%= f.text_field :actual_printable, :class => "form-control" %>
 										</div>
 										</div>
 									</div>
@@ -451,7 +449,7 @@
 										<div class="form-group">
 										<label class="col-md-4">Percentage of Pages or Actual Allowed Copying Pages</label>
 										<div class="col-md-8">
-											<input name="landingPage" placeholder="Percentage of Pages or Actual Allowed Copying Pages"  class="form-control" type="text">
+											<%= f.text_field :actual_allowed_copying_pages, :class => "form-control" %>
 										</div>
 										</div>
 									</div>
@@ -460,12 +458,13 @@
 										<div class="form-group">
 										<label class="col-md-4">Internal Related Content</label>
 										<div class="col-md-8">
-											<input name="landingPage" placeholder="Percentage of Pages or Actual Allowed Copying Pages"  class="form-control" type="text">
+											<%= f.text_field :internal_related_content, :class => "form-control" %>
 										</div>
 										</div>
 									</div>
 								<div class="col-md-12">
-                                    <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefive"> Next </a>
+									<%= button_tag fa_icon("save", text: "Save And Continue"), :class => "btn btn-sm", type: :submit %>
+                                    <!-- <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefive"> Next </a> -->
 									</div>
 									</div>
                                 </div>
@@ -475,7 +474,7 @@
 						<div class="clearfix"></div>
                         <div class="panel checkout-step">
                             <div role="tab" id="headingFour"> <span class="checkout-step-number">5</span>
-                                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefive"  > SEO Configuration </a> </h4>
+                                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href=""  > SEO Configuration </a> </h4>
                             </div>
                             <div id="collapsefive" class="panel-collapse collapse">
                                 <div class="checkout-step-body">
@@ -484,7 +483,6 @@
                             </div>
                         </div>
                     </div>
-					</form>
                
 		 <div class="clearfix"></div>
     
@@ -508,11 +506,30 @@
 		
 	});
 	});
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-				$('#datetimepicker2').datetimepicker();
-				$('.datetimepicker3').datetimepicker({ format: 'DD/MM/YYYY'  });
-		   });
+ $("#submit_btn").click(function(event){
+		// alert($('#form_id').attr('action'));
+        params = []
+		$('.participantRow').each(function(){
+            val = {}
+			$(this).find('input, select, textarea').each(function(){
+			 val[this.id] = $(this).val();
+			});
+            params.push(val);
+			// alert( JSON.parse(params));
+		}); 
+    $.ajax({
+			type: 'POST',
+			//url: create_books_path,
+   		   data : JSON.stringify(params)
+		});
+  });
+
+
+    //         $(function () {
+    //             $('#datetimepicker1').datetimepicker();
+				// $('#datetimepicker2').datetimepicker();
+				// $('.datetimepicker3').datetimepicker({ format: 'DD/MM/YYYY'  });
+		  //  });
 			
 			/* Variables */
 var p = $("#participants").val();
