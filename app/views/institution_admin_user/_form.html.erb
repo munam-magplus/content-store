@@ -26,7 +26,7 @@
 
       <h2 class="H2-L1">Institutional Account</h2>
       <h5>All <sup class="mandatory">*</sup> fields are mandatory</h5>
-      <%= form_for(@inst_admin_user, url: institution_admin_user_index_path ) do |f| %>
+      <%= form_for(@inst_admin_user, url: institution_admin_user_index_path, html: { class: 'form-horizontal form-bg' }) do |f| %>
         <div class="col-md-6">
           <div class="form-group">
             <label for="disabledTextInput" class="col-md-12 nopadding">User Role<sup class="mandatory">*</sup> </label>
@@ -65,7 +65,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Publisher</label>
             <span class="col-sm-8">
-            <%= f.select 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), {:prompt => "select publisher" },{ :class => "form-control" }%>
+            <%= f.select 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), {:prompt => "Select Publisher" },{ :class => "form-control" , style: "background-color: #eee;" }%>
             </span>
             <div class="clearfix"></div> 
           </div>
@@ -74,7 +74,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Institution Name<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-            <%= f.select 'institution_name',options_from_collection_for_select(InstitutionAccount.all, 'institution_name', 'institution_name'),{ :prompt => "select institution name"},{ :class => "form-control" }%>
+            <%= f.select 'institution_name',options_from_collection_for_select(InstitutionAccount.all, 'institution_name', 'institution_name'),{ :prompt => "Select Institution Name" },{ :class => "form-control" , style: "background-color: #eee;"}  %>
             </span> 
             <div class="clearfix"></div>
           </div>
@@ -85,24 +85,25 @@
           <div class="form-group", id="primary2">
             <label for="bookISBN" class="col-sm-4 nopadding">User Name<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-            <%= f.text_field :user_name, :value => "System Generated", :class => "form-control" %>
+            <%= f.text_field :user_name, :value => "System Generated", :class => "form-control", :readonly => true %>
             </span> 
             <div class="clearfix"></div>
           </div>
           <div class="form-group", id="institution2">
-            <label for="bookISBN" class="col-sm-4 nopadding">User Name:<sup class="mandatory">*</sup> SA_</label>
-            <label for="disabledTextInput"></label>
+            <label for="bookISBN" class="col-sm-4 nopadding">User Name:<sup class="mandatory">*</sup></label>
+            <!-- <label style="position: absolute;">SA_</label> -->
             <span class="col-sm-8">
-           <%= f.text_field :user_name,:class => "form-control" %>
+           <%= f.text_field :user_name,:class => "form-control", :placeholder => "SA_user_name" %>
             </span>
             <div class="clearfix"></div>
           </div>
         </div>
+
         <div class="col-md-6">
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Status<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-              <%= f.select 'status',options_for_select(["active","inactive"]), {:prompt => "select status"}, {:class => "form-control"} %>
+              <%= f.select 'status',options_for_select(["active","inactive"]), {:prompt => "Select Status"}, {:class => "form-control", style: "background-color: #eee;"} %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -118,7 +119,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">First Name</label>
             <span class="col-sm-8">
-              <%= f.text_field :first_name, :id => "first",:class => "form-control"  %>
+              <%= f.text_field :first_name, :id => "first",:class => "form-control", :placeholder => "First Name"  %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -127,7 +128,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Last Name</label>
             <span class="col-sm-8">
-              <%= f.text_field :last_name, :id => "last",:class => "form-control" %>
+              <%= f.text_field :last_name, :id => "last",:class => "form-control" , :placeholder => "Last Name" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -136,7 +137,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Email</label>
             <span class="col-sm-8">
-              <%= f.text_field :email, :id => "mail",:class => "form-control" %>
+              <%= f.text_field :email, :id => "mail",:class => "form-control", :placeholder => "Email" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -145,7 +146,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Phone</label>
             <span class="col-sm-8">
-              <%= f.text_field :phone, :id => "phone",:class => "form-control" %>
+              <%= f.text_field :phone, :id => "phone",:class => "form-control", :placeholder => "Phone" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -154,7 +155,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Position</label>
             <span class="col-sm-8">
-              <%= f.text_field :position,:class => "form-control" %>
+              <%= f.text_field :position,:class => "form-control", :placeholder => "Position" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -163,7 +164,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Fax</label>
             <span class="col-sm-8">
-              <%= f.text_field :fax,:class => "form-control" %>
+              <%= f.text_field :fax,:class => "form-control", :placeholder => "Fax" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -172,7 +173,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Password<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-              <%= f.password_field :password,:class => "form-control" %>
+              <%= f.password_field :password,:class => "form-control", :placeholder => "Password" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -181,7 +182,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Confirm Password<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-              <%= f.password_field :confirm_password ,:class => "form-control"%>
+              <%= f.password_field :confirm_password ,:class => "form-control", :placeholder => "Confirm Password" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -190,7 +191,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Comments</label>
             <span class="col-sm-8">
-              <%= f.text_area :comments,:class => "form-control" %>
+              <%= f.text_area :comments,:class => "form-control", :placeholder => "Comments" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -250,8 +251,8 @@ $(document).ready(function(){
         $('#institution2').hide();
         $('#primary2').show();
       } else{
-        $('#primary2').hide();
         $('#institution2').show();
+        $('#primary2').hide();
       }
   });
 });

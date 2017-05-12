@@ -19,8 +19,8 @@
     <div class="wrapper container-fluid">
       <ol class="breadcrumb">
          <li><a href="#">Home</a></li>
-       <li><a><%= link_to "Publisher Setup",publisher_setup_index_path%></li>
-       <li><%= link_to "Search Result",publishers_path%></li>
+       <li><a>Publisher Setup</a></li>
+       <li><a> Search Result</a> </li>
          <div class="pull-right hidden">
           <li><a href="#">Browse by Chapter</a></li>
           <li><a href="#">Browse by Book </a></li>
@@ -33,32 +33,36 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Publisher</label>
             <span class="col-sm-8">
-              <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "Select publisher", :class => "form-control"%>
+              <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "Select Publisher", :class => "form-control",style: "background-color: #eee;", :placeholder => "Publisher" %>
             </span>
+            <div class="clearfix"></div> 
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Email:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :email, params[:email], :class => "form-control" %>
-            </span> 
+            <%= text_field_tag :email, params[:email], :class => "form-control", :placeholder => "Email" %>
+            </span>
+            <div class="clearfix"></div>  
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">First Name / Last Name</label>
             <span class="col-sm-8">
-            <%= text_field_tag :first_name, params[:first_name], :class => "form-control" %>
+            <%= text_field_tag :first_name, params[:first_name], :class => "form-control", :placeholder => "First Name" %>
             </span> 
+            <div class="clearfix"></div> 
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Country:</label>
             <span class="col-sm-8">
-            <%= text_field_tag :country, params[:country], :class => "form-control" %>
-            </span> 
+            <%= text_field_tag :country, params[:country], :class => "form-control", :placeholder => "Country" %>
+            </span>
+            <div class="clearfix"></div>  
           </div>
         </div>
         <div class="col-md-6">
@@ -69,6 +73,7 @@
               <%= radio_button_tag :user_type, 'publisher' %>Publisher
               <%= radio_button_tag :user_type, 'member_publisher' %>Member Publisher</td>
             </span> 
+            <div class="clearfix"></div> 
           </div>
         </div>
         <div class="clearfix"></div>
@@ -94,17 +99,3 @@
   </section>
 </body>
 </html>
-<!--for popup page all popup comes from this page-->
-
-<!-- Main Content Ends --> 
-<!-- Latest compiled and minified JavaScript --> 
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-<script src="assets/scripts/jquery.slimscroll.min.js"></script> 
-<script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script> 
-<script src="https://www.gstatic.com/charts/loader.js"></script> 
-<script src="assets/scripts/js/pace.min.js"></script> 
-<script src="assets/scripts/modernizr.min.js"></script> 
-<script src="assets/scripts/jquery.app.js"></script> 
-<script src="jqgrid/js/i18n/grid.locale-en.js"></script> 
-<script src="jqgrid/js/jquery.jqGrid.min.js"></script> 

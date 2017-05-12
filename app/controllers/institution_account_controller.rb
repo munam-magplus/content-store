@@ -19,6 +19,7 @@ class InstitutionAccountController < ApplicationController
     # end
      # this is the params of the checkbox that is present in the form.
     @chec = params[:ip_address]
+    # byebug
     respond_to do |format|
      format.js 
      format.html

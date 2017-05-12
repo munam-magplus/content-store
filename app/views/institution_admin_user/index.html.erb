@@ -30,7 +30,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label"> First Name <sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= text_field_tag :first_name,"",:class => "form-control" %></td>
+              <%= text_field_tag :first_name,"",:class => "form-control", :placeholder => "First Name" %></td>
             </div>
           </div>
         </div>
@@ -38,7 +38,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Last Name</label>
             <span class="col-sm-8">
-            <%= text_field_tag :last_name,"",:class => "form-control" %>
+            <%= text_field_tag :last_name,"",:class => "form-control", :placeholder => "Last Name" %>
             </span> 
           </div>
         </div>
@@ -46,7 +46,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Email</label>
             <span class="col-sm-8">
-            <%= text_field_tag :email,"",:class => "form-control" %>
+            <%= text_field_tag :email,"",:class => "form-control", :placeholder => "Email" %>
             </span>
           </div>
         </div>
@@ -54,7 +54,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Status:</label>
             <span class="col-sm-8">
-             <%= select_tag 'status',options_for_select(['active', 'inactive', 'pending']), :prompt => "select status", :class => "form-control" %>
+             <%= select_tag 'status',options_for_select(['active', 'inactive', 'pending']), :prompt => "Select Status", :class => "form-control", style: "background-color: #eee;" %>
             </span>
           </div>
         </div>
@@ -62,7 +62,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">User Role</label>
             <span class="col-sm-8">
-              <%= text_field_tag :role,"",:class => "form-control" %>
+              <%= text_field_tag :role,"",:class => "form-control", :placeholder => "User Role" %>
             </span> 
           </div>
         </div>
@@ -70,7 +70,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">User Name:</label>
             <span class="col-sm-8">
-              <%= text_field_tag :user_name,"",:class => "form-control" %>
+              <%= text_field_tag :user_name,"",:class => "form-control", :placeholder => "User Name" %>
             </span>
           </div>
         </div>
@@ -78,7 +78,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Institution Id</label>
             <span class="col-sm-8">
-              <%= text_field_tag :institution_id,"",:class => "form-control" %>
+              <%= text_field_tag :institution_id,"",:class => "form-control", :placeholder => "Institution Id" %>
             </span>
           </div>
         </div>
@@ -86,7 +86,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Institution Name</label>
             <span class="col-sm-8">
-              <%= text_field_tag :institution_name,"",:class => "form-control" %>
+              <%= text_field_tag :institution_name,"",:class => "form-control", :placeholder => "Institution Name" %>
             </span>
           </div>
         </div>

@@ -24,12 +24,13 @@
       </ol>
 
       <h2 class="H2-L1">Create Admin Users</h2>
+        <h6>All <sup class="mandatory">*</sup> are mandatory</h6>
       <%= form_for(:admin_user, url: admin_user_index_path) do |f| %>
         <div class="col-md-6">
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Publisher<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.select 'publisher',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'),{ :prompt => "select publisher"},{:class => "form-control"} %>
+              <%= f.select 'publisher',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'),{ :prompt => "Select Publisher"},{:class => "form-control" , style: "background-color: #eee;" } %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -38,7 +39,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Email<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :email, :class => "form-control" %>
+              <%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -47,7 +48,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Confirm Email<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :confirm_email, :class => "form-control" %>
+              <%= f.text_field :confirm_email, :class => "form-control", :placeholder => "Confirm Email" %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -56,7 +57,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Password</label>
             <span class="col-sm-8">
-            <%= f.password_field :password, :class => "form-control" %>
+            <%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
             </span> 
             <div class="clearfix"></div>
           </div>
@@ -65,7 +66,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Confirm Password</label>
             <span class="col-sm-8">
-            <%= f.password_field :confirm_password, :class => "form-control" %>
+            <%= f.password_field :confirm_password, :class => "form-control" , :placeholder => "Confirm Password"%>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -74,7 +75,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">First Name</label>
             <span class="col-sm-8">
-            <%= f.text_field :first_name, :class => "form-control" %>
+            <%= f.text_field :first_name, :class => "form-control", :placeholder => "First Name" %>
             </span> 
             <div class="clearfix"></div>
           </div>
@@ -83,7 +84,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Last Name</label>
             <span class="col-sm-8">
-            <%= f.text_field :last_name, :class => "form-control" %>
+            <%= f.text_field :last_name, :class => "form-control", :placeholder => "Last Name" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -92,16 +93,16 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Country<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-            <%= f.text_field :country, :class => "form-control" %>
+            <%= f.text_field :country, :class => "form-control" , :placeholder => "Country"%>
             </span> 
             <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Select Language * <sup class="mandatory">*</sup> </label>
+            <label for="taskName" class="col-sm-4 control-label"> Language * <sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= f.select 'language', options_for_select([ "Dansk", "Polish", "Latvian", "English"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
+              <%= f.select 'language', options_for_select([ "Dansk", "Polish", "Latvian", "English"]),{ :prompt => "Select Language"},{:class =>"form-control", style: "background-color: #eee;" } %>
             </span> 
             <div class="clearfix"></div>
           </div>
@@ -121,7 +122,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Role<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= f.select 'role', options_for_select([ "MPS Admin", "Publisher", "Member Publisher", "Member Publisher Role with QA"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
+              <%= f.select 'role', options_for_select([ "MPS Admin", "Publisher", "Member Publisher", "Member Publisher Role with QA"]),{ :prompt => "Please select"},{:class =>"form-control", style: "background-color: #eee;" } %>
             </span> 
             <div class="clearfix"></div>
           </div>
@@ -130,7 +131,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Publisher (s)<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :publishers, :class => "form-control" %>
+              <%= f.text_field :publishers, :class => "form-control", :placeholder => "Publisher(s)" %>
             </div>
             <div class="clearfix"></div>
           </div>

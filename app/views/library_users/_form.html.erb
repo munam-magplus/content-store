@@ -30,7 +30,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 nopadding">First Name<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :first_name , :class => "form-control"  %>
+              <%= f.text_field :first_name , :class => "form-control", :placeholder => "First Name"  %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -39,7 +39,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 nopadding">Last Name<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :last_name , :class => "form-control"  %>
+              <%= f.text_field :last_name , :class => "form-control", :placeholder => "Last Name"  %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -48,7 +48,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 nopadding">Email<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :email , :class => "form-control"  %>
+              <%= f.text_field :email , :class => "form-control", :placeholder => "Email"  %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -57,7 +57,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 nopadding">Member Id/User Name<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :user_name , :class => "form-control"  %>
+              <%= f.text_field :user_name , :class => "form-control", :placeholder => "User Name"  %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -66,7 +66,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 nopadding">Password<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :password , :class => "form-control"  %>
+              <%= f.password_field :password , :class => "form-control", :placeholder => "Password"  %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -75,7 +75,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 nopadding">Password Confirmation<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :password_confirmation , :class => "form-control"  %>
+              <%= f.password_field :password_confirmation , :class => "form-control", :placeholder => "Confirm Password"  %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -85,7 +85,7 @@
              <label for="bookISBN" class="col-sm-4 nopadding">Country</label>
             <span class="col-sm-8">
               <% country_name %>
-              <%=  f.select "country", options_from_collection_for_select(@country, "country_code", "country_name"),{prompt: "select country"}, {:class => "form-control"} %>
+              <%=  f.select "country", options_from_collection_for_select(@country, "country_code", "country_name"),{prompt: "Select Country"}, {:class => "form-control", style: "background-color: #eee;"} %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -94,7 +94,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 nopadding">Status<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.select 'status',options_for_select(['active', 'inactive', 'pending']), {:prompt => "select status"}, {:class => "form-control"} %>
+              <%= f.select 'status',options_for_select(['active', 'inactive', 'pending']), {:prompt => "Select Status"}, {:class => "form-control", style: "background-color: #eee;"} %>
             </div>
             <div class="clearfix"></div>
           </div>

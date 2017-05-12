@@ -40,7 +40,7 @@
 									<td  class="tabledata" ><%= f.role %></td>
 									<td  class="tabledata"><%= f.institution_name %></td>
  									<td  class="tabledata">
-										<%= link_to image_tag("institutional-user.gif",  size: "17x17", title: "User Details") , edit_institution_admin_user_path(f)%>
+										<%= link_to image_tag("institution.png" , title: "User Details") , edit_institution_admin_user_path(f)%>
 									</td>
 							</tr>
 						<% else %>
@@ -52,7 +52,7 @@
 								<td  class="tabledata" ><% f.role %></td>
 								<td  class="tabledata"><%= f.institution_name %></td>
 								<td  class="tabledata">
-									<%= link_to image_tag("institutional-user.gif",  size: "17x17", title: "User Details"), edit_institution_admin_user_path(f)%>
+									<%= link_to image_tag("institution.png", title: "User Details"), edit_institution_admin_user_path(f)%>
 								</td>
 							</tr>
 						<% end %>
