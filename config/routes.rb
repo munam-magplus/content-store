@@ -87,6 +87,8 @@ Rails.application.routes.draw do
       get 'apply_discount'
       get 'result'
       get 'linked_member_publisher'
+      get 'subject_group_search'
+      get 'title_search'
     end
   end
   

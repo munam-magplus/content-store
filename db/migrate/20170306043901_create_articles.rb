@@ -2,7 +2,7 @@ class CreateArticles < ActiveRecord::Migration[5.0]
   def change
     create_table :articles do |t|
       t.string :publisher
-      t.string :doi
+      t.string :date_of_issue
       t.string :content_code
       t.string :journal_title
       t.string :article_type

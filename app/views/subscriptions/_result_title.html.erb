@@ -1,23 +1,23 @@
 <tr class="content_head">
   <th><input type="checkbox" name="select-all" id="select-all" /></th>
-  <th>Subject Group Name</th>
-  <th>Subject Group Code</th>
-  <th>Subject Group Level</th>
+  <th>Title</th>
+  <th>Content Identifier</th>
+  <th>Status</th>
 </tr>
-<% if @subject_group.present? %>
-  <% @subject_group.each do |sub_group| %>
+<% if @title_search.present? %>
+  <% @title_search.each do |title_group| %>
     <tr class="content_value">
       <td>
         <input type="checkbox" name="checkbox" id="chk" />
       </td>
       <td>
-        <%= sub_group.subject_group_name %>
+        <%= title_group.title %>
       </td>
       <td>
-        <%= sub_group.subject_group_code %>
+        <%= title_group.isbn %>
       </td>
       <td>
-        <%= sub_group.subject_group_level %>  
+        <%= title_group.language %>  
       </td>
     </tr>
   <% end %>
@@ -56,7 +56,7 @@
       $(this).closest('.content_head').clone().removeClass('content_head').addClass('clone_content_head').insertBefore(".content_value:first");
     });
     $('.clone_content_head').find('td:last').after('<td class="tableheader">Delete</td>');
-    var cloned =lastRow.closest('.content_value').clone().removeClass('content_value').addClass('clone_content_value').insertAfter(".clone_content_head:last");
+    var cloned =lastRow.closest('.content_value').clone().removeClass('content_value').addClass('clone_content_value').insertAfter(".clone_content_head:last");.
     var arr = []
     lastRow.closest('.content_value').find("td:last").each(function(){
       arr.push($(this).text())

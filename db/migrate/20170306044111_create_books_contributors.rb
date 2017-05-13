@@ -4,8 +4,8 @@ class CreateBooksContributors < ActiveRecord::Migration[5.0]
       t.string :role
       t.string :name
       t.string :description
-      t.string :doi
-      t.string :dod
+      t.string :date_of_birth
+      t.string :date_of_death
       t.string :professional_position
       t.string :professional_affiliation
       t.string :website

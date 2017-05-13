@@ -1,32 +1,31 @@
-<div class="col-md-12">
-  <h3 class="H2-L1">Subject Group</h3>   
-</div>  
-<div class="col-md-6"><div class="form-group">
-  <label for="License" class="col-sm-5 control-label">Subject Group Name</label>
-  <div class="col-sm-7">
-    <input id="sub_code" class="form-control"/>
-  </div>
-  <div class="clearfix"></div>
-</div></div>
-<div class="col-md-6"><div class="form-group">
-  <label for="License" class="col-sm-5 control-label">Subject Group Code</label>
-  <div class="col-sm-7">
-    <input id="sub_name" class="form-control"/>
-  </div>
-  <div class="clearfix"></div>
-</div></div>
-<div class="clearfix m-b-30"></div>
-  <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
-    <input type="button" name="button2" id="button" value="Search" onclick="getSearchDetails();" class="submit_btn" />
+<div class="col-md-5">
+  <div class="form-group">
+    <label for="License" class="col-sm-5 control-label">Subject Group Name</label>
+    <div class="col-sm-6">
+      <input id="subject_group_name" class="form-control" placeholder="Subject Group Name">
+    </div>
+    <div class="clearfix"></div>
   </div>
 </div>
+<div class="col-md-5">
+  <div class="form-group">
+    <label for="License" class="col-sm-5 control-label">Subject Group Code</label>
+    <div class="col-sm-6">
+      <input id="subject_group_code" class="form-control" placeholder="Subject Group Code">
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<div class="col-md-2">
+  <input type="button" name="button2" id="button" value="Search" onclick="getSearchDetails1();" class="btn btn-sm" />
+</div>
 <script type="text/javascript">
-  function getSearchDetails(){
-    var subject_group_name = $('#sub_name').val();
-    var subject_group_code = $('#sub_code').val();
+  function getSearchDetails1(){
+    var subject_group_name = $('#subject_group_name').val();
+    var subject_group_code = $('#subject_group_code').val();
     $.ajax({
       type: 'GET',
-      url: '/subscriptions/search_title',
+      url: '/subscriptions/subject_group_search',
       data : { subject_group_name: subject_group_name,subject_group_code: subject_group_code }
     });
   }

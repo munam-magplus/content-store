@@ -9,7 +9,7 @@ class CreateSubjectGroups < ActiveRecord::Migration[5.0]
       t.string :authentication_user_view_limit
       t.string :discount_percentage
       t.string :viewability_percentage
-      t.string :select_language
+      t.string :language
       t.string :description
 
       t.timestamps

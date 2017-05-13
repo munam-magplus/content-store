@@ -1,7 +1,7 @@
 class LicenseGroupsController < ApplicationController
-    before_action :authenticate_user!
+  before_action :authenticate_user!
 
- def create
+  def create
   @license_group = LicenseGroup.new(license_group_params)
    @license_group.created_by = current_user.email
     respond_to do |format|
@@ -13,8 +13,8 @@ class LicenseGroupsController < ApplicationController
         render 'new'
       end
     end
- end
- def add_license_group_id_to_license
+  end
+  def add_license_group_id_to_license
     ids = params[:license_group][:role_ids].first
     ids = ids.split(',').map(&:squish)
     ids.each do |id|
@@ -22,18 +22,18 @@ class LicenseGroupsController < ApplicationController
      license.license_group_id = @license_group.id
      license.save!
     end
- end
- def new
+  end
+  def new
   @license_group = LicenseGroup.new
- end
+  end
 
- def content_search
+  def content_search
   # search for the License at the time of License Group creation
-  @license_content = License.filter(params.slice(:publisher_id, :license_id, :license_type, :license_name, :isbn))
- end
- 
- def index
- end
+   @license_content = License.filter(params.slice(:publisher_id, :license_id, :license_type, :license_name, :isbn))
+  end
+
+  def index
+  end
 
   def search
     #call filter method to get search results
