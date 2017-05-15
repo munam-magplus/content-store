@@ -38,6 +38,7 @@
 										  <div class="col-sm-8">
 											<%= f.text_field :content_code, :class => "form-control", :placeholder => "Content Code" %>
 										  </div>
+										  <div class="clearfix"></div>
 										</div>
 									</div>
 									
@@ -47,6 +48,7 @@
 										  <div class="col-sm-8">
 												<%= f.text_field :publisher, :class => "form-control", :placeholder => "Publisher" %>	  
 										  </div>
+										  <div class="clearfix"></div>
 										</div>
 									</div>
 									
@@ -56,6 +58,7 @@
 										  <div class="col-sm-8">
 											<%= f.text_field :title, :class => "form-control", :placeholder => "Title" %>
 										  </div>
+										  <div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -64,6 +67,7 @@
 										  <div class="col-sm-8">
 											<%= f.text_field :subject_title, :class => "form-control", :placeholder => "Sub Title" %>
 										  </div>
+										  <div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -72,6 +76,7 @@
 										  <div class="col-sm-8">
 											<%= f.text_field :isbn, :class => "form-control", :placeholder => "ISBN" %>
 										  </div>
+										  <div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -80,6 +85,7 @@
 										  <div class="col-sm-8">
 										  	<%= f.text_field :language, :class => "form-control", :placeholder => "Language"  %>
 										  </div>
+										  <div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -88,6 +94,7 @@
 										  <div class="col-sm-8">
 										  	<%= f.select 'content_classification', options_for_select([ "Bestsellers", "Coming Soon", "Featured Books", "New Releases"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
 										  </div>
+										  <div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -96,6 +103,7 @@
 										  <div class="col-sm-8">
 										  	<%= f.text_field :file_name, :class => "form-control", :placeholder => "File Name" %>
 										  </div>
+										  <div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -104,6 +112,7 @@
 										  <div class="col-sm-8">
 										  	<%= f.text_field :stock_number, :class => "form-control", :placeholder => "Stock Number" %>
 										  </div>
+										  <div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -112,6 +121,7 @@
 										  <div class="col-sm-8">
 										  	<%= f.text_field :publisher_site_sales_link, :class => "form-control", :placeholder => "Publisher Site Sales Link" %>
 										  </div>
+										  <div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-12">
@@ -120,6 +130,7 @@
 										  <div class="col-sm-10">
 											 <%= f.text_area :blurb, cols: "10", rows: "5", :class => "form-control" %>
 										  </div>
+										  <div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -132,6 +143,7 @@
 													<span class="glyphicon glyphicon-calendar"></span>
 												</span>
 											  </div>
+											  <div class="clearfix"></div>
 										  </div>
 										</div>
 									</div>
@@ -141,6 +153,7 @@
 										  <div class="col-sm-8">
 										  	<%= f.select 'conversion_required', options_for_select([ "Yes", "No"]),{ :prompt => "Please select"},{:class =>"form-control" , style: "background-color: #eee;"} %>
 										  </div>
+										  <div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -149,6 +162,7 @@
 										  <div class="col-sm-8">
 										  	<%= f.text_field :edition, :class => "form-control", :placeholder => "Edition" %>
 										  </div>
+										  <div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -157,6 +171,7 @@
 										  <div class="col-sm-8">
 										  	<%= f.select 'binding', options_for_select([ "Board book", "Audio", "Audio cassette", "CD-Audio", "DAT", "Audio disc", "Audio tape", "MiniDisc", "CD-Extra", "DVD Audio", "Downloadable audio file", "Other audio format", "Book", "Hardback", "Paperback"]),{ :prompt => "Please select"},{:class =>"form-control" , style: "background-color: #eee;"} %>
 										  </div>
+										  <div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -165,6 +180,7 @@
 										  <div class="col-sm-8">
 										  	<%= f.text_field :volume, :class => "form-control", :placeholder => "Volume" %>
 										  </div>
+										  <div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -173,6 +189,7 @@
 										  <div class="col-sm-8">
 										  	<%= f.text_field :dimension, :class => "form-control", :placeholder => "Dimensions" %>
 										  </div>
+										  <div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -181,6 +198,7 @@
 										  <div class="col-sm-8">
 										  	<%= f.text_field :series_ISBN, :class => "form-control", :placeholder => "Series ISBN" %>
 										  </div>
+										  <div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -189,6 +207,7 @@
 										  <div class="col-sm-8">
 										  	<%= f.text_field :series_title, :class => "form-control", :placeholder => "Series Title" %>
 										  </div>
+										  <div class="clearfix"></div>
 										</div>
 									</div>
 							</div>
@@ -232,30 +251,30 @@
 													  </tr>
 													</thead>
 													<tbody>
-												<%= form_for :books_contributor, url: {:controller => "books",action: "create"}, remote: true  do |f| %>
+												<%= form_for :books_contributor do |f| %>
 													<tr class="participantRow">
 														  
 													  <td >
-													  	<%= f.select 'role', options_for_select([ "By (author)", "Screenplay by", "Libretto by", "Lyrics by", "By (composer)", "By (artist)", "By (photographer)", "From an idea by", "Designed by", "Photographs by", "Text by", "Preface by", "Prologue by", "Summary by", "Supplement by", "Afterword by", "Notes by", "Commentaries by", "Foreword by", "Introduction by", "Footnotes by", "Memoir by", "Software written by"]),{ :prompt => "Please select"},{:class =>"form-control" , style: "background-color: #eee;"} %></select></td>
-													  <td ><%= f.text_field :name , :placeholder => "Enter Name", :class => "form-control" %> </td>
-													  <td ><%= f.text_area :description, :class => "form-control", :placeholder => "Description" %> </td>
+													  	<%= f.select 'role', options_for_select([ "By (author)", "Screenplay by", "Libretto by", "Lyrics by", "By (composer)", "By (artist)", "By (photographer)", "From an idea by", "Designed by", "Photographs by", "Text by", "Preface by", "Prologue by", "Summary by", "Supplement by", "Afterword by", "Notes by", "Commentaries by", "Foreword by", "Introduction by", "Footnotes by", "Memoir by", "Software written by"]),{ :prompt => "Please select"},{:class =>"form-control" ,:id =>"role" ,style: "background-color: #eee;"} %></select></td>
+													  <td ><%= f.text_field :name , :placeholder => "Enter Name", :class => "form-control",:id =>"name" %> </td>
+													  <td ><%= f.text_area :description, :class => "form-control", :placeholder => "Description",:id =>"description" %> </td>
 													  <td ><div class="input-group date datetimepicker3" >
-													  		<%= f.text_field :doi , :class => "form-control",:id => 'to' %>
+													  		<%= f.text_field :to , :class => "form-control",:id => 'doi' %>
 																 <span class="input-group-addon">
 																	<span class="glyphicon glyphicon-calendar"></span>
 																</span>
 															  </div>                 
 													 </td>
 													  <td ><div class="input-group date " id="datetimepicker2">
-													  		<%= f.text_field :dod , :class => "form-control",:id => 'from' %>
+													  		<%= f.text_field :dod , :class => "form-control",:id => 'dod' %>
 																 <span class="input-group-addon">
 																	<span class="glyphicon glyphicon-calendar"></span>
 																</span>
 															  </div> </td>
-													  <td ><%= f.text_field :professional_position, :placeholder => "Position", :class => "form-control" %></td>
-													  <td ><%= f.text_field :professional_affiliation, :placeholder => "Affiliation", :class => "form-control" %></td>
-													  <td><%= f.text_field :website, :placeholder => "Website", :class => "form-control" %></td>
-													  <td><%= f.text_area :website_description, :class => "form-control", :placeholder => "Description" %></td>
+													  <td ><%= f.text_field :professional_position, :placeholder => "Position",:id => 'professional_position', :class => "form-control" %></td>
+													  <td ><%= f.text_field :professional_affiliation, :placeholder => "Affiliation", :id => 'professional_affiliation', :class => "form-control" %></td>
+													  <td><%= f.text_field :website, :placeholder => "Website", :id => 'website', :class => "form-control" %></td>
+													  <td><%= f.text_area :website_description, :class => "form-control",:id => 'website_description', :placeholder => "Description" %></td>
 													  <td><a class=" remove" href="javascript:;" ><i class="fa fa-trash-o" ></i></a> &nbsp;<a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
 													</tr>
 													 
@@ -267,7 +286,7 @@
                                                 
                                                 <!-- Button -->
                         <div class="col-md-12 nopadding">
-                        	<%= button_tag fa_icon("save", text: "Save"), :class => "btn btn-sm", :id=>"submit_btn" ,type: :submit %>
+                        	<%= f.submit :id=>"submit_btn"  %>
                      		
                      		<% end %>
                  						<!-- <button class="btn btn-sm" id="submit_btn"><i class="fa fa-search" aria-hidden="true"></i> type: :submit &nbsp;Save</button> -->
@@ -295,7 +314,6 @@
                                       <div class="table-responsive" style="overflow-x: inherit;">
 												  <table class="table table-bordered" id="participantTable">
 													<thead>
-                            	<%= form_for :books_content_pricing do |f| %>
 													  <tr>
 														
 														<th>Format </th>
@@ -306,7 +324,8 @@
 													  </tr>
 													</thead>
 													<tbody>
-													<tr class="participantRow1">
+										<%= form_for(:books_content_pricing, url: {:controller => "books",action: "create"}, remote: true) do |f| %>
+													<tr class="participantRow">
 														  <td><%= f.select 'format', options_for_select([ "AER", "PRC", "LIT", "ONL", "PDF", "EXT", "OEB", "WMA", "AAC", "HB", "PB", "EPUB", "CD", "EP"]),{ :prompt => "Please select"},{:class =>"form-control" , style: "background-color: #eee;"} %></td>
 														   <td><%= f.text_field :isbn, :class => "form-control", :placeholder => "ISBN" %></td>
 														   <td><%= f.text_field :doi, :class => "form-control", :placeholder => "DOI" %></td>
@@ -322,20 +341,27 @@
 													<h4>Base Online Access</h4>
 													<div class="form-group">
 														<label class="col-md-2">Watermarked DRM</label>
-														<label class="radio-inline"><%= f.radio_button :watermarked_DRM, 'Yes', :checked => true %> Yes</label>
-														<label class="radio-inline"><%= f.radio_button :watermarked_DRM, 'No' %> No</label>
+														<label class="radio-inline"><%= f.radio_button :watermark_drm, 'Yes', :checked => true %> Yes</label>
+														<label class="radio-inline"><%= f.radio_button :watermark_drm, 'No' %> No</label>
+														<div class="clearfix"></div>
 													</div>
 													<div class="form-group">
 														<label class="col-md-2">External DRM</label>
-														<label class="radio-inline"><%= f.radio_button :external_DRM, 'Yes', :checked => true %> Yes</label>
-														<label class="radio-inline"><%= f.radio_button :external_DRM, 'No' %> No</label>
+														<label class="radio-inline"><%= f.radio_button :external_drm, 'Yes', :checked => true %> Yes</label>
+														<label class="radio-inline"><%= f.radio_button :external_drm, 'No' %> No</label>
 													</div>
 												</div>
 												 <!-- Button -->
-                                                    <div class="col-md-12 nopadding" >
-                                                        <a class="collapsed btn btn-sm" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"> Save & Continue</a>
+                <div class="form-group">
+									<div class="col-md-12">
+										<%= button_tag fa_icon("save", text: "Save And Continue"), :class => "btn btn-sm", type: :submit %>
+						<% end %>
+										</span>
+									</div>
+								</div>
+                                                        <!-- <a class="collapsed btn btn-sm" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"> Save & Continue</a> -->
 														<span class="pull-right" id="addButtonRow">
-														 <button id="singlebutton" name="singlebutton" class="btn btn-sm">Finish</button>
+														 <!-- <button id="singlebutton" name="singlebutton" class="btn btn-sm">Finish</button> -->
 															<button class="btnBlack btn btn-sm add" type="button">Add</button>
 														</span>
                                                     </div>
@@ -343,7 +369,6 @@
                                 </div>
                             </div>
                         </div>
-                                      <% end %>
 						<div class="clearfix"></div>
                         <div class="panel checkout-step">
                             <div role="tab" id="headingFour"> <span class="checkout-step-number">4</span>
@@ -507,7 +532,6 @@
 	});
 	});
  $("#submit_btn").click(function(event){
-		// alert($('#form_id').attr('action'));
         params = []
 		$('.participantRow').each(function(){
             val = {}
@@ -515,12 +539,14 @@
 			 val[this.id] = $(this).val();
 			});
             params.push(val);
-			// alert( JSON.parse(params));
 		}); 
     $.ajax({
-			type: 'POST',
-			//url: create_books_path,
-   		   data : JSON.stringify(params)
+			type: "POST",
+			url: "/books/create",
+			dataType: 'json',
+			//data: { books_contributor: { params} }
+			//data: { total_changes: JSON.stringify(totalChanges) },
+   		data: {book_contributers : JSON.stringify(params)}
 		});
   });
 
@@ -549,8 +575,10 @@ function removeRow(button) {
 }
 /* Doc ready */
 $(".add").on('click', function () {
+	alert("hlo");
   getP();
   if($("#participantTable tr").length < 17) {
+  	alert("hlo1");
     addRow();
     var i = Number(p)+1;
     $("#participants").val(i);
@@ -565,7 +593,7 @@ $(".add").on('click', function () {
 $(".remove").on('click', function () {
   getP();
   if($("#participantTable tr").length === 3) {
-    //alert("Can't remove row.");
+    alert("Can't remove row.");
     $(".remove").hide();
   } else if($("#participantTable tr").length - 1 ==3) {
     $(".remove").hide();

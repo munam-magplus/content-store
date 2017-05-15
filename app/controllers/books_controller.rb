@@ -1,10 +1,11 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
 
   def new
     @book = BooksPrimaryContentInfo.new
     @book_contributor = BooksContributor.new
     @book_seo_config  = BooksSeoConfig.new
+    @book_content_pricing = BooksContentPricing.new
   end
 
   def create
@@ -12,20 +13,22 @@ class BooksController < ApplicationController
      @book = BooksPrimaryContentInfo.new(book_primary_content_info_params)
      @book.save!
      @form = "form1"
-    elsif params[:books_contributor].present?
-     @book_contributor = BooksContributor.new(book_contributor_params)
-     @book_contributor.save!
+    elsif params[:book_contributers].present?
+     book_contributers = JSON.parse(params[:book_contributers])
+     book_contributers.each do |book_contributor_params|
+        @book_contributor = BooksContributor.new(book_contributor_params)
+        @book_contributor.save!
+      end
      @form = "form2"
     elsif params[:book_seo_config].present?
      @book_seo_config = BooksSeoConfig.new(book_seo_config_params)
      @book_seo_config.save!
      @form = "form4"
     else
-      fghfgh
+      @book_content_pricing = BooksContentPricing.new(books_content_pricing_params)
+      @book_content_pricing.save!
+      @form = "form3"
     end
-    # if 
-    
-      #page << "$('#headingTwo').show();"
   end
 
   # def search
@@ -41,6 +44,10 @@ class BooksController < ApplicationController
   def book_contributor_params
     params.require(:books_contributor).permit(:role, :name, :description, :doi, :dod, :professional_position, 
     :professional_affiliation, :website, :website_description)
+  end
+  def books_content_pricing_params
+    params.require(:books_content_pricing).permit(:format, :isbn, :doi, :weight, :watermark_drm, 
+    :external_drm)
   end
   def book_seo_config_params
     params.require(:book_seo_config).permit(:territorial_list_type, :territorial_list, :landing_page, :viewability_percentage, :exclude_pages_from_display, :total_free_pages_before_purchase, 
