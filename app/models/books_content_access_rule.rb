@@ -1,0 +1,2 @@
+class BooksContentAccessRule < ApplicationRecord
+end

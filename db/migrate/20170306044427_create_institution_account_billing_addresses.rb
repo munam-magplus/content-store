@@ -1,9 +1,9 @@
-class CreateInstitutionAccBillingAddresses < ActiveRecord::Migration[5.0]
+class CreateInstitutionAccountBillingAddresses < ActiveRecord::Migration[5.0]
   def change
-    create_table :institution_acc_billing_addresses do |t|
+    create_table :institution_account_billing_addresses do |t|
       t.string :first_name
       t.string :last_name
-      t.string :phone
+      t.integer :phone
       t.string :email
       t.string :address
       t.string :address_line2
@@ -11,8 +11,9 @@ class CreateInstitutionAccBillingAddresses < ActiveRecord::Migration[5.0]
       t.string :city
       t.string :state
       t.integer :postal_code
-      t.string :country
+      t.string :country_code
       t.string :comments
+      t.integer :institution_account_id
 
       t.timestamps
     end

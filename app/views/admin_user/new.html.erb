@@ -18,19 +18,19 @@
     <!-- ================== -->
     <div class="wrapper container-fluid">
       <ol class="breadcrumb">
-           <li><a href="#">Home</a></li>
-         <li><a>Manage User Account</a></li>
-         <li><a>Create Admin User </a></li>
+        <li><a href="#">Home</a></li>
+        <li><a>Manage User Account</a></li>
+        <li><a>Create Admin User </a></li>
       </ol>
 
       <h2 class="H2-L1">Create Admin Users</h2>
-        <h6>All <sup class="mandatory">*</sup> are mandatory</h6>
+      <h6>All <sup class="mandatory">*</sup> are mandatory</h6>
       <%= form_for(:admin_user, url: admin_user_index_path) do |f| %>
         <div class="col-md-6">
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Publisher<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.select 'publisher',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'),{ :prompt => "Select Publisher"},{:class => "form-control" , style: "background-color: #eee;" } %>
+              <%= f.select 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'),{ :prompt => "Select Publisher"},{:class => "form-control", style: "background-color: #eee;"} %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -46,28 +46,10 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Confirm Email<sup class="mandatory">*</sup> </label>
-            <div class="col-sm-8">
-              <%= f.text_field :confirm_email, :class => "form-control", :placeholder => "Confirm Email" %>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Password</label>
             <span class="col-sm-8">
             <%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
             </span> 
-            <div class="clearfix"></div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Confirm Password</label>
-            <span class="col-sm-8">
-            <%= f.password_field :confirm_password, :class => "form-control" , :placeholder => "Confirm Password"%>
-            </span>
             <div class="clearfix"></div>
           </div>
         </div>
@@ -93,7 +75,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Country<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-            <%= f.text_field :country, :class => "form-control" , :placeholder => "Country"%>
+             <%= f.select 'country_code',options_from_collection_for_select(Country.all.order('country_name asc'), 'country_code', 'country_name'),{ :prompt => "please select"},{:class => "form-control"} %>
             </span> 
             <div class="clearfix"></div>
           </div>
@@ -115,24 +97,6 @@
               <%= f.radio_button :user_type, 'publisher' %>Publisher
               <%= f.radio_button :user_type, 'member_publisher' %>Member Publisher
             </span> 
-            <div class="clearfix"></div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Role<sup class="mandatory">*</sup> </label>
-            <span class="col-sm-8">
-              <%= f.select 'role', options_for_select([ "MPS Admin", "Publisher", "Member Publisher", "Member Publisher Role with QA"]),{ :prompt => "Please select"},{:class =>"form-control", style: "background-color: #eee;" } %>
-            </span> 
-            <div class="clearfix"></div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Publisher (s)<sup class="mandatory">*</sup> </label>
-            <div class="col-sm-8">
-              <%= f.text_field :publishers, :class => "form-control", :placeholder => "Publisher(s)" %>
-            </div>
             <div class="clearfix"></div>
           </div>
         </div>

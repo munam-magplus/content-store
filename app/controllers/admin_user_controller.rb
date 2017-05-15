@@ -8,6 +8,7 @@ class AdminUserController < ApplicationController
   def create
     @admin_user = AdminUser.new(admin_user_params)
     if @admin_user.save!
+      flash[:success] = "Admin User Created!"
       # If successfully stored then redirect to  setup path 
       redirect_to admin_user_index_path
     else
@@ -19,15 +20,18 @@ class AdminUserController < ApplicationController
     end
   end
 
+  def index
+  end
+
   def search
     #Call filter method to get search results
-    @admin_user = AdminUser.filter(params.slice(:publisher, :email, :first_name, :country, :user_type))
+    @admin_user = AdminUser.filter(params.slice(:publisher_id, :email, :first_name, :country_code, :user_type))
   end
   
   private 
   def admin_user_params
-    params.require(:admin_user).permit(:publisher, :email, 
-    :confirm_email, :password, :confirm_password, :first_name, :last_name, :country,
-    :language, :user_type, :role, :publishers)
+    params.require(:admin_user).permit(:publisher_id, :email, 
+    :password, :first_name, :last_name, :country_code, :language, 
+    :user_type)
   end
 end

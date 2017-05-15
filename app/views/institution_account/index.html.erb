@@ -87,7 +87,7 @@
             <label for="taskName" class="col-sm-4 control-label">Country:</label>
             <div class="col-sm-8">
              <% country_name %>
-              <%= select_tag "country", options_from_collection_for_select(@country, "country_code", "country_name"),prompt: "Select Country", :class => "form-control", style: "background-color: #eee;" %>
+              <%= select_tag "country_code", options_from_collection_for_select(@country, "country_code", "country_name"),prompt: "Select Country", :class => "form-control", style: "background-color: #eee;" %>
             </div>
           </div>
         </div>

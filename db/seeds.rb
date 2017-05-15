@@ -90,4 +90,4 @@ Country.create(country_name:"Algeria",country_code:"AL" )
 Country.create(country_name: "Afghanistan",country_code: "AF")
 
 # for institution Admin User:
-InstitutionAdminUserAcc.create(role:"Primary Institutiton Administrator", publisher: "Bookstore",institution_name: "Adept Techno Demo", user_name: "PA01", status: "active",first_name: "test1", last_name: "test2",email: "test@gmail.com", phone: 9876543210, fax: "1234",password: "12345", confirm_password: "12345",comments: "test user", primary_count: 1)
+InstitutionAdminUserAccount.create(role:"Primary Institutiton Administrator", publisher_id: "1",institution_name: "Adept Techno Demo", user_name: "PA01", status: "active",first_name: "test1", last_name: "test2",email: "test@gmail.com", phone: 9876543210, fax: "1234",password: "12345",comments: "test user", primary_count: 1)

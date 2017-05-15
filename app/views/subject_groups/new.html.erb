@@ -27,7 +27,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Publisher<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.collection_select :publisher, Publisher.all, :id, :publisher_name, :class => "form-control" %>
+              <%= f.collection_select :publisher_id, Publisher.all, :id, :publisher_name, :class => "form-control" %>
             </div>
           </div>
         </div>
@@ -91,7 +91,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Select Language<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-            <%= f.select(:select_language, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %>
+            <%= f.select(:language, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %>
             </span> 
           </div>
         </div>

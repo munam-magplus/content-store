@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>Content Store :: Institutional Admin User </title>
+<title>Content Store :: Create Institutional Admin User </title>
 <!-- Latest compiled and minified CSS -->
     <!-- Header -->
     <%= render :partial => "layouts/top_header"%>
@@ -21,10 +21,10 @@
       <ol class="breadcrumb">
            <li><a href="#">Home</a></li>
          <li><a>Manage User Account</a></li>
-         <li><a>Institutional Admin User</a></li>
+         <li><a>Create Institutional Admin User</a></li>
       </ol>
 
-      <h2 class="H2-L1">Institutional Account</h2>
+      <h2 class="H2-L1">Create Institutional Admin Account</h2>
       <h5>All <sup class="mandatory">*</sup> fields are mandatory</h5>
       <%= form_for(@inst_admin_user, url: institution_admin_user_index_path, html: { class: 'form-horizontal form-bg' }) do |f| %>
         <div class="col-md-6">
@@ -174,15 +174,6 @@
             <label for="bookISBN" class="col-sm-4 nopadding">Password<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
               <%= f.password_field :password,:class => "form-control", :placeholder => "Password" %>
-            </span>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 nopadding">Confirm Password<sup class="mandatory">*</sup></label>
-            <span class="col-sm-8">
-              <%= f.password_field :confirm_password ,:class => "form-control", :placeholder => "Confirm Password" %>
             </span>
             <div class="clearfix"></div>
           </div>

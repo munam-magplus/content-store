@@ -15,7 +15,7 @@ class SubjectGroupsController < ApplicationController
   end
 
   def search
-    @subject_group = SubjectGroup.filter(params.slice(:publisher, :subject_group_name, :subject_group_code, :language))
+    @subject_group = SubjectGroup.filter(params.slice(:publisher_id, :subject_group_name, :subject_group_code, :language))
   end
 
   def metadata_sheet
@@ -23,8 +23,8 @@ class SubjectGroupsController < ApplicationController
 
   private
   def subject_group_params
-  	params.require(:subject_group).permit(:publisher, :subject_group_level, 
+  	params.require(:subject_group).permit(:publisher_id, :subject_group_level, 
   	:subject_group_code, :subject_group_name, :guest_user_view_limit, :authentication_user_view_limit,
-		:discount_percentage, :viewability_percentage, :select_language, :description)
+		:discount_percentage, :viewability_percentage, :language, :description)
 	end
 end

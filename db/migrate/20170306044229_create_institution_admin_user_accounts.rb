@@ -1,6 +1,6 @@
-class CreateInstitutionAdminUserAccs < ActiveRecord::Migration[5.0]
+class CreateInstitutionAdminUserAccounts < ActiveRecord::Migration[5.0]
   def change
-    create_table :institution_admin_user_accs do |t|
+    create_table :institution_admin_user_accounts do |t|
       t.string :role
       t.integer :publisher_id
       t.string :institution_name
@@ -9,12 +9,12 @@ class CreateInstitutionAdminUserAccs < ActiveRecord::Migration[5.0]
       t.string :first_name
       t.string :last_name
       t.string :email
-      t.string :phone
+      t.integer :phone
       t.string :position
-      t.string :fax
+      t.integer :fax
       t.string :password
-      t.string :confirm_password
       t.string :comments
+      t.integer :primary_count
 
       t.timestamps
     end

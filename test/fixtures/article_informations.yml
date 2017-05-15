@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contributor_information_role: MyString
+  contributor_information_name: MyString
+  contributor_information_description: MyString
+  content_format_type: MyString
+  content_format_date_of_issue: 2017-05-15
+  base_online_access_country: MyString
+  base_online_access_currency: MyString
+  base_online_access_price: 1.5
+  base_download_price_country: MyString
+  base_download: MyString
+  price_currency: MyString
+  base_download_price_price: 1.5
+  article_id: 1
+
+two:
+  contributor_information_role: MyString
+  contributor_information_name: MyString
+  contributor_information_description: MyString
+  content_format_type: MyString
+  content_format_date_of_issue: 2017-05-15
+  base_online_access_country: MyString
+  base_online_access_currency: MyString
+  base_online_access_price: 1.5
+  base_download_price_country: MyString
+  base_download: MyString
+  price_currency: MyString
+  base_download_price_price: 1.5
+  article_id: 1

@@ -2,18 +2,18 @@ class CreateJournals < ActiveRecord::Migration[5.0]
   def change
     create_table :journals do |t|
       t.string :journal_code
-      t.string :publisher
+      t.integer :publisher_id
       t.string :journal_title
       t.string :journal_subtitle
-      t.string :journal_primary_issn
-      t.string :journal_electronic_issn
+      t.integer :journal_primary_issn
+      t.integer :journal_electronic_issn
       t.string :journal_owner
       t.string :language
       t.string :journal_content_classification
       t.string :journal_distribution
       t.string :price_in
-      t.string :journal_publisher_date
-      t.string :stock_number
+      t.date :journal_publication_date
+      t.integer :stock_number
       t.string :cover_image
       t.string :journal_categories
       t.string :journal_description

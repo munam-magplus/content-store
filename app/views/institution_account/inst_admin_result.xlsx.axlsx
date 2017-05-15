@@ -2,7 +2,7 @@
 wb.add_worksheet(name: "institution account") do |sheet|
 	sheet.add_row [ "Institution Id", "Institution Name", "Lib/Dept Name", "Country", "Primary Contact Name","Status" ]
 	@ins_admin.each do |f| 
-		sheet.add_row [ f.id, f.institution_name, f.libary_name,f.institution_acc_billing_address.country, 
-		f.institution_acc_billing_address.first_name +  f.institution_acc_billing_address.last_name, f.status  ]
+		sheet.add_row [ f.id, f.institution_name, f.libary_name,f.institution_account_billing_address.country, 
+		f.institution_account_billing_address.first_name +  f.institution_account_billing_address.last_name, f.status  ]
 	end 
 end

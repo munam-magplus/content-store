@@ -14,6 +14,7 @@ class LicenseGroupsController < ApplicationController
       end
     end
   end
+
   def add_license_group_id_to_license
     ids = params[:license_group][:role_ids].first
     ids = ids.split(',').map(&:squish)
@@ -23,6 +24,7 @@ class LicenseGroupsController < ApplicationController
      license.save!
     end
   end
+  
   def new
   @license_group = LicenseGroup.new
   end

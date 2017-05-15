@@ -13,9 +13,9 @@ class InstitutionAccountController < ApplicationController
      @insti_acc = InstitutionAccount.filter(params.slice(:publisher_id, 
             :status, :libary_name, :institution_name, :id))
     # else
-    # @insti_bill = InstitutionAccBillingAddress.filter(params.slice(:first_name, :last_name,
+    # @insti_bill = InstitutionAccountBillingAddress.filter(params.slice(:first_name, :last_name,
     #               :phone, :email,:address,:address_line2,:address_line3,:city,:state,
-    #               :postal_code,:country))
+    #               :postal_code,:country_code))
     # end
      # this is the params of the checkbox that is present in the form.
     @chec = params[:ip_address]
@@ -29,7 +29,7 @@ class InstitutionAccountController < ApplicationController
 
   def inst_admin_result
     @ins = InstitutionAccount.find_by_id(params[:id]).institution_name
-    @ins_admin = InstitutionAdminUserAcc.where(:institution_name => @ins)
+    @ins_admin = InstitutionAdminUserAccount.where(:institution_name => @ins)
     respond_to do |format|
        format.html   
        format.xlsx { send_data @ins_admin }
@@ -42,7 +42,7 @@ class InstitutionAccountController < ApplicationController
     #this is added inorder to build institution_acc_billing_address
     #we use this syntax because the association between institution account
     # and institution_acc_billing_address is has_one
-    @institution.build_institution_acc_billing_address
+    @institution.build_institution_account_billing_address
   end
 
   def create
@@ -74,9 +74,9 @@ class InstitutionAccountController < ApplicationController
   def institution_params
     params.require(:institution_account).permit(:publisher_id,:institution_id, 
         :libary_name,:institution_name,:status,:display_name, :logo, 
-        institution_acc_billing_address_attributes: [ :id,
+        institution_account_billing_address_attributes: [ :id,
         :first_name, :last_name, :phone, :email, :address, 
         :address_line2,:address_line3, :city, :state, 
-        :postal_code,:country, :comments, :institution_account_id]) 
+        :postal_code, :country_code, :comments, :institution_account_id]) 
   end
 end

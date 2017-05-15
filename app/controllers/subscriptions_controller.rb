@@ -15,21 +15,21 @@ class SubscriptionsController < ApplicationController
   	@subscription = Subscription.new
   end
 
-  def create
-  	@subscription = Subscription.new(subscription_params)
-    if @subscription.save!
-      redirect_to new_subscription_path
-    else
-      render 'new'
-    end
-  end
+  # def create
+  # 	@subscription = Subscription.new(subscription_params)
+  #   if @subscription.save!
+  #     redirect_to new_subscription_path
+  #   else
+  #     render 'new'
+  #   end
+  # end
 
   def create
   @subscription = Subscription.new(subscription_params)
    # @subscription.created_by = current_user.email
     respond_to do |format|
       if @subscription.save!
-        add_subscription_for_subject_groups
+        add_subscription_id_for_subject_groups
         format.html {render "new" }
         format.js   { }
       else
@@ -38,11 +38,11 @@ class SubscriptionsController < ApplicationController
     end
   end
   
-  def add_subscription_for_subject_groups
+  def add_subscription_id_for_subject_groups
     ids = params[:subscription][:role_ids].first
     ids = ids.split(',').map(&:squish)
     ids.each do |id|
-     license = SubscriptionForSubjectGroup.find_by_license_id(id)
+     license = SubjectGroup.find_by_license_id(id)
      license.license_group_id = @license_group.id
      license.save!
     end
@@ -54,8 +54,8 @@ class SubscriptionsController < ApplicationController
   private
   def subscription_params
   	params.require(:subscription).permit(:subscription_id, :subscription_name, 
-    :publisher, :subscription_description, :subscription_category, :subject_group_name, 
-    :subject_group_code, :subscription_type, :borrow_time, :number_of_books, :price, 
-    :currency, :discount_percentage, :duration)
+    :publisher_id, :subscription_description, :subscription_category, :subject_group_name, 
+    :subject_group_code, :subscription_type, :borrow_time, :number_of_books, :subscription_price, 
+    :currency, :discount_percentage, :subscription_duration)
 	end
 end

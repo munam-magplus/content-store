@@ -11,6 +11,7 @@ class CreateMemberPublishers < ActiveRecord::Migration[5.0]
       t.integer :publisher_borrow_period
       t.integer :revenue_share_percentage
       t.integer :publisher_id
+      t.string :country_code
     end
   end
 end
