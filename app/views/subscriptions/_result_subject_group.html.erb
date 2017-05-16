@@ -2,7 +2,7 @@
   <th><input type="checkbox" name="select-all" id="select-all" /></th>
   <th>Subject Group Name</th>
   <th>Subject Group Code</th>
-  <th>Subject Group Level</th>
+  <th>Subject Group Id</th>
 </tr>
 <% if @subject_group_search.present? %>
   <% @subject_group_search.each do |sub_group| %>
@@ -17,7 +17,7 @@
         <%= sub_group.subject_group_code %>
       </td>
       <td>
-        <%= sub_group.subject_group_level %>  
+        <%= sub_group.id %>  
       </td>
     </tr>
   <% end %>

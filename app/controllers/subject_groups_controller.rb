@@ -25,6 +25,6 @@ class SubjectGroupsController < ApplicationController
   def subject_group_params
   	params.require(:subject_group).permit(:publisher_id, :subject_group_level, 
   	:subject_group_code, :subject_group_name, :guest_user_view_limit, :authentication_user_view_limit,
-		:discount_percentage, :viewability_percentage, :language, :description)
+		:discount_percentage, :viewability_percentage, :language, :subject_group_description)
 	end
 end

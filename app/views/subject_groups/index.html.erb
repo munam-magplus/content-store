@@ -29,32 +29,36 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Publisher</label>
             <div class="col-sm-8">
-             <%= text_field_tag :publisher, params[:publisher] %>
+             <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "Select Publisher", :class => "form-control", :style => "background-color: #eee"%>
             </div>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Subject Group Name</label>
             <span class="col-sm-8">
-            <%= text_field_tag :subject_group_name, params[:subject_group_name] %>
+            <%= text_field_tag :subject_group_name, params[:subject_group_name],:class => "form-control", :placeholder => "Subject Group Name" %>
             </span> 
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Subject Group Code</label>
             <span class="col-sm-8">
-            <%= text_field_tag :subject_group_code, params[:subject_group_code] %>
+            <%= text_field_tag :subject_group_code, params[:subject_group_code],:class => "form-control", :placeholder => "Subject Group Code" %>
             </span> 
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Select Language</label>
             <span class="col-sm-8">
-            <%= select_tag(:select_language, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %>
+            <%= select_tag 'language',options_for_select(['Dansk', 'Polish', 'Latvian','English']), :prompt => "Select Language", :class => "form-control", style: "background-color: #eee;" %>
             </span> 
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="clearfix"></div>

@@ -29,7 +29,7 @@ class SubscriptionsController < ApplicationController
    # @subscription.created_by = current_user.email
     respond_to do |format|
       if @subscription.save!
-        add_subscription_id_for_subject_groups
+        add_subscription_id_for_subject_group
         format.html {render "new" }
         format.js   { }
       else
@@ -38,13 +38,17 @@ class SubscriptionsController < ApplicationController
     end
   end
   
-  def add_subscription_id_for_subject_groups
+  def add_subscription_id_for_subject_group
     ids = params[:subscription][:role_ids].first
     ids = ids.split(',').map(&:squish)
     ids.each do |id|
-     license = SubjectGroup.find_by_license_id(id)
-     license.license_group_id = @license_group.id
-     license.save!
+     @subject_group_id = SubscriptionForSubjectGroup.new
+     @subscription_id = SubscriptionForSubjectGroup.new
+     @subject_group_id.subject_group_id = @subscription.id
+     @subscription_id.subscription_id = ids
+     @subject_group_id.save!
+     @subscription_id.save!
+    byebug
     end
   end
 
