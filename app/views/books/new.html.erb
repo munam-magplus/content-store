@@ -46,7 +46,7 @@
 										<div class="form-group">
 										  <label class="control-label col-sm-4" for="email">Publisher</label>
 										  <div class="col-sm-8">
-												<%= f.text_field :publisher_id, :class => "form-control", :placeholder => "Publisher" %>	  
+												<%= f.select 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'),{ :prompt => "select publisher"},{:class => "form-control"} %>	  
 										  </div>
 										  <div class="clearfix"></div>
 										</div>
@@ -226,7 +226,7 @@
 						<div class="clearfix"></div>
                         <div class="panel checkout-step">
                             <div role="tab" id="headingTwo"> <span class="checkout-step-number">2</span>
-                                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href= "#collapseTwo" > Contributor's Information </a> </h4>
+                                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href= "" > Contributor's Information </a> </h4>
                             </div>
                             <div id="collapseTwo" class="panel-collapse collapse">
                                 <div class="checkout-step-body">
@@ -251,22 +251,22 @@
 													  </tr>
 													</thead>
 													<tbody>
-												<%= form_for :books_contributor do |f| %>
-													<tr class="participantRow">
+												<%= form_for(@book_contributor, url: {:controller => "books", action: "create"}, remote: true) do |f| %>
+													<tr class="participantRow check">
 														  
 													  <td >
-													  	<%= f.select 'contributor_role', options_for_select([ "By (author)", "Screenplay by", "Libretto by", "Lyrics by", "By (composer)", "By (artist)", "By (photographer)", "From an idea by", "Designed by", "Photographs by", "Text by", "Preface by", "Prologue by", "Summary by", "Supplement by", "Afterword by", "Notes by", "Commentaries by", "Foreword by", "Introduction by", "Footnotes by", "Memoir by", "Software written by"]),{ :prompt => "Please select"},{:class =>"form-control" ,:id =>"role" ,style: "background-color: #eee;"} %></select></td>
-													  <td ><%= f.text_field :first_name , :placeholder => "Enter Name", :class => "form-control",:id =>"name" %> </td>
+													  	<%= f.select 'contributor_role', options_for_select([ "By (author)", "Screenplay by", "Libretto by", "Lyrics by", "By (composer)", "By (artist)", "By (photographer)", "From an idea by", "Designed by", "Photographs by", "Text by", "Preface by", "Prologue by", "Summary by", "Supplement by", "Afterword by", "Notes by", "Commentaries by", "Foreword by", "Introduction by", "Footnotes by", "Memoir by", "Software written by"]),{ :prompt => "Please select"},{:class =>"form-control" ,:id =>"contributor_role" ,style: "background-color: #eee;"} %></select></td>
+													  <td ><%= f.text_field :first_name , :placeholder => "Enter Name", :class => "form-control",:id =>"first_name" %> <%= f.text_field :last_name , :placeholder => "Enter Name", :class => "form-control",:id =>"last_name" %></td>
 													  <td ><%= f.text_area :description, :class => "form-control", :placeholder => "Description",:id =>"description" %> </td>
 													  <td ><div class="input-group date datetimepicker3" >
-													  		<%= f.text_field :date_of_birth , :class => "form-control",:id => 'doi' %>
+													  		<%= f.text_field :date_of_birth , :class => "form-control",:id => 'date_of_birth' %>
 																 <span class="input-group-addon">
 																	<span class="glyphicon glyphicon-calendar"></span>
 																</span>
 															  </div>                 
 													 </td>
 													  <td ><div class="input-group date " id="datetimepicker2">
-													  		<%= f.text_field :date_of_death , :class => "form-control",:id => 'dod' %>
+													  		<%= f.text_field :date_of_death , :class => "form-control",:id => 'date_of_death' %>
 																 <span class="input-group-addon">
 																	<span class="glyphicon glyphicon-calendar"></span>
 																</span>
@@ -286,9 +286,10 @@
                                                 
                                                 <!-- Button -->
                         <div class="col-md-12 nopadding">
-                        	<%= f.submit :id=>"submit_btn"  %>
+                        <% end %>
+                        	<button id="submit_contributers" ,class = "btn btn-sm">Save And Continue</button>
                      		
-                     		<% end %>
+                     		
                  						<!-- <button class="btn btn-sm" id="submit_btn"><i class="fa fa-search" aria-hidden="true"></i> type: :submit &nbsp;Save</button> -->
 							
                                                          <!-- <a class="collapsed btn btn-sm" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"> Save & Continue</a> -->
@@ -306,13 +307,13 @@
 						<div class="clearfix"></div>
                         <div class="panel checkout-step">
                             <div role="tab" id="headingThree"> <span class="checkout-step-number">3</span>
-                                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"  > Content Pricing Information </a> </h4>
+                                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href=""  > Content Pricing Information </a> </h4>
                             </div>
                             <div id="collapseThree" class="panel-collapse collapse">
                                 <div class="checkout-step-body">
 								<h4>Content Format</h4>
                                       <div class="table-responsive" style="overflow-x: inherit;">
-												  <table class="table table-bordered" id="participantTable">
+												  <table class="table table-bordered" id="participantTable1">
 													<thead>
 													  <tr>
 														
@@ -325,11 +326,11 @@
 													</thead>
 													<tbody>
 										<%= form_for(:books_content_pricing, url: {:controller => "books",action: "create"}, remote: true) do |f| %>
-													<tr class="participantRow">
-														  <td><%= f.select 'format', options_for_select([ "AER", "PRC", "LIT", "ONL", "PDF", "EXT", "OEB", "WMA", "AAC", "HB", "PB", "EPUB", "CD", "EP"]),{ :prompt => "Please select"},{:class =>"form-control" , style: "background-color: #eee;"} %></td>
-														   <td><%= f.text_field :isbn, :class => "form-control", :placeholder => "ISBN" %></td>
-														   <td><%= f.text_field :date_of_issue, :class => "form-control", :placeholder => "DOI" %></td>
-														   <td><%= f.text_field :weight, :class => "form-control", :placeholder => "Weight" %></td>
+													<tr class="participantRows">
+														  <td><%= f.select 'format', options_for_select([ "AER", "PRC", "LIT", "ONL", "PDF", "EXT", "OEB", "WMA", "AAC", "HB", "PB", "EPUB", "CD", "EP"]),{ :prompt => "Please select"},{:class =>"form-control" , :id => "format", style: "background-color: #eee;"} %></td>
+														   <td><%= f.text_field :isbn, :class => "form-control", :id => "isbn",:placeholder => "ISBN" %></td>
+														   <td><%= f.text_field :date_of_issue, :class => "form-control",:id => "date_of_issue", :placeholder => "DOI" %></td>
+														   <td><%= f.text_field :weight, :class => "form-control", :id => "weight",:placeholder => "Weight" %></td>
 														  <td><a class=" remove" href="javascript:;" ><i class="fa fa-trash-o" ></i></a> &nbsp;<a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
 														</tr>
 														 
@@ -341,28 +342,28 @@
 													<h4>Base Online Access</h4>
 													<div class="form-group">
 														<label class="col-md-2">Watermarked DRM</label>
-														<label class="radio-inline"><%= f.radio_button :watermark_drm, 'Yes', :checked => true %> Yes</label>
-														<label class="radio-inline"><%= f.radio_button :watermark_drm, 'No' %> No</label>
+														<label class="radio-inline"><input type="radio" name="watermark_drm" value="Yes" checked =true>Yes </label>
+														<label class="radio-inline"><input type="radio" name="watermark_drm" value="No"> No</label>
 														<div class="clearfix"></div>
 													</div>
 													<div class="form-group">
 														<label class="col-md-2">External DRM</label>
-														<label class="radio-inline"><%= f.radio_button :external_drm, 'Yes', :checked => true %> Yes</label>
-														<label class="radio-inline"><%= f.radio_button :external_drm, 'No' %> No</label>
+														<label class="radio-inline"><input type="radio" name="external_drm" value="Yes" checked =true>Yes </label>
+														<label class="radio-inline"><input type="radio" name="external_drm" value="No" checked =true> No</label>
 													</div>
 												</div>
+										<% end %>
 												 <!-- Button -->
                 <div class="form-group">
 									<div class="col-md-12">
-										<%= button_tag fa_icon("save", text: "Save And Continue"), :class => "btn btn-sm", type: :submit %>
-						<% end %>
+										<button id="submit_pricing_info" ,class = "btn btn-sm">Save And Continue</button>
 										</span>
 									</div>
 								</div>
                                                         <!-- <a class="collapsed btn btn-sm" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"> Save & Continue</a> -->
 														<span class="pull-right" id="addButtonRow">
 														 <!-- <button id="singlebutton" name="singlebutton" class="btn btn-sm">Finish</button> -->
-															<button class="btnBlack btn btn-sm add" type="button">Add</button>
+															<button class="btnBlack btn btn-sm adds" type="button">Add</button>
 														</span>
                                                     </div>
                                     <div class="clearfix"></div>
@@ -399,6 +400,7 @@
 										<div class="col-md-8">
 											<%= f.text_area :landing_page %>
 										</div>
+										<div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -407,6 +409,7 @@
 										<div class="col-md-8">
 											<%= f.text_area :viewability_percentage %>
 										</div>
+										<div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -415,6 +418,7 @@
 										<div class="col-md-8">
 											<%= f.text_area :exclude_pages_from_display %>
 										</div>
+										<div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -422,8 +426,8 @@
 										<label class="col-md-4">Total Free Page Before Purchase</label>
 										<div class="col-md-8">
 											<%= f.text_area :total_free_pages_before_purchase %>
-
 										</div>
+										<div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -432,6 +436,7 @@
 										<div class="col-md-8">
 											<%= f.text_field :total_free_page_before_login, :class => "form-control"%>
 										</div>
+										<div class="clearfix"></div>
 										</div>
 									</div>
 									<div class="col-md-12">
@@ -521,17 +526,40 @@
 </section>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-	$('#demo').multiselect({
-			numberDisplayed: 1,
-			buttonClass: 'multiselectBtn form-control col-md-12',
-			inheritClass: false,
-			buttonWidth: 'auto',
-			buttonContainer: '<div class="col-sm-8" />',
+	// $(document).ready(function() {
+	// $('#demo').multiselect({
+	// 		numberDisplayed: 1,
+	// 		buttonClass: 'multiselectBtn form-control col-md-12',
+	// 		inheritClass: false,
+	// 		buttonWidth: 'auto',
+	// 		buttonContainer: '<div class="col-sm-8" />',
 		
-	});
-	});
- $("#submit_btn").click(function(event){
+	// });
+	// });
+	// $(function () {
+ //    $('#datetimepicker1').datetimepicker();
+	// 	$('#datetimepicker2').datetimepicker();
+	// 	$('.datetimepicker3').datetimepicker({ format: 'DD/MM/YYYY'  });
+	// });
+	$("#submit_pricing_info").click(function(event){
+        params = []
+		$('.participantRows').each(function(){
+            val = {}
+			$(this).find('input, select').each(function(){
+			 val[this.id] = $(this).val();
+			});
+				val["watermark_drm"] = $("input:radio[name='watermark_drm']:checked").val();
+				val["external_drm"] = $("input:radio[name='external_drm']:checked").val();
+            params.push(val);
+		}); 
+    $.ajax({
+			type: "POST",
+			url: "/books",
+			//dataType: 'script',
+   		data: {books_content_pricing : JSON.stringify(params)}
+		});
+  });
+ $("#submit_contributers").click(function(event){
         params = []
 		$('.participantRow').each(function(){
             val = {}
@@ -542,82 +570,38 @@
 		}); 
     $.ajax({
 			type: "POST",
-			url: "/books/create",
-			dataType: 'json',
-			//data: { books_contributor: { params} }
-			//data: { total_changes: JSON.stringify(totalChanges) },
+			url: "/books",
+			//dataType: 'script',
    		data: {book_contributers : JSON.stringify(params)}
 		});
   });
-
-
-    //         $(function () {
-    //             $('#datetimepicker1').datetimepicker();
-				// $('#datetimepicker2').datetimepicker();
-				// $('.datetimepicker3').datetimepicker({ format: 'DD/MM/YYYY'  });
-		  //  });
-			
-			/* Variables */
-var p = $("#participants").val();
-var row = $(".participantRow");
-
-/* Functions */
-function getP(){
-  p = $("#participants").val();
-}
-
-function addRow() {
-  row.clone(true, true).appendTo("#participantTable");
-}
-
-function removeRow(button) {
-  button.closest("tr").remove();
-}
+ 
 /* Doc ready */
+$(".adds").on('click', function () {
+	var row = $(".participantRows");
+	row.clone(true, true).appendTo("#participantTable1");
+  
+});
 $(".add").on('click', function () {
-	alert("hlo");
-  getP();
-  if($("#participantTable tr").length < 17) {
-  	alert("hlo1");
-    addRow();
-    var i = Number(p)+1;
-    $("#participants").val(i);
-  }
-  $(this).closest("tr").appendTo("#participantTable");
-  if ($("#participantTable tr").length === 3) {
-    $(".remove").hide();
-  } else {
-    $(".remove").show();
-  }
+	var row = $(".participantRow");
+	row.clone(true, true).appendTo("#participantTable");
 });
 $(".remove").on('click', function () {
-  getP();
-  if($("#participantTable tr").length === 3) {
-    alert("Can't remove row.");
-    $(".remove").hide();
-  } else if($("#participantTable tr").length - 1 ==3) {
-    $(".remove").hide();
-    removeRow($(this));
-    var i = Number(p)-1;
-    $("#participants").val(i);
-  } else {
-    removeRow($(this));
-    var i = Number(p)-1;
-    $("#participants").val(i);
-  }
+	$(this).closest("tr").remove();
 });
-$("#participants").change(function () {
-  var i = 0;
-  p = $("#participants").val();
-  var rowCount = $("#participantTable tr").length - 2;
-  if(p > rowCount) {
-    for(i=rowCount; i<p; i+=1){
-      addRow();
-    }
-    $("#participantTable #addButtonRow").appendTo("#participantTable");
-  } else if(p < rowCount) {
-  }
-});
-        </script>
+
+// $("#participants").change(function () {
+//   var i = 0;
+//   p = $("#participants").val();
+//   var rowCount = $("#participantTable tr").length - 2;
+//   if(p > rowCount) {
+//     for(i=rowCount; i<p; i+=1){
+//       addRow();
+//     }
+//     $("#participantTable #addButtonRow").appendTo("#participantTable");
+//   } else if(p < rowCount) {
+//   }
+// });
+</script>
 </body>
 </html>

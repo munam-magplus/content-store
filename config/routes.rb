@@ -8,17 +8,13 @@ Rails.application.routes.draw do
 
   get 'site_settings/index'
 
-  get 'books/create'
-  post 'books/new'
-  post 'books/create'
-
   resources :contacts
 
   resources :reports, :printhouse_setup, 
              only: [:index]
 
   resources :books_seo_config,:books_content_access_rules,
-            :books_content_pricing, :books_contributor, only: [:new, :create]
+            :books_content_pricing, :books_contributors
 
   resources :institution_account do
     collection do 
@@ -102,8 +98,6 @@ Rails.application.routes.draw do
 
   resources :books do
     collection do
-      get 'index'
-      post 'create'
       get 'search'
       get 'metadata_sheet'
       get 'onix_input'

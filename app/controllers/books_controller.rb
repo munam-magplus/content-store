@@ -20,11 +20,16 @@ class BooksController < ApplicationController
         @book_contributor.save!
       end
      @form = "form2"
-    elsif params[:book_content_pricing].present?
-      @book_content_pricing = BooksContentPricing.new(books_content_pricing_params)
-      @book_content_pricing.save!
+     respond_to { |format| format.js }
+    elsif params[:books_content_pricing].present?
+      book_content_pricing = JSON.parse(params[:books_content_pricing])
+      book_content_pricing.each do |books_content_pricing_params|
+        @book_content_pricing = BooksContentPricing.new(books_content_pricing_params)
+        @book_content_pricing.save!
+      end
       @form = "form3"
-    elsif params[:book_content_access_rule].present?
+      respond_to { |format| format.js } 
+    elsif params[:books_content_access_rule].present?
      @book_content_access_rule = BooksContentAccessRule.new(book_content_access_rule_params)
      @book_content_access_rule.save!
      @form = "form4"
@@ -35,6 +40,7 @@ class BooksController < ApplicationController
   # end
 
   private
+
   def book_primary_content_information_params
     params.require(:books_primary_content_information).permit(:content_code, :publisher_id, :book_title, :subject_title, :isbn, :language, 
     :content_classification, :file_name, :stock_number, :publisher_site_sales_link, :book_blurb, :publication_date,
