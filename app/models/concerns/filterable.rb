@@ -20,7 +20,7 @@ module Filterable
       end
       filtering_params.each do |key, value|
         # if key's value is present only then value will be added to cond
-        cond << ",""#{value}" if value.present? 
+        cond << ",""%#{value}%" if value.present? 
       end
       # to split string into conditions
       conditions = cond.split(',')

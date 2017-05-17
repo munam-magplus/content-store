@@ -110,7 +110,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-5 control-label">Country<sup class="mandatory">*</sup> </label>
             <div class="col-sm-7">
-              <%= f.select 'country_code',options_from_collection_for_select(Country.all, 'country_code', 'country_name'),{ :prompt => "please select"},{:class => "form-control"} %>
+              <%= f.select 'country_code',options_from_collection_for_select(country_name, 'country_code', 'country_name'),{ :prompt => "please select"},{:class => "form-control"} %>
             </div>
           </div>
         </div> 

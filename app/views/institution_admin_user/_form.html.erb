@@ -65,7 +65,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Publisher</label>
             <span class="col-sm-8">
-            <%= f.select 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), {:prompt => "Select Publisher" },{ :class => "form-control" , style: "background-color: #eee;" }%>
+            <%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'), {:prompt => "Select Publisher" },{ :class => "form-control" , style: "background-color: #eee;" }%>
             </span>
             <div class="clearfix"></div> 
           </div>

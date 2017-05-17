@@ -29,7 +29,7 @@ class BooksController < ApplicationController
       end
       @form = "form3"
       respond_to { |format| format.js } 
-    elsif params[:books_content_access_rule].present?
+    elsif params[:book_content_access_rule].present?
      @book_content_access_rule = BooksContentAccessRule.new(book_content_access_rule_params)
      @book_content_access_rule.save!
      @form = "form4"

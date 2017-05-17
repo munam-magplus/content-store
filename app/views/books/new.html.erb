@@ -46,7 +46,7 @@
 										<div class="form-group">
 										  <label class="control-label col-sm-4" for="email">Publisher</label>
 										  <div class="col-sm-8">
-												<%= f.select 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'),{ :prompt => "select publisher"},{:class => "form-control"} %>	  
+												<%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'),{ :prompt => "select publisher"},{:class => "form-control"} %>	  
 										  </div>
 										  <div class="clearfix"></div>
 										</div>
@@ -83,7 +83,12 @@
 										<div class="form-group">
 										  <label class="control-label col-sm-4" for="email">Language<sup class="mandatory">*</sup></label>
 										  <div class="col-sm-8">
-										  	<%= f.text_field :language, :class => "form-control", :placeholder => "Language"  %>
+										  	<%= f.select 'language',options_for_select([
+				                                  ['Dansk', 'dansk'],
+				                                  ['Polish', 'polish'],
+				                                  ['Latvian', 'latvin'],
+				                                  ['English', 'english']]),{ :prompt => "Please select"},{:class =>"form-control"} %>
+
 										  </div>
 										  <div class="clearfix"></div>
 										</div>
@@ -138,10 +143,7 @@
 										  <label class="control-label col-sm-4" for="email">Publication Date  </label>
 										  <div class="col-sm-8">
 											 <div class="input-group date" id="datetimepicker1">
-												<%= f.text_field :publication_date, :class => "form-control", :placeholder => "DD/MM/YYYY" %>
-												 <span class="input-group-addon">
-													<span class="glyphicon glyphicon-calendar"></span>
-												</span>
+												<%= f.text_field :publication_date, :class => "form-control", :id=> "from", :placeholder => "DD/MM/YYYY" %>
 											  </div>
 											  <div class="clearfix"></div>
 										  </div>
@@ -235,8 +237,7 @@
                                                 <div class="table-responsive" style="overflow-x: inherit;">
 												  <table class="table table-bordered" id="participantTable">
 													<thead>
-              <%#= form_for(:books_contributor, url: {:controller => "books",action: "create"}, remote: true) do |f| %>
-													  <tr  >
+													  <tr>
 														
 														<th>Role<sup class="mandatory">*</sup></th>
 														<th>Name<sup class="mandatory">*</sup></th>
@@ -252,24 +253,17 @@
 													</thead>
 													<tbody>
 												<%= form_for(@book_contributor, url: {:controller => "books", action: "create"}, remote: true) do |f| %>
-													<tr class="participantRow check">
-														  
+													<tr class="participantRow">  
 													  <td >
 													  	<%= f.select 'contributor_role', options_for_select([ "By (author)", "Screenplay by", "Libretto by", "Lyrics by", "By (composer)", "By (artist)", "By (photographer)", "From an idea by", "Designed by", "Photographs by", "Text by", "Preface by", "Prologue by", "Summary by", "Supplement by", "Afterword by", "Notes by", "Commentaries by", "Foreword by", "Introduction by", "Footnotes by", "Memoir by", "Software written by"]),{ :prompt => "Please select"},{:class =>"form-control" ,:id =>"contributor_role" ,style: "background-color: #eee;"} %></select></td>
 													  <td ><%= f.text_field :first_name , :placeholder => "Enter Name", :class => "form-control",:id =>"first_name" %> <%= f.text_field :last_name , :placeholder => "Enter Name", :class => "form-control",:id =>"last_name" %></td>
 													  <td ><%= f.text_area :description, :class => "form-control", :placeholder => "Description",:id =>"description" %> </td>
 													  <td ><div class="input-group date datetimepicker3" >
 													  		<%= f.text_field :date_of_birth , :class => "form-control",:id => 'date_of_birth' %>
-																 <span class="input-group-addon">
-																	<span class="glyphicon glyphicon-calendar"></span>
-																</span>
 															  </div>                 
 													 </td>
 													  <td ><div class="input-group date " id="datetimepicker2">
 													  		<%= f.text_field :date_of_death , :class => "form-control",:id => 'date_of_death' %>
-																 <span class="input-group-addon">
-																	<span class="glyphicon glyphicon-calendar"></span>
-																</span>
 															  </div> </td>
 													  <td ><%= f.text_field :professional_position, :placeholder => "Position",:id => 'professional_position', :class => "form-control" %></td>
 													  <td ><%= f.text_field :professional_affiliation, :placeholder => "Affiliation", :id => 'professional_affiliation', :class => "form-control" %></td>

@@ -27,9 +27,9 @@
             <% if @promo_codes.present? %>
               <% @promo_codes.each do |promo_code| %>
                 <tr>
-                  <td><%= link_to promo_code.publisher_id%> </td>
+                  <td><%= publisher_name(promo_code.publisher_id)%></td>
                   <td><%= promo_code.id %></td>
-                  <td><%= promo_code.campaign_id %> </td>
+                  <td><%= campaign_name(promo_code.campaign_id) %> </td>
                   <td><%= promo_code.number_of_promo_code %></td>
                 </tr>
               <%end%>

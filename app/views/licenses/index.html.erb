@@ -31,7 +31,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Select Publisher<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "Select publisher", :class => "form-control"%>
+              <%= select_tag 'publisher',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'), :prompt => "Select publisher", :class => "form-control"%>
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">License Type</label>
             <span class="col-sm-8">
-             <%= select_tag 'license_type',options_for_select([['Select',''], ['Relative Date Range',:relative], ['Downloadable Content',:downloadable], ['Fixed date Range',:fixed_date_range]]), :prompt => "select status", :class => "form-control" %>
+             <%= select_tag 'license_type',options_for_select([['Relative Date Range',:relative], ['Downloadable Content',:downloadable], ['Fixed date Range',:fixed_date_range]]), :prompt => "select", :class => "form-control" %>
             </span>
           </div>
         </div>
@@ -79,7 +79,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Saleability</label>
             <span class="col-sm-8">
-             <%= select_tag 'license_for_sale',options_for_select([['Select',''], [' For Sale',:y], ['Not For Sale',:n]]), :prompt => "select status", :class => "form-control" %>
+             <%= select_tag 'license_for_sale',options_for_select([[' For Sale',:y], ['Not For Sale',:n]]), :prompt => "select status", :class => "form-control" %>
             </span>
           </div>
         </div>

@@ -33,7 +33,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Select Publisher</label>
             <div class="col-sm-8">
-              <%= select_tag 'publisher',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :prompt => "Select publisher", :class => "form-control"%>
+              <%= select_tag 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'), :prompt => "Select publisher", :class => "form-control"%>
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Select Campaign </label>
             <div class="col-sm-8">
-              <%= select_tag 'publisher',options_from_collection_for_select(Campaign.all, 'campaign_name', 'campaign_name'), :prompt => "Select campaign", :class => "form-control"%>
+              <%= select_tag 'campaign_id',options_from_collection_for_select(Campaign.all, 'id', 'campaign_name'), :prompt => "Select campaign", :class => "form-control"%>
             </div>
           </div>
         </div>

@@ -30,9 +30,9 @@
             <% if @license .present? %>
               <% @license.each do |lic| %>
               <tr>
-                <td><%= lic.publisher_id %></td>
+                <td><%= publisher_name(lic.publisher_id) %></td>
                 <td><%= lic.license_id %></td>
-                <td> <%= link_to lic.license_name %></td>
+                <td> <%= lic.license_name %></td>
                 <td>Downloadable Content</td>
                 <td><%= lic.license_for_sale %></td>
                 <td><%= lic.from %></td>
