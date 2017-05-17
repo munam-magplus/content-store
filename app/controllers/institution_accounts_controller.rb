@@ -1,4 +1,4 @@
-class InstitutionAccountController < ApplicationController  
+class InstitutionAccountsController < ApplicationController  
   include InstitutionAccountHelper
   before_action :authenticate_user!
 
@@ -49,7 +49,7 @@ class InstitutionAccountController < ApplicationController
     @institution = InstitutionAccount.new(institution_params)
   
     if @institution.save!
-      redirect_to institution_account_index_path
+      redirect_to institution_accounts_path
     else
       render 'new'
     end
@@ -63,7 +63,7 @@ class InstitutionAccountController < ApplicationController
   def update
     @institution = InstitutionAccount.find_by(params[:id])
     if @institution.update(institution_params)  
-      redirect_to institution_account_index_path
+      redirect_to institution_accounts_path
     else
       render 'index'
     end

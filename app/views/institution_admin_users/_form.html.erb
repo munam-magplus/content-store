@@ -26,7 +26,7 @@
 
       <h2 class="H2-L1">Create Institutional Admin Account</h2>
       <h5>All <sup class="mandatory">*</sup> fields are mandatory</h5>
-      <%= form_for(@inst_admin_user, url: institution_admin_user_index_path, html: { class: 'form-horizontal form-bg' }) do |f| %>
+      <%= form_for(@inst_admin_user, url: institution_admin_users_path, html: { class: 'form-horizontal form-bg' }) do |f| %>
         <div class="col-md-6">
           <div class="form-group">
             <label for="disabledTextInput" class="col-md-12 nopadding">User Role<sup class="mandatory">*</sup> </label>
@@ -200,7 +200,7 @@
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
 
-            <%= link_to '<i class="fa fa-search" aria-hidden="true"></i>Search Institutional Admin Users'.html_safe, institution_admin_user_index_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
+            <%= link_to '<i class="fa fa-search" aria-hidden="true"></i>Search Institutional Admin Users'.html_safe, institution_admin_users_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
 
             <%= button_tag fa_icon("plus-square-o", text: "Submit"), :class => "btn btn-sm", type: :submit %>
 

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :books_seo_config,:books_content_access_rules,
             :books_content_pricing, :books_contributors
 
-  resources :institution_account do
+  resources :institution_accounts do
     collection do 
       get 'search_op'
       get 'inst_admin_result'
@@ -44,7 +44,7 @@ Rails.application.routes.draw do
 
   resources :retailers do 
     collection do
-      get 'search_op'
+      get 'search'
       get 'result'
     end
   end
@@ -105,7 +105,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :institution_admin_user do 
+  resources :institution_admin_users do 
     collection do 
       get 'search_op'
     end

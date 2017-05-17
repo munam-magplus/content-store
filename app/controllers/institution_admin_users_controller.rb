@@ -1,4 +1,4 @@
-class InstitutionAdminUserController < ApplicationController
+class InstitutionAdminUsersController < ApplicationController
   before_action :authenticate_user!
   before_filter :set_system_generated_username
 
@@ -70,7 +70,7 @@ class InstitutionAdminUserController < ApplicationController
 
     # if @password == @confirm_password
       if @inst_admin_user.save!
-        redirect_to institution_admin_user_index_path
+        redirect_to institution_admin_users_index_path
       else
         render 'new'
       end
@@ -89,7 +89,7 @@ class InstitutionAdminUserController < ApplicationController
   def update
     @inst_admin_user = InstitutionAdminUserAccount.find_by(params[:id])
    if @inst_admin_user.update(insti_admin_user_params)
-    redirect_to search_op_institution_admin_user_index_path
+    redirect_to search_op_institution_admin_users_index_path
     else 
       render 'index'
     end
