@@ -548,10 +548,19 @@
 			$(this).find('input, select').each(function(){
 			 val[this.id] = $(this).val();
 			});
+			
 				val["watermark_drm"] = $("input:radio[name='watermark_drm']:checked").val();
 				val["external_drm"] = $("input:radio[name='external_drm']:checked").val();
             params.push(val);
-		}); 
+		});
+		$('.clone_participantRows').each(function(){
+				$(this).find('input, select').each(function(){
+			 		val[this.id] = $(this).val();
+			});
+			val["watermark_drm"] = $("input:radio[name='watermark_drm']:checked").val();
+				val["external_drm"] = $("input:radio[name='external_drm']:checked").val();
+            params.push(val);
+    });
     $.ajax({
 			type: "POST",
 			url: "/books",
@@ -566,8 +575,16 @@
 			$(this).find('input, select, textarea').each(function(){
 			 val[this.id] = $(this).val();
 			});
+
             params.push(val);
-		}); 
+		});
+		$('.clone_participantRow').each(function(){
+				$(this).find('input, select').each(function(){
+			 		val[this.id] = $(this).val();
+			});
+				params.push(val);
+    });
+
     $.ajax({
 			type: "POST",
 			url: "/books",
@@ -579,12 +596,12 @@
 /* Doc ready */
 $(".adds").on('click', function () {
 	var row = $(".participantRows");
-	row.clone(true, true).appendTo("#participantTable1");
+	row.clone(true, true).removeClass('participantRows').addClass('clone_participantRows').appendTo("#participantTable1");
   
 });
 $(".add").on('click', function () {
 	var row = $(".participantRow");
-	row.clone(true, true).appendTo("#participantTable");
+	row.clone(true, true).removeClass('participantRow').addClass('clone_participantRow').appendTo("#participantTable");
 });
 $(".remove").on('click', function () {
 	$(this).closest("tr").remove();
