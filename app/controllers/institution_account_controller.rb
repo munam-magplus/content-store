@@ -57,7 +57,7 @@ class InstitutionAccountController < ApplicationController
   end
  
   def edit
-    @institution = InstitutionAccount.find_by(params[:id]) 
+    @institution = InstitutionAccount.find_by_id(params[:id]) 
   end
 
   def update

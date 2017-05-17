@@ -24,7 +24,7 @@
          <li><a> Institutional Account</a></li>
       </ol>
 
-      <h2 class="H2-L1">Create Institutional Account</h2>
+      <h2 class="H2-L1">Institutional Account Details</h2>
       <div class="col-md-12">
           <h2 class="H2-L1">Details</h2> 
         </div>
@@ -72,7 +72,8 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Logo</label>
             <span class="col-sm-8">
-              <%= f.file_field :logo , :class => "form-control"%>
+             <!--  <%= f.file_field :logo , :class => "form-control"%> -->
+             <%= image_tag @institution.logo.url(:thumb)%>
             </span>
             <div class="clearfix"></div>
           </div>

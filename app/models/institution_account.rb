@@ -5,6 +5,6 @@ class InstitutionAccount < ApplicationRecord
 	accepts_nested_attributes_for :institution_account_billing_address
 	
 	#used for uploading image
-	has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+	has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" }
     validates_attachment_content_type :logo, content_type: /\Aimage\/.*\z/
 end
