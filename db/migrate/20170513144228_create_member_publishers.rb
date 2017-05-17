@@ -7,11 +7,16 @@ class CreateMemberPublishers < ActiveRecord::Migration[5.0]
       t.string :contact_last_name
       t.string :contact_email
       t.string :member_publisher_status
-      t.string :member_publisher_logo
       t.integer :publisher_borrow_period
-      t.integer :revenue_share_percentage
+      t.float :revenue_share_percentage
       t.integer :publisher_id
       t.string :country_code
+      t.string :member_publisher_logo_file_name
+      t.string :member_publisher_logo_content_type
+      t.integer :member_publisher_logo_file_size
+      t.datetime :member_publisher_logo_updated_at
+
+      t.timestamps
     end
   end
 end

@@ -10,8 +10,7 @@ class CreateArticleInformations < ActiveRecord::Migration[5.0]
       t.string :base_online_access_currency
       t.float :base_online_access_price
       t.string :base_download_price_country
-      t.string :base_download
-      t.string :price_currency
+      t.string :base_download_price_currency
       t.float :base_download_price_price
       t.integer :article_id
 

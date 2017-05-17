@@ -6,15 +6,13 @@ class CreateSubscriptions < ActiveRecord::Migration[5.0]
       t.integer :publisher_id
       t.string :subscription_description
       t.string :subscription_category
-      t.string :subject_group_name
-      t.string :subject_group_code
       t.string :subscription_type
-      t.string :borrow_time
-      t.integer :number_of_books
-      t.float :subscription_price
-      t.string :currency
-      t.integer :discount_percentage
-      t.integer :subscription_duration
+      t.date :agreement_form
+      t.date :agreement_to
+      t.string :available_for_institutional_account
+      t.integer :purchase_information_number_of_books
+      t.float :purchase_information_price
+      t.float :purchase_information_discount_percentage
 
       t.timestamps
     end

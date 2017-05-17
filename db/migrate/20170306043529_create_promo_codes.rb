@@ -4,7 +4,7 @@ class CreatePromoCodes < ActiveRecord::Migration[5.0]
       t.integer :publisher_id
       t.integer :campaign_id
       t.integer :number_of_promo_code
-      t.integer :applicable_discount
+      t.float :applicable_discount
       t.date :valid_from
       t.date :valid_to
 

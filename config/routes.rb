@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'index_content/content_code'
+  get 'index_contents/content_code'
 
-  get 'index_content/publisher_code'
+  get 'index_contents/publisher_code'
 
-  get 'my_account/index'
+  get 'my_accounts/index'
 
   get 'site_settings/index'
 
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :books_seo_config,:books_content_access_rules,
             :books_content_pricing, :books_contributors
 
-  resources :institution_account do
+  resources :institution_accounts do
     collection do 
       get 'search_op'
       get 'inst_admin_result'
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :article do 
+  resources :articles do 
     collection do
       get 'search'
       get 'metadata_sheet'
@@ -49,14 +49,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :end_user, :admin_user do 
+  resources :end_users, :admin_users do 
     collection do
       get  'search' 
       # post 'create'
     end
   end
 
-  resources :content_conversation do
+  resources :content_conversations do
     collection do 
       get 'content_history'
       get 'index_content'
@@ -105,7 +105,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :institution_admin_user do 
+  resources :institution_admin_users do 
     collection do 
       get 'search_op'
     end

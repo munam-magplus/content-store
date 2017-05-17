@@ -7,7 +7,6 @@ class CreateRetailers < ActiveRecord::Migration[5.0]
       t.string :low_ip
       t.string :high_ip
       t.string :ip_list
-      t.string :operation
 
       t.timestamps
     end

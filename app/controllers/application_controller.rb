@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   private
 
   def after_sign_in_path_for(resource)
-    dashboard_content_conversation_index_path
+    dashboard_content_conversations_path
   end
 
   def after_sign_out_path_for(resource)

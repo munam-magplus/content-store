@@ -9,7 +9,7 @@ class CreateInstitutionAdminUserAccounts < ActiveRecord::Migration[5.0]
       t.string :first_name
       t.string :last_name
       t.string :email
-      t.integer :phone
+      t.string :phone
       t.string :position
       t.integer :fax
       t.string :password

@@ -11,7 +11,7 @@
    <nav class="navigation">
       <ul class="list-unstyled leftNav">
         <li>
-          <%= link_to '<i class="material-icons">av_timer</i>Dashboard'.html_safe, dashboard_content_conversation_index_path, :id => "button_id", :class => "nav-label" %>
+          <%= link_to '<i class="material-icons">av_timer</i>Dashboard'.html_safe, dashboard_content_conversations_path, :id => "button_id", :class => "nav-label" %>
         </li>
         <li>
           <a href="#" class="topMenu"><i class="ion-ios-book"></i> <span class="nav-label sub-drop">Publisher Setup</span><span class="fa fa-angle-right pull-right"></span></a>
@@ -41,29 +41,29 @@
               <li>
                 <a class="submenu"><span class="fa fa-angle-right"></span>End User</a>
                   <ul class="nav-multi__list nav-multi" style="display:none">
-                    <li><%= link_to "Create End User", new_end_user_path%></li>
-                    <li><%= link_to "Search End User", end_user_index_path %></li>
+                    <li><%= link_to "Create End User", new_end_user_path %></li>
+                    <li><%= link_to "Search End User", end_users_path %></li>
                   </ul>
               </li>
               <li>
                 <a class="submenu"><span class="fa fa-angle-right"></span>Admin User</a>
                   <ul class="nav-multi__list nav-multi" style="display:none">
                     <li><%= link_to "Create Admin User", new_admin_user_path%></li>
-                    <li><%= link_to "Search Admin User", admin_user_index_path %></li>
+                    <li><%= link_to "Search Admin User", admin_users_path %></li>
                   </ul>
               </li>
               <li>
                 <a class="submenu"><span class="fa fa-angle-right"></span>Institutional Account</a>
                   <ul class="nav-multi__list nav-multi" style="display:none">
-                     <li><%= link_to "Create New Account", new_institution_account_path%></li>
-                     <li><%= link_to "Search Institutional Account", institution_account_index_path%></li>
+                     <li><%= link_to "Create New Account", new_institution_account_path %></li>
+                     <li><%= link_to "Search Institutional Account", institution_accounts_path %></li>
                   </ul>
               </li>
               <li>
                 <a class="submenu"><span class="fa fa-angle-right"></span>Institutional Admin User</a>
                   <ul class="nav-multi__list nav-multi" style="display:none">
                      <li><%= link_to "Create New Institutional Admin User", new_institution_admin_user_path%></li>
-                     <li><%= link_to "Search Institutional Admin User", institution_admin_user_index_path%></li>
+                     <li><%= link_to "Search Institutional Admin User", institution_admin_users_path%></li>
                   </ul>
               </li>
             </ul>
@@ -111,9 +111,9 @@
                     </li>
                     <!-- <li><%= link_to "Create New Journal", new_journal_path %></li>
                     <li><%= link_to "Search Journal", journals_path%></li>
-                    <li><%= link_to "Article Metadata Sheet", metadata_sheet_article_index_path%></li>
+                    <li><%= link_to "Article Metadata Sheet", metadata_sheet_articles_path%></li>
                     <li><%= link_to "Create Articles", new_article_path %></li>
-                    <li><%= link_to "Search Articles", search_article_index_path %></li> -->
+                    <li><%= link_to "Search Articles", search_articles_path %></li> -->
                   </ul>
               </li>
               <li>
@@ -130,7 +130,7 @@
                     </li> -->
                     <li><%= link_to "Create Subject Group", new_subject_group_path %></li>
                     <li><%= link_to "Search Subject Group", subject_groups_path%></li>
-                    <li><%= link_to "Upload Subject Group Metadata Sheet", metadata_sheet_subject_groups_path %></li>
+                    <!-- <li><%= link_to "Upload Subject Group Metadata Sheet", metadata_sheet_subject_groups_path %></li> -->
                   </ul>
               </li>
               <li>
@@ -148,11 +148,11 @@
               <li>
                 <a href="#">Index Content</a>
               </li>
-              <!-- <li><%= link_to "Uploaded Errors", update_status_content_conversation_index_path %></li>
-              <li><%= link_to "Update Status", update_status_content_conversation_index_path %></li>
-              <li><%= link_to "Content History", content_history_content_conversation_index_path %></li>
-              <li><%= link_to "QA Check", qa_check_content_conversation_index_path %></li>
-              <li><%= link_to "Index Content", index_content_content_conversation_index_path %></li> -->
+              <!-- <li><%= link_to "Uploaded Errors", update_status_content_conversations_path %></li>
+              <li><%= link_to "Update Status", update_status_content_conversations_path %></li>
+              <li><%= link_to "Content History", content_history_content_conversations_path %></li>
+              <li><%= link_to "QA Check", qa_check_content_conversations_path %></li>
+              <li><%= link_to "Index Content", index_content_content_conversations_path %></li> -->
             </ul>
           </li>
           <li>

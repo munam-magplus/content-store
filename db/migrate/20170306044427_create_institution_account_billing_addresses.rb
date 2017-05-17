@@ -3,7 +3,7 @@ class CreateInstitutionAccountBillingAddresses < ActiveRecord::Migration[5.0]
     create_table :institution_account_billing_addresses do |t|
       t.string :first_name
       t.string :last_name
-      t.integer :phone
+      t.string :phone
       t.string :email
       t.string :address
       t.string :address_line2

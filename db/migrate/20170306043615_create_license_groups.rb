@@ -12,7 +12,7 @@ class CreateLicenseGroups < ActiveRecord::Migration[5.0]
       t.date :valid_from
       t.date :valid_to
       t.string :purchase_information
-      t.integer :discount_percentage
+      t.float :discount_percentage
       t.string :license_for_sale
 
       t.timestamps

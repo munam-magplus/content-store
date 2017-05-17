@@ -15,18 +15,8 @@ class SubscriptionsController < ApplicationController
   	@subscription = Subscription.new
   end
 
-  # def create
-  # 	@subscription = Subscription.new(subscription_params)
-  #   if @subscription.save!
-  #     redirect_to new_subscription_path
-  #   else
-  #     render 'new'
-  #   end
-  # end
-
   def create
   @subscription = Subscription.new(subscription_params)
-   # @subscription.created_by = current_user.email
     respond_to do |format|
       if @subscription.save!
         add_subscription_id_for_subject_group
@@ -43,12 +33,9 @@ class SubscriptionsController < ApplicationController
     ids = ids.split(',').map(&:squish)
     ids.each do |id|
      @subject_group_id = SubscriptionForSubjectGroup.new
-     @subscription_id = SubscriptionForSubjectGroup.new
      @subject_group_id.subject_group_id = @subscription.id
-     @subscription_id.subscription_id = ids
+     @subject_group_id.subscription_id = ids[id.to_i - 1]
      @subject_group_id.save!
-     @subscription_id.save!
-    byebug
     end
   end
 
@@ -58,8 +45,9 @@ class SubscriptionsController < ApplicationController
   private
   def subscription_params
   	params.require(:subscription).permit(:subscription_id, :subscription_name, 
-    :publisher_id, :subscription_description, :subscription_category, :subject_group_name, 
-    :subject_group_code, :subscription_type, :borrow_time, :number_of_books, :subscription_price, 
-    :currency, :discount_percentage, :subscription_duration)
+    :publisher_id, :subscription_description, :subscription_category, 
+    :subscription_type, :agreement_from, :agreement_to, :available_for_institutional_account, 
+    :purchase_information_number_of_books, :purchase_information_price,
+    :purchase_information_discount_percentage)
 	end
 end

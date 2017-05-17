@@ -42,7 +42,7 @@ class LibraryUsersController < ApplicationController
   def delete
     @library_user = LibraryUser.find_by_id(params[:id])
     if @library_user.destroy(library_user_params)
-      redirect_to institution_account_index_path
+      redirect_to institution_accounts_path
     else
       render 'new'
     end

@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+<head>
+<title>Content Store :: Create Institutional Admin User </title>
+<!-- Latest compiled and minified CSS -->
+    <!-- Header -->
+    <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+
+</head>
+
+<body>
+<!-- Aside Start-->
+    <%= render :partial => "layouts/sidebar"%>
+    <!-- Aside Ends-->
+<!--Main Content Start -->
+  <section class="content"> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+           <li><a href="#">Home</a></li>
+         <li><a>Manage User Account</a></li>
+         <li><a>Create Institutional Admin User</a></li>
+      </ol>
+
+      <h2 class="H2-L1">Create Institutional Admin Account</h2>
+      <h5>All <sup class="mandatory">*</sup> fields are mandatory</h5>
+      <%= form_for(@inst_admin_user, url: institution_admin_users_path, html: { class: 'form-horizontal form-bg' }) do |f| %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="disabledTextInput" class="col-md-12 nopadding">User Role<sup class="mandatory">*</sup> </label>
+            <label class="radio-inline">
+              <%= f.radio_button :role, 'Primary Institution Administrator', :checked => true %> Primary Institution Administrator
+            </label>
+            <label class="radio-inline" >
+              <%= f.radio_button :role,'Institution Administrator'%> Institution Administrator
+            </label>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <% if @inst.present? %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 nopadding">Publisher</label>
+            <span class="col-sm-8">
+            <%= f.hidden_field :publisher_id2, value: publisher_name(@inst.publisher_id).id  , :class => "form-control"%>
+              <%= publisher_name(@inst.publisher_id).publisher_name %>
+            </span>
+            <div class="clearfix"></div> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 nopadding">Institution Name<sup class="mandatory">*</sup></label>
+            <span class="col-sm-8">
+            <%= f.hidden_field :institution_name2, value: @inst.institution_name  , :class => "form-control" %>
+              <%= @inst.institution_name %>
+            </span> 
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <% else %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 nopadding">Publisher</label>
+            <span class="col-sm-8">
+            <%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'), {:prompt => "Select Publisher" },{ :class => "form-control" , style: "background-color: #eee;" }%>
+            </span>
+            <div class="clearfix"></div> 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 nopadding">Institution Name<sup class="mandatory">*</sup></label>
+            <span class="col-sm-8">
+            <%= f.select 'institution_name',options_from_collection_for_select(InstitutionAccount.all, 'institution_name', 'institution_name'),{ :prompt => "Select Institution Name" },{ :class => "form-control" , style: "background-color: #eee;"}  %>
+            </span> 
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <% end %>
+
+        <div class="col-md-6">
+          <div class="form-group", id="primary2">
+            <label for="bookISBN" class="col-sm-4 nopadding">User Name<sup class="mandatory">*</sup></label>
+            <span class="col-sm-8">
+            <%= f.text_field :user_name, :value => "System Generated", :class => "form-control", :readonly => true %>
+            </span> 
+            <div class="clearfix"></div>
+          </div>
+          <div class="form-group", id="institution2">
+            <label for="bookISBN" class="col-sm-4 nopadding">User Name:<sup class="mandatory">*</sup></label>
+            <!-- <label style="position: absolute;">SA_</label> -->
+            <span class="col-sm-8">
+           <%= f.text_field :user_name,:class => "form-control", :placeholder => "SA_user_name" %>
+            </span>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 nopadding">Status<sup class="mandatory">*</sup></label>
+            <span class="col-sm-8">
+              <%= f.select 'status',options_for_select(["active","inactive"]), {:prompt => "Select Status"}, {:class => "form-control", style: "background-color: #eee;"} %>
+            </span>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="checkbox-inline"><%= check_box_tag :billing_contact %>
+              same as institution billing contact</label>
+              <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 nopadding">First Name</label>
+            <span class="col-sm-8">
+              <%= f.text_field :first_name, :id => "first",:class => "form-control", :placeholder => "First Name"  %>
+            </span>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 nopadding">Last Name</label>
+            <span class="col-sm-8">
+              <%= f.text_field :last_name, :id => "last",:class => "form-control" , :placeholder => "Last Name" %>
+            </span>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 nopadding">Email</label>
+            <span class="col-sm-8">
+              <%= f.text_field :email, :id => "mail",:class => "form-control", :placeholder => "Email" %>
+            </span>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 nopadding">Phone</label>
+            <span class="col-sm-8">
+              <%= f.text_field :phone, :id => "phone",:class => "form-control", :placeholder => "Phone" %>
+            </span>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 nopadding">Position</label>
+            <span class="col-sm-8">
+              <%= f.text_field :position,:class => "form-control", :placeholder => "Position" %>
+            </span>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 nopadding">Fax</label>
+            <span class="col-sm-8">
+              <%= f.text_field :fax,:class => "form-control", :placeholder => "Fax" %>
+            </span>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 nopadding">Password<sup class="mandatory">*</sup></label>
+            <span class="col-sm-8">
+              <%= f.password_field :password,:class => "form-control", :placeholder => "Password" %>
+            </span>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 nopadding">Comments</label>
+            <span class="col-sm-8">
+              <%= f.text_area :comments,:class => "form-control", :placeholder => "Comments" %>
+            </span>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="checkbox-inline"><%= check_box_tag(:mail) %>
+            Send Email Comfirmation to Email Address above</label>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="clearfix m-b-30"></div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+
+            <%= link_to '<i class="fa fa-search" aria-hidden="true"></i>Search Institutional Admin Users'.html_safe, institution_admin_users_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
+
+            <%= button_tag fa_icon("plus-square-o", text: "Submit"), :class => "btn btn-sm", type: :submit %>
+
+            <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
+          </div>
+        </div>
+      <% end %>
+    </div>  
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+    <!-- Footer Ends --> 
+  </section>
+</body>
+</html>
+
+
+<script>   
+$(document).ready(function(){
+  $('#institution2').hide();
+  $('input[type="checkbox"]').click(function(){
+      if($('#billing_contact').prop("checked") == true){
+         $("#first").prop('disabled', true);
+         $("#last").prop('disabled', true);
+         $("#mail").prop('disabled', true);
+         $("#phone").prop('disabled', true);
+       }
+      else{
+       $("#first").prop('disabled', false);
+       $("#last").prop('disabled', false);
+       $("#mail").prop('disabled', false);
+       $("#phone").prop('disabled', false);
+      }
+  });
+
+  $(':radio').change(function (event) {
+      var id = $(this).val();
+      if(id.search("Primary Institution Administrator")!=-1)
+      {
+        $('#institution2').hide();
+        $('#primary2').show();
+      } else{
+        $('#institution2').show();
+        $('#primary2').hide();
+      }
+  });
+});
+</script>
