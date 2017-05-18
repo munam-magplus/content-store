@@ -51,17 +51,6 @@
       <div class="row" >
         <div class="col-md-6">
           <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Publisher:</label>
-            <span class="col-sm-8">
-              <%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'),{ :prompt => "Select Publisher"},{:class => "form-control" , style: "background-color: #eee;" } %>
-            </span>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-      </div>
-      <div class="row" >
-        <div class="col-md-6">
-          <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Subscription Description:</label>
             <div class="col-sm-8">
               <%= f.text_area :subscription_description, :class => "form-control", :placeholder => "Subscription Description" %>
@@ -88,8 +77,8 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <%= f.radio_button :purchase_information_price , 'Subject Group', checked: true %>Subject Group
-          <%= f.radio_button :purchase_information_price, 'Book', checked: true %>Book<br/>
+          <%= radio_button_tag 'value[]', "Subject Group", checked:"true" %>Subject Group
+          <%= radio_button_tag 'value[]', "Book" %>Book
         </div>
       </div>
       <div class="row", id="subject_group">
@@ -107,19 +96,19 @@
       <div id="book_id">
         <div class="col-md-12">
           <div class="form-group">
-            <%= f.radio_button :purchase_information_price, 'All Publishers', checked: true %>All Publishers
-            <%= f.radio_button :purchase_information_price, 'Select Publisher' %>Select Publisher<br>
+            <%= radio_button_tag 'value1[]', "All Publishers", checked:"true" %>All Publishers
+            <%= radio_button_tag 'value1[]', "Select Publisher" %>Select Publisher
           </div>
         </div>
         <div class="col-md-12" id="select_publisher">
           <div class="form-group">
-            <%= f.select 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'),{ :prompt => "select publisher"},{:class => "form-control", style: "background-color: #eee;" } %>
+            <%= f.select :publisher_id, options_from_collection_for_select(Publisher.all, "id", "publisher_name"),{:multiple => true}, {:class => "form-control", style: "background-color: #eee;"} %> 
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <%= f.radio_button :purchase_information_price , 'All Titles', checked: true %>All Titles
-            <%= f.radio_button :purchase_information_price, 'Select Title' %>Select Title<br>
+            <%= radio_button_tag 'value2[]', "All Titles", checked:"true" %>All Titles
+            <%= radio_button_tag 'value2[]', "Select Title" %>Select Title
           </div>
         </div>
         <div class="row" id="select_title">
@@ -141,7 +130,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-6">
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Subscription Type *</label>
@@ -156,37 +145,37 @@
           </div>
         </div>
       </div>
-      <div id="fixed">
+      <div id="fixed"> -->
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-              <label for="taskName" class="col-sm-2 control-label">From</label>
-              <div class="col-sm-2">
-                <%= text_field :purchase_information_price, :class => "form-control", :placeholder => "From" %>
+              <label for="taskName" class="col-sm-1 control-label">From</label>
+              <div class="col-sm-3">
+                <%= text_field :agreement_form, :class => "form-control", :placeholder => "From" %>
               </div>
-                <label for="taskName" class="col-sm-2 control-label">To</label>
+                <label for="taskName" class="col-sm-1 control-label">To</label>
               <div class="col-sm-2">
-                <%= text_field :purchase_information_price, :class => "form-control", :placeholder => "To" %>
+                <%= text_field :agreement_to, :class => "form-control", :placeholder => "To" %>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      <!-- </div>
       <div id="relative">
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
               <label for="taskName" class="col-sm-2 control-label">Duration</label>
               <div class="col-sm-2">
-                <%= text_field :purchase_information_price, :class => "form-control", :placeholder => "Duration" %>
+                <%= text_field :agreement_to, :class => "form-control", :placeholder => "Duration" %>
               </div>
               <div class="col-sm-2">
-                <%= f.select 'purchase_information_price',options_for_select(['Years', 'Months', 'Weeks']), {:prompt => "Select"}, {:class => "form-control"} %>
+                <%= select_tag "duration", options_for_select(["Years", "Months", "Weeks"]), {:prompt => "Select", :class => "form-control"} %>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="col-md-12">
         <div class="col-md-12">
           <h3 class="H2-L1">Available for Institutional Accounts</h3>   
@@ -194,8 +183,8 @@
       </div>
       <div class="col-md-6">
         <div class="col-md-12">
-          <label class="radio-inline"><%= f.radio_button :purchase_information_price, 'yes' %>Yes</label>
-          <label class="radio-inline"><%= f.radio_button :purchase_information_price, 'no' %>No</label>
+          <label class="radio-inline"><%= f.radio_button :available_for_institutional_account, 'yes' %>Yes</label>
+          <label class="radio-inline"><%= f.radio_button :available_for_institutional_account, 'no' %>No</label>
         </div>
       </div>
       <div class="clearfix m-b-30"></div>
