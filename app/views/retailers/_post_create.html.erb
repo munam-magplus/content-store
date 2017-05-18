@@ -1,7 +1,7 @@
-  <div class="row" id="searchResultGrid">
-  <div class="col-md-12">
-    <div class="mt10 table-demo">Created retailers
-    	<span class="pull-right">
+<div class="row" id="searchResultGrid">
+	<div class="col-md-12">
+	  <div class="mt10 table-demo">Created retailers
+	  	<span class="pull-right">
 	      <div class="dropdown">
 	        <ul class="nav">
 	          <li class="drop"><i style="cursor: pointer;width: 12px;" class="fa fa-ellipsis-v" aria-hidden="true"></i>
@@ -13,22 +13,22 @@
 	          </li>
 	        </ul>
 	      </div>
-      </span>
-    </div>
-    <div class="table-responsive">
-      <table class="table table-bordered">
-        <thead>
-          <tr style="font-size:13px">
-            <th>Retailer Code</th>
-            <th>Retailer Name</th>
-            <th>Publisher ID</th>
-            <th>Low IP</th>
+	    </span>
+	  </div>
+	  <div class="table-responsive">
+	    <table class="table table-bordered">
+	      <thead>
+	        <tr style="font-size:13px">
+	          <th>Retailer Code</th>
+	          <th>Retailer Name</th>
+	          <th>Publisher ID</th>
+	          <th>Low IP</th>
 						<th>High IP</th>
-            <th>IP List</th>
-          </tr>
-        </thead>
-         <tbody>
-					<% if @retailer.present?   %>
+	          <th>IP List</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+					<% if @retailer.present?  %>
 				 		<tr>
 				 			<td class="tabledata"><%= @retailer.retailer_code %></td>
 							<td class="tabledata">
@@ -50,9 +50,9 @@
 							</td>
 						</tr>
 					<% end %>
-    		</tbody>
-      </table>
-    </div>
-  </div>
-  <div class="col-sm-12"> </div>
+	  		</tbody>
+	    </table>
+	  </div>
+	</div>
+	<div class="col-sm-12"> </div>
 </div>

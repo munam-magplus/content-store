@@ -14,8 +14,7 @@ class RetailersController < ApplicationController
  		@retailer = Retailer.new(retailer_params)
 		if @retailer.save!
  			flash[:success] = "retailer created"
-			# redirect_to result_retailers_path		
-			respond_to do |format|
+ 			respond_to do |format|
   			format.js
 			end
 		else
@@ -32,28 +31,27 @@ class RetailersController < ApplicationController
 	end
 
 	def search 
-  
 	end
 
 	def show
  	end
 
  	def edit
-  		@retailer = Retailer.find_by_id(params[:id])
+   	@retailer = Retailer.find_by_id(params[:id])
  	end
 
  	def update
-  		@retailer = Retailer.find_by_id(params[:id])
- 		if @retailer.update 
- 			redirect_to 'index'
+   	@retailer = Retailer.find_by_id(params[:id])
+ 		if @retailer.update(retailer_params) 
+ 			render 'search'
  		else
- 			render 'new'
+ 			render 'index'
  		end
  	end
 
-	def destroy
+	def delete
 		@retailer = Retailer.find_by_id(params[:id])
-		@retailer.destroy
+		@retailer.destroy(retailer_params)
 		redirect_to :back
 	end
 
