@@ -26,7 +26,7 @@
 
       <h2 class="H2-L1">Create Institutional Admin Account</h2>
       <h5>All <sup class="mandatory">*</sup> fields are mandatory</h5>
-      <%= form_for(@inst_admin_user, url: institution_admin_users_path, html: { class: 'form-horizontal form-bg' }) do |f| %>
+      <%= form_for(@institution_admin_user, url: institution_admin_users_path, html: { class: 'form-horizontal form-bg' }) do |f| %>
         <div class="col-md-6">
           <div class="form-group">
             <label for="disabledTextInput" class="col-md-12 nopadding">User Role<sup class="mandatory">*</sup> </label>
@@ -39,13 +39,13 @@
             <div class="clearfix"></div>
           </div>
         </div>
-        <% if @inst.present? %>
+        <% if @institution.present? %>
         <div class="col-md-6">
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Publisher</label>
             <span class="col-sm-8">
-            <%= f.hidden_field :publisher_id2, value: publisher_name(@inst.publisher_id).id  , :class => "form-control"%>
-              <%= publisher_name(@inst.publisher_id).publisher_name %>
+            <%= f.hidden_field :publisher_id2, value: publisher_name(@institution.publisher_id).id  , :class => "form-control"%>
+              <%= publisher_name(@institution.publisher_id).publisher_name %>
             </span>
             <div class="clearfix"></div> 
           </div>
@@ -54,8 +54,8 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Institution Name<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-            <%= f.hidden_field :institution_name2, value: @inst.institution_name  , :class => "form-control" %>
-              <%= @inst.institution_name %>
+            <%= f.hidden_field :institution_name2, value: @institution.institution_name  , :class => "form-control" %>
+              <%= @institution.institution_name %>
             </span> 
             <div class="clearfix"></div>
           </div>

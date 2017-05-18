@@ -85,7 +85,7 @@
              <label for="bookISBN" class="col-sm-4 nopadding">Country</label>
             <span class="col-sm-8">
               <% country_name %>
-              <%=  f.select "country", options_from_collection_for_select(@country, "country_code", "country_name"),{prompt: "Select Country"}, {:class => "form-control", style: "background-color: #eee;"} %>
+              <%=  f.select "country_code", options_from_collection_for_select(@country, "country_code", "country_name"),{prompt: "Select Country"}, {:class => "form-control", style: "background-color: #eee;"} %>
             </span>
             <div class="clearfix"></div>
           </div>

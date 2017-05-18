@@ -25,12 +25,12 @@
       </ol>
 
       <h2 class="H2-L1">User Details</h2>
-       <%= form_for(@inst_admin_user, url: institution_admin_user_path) do |f| %>
+       <%= form_for(@institution_admin_user, url: institution_admin_user_path) do |f| %>
         <div class="col-md-6">
           <div class="form-group">
             <label for="disabledTextInput" class="col-md-4 nopadding">User Role<sup class="mandatory">*</sup> </label>
             <label class="radio-inline">
-             <%= @inst_admin_user.role %>
+             <%= @institution_admin_user.role %>
             </label>
             <div class="clearfix"></div>
           </div>
@@ -39,7 +39,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Publisher</label>
             <span class="col-sm-8">
-            <%= @inst_admin_user.publisher_id %>
+            <%= @institution_admin_user.publisher_id %>
             </span> 
             <div class="clearfix"></div>
           </div>
@@ -48,7 +48,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Institution Name</label>
             <span class="col-sm-8">
-            <%= @inst_admin_user.institution_name %>
+            <%= @institution_admin_user.institution_name %>
             </span> 
             <div class="clearfix"></div>
           </div>

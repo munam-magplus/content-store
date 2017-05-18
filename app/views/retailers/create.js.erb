@@ -1,1 +1,8 @@
- $('#result').append('<%= j(render partial: 'result', locals: { retailer: @retailer  }) %>')
+ alert($('#searchResultGrid').size());
+ var row_count = $('#searchResultGrid').size();
+ if(row_count == 0){
+ $('#result').html('<%= j(render partial: 'result', locals: { retailer: @retailer  }) %>')
+ }
+ else{
+ $('#result').append('<%= j(render partial: 'result_append', locals: { retailer: @retailer  }) %>')
+}

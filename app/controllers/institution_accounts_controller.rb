@@ -4,21 +4,21 @@ class InstitutionAccountsController < ApplicationController
 
   def index
   end
-  # (params[:institution_name].present?)||(params[:publisher_id].present?)||(params[:status].present?)||(params[:libary_name].present?)
-  def search_op
-    # @insti_acc1 = InstitutionAccount.paginate(:page => params[:page], :per_page => 2)
-    # we perform search operation by slicing the params.
-     # if ((params[:institution_name].present?)||(params[:publisher_id].present?)||(params[:status].present?)||(params[:libary_name].present?)) 
-    # @id = InstitutionAccount.find_by_id(params[:institution_id])
-     @insti_acc = InstitutionAccount.filter(params.slice(:publisher_id, 
-            :status, :libary_name, :institution_name, :id))
-    # else
-    # @insti_bill = InstitutionAccountBillingAddress.filter(params.slice(:first_name, :last_name,
-    #               :phone, :email,:address,:address_line2,:address_line3,:city,:state,
-    #               :postal_code,:country_code))
-    # end
+
+  def search 
+     @institution_account = InstitutionAccount.filter(params.slice(:publisher_id, 
+            :status, :library_name, :institution_name, :id))
+
+    @id = @institution_account.ids
+
+    @insti_bill = InstitutionAccountBillingAddress.filter(params.slice(:first_name, :last_name,
+                  :phone, :email,:address,:address_line2,:address_line3,:city,:state,
+                  :postal_code,:country_code))
+
+    @result = @insti_bill.where(institution_account_id: @id)
+   
      # this is the params of the checkbox that is present in the form.
-    @chec = params[:ip_address]
+    @check = params[:ip_address]
     respond_to do |format|
      format.js 
      format.html
@@ -26,9 +26,9 @@ class InstitutionAccountsController < ApplicationController
     end
   end
 
-  def inst_admin_result
-    @ins = InstitutionAccount.find_by_id(params[:id]).institution_name
-    @ins_admin = InstitutionAdminUserAccount.where(:institution_name => @ins)
+  def institution_admin_result
+    @institution = InstitutionAccount.find_by_id(params[:id]).institution_name
+    @institution_admin = InstitutionAdminUserAccount.where(:institution_name => @ins)
     respond_to do |format|
        format.html   
        format.xlsx { send_data @ins_admin }

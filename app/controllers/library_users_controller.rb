@@ -1,17 +1,17 @@
 class LibraryUsersController < ApplicationController
   def index
-    @library_user = LibraryUser.all
+    @library_users = LibraryUser.all
   end
 
   def new
     @library_user = LibraryUser.new
-    @@insti_id = params[:format]
+    @@institution_id = params[:format]
    end
 
   def create
       @library_user = LibraryUser.new(library_user_params)
-    if @@insti_id.present?
-       @library_user.institution_account_id = @@insti_id
+    if @@institution_id.present?
+       @library_user.institution_account_id = @@institution_id
     end
     if @library_user.save!
       redirect_to result_library_users_path 
@@ -21,9 +21,8 @@ class LibraryUsersController < ApplicationController
   end
 
   def result
-    @ins_id = params[:id]
-    @v = @ins_id
-    @lib = LibraryUser.where(institution_account_id: @ins_id)
+    @institution_id = params[:id]
+    @library_users = LibraryUser.where(institution_account_id: @institution_id)
   end
 
   def edit

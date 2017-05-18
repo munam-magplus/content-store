@@ -18,8 +18,8 @@ Rails.application.routes.draw do
 
   resources :institution_accounts do
     collection do 
-      get 'search_op'
-      get 'inst_admin_result'
+      get 'search'
+      get 'institution_admin_result'
     end
   end
 
@@ -107,7 +107,7 @@ Rails.application.routes.draw do
 
   resources :institution_admin_users do 
     collection do 
-      get 'search_op'
+      get 'search'
     end
   end
 end

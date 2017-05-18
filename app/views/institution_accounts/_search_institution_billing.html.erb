@@ -30,8 +30,8 @@
           </tr>
         </thead>
          <tbody>
-					<% if @insti_bill.present?   %>
- 						<% @insti_bill.each do |f| %>
+					<% if @institution_billing.present?   %>
+ 						<% @institutiom_billing.each do |f| %>
  						 		<tr>
  						 			<% institution_account(f.institution_account_id) %>
 						 			<td class="tabledata"><%= f.id %></td>

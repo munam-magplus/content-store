@@ -14,15 +14,15 @@
 			 		</tr>
 			</thead>
 			<tbody>
-				<% if @insti_acc.present? %>
-					<% @insti_acc.each do |f| %>
+				<% if @result.present? %>
+					<% @result.each do |f| %>
  						<%if f.status == "active"%>
 					 		<tr class="backgroundcolor">
 					 			<td class="tabledata"><%= f.id %></td>
 								<td class="tabledata">
 									<%= link_to (f.institution_name), edit_institution_account_path(f.id) %>
 								</td>
-								<td class="tabledata"><%= f.libary_name %></td>
+								<td class="tabledata"><%= f.library_name %></td>
 								<td class="tabledata">
 									<%= ISO3166::Country[f.institution_account_billing_address.country_code].translations[I18n.locale.to_s] %>
 								</td>
@@ -31,7 +31,7 @@
 								</td>
 								<td class="tabledata"><%= f.status %></td>
 								<td class="tabledata">
-									<%if @chec.present? %>
+									<%if @check.present? %>
 											yes
 									<%else%>
 										 no
@@ -52,7 +52,7 @@
 								<td class="tabledata">
 									<%= link_to (f.institution_name), edit_institution_account_path(f.id) %>
 								</td>
-								<td class="tabledata"><%= f.libary_name %></td>
+								<td class="tabledata"><%= f.library_name %></td>
 								<td class="tabledata">
 									<%= ISO3166::Country[f.institution_account_billing_address.country].translations[I18n.locale.to_s] %>				
 								</td>
@@ -61,7 +61,7 @@
 								</td>
 								<td class="tabledata"><%= f.status %></td>
 								<td class="tabledata">
-									<%if @chec.present? %>
+									<%if @check.present? %>
 											yes
 									<%else%>
 										 no

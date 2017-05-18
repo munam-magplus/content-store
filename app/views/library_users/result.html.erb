@@ -46,8 +46,8 @@
           </tr>
         </thead>
         <tbody>
-					<% if @lib.present? %>
-					<% @lib.each do |f| %>
+					<% if @library_users.present? %>
+					<% @library_users.each do |f| %>
  					<tr>
 						<td class="tabledata" >						
 							<%= link_to (f.user_name), edit_library_user_path(f) %>
@@ -72,7 +72,7 @@
 				<% end %>
     		</tbody>
       </table>
-			<%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Create New User'.html_safe, new_library_user_path(@ins_id), :id => "button_id", :class => "btn btn-sm pull-left", method: "get"  %>
+			<%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Create New User'.html_safe, new_library_user_path(@institution_id), :id => "button_id", :class => "btn btn-sm pull-left", method: "get"  %>
     </div>
   </div>
   <div class="col-sm-12"> </div>

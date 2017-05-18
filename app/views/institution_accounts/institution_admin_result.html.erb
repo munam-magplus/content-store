@@ -49,8 +49,8 @@
           </tr>
         </thead>
         <tbody>
-					<% if @ins_admin.present? %>
-					<% @ins_admin.each do |f| %>
+					<% if @institution_admin.present? %>
+					<% @institution_admin.each do |f| %>
 					 	<%if f.status == "active"%>
 						 	<tr class="backgroundcolor">
 									<td  class="tabledata"><%= f.first_name%>&nbsp<%= f.last_name %></td>
