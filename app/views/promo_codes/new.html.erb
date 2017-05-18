@@ -46,7 +46,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Select Campaign<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.select 'campaign_id',options_from_collection_for_select(Campaign.all, 'id', 'campaign_name'),{ :prompt => "select campaign"},{:class => "form-control"} %>
+              <%= f.select 'campaign_id',options_from_collection_for_select(@campaign_names, 'id', 'campaign_name'),{ :prompt => "select campaign"},{:class => "form-control"} %>
             </div>
             <div class="clearfix"></div>
           </div>

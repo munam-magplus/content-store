@@ -13,10 +13,12 @@ class PromoCodesController < ApplicationController
 
   def new
     @promo_codes = PromoCode.new
+    @campaign_names = Campaign.order('campaign_name').all # to get all campaign names
   end
 
   def index
   end
+  
   private 
   def promo_code_params
     params.require(:promo_code).permit(:publisher_id, :campaign_id, 

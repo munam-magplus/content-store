@@ -27,17 +27,17 @@
               <th class="tableheader">Created By</th>
           </thead>
           <tbody>    
-            <% if @license .present? %>
-              <% @license.each do |lic| %>
+            <% if @licenses.present? %>
+              <% @licenses.each do |license| %>
               <tr>
-                <td><%= publisher_name(lic.publisher_id) %></td>
-                <td><%= lic.license_id %></td>
-                <td> <%= lic.license_name %></td>
-                <td>Downloadable Content</td>
-                <td><%= lic.license_for_sale %></td>
-                <td><%= lic.from %></td>
-                <td><%= lic.to%></td>
-                <td><%= lic.created_by %></td>
+                <td><%= publisher_name(license.publisher_id) %></td>
+                <td><%= license.license_id %></td>
+                <td> <%= license.license_name %></td>
+                <td>license.license_type</td>
+                <td><%= license.license_for_sale %></td>
+                <td><%= license.from %></td>
+                <td><%= license.to%></td>
+                <td><%= license.created_by %></td>
               </tr>
             <%end%>
             <%end%>

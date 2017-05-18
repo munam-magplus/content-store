@@ -10,29 +10,35 @@ class BooksController < ApplicationController
 
   def create
     if params[:books_primary_content_information].present?
+    # To save books_primary_content_information values
      @book = BooksPrimaryContentInformation.new(book_primary_content_information_params)
      @book.save!
-     @form = "form1"
-    elsif params[:book_contributers].present?
+     @form = "form1" # just to move on next form.
+    elsif params[:book_contributers].present? 
+    # To save book_contributers values
      book_contributers = JSON.parse(params[:book_contributers])
      book_contributers.each do |book_contributor_params|
+      # To save multiple records
         @book_contributor = BooksContributor.new(book_contributor_params)
         @book_contributor.save!
       end
-     @form = "form2"
+     @form = "form2"  # just to move on next form. 
      respond_to { |format| format.js }
     elsif params[:books_content_pricing].present?
+      # To save books_content_pricing values
       book_content_pricing = JSON.parse(params[:books_content_pricing])
       book_content_pricing.each do |books_content_pricing_params|
+        # To save multiple records
         @book_content_pricing = BooksContentPricing.new(books_content_pricing_params)
         @book_content_pricing.save!
       end
-      @form = "form3"
+      @form = "form3" # just to move on next form. 
       respond_to { |format| format.js } 
     elsif params[:book_content_access_rule].present?
+      # To save book_content_access_rule values
      @book_content_access_rule = BooksContentAccessRule.new(book_content_access_rule_params)
      @book_content_access_rule.save!
-     @form = "form4"
+     @form = "form4" # just to move on next form. 
     end
   end
 
