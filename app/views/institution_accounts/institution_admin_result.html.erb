@@ -49,44 +49,44 @@
           </tr>
         </thead>
         <tbody>
-					<% if @institution_admin.present? %>
-					<% @institution_admin.each do |f| %>
-					 	<%if f.status == "active"%>
-						 	<tr class="backgroundcolor">
-									<td  class="tabledata"><%= f.first_name%>&nbsp<%= f.last_name %></td>
-									<td  class="tabledata"><%= f.email %></td>
-									<td  class="tabledata"><%= f.status %></td>
-									<td  class="tabledata"><%= f.user_name %></td>
-									<td  class="tabledata" ><%= f.role %></td>
-									<td  class="tabledata"><%= f.institution_name %></td>
-									<td  class="tabledata">
-										<%= link_to image_tag("institutional-user.gif",  size: "17x17", title: "User Details") , edit_institution_admin_user_path(f)%>
-									</td>
-							</tr>
-						<% else %>
-							<tr class="backgroundcolor1">
-								<td  class="tabledata"><%= f.first_name %>&nbsp<%= f.last_name %></td>
-								<td  class="tabledata"><%= f.email %></td>
-								<td  class="tabledata"><%= f.status %></td>
-								<td  class="tabledata"><% f.user_name %></td>
-								<td  class="tabledata" ><% f.role %></td>
-								<td  class="tabledata"><%= f.institution_name %></td>
-								<td  class="tabledata">
-									<%= link_to image_tag("institutional-user.gif",  size: "17x17", title: "User Details"), edit_institution_admin_user_path(f)%>
-								</td>
-							</tr>
-						<% end %>
-					<%end%>
-				<% else %>
-					<tr>
-						<td >
-							Records not found
+ 		<% if @institution_admin.present? %>
+		<% @institution_admin.each do |f| %>
+		 	<%if f.status == "active"%>
+			 	<tr class="backgroundcolor">
+						<td  class="tabledata"><%= f.first_name%>&nbsp<%= f.last_name %></td>
+						<td  class="tabledata"><%= f.email %></td>
+						<td  class="tabledata"><%= f.status %></td>
+						<td  class="tabledata"><%= f.user_name %></td>
+						<td  class="tabledata" ><%= f.role %></td>
+						<td  class="tabledata"><%= f.institution_name %></td>
+						<td  class="tabledata">
+							<%= link_to image_tag("institutional-user.gif",  size: "17x17", title: "User Details") , edit_institution_admin_user_path(f)%>
 						</td>
-					</tr>
-				<% end %>	
-    		</tbody>
+				</tr>
+			<% else %>
+				<tr class="backgroundcolor1">
+					<td  class="tabledata"><%= f.first_name %>&nbsp<%= f.last_name %></td>
+					<td  class="tabledata"><%= f.email %></td>
+					<td  class="tabledata"><%= f.status %></td>
+					<td  class="tabledata"><% f.user_name %></td>
+					<td  class="tabledata" ><% f.role %></td>
+					<td  class="tabledata"><%= f.institution_name %></td>
+					<td  class="tabledata">
+						<%= link_to image_tag("institutional-user.gif",  size: "17x17", title: "User Details"), edit_institution_admin_user_path(f)%>
+					</td>
+				</tr>
+			<% end %>
+		<%end%>
+	<% else %>
+		<tr>
+			<td >
+				Records not found
+			</td>
+		</tr>
+	<% end %>	
+</tbody>
       </table>
-			<%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Create New Admin User'.html_safe, new_institution_admin_user_path(@ins) , :class => "btn btn-sm pull-left" , method: "get"  %>
+			<%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Create New Admin User'.html_safe, new_institution_admin_user_path(@institution) , :class => "btn btn-sm pull-left" , method: "get"  %>
     </div>
   </div>
   <div class="col-sm-12"> </div>

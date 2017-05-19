@@ -54,7 +54,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Institution Name<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-            <%= f.hidden_field :institution_name2, value: @institution.institution_name  , :class => "form-control" %>
+            <%= f.hidden_field :institution_name2, value: @institution.institution_name ,:required => true, :class => "form-control" %>
               <%= @institution.institution_name %>
             </span> 
             <div class="clearfix"></div>
@@ -173,7 +173,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Password<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-              <%= f.password_field :password,:class => "form-control", :placeholder => "Password" %>
+              <%= f.password_field :password,:class => "form-control",:required => true, :placeholder => "Password" %>
             </span>
             <div class="clearfix"></div>
           </div>

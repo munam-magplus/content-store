@@ -31,7 +31,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Select Publisher<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "Select publisher", :class => "form-control"%>
+              <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "Select publisher",:required => true, :class => "form-control"%>
             </div>
           </div>
         </div>
@@ -46,7 +46,7 @@
         <div class="col-md-6"><div class="form-group">
           <label for="License" class="col-sm-4 control-label">From<sup class="mandatory">*</sup></label>
           <div class="col-sm-8">
-            <%= text_field_tag :from,"",:class => "form-control"  %>
+            <%= text_field_tag :from,"",:required => true ,:class => "form-control"  %>
           </div>
         </div></div>
         <div class="col-md-6"><div class="form-group">

@@ -30,7 +30,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 nopadding">First Name<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :first_name , :class => "form-control", :placeholder => "First Name"  %>
+              <%= f.text_field :first_name , :class => "form-control",:required => true, :placeholder => "First Name"  %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -39,7 +39,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 nopadding">Last Name<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :last_name , :class => "form-control", :placeholder => "Last Name"  %>
+              <%= f.text_field :last_name ,:required => true, :class => "form-control", :placeholder => "Last Name"  %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -48,7 +48,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 nopadding">Email<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :email , :class => "form-control", :placeholder => "Email"  %>
+              <%= f.email_field :email ,:required => true, :class => "form-control", :placeholder => "Email"  %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -57,7 +57,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 nopadding">Member Id/User Name<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :user_name , :class => "form-control", :placeholder => "User Name"  %>
+              <%= f.text_field :user_name ,:required => true, :class => "form-control", :placeholder => "User Name"  %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -66,7 +66,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 nopadding">Password<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.password_field :password , :class => "form-control", :placeholder => "Password"  %>
+              <%= f.password_field :password ,:required => true, :class => "form-control", :placeholder => "Password"  %>
             </div>
             <div class="clearfix"></div>
           </div>

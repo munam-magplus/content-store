@@ -28,7 +28,7 @@
        <%= form_for(@institution_admin_user, url: institution_admin_user_path) do |f| %>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="disabledTextInput" class="col-md-4 nopadding">User Role<sup class="mandatory">*</sup> </label>
+            <label for="bookISBN" class="col-md-4 nopadding">User Role<sup class="mandatory">*</sup> </label>
             <label class="radio-inline">
              <%= @institution_admin_user.role %>
             </label>
@@ -75,7 +75,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Email</label>
             <span class="col-sm-8">
-              <%= f.text_field :email, :id => "mail",:class => "form-control", :placeholder => "Email" %>
+              <%= f.email_field :email, :id => "mail",:class => "form-control",:required => true, :placeholder => "Email" %>
             </span>
             <div class="clearfix"></div>
           </div>

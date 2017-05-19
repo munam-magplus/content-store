@@ -37,7 +37,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Select Publisher<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'),{ :prompt => "select publisher"},{:class => "form-control"} %>
+              <%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'),{ :prompt => "select publisher", :required => true},{:class => "form-control"} %>
             </div>
           </div>
         </div>

@@ -39,34 +39,34 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Email<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
+              <%= f.email_field :email,:required => true, :class => "form-control", :placeholder => "Email" %>
             </div>
             <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Password</label>
+            <label for="bookISBN" class="col-sm-4 control-label">Password<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-            <%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
+            <%= f.password_field :password,:required => true, :class => "form-control", :placeholder => "Password" %>
             </span> 
             <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">First Name</label>
+            <label for="bookISBN" class="col-sm-4 control-label">First Name<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-            <%= f.text_field :first_name, :class => "form-control", :placeholder => "First Name" %>
+            <%= f.text_field :first_name,:required => true, :class => "form-control", :placeholder => "First Name" %>
             </span> 
             <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Last Name</label>
+            <label for="bookISBN" class="col-sm-4 control-label">Last Name<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-            <%= f.text_field :last_name, :class => "form-control", :placeholder => "Last Name" %>
+            <%= f.text_field :last_name,:required => true, :class => "form-control", :placeholder => "Last Name" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -75,7 +75,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Country<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-             <%= f.select 'country_code',options_from_collection_for_select(Country.all.order('country_name asc'), 'country_code', 'country_name'),{ :prompt => "please select"},{:class => "form-control"} %>
+             <%= f.select 'country_code',options_from_collection_for_select(Country.all.order('country_name asc'), 'country_code', 'country_name'),{:required => true, :prompt => "please select"},{:class => "form-control"} %>
             </span> 
             <div class="clearfix"></div>
           </div>

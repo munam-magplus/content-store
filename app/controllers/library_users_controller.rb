@@ -14,7 +14,7 @@ class LibraryUsersController < ApplicationController
        @library_user.institution_account_id = @@institution_id
     end
     if @library_user.save!
-      redirect_to result_library_users_path 
+      redirect_to institution_accounts_path
     else
       render 'new'
     end

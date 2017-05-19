@@ -28,7 +28,7 @@
             <div class="form-group">
               <label for="bookISBN" class="col-sm-4 control-label">Journal Title<span class="red">*</span>:</label>
               <span class="col-sm-8">
-              <%= text_field_tag :journal_title, params[:journal_title] , placeholder: "Journal Title"%>
+              <%= text_field_tag :journal_title, params[:journal_title] ,:required => true, placeholder: "Journal Title"%>
             </span>
             <div class="clearfix"></div>
             </div>
@@ -39,7 +39,7 @@
             <div class="form-group">
               <label for="bookISBN" class="col-sm-4 control-label" >Title<span class="red">*</span>:</label>
               <span class="col-sm-8">
-              <%= text_field_tag :title, params[:title], placeholder: "Title" %>
+              <%= text_field_tag :title, params[:title], :required => true ,placeholder: "Title" %>
             </span>
             <div class="clearfix"></div>
             </div>
@@ -50,7 +50,7 @@
             <div class="form-group">
               <label for="bookISBN" class="col-sm-4 control-label">Content Code<span class="red">*</span>:</label>
               <span class="col-sm-8">
-              <%= text_field_tag :code, params[:code], placeholder: "Content Code" %>
+              <%= text_field_tag :code, params[:code],:required => true, placeholder: "Content Code" %>
             </span>
             <div class="clearfix"></div>
             </div>
@@ -92,7 +92,7 @@
             <div class="form-group">
               <label for="bookISBN" class="col-sm-4 control-label" >Article Section <span class="red">*</span>:</label>
               <span class="col-sm-8">
-              <%= text_field_tag :article, params[:article], placeholder: "Article" %>
+              <%= text_field_tag :article, params[:article],:required => true, placeholder: "Article" %>
               </span>
               <div class="clearfix"></div>
             </div>

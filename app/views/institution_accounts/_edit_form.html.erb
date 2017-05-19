@@ -42,7 +42,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Lib./Dept. Name<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-            <%= f.text_field :library_name , :class => "form-control", :placeholder => "Library Name" %>
+            <%= f.text_field :library_name ,:required => true, :class => "form-control", :placeholder => "Library Name" %>
             </span> 
             <div class="clearfix"></div>
           </div>
@@ -51,7 +51,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Institution Name:<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-            <%= f.text_field :institution_name , :class => "form-control", :placeholder => "Institution Name" %>
+            <%= f.text_field :institution_name ,:required => true, :class => "form-control", :placeholder => "Institution Name" %>
             </span> 
             <div class="clearfix"></div>
           </div>
@@ -72,7 +72,6 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 nopadding">Logo</label>
             <span class="col-sm-8">
-             <!--  <%= f.file_field :logo , :class => "form-control"%> -->
              <%= image_tag @institution.logo.url(:thumb)%>
             </span>
             <div class="clearfix"></div>
@@ -95,7 +94,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">Contact First Name<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= builder.text_field :first_name , :class => "form-control", :placeholder => "First Name" %>
+              <%= builder.text_field :first_name ,:required => true, :class => "form-control", :placeholder => "First Name" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -104,7 +103,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">Contact Last Name<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= builder.text_field :last_name , :class => "form-control", :placeholder => "Last Name" %>
+              <%= builder.text_field :last_name ,:required => true, :class => "form-control", :placeholder => "Last Name" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -113,7 +112,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">Phone<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= builder.text_field :phone , :class => "form-control", :placeholder => "Phone" %>
+              <%= builder.text_field :phone , :required => true,:class => "form-control", :placeholder => "Phone" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -122,7 +121,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">Email<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= builder.text_field :email , :class => "form-control", :placeholder => "Email" %>
+              <%= builder.email_field :email ,:required => true, :class => "form-control", :placeholder => "Email" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -131,7 +130,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">Address<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= builder.text_field :address , :class => "form-control", :placeholder => "Address" %>
+              <%= builder.text_field :address ,:required => true, :class => "form-control", :placeholder => "Address" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -158,7 +157,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">City/ Town<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= builder.text_field :city , :class => "form-control", :placeholder => "City" %>
+              <%= builder.text_field :city ,:required => true, :class => "form-control", :placeholder => "City" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -167,7 +166,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">State / Province<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= builder.text_field :state , :class => "form-control", :placeholder => "State" %>
+              <%= builder.text_field :state ,:required => true, :class => "form-control", :placeholder => "State" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -176,7 +175,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">Postal Code<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= builder.text_field :postal_code , :class => "form-control", :placeholder => "Postal Code" %>
+              <%= builder.text_field :postal_code ,:required => true, :class => "form-control", :placeholder => "Postal Code" %>
             </span>
             <div class="clearfix"></div>
           </div>

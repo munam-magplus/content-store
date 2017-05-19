@@ -11,11 +11,11 @@ class InstitutionAccountsController < ApplicationController
 
     @id = @institution_account.ids
 
-    @insti_bill = InstitutionAccountBillingAddress.filter(params.slice(:first_name, :last_name,
+    @institution_billing = InstitutionAccountBillingAddress.filter(params.slice(:first_name, :last_name,
                   :phone, :email,:address,:address_line2,:address_line3,:city,:state,
                   :postal_code,:country_code))
 
-    @result = @insti_bill.where(institution_account_id: @id)
+    @result = @institution_billing.where(institution_account_id: @id)
    
      # this is the params of the checkbox that is present in the form.
     @check = params[:ip_address]
@@ -28,7 +28,7 @@ class InstitutionAccountsController < ApplicationController
 
   def institution_admin_result
     @institution = InstitutionAccount.find_by_id(params[:id]).institution_name
-    @institution_admin = InstitutionAdminUserAccount.where(:institution_name => @ins)
+    @institution_admin = InstitutionAdminUserAccount.where(:institution_name => @institution)
     respond_to do |format|
        format.html   
        format.xlsx { send_data @ins_admin }

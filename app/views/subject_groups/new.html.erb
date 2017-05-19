@@ -36,7 +36,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Subject Group Level<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :subject_group_level, :class => "form-control", :placeholder => "Subject Group Level" %>
+              <%= f.text_field :subject_group_level,:required => true, :class => "form-control", :placeholder => "Subject Group Level" %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -45,7 +45,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Subject Group Code<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :subject_group_code, :class => "form-control", :placeholder => "Subject Group Code" %>
+              <%= f.text_field :subject_group_code,:required => true, :class => "form-control", :placeholder => "Subject Group Code" %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -90,7 +90,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Viewability Percentage<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-            <%= f.text_field :viewability_percentage, :class => "form-control", :placeholder => "Duration", :placeholder => "Viewability Percentage" %>
+            <%= f.text_field :viewability_percentage,:required => true, :class => "form-control", :placeholder => "Duration", :placeholder => "Viewability Percentage" %>
             </span> 
             <div class="clearfix"></div>
           </div>

@@ -73,15 +73,15 @@
           <div class="form-group">
             <label for="License" class="col-sm-5 control-label">Valid From<sup class="mandatory">*</sup></label>
             <div class="col-sm-7">
-              <%= f.text_field :valid_from , :class => "form-control", :id => 'from' %>
+              <%= f.text_field :valid_from ,:required => true, :class => "form-control", :id => 'from' %>
             </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="License" class="col-sm-5 control-label">Valid To</label>
+            <label for="License" class="col-sm-5 control-label">Valid To<sup class="mandatory">*</sup></label>
             <div class="col-sm-7">
-              <%= f.text_field :valid_to , :class => "form-control", :id => 'to' %>
+              <%= f.text_field :valid_to ,:required => true, :class => "form-control", :id => 'to' %>
             </div>
             <div class="clearfix"></div>
           </div>

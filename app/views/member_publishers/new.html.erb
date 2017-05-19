@@ -40,9 +40,9 @@
           <label for="Publisher" class="col-sm-5 control-label">Member Publisher Code<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
             <%if @member_publisher.new_record?%>
-              <%= f.text_field :member_publisher_code , :class => "form-control" %>
+              <%= f.text_field :member_publisher_code ,:required => true,  :class => "form-control" %>
             <%else%>
-              <%= f.text_field :member_publisher_code , :class => "form-control",disabled: true %>
+              <%= f.text_field :member_publisher_code ,:required => true, :class => "form-control",disabled: true %>
             <%end%>
           </div>
           <div class="clearfix"></div>
@@ -51,7 +51,7 @@
           <label for="PublisherName" class="col-sm-5 control-label">Member Publisher Name<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
             <%if @member_publisher.new_record?%>
-              <%= f.text_field :member_publisher_name , :class => "form-control" %>
+              <%= f.text_field :member_publisher_name ,:required => true, :class => "form-control" %>
             <%else%>
               <%= f.text_field :member_publisher_name , :class => "form-control",disabled: true %>
             <%end%>
@@ -75,28 +75,28 @@
         <div class="col-md-6"><div class="form-group">
             <label for="ContactFirstName" class="col-sm-5 control-label">Contact First Name<sup class="mandatory">*</sup></label>
             <div class="col-sm-7">
-              <%= f.text_field :contact_first_name, :class => "form-control" %>
+              <%= f.text_field :contact_first_name,:required => true, :class => "form-control" %>
             </div>
             <div class="clearfix"></div>
          </div></div>
           <div class="col-md-6"><div class="form-group">
            <label for="ContactlastName" class="col-sm-5 control-label">Contact Last Name<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
-                <%= f.text_field :contact_last_name, :class => "form-control" %>
+                <%= f.text_field :contact_last_name,:required => true, :class => "form-control" %>
           </div>
           <div class="clearfix"></div>
         </div></div>
         <div class="col-md-6"><div class="form-group">
           <label for="ContactEmail" class="col-sm-5 control-label">Contact Email</label>
           <div class="col-sm-7">
-               <%= f.text_field :contact_email, :class => "form-control" %>
+               <%= f.email_field :contact_email, :class => "form-control" %>
           </div>
           <div class="clearfix"></div>
         </div></div>
         <div class="col-md-6"><div class="form-group">
           <label for="DefaultManagerLanguage" class="col-sm-5 control-label">Revenue share percentage*<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
-             <%= f.text_field :revenue_share_percentage, :class => "form-control"%>
+             <%= f.text_field :revenue_share_percentage,:required => true, :class => "form-control"%>
           </div>
           <div class="clearfix"></div>
         </div></div>

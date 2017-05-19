@@ -3,38 +3,38 @@
     <div class="col-md-6">
       <div class="form-group">
         <label for="Email">Email<sup class="mandatory">*</sup></label>
-           <%= f.email_field :email , autofocus: true, :class => "form-control", :placeholder => "Enter your Email" %>
+           <%= f.email_field :email , autofocus: true, :class => "form-control",:required => true, :placeholder => "Enter your Email" %>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
             <label for="Subject" >Subject <sup class="mandatory">*</sup></label>
-              <%= f.text_field :subject , autofocus: true, :class => "form-control", :placeholder => "Enter your Subject" %>
+              <%= f.text_field :subject , autofocus: true, :class => "form-control",:required => true, :placeholder => "Enter your Subject" %>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
             <label for="Topic" >Topic <sup class="mandatory">*</sup></label>
-              <%= f.text_field :topic , autofocus: true, :class => "form-control", :placeholder => "Enter your topic" %>
+              <%= f.text_field :topic , autofocus: true, :class => "form-control",:required => true, :placeholder => "Enter your topic" %>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
             <label for="phone" >Phone Number <sup class="mandatory">*</sup></label>
-              <%= f.number_field :phone_number , autofocus: true, :class => "form-control", :placeholder => "Enter Phone Number" %>
+              <%= f.number_field :phone_number , autofocus: true, :class => "form-control",:required => true, :placeholder => "Enter Phone Number" %>
               (Please include country and city codes)
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
             <label for="Fax" >Fax Number <sup class="mandatory">*</sup></label>
-              <%= f.number_field :fax_number , autofocus: true, :class => "form-control", :placeholder => "Enter Fax Number" %>
+              <%= f.number_field :fax_number , autofocus: true, :class => "form-control",:required => true, :placeholder => "Enter Fax Number" %>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
             <label for="Comments" >Comments<sup class="mandatory">*</sup></label>
-              <%= f.text_area :comments , autofocus: true, :class => "form-control", :placeholder => "Comments" %>
+              <%= f.text_area :comments , autofocus: true, :class => "form-control",:required => true, :placeholder => "Comments" %>
       </div>
     </div>
     <div class="row">

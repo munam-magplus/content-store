@@ -29,7 +29,7 @@
             <div class="form-group">
               <label for="taskName" class="col-sm-4 control-label">Publisher<sup class="mandatory">*</sup> </label>
               <div class="col-sm-8">
-                <%= f.collection_select :publisher, Publisher.all, :id, :publisher_name, :class => "form-control" %>
+                <%= f.collection_select :publisher, Publisher.all, :id, :publisher_name,:required => true, :class => "form-control" %>
               </div>
             </div>
           </div>
@@ -37,7 +37,7 @@
             <div class="form-group">
               <label for="taskName" class="col-sm-4 control-label">DOI<sup class="mandatory">*</sup> </label>
               <div class="col-sm-8">
-                <%= f.text_field :doi, :class => "form-control" %>
+                <%= f.text_field :doi,:required => true , :class => "form-control" %>
               </div>
             </div>
           </div>
@@ -45,7 +45,7 @@
             <div class="form-group">
               <label for="taskName" class="col-sm-4 control-label">Content Code<sup class="mandatory">*</sup> </label>
               <div class="col-sm-8">
-                <%= f.text_field :content_code, :class => "form-control" %>
+                <%= f.text_field :content_code,:required => true, :class => "form-control" %>
               </div>
             </div>
           </div>
@@ -182,7 +182,7 @@
             <div class="form-group">
               <label for="taskName" class="col-sm-4 control-label">Abstract<sup class="mandatory">*</sup> </label>
               <span class="col-sm-8">
-              <%= f.text_area :abstract, :class => "form-control" %>
+              <%= f.text_area :abstract,:required => true , :class => "form-control" %>
               </span> 
             </div>
           </div>
@@ -210,11 +210,11 @@
             </div>
             <h4>Content Format</h4>
             <a href="Javascript:onClick=validateFormatListandAddRow('formatTable',3,1)">
-                              <%= image_tag("add.gif")%>
-                            </a>&nbsp;&nbsp;
-                            <a href="Javascript:onClick=deleteRowModified('formatTable',3,1,document.getElementById('formContentPrice').selFomatDataCK)">
-                              <%= image_tag("remove.gif")%>
-                            </a>&nbsp;
+              <%= image_tag("add.gif")%>
+            </a>&nbsp;&nbsp;
+            <a href="Javascript:onClick=deleteRowModified('formatTable',3,1,document.getElementById('formContentPrice').selFomatDataCK)">
+              <%= image_tag("remove.gif")%>
+            </a>&nbsp;
             <div class="row">
               <div class="table-responsive" style="overflow-x: inherit;">
                 <table class="table table-bordered" id="participantTable">
@@ -237,11 +237,11 @@
             </div>
             <h4>Base Online Access</h4>
             <a href="Javascript:onClick=validateFormatListandAddRow('formatTable',3,1)">
-                              <%= image_tag("add.gif")%>
-                            </a>&nbsp;&nbsp;
-                            <a href="Javascript:onClick=deleteRowModified('formatTable',3,1,document.getElementById('formContentPrice').selFomatDataCK)">
-                              <%= image_tag("remove.gif")%>
-                            </a>&nbsp;
+              <%= image_tag("add.gif")%>
+            </a>&nbsp;&nbsp;
+            <a href="Javascript:onClick=deleteRowModified('formatTable',3,1,document.getElementById('formContentPrice').selFomatDataCK)">
+              <%= image_tag("remove.gif")%>
+            </a>&nbsp;
             <div class="row">
               <div class="table-responsive" style="overflow-x: inherit;">
                 <table class="table table-bordered" id="participantTable">

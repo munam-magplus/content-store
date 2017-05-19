@@ -30,7 +30,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label"> First Name <sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= text_field_tag :first_name,"",:class => "form-control", :placeholder => "First Name" %></td>
+              <%= text_field_tag :first_name,"",:class => "form-control",:required => true, :placeholder => "First Name" %></td>
             </div>
           </div>
         </div>
@@ -46,7 +46,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Email</label>
             <span class="col-sm-8">
-            <%= text_field_tag :email,"",:class => "form-control", :placeholder => "Email" %>
+            <%= email_field_tag :email,"",:class => "form-control", :placeholder => "Email" %>
             </span>
           </div>
         </div>
