@@ -6,6 +6,8 @@ class CreateSubscriptionForBooks < ActiveRecord::Migration[5.0]
       t.integer :title_id
       t.boolean :all_publisher
       t.boolean :all_title
+
+      t.timestamps
     end
   end
 end
