@@ -1,6 +1,6 @@
- <div class="row" id="searchResultGrid">
+  <div class="row" id="searchResultGrid">
   <div class="col-md-12">
-    <div class="mt10 table-demo">Search Result
+    <div class="mt10 table-demo">Created retailers
     	<span class="pull-right">
 	      <div class="dropdown">
 	        <ul class="nav">
@@ -19,36 +19,30 @@
       <table class="table table-bordered">
         <thead>
           <tr style="font-size:13px">
-            <th>Retailer Id</th>
-            <th>Retailer Name</th>
             <th>Retailer Code</th>
+            <th>Retailer Name</th>
+            <th>Publisher ID</th>
             <th>Low IP</th>
 						<th>High IP</th>
             <th>IP List</th>
-		 				<th>Edit</th>
           </tr>
         </thead>
-        <tbody>
-					<% if @retailers.present?   %>
-						<% @retailers.each do |f| %>
- 						 		<tr >
-						 			<td class="tabledata"><%= f.id %></td>
-									<td class="tabledata">
-										<%= f.retailer_name %>
-									</td>
-									<td class="tabledata"><%= f.retailer_code %></td>
-									<td class="tabledata">
-										<%= f.low_ip %>
-									</td>
-									<td class="tabledata">
-											<%= f.high_ip %>
-									</td>
-									<td class="tabledata"><%= f.ip_list %></td>
-									<td class="tabledata">
-										<%= link_to image_tag("institution.png"), edit_retailer_path(f.id) %>
-									</td>
-								</tr>
-						<%end%>
+         <tbody>
+					<% if @retailer.present?   %>
+				 		<tr>
+				 			<td class="tabledata"><%= @retailer.retailer_code %></td>
+							<td class="tabledata">
+								<%= @retailer.retailer_name %>
+							</td>
+							<td class="tabledata"><%= @retailer.publisher_id %></td>
+							<td class="tabledata">
+								<%= @retailer.low_ip %>
+							</td>
+							<td class="tabledata">
+									<%= @retailer.high_ip %>
+							</td>
+							<td class="tabledata"><%= @retailer.ip_list %></td>
+						</tr>
 					<% else %>
 						<tr>
 							<td>

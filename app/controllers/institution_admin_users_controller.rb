@@ -68,15 +68,11 @@ class InstitutionAdminUsersController < ApplicationController
     # @password = params[:institution_admin_user_account][:password]
     # @confirm_password = params[:institution_admin_user_account][:confirm_password]
 
-    # if @password == @confirm_password
-      if @institution_admin_user.save!
-        redirect_to institution_admin_users_path
-      else
-        render 'new'
-      end
-    # else
-    #   render 'new'
-    # end
+    if @institution_admin_user.save!
+     redirect_to institution_admin_users_path
+    else
+     render 'new'
+    end
     if params[:mail] == "1"
       InstitutionAdminUserMailer.confirm_mail(@institution_admin_user, current_user).deliver
     end
