@@ -73,6 +73,7 @@ class InstitutionAdminUsersController < ApplicationController
     else
      render 'new'
     end
+
     if params[:mail] == "1"
       InstitutionAdminUserMailer.confirm_mail(@institution_admin_user, current_user).deliver
     end

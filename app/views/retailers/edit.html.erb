@@ -25,7 +25,7 @@
       </ol>
 
      	<h2 class="H2-L1">Retailer's Details</h2>
-				<%= form_for(:retailer, url: retailers_path ,  :class => "form-horizontal form-bg", :html => {:id => "form"}, remote: true)  do |f| %>
+				<%= form_for(@retailer ,  :class => "form-horizontal form-bg")  do |f| %>
 				  <div class="col-md-6">
 				    <div class="form-group">
 				      <label for="taskName" class="col-sm-4 control-label">Retailer Code</label>
