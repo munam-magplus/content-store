@@ -102,7 +102,7 @@
         </div>
         <div class="col-md-12" id="select_publisher">
           <div class="form-group">
-            <%= f.select :publisher_id, options_from_collection_for_select(Publisher.all, "id", "publisher_name"),{:multiple => true}, {:class => "form-control", style: "background-color: #eee;"} %> 
+            <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :multiple => true, :prompt => "Select publisher", :class => "form-control", :style => "background-color: #eee"%> 
           </div>
         </div>
         <div class="col-md-6">

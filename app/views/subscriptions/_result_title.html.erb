@@ -60,6 +60,7 @@
     var arr = []
     lastRow.closest('.content_value').find("td:last").each(function(){
       arr.push($(this).text())
+      alert(arr);
     });
 
     $('#role_ids').val(arr)
@@ -74,9 +75,11 @@
    $('.submit_btn1').show();
     
    $('.del').on('click',function(){
+    alert(arr.pop($(this).text()));
     $(this).parent().remove();
-    arr.pop($(this).text())
+   
       $('#role_ids').val(arr)
+      //alert(arr);
    });
    }
 </script>

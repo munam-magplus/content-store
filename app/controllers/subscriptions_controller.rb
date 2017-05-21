@@ -12,7 +12,7 @@ class SubscriptionsController < ApplicationController
  end
 
   def new
-  	@subscription = Subscription.new
+    @subscription = Subscription.new
   end
 
   def create
@@ -33,12 +33,16 @@ class SubscriptionsController < ApplicationController
   end
   
   def add_subscription_for_subject_group
-    ids = params[:subscription][:role_ids].first
-    ids = ids.split(',').map(&:squish)
-    ids.each do |step|
+    role_ids = params[:subscription][:role_ids]
+    new_role_ids = []
+    role_ids.each do |role_id|
+      new_role_id = role_id.split(',').map(&:squish)
+      new_role_ids << new_role_id
+    end
+    new_role_ids.flatten.each do |role_id|
      @subject_group_id = SubscriptionForSubjectGroup.new
      @subject_group_id.subscription_id = @subscription.id
-     @subject_group_id.subject_group_id = ids[step.to_i - 1]
+     @subject_group_id.subject_group_id = role_id
      @subject_group_id.save!
     end
   end
@@ -60,22 +64,26 @@ class SubscriptionsController < ApplicationController
       selected_publisher_id = params[:subscription][:publisher_id]
       selected_publisher_id = selected_publisher_id.split(',').map(&:squish)
       selected_publisher_id.each do |step1|
-        @book_id.publisher_id = selected_publisher_id[step1.to_i - 1]
+        @book_id.publisher_id = selected_publisher_id[step1.to_i]
       end
     else
       @book_id.publisher_id = "nil"
     end
     if params[:value2] == ["Select Title"]
-      ids = params[:subscription][:role_ids].first
-      ids = ids.split(',').map(&:squish)
-      ids.each do |move|
-        @book_id.title_id = ids[move.to_i - 1]
+      role_ids = params[:subscription][:role_ids]
+      new_role_ids = []
+      role_ids.each do |role_id|
+        new_role_id = role_id.split(',').map(&:squish)
+        new_role_ids << new_role_id
+      end
+      new_role_ids.flatten.each do |role_id|
+        @book_id.title_id = role_id
+        @book_id.save!
       end
     else
       @book_id.title_id = "nil"
     end
     @book_id.save!
-    byebug
   end
 
   def index
@@ -83,10 +91,10 @@ class SubscriptionsController < ApplicationController
 
   private
   def subscription_params
-  	params.require(:subscription).permit(:subscription_id, :subscription_name, 
+    params.require(:subscription).permit(:subscription_id, :subscription_name, 
     :subscription_description, :subscription_category, 
     :subscription_type, :agreement_from, :agreement_to, :available_for_institutional_account, 
     :purchase_information_number_of_books, :purchase_information_price,
-    :purchase_information_discount_percentage)
-	end
+    :purchase_information_discount_percentage, :role_ids)
+  end
 end

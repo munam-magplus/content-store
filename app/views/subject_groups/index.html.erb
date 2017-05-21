@@ -29,7 +29,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Publisher</label>
             <div class="col-sm-8">
-             <%= select_tag 'publisher_id',options_from_collection_for_select(publisher_names, 'publisher_name', 'publisher_name'), :prompt => "Select Publisher", :class => "form-control", :style => "background-color: #eee"%>
+             <%= select_tag 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'), :prompt => "Select Publisher", :class => "form-control", :style => "background-color: #eee"%>
             </div>
             <div class="clearfix"></div>
           </div>

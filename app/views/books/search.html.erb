@@ -1,9 +1,9 @@
 <html>
   <head>
     <title>Content Store :: Search Books</title>
-      <!-- Header -->
-      <%= render :partial => "layouts/top_header"%>
-      <!-- Header Ends --> 
+    <!-- Header -->
+    <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
   </head>
 
   <body>
@@ -17,20 +17,20 @@
       <div class="wrapper container-fluid">
         <ol class="breadcrumb">
           <li><a href="#">Home</a></li>
-          <li><%= link_to "Publisher Setup",publisher_setup_index_path%></li>
-          <li><%= link_to "Search Books",publishers_path%></li>
+          <li><%= link_to "Publisher Setup" %></li>
+          <li><%= link_to "Search Books" %></li>
         </ol>
         
       <h2 class="H2-L1">Search Books</h2>
-      <%= form_tag search_publishers_path, :method => 'get' do %>
+      <%= form_tag search_books_path, :method => 'get', :remote => true do %>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label for="bookISBN" class="col-sm-4 control-label">Search By:<span class="red">*</span>:</label>
               <span class="col-sm-8">
-              <%= radio_button_tag :JOC_DESCRIPTION, 'Book', :checked => true %>Book
-              <%= radio_button_tag :JOC_DESCRIPTION, 'Chapter' %>Chapter
-              <%= radio_button_tag :JOC_DESCRIPTION, 'Batch' %>Batch
+                <%= radio_button_tag 'search_by', "Book", class: "form-control" %>Book
+                <%= radio_button_tag 'search_by', "Chapter", class: "form-control" %>Chapter
+                <%= radio_button_tag 'search_by', "Batch", class: "form-control" %>Batch
               </span><span>(Wildcard characters supported: *,+ )
             </span>
             </div>
@@ -40,9 +40,9 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >Publisher Name:<span class="red">*</span>:</label>
+                <label for="bookISBN" class="col-sm-4 control-label" >Publisher:<span class="red">*</span>:</label>
                 <span class="col-sm-8">
-                <%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :publisher_name) %>
+                <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "Select publisher", :class => "form-control", :style => "background-color: #eee"%>
               </span>
               </div>
             </div>
@@ -52,7 +52,7 @@
               <div class="form-group">
                 <label for="bookISBN" class="col-sm-4 control-label">ISBN <span class="red">*</span>:</label>
                 <span class="col-sm-8">
-                <%= text_field_tag :isbn, params[:isbn] %>
+                <%= text_field_tag :isbn, params[:isbn], :class => "form-control", :placeholder => "ISBN" %>
               </span>
               </div>
             </div>
@@ -62,7 +62,7 @@
               <div class="form-group">
                 <label for="bookISBN" class="col-sm-4 control-label" >Title</label>
                 <span class="col-sm-8">
-                <%= text_field_tag :title, params[:title] %>
+                <%= text_field_tag :title, params[:title], :class => "form-control", :placeholder => "Title" %>
               </span>
               </div>
             </div>
@@ -73,7 +73,7 @@
               <div class="form-group">
                 <label for="bookISBN" class="col-sm-4 control-label" >First Name:</label>
                 <span class="col-sm-8">
-                <%= text_field_tag :first_name, params[:first_name] %>
+                <%= text_field_tag :first_name, params[:first_name], :class => "form-control", :placeholder => "First Name" %>
               </span>
               </div>
             </div>
@@ -81,7 +81,7 @@
               <div class="form-group">
                 <label for="bookISBN" class="col-sm-4 control-label" >Last Name:</label>
                 <span class="col-sm-8">
-                <%= text_field_tag :last_name, params[:last_name] %>
+                <%= text_field_tag :last_name, params[:last_name], :class => "form-control", :placeholder => "Last Name" %>
               </span>
               </div>
             </div>
@@ -91,7 +91,7 @@
               <div class="form-group">
                 <label for="bookISBN" class="col-sm-4 control-label" >Status <span class="red">*</span>:</label>
                 <span class="col-sm-8">
-                <%= text_field_tag :status, params[:status] %>
+                <%= text_field_tag :status, params[:status], :class => "form-control", :placeholder => "Status" %>
                 </span>
               </div>
             </div>
@@ -102,7 +102,7 @@
               <div class="form-group">
                 <label for="bookISBN" class="col-sm-4 control-label" >from</label>
                 <span class="col-sm-8">
-                <%= text_field_tag :from, params[:from] %>
+                <%= text_field_tag :from, params[:from], :class => "form-control", :placeholder => "from" %>
                 </span>
               </div>
             </div>
@@ -110,7 +110,7 @@
               <div class="form-group">
                 <label for="bookISBN" class="col-sm-4 control-label" >to</label>
                 <span class="col-sm-8">
-                <%= text_field_tag :to, params[:to] %>
+                <%= text_field_tag :to, params[:to], :class => "form-control", :placeholder => "to" %>
               </span>
               </div>
             </div>
@@ -140,9 +140,9 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >Publisher Name:<span class="red">*</span>:</label>
+                <label for="bookISBN" class="col-sm-4 control-label" >Publisher:<span class="red">*</span>:</label>
                 <span class="col-sm-8">
-                <%= collection_select(:PUY_PUBLISHER_COUNTRY_ID, 0, Publisher.all, :id, :publisher_name) %>
+                <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "Select publisher", :class => "form-control", :style => "background-color: #eee"%>
               </span>
               </div>
             </div>
@@ -152,7 +152,7 @@
               <div class="form-group">
                 <label for="bookISBN" class="col-sm-4 control-label" >Book ISBN <span class="red">*</span>:</label>
                 <span class="col-sm-8">
-                <%= text_field_tag :isbn, params[:isbn] %>
+                <%= text_field_tag :isbn, params[:isbn], :class => "form-control", :placeholder => "Book ISBN" %>
               </span>
               </div>
             </div>
@@ -162,7 +162,7 @@
               <div class="form-group">
                 <label for="bookISBN" class="col-sm-4 control-label" >Chapter Identifier</label>
                 <span class="col-sm-8">
-                <%= text_field_tag :identifier, params[:identifier] %>
+                <%= text_field_tag :identifier, params[:identifier], :class => "form-control", :placeholder => "Chapter Identifier" %>
               </span>
               </div>
             </div>
@@ -172,7 +172,7 @@
               <div class="form-group">
                 <label for="bookISBN" class="col-sm-4 control-label" >Chapter Title</label>
                 <span class="col-sm-8">
-                <%= text_field_tag :title, params[:title] %>
+                <%= text_field_tag :title, params[:title], :class => "form-control", :placeholder => "Chapter Title" %>
               </span>
               </div>
             </div>
@@ -183,7 +183,7 @@
               <div class="form-group">
                 <label for="bookISBN" class="col-sm-4 control-label" >First Name</label>
                 <span class="col-sm-8">
-                <%= text_field_tag :first_name, params[:first_name] %>
+                <%= text_field_tag :first_name, params[:first_name], :class => "form-control", :placeholder => "First Name" %>
               </span>
               </div>
             </div>
@@ -191,7 +191,7 @@
               <div class="form-group">
                 <label for="bookISBN" class="col-sm-4 control-label" >Last Name</label>
                 <span class="col-sm-8">
-                <%= text_field_tag :last_name, params[:last_name] %>.
+                <%= text_field_tag :last_name, params[:last_name], :class => "form-control", :placeholder => "Last Name" %>.
               </span>
               </div>
             </div>
@@ -213,7 +213,7 @@
               <div class="form-group">
                 <label for="bookISBN" class="col-sm-4 control-label" >Conversion Batch Name</label>
                 <span class="col-sm-8">
-                <%= text_field_tag :conversion_batch_name, params[:conversion_batch_name] %>
+                <%= text_field_tag :conversion_batch_name, params[:conversion_batch_name], :class => "form-control", :placeholder => "Conversion Batch Name" %>
               </span>
               </div>
             </div>
@@ -224,7 +224,7 @@
               <div class="form-group">
                 <label for="bookISBN" class="col-sm-4 control-label" >from</label>
                 <span class="col-sm-8">
-                <%= text_field_tag :from, params[:from] %>
+                <%= text_field_tag :from, params[:from], :class => "form-control", :placeholder => "from" %>
               </span>
               </div>
             </div>
@@ -232,7 +232,7 @@
               <div class="form-group">
                 <label for="bookISBN" class="col-sm-4 control-label" >to</label>
                 <span class="col-sm-8">
-                <%= text_field_tag :to, params[:to] %>
+                <%= text_field_tag :to, params[:to], :class => "form-control", :placeholder => "to" %>
               </span>
               </div>
             </div>

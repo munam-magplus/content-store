@@ -73,20 +73,20 @@
         <div class="col-md-6"><div class="form-group">
           <label for="License" class="col-sm-5 control-label">From<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
-            <%= f.text_field :from , :class => "form-control",:id => 'from' %>
+            <%= f.text_field :valid_from , :class => "form-control",:id => 'from' %>
           </div>
           <div class="clearfix"></div>
         </div></div>
         <div class="col-md-6"><div class="form-group">
           <label for="License" class="col-sm-5 control-label">To</label>
           <div class="col-sm-7">
-            <%= f.text_field :to , :class => "form-control",:id => 'to' %>
+            <%= f.text_field :valid_to , :class => "form-control",:id => 'to' %>
           </div>
         </div></div>
         <div class="col-md-12">
           <div class="col-md-12">
-            <label class="radio-inline"><%= f.radio_button :to ,'Yes' %> Allow License to be linked  </label>
-            <label class="radio-inline" ><%= f.radio_button :to ,'no' %> Prevent License from being linked </label>
+            <label class="radio-inline"><%= f.radio_button :valid_to ,'Yes' %> Allow License to be linked  </label>
+            <label class="radio-inline" ><%= f.radio_button :valid_to ,'no' %> Prevent License from being linked </label>
           </div>
         </div>
         
@@ -104,7 +104,7 @@
         <div class="col-md-6"><div class="form-group">
           <label for="License" class="col-sm-5 control-label">Discount%</label>
           <div class="col-sm-7">
-            <%= f.text_field :purchase_info_discount , :class => "form-control" %>
+            <%= f.text_field :purchase_information , :class => "form-control" %>
           </div>
           <div class="clearfix"></div>
         </div></div>

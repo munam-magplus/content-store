@@ -8,7 +8,7 @@ class SubjectGroupsController < ApplicationController
   def create
   	@subject_group = SubjectGroup.new(subject_group_params)
   	if @subject_group.save
-			redirect_to new_subject_group_path
+			redirect_to subject_groups_path
 		else
 			render 'new'
 		end

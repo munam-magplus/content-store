@@ -42,8 +42,9 @@ class BooksController < ApplicationController
     end
   end
 
-  # def search
-  # end
+  def search
+    
+  end
 
   private
 
