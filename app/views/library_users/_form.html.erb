@@ -24,7 +24,7 @@
       </ol>
 
       <h2 class="H2-L1">Registration For Library User</h2>
-      <h6>* All Fields are Mandatory</h6>
+       
       <%= form_for(@library_user) do |f| %>
         <div class="col-md-6">
           <div class="form-group">
@@ -84,8 +84,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">Country</label>
             <span class="col-sm-8">
-              <% country_name %>
-              <%=  f.select "country_code", options_from_collection_for_select(@country, "country_code", "country_name"),{prompt: "Select Country"}, {:class => "form-control", style: "background-color: #eee;"} %>
+               <%=  f.select "country_code", options_from_collection_for_select(country, "country_code", "country_name"),{prompt: "Select Country"}, {:class => "form-control", style: "background-color: #eee;"} %>
             </span>
             <div class="clearfix"></div>
           </div>

@@ -10,7 +10,10 @@ module ApplicationHelper
 	def publisher_names
 		@publishers = Publisher.order('publisher_name').all
 	end
-	def country_name
+	def country 
 		@country = Country.order('country_name').all
+	end
+	def country_name(country_code)
+ 		@country_name = Country.find_by_country_code(country_code).country_name		
 	end
 end

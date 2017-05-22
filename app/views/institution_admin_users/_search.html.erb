@@ -1,72 +1,71 @@
 <div class="row" id="searchResultGrid">
-  <div class="col-md-12">
-    <div class="mt10 table-demo">Search Result
-    	<span class="pull-right">
-	      <div class="dropdown">
-	        <ul class="nav">
-	          <li class="drop"><i style="cursor: pointer;width: 12px;" class="fa fa-ellipsis-v" aria-hidden="true"></i>
-	            <ul class="dropdown-menu-right">
-	              <li><a href="#"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</a></li>
-	              <li><a href="#"> <i class="fa fa-file-o" aria-hidden="true"></i> CSV</a></li>
-	              <li><a href="#"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a></li>
-	            </ul>
-	          </li>
-	        </ul>
-	      </div>
-      </span>
-    </div>
-    <div class="table-responsive">
-      <table class="table table-bordered">
-        <thead>
-          <tr style="font-size:13px">
-            <th>Contact Name</th>
-            <th>Email Id</th>
-            <th>Status</th>
-            <th>User Name</th>
-						<th>User Role</th>
-            <th>Institution Name</th>
-		 				<th></th>
-          </tr>
-        </thead>
-        <tbody>
+	<div class="col-md-12">
+	    <div class="mt10 table-demo">Search Result
+	    	<span class="pull-right">
+		      <div class="dropdown">
+		        <ul class="nav">
+		          <li class="drop"><i style="cursor: pointer;width: 12px;" class="fa fa-ellipsis-v" aria-hidden="true"></i>
+		            <ul class="dropdown-menu-right">
+		              <li><a href="#"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</a></li>
+		              <li><a href="#"> <i class="fa fa-file-o" aria-hidden="true"></i> CSV</a></li>
+		              <li><a href="#"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a></li>
+		            </ul>
+		          </li>
+		        </ul>
+		      </div>
+	      </span>
+	    </div>
+	    <div class="table-responsive">
+	        <table class="table table-bordered">
+		        <thead>
+		          <tr style="font-size:13px">
+		            <th>Contact Name</th>
+		            <th>Email Id</th>
+		            <th>Status</th>
+		            <th>User Name</th>
+					<th>User Role</th>
+		            <th>Institution Name</th>
+		           </tr>
+		        </thead>
+		        <tbody>
 					<% if @result.present? %>
-					<% @result.each do |f| %>
-					 	<%if f.status == "active"%>
-						 	<tr class="backgroundcolor">
-									<td  class="tabledata"><%= f.first_name%>&nbsp<%= f.last_name %></td>
+						<% @result.each do |f| %>
+						 	<%if f.status == "active"%>
+							 	<tr class="backgroundcolor">
+										<td  class="tabledata"><%= f.first_name%>&nbsp<%= f.last_name %></td>
+										<td  class="tabledata"><%= f.email %></td>
+										<td  class="tabledata"><%= f.status %></td>
+										<td  class="tabledata"><%= f.user_name %></td>
+										<td  class="tabledata" ><%= f.role %></td>
+										<td  class="tabledata"><%= f.institution_name %></td>
+											<td  class="tabledata">
+											<%= link_to image_tag("institution.png" , title: "User Details") , edit_institution_admin_user_path(f)%>
+										</td>
+								</tr>
+							<% else %>
+								<tr>
+									<td  class="tabledata"><%= f.first_name %></td>
 									<td  class="tabledata"><%= f.email %></td>
 									<td  class="tabledata"><%= f.status %></td>
-									<td  class="tabledata"><%= f.user_name %></td>
-									<td  class="tabledata" ><%= f.role %></td>
+									<td  class="tabledata"><% f.user_name %></td>
+									<td  class="tabledata" ><% f.role %></td>
 									<td  class="tabledata"><%= f.institution_name %></td>
- 									<td  class="tabledata">
-										<%= link_to image_tag("institution.png" , title: "User Details") , edit_institution_admin_user_path(f)%>
+									<td  class="tabledata">
+										<%= link_to image_tag("institution.png", title: "User Details"), edit_institution_admin_user_path(f)%>
 									</td>
-							</tr>
-						<% else %>
-							<tr>
-								<td  class="tabledata"><%= f.first_name %></td>
-								<td  class="tabledata"><%= f.email %></td>
-								<td  class="tabledata"><%= f.status %></td>
-								<td  class="tabledata"><% f.user_name %></td>
-								<td  class="tabledata" ><% f.role %></td>
-								<td  class="tabledata"><%= f.institution_name %></td>
-								<td  class="tabledata">
-									<%= link_to image_tag("institution.png", title: "User Details"), edit_institution_admin_user_path(f)%>
-								</td>
-							</tr>
-						<% end %>
-					<%end%>
-				<% else %>
-					<tr>
-						<td >
-							Records not found
-						</td>
-					</tr>
-				<% end %>	
-    		</tbody>
-      </table>
-    </div>
-  </div>
-  <div class="col-sm-12"> </div>
+								</tr>
+							<% end %>
+						<%end%>
+					<% else %>
+						<tr>
+							<td >
+								Records not found
+							</td>
+						</tr>
+					<% end %>	
+		    	</tbody>
+	        </table>
+	    </div>
+	</div>
+	<div class="col-sm-12"> </div>
 </div>

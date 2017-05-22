@@ -24,8 +24,7 @@
       </ol>
 
       <h2 class="H2-L1">Create Admin Users</h2>
-      <h6>All <sup class="mandatory">*</sup> are mandatory</h6>
-      <%= form_for(:admin_user, url: admin_users_path) do |f| %>
+       <%= form_for(:admin_user, url: admin_users_path) do |f| %>
         <div class="col-md-6">
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Publisher<sup class="mandatory">*</sup> </label>
@@ -75,7 +74,8 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Country<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-             <%= f.select 'country_code',options_from_collection_for_select(Country.all.order('country_name asc'), 'country_code', 'country_name'),{:required => true, :prompt => "please select"},{:class => "form-control"} %>
+              <%= f.select 'country_code',options_from_collection_for_select(country, 'country_code', 'country_name'),{:required => true, :prompt => "please select"},{:class => "form-control"} %>
+              
             </span> 
             <div class="clearfix"></div>
           </div>

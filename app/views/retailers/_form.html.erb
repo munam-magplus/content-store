@@ -1,17 +1,17 @@
- <h2 class="H2-L1">Create Retailers</h2>
+ <h2 class="H2-L1">CrPAeate Retailers</h2>
 <%= form_for(:retailer, url: retailers_path ,  :class => "form-horizontal form-bg", :html => {:id => "form"}, remote: true)  do |f| %>
   <div class="col-md-6">
     <div class="form-group">
-      <label for="taskName" class="col-sm-4 control-label">Retailer Code</label>
+      <label for="taskName" class="col-sm-4 control-label">Retailer Code<sup class="mandatory">*</sup></label>
       <div class="col-sm-8">
-        <%= f.text_field :retailer_code,:class => "form-control"  %>
+        <%= f.text_field :retailer_code,:placeholder => "Retailer Code",required: true,:class => "form-control"  %>
       </div>
       <div class="clearfix"></div>
     </div>
   </div>
   <div class="col-md-6">
     <div class="form-group">
-      <label for="bookISBN" class="col-sm-4 control-label">Retailer Name</label>
+      <label for="bookISBN" class="col-sm-4 control-label">Retailer Name<sup class="mandatory">*</sup></label>
       <span class="col-sm-8">
       <%= f.text_field :retailer_name, :value => @publisher.publisher_code, :class => "form-control", readonly: true  %>
       </span> 
@@ -20,7 +20,7 @@
   </div>
   <div class="col-md-6">
     <div class="form-group">
-      <label for="bookISBN" class="col-sm-4 control-label">Publisher Id</label>
+      <label for="bookISBN" class="col-sm-4 control-label">Publisher Id<sup class="mandatory">*</sup></label>
       <span class="col-sm-8">
       <%= f.text_field :publisher_id , :value => @publisher.id ,:class => "form-control", readonly: true %>
       </span>
@@ -29,27 +29,27 @@
   </div>
   <div class="col-md-6">
     <div class="form-group">
-      <label for="bookISBN" class="col-sm-4 control-label">Low IP</label>
+      <label for="bookISBN" class="col-sm-4 control-label">Low IP<sup class="mandatory">*</sup></label>
       <span class="col-sm-8">
-      <%= f.text_field :low_ip ,:class => "form-control" %>
+      <%= f.text_field :low_ip, :placeholder => "Low IP", required: true ,:class => "form-control" %>
       </span>
       <div class="clearfix"></div> 
     </div>
   </div>
   <div class="col-md-6">
     <div class="form-group">
-      <label for="bookISBN" class="col-sm-4 control-label">High IP</label>
+      <label for="bookISBN" class="col-sm-4 control-label">High IP<sup class="mandatory">*</sup></label>
       <span class="col-sm-8">
-      <%= f.text_field :high_ip ,:class => "form-control" %>
+      <%= f.text_field :high_ip, :placeholder => "High IP", required: true ,:class => "form-control" %>
       </span>
       <div class="clearfix"></div>
     </div>
   </div>
   <div class="col-md-6">
     <div class="form-group">
-      <label for="bookISBN" class="col-sm-4 control-label">IP List</label>
+      <label for="bookISBN" class="col-sm-4 control-label">IP List<sup class="mandatory">*</sup></label>
       <span class="col-sm-8">
-      <%= f.text_field :ip_list ,:class => "form-control" %>
+      <%= f.text_field :ip_list, :placeholder => "IP List", required: true ,:class => "form-control" %>
       </span> 
       <div class="clearfix"></div>
     </div>

@@ -184,8 +184,7 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">Country<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <% country_name %>
-              <%=  builder.select "country_code", options_from_collection_for_select(@country, "country_code", "country_name"),{prompt: "Select Country"}, {:class => "form-control", style: "background-color: #eee;"} %>
+               <%=  builder.select "country_code", options_from_collection_for_select(country, "country_code", "country_name"),{prompt: "Select Country"}, {:class => "form-control", style: "background-color: #eee;"} %>
             </span>
             <div class="clearfix"></div>
           </div>

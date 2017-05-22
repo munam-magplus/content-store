@@ -40,9 +40,9 @@
           <label for="Publisher" class="col-sm-5 control-label">Member Publisher Code<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
             <%if @member_publisher.new_record?%>
-              <%= f.text_field :member_publisher_code ,:required => true,  :class => "form-control" %>
+              <%= f.text_field :member_publisher_code ,:required => true,:placeholder => "Member Publisher Code",  :class => "form-control" %>
             <%else%>
-              <%= f.text_field :member_publisher_code ,:required => true, :class => "form-control",disabled: true %>
+              <%= f.text_field :member_publisher_code ,:required => true,:placeholder => "Member Publisher Code", :class => "form-control",disabled: true %>
             <%end%>
           </div>
           <div class="clearfix"></div>
@@ -51,9 +51,9 @@
           <label for="PublisherName" class="col-sm-5 control-label">Member Publisher Name<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
             <%if @member_publisher.new_record?%>
-              <%= f.text_field :member_publisher_name ,:required => true, :class => "form-control" %>
+              <%= f.text_field :member_publisher_name ,:required => true,:placeholder => "Member Publisher Name", :class => "form-control" %>
             <%else%>
-              <%= f.text_field :member_publisher_name , :class => "form-control",disabled: true %>
+              <%= f.text_field :member_publisher_name,:placeholder => "Member Publisher Name", :class => "form-control",disabled: true %>
             <%end%>
           </div>
           <div class="clearfix"></div>
@@ -68,49 +68,49 @@
        <div class="col-md-6"><div class="form-group">
           <label for="DefaultEndUserLanguage" class="col-sm-5 control-label">Publisher Borrow Period (in days)</label>
           <div class="col-sm-7">
-            <%= f.text_field :publisher_borrow_period, :class => "form-control" %>
+            <%= f.text_field :publisher_borrow_period,:placeholder => "Publisher Borrow Period", :class => "form-control" %>
           </div>
           <div class="clearfix"></div>
         </div></div>
         <div class="col-md-6"><div class="form-group">
             <label for="ContactFirstName" class="col-sm-5 control-label">Contact First Name<sup class="mandatory">*</sup></label>
             <div class="col-sm-7">
-              <%= f.text_field :contact_first_name,:required => true, :class => "form-control" %>
+              <%= f.text_field :contact_first_name,:required => true,:placeholder => "Contact First Name ", :class => "form-control" %>
             </div>
             <div class="clearfix"></div>
          </div></div>
           <div class="col-md-6"><div class="form-group">
            <label for="ContactlastName" class="col-sm-5 control-label">Contact Last Name<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
-                <%= f.text_field :contact_last_name,:required => true, :class => "form-control" %>
+                <%= f.text_field :contact_last_name,:required => true,:placeholder => "Contact Last Name ", :class => "form-control" %>
           </div>
           <div class="clearfix"></div>
         </div></div>
         <div class="col-md-6"><div class="form-group">
           <label for="ContactEmail" class="col-sm-5 control-label">Contact Email</label>
           <div class="col-sm-7">
-               <%= f.email_field :contact_email, :class => "form-control" %>
+               <%= f.email_field :contact_email,:placeholder => "Contact Email", :class => "form-control" %>
           </div>
           <div class="clearfix"></div>
         </div></div>
         <div class="col-md-6"><div class="form-group">
-          <label for="DefaultManagerLanguage" class="col-sm-5 control-label">Revenue share percentage*<sup class="mandatory">*</sup></label>
+          <label for="DefaultManagerLanguage" class="col-sm-5 control-label">Revenue share percentage<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
-             <%= f.text_field :revenue_share_percentage,:required => true, :class => "form-control"%>
+             <%= f.text_field :revenue_share_percentage,:required => true,:placeholder => "Revenue share percentage",  :class => "form-control"%>
           </div>
           <div class="clearfix"></div>
         </div></div>
         <div class="col-md-6"><div class="form-group">
           <label for="DefaultManagerLanguage" class="col-sm-5 control-label">Member Publisher Logo</label>
           <div class="col-sm-7">
-             <%= f.file_field :member_publisher_logo, :class => "form-control"%>
+             <%= f.file_field :member_publisher_logo,:placeholder => "Member Publisher Logo", :class => "form-control"%>
           </div>
         </div></div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="taskName" class="col-sm-5 control-label">Country<sup class="mandatory">*</sup> </label>
             <div class="col-sm-7">
-              <%= f.select 'country_code',options_from_collection_for_select(country_name, 'country_code', 'country_name'),{ :prompt => "please select"},{:class => "form-control"} %>
+              <%= f.select 'country_code',options_from_collection_for_select(country , 'country_code', 'country_name'),{ :prompt => "please select"},{:class => "form-control"} %>
             </div>
           </div>
         </div> 

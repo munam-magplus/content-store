@@ -43,7 +43,7 @@
 									</td>
 									<td class="tabledata"><%= f.library_name %></td>
 									<td class="tabledata">
-										<%= f.institution_account_billing_address.country_code %>
+										<%= country_name(f.institution_account_billing_address.country_code)%>
 									</td>
 									<td class="tabledata">
 											<%= link_to (f.institution_account_billing_address.first_name + f.institution_account_billing_address.last_name), edit_institution_account_path(f.id) %>
@@ -75,7 +75,7 @@
 									</td>
 									<td class="tabledata"><%= f.library_name %></td>
 									<td class="tabledata">
-										<%=  f.institution_account_billing_address.country_code  %>				
+										<%= country_name(f.institution_account_billing_address.country_code)%>			
 									</td>
 									<td class="tabledata">
 											<%= link_to (f.institution_account_billing_address.first_name +  f.institution_account_billing_address.last_name), edit_institution_account_path(f.id) %>
