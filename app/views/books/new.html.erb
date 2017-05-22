@@ -1,504 +1,522 @@
 <html>
-<head>
-<title>Content Store :: Create New Book  </title>
-<!-- Latest compiled and minified CSS -->
-  <!-- Header -->
-    <%= render :partial => "layouts/top_header"%>
-  <!-- Header Ends --> 
-</head>
+	<head>
+		<title>Content Store :: Create New Book</title>
+		<!-- Latest compiled and minified CSS -->
+	  <!-- Header -->
+	  <%= render :partial => "layouts/top_header"%>
+	  <!-- Header Ends --> 
+	</head>
 <body>
 <!-- Aside Start-->
-    <%= render :partial => "layouts/sidebar"%>
-    <!-- Aside Ends-->
+<%= render :partial => "layouts/sidebar"%>
+<!-- Aside Ends-->
 <!--Main Content Start -->
 <section class="content"> 
   <!-- Page Content Start --> 
   <!-- ================== -->
   <div class="wrapper container-fluid">
-  <ol class="breadcrumb">
-       <li><a href="#">Home</a></li>
-	   <li><a href="#">Content Conversion</a></li>
-	   <li><a href="#" class="active">Create New Book</a></li>
-      </ol>
+	  <ol class="breadcrumb">
+	    <li><a href="#">Home</a></li>
+		  <li><a href="#">Content Conversion</a></li>
+		  <li><a href="#" class="active">Create New Book</a></li>
+		</ol>
     <h2 class="H2-L1">Create New Book</h2>
-                    <div id="accordion" class="checkout">
-					<div class="clearfix"></div>
-                        <div class="panel checkout-step">
-                            <div> <span class="checkout-step-number">1</span>
-                                <h4 class="checkout-step-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="" > Primary Content Information</a></h4>
-                            </div>
-							
-                            <div id="collapseOne" class="collapse in">
-                                <div class="checkout-step-body">
-              <%= form_for(@book, url: {:controller => "books",action: "create"}, remote: true) do |f| %>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-										  <label class="control-label col-sm-4" for="email">Content Code</label>
-										  <div class="col-sm-8">
-											<%= f.text_field :content_code, :class => "form-control", :placeholder => "Content Code" %>
-										  </div>
-										  <div class="clearfix"></div>
-										</div>
-									</div>
-									
-									<div class="col-md-6">
-										<div class="form-group">
-										  <label class="control-label col-sm-4" for="email">Publisher</label>
-										  <div class="col-sm-8">
-												<%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'),{ :prompt => "select publisher"},{:class => "form-control"} %>	  
-										  </div>
-										  <div class="clearfix"></div>
-										</div>
-									</div>
-									
-									<div class="col-md-6">
-										<div class="form-group">
-										  <label class="control-label col-sm-4" for="email">Title<sup class="mandatory">*</sup></label>
-										  <div class="col-sm-8">
-											<%= f.text_field :book_title, :class => "form-control", :placeholder => "Title" %>
-										  </div>
-										  <div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										  <label class="control-label col-sm-4" for="email">Sub Title</label>
-										  <div class="col-sm-8">
-											<%= f.text_field :subject_title, :class => "form-control", :placeholder => "Sub Title" %>
-										  </div>
-										  <div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										  <label class="control-label col-sm-4" for="email">ISBN<sup class="mandatory">*</sup></label>
-										  <div class="col-sm-8">
-											<%= f.text_field :isbn, :class => "form-control", :placeholder => "ISBN" %>
-										  </div>
-										  <div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										  <label class="control-label col-sm-4" for="email">Language<sup class="mandatory">*</sup></label>
-										  <div class="col-sm-8">
-										  	<%= f.select 'language',options_for_select([
-				                                  ['Dansk', 'dansk'],
-				                                  ['Polish', 'polish'],
-				                                  ['Latvian', 'latvin'],
-				                                  ['English', 'english']]),{ :prompt => "Please select"},{:class =>"form-control"} %>
-
-										  </div>
-										  <div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										  <label class="control-label col-sm-4" for="email">Content Classification </label>
-										  <div class="col-sm-8">
-										  	<%= f.select 'content_classification', options_for_select([ "Bestsellers", "Coming Soon", "Featured Books", "New Releases"]),{ :prompt => "Please select"},{:class =>"form-control"} %>
-										  </div>
-										  <div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										  <label class="control-label col-sm-4" for="email">File Name<sup class="mandatory">*</sup> </label>
-										  <div class="col-sm-8">
-										  	<%= f.text_field :file_name, :class => "form-control", :placeholder => "File Name" %>
-										  </div>
-										  <div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										  <label class="control-label col-sm-4" for="email">Stock Number<sup class="mandatory">*</sup> </label>
-										  <div class="col-sm-8">
-										  	<%= f.text_field :stock_number, :class => "form-control", :placeholder => "Stock Number" %>
-										  </div>
-										  <div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										  <label class="control-label col-sm-4" for="email">Publisher Site Sales Link  </label>
-										  <div class="col-sm-8">
-										  	<%= f.text_field :publisher_site_sales_link, :class => "form-control", :placeholder => "Publisher Site Sales Link" %>
-										  </div>
-										  <div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-										  <label class="control-label col-sm-2" for="email">Blurb</label>
-										  <div class="col-sm-10">
-											 <%= f.text_area :book_blurb, cols: "10", rows: "5", :class => "form-control" %>
-										  </div>
-										  <div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										  <label class="control-label col-sm-4" for="email">Publication Date  </label>
-										  <div class="col-sm-8">
-											 <div class="input-group date" id="datetimepicker1">
-												<%= f.text_field :publication_date, :class => "form-control", :id=> "from", :placeholder => "DD/MM/YYYY" %>
-											  </div>
-											  <div class="clearfix"></div>
-										  </div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										  <label class="control-label col-sm-4" for="email">Conversion Required </label>
-										  <div class="col-sm-8">
-										  	<%= f.select 'conversion_required', options_for_select([ "Yes", "No"]),{ :prompt => "Please select"},{:class =>"form-control" , style: "background-color: #eee;"} %>
-										  </div>
-										  <div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										  <label class="control-label col-sm-4" for="email">Edition</label>
-										  <div class="col-sm-8">
-										  	<%= f.text_field :edition, :class => "form-control", :placeholder => "Edition" %>
-										  </div>
-										  <div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										  <label class="control-label col-sm-4" for="email">Binding</label>
-										  <div class="col-sm-8">
-										  	<%= f.select 'binding', options_for_select([ "Board book", "Audio", "Audio cassette", "CD-Audio", "DAT", "Audio disc", "Audio tape", "MiniDisc", "CD-Extra", "DVD Audio", "Downloadable audio file", "Other audio format", "Book", "Hardback", "Paperback"]),{ :prompt => "Please select"},{:class =>"form-control" , style: "background-color: #eee;"} %>
-										  </div>
-										  <div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										  <label class="control-label col-sm-4" for="email">Volume</label>
-										  <div class="col-sm-8">
-										  	<%= f.text_field :volume, :class => "form-control", :placeholder => "Volume" %>
-										  </div>
-										  <div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										  <label class="control-label col-sm-4" for="email">Dimensions</label>
-										  <div class="col-sm-8">
-										  	<%= f.text_field :dimension, :class => "form-control", :placeholder => "Dimensions" %>
-										  </div>
-										  <div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										  <label class="control-label col-sm-4" for="email">Series ISBN</label>
-										  <div class="col-sm-8">
-										  	<%= f.text_field :series_isbn, :class => "form-control", :placeholder => "Series ISBN" %>
-										  </div>
-										  <div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										  <label class="control-label col-sm-4" for="email">Series Title</label>
-										  <div class="col-sm-8">
-										  	<%= f.text_field :series_title, :class => "form-control", :placeholder => "Series Title" %>
-										  </div>
-										  <div class="clearfix"></div>
-										</div>
-									</div>
-							</div>
-                                   <!--Next  Button -->
+    <div id="accordion" class="checkout">
+			<div class="clearfix"></div>
+      <div class="panel checkout-step">
+      	<span class="checkout-step-number">1</span>
+      	<h4 class="checkout-step-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="" > Primary Content Information</a></h4>
+      </div>
+      <div id="collapseOne" class="collapse in">
+        <div class="checkout-step-body">
+          <%= form_for(@book, url: {:controller => "books",action: "create"}, remote: true) do |f| %>
+						<div class="row">
+							<div class="col-md-6">
 								<div class="form-group">
-									<div class="col-md-12">
-										<%= button_tag fa_icon("save", text: "Save And Continue"), :class => "btn btn-sm", type: :submit %>
-						<% end %>
-										</span>
+									<label class="control-label col-sm-4" for="email">Content Code</label>
+									<div class="col-sm-8">
+										<%= f.text_field :content_code, :class => "form-control", :placeholder => "Content Code" %>
 									</div>
+								  <div class="clearfix"></div>
 								</div>
-                                </div>
-                            </div>
-                        </div>
-						<div class="clearfix"></div>
-                        <div class="panel checkout-step">
-                            <div role="tab" id="headingTwo"> <span class="checkout-step-number">2</span>
-                                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href= "" > Contributor's Information </a> </h4>
-                            </div>
-                            <div id="collapseTwo" class="panel-collapse collapse">
-                                <div class="checkout-step-body">
-                                    <div class="checout-address-step">
-                                        <div class="row">
-                                                <div class="table-responsive" style="overflow-x: inherit;">
-												  <table class="table table-bordered" id="participantTable">
-													<thead>
-													  <tr>
-														
-														<th>Role<sup class="mandatory">*</sup></th>
-														<th>Name<sup class="mandatory">*</sup></th>
-														<th>Description</th>
-														<th> 	Date of Birth</th>
-														<th>Date of Death </th>
-														<th>Professional Position</th>
-														 <th>Professional Affiliation</th>
-														 <th>Website</th>
-														 <th> 	Website Description</th>
-														 <th>Action</th>
-													  </tr>
-													</thead>
-													<tbody>
-												<%= form_for(@book_contributor, url: {:controller => "books", action: "create"}, remote: true) do |f| %>
-													<tr class="participantRow">  
-													  <td >
-													  	<%= f.select 'contributor_role', options_for_select([ "By (author)", "Screenplay by", "Libretto by", "Lyrics by", "By (composer)", "By (artist)", "By (photographer)", "From an idea by", "Designed by", "Photographs by", "Text by", "Preface by", "Prologue by", "Summary by", "Supplement by", "Afterword by", "Notes by", "Commentaries by", "Foreword by", "Introduction by", "Footnotes by", "Memoir by", "Software written by"]),{ :prompt => "Please select"},{:class =>"form-control" ,:id =>"contributor_role" ,style: "background-color: #eee;"} %></select></td>
-													  <td ><%= f.text_field :first_name , :placeholder => "Enter Name", :class => "form-control",:id =>"first_name" %> <%= f.text_field :last_name , :placeholder => "Enter Name", :class => "form-control",:id =>"last_name" %></td>
-													  <td ><%= f.text_area :description, :class => "form-control", :placeholder => "Description",:id =>"description" %> </td>
-													  <td ><div class="input-group date datetimepicker3" >
-													  		<%= f.text_field :date_of_birth , :class => "form-control",:id => 'date_of_birth' %>
-															  </div>                 
-													 </td>
-													  <td ><div class="input-group date " id="datetimepicker2">
-													  		<%= f.text_field :date_of_death , :class => "form-control",:id => 'date_of_death' %>
-															  </div> </td>
-													  <td ><%= f.text_field :professional_position, :placeholder => "Position",:id => 'professional_position', :class => "form-control" %></td>
-													  <td ><%= f.text_field :professional_affiliation, :placeholder => "Affiliation", :id => 'professional_affiliation', :class => "form-control" %></td>
-													  <td><%= f.text_field :website, :placeholder => "Website", :id => 'website', :class => "form-control" %></td>
-													  <td><%= f.text_area :website_description, :class => "form-control",:id => 'website_description', :placeholder => "Description" %></td>
-													  <td><a class=" remove" href="javascript:;" ><i class="fa fa-trash-o" ></i></a></td>
-													</tr> 
-													</tbody>
-												  </table>
-												</div>                        
-                        <!-- Button -->
-                        <div class="col-md-12 nopadding">
-                        <% end %>
-                        <%= button_tag fa_icon("save", text: "Save And Continue"), :class => "btn btn-sm", id: :submit_contributers %>
-														<span class="pull-right" id="addButtonRow">
-															<button class="btnBlack btn btn-sm add" type="button">Add</button>
-														</span>
-                                                    </div>
-                                        </div>
-                                    </div>
-                                  
-                                </div>
-                            </div>
-                        </div>
-						<div class="clearfix"></div>
-                        <div class="panel checkout-step">
-                            <div role="tab" id="headingThree"> <span class="checkout-step-number">3</span>
-                                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href=""  > Content Pricing Information </a> </h4>
-                            </div>
-                            <div id="collapseThree" class="panel-collapse collapse">
-                                <div class="checkout-step-body">
-								<h4>Content Format</h4>
-                                      <div class="table-responsive" style="overflow-x: inherit;">
-												  <table class="table table-bordered" id="participantTable1">
-													<thead>
-													  <tr>
-														<th>Format </th>
-														<th>ISBN<sup class="mandatory">*</sup></th>
-														<th>DOI</th>
-														<th>Weight</th>
-														 <th>Action</th>
-													  </tr>
-													</thead>
-													<tbody>
-										<%= form_for(:books_content_pricing, url: {:controller => "books",action: "create"}, remote: true) do |f| %>
-													<tr class="participantRows">
-														  <td><%= f.select 'format', options_for_select([ "AER", "PRC", "LIT", "ONL", "PDF", "EXT", "OEB", "WMA", "AAC", "HB", "PB", "EPUB", "CD", "EP"]),{ :prompt => "Please select"},{:class =>"form-control" , :id => "format", style: "background-color: #eee;"} %></td>
-														   <td><%= f.text_field :isbn, :class => "form-control", :id => "isbn",:placeholder => "ISBN" %></td>
-														   <td><%= f.text_field :date_of_issue, :class => "form-control",:id => "date_of_issue", :placeholder => "DOI" %></td>
-														   <td><%= f.text_field :weight, :class => "form-control", :id => "weight",:placeholder => "Weight" %></td>
-														  <td><a class=" remove" href="javascript:;" ><i class="fa fa-trash-o" ></i></a></td>
-														</tr>
-													</tbody>
-												  </table>
-												</div>
-												<div class="col-md-12 nopadding" >
-													<h4>Base Online Access</h4>
-													<div class="form-group">
-														<label class="col-md-2">Watermarked DRM</label>
-														<label class="radio-inline"><input type="radio" name="watermark_drm" value="Yes" checked =true>Yes </label>
-														<label class="radio-inline"><input type="radio" name="watermark_drm" value="No"> No</label>
-														<div class="clearfix"></div>
-													</div>
-													<div class="form-group">
-														<label class="col-md-2">External DRM</label>
-														<label class="radio-inline"><input type="radio" name="external_drm" value="Yes" checked =true>Yes </label>
-														<label class="radio-inline"><input type="radio" name="external_drm" value="No" checked =true> No</label>
-													</div>
-												</div>
-										<% end %>
-									<!-- Button -->
-                <div class="form-group">
-									<div class="col-md-12">
-										<%= button_tag fa_icon("save", text: "Save And Continue"), :class => "btn btn-sm", id: :submit_pricing_info %>
-										</span>
-									</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  <label class="control-label col-sm-4" for="email">Publisher<sup class="mandatory">*</sup></label>
+								  <div class="col-sm-8">
+										<%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'),{ :prompt => "Select Publisher"},{required: true, :class => "form-control", style: "background-color: #eee;"} %>	  
+								  </div>
+								  <div class="clearfix"></div>
 								</div>
-														<span class="pull-right" id="addButtonRow">
-															<button class="btnBlack btn btn-sm adds" type="button">Add</button>
-														</span>
-                                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>
-						<div class="clearfix"></div>
-                        <div class="panel checkout-step">
-                            <div role="tab" id="headingFour"> <span class="checkout-step-number">4</span>
-                                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href=""  > Content Access Rules </a> </h4>
-                            </div>
-                            <div id="collapseFour" class="panel-collapse collapse">
-                                <div class="checkout-step-body">
-                            <%= form_for :book_content_access_rule ,url: {:controller => "books",action: "create"}, remote: true do |f| %>
-								<div class="row">
-								<div class="col-md-6">
-										<div class="form-group">
-										<label class="col-md-4">Territorial List Type</label>
-										<div class="col-md-8">
-											<%= f.select 'territorial_list_type', options_for_select([ "INC", "EXC"]),{ :prompt => "Please select"},{:class =>"form-control" , style: "background-color: #eee;"} %>
-										</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										<label class="col-md-4">Territorial List</label>
-										<%= f.text_area :territorial_list %>
-										</div>
-									</div>
-									<div class="col-md-12"><h4>ContentStore Viewing Rules</h4></div>
-									<div class="col-md-6">
-										<div class="form-group">
-										<label class="col-md-4">Landing Page</label>
-										<div class="col-md-8">
-											<%= f.text_area :landing_page %>
-										</div>
-										<div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										<label class="col-md-4">Viewability Percentage</label>
-										<div class="col-md-8">
-											<%= f.text_area :viewability_percentage %>
-										</div>
-										<div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										<label class="col-md-4">Exclude Pages from Display</label>
-										<div class="col-md-8">
-											<%= f.text_area :exclude_pages_from_display %>
-										</div>
-										<div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										<label class="col-md-4">Total Free Page Before Purchase</label>
-										<div class="col-md-8">
-											<%= f.text_area :total_free_pages_before_purchase %>
-										</div>
-										<div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										<label class="col-md-4">Total Free Page Before Login</label>
-										<div class="col-md-8">
-											<%= f.text_field :total_free_page_before_login, :class => "form-control"%>
-										</div>
-										<div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="col-md-12">
-										<h4>Book Search Index Rules</h4>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										<label class="col-md-4">Exclude Pages from External Index</label>
-										<div class="col-md-8">
-											<%= f.text_field :exclude_pages_from_external_index, :class => "form-control" %>
-										</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										<label class="col-md-4">Percentage of Pages or Actual Pages Index-able</label>
-										<div class="col-md-8">
-											<%= f.text_field :actual_pages_indexable, :class => "form-control" %>
-										</div>
-										</div>
-									</div>
-									<div class="col-md-12"><h4>ContentStore Search Partner Rules</h4></div>
-									<div class="col-md-6">
-										<div class="form-group">
-										<label class="col-md-4">Percentage of Pages or Actual Browsable Pages</label>
-										<div class="col-md-8">
-											<%= f.text_field :actual_browsable_pages, :class => "form-control" %>
-										</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										<label class="col-md-4">Percentage of Pages or Actual Printable Pages</label>
-										<div class="col-md-8">
-											<%= f.text_field :actual_printable_pages, :class => "form-control" %>
-										</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-										<label class="col-md-4">Percentage of Pages or Actual Allowed Copying Pages</label>
-										<div class="col-md-8">
-											<%= f.text_field :actual_allowed_copying_pages, :class => "form-control" %>
-										</div>
-										</div>
-									</div>
-									<div class="col-md-12"><h4>Related Content</h4></div>
-									<div class="col-md-6">
-										<div class="form-group">
-										<label class="col-md-4">Internal Related Content</label>
-										<div class="col-md-8">
-											<%= f.text_field :internal_related_content, :class => "form-control" %>
-										</div>
-										</div>
-									</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  <label class="control-label col-sm-4" for="email">Title<sup class="mandatory">*</sup></label>
+								  <div class="col-sm-8">
+										<%= f.text_field :book_title, required: true,:class => "form-control", :placeholder => "Title" %>
+								  </div>
+								  <div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  <label class="control-label col-sm-4" for="email">Sub Title</label>
+								  <div class="col-sm-8">
+										<%= f.text_field :subject_title,:class => "form-control", :placeholder => "Sub Title" %>
+								  </div>
+								  <div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  <label class="control-label col-sm-4" for="email">ISBN<sup class="mandatory">*</sup></label>
+								  <div class="col-sm-8">
+										<%= f.text_field :isbn, required: true,:class => "form-control", :placeholder => "ISBN" %>
+								  </div>
+								  <div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  <label class="control-label col-sm-4" for="email">Language<sup class="mandatory">*</sup></label>
+								  <div class="col-sm-8">
+								  	<%= f.select 'language',options_for_select([
+		                                  ['Dansk', 'dansk'],
+		                                  ['Polish', 'polish'],
+		                                  ['Latvian', 'latvin'],
+		                                  ['English', 'english']]),{ :prompt => "Please Select"},{required: true, :class =>"form-control", style: "background-color: #eee;"} %>
+
+								  </div>
+								  <div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  <label class="control-label col-sm-4" for="email">Content Classification </label>
+								  <div class="col-sm-8">
+								  	<%= f.select 'content_classification', options_for_select([ "Bestsellers", "Coming Soon", "Featured Books", "New Releases"]),{ :prompt => "Please Select"},{:class =>"form-control", style: "background-color: #eee;"} %>
+								  </div>
+								  <div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  <label class="control-label col-sm-4" for="email">File Name<sup class="mandatory">*</sup> </label>
+								  <div class="col-sm-8">
+								  	<%= f.text_field :file_name, required: true, :class => "form-control", :placeholder => "File Name" %>
+								  </div>
+								  <div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  <label class="control-label col-sm-4" for="email">Stock Number</label>
+								  <div class="col-sm-8">
+								  	<%= f.text_field :stock_number, :class => "form-control", :placeholder => "Stock Number" %>
+								  </div>
+								  <div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  <label class="control-label col-sm-4" for="email">Publisher Site Sales Link  </label>
+								  <div class="col-sm-8">
+								  	<%= f.text_field :publisher_site_sales_link, :class => "form-control", :placeholder => "Publisher Site Sales Link" %>
+								  </div>
+								  <div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+								  <label class="control-label col-sm-2" for="email">Blurb</label>
+								  <div class="col-sm-10">
+										<%= f.text_area :book_blurb, cols: "10", rows: "5", :class => "form-control" %>
+								  </div>
+								  <div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  <label class="control-label col-sm-4" for="email">Publication Date  </label>
+								  <div class="col-sm-8">
+										<div class="input-group date" id="datetimepicker1">
+											<%= f.text_field :publication_date, :class => "form-control", :id=> "from", :placeholder => "DD/MM/YYYY" %>
+									  </div>
+									  <div class="clearfix"></div>
+								  </div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  <label class="control-label col-sm-4" for="email">Conversion Required </label>
+								  <div class="col-sm-8">
+								  	<%= f.select 'conversion_required', options_for_select([ "Yes", "No"]),{ :prompt => "Please Select"},{:class =>"form-control" , style: "background-color: #eee;"} %>
+								  </div>
+								  <div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  <label class="control-label col-sm-4" for="email">Edition</label>
+								  <div class="col-sm-8">
+								  	<%= f.text_field :edition, :class => "form-control", :placeholder => "Edition" %>
+								  </div>
+								  <div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  <label class="control-label col-sm-4" for="email">Binding</label>
+								  <div class="col-sm-8">
+								  	<%= f.select 'binding', options_for_select([ "Board book", "Audio", "Audio cassette", "CD-Audio", "DAT", "Audio disc", "Audio tape", "MiniDisc", "CD-Extra", "DVD Audio", "Downloadable audio file", "Other audio format", "Book", "Hardback", "Paperback"]),{ :prompt => "Please Select"},{:class =>"form-control" , style: "background-color: #eee;"} %>
+								  </div>
+								  <div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  <label class="control-label col-sm-4" for="email">Volume</label>
+								  <div class="col-sm-8">
+								  	<%= f.text_field :volume, :class => "form-control", :placeholder => "Volume" %>
+								  </div>
+								  <div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  <label class="control-label col-sm-4" for="email">Dimensions</label>
+								  <div class="col-sm-8">
+								  	<%= f.text_field :dimension, :class => "form-control", :placeholder => "Dimensions" %>
+								  </div>
+								  <div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  <label class="control-label col-sm-4" for="email">Series ISBN</label>
+								  <div class="col-sm-8">
+								  	<%= f.text_field :series_isbn, :class => "form-control", :placeholder => "Series ISBN" %>
+								  </div>
+								  <div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  <label class="control-label col-sm-4" for="email">Series Title</label>
+								  <div class="col-sm-8">
+								  	<%= f.text_field :series_title, :class => "form-control", :placeholder => "Series Title" %>
+								  </div>
+								  <div class="clearfix"></div>
+								</div>
+							</div>
+							<!--Next  Button -->
+							<div class="form-group">
 								<div class="col-md-12">
 									<%= button_tag fa_icon("save", text: "Save And Continue"), :class => "btn btn-sm", type: :submit %>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+    <div class="panel checkout-step">
+      <div role="tab" id="headingTwo">
+      	<span class="checkout-step-number">2</span>
+        <h4 class="checkout-step-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href= "" > Contributor's Information</a></h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse">
+        <div class="checkout-step-body">
+          <div class="checout-address-step">
+            <div class="row">
+              <div class="table-responsive" style="overflow-x: inherit;">
+							  <table class="table table-bordered" id="participantTable">
+									<thead>
+									  <tr>
+											<th>Role<sup class="mandatory">*</sup></th>
+											<th>Name<sup class="mandatory">*</sup></th>
+											<th>Description</th>
+											<th>Date of Birth</th>
+											<th>Date of Death</th>
+											<th>Professional Position</th>
+											<th>Professional Affiliation</th>
+											<th>Website</th>
+											<th>Website Description</th>
+											<th>Action</th>
+									  </tr>
+									</thead>
+									<tbody>
+										<%= form_for(@book_contributor, url: {:controller => "books", action: "create"}, remote: true) do |f| %>
+											<tr class="participantRow">  
+											  <td >
+											  	<%= f.select 'contributor_role', options_for_select([ "By (author)", "Screenplay by", "Libretto by", "Lyrics by", "By (composer)", "By (artist)", "By (photographer)", "From an idea by", "Designed by", "Photographs by", "Text by", "Preface by", "Prologue by", "Summary by", "Supplement by", "Afterword by", "Notes by", "Commentaries by", "Foreword by", "Introduction by", "Footnotes by", "Memoir by", "Software written by"]),{ :prompt => "Please select"},{:class =>"form-control" ,:id =>"contributor_role" ,style: "background-color: #eee;"} %>
+											  </td>
+											  <td ><%= f.text_field :first_name , :placeholder => "First Name", :class => "form-control",:id =>"first_name" %> <%= f.text_field :last_name , :placeholder => "Last Name", :class => "form-control",:id =>"last_name" %>
+											  </td>
+											  <td ><%= f.text_area :description, :class => "form-control", :placeholder => "Description",:id =>"description" %>
+											  </td>
+											  <td>
+											  	<div class="input-group date datetimepicker3" >
+											  		<%= f.text_field :date_of_birth, :placeholder => "DOB", :class => "form-control",:id => 'date_of_birth' %>
+													</div>                 
+											 	</td>
+											  <td >
+											  	<div class="input-group date " id="datetimepicker2">
+											  		<%= f.text_field :date_of_death, :placeholder => "DOD", :class => "form-control",:id => 'date_of_death' %>
+													</div>
+												</td>
+											  <td><%= f.text_field :professional_position, :placeholder => "Position",:id => 'professional_position', :class => "form-control" %>
+											  </td>
+											  <td><%= f.text_field :professional_affiliation, :placeholder => "Affiliation", :id => 'professional_affiliation', :class => "form-control" %>
+											  </td>
+											  <td><%= f.text_field :website, :placeholder => "Website", :id => 'website', :class => "form-control" %>
+											  </td>
+											  <td><%= f.text_area :website_description, :class => "form-control",:id => 'website_description', :placeholder => "Description" %>
+											  </td>
+											  <td><a class=" remove" href="javascript:;" ><i class="fa fa-trash-o" ></i></a></td>
+											</tr> 
+			      				<% end %>
+									</tbody>
+							  </table>
+							</div>                        
+				      <!-- Button -->
+				      <div class="col-md-12 nopadding">
+				      	<%= button_tag fa_icon("save", text: "Save And Continue"), :class => "btn btn-sm", id: :submit_contributers %>
+								<span class="pull-right" id="addButtonRow">
+									<button class="btnBlack btn btn-sm add" type="button">Add</button>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+    </div>
+		<div class="clearfix"></div>
+    <div class="panel checkout-step">
+      <div role="tab" id="headingThree">
+      	<span class="checkout-step-number">3</span>
+        <h4 class="checkout-step-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href=""  >Content Pricing Information</a></h4>
+      </div>
+			<%= form_for(:books_content_pricing, url: {:controller => "books",action: "create"}, remote: true) do |f| %>
+	      <div id="collapseThree" class="panel-collapse collapse">
+	        <div class="checkout-step-body">
+						<h4>Content Format</h4>
+	          <div class="table-responsive" style="overflow-x: inherit;">
+						  <table class="table table-bordered" id="participantTable1">
+								<thead>
+								  <tr>
+										<th>Format</th>
+										<th>ISBN</th>
+										<th>DOI</th>
+										<th>Weight</th>
+										<th>Action</th>
+								  </tr>
+								</thead>
+								<tbody>
+									<tr class="participantRows">
+									  <td><%= f.select 'format', options_for_select([ "AER", "PRC", "LIT", "ONL", "PDF", "EXT", "OEB", "WMA", "AAC", "HB", "PB", "EPUB", "CD", "EP"]),{ :prompt => "Please select"},{:class =>"form-control" , :id => "format", style: "background-color: #eee;"} %></td>
+									  <td><%= f.text_field :isbn, :class => "form-control", :id => "isbn",:placeholder => "ISBN" %></td>
+									  <td><%= f.text_field :date_of_issue, :class => "form-control",:id => "date_of_issue", :placeholder => "DOI" %></td>
+									  <td><%= f.text_field :weight, :class => "form-control", :id => "weight",:placeholder => "Weight" %></td>
+									  <td><a class=" remove" href="javascript:;" ><i class="fa fa-trash-o" ></i></a></td>
+									</tr>
+								</tbody>
+					  	</table>
+					  </div>
+						<div class="col-md-12 nopadding" >
+							<h4>Base Online Access</h4>
+							<div class="form-group">
+								<label class="col-md-2">Watermarked DRM</label>
+								<label class="radio-inline"><input type="radio" name="watermark_drm" value="Yes">Yes</label>
+								<label class="radio-inline"><input type="radio" name="watermark_drm" value="No"> No</label>
+								<div class="clearfix"></div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-2">External DRM</label>
+								<label class="radio-inline"><input type="radio" name="external_drm" value="Yes">Yes</label>
+								<label class="radio-inline"><input type="radio" name="external_drm" value="No"> No</label>
+	    					<div class="clearfix"></div>
+							</div>
+						</div>
+						<!-- Button -->
+					  <div class="col-md-12 nopadding">
+							<%= button_tag fa_icon("save", text: "Save And Continue"), :class => "btn btn-sm", id: :submit_pricing_info %>
+							<span class="pull-right" id="addButtonRow">
+								<button class="btnBlack btn btn-sm adds" type="button">Add</button>
+							</span>
+						</div>
+					</div>
+				</div>
+			<% end %>
+    	<div class="clearfix"></div>
+		</div>
+    <div class="panel checkout-step">
+      <div role="tab" id="headingFour">
+      	<span class="checkout-step-number">4</span>
+        <h4 class="checkout-step-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href=""  >Content Access Rules</a></h4>
+      </div>
+			<div class="clearfix"></div>
+      <div id="collapseFour" class="panel-collapse collapse">
+        <div class="checkout-step-body" style="padding-left: <%= 30 %>px;">
+      		<%= form_for :book_content_access_rule ,url: {:controller => "books",action: "create"}, remote: true do |f| %>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-md-4">Territorial List Type</label>
+									<div class="col-md-8">
+										<%= f.select 'territorial_list_type', options_for_select([ "INC", "EXC"]),{ :prompt => "Please Select"},{:class =>"form-control" , style: "background-color: #eee;"} %>
 									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-md-4">Territorial List</label>
+									<div class="col-md-8">
+										<%=  f.select "territorial_list", options_from_collection_for_select(country, "country_code", "country_name"),{prompt: "Select Country"}, {:class => "form-control", :multiple => true, style: "background-color: #eee;"} %>
 									</div>
-                                </div>
-                            </div>
-                        </div>
-                        <% end %>
-						<div class="clearfix"></div>
-                        <div class="panel checkout-step">
-                            <div role="tab" id="headingFour"> <span class="checkout-step-number">5</span>
-                                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href=""  > SEO Configuration </a> </h4>
-                            </div>
-                            <div id="collapsefive" class="panel-collapse collapse">
-                                <div class="checkout-step-body">
-                                    <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> Proccess to payment </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>         
-		 <div class="clearfix"></div>
-  </div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<h4>ContentStore Viewing Rules</h4>
+							</div>
+							<div class="clearfix"></div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-md-4">Landing Page</label>
+									<div class="col-md-8">
+										<%= f.text_field :landing_page, :class => "form-control", :placeholder => "Landing Page" %>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-md-4">Viewability Percentage</label>
+									<div class="col-md-8">
+										<%= f.text_field :viewability_percentage, :class => "form-control", :placeholder => "Viewability Percentage" %>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-md-4">Exclude Pages from Display</label>
+									<div class="col-md-8">
+										<%= f.text_field :exclude_pages_from_display, :class => "form-control", :placeholder => "Exclude Pages from Display" %>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-md-4">Total Free Page Before Purchase</label>
+									<div class="col-md-8">
+										<%= f.text_field :total_free_pages_before_purchase, :class => "form-control", :placeholder => "Total Free Page Before Purchase" %>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-md-4">Total Free Page Before Login</label>
+									<div class="col-md-8">
+										<%= f.text_field :total_free_page_before_login, :class => "form-control", :placeholder => "Total Free Page Before Login" %>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<h4>Book Search Index Rules</h4>
+							</div>
+							<div class="clearfix"></div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-md-4">Exclude Pages from External Index</label>
+									<div class="col-md-8">
+										<%= f.text_field :exclude_pages_from_external_index, :class => "form-control", :placeholder => "Exclude Pages from External Index" %>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-md-4">Percentage of Pages or Actual Pages Index-able</label>
+									<div class="col-md-8">
+										<%= f.text_field :actual_pages_indexable, :class => "form-control", :placeholder => "Actual Pages Index-able" %>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<h4>ContentStore Search Partner Rules</h4>
+							</div>
+							<div class="clearfix"></div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-md-4">Actual Browsable Pages</label>
+									<div class="col-md-8">
+										<%= f.text_field :actual_browsable_pages, :class => "form-control", :placeholder => "Actual Browsable Pages" %>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-md-4">Actual Printable Pages</label>
+									<div class="col-md-8">
+										<%= f.text_field :actual_printable_pages, :class => "form-control", :placeholder => "Actual Printable Pages" %>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-md-4">Actual Allowed Copying Pages</label>
+									<div class="col-md-8">
+										<%= f.text_field :actual_allowed_copying_pages, :class => "form-control", :placeholder => "Actual Allowed Copying Pages" %>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<%= button_tag fa_icon("save", text: "Save And Continue"), :class => "btn btn-sm", type: :submit %>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+	      	<% end %>
+	      </div>
+	    </div>
+	  </div>
+    <div class="panel checkout-step">
+      <div role="tab" id="headingFour">
+      	<span class="checkout-step-number">5</span>
+        <h4 class="checkout-step-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href=""  >SEO Configuration</a></h4>
+      </div>
+			<div class="clearfix"></div>
+      <div id="collapsefive" class="panel-collapse collapse">
+        <div class="checkout-step-body">
+          <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> Proccess to payment </a>
+        </div>
+      </div>
+			<div class="clearfix"></div>
+    </div>
+	</div>         
+	<div class="clearfix"></div>
   <!-- Page Content Ends --> 
   <!-- ================== --> 
   
   <!-- Footer Start -->
-    <%= render :partial => "layouts/footer" %>
+  <%= render :partial => "layouts/footer" %>
   <!-- Footer Ends --> 
 </section>
+</body>
+</html>
 
 <script type="text/javascript">
 	$("#submit_pricing_info").click(function(event){
@@ -574,5 +592,3 @@
 	 	}
 	});
 </script>
-</body>
-</html>

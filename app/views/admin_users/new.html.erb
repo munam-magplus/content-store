@@ -29,7 +29,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Publisher<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.select 'publisher_id',options_from_collection_for_select(publisher_names,'id', 'publisher_name'),{ :prompt => "Select Publisher"},{:class => "form-control", style: "background-color: #eee;"} %>
+              <%= f.select 'publisher_id',options_from_collection_for_select(publisher_names,'id', 'publisher_name'),{ :prompt => "Select Publisher"},{required: true, :class => "form-control", style: "background-color: #eee;"} %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -38,7 +38,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Email<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.email_field :email,:required => true, :class => "form-control", :placeholder => "Email" %>
+              <%= f.email_field :email, :required => true, :class => "form-control", :placeholder => "Email" %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -47,7 +47,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Password<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-            <%= f.password_field :password,:required => true, :class => "form-control", :placeholder => "Password" %>
+            <%= f.password_field :password, :required => true, :class => "form-control", :placeholder => "Password" %>
             </span> 
             <div class="clearfix"></div>
           </div>
@@ -56,7 +56,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">First Name<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-            <%= f.text_field :first_name,:required => true, :class => "form-control", :placeholder => "First Name" %>
+            <%= f.text_field :first_name, :required => true, :class => "form-control", :placeholder => "First Name" %>
             </span> 
             <div class="clearfix"></div>
           </div>
@@ -65,7 +65,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Last Name<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-            <%= f.text_field :last_name,:required => true, :class => "form-control", :placeholder => "Last Name" %>
+            <%= f.text_field :last_name, :required => true, :class => "form-control", :placeholder => "Last Name" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -74,7 +74,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Country<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= f.select 'country_code',options_from_collection_for_select(country, 'country_code', 'country_name'),{:required => true, :prompt => "please select"},{:class => "form-control"} %>
+              <%= f.select 'country_code',options_from_collection_for_select(country, 'country_code', 'country_name'),{:prompt => "Please Country"},{required: true, :class => "form-control", style: "background-color: #eee;"} %>
               
             </span> 
             <div class="clearfix"></div>
@@ -82,16 +82,16 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label"> Language * <sup class="mandatory">*</sup> </label>
+            <label for="taskName" class="col-sm-4 control-label"> Language<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-              <%= f.select 'language', options_for_select([ "Dansk", "Polish", "Latvian", "English"]),{ :prompt => "Select Language"},{:class =>"form-control", style: "background-color: #eee;" } %>
+              <%= f.select 'language', options_for_select([ "Dansk", "Polish", "Latvian", "English"]),{ :prompt => "Select Language"},{required: true, :class =>"form-control", style: "background-color: #eee;" } %>
             </span> 
             <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">User Type<sup class="mandatory">*</sup> </label>
+            <label for="taskName" class="col-sm-4 control-label">User Type<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
               <%= f.radio_button :user_type, 'mps' %>MPS
               <%= f.radio_button :user_type, 'publisher' %>Publisher
@@ -100,9 +100,9 @@
             <div class="clearfix"></div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="form-group">
-            <span class="col-sm-8">
+            <span class="col-sm-12">
              <%= check_box_tag(:mail) %>Send Email Comfirmation to Email Address above 
             </span> 
             <div class="clearfix"></div>
@@ -113,7 +113,7 @@
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
 
-            <%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Search Admin User'.html_safe, admin_users_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
+            <%= link_to '<i class="fa fa-search" aria-hidden="true"></i>Search Admin User'.html_safe, admin_users_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
             <%= f.submit "Submit", :class => "btn btn-sm" %>
             <%= f.button "Reset", :class => "btn btn-sm", type: :reset %>
           </div>

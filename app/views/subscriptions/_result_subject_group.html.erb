@@ -23,7 +23,7 @@
   <% end %>
   <tr>
     <td>&nbsp;</td>
-    <td><input type="button" value="add" onclick="getAddDetails();" class="submit_btn" /></td>
+    <td><input type="button" value="add" onclick="getAddDetails();" class="btn btn-sm" /></td>
   </tr>
 <%else%>
   No Record Found
@@ -67,11 +67,11 @@
     $(':checkbox').each(function() {
       $('#select-all').remove();
       $("#chk").remove(); 
-      $(".submit_btn").remove()                      
+      $(".btn btn-sm").remove()                      
     });
            $('.content_value').remove();
    $('.content_head').remove();
-   $('.submit_btn1').show();
+   $('.btn btn-sm').show();
     
    $('.del').on('click',function(){
     $(this).parent().remove();
