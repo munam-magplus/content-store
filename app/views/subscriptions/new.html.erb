@@ -42,7 +42,7 @@
           <div class="form-group">
             <label for="bookISBN" class="col-sm-4 control-label">Subscription Name:</label>
             <div class="col-sm-8">
-              <%= f.text_field :subscription_name, :class => "form-control", :placeholder => "Subscription Name" %>
+              <%= f.text_field :subscription_name, :required => true, :class => "form-control", :placeholder => "Subscription Name" %>
             </div> 
             <div class="clearfix"></div>
           </div>
@@ -151,11 +151,11 @@
             <div class="form-group">
               <label for="taskName" class="col-sm-1 control-label">From</label>
               <div class="col-sm-3">
-                <%= text_field :agreement_form, :class => "form-control", :placeholder => "From" %>
+                <%= f.text_field :agreement_form, :required => true, :class => "form-control", :placeholder => "From",:id => 'from' %>
               </div>
                 <label for="taskName" class="col-sm-1 control-label">To</label>
               <div class="col-sm-2">
-                <%= text_field :agreement_to, :class => "form-control", :placeholder => "To" %>
+                <%= f.text_field :agreement_to, :required => true, :class => "form-control", :placeholder => "To",:id => 'to' %>
               </div>
             </div>
           </div>

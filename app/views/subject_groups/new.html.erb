@@ -27,16 +27,16 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Publisher<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'),{ :prompt => "Select Publisher"},{:class => "form-control" , style: "background-color: #eee;" } %>
+              <%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'),{ :prompt => "Select Publisher"},{:required => true, :class => "form-control" , style: "background-color: #eee;" } %>
             </div>
             <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Subject Group Level<sup class="mandatory">*</sup> </label>
+            <label for="taskName" class="col-sm-4 control-label">Subject Group Level</label>
             <div class="col-sm-8">
-              <%= f.text_field :subject_group_level,:required => true, :class => "form-control", :placeholder => "Subject Group Level" %>
+              <%= f.text_field :subject_group_level, :class => "form-control", :placeholder => "Subject Group Level" %>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -45,16 +45,16 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Subject Group Code<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :subject_group_code,:required => true, :class => "form-control", :placeholder => "Subject Group Code" %>
+              <%= f.text_field :subject_group_code, :required => true, :class => "form-control", :placeholder => "Subject Group Code" %>
             </div>
             <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Subject Group Name</label>
+            <label for="bookISBN" class="col-sm-4 control-label">Subject Group Name<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-            <%= f.text_field :subject_group_name, :class => "form-control", :placeholder => "Subject Group Name" %>
+            <%= f.text_field :subject_group_name, :required => true, :class => "form-control", :placeholder => "Subject Group Name" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -88,25 +88,25 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Viewability Percentage<sup class="mandatory">*</sup> </label>
+            <label for="taskName" class="col-sm-4 control-label">Viewability Percentage</label>
             <span class="col-sm-8">
-            <%= f.text_field :viewability_percentage,:required => true, :class => "form-control", :placeholder => "Duration", :placeholder => "Viewability Percentage" %>
+            <%= f.text_field :viewability_percentage, :class => "form-control", :placeholder => "Duration", :placeholder => "Viewability Percentage" %>
             </span> 
             <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Select Language<sup class="mandatory">*</sup> </label>
+            <label for="taskName" class="col-sm-4 control-label">Select Language<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-            <%= f.select 'language',options_for_select(['Dansk', 'Polish', 'Latvian','English']), {:prompt => "Select Language"}, {:class => "form-control" , style: "background-color: #eee;" } %>
+            <%= f.select 'language',options_for_select(['Dansk', 'Polish', 'Latvian','English']), {:prompt => "Select Language"}, {:required => true, :class => "form-control" , style: "background-color: #eee;" } %>
             </span> 
             <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Description<sup class="mandatory">*</sup> </label>
+            <label for="taskName" class="col-sm-4 control-label">Description</label>
             <span class="col-sm-8">
               <%= f.text_area :subject_group_description, :class => "form-control", :placeholder => "Description" %>
             </span> 
