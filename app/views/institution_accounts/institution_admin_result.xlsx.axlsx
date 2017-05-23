@@ -1,4 +1,4 @@
- wb = xlsx_package.workbook
+wb = xlsx_package.workbook
 wb.add_worksheet(name: "institution account") do |sheet|
 	sheet.add_row [ "Institution Id", "Institution Name", "Lib/Dept Name", "Country", "Primary Contact Name","Status" ]
 	@institution_admin.each do |f| 

@@ -7,6 +7,11 @@ class PublishersController < ApplicationController
   def search
     #call filter method to get search results
     @publisher = Publisher.filter(params.slice(:publisher_code, :publisher_name))
+     respond_to do |format|
+      format.js 
+      format.html
+      format.xlsx  
+    end
   end
 
   def edit   

@@ -2,115 +2,116 @@
     <div class="col-md-12">
 	    <div class="mt10 table-demo">Search Result
 	    	<span class="pull-right">
-			    <div class="dropdown">
-			        <ul class="nav">
-			          <li class="drop">
-			          	<i style="cursor: pointer;width: 12px;" class="fa fa-ellipsis-v" aria-hidden="true"></i>
-			            <ul class="dropdown-menu-right">
-			              <li><a href="#"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</a></li>
-			              <li><a href="#"> <i class="fa fa-file-o" aria-hidden="true"></i> CSV</a></li>
-			              <li><a href="#"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a></li>
-			            </ul>
-			          </li>
-			        </ul>
-			    </div>
-	        </span>
+			    <!-- <div class="dropdown">
+		        <ul class="nav">
+		          <li class="drop">
+		          	<i style="cursor: pointer;width: 12px;" class="fa fa-ellipsis-v" aria-hidden="true"></i>
+		            <ul class="dropdown-menu-right">
+		              <li><%= link_to '<i class="fa fa-file-excel-o" aria-hidden="true"></i>Excel'.html_safe, search_institution_accounts_path(format: :xlsx) %>
+						        </li>
+		              <li><a href="#"> <i class="fa fa-file-o" aria-hidden="true"></i> CSV</a></li>
+		              <li><a href="#"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a></li>
+		            </ul>
+		          </li>
+		        </ul>
+			    </div>  -->
+	      </span>
 	    </div>
 	    <div class="table-responsive">
 		    <table class="table table-bordered">
-		        <thead>
-		        	<tr style="font-size:13px">
-			            <th>Institution ID</th>
-			            <th>Institution Name</th>
-			            <th>Lib./Dept. Name</th>
-			            <th>Country</th>
-						<th>Primary Contact Name</th>
-			            <th>Status</th>
-		 				<th>New IP Requests</th>
-		 				<th>Actions</th>
-		            </tr>
-		        </thead>
-		        <tbody>
-					<% if @result.present?   %>
-						<% @result.each do |f1| %>
- 							<%institution_account(f1.institution_account_id)%>
-						<% @institution.each do |f| %>
-							<%if f.status == "active"%>
-						 		<tr class="backgroundcolor">
-						 			<td class="tabledata"><%= f.id %></td>
-									<td class="tabledata">
-										<%= link_to (f.institution_name), edit_institution_account_path(f.id) %>
-									</td>
-									<td class="tabledata"><%= f.library_name %></td>
-									<td class="tabledata">
-										<%= country_name(f.institution_account_billing_address.country_code)%>
-									</td>
-									<td class="tabledata">
-											<%= link_to (f.institution_account_billing_address.first_name + f.institution_account_billing_address.last_name), edit_institution_account_path(f.id) %>
-									</td>
-									<td class="tabledata"><%= f.status %></td>
-									<td class="tabledata">
-										<%if @check.present? %>
-												yes
-										<%else%>
-											 no
-										<%end%>
-									</td>
-									<td class="tabledata">
-									<!-- 
-										<%= image_tag("IP.png")%>
-										<%= image_tag("subscription.png")%><br>
-										<%= image_tag("view_linked_licenses.gif")%>
-										<%= image_tag("Referral_URL.png")%>
-									 -->
-										<%= link_to image_tag("Library_User.png"), result_library_users_path(id: f.id) , title: "Library users"%>
-										<%= link_to image_tag("institution.png"), institution_admin_result_institution_accounts_path(:id => f.id), title: "Institution Admin User" %>
-									</td>
-								</tr>
-							<% else %>
-								<tr>
-						 			<td class="tabledata"><%= f.id %></td>		
-									<td class="tabledata">
-										<%= link_to (f.institution_name), edit_institution_account_path(f.id) %>
-									</td>
-									<td class="tabledata"><%= f.library_name %></td>
-									<td class="tabledata">
-										<%= country_name(f.institution_account_billing_address.country_code)%>			
-									</td>
-									<td class="tabledata">
-											<%= link_to (f.institution_account_billing_address.first_name +  f.institution_account_billing_address.last_name), edit_institution_account_path(f.id) %>
-									</td>
-									<td class="tabledata"><%= f.status %></td>
-									<td class="tabledata">
-										<%if @chec.present? %>
-												yes
-										<%else%>
-											 no
-										<%end%>
-									</td>
-									<td class="tabledata">
-									<!-- 
-										<%= image_tag("IP.png")%>
-										<%= image_tag("subscription.png")%><br>
-										<%= image_tag("view_linked_licenses.gif")%>
-										<%= image_tag("Referral_URL.png")%>
-									 -->
-										<%= link_to image_tag("Library_User.png"), result_library_users_path(id: f.id), title: "Library users"%>
-										<%= link_to image_tag("institution.png"), institution_admin_result_institution_accounts_path(:id => f.id), title: "Institution Admin User" %>
-									</td>
-								</tr>
-							<% end %>
+	        <thead>
+	        	<tr style="font-size:13px">
+	            <th>Institution ID</th>
+	            <th>Institution Name</th>
+	            <th>Lib./Dept. Name</th>
+	            <th>Country</th>
+							<th>Primary Contact Name</th>
+	            <th>Status</th>
+			 				<th>New IP Requests</th>
+			 				<th>Actions</th>
+	          </tr>
+	        </thead>
+	        <tbody>
+						<% if @result.present?   %>
+							<% @result.each do |f1| %>
+		 						<%institution_account(f1.institution_account_id)%>
+								<% @institution.each do |f| %>
+									<%if f.status == "active"%>
+								 		<tr class="backgroundcolor">
+								 			<td class="tabledata"><%= f.id %></td>
+											<td class="tabledata">
+												<%= link_to (f.institution_name), edit_institution_account_path(f.id) %>
+											</td>
+											<td class="tabledata"><%= f.library_name %></td>
+											<td class="tabledata">
+												<%= country_name(f.institution_account_billing_address.country_code)%>
+											</td>
+											<td class="tabledata">
+													<%= link_to (f.institution_account_billing_address.first_name + f.institution_account_billing_address.last_name), edit_institution_account_path(f.id) %>
+											</td>
+											<td class="tabledata"><%= f.status %></td>
+											<td class="tabledata">
+												<%if @check.present? %>
+														yes
+												<%else%>
+													 no
+												<%end%>
+											</td>
+											<td class="tabledata">
+											<!-- 
+												<%= image_tag("IP.png")%>
+												<%= image_tag("subscription.png")%><br>
+												<%= image_tag("view_linked_licenses.gif")%>
+												<%= image_tag("Referral_URL.png")%>
+											 -->
+												<%= link_to image_tag("Library_User.png"), result_library_users_path(id: f.id) , title: "Library users"%>
+												<%= link_to image_tag("institution.png"), institution_admin_result_institution_accounts_path(:id => f.id), title: "Institution Admin User" %>
+											</td>
+										</tr>
+									<% else %>
+										<tr>
+								 			<td class="tabledata"><%= f.id %></td>		
+											<td class="tabledata">
+												<%= link_to (f.institution_name), edit_institution_account_path(f.id) %>
+											</td>
+											<td class="tabledata"><%= f.library_name %></td>
+											<td class="tabledata">
+												<%= country_name(f.institution_account_billing_address.country_code)%>			
+											</td>
+											<td class="tabledata">
+													<%= link_to (f.institution_account_billing_address.first_name +  f.institution_account_billing_address.last_name), edit_institution_account_path(f.id) %>
+											</td>
+											<td class="tabledata"><%= f.status %></td>
+											<td class="tabledata">
+												<%if @chec.present? %>
+														yes
+												<%else%>
+													 no
+												<%end%>
+											</td>
+											<td class="tabledata">
+											<!-- 
+												<%= image_tag("IP.png")%>
+												<%= image_tag("subscription.png")%><br>
+												<%= image_tag("view_linked_licenses.gif")%>
+												<%= image_tag("Referral_URL.png")%>
+											 -->
+												<%= link_to image_tag("Library_User.png"), result_library_users_path(id: f.id), title: "Library users"%>
+												<%= link_to image_tag("institution.png"), institution_admin_result_institution_accounts_path(:id => f.id), title: "Institution Admin User" %>
+											</td>
+										</tr>
+									<% end %>
+								<% end %>
+	 						<%end%>
+						<% else %>
+							<tr>
+								<td>
+									Records not found
+								</td>
+							</tr>
 						<% end %>
- 						<%end%>
-					<% else %>
-						<tr>
-							<td>
-								Records not found
-							</td>
-						</tr>
-					<% end %>
-		    	</tbody>
-		    </table>
+	    	</tbody>
+	    </table>
 		</div>
 	</div>
 	<div class="col-sm-12"> </div>

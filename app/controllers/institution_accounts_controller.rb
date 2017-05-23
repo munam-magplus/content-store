@@ -16,22 +16,22 @@ class InstitutionAccountsController < ApplicationController
                   :postal_code,:country_code))
 
     @result = @institution_billing.where(institution_account_id: @id)
-   
-     # this is the params of the checkbox that is present in the form.
+    
+      # this is the params of the checkbox that is present in the form.
     @check = params[:ip_address]
     respond_to do |format|
-     format.js 
-     format.html
-     format.xlsx 
-    end
+      format.js 
+      format.html
+      format.xlsx
+     end
   end
 
   def institution_admin_result
     @institution = InstitutionAccount.find_by_id(params[:id]).institution_name
     @institution_admin = InstitutionAdminUserAccount.where(:institution_name => @institution)
     respond_to do |format|
-       format.html   
-       format.xlsx { send_data @ins_admin }
+      format.html   
+      format.xlsx { send_data @institution_admin }
     end
   end 
 

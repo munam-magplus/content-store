@@ -2,17 +2,17 @@
 	<div class="col-md-12">
 	    <div class="mt10 table-demo">Search Result
 	    	<span class="pull-right">
-		      <div class="dropdown">
+		      <!-- <div class="dropdown">
 		        <ul class="nav">
 		          <li class="drop"><i style="cursor: pointer;width: 12px;" class="fa fa-ellipsis-v" aria-hidden="true"></i>
 		            <ul class="dropdown-menu-right">
-		              <li><a href="#"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</a></li>
+		              <li><%= link_to '<i class="fa fa-file-excel-o" aria-hidden="true"></i>Excel'.html_safe, search_institution_admin_users_path(format: :xlsx) %></li>
 		              <li><a href="#"> <i class="fa fa-file-o" aria-hidden="true"></i> CSV</a></li>
 		              <li><a href="#"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a></li>
 		            </ul>
 		          </li>
 		        </ul>
-		      </div>
+		      </div> -->
 	      </span>
 	    </div>
 	    <div class="table-responsive">
@@ -23,16 +23,17 @@
 		            <th>Email Id</th>
 		            <th>Status</th>
 		            <th>User Name</th>
-					<th>User Role</th>
+								<th>User Role</th>
 		            <th>Institution Name</th>
-		           </tr>
+		            <th>Details</th>
+		          </tr>
 		        </thead>
 		        <tbody>
 					<% if @result.present? %>
 						<% @result.each do |f| %>
 						 	<%if f.status == "active"%>
 							 	<tr class="backgroundcolor">
-										<td  class="tabledata"><%= f.first_name%>&nbsp<%= f.last_name %></td>
+										<td  class="tabledata"><%= f.first_name + f.last_name %></td>
 										<td  class="tabledata"><%= f.email %></td>
 										<td  class="tabledata"><%= f.status %></td>
 										<td  class="tabledata"><%= f.user_name %></td>
@@ -44,7 +45,7 @@
 								</tr>
 							<% else %>
 								<tr>
-									<td  class="tabledata"><%= f.first_name %></td>
+									<td  class="tabledata"><%= f.first_name + f.last_name %></td>
 									<td  class="tabledata"><%= f.email %></td>
 									<td  class="tabledata"><%= f.status %></td>
 									<td  class="tabledata"><% f.user_name %></td>

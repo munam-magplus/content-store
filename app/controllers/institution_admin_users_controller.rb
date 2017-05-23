@@ -13,7 +13,7 @@ class InstitutionAdminUsersController < ApplicationController
     respond_to do |format|
        format.js 
        format.html
-       format.xlsx 
+       format.xlsx  
     end
   end
 
@@ -21,6 +21,7 @@ class InstitutionAdminUsersController < ApplicationController
   end
 
   def new
+    # we get params[:format] from institution_account's institution details
     if params[:format].present?
     @institution = InstitutionAccount.find_by_id(params[:format])
     end
@@ -75,7 +76,7 @@ class InstitutionAdminUsersController < ApplicationController
     end
 
     if params[:mail] == "1"
-      InstitutionAdminUserMailer.confirm_mail(@institution_admin_user, current_user).deliver
+      InstitutionAdminUserAccountMailer.confirm_mail(@institution_admin_user, current_user).deliver_now
     end
   end
 

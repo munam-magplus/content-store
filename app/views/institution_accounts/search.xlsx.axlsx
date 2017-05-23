@@ -1,10 +1,12 @@
 wb = xlsx_package.workbook
-wb.add_worksheet(name: "institution account") do |sheet|
-	sheet.add_row [ "Institution Id", "Institution Name", "Lib/Dept Name", "Country", "Primary Contact Name","Status" ]
-	@institution_account.each do |f| 
-		sheet.add_row [ f.id, f.institution_name, f.library_name,f.institution_account_billing_address.country_code, 
-		f.institution_account_billing_address.first_name +  f.institution_account_billing_address.last_name, f.status  ]
-	end 
+wb.add_worksheet(name: "Institution Account") do |sheet|
+	sheet.add_row [ "Institution Id", "Institution Name", "Lib./Dept Name", "Country", "Primary Contact Name", "Status" ]
+	@result.each do |f1|
+		institution_account(f1.institution_account_id)
+		@institution.each do |f|
+			sheet.add_row [ f.id, f.institution_name, f.library_name, country_name(f.institution_account_billing_address.country_code) , f.institution_account_billing_address.first_name + f.institution_account_billing_address.last_name , f.status ]
+		end
+	end
 end
 
 

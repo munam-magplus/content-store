@@ -1,4 +1,4 @@
-class InstitutionAdminUserMailer < ApplicationMailer
+class InstitutionAdminUserAccountMailer < ApplicationMailer
 	def confirm_mail(institution_admin_user, current_user)
 		@current_user = current_user
 		@institution_admin_user = institution_admin_user

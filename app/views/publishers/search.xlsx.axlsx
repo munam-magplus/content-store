@@ -1,0 +1,9 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Publishers") do |sheet|
+	sheet.add_row [ "Publisher Code", "Publisher Name", "Publisher Country", "Contact Name", "Contact Email" ]
+	@publisher.each do |pub|
+ 		sheet.add_row [ pub.publisher_code, pub.publisher_name, country_name(pub.country_code),  pub.contact_first_name,   pub.contact_email ]
+	end
+end
+
+
