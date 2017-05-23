@@ -18,15 +18,7 @@
       <div class="clearfix"></div>
     </div>
   </div>
-  <div class="col-md-6">
-    <div class="form-group">
-      <label for="bookISBN" class="col-sm-4 control-label">Publisher Id<sup class="mandatory">*</sup></label>
-      <span class="col-sm-8">
-      <%= f.text_field :publisher_id , :value => @publisher.id ,:class => "form-control", readonly: true %>
-      </span>
-      <div class="clearfix"></div>
-    </div>
-  </div>
+  <%= f.hidden_field :publisher_id , :value => @publisher.id ,:class => "form-control", readonly: true %>
   <div class="col-md-6">
     <div class="form-group">
       <label for="bookISBN" class="col-sm-4 control-label">Low IP<sup class="mandatory">*</sup></label>

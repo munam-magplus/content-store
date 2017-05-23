@@ -1,29 +1,32 @@
- 	<div class="col-md-12">
-		 <div class="table-responsive">
-			    <table class="table table-bordered">
-							<% if @retailer.present?   %>
-						 		<tr>
-						 			<td class="tabledata"><%= @retailer.retailer_code %></td>
-									<td class="tabledata">
-										<%= @retailer.retailer_name %>
-									</td>
-									<td class="tabledata"><%= @retailer.publisher_id %></td>
-									<td class="tabledata">
-										<%= @retailer.low_ip %>
-									</td>
-									<td class="tabledata">
-											<%= @retailer.high_ip %>
-									</td>
-									<td class="tabledata"><%= @retailer.ip_list %></td>
-								</tr>
-							<% else %>
-								<tr>
-									<td>
-										Records not found
-									</td>
-								</tr>
-							<% end %>
-		      </table>
-		</div>
-	</div>
+<div class="col-md-12">
+	<div class="table-responsive">
+	    <table class="table table-bordered">
+			<% if @retailer.present?   %>
+		 		<tr>
+		 			<td class="tabledata">
+		 				<%= @retailer.retailer_code %>
+		 			</td>
+					<td class="tabledata">
+						<%= @retailer.retailer_name %>
+					</td>
  
+					<td class="tabledata">
+						<%= @retailer.low_ip %>
+					</td>
+					<td class="tabledata">
+						<%= @retailer.high_ip %>
+					</td>
+					<td class="tabledata">
+						<%= @retailer.ip_list %>
+					</td>
+				</tr>
+			<% else %>
+				<tr>
+					<td>
+						Records not found
+					</td>
+				</tr>
+			<% end %>
+        </table>
+	</div>
+</div>
