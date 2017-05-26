@@ -568,7 +568,8 @@ header {
 .top-right-menu {
   margin-top: 0;
   margin-bottom: 0;
-  margin-right: 0; }
+  margin-right: 0;
+  float: left !important; }
 
 .top-head {
   z-index: 222;

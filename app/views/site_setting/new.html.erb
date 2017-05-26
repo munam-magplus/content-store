@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<title>Content Store :: Site Settings</title>
+<!-- Latest compiled and minified CSS -->
+    <!-- Header -->
+   <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+</head>
+
+<body>
+  <!-- Aside Start-->
+    <%= render :partial => "layouts/sidebar"%>
+    <!-- Aside Ends-->
+  <!--Main Content Start -->
+  <section class="content"> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a>Publisher Setup</a></li>
+        <li><a>Site Settings</a> </li>
+        <div class="pull-right hidden">
+          <li><a href="#">Browse by Chapter</a></li>
+          <li><a href="#">Browse by Book </a></li>
+        </div>
+      </ol>
+      
+      <h2 class="H2-L1">Site Settings</h2>
+      <%= form_tag site_setting_index_path, :method => 'get', :remote => true do  %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Publisher</label>
+            <span class="col-sm-8">
+              <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "Select Publisher", :class => "form-control", :style => "background-color: #eee"%>
+            </span>
+            <div class="clearfix"></div> 
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="clearfix m-b-30"></div>
+        <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+        <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit %>
+        <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
+        <!--<%= submit_tag "Search", :class => "btn btn-sm" %>
+        <%= button_tag "Reset", type: :reset, :class => "btnBlack btn-sm" %>-->
+        </div>
+      <%end%>
+      <div class="clearfix m-b-30"></div>
+      <div id="search_result"></div>
+    </div>
+      <!-- Page Content Ends --> 
+      <!-- ================== --> 
+    
+      <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+      <!-- Footer Ends --> 
+  </section>
+</body>
+</html>

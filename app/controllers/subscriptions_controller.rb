@@ -50,7 +50,7 @@ class SubscriptionsController < ApplicationController
   def add_subscription_for_book
     @book_id = SubscriptionForBook.new
     @book_id.subscription_id = @subscription.id
-    if params[:value1] == ["All Publishers"]
+    if params[:value1] == ["All Publishers"] && params[:value] == ["Book"]
       @book_id.all_publisher = "true"
     else
       @book_id.all_publisher = "false"
@@ -86,6 +86,18 @@ class SubscriptionsController < ApplicationController
     @book_id.save!
   end
 
+  def condition_one
+  end
+
+  def condition_two
+  end
+
+  def condition_three
+  end
+
+  def condition_four
+  end
+
   def index
   end
 
@@ -93,7 +105,7 @@ class SubscriptionsController < ApplicationController
   def subscription_params
     params.require(:subscription).permit(:subscription_id, :subscription_name, 
     :subscription_description, :subscription_category, 
-    :subscription_type, :agreement_from, :agreement_to, :available_for_institutional_account, 
+    :subscription_type, :agreement_form, :agreement_to, :available_for_institutional_account, 
     :purchase_information_number_of_books, :purchase_information_price,
     :purchase_information_discount_percentage, :role_ids)
   end
