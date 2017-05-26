@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<title>Content Store :: Search Result</title>
+<!-- Latest compiled and minified CSS -->
+    <!-- Header -->
+   <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+ </head>
+<body>
+  <!-- Aside Start-->
+    <%= render :partial => "layouts/sidebar"%>
+    <!-- Aside Ends-->
+  <!--Main Content Start -->
+  <section class="content"> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+         <li><a href="#">Home</a></li>
+  	   <li><a> Site Settings</a></li>
+  	   <li><a>Upload Theme</a></li>
+        </ol>
+      
+      <h2 class="H2-L1">Upload Theme</h2>
+         <%= form_for @theme, :class => "form-horizontal form-bg" do |f|%>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Theme name<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+              <%= f.text_field :theme_name , :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">Template</label>
+            <span class="col-sm-8">
+            <%= f.file_field :template,:placeholder => "Member Publisher Logo", :class => "form-control"%>
+            </span> 
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      <div class="clearfix m-b-30"></div>
+      <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+        <%= button_tag fa_icon("save", text: "Save"), :class => "btn btn-sm", type: :submit %>
+        <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
+      <%end%>
+      </div>
+    </div>
+      <!-- Page Content Ends --> 
+      <!-- ================== --> 
+    
+      <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+      <!-- Footer Ends --> 
+  </section>
+</body>
+</html>

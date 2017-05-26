@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<title>Content Store :: Search Result</title>
+<!-- Latest compiled and minified CSS -->
+    <!-- Header -->
+   <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+ </head>
+<body>
+  <!-- Aside Start-->
+    <%= render :partial => "layouts/sidebar"%>
+    <!-- Aside Ends-->
+  <!--Main Content Start -->
+  <section class="content"> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+         <li><a href="#">Home</a></li>
+  	   <li><a> Site Settings</a></li>
+        <li><a> Change Theme</a></li>
+        </ol> 
+      <h2 class="H2-L1">Change Theme</h2>
+      <%= form_tag get_theme_themes_path, :method => 'get', :remote => true do%>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 nopadding">Select Publisher<sup class="mandatory">*</sup> </label>
+            <div class="col-sm-8">
+            <%= select_tag 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'), :prompt => "Select publisher", :class => "form-control"%>
+               
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+         
+        <div class="clearfix m-b-30"></div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+
+            <%= button_tag fa_icon("plus-square-o", text: "Submit"), :class => "btn btn-sm", type: :submit %>
+
+            <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
+          </div>
+        </div>
+      <% end %>
+      <div id="all_theme"> </div>
+    </div>
+      <!-- Page Content Ends --> 
+      <!-- ================== --> 
+    
+      <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+      <!-- Footer Ends --> 
+  </section>
+</body>
+</html>
+

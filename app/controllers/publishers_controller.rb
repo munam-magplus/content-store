@@ -2,6 +2,7 @@ class PublishersController < ApplicationController
       before_action :authenticate_user!
 
   def index
+    @publisher = Publisher.all
   end
 
   def search

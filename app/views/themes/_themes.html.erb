@@ -1,0 +1,18 @@
+<%@themes.each do |theme|%>
+<div class ="row">
+	<div class="col-md-12">
+    <div class="form-group">
+      <div class="col-sm-8">
+				<%= image_tag theme.template.url(:medium)%>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-12">
+    <div class="form-group">
+      <div class="col-sm-8">
+				<%= theme.theme_name%>
+			</div>
+		</div>
+	</div>
+</div>
+<%end%>

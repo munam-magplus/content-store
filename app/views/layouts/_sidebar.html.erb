@@ -20,11 +20,16 @@
                 <a class="submenu"><span class="fa fa-angle-right"></span>Publisher</a>
                   <ul class="nav-multi__list nav-multi" style="display:none">
                      <li><%= link_to "Create New Publisher", new_publisher_path%></li>
-                     <li><%= link_to "Search Publisher", publishers_path%></li>
+                     <li><%= link_to "All Publisher", publishers_path%></li>
                   </ul>
               </li>
-		         <li><%= link_to "Site Setting", site_setting_new_path %></li>
-            </ul>
+              <li>
+                <a class="submenu"><span class="fa fa-angle-right"></span>Site Setting</a>
+                    <ul class="nav-multi__list nav-multi" style="display:none">
+                       <li><%= link_to "Upload Theme", new_theme_path%></li>
+                       <li><%= link_to "Change Theme", change_theme_themes_path%></li>
+                    </ul>
+              </ul>
           </li>
           <li>
             <a href="#" class="topMenu"><i class="ion-ios-book"></i> <span class="nav-label sub-drop">Manage User Account</span><span class="fa fa-angle-right pull-right"></span></a>

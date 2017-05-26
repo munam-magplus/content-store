@@ -22,7 +22,7 @@ Rails.application.routes.draw do
              only: [:index]
 
   resources :books_seo_config,:books_content_access_rules,
-            :books_content_pricing, :books_contributors
+            :books_content_pricing, :books_contributors 
 
   resources :institution_accounts do
     collection do 
@@ -80,7 +80,7 @@ Rails.application.routes.draw do
     end
   end
  
-  resources :publishers,  :access_tokens, :promo_codes, :campaigns, :license_groups, :licenses,
+  resources :publishers, :access_tokens, :promo_codes, :campaigns, :license_groups, :licenses,
             :subscriptions, :subject_groups, :member_publishers do 
     collection do 
       post 'save'
@@ -118,4 +118,11 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  resources :themes do 
+    collection do 
+      get 'change_theme'
+      get 'get_theme'
+    end
+  end
+  
 end
