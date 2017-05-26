@@ -1,0 +1,47 @@
+<!-- Aside Start-->
+    <%= render :partial => "layouts/sidebar"%>
+    <!-- Aside Ends--><div class="div1">
+  <table bgcolor="#cccccc" border="0" cellpadding="8" cellspacing="1" width="70%"></table>
+  <table bgcolor="#cccccc" border="0" cellpadding="8" cellspacing="1" class="center" width="100%">
+    <tbody>
+      <tr>
+        <td class="tableheader">Email</td>
+        <td class="tableheader">First Name</td>
+        <td class="tableheader">Last Name</td>
+        <td class="tableheader">Country</td>
+        <td class="tableheader">Actions</td>
+      </tr>
+      <% if @end_user.present? %>
+        <% @end_user.each do |f| %>
+        <tr>
+          <td bgcolor="#FBFBFB">
+            <%= f.email %>
+          </td>
+          <td bgcolor="#FBFBFB">
+            <%= f.first_name %>
+          </td>
+          <td bgcolor="#FBFBFB">
+            <%= f.last_name %>
+          </td>
+          <td bgcolor="#FBFBFB">
+            <%= f.country %>
+          </td>
+          <td bgcolor="#FBFBFB">
+            <%= image_tag("reset_password.gif")%>
+            <%= image_tag("link_license.gif")%>
+            <%= image_tag("view_linked_licenses.gif")%><br>
+            <%= image_tag("delete_icon.gif")%>
+          </td>
+        </tr>
+        <% end %>
+        <% else %>
+          <tr>
+            <td bgcolor="#FBFBFB">
+              <p> Record Not Found </p> 
+            </td>
+          </tr>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>

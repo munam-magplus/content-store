@@ -8,13 +8,13 @@ Rails.application.routes.draw do
 
   get 'site_setting/delete'
 
+  get 'site_setting/search'
+
   get 'index_contents/content_code'
 
   get 'index_contents/publisher_code'
 
   get 'my_accounts/index'
-
-  get 'site_settings/index'
 
   resources :contacts
 
