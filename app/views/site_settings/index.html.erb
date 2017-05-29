@@ -28,12 +28,12 @@
       </ol>
       
       <h2 class="H2-L1">View Publisher's Books</h2>
-      <%= form_tag site_setting_search_path, :method => 'get', :remote => true do  %>
+      <%= form_tag site_settings_search_path, :method => 'get', :remote => true do  %>
         <div class="col-md-6">
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Publisher</label>
             <span class="col-sm-8">
-              <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "Select Publisher", :class => "form-control", :style => "background-color: #eee"%>
+              <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "Select Publisher", :class => "form-control", :style => "background-color: #eee", id: :publisher_id %>
             </span>
             <div class="clearfix"></div> 
           </div>
@@ -52,3 +52,20 @@
   </section>
 </body>
 </html>
+
+<script>
+  $('#publisher_id').change(function(){
+    var a = $('#publisher_id').val();
+    $.ajax({
+          url: "search",
+          type: "GET",
+          data: { publisher_id: a },
+          // dataType: "js",
+          success: function(result){
+
+            alert(result.a);
+            // console.log(result);
+            $('#search_result').val(result.a);
+    }});
+  })
+</script>

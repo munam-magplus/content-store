@@ -1,5 +1,9 @@
 class BooksPrimaryContentInformation < ApplicationRecord
 	include Filterable
+	belongs_to :publisher
+	has_one :books_contributor
+	has_one :books_content_pricing
+	has_one :books_content_access_rule
 	belongs_to :license, optional: true
 	#used for uploading image
 	has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" }

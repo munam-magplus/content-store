@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 
-  get 'site_setting/new'
+  get 'site_settings/new'
 
-  get 'site_setting/create'
+  get 'site_settings/create'
 
-  get 'site_setting/index'
+  get 'site_settings/index'
 
-  get 'site_setting/delete'
+  get 'site_settings/delete'
 
-  get 'site_setting/search'
+  get 'site_settings/search'
 
   get 'index_contents/content_code'
 
