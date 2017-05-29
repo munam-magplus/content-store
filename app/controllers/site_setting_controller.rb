@@ -1,5 +1,6 @@
 class SiteSettingController < ApplicationController
   def new
+    @books_details = BooksPrimaryContentInformation.find_by_id(params[:format])
   end
 
   def create
@@ -10,7 +11,7 @@ class SiteSettingController < ApplicationController
 
   def search
     #Call filter method to get search results
-    @books_search = BooksPrimaryContentInformation.filter(params.slice(:publisher_id))
+    @books_search = BooksPrimaryContentInformation.filter(params.slice(:publisher_id, :book_title))
   end
 
   def delete

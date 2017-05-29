@@ -23,6 +23,7 @@
             <th>ISBN</th>
             <th>Language</th>
             <th>Publisher ID</th>
+            <th>Images</th>
           </tr>
         </thead>
         <tbody>
@@ -32,8 +33,8 @@
                 <td><%= f.book_title %></td>
                 <td><%= f.isbn %></td>
                 <td><%= f.language %></td>
-                <td><%= f.publisher_id %>
-                </td>
+                <td><%= f.publisher_id %></td>
+                <td><%= link_to image_tag(f.logo.url(:thumb)), site_setting_new_path(f) %></td>
               </tr>
             <% end %>
           <% else %>
