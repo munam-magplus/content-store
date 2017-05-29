@@ -119,9 +119,11 @@ Rails.application.routes.draw do
     end
   end
   resources :themes do 
-    collection do 
+    collection do
+      post 'save' 
       get 'change_theme'
-      get 'get_theme'
+      post 'save_theme_for_publisher'
+      delete 'destroy'
     end
   end
   
