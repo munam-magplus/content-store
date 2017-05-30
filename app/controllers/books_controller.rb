@@ -52,7 +52,7 @@ class BooksController < ApplicationController
     params.require(:books_primary_content_information).permit(:content_code, :publisher_id, :book_title, :subject_title, :isbn, :language, 
     :content_classification, :file_name, :stock_number, :publisher_site_sales_link, :book_blurb, :publication_date,
     :publication_month, :publication_year, :conversion_required, :edition, :binding, :volume, :dimension, :series_isbn,
-    :series_title)
+    :series_title, :logo)
   end
   def book_contributor_params
     params.require(:books_contributor).permit(:contributor_role, :first_name, :description, :date_of_birth, :date_of_death, :professional_position, 

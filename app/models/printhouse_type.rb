@@ -1,2 +1,0 @@
-class PrinthouseType < ApplicationRecord
-end

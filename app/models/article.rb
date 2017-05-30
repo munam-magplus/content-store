@@ -4,7 +4,7 @@ class Article < ApplicationRecord
 	has_one :article_info
 	accepts_nested_attributes_for :article_info
 	# Validations
-	validates_presence_of :publisher
+	  validates_presence_of :publisher
   	validates_presence_of :content_code
   	validates_presence_of :journal_title
   	validates_presence_of :article_type

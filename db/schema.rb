@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170518125349) do
+ActiveRecord::Schema.define(version: 20170526104845) do
 
   create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "publisher_id"
@@ -140,6 +140,10 @@ ActiveRecord::Schema.define(version: 20170518125349) do
     t.integer  "license_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   create_table "campaigns", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -233,8 +237,9 @@ ActiveRecord::Schema.define(version: 20170518125349) do
     t.string   "password"
     t.string   "comments"
     t.integer  "primary_count"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "institution_account_id"
   end
 
   create_table "journals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -401,10 +406,9 @@ ActiveRecord::Schema.define(version: 20170518125349) do
     t.datetime "updated_at",       null: false
   end
 
-  create_table "subscriptions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "subscriptions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "utf8_general_ci" do |t|
     t.string   "subscription_id"
     t.string   "subscription_name"
-    t.integer  "publisher_id"
     t.string   "subscription_description"
     t.string   "subscription_category"
     t.string   "subscription_type"

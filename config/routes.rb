@@ -1,20 +1,17 @@
 Rails.application.routes.draw do
 
-  get 'site_setting/new'
-
-  get 'site_setting/create'
-
-  get 'site_setting/index'
-
-  get 'site_setting/delete'
-
   get 'index_contents/content_code'
 
   get 'index_contents/publisher_code'
 
   get 'my_accounts/index'
 
-  get 'site_settings/index'
+  resources :site_settings do 
+    collection do 
+      get 'books_of_publisher'
+      get 'simple_search'
+    end
+  end
 
   resources :contacts
 

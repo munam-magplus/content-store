@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<title>Content Store :: Site Settings</title>
+<!-- Latest compiled and minified CSS -->
+    <!-- Header -->
+   <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+</head>
+
+<body>
+  <!-- Aside Start-->
+    <%= render :partial => "layouts/sidebar"%>
+    <!-- Aside Ends-->
+  <!--Main Content Start -->
+  <section class="content"> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a>Publisher Setup</a></li>
+        <li><a>Site Settings</a> </li>
+        <div class="pull-right hidden">
+          <li><a href="#">Browse by Chapter</a></li>
+          <li><a href="#">Browse by Book </a></li>
+        </div>
+      </ol>
+      
+      <h2 class="H2-L1">Book Details</h2>
+      <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr style="font-size:13px">
+            <th>Book Title</th>
+            <th>ISBN</th>
+            <th>Language</th>
+            <th>Publisher ID</th>
+            <th>Images</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @books_details.book_title %></td>
+            <td><%= @books_details.isbn %></td>
+            <td><%= @books_details.language %></td>
+            <td><%= @books_details.publisher_id %></td>
+            <td><%= image_tag(@books_details.logo.url(:thumb)) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      <div class="clearfix m-b-30"></div>
+      <div id="search_result"></div>
+    </div>
+      <!-- Page Content Ends --> 
+      <!-- ================== --> 
+    
+      <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+      <!-- Footer Ends --> 
+  </section>
+</body>
+</html>
