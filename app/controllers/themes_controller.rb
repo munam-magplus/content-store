@@ -15,7 +15,7 @@ class ThemesController < ApplicationController
   end
 
   def save
-    if params[:theme][:id] != nil
+    unless params[:theme][:id].blank?
       @theme = Theme.find(params[:theme][:id])
       if @theme.update_attributes!(theme_params)
       # Handle a successful update.

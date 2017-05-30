@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get 'my_accounts/index'
 
   get 'site_settings/index'
+  get 'homes/index'
+  root :to => "homes#index"
 
   resources :contacts
 
@@ -46,9 +48,11 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  devise_scope :user do
-    root to: "devise/sessions#new"
-  end
+  get 'users/sign_in'
+
+  # devise_scope :user do
+  #   root to: "devise/sessions#new"
+  # end
 
   resources :retailers do 
     collection do

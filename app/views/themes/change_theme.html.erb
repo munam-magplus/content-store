@@ -36,7 +36,7 @@
       <% @themes.each do |theme|%>
         <div class="form-group">
           <div class="col-sm-2 text-center ChangeThemeThumbnail">
-              <%= image_tag theme.template.url(:thumb) , :class => "imgPopover"%><br>
+              <%= image_tag theme.template.url(:original) , :class => "imgPopover"%><br>
               <%= f.radio_button :theme_name, theme.theme_name %>
               <p><%= theme.theme_name%></p>
           </div>
