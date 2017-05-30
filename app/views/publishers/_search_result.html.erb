@@ -21,20 +21,20 @@
           <tr style="font-size:13px">
             <th>Publisher Code</th>
             <th>Publisher Name</th>
-            <th>Publisher Country</th>
             <th>Contact Name</th>
             <th>Contact Email</th>
+            <th>Domain Name </th>
           </tr>
         </thead>
         <tbody>
           <%if @publisher.present? %>
-            <% @publisher.each do |pub| %>
+            <% @publisher.each do |publisher| %>
   	          <tr>
-                <td><%= link_to pub.publisher_code,edit_publisher_path(pub) %></td>
-                <td ><%= pub.publisher_name %></td>
-                <td ><%= country_name(pub.country_code) %></td>
-                <td ><%= pub.contact_first_name %></td>
-                <td ><%= pub.contact_email %></td>
+                <td><%= link_to publisher.publisher_code,edit_publisher_path(publisher) %></td>
+                <td ><%= publisher.publisher_name %></td>
+                <td ><%= publisher.contact_first_name %></td>
+                <td ><%= publisher.contact_email %></td>
+                <td><%= publisher.domain_name %></td>
               </tr>
             <%end%>
           <% else %>

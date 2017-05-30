@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'homes/index'
+  root :to => "homes#index"
+
   resources :contacts
 
   resources :reports, :printhouse_setup, 
@@ -43,9 +46,11 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  devise_scope :user do
-    root to: "devise/sessions#new"
-  end
+  get 'users/sign_in'
+
+  # devise_scope :user do
+  #   root to: "devise/sessions#new"
+  # end
 
   resources :retailers do 
     collection do

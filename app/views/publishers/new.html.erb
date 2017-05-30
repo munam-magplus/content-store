@@ -141,8 +141,16 @@
         <div class="col-sm-7">
           <%= f.select 'country_code',options_from_collection_for_select(country , 'country_code', 'country_name'),{ :prompt => "please Select"},{required: true, :class => "form-control"} %>
         </div>
+        <div class="clearfix"></div>
       </div>
     </div>
+    <div class="col-md-6"><div class="form-group">
+      <label for="taskName" class="col-sm-5 control-label">Domain Name<sup class="mandatory">*</sup></label>
+      <div class="col-sm-7">
+            <%= f.text_field :domain_name, :required => true, :class => "form-control" %>
+      </div>
+      <div class="clearfix"></div>
+    </div></div>
       
       <div class="clearfix"></div>
     
