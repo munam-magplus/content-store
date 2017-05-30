@@ -7,7 +7,6 @@
    <%= render :partial => "layouts/top_header"%>
     <!-- Header Ends --> 
 </head>
-
 <body>
   <!-- Aside Start-->
     <%= render :partial => "layouts/sidebar"%>
@@ -26,9 +25,8 @@
           <li><a href="#">Browse by Book </a></li>
         </div>
       </ol>
-      
       <h2 class="H2-L1">View Publisher's Books</h2>
-      <%= form_tag site_settings_search_path, :method => 'get', :remote => true do  %>
+      <%= form_tag books_of_publisher_site_settings_path, :method => 'get', :remote => true do  %>
         <div class="col-md-6">
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Publisher</label>
@@ -38,34 +36,17 @@
             <div class="clearfix"></div> 
           </div>
         </div>
-        <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit %>
+        <%= button_tag fa_icon("hand-o-up", text: "
+        Click"), :class => "btn btn-sm", type: :submit %>
       <%end%>
       <div class="clearfix m-b-30"></div>
       <div id="search_result"></div>
     </div>
       <!-- Page Content Ends --> 
       <!-- ================== --> 
-    
-      <!-- Footer Start -->
+       <!-- Footer Start -->
     <%= render :partial => "layouts/footer" %>
       <!-- Footer Ends --> 
   </section>
 </body>
 </html>
-
-<script>
-  $('#publisher_id').change(function(){
-    var a = $('#publisher_id').val();
-    $.ajax({
-          url: "search",
-          type: "GET",
-          data: { publisher_id: a },
-          // dataType: "js",
-          success: function(result){
-
-            alert(result.a);
-            // console.log(result);
-            $('#search_result').val(result.a);
-    }});
-  })
-</script>

@@ -1,4 +1,4 @@
-<div class="row">
+ <div class="row">
   <div class="col-md-12">
     <div class="mt10 table-demo">Books 
       <span class="pull-right">
@@ -16,22 +16,6 @@
       </span>
     </div>
     <div class="table-responsive">
-      <% if @books_search.present? %>
-
-        <%= form_tag simple_search_site_settings_path, :method => 'get', :remote => true, :class => "form-horizontal form-bg" do |f| %>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="taskName" class="col-sm-4 control-label">ISBN</label>
-              <div class="col-sm-8">
-                <%= text_field_tag :isbn,"", :class => "form-control"%>
-              </div>
-              <% @books_search.each do |f| %>
-                <%= hidden_field_tag :publisher_id,  f.publisher_id %>
-              <% end %>
-            </div>
-          </div>
-          <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit, :id => "submit" %>
-        <% end %>
         <table class="table table-bordered">
           <thead>
             <tr style="font-size:13px">
@@ -42,7 +26,8 @@
             </tr>
           </thead>
           <tbody>
-            <% @books_search.each do |f| %>
+		      <% if @result.present? %>        
+            <% @result.each do |f| %>
               <tr>
                 <td><%= f.book_title %></td>
                 <td><%= f.isbn %></td>
@@ -50,15 +35,15 @@
                 <td><%= link_to image_tag(f.logo.url(:thumb)), new_site_setting_path(f) %></td>
               </tr>
             <% end %>
+		      <% else %>
+		        <tr>
+		          <td bgcolor="#FBFBFB">
+		            <p> Record Not Found </p> 
+		          </td>
+		        </tr>
+		      <% end %>
           </tbody>
         </table>
-      <% else %>
-        <tr>
-          <td bgcolor="#FBFBFB">
-            <p> Record Not Found </p> 
-          </td>
-        </tr>
-      <% end %>
     </div>
   </div>
   <div class="col-sm-12"> </div>
