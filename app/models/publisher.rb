@@ -1,6 +1,7 @@
 class Publisher < ApplicationRecord
 	include Filterable #search module
   has_many :books_primary_content_informations
+  has_many :subject_groups
 	# Validations
   #-----------------------------------------------------------------------------
 	  validates_presence_of :publisher_name

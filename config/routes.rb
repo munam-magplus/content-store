@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :subject_group_books 
+           
+
   get 'site_settings/new'
 
   get 'site_settings/create'
@@ -15,6 +18,9 @@ Rails.application.routes.draw do
   get 'index_contents/publisher_code'
 
   get 'my_accounts/index'
+
+  get 'subject_groups/associate_book'
+  post 'subject_groups/associate_book'
 
   resources :contacts
 

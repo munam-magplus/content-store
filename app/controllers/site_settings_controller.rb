@@ -1,4 +1,6 @@
 class SiteSettingsController < ApplicationController
+    before_action :authenticate_user!
+
   def new
     @books_details = BooksPrimaryContentInformation.find_by_id(params[:format])
   end

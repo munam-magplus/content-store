@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<title>Content Store :: Search Subject Group</title>
+<!-- Latest compiled and minified CSS -->
+    <!-- Header -->
+   <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+</head>
+
+<body>
+  <!-- Aside Start-->
+    <%= render :partial => "layouts/sidebar"%>
+    <!-- Aside Ends-->
+  <!--Main Content Start -->
+  <section class="content"> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a>Publisher Setup</a></li>
+        <li><a>Associate Books</a></li>
+      </ol>
+      
+      <h2 class="H2-L1">Associate Books</h2>
+      <div class="wrapper container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="mt10 table-demo">
+              Select books for "<%= @subject_group_name %>"
+            </div>
+            <div class="table-responsive">
+              <%= form_tag subject_group_books_path, :method => 'post' do %>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr style="font-size:13px">
+                      <th></th>
+                      <th>Book Title</th>
+                      <th>Book ISBN</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if @books.present? %>
+                      <% @books.each do |book| %>
+                        <tr>
+                          <td><%= check_box_tag "book_id[]", book.id %></td>
+                          <td><%= book.book_title %></td>
+                          <td><%= book.isbn %></td>
+                        </tr>
+                        <%= hidden_field_tag "subject_group_id", @subject_group_id %>
+                      <% end %>
+                    <% else %>
+                      <tr>
+                        <td bgcolor="#FBFBFB">
+                          <p> Record Not Found </p> 
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+                <%= button_tag fa_icon("search", text: "Associate Books"), :class => "btn btn-sm", type: :submit %>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-sm-12"></div>
+        </div>
+      </div>
+    </div>  
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+    <!-- Footer Ends --> 
+  </section>
+</body>
+</html>

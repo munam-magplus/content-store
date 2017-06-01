@@ -21,6 +21,12 @@ class SubjectGroupsController < ApplicationController
   def metadata_sheet
   end
 
+  def associate_book
+    @subject_group_id = params[:subject_group_id]
+    @subject_group_name = params[:subject_group_name]
+    @books = BooksPrimaryContentInformation.where(:publisher_id => params[:format])
+  end
+
   private
   def subject_group_params
   	params.require(:subject_group).permit(:publisher_id, :subject_group_level, 
