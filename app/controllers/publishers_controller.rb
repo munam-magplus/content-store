@@ -51,6 +51,6 @@ class PublishersController < ApplicationController
   def publisher_params
     params.require(:publisher).permit(:publisher_code, :publisher_name, 
     :publisher_status, :publisher_type, :end_user_language, :manager_language,
-    :contact_first_name, :contact_last_name, :contact_email,:country_code,:domain_name)
+    :contact_first_name, :contact_last_name, :contact_email,:country_code,:domain_name, :about, :policy, :terms_and_conditions)
   end
 end
