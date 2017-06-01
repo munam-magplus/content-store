@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
+  resources :subject_group_books 
+ 
   get 'index_contents/content_code'
 
   get 'index_contents/publisher_code'
 
   get 'my_accounts/index'
-
 
   resources :site_settings do 
     collection do 
@@ -17,6 +18,11 @@ Rails.application.routes.draw do
   get 'homes/index'
   root :to => "homes#index"
   get 'homes/search'
+
+  get 'homes/books_description'
+
+  get 'subject_groups/associate_book'
+  post 'subject_groups/associate_book'
 
   resources :contacts
 
@@ -97,7 +103,6 @@ Rails.application.routes.draw do
       get 'linked_member_publisher'
       get 'subject_group_search'
       get 'title_search'
-      delete 'destroy'
     end
   end
   

@@ -48,7 +48,8 @@ class PublishersController < ApplicationController
   end
 
   def destroy
-    Publisher.find_by(id: params[:id]).destroy
+    @publisher = Publisher.find( params[:id])
+    @publisher.destroy
     redirect_to :back
   end
   

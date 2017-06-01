@@ -17,7 +17,6 @@
     </div>
     <div class="table-responsive">
       <% if @books_search.present? %>
-
         <%= form_tag simple_search_site_settings_path, :method => 'get', :remote => true, :class => "form-horizontal form-bg" do |f| %>
           <div class="col-md-6">
             <div class="form-group">
@@ -36,17 +35,13 @@
           <thead>
             <tr style="font-size:13px">
               <th>Book Title</th>
-              <th>ISBN</th>
-              <th>Language</th>
-              <th>Images</th>
+              <th>Display Image</th>
             </tr>
           </thead>
           <tbody>
             <% @books_search.each do |f| %>
               <tr>
                 <td><%= f.book_title %></td>
-                <td><%= f.isbn %></td>
-                <td><%= f.language %></td>
                 <td><%= link_to image_tag(f.logo.url(:thumb)), new_site_setting_path(f) %></td>
               </tr>
             <% end %>
