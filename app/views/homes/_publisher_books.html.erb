@@ -1,0 +1,24 @@
+<div class="row" id="searchResultGrid">
+  <div class="col-md-12">
+    <div class="table-responsive">
+			<% if @result.present?   %>
+				<% @result.each do |f| %>
+					<div class="col-md-6">
+		        <div class="form-group" style="width:300px; height:300px;">
+		          <span class="col-sm-8">
+		           <%= image_tag f.logo.url(:thumb)%>
+		          </span>
+		          <span class="col-sm-8">
+		           <%= f.book_title %>
+		          </span>
+		          <div class="clearfix"></div>
+		        </div>
+		      </div>
+				<% end %>
+			<% else %>
+				Records not found
+ 			<% end %>
+		</div>
+	</div>
+	<div class="col-sm-12"> </div>
+</div>

@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   get 'homes/index'
   root :to => "homes#index"
 
+  get 'homes/books_description'
+
+  get 'homes/search'
+
   resources :contacts
 
   resources :reports, :printhouse_setup, 
