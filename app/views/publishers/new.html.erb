@@ -152,6 +152,13 @@
       <div class="clearfix"></div>
     </div></div>
     <div class="col-md-6"><div class="form-group">
+      <label for="DefaultManagerLanguage" class="col-sm-5 control-label">Publisher Logo</label>
+      <div class="col-sm-7">
+         <%= f.file_field :publisher_logo,:placeholder => "Member Publisher Logo", :class => "form-control"%>
+      </div>
+      <div class="clearfix"></div>
+    </div></div>
+    <div class="col-md-6"><div class="form-group">
       <label for="taskName" class="col-sm-5 control-label">About</label>
       <div class="col-sm-7">
         <%= f.text_area :about, :class => "form-control" %>

@@ -23,5 +23,4 @@ class HomesController < ApplicationController
  	  @gethost = request.host.split('.')[0] + '.' + 'com'
     @publisher = Publisher.find_by_domain_name(@gethost)
    end
-
 end

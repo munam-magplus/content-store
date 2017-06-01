@@ -24,6 +24,7 @@
             <th>Contact Name</th>
             <th>Contact Email</th>
             <th>Domain Name </th>
+            <th>Action </th>
           </tr>
         </thead>
         <tbody>
@@ -35,6 +36,7 @@
                 <td ><%= publisher.contact_first_name %></td>
                 <td ><%= publisher.contact_email %></td>
                 <td><%= publisher.domain_name %></td>
+                <td><%= button_to("Delete ", publishers_path, :data => { :confirm => "Are you sure you want to delete this Theme?"},:class => "btn btn-sm", params:{ id: publisher.id },:method => :delete) %></td>
               </tr>
             <%end%>
           <% else %>

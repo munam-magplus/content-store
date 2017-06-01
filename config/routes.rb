@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get 'my_accounts/index'
 
+
   resources :site_settings do 
     collection do 
       get 'books_of_publisher'
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
 
   get 'homes/index'
   root :to => "homes#index"
+  get 'homes/search'
 
   get 'homes/books_description'
 
@@ -99,6 +101,7 @@ Rails.application.routes.draw do
       get 'linked_member_publisher'
       get 'subject_group_search'
       get 'title_search'
+      delete 'destroy'
     end
   end
   
