@@ -46,11 +46,16 @@ class PublishersController < ApplicationController
       end
     end
   end
+
+  def destroy
+    Publisher.find_by(id: params[:id]).destroy
+    redirect_to :back
+  end
   
   private 
   def publisher_params
     params.require(:publisher).permit(:publisher_code, :publisher_name, 
     :publisher_status, :publisher_type, :end_user_language, :manager_language,
-    :contact_first_name, :contact_last_name, :contact_email,:country_code,:domain_name, :about, :policy, :terms_and_conditions)
+    :contact_first_name, :contact_last_name, :contact_email, :publisher_logo, :country_code,:domain_name, :about, :policy, :terms_and_conditions)
   end
 end
