@@ -1,9 +1,9 @@
-<!-- brand -->
-<div>
-  <a href="/homes/index" class="logo-expanded">
-   <%= image_tag(@publisher.publisher_logo , :class => "logo-lg publogo")%>
-  </a>
-</div>
+ <!doctype html>
+<html>
+<head>
+<title>Content Store :: Books </title>
+ </head>
+
 <body>
   
 <!--Main Content Start -->
@@ -14,48 +14,47 @@
       <ol class="breadcrumb">
         <li><a href="#">My Account</a></li>
         <li><a>About Us</a></li>        
-        <li><a href="/homes/contact_us"> Contact Us </a></li>
+        <li><a> Contact Us </a></li>
         <li><a>Help</a></li>
       </ol>
       <%= form_tag homes_search_path, :method => 'get', :remote => true, :class => "form-horizontal form-bg" do |f| %>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Book Title</label>
-            <div class="col-sm-8">
-              <%= text_field_tag :book_title,"", :class => "form-control", style: "background-color: #eee;"%>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
-       	 <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit, :id => "submit" %>
-      	</div>
-      </div>
-       <% end %>
+	      <div class="row">
+	        <div class="col-md-6">
+	          <div class="form-group">
+	            <label for="taskName" class="col-sm-4 control-label">Book Title</label>
+	            <div class="col-sm-8">
+	              <%= text_field_tag :book_title,"", :class => "form-control", style: "background-color: #eee;"%>
+	            </div>
+	          </div>
+	        </div>
+	        <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+	       	 <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit, :id => "submit" %>
+	      	</div>
+	      </div>
+      <% end %>
       <div class="clearfix"></div>
       <div id="search">
-      <% @books.each do |f| %>
-					<div class="col-md-6">
-		        <div class="form-group" style="width:300px; height:300px;>
-		          <span class="col-sm-8">
-		           <%= image_tag f.logo.url(:thumb)%>
-		          </span>
-		          <span class="col-sm-8">
-		           <%= f.book_title %>
-		          </span>
-		          <div class="clearfix"></div>
-		        </div>
-		      </div>
+	      <% if @books.present? %>
+	      	<% @books.each do |f| %>
+						<div class="col-md-2">
+							<div class="col-sm-2 text-center  ">
+			          <%= image_tag f.logo.url(:thumb)%>
+		            <%= link_to f.book_title, homes_books_description_path(f.id) %>
+			          <div class="clearfix"></div>
+				      </div>
+			      </div>
+					<% end %>
+				<% else %>
+					Records Not Found 
 				<% end %>
+		  </div>
       <div class="clearfix m-b-30"></div>
       <!-- <h2 class="H2-L1">Publisher's Books</h2> -->
-      </div>
-    </div>  
+    </div>
     <!-- Footer Start -->
-    <%= render :partial => "layouts/footer" %>
+    <%= render :partial => "homes/publisher_footer", :locals => { books: @books } %>
     <!-- Footer Ends --> 
   </section>
 </body>
+</html>
 
-
-	  

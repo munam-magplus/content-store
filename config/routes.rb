@@ -20,8 +20,6 @@ Rails.application.routes.draw do
   get 'homes/search'
 
   get 'homes/books_description'
-
-  get 'subject_groups/associate_book'
   post 'subject_groups/associate_book'
 
   resources :contacts
