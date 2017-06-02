@@ -9,6 +9,15 @@ class HomesController < ApplicationController
   def contact_us
   end
  
+  def about
+  end
+
+  def terms_and_conditions
+  end
+
+  def policy
+  end
+
   def search
    	if params[:book_title] == ""
   		flash[:alert] = "Sorry - no search terms were entered. Please enter your search terms and try again."
