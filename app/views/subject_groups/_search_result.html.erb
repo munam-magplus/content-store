@@ -32,7 +32,7 @@
                 <td><%= f.subject_group_name %></td>
                 <td><%= f.subject_group_code %></td>
                 <td><%= f.subject_group_level %></td>
-                <td><%= link_to 'Associate Books',subject_groups_associate_book_path(f.publisher_id, subject_group_name: f.subject_group_name, subject_group_id: f.id) %></td>
+                <td><%= link_to 'Associate Books',associate_book_subject_groups_path(f.publisher_id, subject_group_name: f.subject_group_name, subject_group_id: f.id) %></td>
               </tr>
             <% end %>
           <% else %>

@@ -18,6 +18,11 @@ Rails.application.routes.draw do
   get 'homes/index'
   root :to => "homes#index"
   get 'homes/search'
+  resources :homes do
+    collection do
+      get 'books_by_category'
+    end
+  end
 
   get 'homes/books_description'
   post 'subject_groups/associate_book'
@@ -101,6 +106,7 @@ Rails.application.routes.draw do
       get 'linked_member_publisher'
       get 'subject_group_search'
       get 'title_search'
+      get 'associate_book'
     end
   end
   

@@ -17,6 +17,10 @@ class HomesController < ApplicationController
     @book_information = BooksPrimaryContentInformation.find_by_id(params[:format])
    end
 
+  def books_by_category
+    subject_group = SubjectGroup.find(params[:subject_group_id])
+    @books_by_subject_group = subject_group.subject_group_books   
+  end
   private
 	
 	def get_host

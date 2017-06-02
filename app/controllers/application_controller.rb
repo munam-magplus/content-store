@@ -14,10 +14,10 @@ class ApplicationController < ActionController::Base
   end
 
   def set_them
-    if request.domain.present? && request.domain != 'www'
-      @css_root = "#{request.domain}"
-    else
+    if request.domain == "localhost"
       @css_root = "application" 
+    elsif request.domain.present? && request.domain != 'www'
+      @css_root = "#{request.domain}/application"
     end 
   end
 

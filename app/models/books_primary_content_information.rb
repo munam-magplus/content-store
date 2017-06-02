@@ -4,6 +4,7 @@ class BooksPrimaryContentInformation < ApplicationRecord
 	has_one :books_contributor
 	has_one :books_content_pricing
 	has_one :books_content_access_rule
+	has_many :subject_group_books
 	has_many :subject_groups , through: :subject_group_books
 	belongs_to :license, optional: true
 	#used for uploading image

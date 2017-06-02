@@ -1,0 +1,25 @@
+<aside class="left-panel">
+  <div class="logo">
+      <a href="index.html" class="logo-expanded">
+       <%= image_tag(@publisher.publisher_logo , :class => "logo-lg")%>
+      </a>
+   </div>
+ <!-- Navbar Start -->
+ <nav class="navigation">
+    <ul class="list-unstyled leftNav">
+      <li>
+        <a href="#" class="topMenu"><span class="nav-label sub-drop">Browse By Category</span><span class="fa fa-angle-right pull-right"></span></a>
+        <ul class="nav-multi__list nav-multi" style="display:none">
+          <li>
+            <% unless @publisher.subject_groups.blank? %>
+              <%@publisher.subject_groups.each do |subject_group| %>
+                <li> <%=link_to subject_group.subject_group_name ,books_by_category_homes_path(:subject_group_id => subject_group.id)%></li>
+                  <%end%>
+            <%end%>
+          </li>
+        </ul>
+      </li>
+    </ul>  
+ </nav>
+</aside>
+    
