@@ -1,9 +1,13 @@
- <!doctype html>
+<!doctype html>
 <html>
 <head>
 <title>Content Store :: Books </title>
  </head>
-
+<div>
+  <a href="/homes/index" class="logo-expanded">
+   <%= image_tag(@publisher.publisher_logo , :class => "logo-lg publogo")%>
+  </a>
+</div>
 <body>
   
 <!--Main Content Start -->
@@ -13,8 +17,9 @@
     <!-- ================== -->
     <div class="wrapper container-fluid">
       <ol class="breadcrumb">
-        <li><a href="#">My Account</a></li>
-        <li><a>About Us</a></li>        
+      	<li><%= link_to '<i class="fa fa-home" aria-hidden="true"></i>'.html_safe, root_path %></li>
+        <li><%= link_to "My Account", "", target: :_blank %></li>
+        <li><%= link_to "About Us", homes_about_path %></li>        
         <li><a> Contact Us </a></li>
         <li><a>Help</a></li>
       </ol>
@@ -33,29 +38,30 @@
 	      	</div>
 	      </div>
       <% end %>
+    	<% flash.each do |key, value| %>
+			  <%= content_tag :div, value, class: "flash #{key}" %>
+			<% end %>
       <div class="clearfix"></div>
       <div id="search">
 	      <% if @books.present? %>
 	      	<% @books.each do |f| %>
 						<div class="col-md-2">
-							<div class="col-sm-2 text-center  ">
-			          <%= image_tag f.logo.url(:thumb)%>
-		            <%= link_to f.book_title, homes_books_description_path(f.id) %>
-			          <div class="clearfix"></div>
+			          <%= image_tag(f.logo.url(:thumb), height: '178', width: '126')%>
+							    <%= link_to truncate(f.book_title, length: 10), homes_books_description_path(f.id)%>
+ 			          <div class="clearfix"></div>
 				      </div>
-			      </div>
-					<% end %>
+ 					<% end %>
 				<% else %>
 					Records Not Found 
 				<% end %>
 		  </div>
+      
       <div class="clearfix m-b-30"></div>
       <!-- <h2 class="H2-L1">Publisher's Books</h2> -->
     </div>
     <!-- Footer Start -->
-    <%= render :partial => "homes/publisher_footer", :locals => { books: @books } %>
+    <%= render :partial => "homes/publisher_footer"%>
     <!-- Footer Ends --> 
   </section>
 </body>
 </html>
-

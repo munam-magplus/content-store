@@ -27,6 +27,10 @@ Rails.application.routes.draw do
   get 'homes/books_description'
   post 'subject_groups/associate_book'
 
+  get 'homes/about'
+  get 'homes/terms_and_conditions'
+  get 'homes/policy'
+
   resources :contacts
 
   resources :reports, :printhouse_setup, 

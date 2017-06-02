@@ -1,13 +1,18 @@
- <% if @gethost == "wutheringink.com" %>
+ <% if @gethost == "wtbooks.com" %>
 	<footer class="footer">
-		<ul>
-      <li ><a> Terms &amp; Conditions </a></li>
-      <li><a>Privacy Policy</a></li>
-      <li class="float-right search"> © 2013-2014 World Technologies. All right reserved &nbsp;&nbsp; </li>
-     </ul>
+	<ul>
+    <li><%= link_to "Terms & Conditions", homes_terms_and_conditions_path %></li>
+    <li><%= link_to "Privacy Policy", homes_policy_path %></li>
+    <li class="float-right search"> © 2013-2014 World Technologies. All right reserved &nbsp;&nbsp; </li>
+   </ul>
 	</footer>
 <% else %>
 	<footer class="footer">
-		© 2011-2012 MPS LTD. All rights reserved 
+		<ul>
+    <li><%= link_to "Terms & Conditions", homes_terms_and_conditions_path %></li>
+    <li><%= link_to "Privacy Policy", homes_policy_path %></li>
+    <li class="float-right search">© 2011-2012 MPS LTD. All rights reserved &nbsp;&nbsp; </li>
+   </ul>
+		
 	</footer>
 <% end %>
