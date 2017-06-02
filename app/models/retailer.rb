@@ -1,11 +1,8 @@
 class Retailer < ApplicationRecord
 	include Filterable #search module
 	# validating fields
-	validates :retailer_code, presence: true, uniqueness: true
-	validates :retailer_name, presence: true
-	validates :publisher_id, presence: true
-	validates :low_ip, presence: true
-	validates :high_ip, presence: true
-	validates :ip_list, presence: true
+	validates_presence_of :retailer_code, uniqueness: true
+	validates_presence_of :retailer_name, :publisher_id, :low_ip,
+	:high_ip, :ip_list
 end
  

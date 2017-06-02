@@ -7,11 +7,7 @@ class Publisher < ApplicationRecord
   has_many :books_primary_content_informations, dependent: :destroy
 	# Validations
   #-----------------------------------------------------------------------------
-	  validates_presence_of :publisher_name
-  	validates_presence_of :publisher_code
-  	validates_presence_of :publisher_type
-  	validates_presence_of :contact_first_name
-  	validates_presence_of :contact_last_name
-  	validates_presence_of :contact_email
+	  validates_presence_of :publisher_name, :publisher_code, :publisher_type,
+  	 :contact_first_name, :contact_last_name, :contact_email
   #-----------------------------------------------------------------------------
 end

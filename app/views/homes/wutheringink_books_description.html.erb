@@ -3,6 +3,11 @@
 <head>
 <title>Content Store :: Books </title>
  </head>
+<div>
+  <a href="/homes/index" class="logo-expanded">
+   <%= image_tag(@publisher.publisher_logo , :class => "logo-lg publogo")%>
+  </a>
+</div>
 
 <body>
   
@@ -12,6 +17,7 @@
     <!-- ================== -->
     <div class="wrapper container-fluid">
       <ol class="breadcrumb">
+      	<li><%= link_to '<i class="fa fa-home" aria-hidden="true"></i>'.html_safe, root_path %></li>
         <li><a href="#">My Account</a></li>
         <li><a>About Us</a></li>        
         <li><a> Contact Us </a></li>

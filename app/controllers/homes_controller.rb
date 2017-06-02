@@ -8,14 +8,23 @@ class HomesController < ApplicationController
 
   def contact_us
   end
-
+ 
   def search
-    @result = BooksPrimaryContentInformation.filter(params.slice(:book_title))
+   	if params[:book_title] == ""
+  		flash[:alert] = "Sorry - no search terms were entered. Please enter your search terms and try again."
+ 		else 		
+   	 @result = BooksPrimaryContentInformation.where(:book_title => params[:book_title])
+  	end
   end
 
   def books_description
     @book_information = BooksPrimaryContentInformation.find_by_id(params[:format])
-   end
+	  if @publisher.domain_name == "wutheringink.com"
+	  	render 'wutheringink_books_description'
+	  else
+	  	render 'wtbooks_books_description'
+	  end
+  end
 
   private
 	
