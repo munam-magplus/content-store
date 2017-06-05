@@ -18,18 +18,19 @@ Rails.application.routes.draw do
   get 'homes/index'
   root :to => "homes#index"
   get 'homes/search'
+
   resources :homes do
     collection do
       get 'books_by_category'
+      get 'about'
+      get 'terms_and_conditions'
+      get 'policy'
     end
   end
 
   get 'homes/books_description'
   post 'subject_groups/associate_book'
 
-  get 'homes/about'
-  get 'homes/terms_and_conditions'
-  get 'homes/policy'
 
   resources :contacts
 
