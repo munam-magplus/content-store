@@ -1,9 +1,13 @@
 class HomesController < ApplicationController
 	before_action :get_host
   def index
+    begin
     unless @publisher.books_primary_content_informations.blank?
       @books = @publisher.books_primary_content_informations
   	end
+  rescue => e # catches StandardError (don't use rescue Esception => e)
+   logger.error e.message
+  end
   end
 
   def contact_us
@@ -42,7 +46,11 @@ class HomesController < ApplicationController
   private
 	
 	def get_host
+    begin
  	  @gethost = request.host.split('.')[0] + '.' + 'com'
     @publisher = Publisher.find_by_domain_name(@gethost)
-   end
+  rescue => e # catches StandardError (don't use rescue Esception => e)
+   logger.error e.message
+  end
+  end
 end
