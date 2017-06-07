@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     dashboard_content_conversations_path
+    # if current_user.admin?
+    #   dashboard_content_conversations_path
+    # else
+    #   index_contents_content_code_path
+    # end
   end
 
   def after_sign_out_path_for(resource)
@@ -29,7 +34,7 @@ class ApplicationController < ActionController::Base
 	
   def configure_permitted_parameters
   	devise_parameter_sanitizer.permit(:sign_in) do |user_params|
-      user_params.permit(:username, :email)
+      user_params.permit(:username, :email, :admin)
     end
   end
 end
