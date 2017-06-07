@@ -1,1 +1,3 @@
 $("#search_result").html("<%= escape_javascript(render(:partial => "search_result", :object => @books_search))%>");
+$("#bookwillpaginate").html("<%= escape_javascript(will_paginate @books_search, renderer: BootstrapPagination::Rails)%>");
+$('.pagination a').attr('data-remote','true');
