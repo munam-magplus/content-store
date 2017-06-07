@@ -20,6 +20,8 @@ class BooksController < ApplicationController
      book_contributers.each do |book_contributor_params|
       # To save multiple records
         @book_contributor = BooksContributor.new(book_contributor_params)
+        primary_id = BooksPrimaryContentInformation.last[:id]
+        @book_contributor.books_primary_content_information_id = primary_id
         @book_contributor.save!
       end
      @form = "form2"  # just to move on next form. 
@@ -30,6 +32,8 @@ class BooksController < ApplicationController
       book_content_pricing.each do |books_content_pricing_params|
         # To save multiple records
         @book_content_pricing = BooksContentPricing.new(books_content_pricing_params)
+        primary_id = BooksPrimaryContentInformation.last[:id]
+        @book_content_pricing.books_primary_content_information_id = primary_id
         @book_content_pricing.save!
       end
       @form = "form3" # just to move on next form. 
@@ -37,6 +41,8 @@ class BooksController < ApplicationController
     elsif params[:book_content_access_rule].present?
       # To save book_content_access_rule values
      @book_content_access_rule = BooksContentAccessRule.new(book_content_access_rule_params)
+     primary_id = BooksPrimaryContentInformation.last[:id]
+     @book_content_access_rule.books_primary_content_information_id = primary_id
      @book_content_access_rule.save!
      @form = "form4" # just to move on next form. 
     end

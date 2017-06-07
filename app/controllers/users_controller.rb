@@ -33,12 +33,6 @@ class UsersController < ApplicationController
       redirect_to root_url
     else
       render 'new'
-      #   format.html { redirect_to @cdp_user, notice: 'Cdp user was successfully created.' }
-      #   format.json { render :show, status: :created, location: @cdp_user }
-      # else
-      #   format.html { render :new }
-      #   format.json { render json: @cdp_user.errors, status: :unprocessable_entity }
-      # end
     end
   end
 
@@ -80,6 +74,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :encrypted_password)
+       params.require(:user).permit(:email, :admin, :encrypted_password)
     end
 end
