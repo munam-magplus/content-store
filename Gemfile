@@ -29,8 +29,9 @@ gem 'devise'
 
 #for pagination
 gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 
-
+gem "remotipart", "~> 1.3.1"
 gem "font-awesome-rails"
 #used for encrypting password
 gem 'bcrypt-ruby', '~> 3.1.2'

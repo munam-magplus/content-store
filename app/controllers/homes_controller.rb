@@ -2,7 +2,7 @@ class HomesController < ApplicationController
 	before_action :get_host
   def index
     unless @publisher.books_primary_content_informations.blank?
-      @books = @publisher.books_primary_content_informations
+      @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 12)
   	end
   end
 
@@ -18,21 +18,16 @@ class HomesController < ApplicationController
   def policy
   end
 
+  def advance_search
+  end
+  
   def search
-   	if params[:book_title] == ""
-  		flash[:alert] = "Sorry - no search terms were entered. Please enter your search terms and try again."
- 		else 		
-   	 @result = BooksPrimaryContentInformation.where(:book_title => params[:book_title])
-  	end
+    @books = @publisher.books_primary_content_informations.filter(params.slice(:book_title))
+    render "books_search_results", :object => @books
   end
 
   def books_description
     @book_information = BooksPrimaryContentInformation.find_by_id(params[:format])
-	  if @publisher.domain_name == "wutheringink.com"
-	  	render 'wutheringink_books_description'
-	  else
-	  	render 'wtbooks_books_description'
-	  end
   end
 
   def books_by_category
@@ -44,5 +39,5 @@ class HomesController < ApplicationController
 	def get_host
  	  @gethost = request.host.split('.')[0] + '.' + 'com'
     @publisher = Publisher.find_by_domain_name(@gethost)
-   end
+  end
 end

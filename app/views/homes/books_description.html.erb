@@ -3,33 +3,22 @@
 <head>
 <title>Content Store :: Books </title>
  </head>
-<div>
-  <a href="/homes/index" class="logo-expanded">
-   <%= image_tag(@publisher.publisher_logo , :class => "logo-lg publogo")%>
-  </a>
-</div>
-
 <body>
   
 <!--Main Content Start -->
-  <section class="content"> 
+ <section class="content">
+  	<%= render :partial => "homes/side_bar"%>
+  	<%= render :partial => "header"%>
     <!-- Page Content Start --> 
     <!-- ================== -->
     <div class="wrapper container-fluid">
-      <ol class="breadcrumb">
-      	<li><%= link_to '<i class="fa fa-home" aria-hidden="true"></i>'.html_safe, root_path %></li>
-        <li><a href="#">My Account</a></li>
-        <li><%= link_to "About Us", about_homes_path%></li>        
-        <li><a> Contact Us </a></li>
-        <li><a>Help</a></li>
-      </ol>
       <% if @book_information.present?   %>
  	      <div class="row">
 	        <div class="col-md-6">
 	          <div class="form-group">
 	            <label for="taskName" class="col-sm-4 control-label"> </label>
 	            <div class="col-sm-8">
-	              <%= image_tag @book_information.logo.url(:thumb)%>
+	              <%= image_tag @book_information.logo.url(:original)%>
 	            </div>
 	          </div>
 	        </div>
@@ -40,7 +29,8 @@
 	          <div class="form-group">
 	            <label for="taskName" class="col-sm-4 control-label">Book Title</label>
 	            <div class="col-sm-8">
-	              <%= @book_information.book_title %>
+	            <div class="col-sm-6 frontend-table-demo">
+	              <%= @book_information.book_title %> <div>
 	            </div>
 	          </div>
 	        </div>

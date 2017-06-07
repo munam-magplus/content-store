@@ -3,65 +3,45 @@
 <head>
 <title>Content Store :: Books </title>
  </head>
-<div>
-  <a href="/homes/index" class="logo-expanded">
-   <%= image_tag(@publisher.publisher_logo , :class => "logo-lg publogo")%>
-  </a>
-</div>
 <body>
   
 <!--Main Content Start -->
-  <section class="content"> 
-  	<%= render :partial => "homes/side_bar"%>
+  <section class="content">
+    <%= render :partial => "header"%> 
+  	<%= render :partial => "side_bar"%>
+
     <!-- Page Content Start --> 
     <!-- ================== -->
     <div class="wrapper container-fluid">
-      <ol class="breadcrumb">
-      	<li><%= link_to '<i class="fa fa-home" aria-hidden="true"></i>'.html_safe, root_path %></li>
-        <li><%= link_to "My Account", "", target: :_blank %></li>
-        <li><%= link_to "About Us",  about_homes_path %></li>        
-        <li><a> Contact Us </a></li>
-        <li><a>Help</a></li>
-      </ol>
-      <%= form_tag homes_search_path, :method => 'get', :remote => true, :class => "form-horizontal form-bg" do |f| %>
-	      <div class="row">
-	        <div class="col-md-6">
-	          <div class="form-group">
-	            <label for="taskName" class="col-sm-4 control-label">Book Title</label>
-	            <div class="col-sm-8">
-	              <%= text_field_tag :book_title,"", :class => "form-control", style: "background-color: #eee;"%>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
-	       	 <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit, :id => "submit" %>
-	      	</div>
-	      </div>
-      <% end %>
-    	<% flash.each do |key, value| %>
-			  <%= content_tag :div, value, class: "flash #{key}" %>
-			<% end %>
       <div class="clearfix"></div>
-      <div id="search">
-	      <% if @books.present? %>
-	      	<% @books.each do |f| %>
-						<div class="col-md-2">
-			          <%= image_tag(f.logo.url(:thumb), height: '178', width: '126')%>
-							    <%= link_to truncate(f.book_title, length: 10), homes_books_description_path(f.id)%>
- 			          <div class="clearfix"></div>
-				      </div>
- 					<% end %>
-				<% else %>
-					Records Not Found 
-				<% end %>
+       <% if @books.present? %>
+        <% @books.each do |f| %>
+          <div class="col-md-2">
+           <%= image_tag(f.logo.url(:thumb), height: '178', width: '126')%>
+            <%= link_to truncate(f.book_title, length: 10), books_description_homes_path(f.id)%>
+            <div class="clearfix"></div>
+          </div>
+        <%end%>
+        <% else %>
+          Record Not found
+        <% end %>
+      </div>
 		  </div>
+      <div class="pagination-frontend">
+     <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+   </div>
       
       <div class="clearfix m-b-30"></div>
       <!-- <h2 class="H2-L1">Publisher's Books</h2> -->
     </div>
+    
     <!-- Footer Start -->
     <%= render :partial => "homes/publisher_footer"%>
     <!-- Footer Ends --> 
   </section>
+
 </body>
 </html>
+
+
+

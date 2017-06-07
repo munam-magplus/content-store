@@ -25,10 +25,12 @@ Rails.application.routes.draw do
       get 'about'
       get 'terms_and_conditions'
       get 'policy'
+      get 'books_description'
+      get 'advance_search'
     end
   end
 
-  get 'homes/books_description'
+  
   post 'subject_groups/associate_book'
 
 

@@ -1015,6 +1015,18 @@ ol.vertical {
   font-size: 14px;
   font-weight: 500; }
 
+.frontend-table-demo {
+  background: black;
+  padding: 5px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom:20px; }
+
+.pagination-frontend {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
 @media (max-width: 450px) {
   .brd-crm-btn {
     display: block;
