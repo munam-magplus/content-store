@@ -27,6 +27,9 @@ gem 'exception_handler'
 
 gem 'devise'
 
+gem 'bootstrap3-rails'
+
+
 #for pagination
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'

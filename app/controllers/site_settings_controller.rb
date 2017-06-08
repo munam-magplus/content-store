@@ -13,7 +13,7 @@ class SiteSettingsController < ApplicationController
 
 	def books_of_publisher
 	  publisher = params[:publisher_id]
-	  @books_search = BooksPrimaryContentInformation.where(publisher_id: publisher)
+	  @books_search = BooksPrimaryContentInformation.where(publisher_id: publisher).paginate(:page => params[:page], :per_page => 12)
 	end
 
 	def simple_search

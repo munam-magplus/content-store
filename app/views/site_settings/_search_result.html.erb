@@ -47,6 +47,9 @@
             <% end %>
           </tbody>
         </table>
+        <div class="pagination-frontend">
+         <%= will_paginate @books_search,renderer: BootstrapPagination::Rails%>
+       </div>
       <% else %>
         <tr>
           <td bgcolor="#FBFBFB">
