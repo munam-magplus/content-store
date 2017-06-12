@@ -1,26 +1,60 @@
 
 <% unless @publisher.blank?%>
-<aside class="left-panel">
-  <div class="logo">
-       <%= link_to image_tag(@publisher.publisher_logo ), homes_path, :class => "logo-lg"%>
-   </div>
- <!-- Navbar Start -->
- <nav class="navigation">
-    <ul class="list-unstyled leftNav">
-      <li>
-        <a href="#" class="topMenu"><span class="nav-label sub-drop">Browse By Category</span><span class="fa fa-angle-right pull-right"></span></a>
-        <ul class="nav-multi__list nav-multi" style="display:none">
-          <li>
-            <% unless @publisher.subject_groups.blank? %>
-              <%@publisher.subject_groups.each do |subject_group| %>
-                <li> <%=link_to subject_group.subject_group_name ,books_by_category_homes_path(:subject_group_id => subject_group.id)%></li>
+
+  <div class="sidebar">
+    <!--institutionBox-->
+      <div class="institutionBox">
+        <h1>You are logged in from:</h1>
+        <h2> <%= link_to image_tag(@publisher.publisher_logo ), homes_path, :class => "logo-lg"%>
+            <p>Indica Publishers &amp; Distributors Pvt. Ltd.</p>
+        </h2>
+        <strong><a href="/BookStore/browseByTitle.do?offSet=0&amp;title=All&amp;type=subscribed">View Subscribed Content</a></strong> 
+      </div>
+      <h1 class="sectionHeading hidden-xs">BROWSE BY</h1>
+
+        <!--accordion-->
+      <div class="panel-group hidden-xs" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  LCC
+                  <span class="fa fa-angle-up pull-right"></span>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              <ul class="sidebar_sub">
+                <% unless @publisher.subject_groups.blank? %>
+                  <%@publisher.subject_groups.each do |subject_group| %>
+                    <li> <%=link_to subject_group.subject_group_name ,books_by_category_homes_path(:subject_group_id => subject_group.id), :remote => true %>
+                    </li>
                   <%end%>
-            <%end%>
-          </li>
-        </ul>
-      </li>
-    </ul>  
- </nav>
-</aside>
+                <%end%>
+              </ul>
+            </div>
+          </div>    
+        </div>       
+      </div>        
+                  
+                  
+                  
+                  
+                  
+                  
+                   
+                
+                
+           
+         <!--accordionend-->
+</div>
+
 <%end%>
-    
+   <script>
+  $('.collapse').on('shown.bs.collapse', function(){
+  $(this).parent().find(".fa-angle-down").removeClass("fa-angle-down").addClass("fa-angle-up");
+  }).on('hidden.bs.collapse', function(){
+  $(this).parent().find(".fa-angle-up").removeClass("fa-angle-up").addClass("fa-angle-down");
+  });
+</script> 
