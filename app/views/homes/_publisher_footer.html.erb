@@ -1,7 +1,7 @@
 <footer class="footer">
 <ul>
-  <li><%= link_to "Terms & Conditions", terms_and_conditions_homes_path %></li>
-  <li><%= link_to "Privacy Policy", policy_homes_path %></li>
+  <li><%= link_to "Terms & Conditions",terms_and_conditions_homes_path, :remote => true %></li>
+  <li><%= link_to "Privacy Policy", policy_homes_path,:remote => true%></li>
   <li class="float-right search"> © 2016-2017 <%= @publisher.publisher_name%>.  All right reserved &nbsp;&nbsp; </li>
 </ul>
 </footer>

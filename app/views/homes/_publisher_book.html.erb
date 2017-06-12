@@ -11,66 +11,6 @@
       <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
     </nav>  
   </div>
-<% elsif @book_information.present? %>
-  <div class="wrapper container-fluid">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="taskName" class="col-sm-4 control-label"> </label>
-          <div class="col-sm-8">
-            <%= image_tag @book_information.logo.url(:original)%>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="clearfix"></div>
-    
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="taskName" class="col-sm-4 control-label">Book Title</label>
-          <div class="col-sm-8">
-            <div class="col-sm-6 frontend-table-demo">
-              <%= @book_information.book_title %> 
-            <div>
-          </div>
-        </div>
-      </div>
-    </div>
-      <div class="clearfix"></div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">ISBN</label>
-            <div class="col-sm-8">
-              <%= @book_information.isbn %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="clearfix"></div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Language</label>
-            <div class="col-sm-8">
-              <%= @book_information.language %>
-            </div>
-          </div>
-        </div>
-      </div>
-        <div class="clearfix"></div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="taskName" class="col-sm-4 control-label">Year</label>
-              <div class="col-sm-8">
-               <%= @book_information.publication_year %>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="clearfix"></div>
+  <div class="clearfix"></div>
 <% end %>
 <div style="clear:both;"></div>

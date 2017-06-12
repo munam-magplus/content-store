@@ -14,20 +14,22 @@ class HomesController < ApplicationController
   end
  
   def about
+    @publisher_about = @publisher.about
   end
 
   def terms_and_conditions
+    @publisher_terms = @publisher.terms_and_conditions
   end
 
   def policy
+    @publisher_policy = @publisher.policy
   end
 
   def advance_search
   end
   
   def search
-    @books = @publisher.books_primary_content_informations.filter(params.slice(:book_title))
-    render "books_search_results", :object => @books
+    @books = @publisher.books_primary_content_informations.filter(params.slice(:book_title)).paginate(:page => params[:page], :per_page => 2)
   end
 
   def books_description
@@ -42,8 +44,7 @@ class HomesController < ApplicationController
     @books = subject_group.books_primary_content_informations.paginate(:page => params[:page], :per_page => 1)
     respond_to do |format|
       format.js
-    end  
-      
+    end     
   end
 
   private
