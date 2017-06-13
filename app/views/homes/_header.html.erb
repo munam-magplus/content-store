@@ -27,21 +27,20 @@
               <li><a href="#">My Saved Searches</a></li>
             </ul>
           </li>
-          <li><%= link_to "About US",(about_homes_path), :remote => true %></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><%= link_to "ABOUT US",(about_homes_path), :remote => true %></li>
+          <li><%= link_to "CONTACT US",(contact_homes_path), :remote => true %></li>
           <li><a href="#">Help</a></li>
           <li class="searchmenu">
             <div class="navbar-form" role="search">
               <div class="input-group add-on">
                 <%= form_tag(homes_search_path, :method => "get", id: "search-form",:remote => true) do %>
-                  <%= text_field_tag :book_title, params[:search], class:'form-control',placeholder: "Search by Title " %>
+                  <%= text_field_tag :book_title, params[:search], class:'form-control',required: true,placeholder: "Search by Title " %>
                     <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
                       <i class="glyphicon glyphicon-search"></i>
                     <% end %>
-                    <a href="#">
-                      <span class="glyphicon glyphicon-plus-sign"></span>
-                    </a>
-                <% end %>
+                    <%= link_to '<i class="glyphicon glyphicon-plus-sign btn btn-primary"></i>'.html_safe, advance_search_homes_path,:remote => true %>
+   
+                <%end%>
               </div>
               <div class="pull-right">  </div>
             </div>
@@ -51,7 +50,4 @@
     </div>
   </div>
 </nav>
-
-
-
 <!--header_bar-->

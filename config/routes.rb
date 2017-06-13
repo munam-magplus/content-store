@@ -27,6 +27,9 @@ Rails.application.routes.draw do
       get 'policy'
       get 'books_description'
       get 'advance_search'
+      get 'get_search_results'
+      get 'books_by_author'
+      get 'contact'
     end
   end
 

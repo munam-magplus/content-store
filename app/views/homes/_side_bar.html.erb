@@ -37,23 +37,14 @@
           </div>    
         </div>       
       </div>
-      <%= link_to "Books By Author",(), :remote => true %>
-            
-                  
-                  
-                  
-                  
-                  
-                  
-                   
-                
-                
+      <%= link_to "Books By Author",books_by_author_homes_path, :remote => true %>
+      <div class="clearfix"></div>    
            
          <!--accordionend-->
 </div>
 
 <%end%>
-   <script>
+<script>
   $('.collapse').on('shown.bs.collapse', function(){
   $(this).parent().find(".fa-angle-down").removeClass("fa-angle-down").addClass("fa-angle-up");
   }).on('hidden.bs.collapse', function(){

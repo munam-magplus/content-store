@@ -10,9 +10,20 @@ class HomesController < ApplicationController
   end
   end
 
-  def contact_us
+  def contact
   end
- 
+  
+  def books_by_author
+    if !params[:letter].present?
+      @books = BooksPrimaryContentInformation.all.paginate(:page => params[:page], :per_page => 2)
+    else
+      @books = BooksPrimaryContentInformation.find_by_first_letter(params[:letter]).paginate(:page => params[:page], :per_page => 2)
+    end
+  end
+
+  def get_search_results
+    @books = BooksPrimaryContentInformation.get_books_by_advance_search
+  end
   def about
     @publisher_about = @publisher.about
   end
@@ -29,7 +40,10 @@ class HomesController < ApplicationController
   end
   
   def search
-    @books = @publisher.books_primary_content_informations.filter(params.slice(:book_title)).paginate(:page => params[:page], :per_page => 2)
+    @books = @publisher.books_primary_content_informations.filter(params.slice(:book_title)).paginate(:page => params[:page], :per_page => 5)
+    respond_to do |format|
+      format.js
+    end 
   end
 
   def books_description

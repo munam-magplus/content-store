@@ -1,5 +1,8 @@
-<% if @publisher_about.present? %>
-  <div class="wrapper container-fluid">
-    <%= @publisher_about %>
-  </div>
-<%end%>
+<h1 class="sectionHeading">About us</h1>
+<div class="row placeholders">
+	<% if @publisher_about.present? %>
+	  <div class="wrapper container-fluid">
+	    <%= @publisher_about %>
+	  </div>
+	<%end%>
+</div>
