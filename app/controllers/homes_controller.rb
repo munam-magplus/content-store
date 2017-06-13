@@ -55,7 +55,7 @@ class HomesController < ApplicationController
 
   def books_by_category
     subject_group = SubjectGroup.find(params[:subject_group_id])
-    @books = subject_group.books_primary_content_informations.paginate(:page => params[:page], :per_page => 1)
+    @books = subject_group.books_primary_content_informations.paginate(:page => params[:page], :per_page => 3)
     respond_to do |format|
       format.js
     end     
