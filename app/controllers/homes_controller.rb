@@ -3,7 +3,7 @@ class HomesController < ApplicationController
   def index
     begin
     unless @publisher.books_primary_content_informations.blank?
-      @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 2)
+      @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10)
     end
   rescue => e # catches StandardError (don't use rescue Esception => e)
    logger.error e.message

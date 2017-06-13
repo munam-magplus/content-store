@@ -57,6 +57,7 @@ GEM
     bootstrap3-rails (3.2.0)
       rails (>= 4.0.0)
     builder (3.2.3)
+    bxslider-rails (4.2.5.1)
     byebug (9.0.6)
     climate_control (0.1.0)
     cocaine (0.5.8)
@@ -222,6 +223,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.1.2)
   bootstrap-sass (~> 3.3.5.1)
   bootstrap3-rails
+  bxslider-rails
   byebug
   coffee-rails (~> 4.2)
   devise

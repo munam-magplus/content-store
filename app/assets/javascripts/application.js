@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bxslider
 //= require bootstrap
 //= require jquery.remotipart
 //= require_tree .
