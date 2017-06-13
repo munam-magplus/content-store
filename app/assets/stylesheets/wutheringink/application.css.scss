@@ -1,3 +1,4 @@
+//= require bxslider
 @import "bootstrap";
 @import "bootstrap-sprockets";
 @font-face {
@@ -297,4 +298,44 @@ padding: 4px 0;
      margin: 20px 0;
      border-radius: 4px;
 }
+
+/*========Carosuel==========*/
+
+.details {
+    position: static;
+    width: 79%;
+    margin: 10px 0;
+    font-size: 1.25em;
+    border: 1px solid #ccc;
+}
+ul.bxslider {
+  margin: 10;
+  padding: 0;
+}
+
+.bxslider li {
+    background: #efefef;
+    width: 160px !important
+}
+
+.bx-wrapper .bx-viewport {
+ background: #efefef;   
+}
+
+/*===============Theme css=========== */
+.wtbooks {
+  background: #b43838;
+  padding: 4px 0;
+
+}
+.wtbooks li a{color:#fff !important;}
+.theme_green li a:hover{color:#121212 !important;background:#ccc !important;}
+
+.wutheringink {
+  background: #FFFFFF;
+padding: 4px 0;
+
+}
+.wutheringink li a{color: #000000 !important;}
+.wutheringink li a:hover{color:#121212 !important;background:#ccc !important;}
 
