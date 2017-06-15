@@ -59,6 +59,9 @@ GEM
     builder (3.2.3)
     bxslider-rails (4.2.5.1)
     byebug (9.0.6)
+    ckeditor (4.2.3)
+      cocaine
+      orm_adapter (~> 0.5.0)
     climate_control (0.1.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
@@ -225,6 +228,7 @@ DEPENDENCIES
   bootstrap3-rails
   bxslider-rails
   byebug
+  ckeditor
   coffee-rails (~> 4.2)
   devise
   exception_handler
@@ -253,4 +257,4 @@ DEPENDENCIES
   will_paginate-bootstrap
 
 BUNDLED WITH
-   1.13.6
+   1.15.1

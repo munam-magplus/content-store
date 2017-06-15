@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
   resources :subject_group_books 
  
   get 'index_contents/content_code'
@@ -12,6 +13,9 @@ Rails.application.routes.draw do
     collection do 
       get 'books_of_publisher'
       get 'simple_search'
+      get 'homepage'
+      get 'new_homepage'
+      patch 'update_homepage'
     end
   end
 
