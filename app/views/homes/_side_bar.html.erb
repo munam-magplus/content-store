@@ -2,23 +2,13 @@
 <% unless @publisher.blank?%>
 
   <div class="sidebar">
-    <!--institutionBox-->
-      <div class="institutionBox">
-        <h1>You are logged in from:</h1>
-        <h2> <%= link_to image_tag(@publisher.publisher_logo ), homes_path, :class => "logo-lg"%>
-            <p>Indica Publishers &amp; Distributors Pvt. Ltd.</p>
-        </h2>
-        <strong><a href="/BookStore/browseByTitle.do?offSet=0&amp;title=All&amp;type=subscribed">View Subscribed Content</a></strong> 
-      </div>
-      <h1 class="sectionHeading hidden-xs">BROWSE BY</h1>
-
         <!--accordion-->
       <div class="panel-group hidden-xs" id="accordion" role="tablist" aria-multiselectable="true">
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="headingOne">
             <h4 class="panel-title">
               <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  LCC
+                  Subject
                   <span class="fa fa-angle-up pull-right"></span>
               </a>
             </h4>

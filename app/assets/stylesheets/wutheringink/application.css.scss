@@ -1,4 +1,4 @@
-//= require bxslider
+@import "bxslider";
 @import "bootstrap";
 @import "bootstrap-sprockets";
 @font-face {
@@ -323,19 +323,29 @@ ul.bxslider {
 }
 
 /*===============Theme css=========== */
-.wtbooks {
+.theme1 {
   background: #b43838;
   padding: 4px 0;
 
 }
-.wtbooks li a{color:#fff !important;}
-.theme_green li a:hover{color:#121212 !important;background:#ccc !important;}
 
-.wutheringink {
-  background: #FFFFFF;
-padding: 4px 0;
+.theme1 li a{color:#fff !important;}
+.theme1 li a:hover{color:#121212 !important;background:#ccc !important;}
 
+.theme2 {
+  background: #006400;
+  padding: 4px 0;
 }
-.wutheringink li a{color: #000000 !important;}
-.wutheringink li a:hover{color:#121212 !important;background:#ccc !important;}
 
+.theme2 li a{color: #000000 !important;}
+.theme2 li a:hover{color:#121212 !important;background:#ccc !important;}
+
+.fixwidth {
+    width: 76.3%;
+}
+
+.logo-container {
+  width: 131.7%;
+  float: left;
+  display: block;
+}

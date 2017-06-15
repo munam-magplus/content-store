@@ -1,31 +1,39 @@
 <h1 class="sectionHeading">Featured Books</h1>
 <div class="row placeholders">
   <% if @books.present? %>
-    <%if @publisher.theme_name== 'wutheringink'%>
-    <% @books.each do |f| %>
-      <div class="col-xs-6 col-sm-3  col-md-2 placeholder">
-        <%= image_tag(f.logo.url(:thumb), height: '178', width: '126')%>
-        <%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id), :remote => true %>
-        <div class="clearfix"></div>
-      </div>
-    <%end%>
-    <% elsif @publisher.theme_name== 'wtbooks' %>
-      <ul class="bxslider">
     
-      <% @books.each do |f| %>
-        <li>
-      
-        <%= image_tag(f.logo.url(:medium))%>
-        <div>
-          <div class='details'>
-            <%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id), :remote => true %>
-          </div>
-        <div> 
-        </li>
-    <%end%>
+    <!--Theme1 -->
 
-  </ul>
-    <% end %>
+    <% if @publisher.theme_name== 'theme1' %>
+      <ul class="bxslider">
+        <% @books.each do |f| %>
+          <li>
+            <%= image_tag(f.logo.url(:medium))%>
+            <div>
+              <div class='details'>
+                <%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id), :remote => true %>
+              </div>
+            <div> 
+          </li>
+        <%end%>
+      </ul>
+
+      <!--Theme1EnD -->
+
+      <!--Theme2 -->
+
+      <%elsif @publisher.theme_name== 'theme2'%>
+        <% @books.each do |f| %>
+          <div class="col-xs-6 col-sm-3  col-md-2 placeholder">
+            <%= image_tag(f.logo.url(:thumb), height: '178', width: '126')%>
+            <%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id), :remote => true %>
+            <div class="clearfix"></div>
+          </div>
+        <%end%>
+      <% end %>
+    
+    <!--Theme2EnD -->
+
     <div class="pagination-frontend">
       <nav aria-label="Page navigation" style="clear:both;"> 
         <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
@@ -35,7 +43,7 @@
   <% end %>
   <div style="clear:both;"></div>
 </div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
 <script src="http://bxslider.com/lib/jquery.bxslider.js"></script>
 <script>
 $(document).ready(function(){
