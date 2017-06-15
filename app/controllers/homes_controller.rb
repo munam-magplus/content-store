@@ -5,9 +5,9 @@ class HomesController < ApplicationController
     unless @publisher.books_primary_content_informations.blank?
       @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10)
     end
-  rescue => e # catches StandardError (don't use rescue Esception => e)
-   logger.error e.message
-  end
+    rescue => e # catches StandardError (don't use rescue Esception => e)
+      logger.error e.message
+    end
   end
 
   def contact
@@ -62,13 +62,13 @@ class HomesController < ApplicationController
   end
 
   private
-  
   def get_host
     begin
-      @gethost = request.host.split('.')[0] + '.' + 'com'
-      @publisher = Publisher.find_by_domain_name(@gethost)
-    rescue => e # catches StandardError (don't use rescue Esception => e)
-     logger.error e.message
+    @gethost = request.host.split('.')[0] + '.' + 'com'
+    @publisher = Publisher.find_by_domain_name!(@gethost)
+    rescue ActiveRecord::RecordNotFound
+      redirect_to users_sign_in_path
     end
   end
+  
 end

@@ -32,20 +32,23 @@ gem 'devise'
 
 gem 'bootstrap3-rails'
 
+# For ckeditor
+gem 'ckeditor'
 
-#for pagination
+# For pagination
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 
 gem "remotipart", "~> 1.3.1"
 gem "font-awesome-rails"
-#used for encrypting password
+
+# Used for encrypting password
 gem 'bcrypt-ruby', '~> 3.1.2'
 
-#used for uploading image
+# Used for uploading image
 gem "paperclip", "~> 5.0.0"
 
-#for exporting excel sheet
+# For exporting excel sheet
 gem 'axlsx_rails'
 gem 'roo'
 

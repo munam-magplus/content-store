@@ -17,9 +17,34 @@ class SiteSettingsController < ApplicationController
 	end
 
 	def simple_search
-	 @result = BooksPrimaryContentInformation.filter(params.slice(:isbn, :publisher_id))
+		@result = BooksPrimaryContentInformation.filter(params.slice(:isbn, :publisher_id))
 	end
 
 	def delete
 	end
+
+	def homepage
+    @homepage = Publisher.new
+  end
+
+  def new_homepage
+    @homepage = Publisher.find(params[:id])
+    respond_to do |format|
+      format.js 
+    end
+  end
+
+  def update_homepage
+    @homepage = Publisher.find(params[:publisher][:id])
+    if @homepage.update_attributes(homepage_params)
+      redirect_to homepage_site_settings_path, notice: "The Homepage has been successfully updated."
+    else
+      render action: "edit"
+    end
+  end
+
+  private
+  def homepage_params
+    params.require(:publisher).permit(:welcome_text, :news_and_events)
+  end
 end

@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <h2 class="H2-L1">Homepage Management New</h2>
+  <%= form_for(@homepage, url: update_homepage_site_settings_path) do |f| %>
+    <div class="row">
+      <div class="col-md-10">
+        <div class="form-group">
+          <label for="bookISBN" class="col-sm-4 control-label"><h5>Welcome Text</h5></label>
+          <span class="col-sm-10">
+          <%= f.cktext_area :welcome_text, required: true, cols: "10", rows: "5", :class => "form-control", :placeholder => "Welcome Text" %>
+          </span> 
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+        <div class="form-group">
+          <label for="bookISBN" class="col-sm-4 control-label"><h5>News and Events</h5></label>
+          <span class="col-sm-10">
+          <%= f.cktext_area :news_and_events, required: true, cols: "10", rows: "5", :class => "form-control", :placeholder => "News and Events" %>
+          </span>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <%= f.hidden_field :id, value: params[:id], :class => "form-control"%>
+    <div class="clearfix"></div>
+    <div class="clearfix m-b-30"></div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+        <%= f.submit "Update Record", :class => "btn btn-sm" %>
+      </div>
+    </div>
+  <% end %>
+</html>
