@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'end_user_dashboard/wtbooks_index'
+  get 'end_user_dashboard/wutheringink_index'
+
+  devise_for :end_users, :controllers => {
+    :sessions => 'end_users/sessions',
+    :registrations => "end_users/registrations"}
+    
   resources :subject_group_books 
  
   get 'index_contents/content_code'
@@ -15,9 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'homes/index'
   root :to => "homes#index"
-  get 'homes/search'
 
   resources :homes do
     collection do
@@ -30,6 +35,7 @@ Rails.application.routes.draw do
       get 'get_search_results'
       get 'books_by_author'
       get 'contact'
+      get 'search'
     end
   end
 
@@ -85,7 +91,7 @@ Rails.application.routes.draw do
   resources :end_users, :admin_users do 
     collection do
       get  'search' 
-      # post 'create'
+       # post 'create'
     end
   end
 

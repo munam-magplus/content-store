@@ -1,7 +1,13 @@
-<!--top_bar-->
-<nav class="top_bar navbar-inner">
+ <nav class="top_bar navbar-inner">
   <div class="container-fluid">
-    <div class="pull-right welcome"> Welcome <strong> Guest&nbsp;User</strong> <span class="pipe"> | </span> <a href="/BookStore/signInHome.do"> Login </a> </div>
+    <div class="pull-right welcome"> 
+      Welcome <strong> Guest&nbsp;User</strong>
+      <span class="pipe"> | </span>
+      <%= link_to "login", new_end_user_session_path %>
+      <% if current_end_user.present? %>
+        <%= link_to '<i class="material-icons">power_settings_new</i>Sign Out'.html_safe, destroy_end_user_session_path, :method => "delete", :id => "button_id", :class => "nav-label" %> 
+      <% end %>
+    </div>
   </div>
 </nav>
 <!--top_bar-->
@@ -33,15 +39,14 @@
           <li class="searchmenu">
             <div class="navbar-form" role="search">
               <div class="input-group add-on">
-                <%= form_tag(homes_search_path, :method => "get", id: "search-form",:remote => true) do %>
+                <%= form_tag(search_homes_path, :method => "get", id: "search-form",:remote => true) do %>
                   <%= text_field_tag :book_title, params[:search], class:'form-control',required: true,placeholder: "Search by Title " %>
                     <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
                       <i class="glyphicon glyphicon-search"></i>
                     <% end %>
                     <%= link_to '<i class="glyphicon glyphicon-plus-sign btn btn-primary"></i>'.html_safe, advance_search_homes_path,:remote => true %>
-   
                 <%end%>
-              </div>
+               </div>
               <div class="pull-right">  </div>
             </div>
           </li>
@@ -50,4 +55,4 @@
     </div>
   </div>
 </nav>
-<!--header_bar-->
+<!--header_bar  
