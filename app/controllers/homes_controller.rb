@@ -1,5 +1,6 @@
 class HomesController < ApplicationController
-  before_action :get_host
+  
+  
   def index
     begin
     unless @publisher.books_primary_content_informations.blank?
@@ -61,14 +62,4 @@ class HomesController < ApplicationController
     end     
   end
 
-  private
-  def get_host
-    begin
-    @gethost = request.host.split('.')[0] + '.' + 'com'
-    @publisher = Publisher.find_by_domain_name!(@gethost)
-    rescue ActiveRecord::RecordNotFound
-      redirect_to users_sign_in_path
-    end
-  end
-  
 end

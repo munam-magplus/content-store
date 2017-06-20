@@ -1,0 +1,34 @@
+<div class="sidebar">
+  <ul class="cd-accordion-menu animated">
+    <li class="has-children">
+	  <input type="checkbox" name ="group-1" id="group-1" checked>
+	    <label for="group-1">SUBJECT</label>
+        <ul>
+      	  <li class="has-children">
+      	    <input type="checkbox" name ="sub-group-1" id="sub-group-1">
+			  <label for="sub-group-1">Engineering and Technology</label>
+			<ul class="accordion-color">
+			  <% unless @publisher.subject_groups.blank? %>
+                  <%@publisher.subject_groups.each do |subject_group| %>
+                    <li> <%=link_to subject_group.subject_group_name ,books_by_category_homes_path(:subject_group_id => subject_group.id), :remote => true %>
+                    </li>
+                  <%end%>
+                <%end%>
+            </ul>
+          </li>
+         
+        </ul>       
+      	 <li class="has-children">
+			<a href="#">
+			AUTHOR / EDITOR</a>			
+		</li>
+        
+        <li class="has-children">
+			<a href="#">
+			TITLE</a>			
+		</li>	
+
+    </li>
+   <ul>
+
+</div>
