@@ -36,7 +36,7 @@
                 <td ><%= publisher.contact_first_name %></td>
                 <td ><%= publisher.contact_email %></td>
                 <td><%= publisher.domain_name %></td>
-                <td><%= link_to "Destroy ", publisher_path(publisher), :data => { :confirm => "Are you sure you want to delete this Publisher?"},:class => "btn btn-sm",:method => :delete %></td>
+                <td><%= link_to "Delete", publisher_path(publisher), :data => { :confirm => "Are you sure you want to delete this Publisher?"},:class => "btn btn-sm",:method => :delete %></td>
               </tr>
             <%end%>
           <% else %>
