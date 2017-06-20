@@ -61,6 +61,16 @@ class HomesController < ApplicationController
     end     
   end
 
+  def download_pdf
+    req = request.domain
+    send_file(
+    "#{Rails.root}/public/#{req}.pdf",
+    filename: "#{req}.pdf",
+    disposition: "inline",
+    type: "application/pdf"
+    )
+  end
+
   private
   def get_host
     begin

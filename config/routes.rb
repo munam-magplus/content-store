@@ -34,14 +34,19 @@ Rails.application.routes.draw do
       get 'get_search_results'
       get 'books_by_author'
       get 'contact'
+      get 'download_pdf'
     end
   end
 
-  
   post 'subject_groups/associate_book'
 
-
   resources :contacts
+
+  resources :subjects do
+    collection do
+      get 'search'
+    end
+  end
 
   resources :reports, :printhouse_setup, 
              only: [:index]
@@ -148,6 +153,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+
   resources :themes do 
     collection do
       post 'save' 
@@ -156,5 +162,4 @@ Rails.application.routes.draw do
       delete 'destroy'
     end
   end
-  
 end
