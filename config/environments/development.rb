@@ -25,8 +25,6 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
-
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
@@ -39,8 +37,8 @@ Rails.application.configure do
       :address => "smtp.gmail.com",
       :port => 587,
       :domain => 'localhost:3000',
-      :user_name => "kirti.mps09@gmail.com",
-      :password => "kirtigoogle",
+      :user_name => ENV["user_name"],
+      :password => ENV["password"],
       :authentication => :plain,
       :enable_starttls_auto => true
   }

@@ -1,36 +1,30 @@
-
-    <% if @books.present? %>
-      <div class="row">
-        <div class="col-md-10 col-sm-offset-1">
-          <div class="carousel carousel-showmanymoveone slide bx-wrapper" id="carousel123">
-            <div class="carousel-inner">
-              <% @books.each_with_index do |f,index| %>
-                <div class="item <%= 'active' if index == 0 %>">
-                  <div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="result media-result ebook">
-                      <div class="cover">
-                        
-                        <%= image_tag(f.logo.url(:original))%>
-                        <div class="details">
-                         <h3 class="title"><%= link_to truncate(f.book_title, length: 4), books_description_homes_path(:book_id => f.id), :remote => true %>
-                         </h3>
-                         <h4 class="author" title=">Betty Karasek">Betty Karasek</h4>
-                        </div>
-                      </div>
+<% if @books.present? %>
+  <div class="row">
+    <div class="col-md-10 col-sm-offset-1">
+      <div class="carousel carousel-showmanymoveone slide bx-wrapper" id="carousel123">
+        <div class="carousel-inner">
+          <% @books.each_with_index do |f,index| %>
+            <div class="item <%= 'active' if index == 0 %>">
+              <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="result media-result ebook">
+                  <div class="cover">
+                    <%= image_tag(f.logo.url(:original))%>
+                    <div class="details">
+                     <h3 class="title"><%= link_to truncate(f.book_title, length: 4), books_description_homes_path(:book_id => f.id), :remote => true %>
+                     </h3>
+                     <h4 class="author" title=">Betty Karasek">Betty Karasek</h4>
                     </div>
                   </div>
                 </div>
-              <% end %>
+              </div>
             </div>
+          <% end %>
+        </div>
             <a class="left carousel-control" href="#carousel123" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
         <a class="right carousel-control" href="#carousel123" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
           </div>
-
-        
-
         </div>
       </div>
-    <% end %>
                         
     <!--Theme2EnD -->
     <div class="pagination-frontend">
