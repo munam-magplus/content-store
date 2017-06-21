@@ -11,7 +11,7 @@
 		  <div class="form-group">
 		    <div class="col-sm-2 text-center">
 		      <%= image_tag book.logo.url(:original) , :class => "imgPopover"%><br>
-		        <p><%= book.book_title%></p>
+		        <p><%= link_to truncate(book.book_title, length: 10), books_description_homes_path(:book_id => book.id), :remote => true %></p>
 		    </div>
 		  </div>
 		<%end%>

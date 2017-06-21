@@ -5,7 +5,7 @@ module Filterable
   module ClassMethods
     def filter(filtering_params)
       results = self.where(nil) # to get all the data from model
-      cond = "#{self.column_names.first} > 0" # default condition
+      cond = "true" # default condition
       filtering_params.each do |key, value|
         if key == "from"
           cond << " AND created_at >=?" if value.present?
