@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       get 'get_search_results'
       get 'books_by_author'
       get 'contact'
+      post 'send_mail'
     end
   end
 

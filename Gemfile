@@ -35,6 +35,9 @@ gem 'bootstrap3-rails'
 # For ckeditor
 gem 'ckeditor'
 
+# for secure configuration
+gem "figaro"
+
 # For pagination
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'

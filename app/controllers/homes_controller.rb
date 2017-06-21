@@ -1,4 +1,7 @@
 class HomesController < ApplicationController
+ protect_from_forgery
+ skip_before_action :verify_authenticity_token
+
   before_action :get_host
   def index
     begin
@@ -11,6 +14,11 @@ class HomesController < ApplicationController
   end
 
   def contact
+  end
+
+  def send_mail
+    EndUserContactMailer.contact_email(@publisher ,params[:name], params[:email],params[:subject], params[:message]).deliver_now
+    redirect_to homes_path, notice: 'Message sent'
   end
   
   def books_by_author

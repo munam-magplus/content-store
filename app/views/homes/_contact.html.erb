@@ -2,40 +2,8 @@
 <div class="row placeholders">
 	<div class="wrapper container-fluid">
 	<div class="clearfix"></div>
-		<h6>Please select one of the following message options before you write your message to ensure we can answer your question as quickly as possible:</h6>
-		<div class="col-md-12">
-          <div class="form-group">
-          	<div class="col-sm-8">
-              <%= radio_button_tag :subject, :class => "form-control" %>I have editorial/content related feedback for the publisher
-    		</div>
-    		<div class="clearfix"></div>
-          </div>
-        </div>
-		<div class="col-md-12">
-          <div class="form-group">
-          	<div class="col-sm-8">
-              <%= radio_button_tag :subject, :class => "form-control" %>I have editorial/content related feedback for the publisher
-    		</div>
-    		<div class="clearfix"></div>
-          </div>
-        </div>
-
-		<div class="col-md-12">
-          <div class="form-group">
-          	<div class="col-sm-8">
-              <%= radio_button_tag :subject, :class => "form-control" %>I have editorial/content related feedback for the publisher
-    		</div>
-    		<div class="clearfix"></div>
-          </div>
-        </div>
-		<div class="col-md-12">
-          <div class="form-group">
-          	<div class="col-sm-8">
-              <%= radio_button_tag :subject, :class => "form-control" %>I have editorial/content related feedback for the publisher
-    		</div>
-    		<div class="clearfix"></div>
-          </div>
-        </div>
+  <%= form_tag(send_mail_homes_path) do %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>	
 		<div class="col-md-12">
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Your Name:</label>
@@ -49,7 +17,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Email:</label>
             <div class="col-sm-8">
-              <%= text_field_tag :email,"", :class => "form-control" %>
+              <%= text_field_tag :email,"", :required => true ,:class => "form-control" %>
     		</div>
     		<div class="clearfix"></div>
           </div>
@@ -75,5 +43,6 @@
 		<div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
 			<%= button_tag fa_icon("send Message", text: "Send Message"), :class => "btn btn-sm", type: :submit %>
 		</div>
+  <%end%>
 	</div>
 </div>
