@@ -30,9 +30,9 @@
       <%= form_tag new_homepage_site_settings_path, :method => 'get', :remote => true do  %>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Publisher</label>
+            <label for="taskName" class="col-sm-4 control-label">Publisher<sup class="mandatory">*</sup></label>
             <div class="col-sm-8">
-            <%= select_tag 'id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "Select Publisher", :class => "form-control", :style => "background-color: #eee", :presence => true %>
+            <%= select_tag 'id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :required => true, :prompt => "Select Publisher", :class => "form-control", :style => "background-color: #eee", :presence => true %>
             </div>
             <div class="clearfix"></div>            
           </div>

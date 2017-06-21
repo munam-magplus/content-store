@@ -2,7 +2,6 @@ class HomesController < ApplicationController
  protect_from_forgery
  skip_before_action :verify_authenticity_token
 
-  before_action :get_host
   def index
     begin
     unless @publisher.books_primary_content_informations.blank?
@@ -69,14 +68,13 @@ class HomesController < ApplicationController
     end     
   end
 
-  private
-  def get_host
-    begin
-    @gethost = request.host.split('.')[0] + '.' + 'com'
-    @publisher = Publisher.find_by_domain_name!(@gethost)
-    rescue ActiveRecord::RecordNotFound
-      redirect_to users_sign_in_path
-    end
+  def download_pdf
+    req = request.domain
+    send_file(
+    "#{Rails.root}/public/#{req}.pdf",
+    filename: "#{req}.pdf",
+    disposition: "inline",
+    type: "application/pdf"
+    )
   end
-  
 end

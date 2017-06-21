@@ -6,6 +6,7 @@ class Publisher < ApplicationRecord
   # Associations
   has_many :books_primary_content_informations, dependent: :destroy
   has_many :subject_groups
+  has_many :subjects
 	# Validations
   #-----------------------------------------------------------------------------
 	  validates_presence_of :publisher_name, :publisher_code, :publisher_type,

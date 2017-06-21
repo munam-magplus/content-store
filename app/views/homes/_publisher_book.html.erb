@@ -1,39 +1,38 @@
-<h1 class="sectionHeading">Featured Books</h1>
-<div class="row placeholders">
-  <% if @books.present? %>
-    
-    <!--Theme1 -->
 
-    <% if @publisher.theme_name== 'theme1' %>
-      <ul class="bxslider">
-        <% @books.each do |f| %>
-          <li>
-            <%= image_tag(f.logo.url(:medium))%>
-            <div>
-              <div class='details'>
-                <%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id), :remote => true %>
-              </div>
-            <div> 
-          </li>
-        <%end%>
-      </ul>
-
-      <!--Theme1EnD -->
-
-      <!--Theme2 -->
-
-      <%elsif @publisher.theme_name== 'theme2'%>
-        <% @books.each do |f| %>
-          <div class="col-xs-6 col-sm-3  col-md-2 placeholder">
-            <%= image_tag(f.logo.url(:thumb), height: '178', width: '126')%>
-            <%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id), :remote => true %>
-            <div class="clearfix"></div>
+    <% if @books.present? %>
+      <div class="row">
+        <div class="col-md-10 col-sm-offset-1">
+          <div class="carousel carousel-showmanymoveone slide bx-wrapper" id="carousel123">
+            <div class="carousel-inner">
+              <% @books.each_with_index do |f,index| %>
+                <div class="item <%= 'active' if index == 0 %>">
+                  <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="result media-result ebook">
+                      <div class="cover">
+                        
+                        <%= image_tag(f.logo.url(:original))%>
+                        <div class="details">
+                         <h3 class="title"><%= link_to truncate(f.book_title, length: 4), books_description_homes_path(:book_id => f.id), :remote => true %>
+                         </h3>
+                         <h4 class="author" title=">Betty Karasek">Betty Karasek</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <a class="left carousel-control" href="#carousel123" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+        <a class="right carousel-control" href="#carousel123" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
           </div>
-        <%end%>
-      <% end %>
-    
-    <!--Theme2EnD -->
 
+        
+
+        </div>
+      </div>
+    <% end %>
+                        
+    <!--Theme2EnD -->
     <div class="pagination-frontend">
       <nav aria-label="Page navigation" style="clear:both;"> 
         <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
@@ -43,16 +42,36 @@
   <% end %>
     <%= @publisher.welcome_text.html_safe  unless @publisher.welcome_text.blank? %>
   <div style="clear:both;"></div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-<script src="http://bxslider.com/lib/jquery.bxslider.js"></script>
+</div> 
+
 <script>
 $(document).ready(function(){
- $('.bxslider').bxSlider({
-  minSlides: 4,
-  maxSlides: 5,
-  slideWidth: 200,
-  slideMargin: 0
- });
+ (function(){
+  // setup your carousels as you normally would using JS
+  // or via data attributes according to the documentation
+  // https://getbootstrap.com/javascript/#carousel
+  $('#carousel123').carousel({ interval: 2000 });
+  $('#carouselABC').carousel({ interval: 3600 });
+}());
+
+(function(){
+  $('.carousel-showmanymoveone .item').each(function(){
+    var itemToClone = $(this);
+
+    for (var i=1;i<4;i++) {
+      itemToClone = itemToClone.next();
+
+      // wrap around if at end of item collection
+      if (!itemToClone.length) {
+        itemToClone = $(this).siblings(':first');
+      }
+
+      // grab item, clone, add marker class, add to collection
+      itemToClone.children(':first-child').clone()
+        .addClass("cloneditem-"+(i))
+        .appendTo($(this));
+    }
+  });
+}());
  });
 </script>

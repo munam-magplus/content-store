@@ -1,0 +1,38 @@
+<!--header_bar-->
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container-fluid">
+    <div class="col-sm-4 col-md-3 mob-pad">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <%= image_tag @publisher.publisher_logo(:original)%> 
+      </div>
+    </div> 
+    <div class="col-sm-8 col-md-9 no-lr-pad  ">
+      
+    <div class="my_menu red_menu">
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left">
+          <li><%= link_to "HOME", homes_path %></li>
+          <li><%= link_to "ABOUT US",(about_homes_path), :remote => true %></li>
+          <li><a href="#">CATALOGUE</a></li>
+           <li><%= link_to "CONTACT US",(contact_homes_path), :remote => true %></li>
+        </ul>
+        
+        <div class="searchmenu pull-right">
+            <form class="navbar-form" role="search">
+              <div class="input-group add-on">
+                <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
+                <div class="input-group-btn ">
+                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+              </div>
+              <div class="pull-right"> <a class="adcance_search" href="#"> <i class="fa fa-plus-circle head-plus" ></i></a> </div>
+            </form>
+          </div>
+      </div>
+    </div>
+    </div>
+      
+    
+  </div>
+</nav>

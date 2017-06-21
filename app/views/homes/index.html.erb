@@ -1,14 +1,28 @@
+<link href="css/font-awesome.css" rel="stylesheet">
+<!-- Google_font-->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
 
 <!--Main Content Start -->
   <section class="content">
-    <%= render :partial => "header"%>
+    <% if @publisher.theme_name== 'theme1' %>
+      <%= render :partial => "header_theme1"%>
+    <% elsif @publisher.theme_name== 'theme2' %>
+       <%= render :partial => "header_theme2"%>
+    <% end %>
+    
     <div class="container-fluid">
       <div class="row"> 
         <div class="col-sm-4 col-md-3 ">
-          <%= render :partial => "side_bar"%>
+          <% if @publisher.theme_name== 'theme1' %>
+            <%= render :partial => "sidebar_theme1"%>
+          <% end %>  
         </div>
-        <div class="col-sm-8 col-md-9">
+        
+        <div class="col-sm-8 col-md-9 mar-b50" >
+        
           <div id= 'pub_book'>
+            <h1 class="sectionHeading">Featured Books</h1>
             <%= render :partial => 'publisher_book' %>
           </div>
         </div>
