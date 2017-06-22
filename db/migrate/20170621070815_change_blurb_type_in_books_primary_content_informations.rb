@@ -1,4 +1,4 @@
-class CahngeBlurbTypeInBooksPrimaryContentInformatiions < ActiveRecord::Migration[5.0]
+class ChangeBlurbTypeInBooksPrimaryContentInformations < ActiveRecord::Migration[5.0]
   def change
   	change_column :books_primary_content_informations, :book_blurb, :text
     change_column :books_primary_content_informations, :isbn, :bigint
