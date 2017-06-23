@@ -1,19 +1,83 @@
-<h1 class="sectionHeading">Featured Books</h1>
-<div class="row placeholders">
-  <% if @books.present? %>
-    <% @books.each do |f| %>
-      <div class="col-xs-6 col-sm-3  col-md-2 placeholder">
-        <%= image_tag(f.logo.url(:thumb), height: '178', width: '126')%>
-        <%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id), :remote => true %>
-        <div class="clearfix"></div>
+<% if @publisher.domain_name == "syrawoodpublishinghouse" %>
+<div class="container" style="padding-bottom:90px;">
+<div class="row">
+<section class="col-md-12">
+  <div class="border_wrapper padding10px mtb25">
+    <div id="bodydivs"> 
+      <div class="col-md-12 border_bottom pb10">
+        <h2 class="heading1 ">Search Results
+          <form id="refineSearch"    class="form-inline pull-right">
+            <input   value="Refine Search"   id="textToBeSearched" class="form-control input-sm  " type="text" >
+            
+            <input id="refineHref" value="Search"   class="btn btn-primary btn-sm responsive_margin_top20px border_radius3px" type="button">
+          </form>
+        </h2>
       </div>
-    <%end%>
-  <% end %>
-    <div class="pagination-frontend">
-      <nav aria-label="Page navigation" style="clear:both;"> 
-        <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
-      </nav>  
+      <div class="clearfix"> </div>
+      <div class="dotted_bottom"> </div>
+      <!-- <div class="col-md-12 mtb25 ">
+        <div class="pull-left padding_top3px">
+          <p>Results
+            &nbsp;1&ndash;10
+            of
+            &nbsp;120 <strong>&nbsp;</strong></p>
+        </div>
+      </div> -->
+      <div class="clearfix"> </div>
+      <div class="border_bottom"></div>
+      <% if @books.present? %>
+      <% @books.each do |f| %>
+      <div class="margin_top20px im_width">
+        <div class="pull-left margin_right5px margin_left5px effects search-result col-md-3">
+          <a href="#" class="cover2">
+          <%= image_tag(f.logo.url(:thumb), height: '178', width: '126')%>
+          </a>
+        </div>
+        <div class="col-md-9">
+          <h3 title="A Modern Approach to Ecology of Plants"><a href="/agricultural-sciences/9781682863947"><%= f.book_title%></a></h3>
+          <h3 title="Austin Balfour"> By
+           : <span class="dark_yellow"><%= f.books_contributor.first_name + f.books_contributor.last_name %></span></h3>
+          <p><strong> Description
+          :</strong><%= f.book_blurb %>.... <%= link_to "more>>", books_description_homes_path(:book_id => f.id), :remote => true %> </p>
+        </div>
+        <div class=" clearfix"> </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="border_bottom"> </div>
+      <div class=" clearfix"> </div>
+      <% end %>
+      <% end %>
+      <div class="pagination-frontend">
+        <nav aria-label="Page navigation" style="clear:both;"> 
+          <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+        </nav>  
+      </div>
     </div>
-    <div class="clearfix"></div>
-  <div style="clear:both;"></div>
+  </div>
+</section>
 </div>
+</div>
+
+<% else %>
+  <h1 class="sectionHeading">Featured Books</h1>
+  <div class="row placeholders">
+    <% if @books.present? %>
+      <% @books.each do |f| %>
+        <div class="col-xs-6 col-sm-3  col-md-2 placeholder">
+          <%= image_tag(f.logo.url(:thumb), height: '178', width: '126')%>
+          <%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id), :remote => true %>
+          <div class="clearfix"></div>
+        </div>
+      <%end%>
+    <% end %>
+      <div class="pagination-frontend">
+        <nav aria-label="Page navigation" style="clear:both;"> 
+          <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+        </nav>  
+      </div>
+      <div class="clearfix"></div>
+    <div style="clear:both;"></div>
+  </div>
+<% end %>
+
+

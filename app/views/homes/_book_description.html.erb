@@ -1,4 +1,4 @@
-<h1 class="sectionHeading">Book Description</h1>
+ <h1 class="sectionHeading">Book Description</h1>
 <div class="row placeholders">
   <% if @book_information.present? %>
     <div class="wrapper container-fluid">
@@ -55,7 +55,7 @@
               <div class="form-group">
                 <label for="taskName" class="col-sm-4 control-label">Year</label>
                 <div class="col-sm-8">
-                 <%= @book_information.publication_year %>
+                 <%= @book_information.publication_date %>
                 </div>
               </div>
             </div>
