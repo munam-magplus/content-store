@@ -19,7 +19,7 @@
         </ul>
         
         <div class="searchmenu pull-right">
-            <%= form_tag(homes_search_path, :method => "get", id: "search-form",:remote => true) do %>
+            <%= form_tag(search_homes_path, :method => "get", id: "search-form",:remote => true) do %>
               <div class="input-group add-on">
                 <%= text_field_tag :book_title, params[:search], class:'form-control',required: true,placeholder: "Search by Title " %>
                 <div class="input-group-btn ">

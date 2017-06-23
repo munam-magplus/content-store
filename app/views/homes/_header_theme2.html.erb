@@ -21,12 +21,20 @@
           </ul>
         </div> 
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon1">
-          <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-search"></i></span>
-          <div class="pull-right" style="margin-left:10px;">
-            <a href="#"><span><i class="glyphicon glyphicon-plus-sign" style="font-size:1.9em; color:#fff"></i></span></a> 
+          <%= form_tag(search_homes_path, :method => "get", id: "search-form",:remote => true) do %>
+            <div class="input-group add-on">
+              <%= text_field_tag :book_title, params[:search], class:'form-control',required: true,placeholder: "Search by Title " %>
+              <div class="input-group-btn ">
+                <%= button_tag(type: 'submit', class: "btn") do %>
+                <i class="glyphicon glyphicon-search"></i>
+              <% end %>
+              </div>
+              <div class="pull-right"> <%= link_to '<i class="glyphicon glyphicon-plus-sign" style="font-size:1.9em; color:#fff"></i>'.html_safe, advance_search_homes_path,:remote => true %>
+              </div>
+            </div>
+            <%end%>
           </div>
-        </div>
+          </div>
         <div class="clearfix"> </div>
       </div>
     </div>
@@ -59,8 +67,8 @@
               <% end %>
                 </ul>
               </li>
-              <li><a href="#">AUTHOR/EDITOR</a>  </li>
-              <li ><a href="#">TITLE</a></li>
+              <li><%= link_to "AUTHOR / EDITOR",books_by_author_homes_path, :remote => true %></li>
+              <li ><%= link_to "TITLE",books_by_title_homes_path, :remote => true %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

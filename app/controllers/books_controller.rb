@@ -52,6 +52,12 @@ class BooksController < ApplicationController
     
   end
 
+  def destroy
+    book = BooksPrimaryContentInformation.find(params[:id])
+    book.destroy
+    redirect_to :back
+  end
+
   private
 
   def book_primary_content_information_params
