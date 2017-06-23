@@ -1,4 +1,4 @@
-<h1 class="sectionHeading">BOOKS BY AUTHOR</h1>
+<h1 class="sectionHeading">BOOKS BY TITLE</h1>
 <div class="row placeholders">
 <div class="clearfix"></div>
 	<ul class="pagination">
@@ -11,7 +11,9 @@
 		  <div class="form-group">
 		    <div class="col-sm-2 text-center">
 		      <%= image_tag book.logo.url(:original) , :class => "imgPopover"%><br>
-		        <p><%= link_to truncate(book.book_title, length: 10), books_description_homes_path(:book_id => book.id), :remote => true %></p>
+		        <p><%= link_to book.book_title, books_description_homes_path(:book_id => book.id), :remote => true %>
+		        </p>
+		        <%= book.book_blurb %>
 		    </div>
 		  </div>
 		<%end%>
