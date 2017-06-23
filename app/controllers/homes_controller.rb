@@ -31,8 +31,12 @@ class HomesController < ApplicationController
   def get_search_results
     @books = BooksPrimaryContentInformation.get_books_by_advance_search
   end
+
   def about
     @publisher_about = @publisher.about
+    respond_to do |format|
+      format.js
+    end 
   end
 
   def terms_and_conditions

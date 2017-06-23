@@ -1,48 +1,58 @@
-<link href="css/font-awesome.css" rel="stylesheet">
-<!-- Google_font-->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
-
 <!--Main Content Start -->
   <section class="content">
-    <% if @publisher.theme_name== 'theme1' %>
-      <%= render :partial => "header_theme1"%>
-    <% elsif @publisher.theme_name== 'theme2' %>
-       <%= render :partial => "header_theme2"%>
-    <% end %>
+    <!--Nyresearch Start-->
+    <% if @publisher.domain_name == 'nyresearch'%>
+      
+      <% unless @publisher.theme_name.blank? %>
+        <% if @publisher.theme_name== 'theme1' %>
+          <%= render :partial => "header_theme1"%>
+        <% elsif @publisher.theme_name== 'theme2' %>
+          <%= render :partial => "header_theme2"%>   
+        <% end %>
+      <% else %>
+           <%= render :partial => "nysearch_header"%>
+      <% end %>  
     
-    <div class="container-fluid">
-      <div class="row"> 
-        <div class="col-sm-4 col-md-3 ">
-          <% if @publisher.theme_name== 'theme1' %>
-            <%= render :partial => "sidebar_theme1"%>
-          <% end %>  
-        </div>
-        
-        <div class="col-sm-8 col-md-9 mar-b50" >
-        
-          <div id= 'pub_book'>
-            <h1 class="sectionHeading">Featured Books</h1>
-            <%= render :partial => 'publisher_book' %>
+      <div class="container-fluid">
+        <div class="row"> 
+          <div class="col-sm-4 col-md-3 ">
+            <% if @publisher.theme_name== 'theme1' %>
+              <%= render :partial => "sidebar_theme1"%>
+            <% end %>  
           </div>
+        
+          <div class="col-sm-8 col-md-9 mar-b50" >
+            <div id= 'pub_book'>
+              <h1 class="sectionHeading">Featured Books</h1>
+                <%= render :partial => 'publisher_book' %>
+            </div>
+          </div>   
         </div>
-         
       </div>
-
-    </div>
 
     <!-- Page Content Start --> 
     <!-- ================== -->
-    
-      
-      
-      <div class="clearfix m-b-30"></div>
-      <!-- <h2 class="H2-L1">Publisher's Books</h2> -->
+    <div class="clearfix m-b-30"></div>
+    <!-- <h2 class="H2-L1">Publisher's Books</h2> -->
     </div>
-    
-   
+
+  <% elsif @publisher.domain_name == 'syrawoodpublishinghouse' %> 
+    <%= render :partial => "header_theme2"%>
+    <div class="container-fluid">
+        <div class="row"> 
+          <div class="col-sm-8 col-md-9 mar-b50" >
+            <div id= 'pub_book'>
+              <h1 class="sectionHeading">Featured Books</h1>
+                <%= render :partial => 'publisher_book' %>
+            </div>
+          </div>   
+        </div>
+      </div>
+  <% end %> 
+
+   <!--Nyresearch End -->
   </section>
+
 <!-- Footer Start -->
     <%= render :partial => "homes/publisher_footer"%>
-    <!-- Footer Ends --> 
-
+    <!-- Footer Ends -->

@@ -1,3 +1,72 @@
+<% if @publisher.domain_name == "syrawoodpublishinghouse" %> 
+<div class="container" style="padding-bottom:90px;">
+  <div class="row">
+    <section class="col-md-12  mt30">
+      <div class="border_wrapper padding10px ">
+        <div id="bodydivs">
+        <h2 class="heading1 border_bottom mb20">
+          Contact Us
+        </h2>
+        <div class="clearfix"></div>
+            <%= form_tag send_mail_homes_path , :class => "col-md-8 col-sm-7 form-horizontal grayContainer padding10px margin_top10px nomargin" do %>
+              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>  
+            <p class="margin_bottom10px pull-left">
+              <em>Fields marked with&nbsp;<span class="red">*</span>&nbsp;are compulsory</em>
+            </p>
+            <span class="clearfix"> </span>
+            <div class="control-group margin_bottom10px">
+              <label class="control-label" for="inputName">Your name:<span class="red">*</span></label>
+              <div class="controls">
+                <%= text_field_tag :name,"", :class => "form-control input-lg" %>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Your email:<span class="red">*</span></label>
+              <div class="controls">
+                <%= text_field_tag :email,"", :required => true ,:class => "form-control input-lg" %>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Subject:</label>
+              <div id="defaultDiv" style="display: block">
+                <div class="controls">
+                  <%= text_field_tag :subject,"", :class => "form-control input-lg" %>
+                </div>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Your message:<span class="red">*</span></label>
+              <div class="controls">
+              <%= text_area_tag :message,"", :class => "form-control input-lg", :style => "resize:none;", :cols => "40", :rows => "5" %>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for=""></label>
+              <div class="controls">
+                <input name="submit" value="Send Message" class="btn btn-primary btn-inverse pull-right" type="submit">
+                <p></p>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="add_text2 col-md-4 col-sm-5 text-center">
+            <%= image_tag('contact_us_button.png', :style => "width:75%;")%>
+            <p>
+              <strong>Address</strong>
+            </p>
+            <p>Syrawood Publishing House,<br> 750 Third Avenue, 9th Floor,<br> New York, NY 10017, USA <br></p>
+            <p>
+              <strong>Email</strong><br>
+             <span class="clr_red"><i class="glyphicon glyphicon-envelope"></i> </span> <a href="mailto:info@syrawoodpublishinghouse.com">info@syrawoodpublishinghouse.com</a></p>
+          </div>
+          <div class="clearfix"></div>
+         </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<% else %>
 <h1 class="sectionHeading">Contact us</h1>
 <div class="row placeholders">
 	<div class="wrapper container-fluid">
@@ -46,3 +115,4 @@
   <%end%>
 	</div>
 </div>
+<% end %>

@@ -19,9 +19,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'homes/index'
   root :to => "homes#index"
-  get 'homes/search'
 
   resources :homes do
     collection do
@@ -36,6 +34,7 @@ Rails.application.routes.draw do
       get 'contact'
       post 'send_mail'
       get 'download_pdf'
+      get 'search'
     end
   end
 
