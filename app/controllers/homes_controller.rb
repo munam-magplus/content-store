@@ -22,14 +22,27 @@ class HomesController < ApplicationController
   
   def books_by_author
     if !params[:letter].present?
-      @books = BooksPrimaryContentInformation.all.paginate(:page => params[:page], :per_page => 2)
+      @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10)
     else
-      @books = BooksPrimaryContentInformation.find_by_first_letter(params[:letter]).paginate(:page => params[:page], :per_page => 2)
+      @books = @publisher.books_primary_content_informations.joins(:books_contributor).where("first_name LIKE ?", "%#{params[:letter]}%").paginate(:page => params[:page], :per_page => 10)
+    end
+  end
+  def books_by_title
+    if !params[:letter].present?
+      @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10)
+    else
+      @books = @publisher.books_primary_content_informations.where("book_title LIKE ?", "%#{params[:letter]}%").paginate(:page => params[:page], :per_page => 10)
     end
   end
 
   def get_search_results
-    @books = BooksPrimaryContentInformation.get_books_by_advance_search
+    if params[:sort_by] == 'author'
+      sort_order = "first_name asc"
+    else
+      sort_order = "book_title asc"
+    end
+   @books = @publisher.books_primary_content_informations.joins(:subject_groups,:books_content_pricing,:books_contributor).filter(params.slice(:book_title , :first_name, :isbn, :subject_group_name, :publication_date, :format)).order(sort_order).paginate(:page => params[:page], :per_page => 5)
+    #@books = BooksPrimaryContentInformation.get_books_by_advance_search(params).order(sort_order).paginate(:page => params[:per_page])
   end
   def about
     @publisher_about = @publisher.about

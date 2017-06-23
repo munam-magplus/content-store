@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       get 'advance_search'
       get 'get_search_results'
       get 'books_by_author'
+      get 'books_by_title'
       get 'contact'
       post 'send_mail'
       get 'download_pdf'

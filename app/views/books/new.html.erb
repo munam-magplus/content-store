@@ -260,6 +260,7 @@
 										<%= form_for(@book_contributor, url: {:controller => "books", action: "create"}, remote: true) do |f| %>
 											<tr class="participantRow">  
 											  <td >
+											  	<%= f.hidden_field :id, value: @book.id, :id =>"books_primary_content_information_id" %>
 											  	<%= f.select 'contributor_role', options_for_select([ "Screenplay by", "Libretto by", "Lyrics by", "By (composer)", "By (artist)", "By (photographer)", "From an idea by", "Designed by", "Photographs by", "Text by", "Preface by", "Prologue by", "Summary by", "Supplement by", "Afterword by", "Notes by", "Commentaries by", "Foreword by", "Introduction by", "Footnotes by", "Memoir by", "Software written by"]),{ :prompt => "Please select"},{:class =>"form-control" ,:id =>"contributor_role" ,style: "background-color: #eee;"} %>
 											  </td>
 											  <td ><%= f.text_field :first_name , :placeholder => "First Name", :class => "form-control",:id =>"first_name" %> <%= f.text_field :last_name , :placeholder => "Last Name", :class => "form-control",:id =>"last_name" %>
@@ -325,8 +326,9 @@
 								</thead>
 								<tbody>
 									<tr class="participantRows">
+										<%= f.hidden_field :id, value: @book.id, :id =>"books_primary_content_information_id",:class =>"book_id" %>
 									  <td><%= f.select 'format', options_for_select([ "AER", "PRC", "LIT", "ONL", "PDF", "EXT", "OEB", "WMA", "AAC", "HB", "PB", "EPUB", "CD", "EP"]),{ :prompt => "Please select"},{:class =>"form-control" , :id => "format", style: "background-color: #eee;"} %></td>
-									  <td><%= f.text_field :isbn, :class => "form-control", :id => "isbn",:placeholder => "ISBN" %></td>
+									  <td><%= f.text_field :format_isbn, :class => "form-control", :id => "format_isbn",:placeholder => "ISBN" %></td>
 									  <td><%= f.text_field :date_of_issue, :class => "form-control",:id => "date_of_issue", :placeholder => "DOI" %></td>
 									  <td><%= f.text_field :weight, :class => "form-control", :id => "weight",:placeholder => "Weight" %></td>
 									  <td><a class=" remove" href="javascript:;" ><i class="fa fa-trash-o" ></i></a></td>
@@ -364,7 +366,7 @@
     <div class="panel checkout-step">
       <div role="tab" id="headingFour">
       	<span class="checkout-step-number">4</span>
-        <h4 class="checkout-step-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href=""  >Content Access Rules</a></h4>
+        <h4 class="checkout-step-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"  >Content Access Rules</a></h4>
       </div>
 			<div class="clearfix"></div>
       <div id="collapseFour" class="panel-collapse collapse">
@@ -386,6 +388,7 @@
 								<div class="form-group">
 									<label class="col-md-4">Territorial List</label>
 									<div class="col-md-8">
+										<%= f.hidden_field :books_primary_content_information_id, value: @book_content_pricing.books_primary_content_information_id%>
 										<%=  f.select "territorial_list", options_from_collection_for_select(country, "country_code", "country_name"),{prompt: "Select Country"}, {:class => "form-control", :multiple => true, style: "background-color: #eee;"} %>
 									</div>
 									<div class="clearfix"></div>
@@ -532,7 +535,7 @@
         params = []
 		$('.participantRows').each(function(){
             val = {}
-			$(this).find('input, select').each(function(){
+			$(this).find('input, select, input:hidden').each(function(){
 			 val[this.id] = $(this).val();
 			});
 			
@@ -560,7 +563,7 @@
         params = []
 		$('.participantRow').each(function(){
             val = {}
-			$(this).find('input, select, textarea').each(function(){
+			$(this).find('input, select, textarea, input:hidden').each(function(){
 			 val[this.id] = $(this).val();
 			});
 

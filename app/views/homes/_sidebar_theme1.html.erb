@@ -19,13 +19,11 @@
          
         </ul>       
       	 <li class="has-children">
-			<a href="#">
-			AUTHOR / EDITOR</a>			
-		</li>
+          <%= link_to "AUTHOR / EDITOR",books_by_author_homes_path, :remote => true %>		
+		    </li>
         
         <li class="has-children">
-			<a href="#">
-			TITLE</a>			
+			   <%= link_to "TITLE",books_by_title_homes_path, :remote => true %>			
 		</li>	
 
     </li>
