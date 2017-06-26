@@ -12,8 +12,8 @@ gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.1'
 gem 'bootstrap-sass', '~> 3.3.5.1'
+gem 'sass-rails', '~> 5.0.1'
 gem 'jquery-slimscroll-rails'
 
 # Use Uglifier as compressor for JavaScript assets
@@ -28,8 +28,6 @@ gem 'haml'
 gem 'exception_handler'
 
 gem 'devise'
-
-gem 'bootstrap3-rails'
 
 # For ckeditor
 gem 'ckeditor'

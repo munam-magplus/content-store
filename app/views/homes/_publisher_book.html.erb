@@ -71,14 +71,15 @@
           <a class="right carousel-control" href="#carousel123" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
         </div>
       </div>
+
     </div>
+
+        <div class="col-sm-12">
+          <%= @publisher.welcome_text.html_safe unless @publisher.welcome_text.blank? %>
+        </div>
   <% end %>
 <% end %>
 
-<div class="col-sm-12">
-  <%= @publisher.welcome_text %>
-</div>
-   
 <script>
 $(document).ready(function(){
  (function(){

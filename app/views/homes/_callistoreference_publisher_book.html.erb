@@ -1,0 +1,20 @@
+<% @books.each do |f| %>
+  <div class="col-sm-3">
+    <div class="result media-result ebook">
+      
+        <%= link_to image_tag(f.logo.url(:medium)),books_description_homes_path(:book_id => f.id), :remote => true, class: "border-img"%>
+        <div class="details">
+          <h3 class="title"><%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id), :remote => true %>
+          </h3>
+       
+      </div>
+    </div>
+  </div>
+<% end %> 
+
+
+
+
+
+
+

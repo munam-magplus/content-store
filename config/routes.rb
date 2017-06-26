@@ -19,21 +19,24 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'homes/index'
   root :to => "homes#index"
+  get 'homes/search'
 
   resources :homes do
     collection do
       get 'books_by_category'
+      get 'books_by_subject'
       get 'about'
       get 'terms_and_conditions'
       get 'policy'
       get 'books_description'
       get 'advance_search'
+      get 'books_by_title'
+      post 'send_mail'
       get 'get_search_results'
       get 'books_by_author'
-      get 'books_by_title'
       get 'contact'
-      post 'send_mail'
       get 'download_pdf'
       get 'search'
     end

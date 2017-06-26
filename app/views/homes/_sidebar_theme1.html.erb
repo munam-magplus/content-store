@@ -1,32 +1,35 @@
 <div class="sidebar">
   <ul class="cd-accordion-menu animated">
     <li class="has-children">
-	  <input type="checkbox" name ="group-1" id="group-1" checked>
-	    <label for="group-1">SUBJECT</label>
-        <ul>
-      	  <li class="has-children">
-      	    <input type="checkbox" name ="sub-group-1" id="sub-group-1">
-			  <label for="sub-group-1">Engineering and Technology</label>
-			<ul class="accordion-color">
-			  <% unless @publisher.subject_groups.blank? %>
-                  <%@publisher.subject_groups.each do |subject_group| %>
-                    <li> <%=link_to subject_group.subject_group_name ,books_by_category_homes_path(:subject_group_id => subject_group.id), :remote => true %>
-                    </li>
-                  <%end%>
-                <%end%>
+      <input type="checkbox" name ="group-1" id="group-1" checked>
+      <label for="group-1">SUBJECT</label>
+      <ul>
+        <% @publisher.subjects.each_with_index do |subject,i| %>  
+          <li class="has-children">
+            <input type='checkbox' name ='sub-group-<%= i+1%>' id='sub-group-<%= i+1%>'>
+            <label for="sub-group-<%= i+1%>"><%=subject.subject_name%></label>
+            <ul class="accordion-color">
+              <%subject.subject_groups.each do |subject_group| %>
+                <li>
+                  <%=link_to subject_group.subject_group_name ,books_by_category_homes_path(:subject_group_id => subject_group.id), :remote => true %>
+                </li>
+              <% end%>
             </ul>
           </li>
-         
-        </ul>       
-      	 <li class="has-children">
-          <%= link_to "AUTHOR / EDITOR",books_by_author_homes_path, :remote => true %>		
-		    </li>
-        
-        <li class="has-children">
-			   <%= link_to "TITLE",books_by_title_homes_path, :remote => true %>			
-		</li>	
-
+        <% end %>  
+      </ul>
     </li>
-   <ul>
+
+    <li class="has-children">
+      <a href="#">
+      AUTHOR / EDITOR</a>     
+    </li>
+        
+    <li class="has-children">
+      <a href="#">
+      TITLE</a>     
+    </li>
+             
+  </ul>
 
 </div>
