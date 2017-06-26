@@ -33,11 +33,11 @@
     <% end %>
                         
         <div class="col-sm-12">
-          <%= @publisher.welcome_text.html_safe %>
+          <%= @publisher.welcome_text.html_safe unless @publisher.welcome_text.blank? %>
         </div>
     
    
-
+ 
 <script>
 $(document).ready(function(){
  (function(){

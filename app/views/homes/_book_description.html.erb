@@ -1,65 +1,41 @@
-<h1 class="sectionHeading">Book Description</h1>
-<div class="row placeholders">
-  <% if @book_information.present? %>
-    <div class="wrapper container-fluid">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label"> </label>
-            <div class="col-sm-8">
-              <%= image_tag @book_information.logo.url(:original)%>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="clearfix"></div>
-      
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Book Title</label>
-            <div class="col-sm-8">
-              <div class="col-sm-6 frontend-table-demo">
-                <%= @book_information.book_title %> 
-              <div>
+<div id="bodydivs"> 
+   
+    <div class="row">
+    <div class="col-md-12">
+        <ul class="nav nav-tabs noborder" data-tabs="tabs">
+          <li class="active tabGradient"><a href="#bookInfo" data-toggle="tab">Book Info</a></li>
+        </ul>
+        <div class="tab-content tab_border grayContainer">
+          <div class="tab-pane active" id="bookInfo">
+            <div class="pageHeading">
+              <h1> <a  href="#"><strong><%= @book_information.book_title %></strong></a> </h1>
+            </div>
+            <div class="xtraPadding">
+              <div class="col-md-3 col-sm-3"> <%= image_tag @book_information.logo.url(:original)%> </div>
+              <div class="col-md-9 col-sm-9"> 
+                <!-- <p>To read sections of the book, please use the navigation menu at the top left.</p> -->
+                <div class="clearFloat"></div>
+               
+                 
+                <p><span class="book_atr col-xs-12 col-md-3"><strong>ISBN&nbsp;:&nbsp;</strong></span><span class="book_description col-xs-12 col-md-9"><%= @book_information.isbn%></span></p>
+                <p><span class="book_atr col-xs-12 col-md-3"><strong>Publisher&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-9">&nbsp;<%= @publisher.publisher_name%></span></p>
+                <p><span class="book_atr col-xs-12 col-md-3"><strong>Language&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-9">&nbsp;<%= @book_information.language%></span></p>
+                <p><span class="book_atr col-xs-12 col-md-3"><strong>Category&nbsp;:&nbsp;</strong></span> <span class="book_description col-xs-12 col-md-9">&nbsp;Engineering and Technology</span></p>
+              
+                
+                <p><span class="book_atr col-xs-12 col-md-3"><strong>Publication Year&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-9">&nbsp;<%= @book_information.publication_date%></span></p>
+                <p><span class="book_atr col-xs-12 col-md-3"><strong>Price&nbsp;:</strong></span><span class="book_description col-xs-12 col-md-9">&nbsp;USD&nbsp;    145.00</span></p>
+                <p><span class="book_atr col-xs-12 col-md-3"><strong>Format&nbsp;:</strong></span><span class="col-xs-12 book_description col-md-9">&nbsp; <%=@book_information.books_content_pricing.format%></span></p>
+                <p><span class="book_atr col-xs-12 col-md-3"><strong>Description&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-12 margin_bottom10px"><%= @book_information.book_blurb %> </span></p>
+                <p><span class="col-xs-12 book_atr col-md-3"><strong>Author/Editor&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-12"><br>
+                  Danice Coy<br>
+                  Danice Coy holds Master of Science degree in water and environmental engineering from the University of Surrey, United Kingdom. His academic interests lie in hydraulics, water supply networks and environmental pollution. He serves as a regional head for water distribution network; and his current work involves analysing and optimizing public water supply systems. Coy has authored and edited a number of articles, book chapters and conference proceedings on water and environmental engineering. <br>
+                  </span></p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-        <div class="clearfix"></div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="taskName" class="col-sm-4 control-label">ISBN</label>
-              <div class="col-sm-8">
-                <%= @book_information.isbn %>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="clearfix"></div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="taskName" class="col-sm-4 control-label">Language</label>
-              <div class="col-sm-8">
-                <%= @book_information.language %>
-              </div>
-            </div>
-          </div>
-        </div>
-          <div class="clearfix"></div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="taskName" class="col-sm-4 control-label">Year</label>
-                <div class="col-sm-8">
-                 <%= @book_information.publication_year %>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="clearfix"></div>
-  <% end %>
-</div>
+    </div>
+  </div>

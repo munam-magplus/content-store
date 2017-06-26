@@ -1,19 +1,82 @@
-<h1 class="sectionHeading">Featured Books</h1>
-<div class="row placeholders">
-  <% if @books.present? %>
-    <% @books.each do |f| %>
-      <div class="col-xs-6 col-sm-3  col-md-2 placeholder">
-        <%= image_tag(f.logo.url(:thumb), height: '178', width: '126')%>
-        <%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id), :remote => true %>
-        <div class="clearfix"></div>
+
+<div class="border_wrapper padding10px">
+  <div class="row ">
+    <div class="col-sm-4 pb-10">Search Results</div>
+      <div class="text-right col-sm-8">
+        <form class="form-inline" action="/action_page.php">
+          <div class="form-group">
+            <input type="text" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
       </div>
-    <%end%>
-  <% end %>
-    <div class="pagination-frontend">
-      <nav aria-label="Page navigation" style="clear:both;"> 
-        <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
-      </nav>  
+        
+      <div class="col-md-12 col-xs-12 mt-20">
+        <div class="bg-gray">
+          <div class="col-sm-4 no-pad" style="padding-top: 6px;">Results  1–10 of  227 
+          </div>
+          <div class="col-sm-8 text-right no-pad">
+            <div class="pagination-frontend">
+              <nav aria-label="Page navigation" style="clear:both;"> 
+                <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+              </nav>  
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+
+      <% @books.each do |f| %>
+        <div class="col-md-12  no-pad mt-20">
+          <div class="col-md-2  col-sm-2 col-xs-12 ">
+            <div class="effects search-result "> 
+            <%= link_to image_tag(f.logo.url(:medium),class: "img-responsive"), books_description_homes_path(:book_id => f.id),:remote => true, class: "cover2" %>
+
+
+            </div>
+          </div>
+          <div class="col-md-10">
+            <div class="">
+              <h2 title="Advanced Concepts and Applications of Fuzzy Logic"><a href="/engineering-and-technology/9781632380104"><%= f.book_title%></a></h2>
+              <h3 title="Frank West">
+                By
+                : <span class="dark_yellow">Frank West</span></h3>
+              <p><strong>
+                Description
+                :</strong> 
+                <%= f.book_blurb%>.... <a href="/engineering-and-technology/9781632380104">
+                More»</a> </p>
+            </div>
+          </div>  
+        </div>
+
+        <div class="col-md-12 ">
+          <div class="border_bottom-list"> </div>
+        </div>
+
+        <% end%>
+
+
+       <!--lower pagination start -->
+      <div class="col-md-12 col-xs-12 mt-20">
+        <div class="bg-gray">
+          <div class="col-sm-4 no-pad" style="padding-top: 6px;">Results  1–10 of  227 </div>
+          <div class="col-sm-8 text-right no-pad">
+            <div class="pagination-frontend">
+              <nav aria-label="Page navigation" style="clear:both;"> 
+                <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+              </nav>  
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        </div>
+        
     </div>
-    <div class="clearfix"></div>
-  <div style="clear:both;"></div>
-</div>
+  </div>
+   
+
+

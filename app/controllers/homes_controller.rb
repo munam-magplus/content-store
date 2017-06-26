@@ -1,11 +1,10 @@
 class HomesController < ApplicationController
   
-  
   def index
     begin
-    unless @publisher.books_primary_content_informations.blank?
-      @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10)
-    end
+      unless @publisher.books_primary_content_informations.blank?
+        @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10)
+      end
     rescue => e # catches StandardError (don't use rescue Esception => e)
       logger.error e.message
     end
@@ -60,6 +59,14 @@ class HomesController < ApplicationController
     respond_to do |format|
       format.js
     end     
+  end
+
+  def books_by_subject
+    subject = Subject.find(params[:subject])
+    subjectbook = subject.subject_groups
+    respond_to do |format|
+      format.js
+    end
   end
 
   def download_pdf
