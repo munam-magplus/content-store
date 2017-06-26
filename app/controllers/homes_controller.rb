@@ -1,6 +1,5 @@
 class HomesController < ApplicationController
-  
-  
+    
   def index
     begin
     unless @publisher.books_primary_content_informations.blank?
@@ -20,21 +19,34 @@ class HomesController < ApplicationController
     else
       @books = BooksPrimaryContentInformation.find_by_first_letter(params[:letter]).paginate(:page => params[:page], :per_page => 2)
     end
+    respond_to do |format|
+      format.js
+    end
   end
 
   def get_search_results
     @books = BooksPrimaryContentInformation.get_books_by_advance_search
   end
+
   def about
     @publisher_about = @publisher.about
+    respond_to do |format|
+      format.js
+    end 
   end
 
   def terms_and_conditions
     @publisher_terms = @publisher.terms_and_conditions
+    respond_to do |format|
+      format.js
+    end 
   end
 
   def policy
     @publisher_policy = @publisher.policy
+    respond_to do |format|
+      format.js
+    end 
   end
 
   def advance_search

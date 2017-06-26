@@ -16,4 +16,16 @@
 		  </div>
 		<%end%>
 	</div>
+	<div class="clearfix"></div>
+	  <div class="col-md-12 mt20">
+	    <div class="pull-right">
+	      <div class="pagination-frontend">
+	        <nav aria-label="Page navigation" style="clear:both;"> 
+	          <%= will_paginate @books,renderer: BootstrapPagination::Rails %>
+	        </nav>  
+	      </div>
+	    </div>
+	    <div class="clearfix"></div>
+	  </div>
+	</div>
 </div>
