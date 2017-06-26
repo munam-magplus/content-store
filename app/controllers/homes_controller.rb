@@ -33,6 +33,9 @@ class HomesController < ApplicationController
     else
       @books = @publisher.books_primary_content_informations.where("book_title LIKE ?", "%#{params[:letter]}%").paginate(:page => params[:page], :per_page => 10)
     end
+    respond_to do |format|
+      format.js
+    end
   end
 
   def get_search_results
@@ -54,10 +57,16 @@ class HomesController < ApplicationController
 
   def terms_and_conditions
     @publisher_terms = @publisher.terms_and_conditions
+    respond_to do |format|
+      format.js
+    end 
   end
 
   def policy
     @publisher_policy = @publisher.policy
+    respond_to do |format|
+      format.js
+    end 
   end
 
   def advance_search
