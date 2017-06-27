@@ -1,5 +1,5 @@
 
-<% if @publisher.domain_name == "syrawoodpublishinghouse" %>
+<% if @publisher.domain_name == "syrawoodpublishinghouse"%>
 <div class="container" style="padding-bottom:90px;">
 <div class="row">
 <section class="col-md-12">
@@ -59,7 +59,7 @@
 </div>
 </div>
 
-<% elsif @publisher.domain_name == "nyresearchpress" %>
+<% elsif @publisher.domain_name == "nyresearchpress" || 'callistoreference' %>
 <div class="border_wrapper padding10px">
   <div class="row ">
     <div class="col-sm-4 pb-10">Search Results</div>
@@ -71,11 +71,27 @@
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
-        
+
       <div class="col-md-12 col-xs-12 mt-20">
         <div class="bg-gray">
-          <div class="col-sm-4 no-pad" style="padding-top: 6px;">Results  1–10 of  227 
+          <div class="col-sm-4 no-pad" style="padding-top: 6px;">Results  1–10 of  227 </div>
+          <div class="col-sm-8 text-right no-pad">
+            <div class="pagination-frontend">
+              <nav aria-label="Page navigation" style="clear:both;"> 
+                <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+              </nav>  
+            </div>
           </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+        
+      <div class="col-md-12 col-xs-12 mt-20">
+        <%if @books.count >10 %>
+          <div class="bg-gray">
+            <div class="col-sm-4 no-pad" style="padding-top: 6px;"> 
+              Results  1–10 of  <%= @books.count%>
+            </div>
           <div class="col-sm-8 text-right no-pad">
             <div class="pagination-frontend">
               <nav aria-label="Page navigation" style="clear:both;"> 
@@ -86,6 +102,7 @@
 
           <div class="clearfix"></div>
         </div>
+        <% end %>
       </div>
 
       <div class="clearfix"></div>
@@ -101,7 +118,9 @@
           </div>
           <div class="col-md-10">
             <div class="">
-              <h2 title="Advanced Concepts and Applications of Fuzzy Logic"><a href="/engineering-and-technology/9781632380104"><%= f.book_title%></a></h2>
+              <h2>
+               <%= link_to f.book_title, books_description_homes_path(:book_id => f.id), :remote => true %>
+              </h2>
               <h3 title="Frank West">
                 By
                 : <span class="dark_yellow">Frank West</span></h3>
@@ -134,7 +153,7 @@
           </div>
           <div class="clearfix"></div>
         </div>
-        </div>
+      </div>
         
     </div>
   </div>
