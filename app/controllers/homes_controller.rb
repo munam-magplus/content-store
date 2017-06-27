@@ -6,7 +6,7 @@ class HomesController < ApplicationController
   def index
     begin
       unless @publisher.books_primary_content_informations.blank?
-        @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10)
+        @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 3)
       end
     rescue => e # catches StandardError (don't use rescue Esception => e)
       logger.error e.message
@@ -93,7 +93,7 @@ class HomesController < ApplicationController
 
   def books_by_category
     subject_group = SubjectGroup.find(params[:subject_group_id])
-    @books = subject_group.books_primary_content_informations.paginate(:page => params[:page], :per_page => 3)
+    @books = subject_group.books_primary_content_informations.paginate(:page => params[:page], :per_page => 1)
     respond_to do |format|
       format.js
     end     
@@ -102,6 +102,9 @@ class HomesController < ApplicationController
   def books_by_subject
     subject = Subject.find(params[:subject])
     subjectbook = subject.subject_groups
+    subjectbook.each do |subbook| 
+      @books = subbook.books_primary_content_informations.paginate(:page => params[:page], :per_page => 1)
+    end
     respond_to do |format|
       format.js
     end
@@ -110,7 +113,7 @@ class HomesController < ApplicationController
   def download_pdf
     req = request.domain
     send_file(
-    "#{Rails.root}/public/#{req}.pdf",
+    "#{Rails.root}/vendor/#{req}.pdf",
     filename: "#{req}.pdf",
     disposition: "inline",
     type: "application/pdf"
