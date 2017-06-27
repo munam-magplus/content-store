@@ -1,0 +1,79 @@
+<div class="container">
+    <header>
+      <div class="row">
+        <div class="col-sm-6 col-md-6">
+          <h1 class="logo_container">     
+            <a class="logo"  href="#">
+              <%= link_to image_tag(@publisher.publisher_logo(:original)), {action: 'index', controller: 'homes'}, {class: 'dock-item'}%>
+            </a>
+          </h1>
+        </div>
+      </div>
+    </header>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="nav navbar-default" role="navigation">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li>
+                <%= link_to "HOME", homes_path %>
+              </li>
+              <li>
+                <%= link_to "ABOUT US",(about_homes_path), :remote => true %>  
+              </li>
+              <li>
+                <%= link_to "CONTACT US",(contact_homes_path), :remote => true %>
+              </li>
+            </ul>
+            <div class="col-sm-3 col-md-3 pull-right nopadding" style="margin-top:8px;">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon1">
+                <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-search"></i></span>
+                <div class="pull-right" style="margin-left:10px;">
+                 <a href="#"><span><%= link_to '<i class="glyphicon glyphicon-plus-sign adSearchIcon"></i>'.html_safe, advance_search_homes_path,:remote => true %></span></a> 
+                </div>
+              </div>
+            </div><!--/.nav-collapse -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="menu_box">
+          <div class="navbar-inner">
+            <ul class="nav col-md-12" role="navigation">
+              <li class="dropdown col-md-4 phone_width">
+                <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> CATEGORY<b class="caret pull-right caret_white"></b>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                  <li>
+                    <% unless @publisher.subject_groups.blank? %>
+                      <%@publisher.subject_groups.each do |subject_group| %>
+                        <li> <%=link_to subject_group.subject_group_name ,books_by_category_homes_path(:subject_group_id => subject_group.id), :remote => true %>
+                        </li>
+                      <%end%>
+                    <%end%>
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown col-md-4 thick_bord margin_author phone_width"><%= link_to "AUTHOR",(books_by_author_homes_path), :remote => true %>
+              </li>
+              <li class="dropdown col-md-4 thick_bord margin_title"> <a id="drop1" href="/titles" role="button" class="dropdown-toggle" data-toggle="dropdown"> TITLE </a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>

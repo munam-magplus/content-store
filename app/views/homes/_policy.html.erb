@@ -1,8 +1,28 @@
-<h1 class="sectionHeading">Privacy Policy</h1>
-<div class="row placeholders">
-	<% if @publisher_policy.present? %>
-	  <div class="wrapper container-fluid">
-	    <%= @publisher_policy %>
+<% if @publisher.domain_name == "mlbooksinternational" %>
+	<div class="container" >
+	  <div class="row">
+	    <div class="col-sm-12">
+	      <div class="border_wrapper padding10px mt5">
+	        <h1 class="heading1 border_bottom "> Privacy Policy </h1>
+	        <div class="clearfix"></div>
+	        <p class="mt20">
+	        	<% if @publisher_policy.present? %>
+						  <div class="wrapper container-fluid">
+						    <%= @publisher_policy %>
+						  </div>
+						<%end%>
+					</p>
+	      </div>
+	    </div>
 	  </div>
-	<%end%>
-</div>
+	</div>
+<% else %>
+	<h1 class="sectionHeading">Privacy Policy</h1>
+	<div class="row placeholders">
+		<% if @publisher_policy.present? %>
+		  <div class="wrapper container-fluid">
+		    <%= @publisher_policy %>
+		  </div>
+		<%end%>
+	</div>
+<% end %>

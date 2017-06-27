@@ -1,4 +1,5 @@
-
+<body>
+  <div class="container wrapper">
 <!--Main Content Start -->
   <section class="content">
     
@@ -46,25 +47,26 @@
         </div>
       </div>
     <% elsif @publisher.domain_name == "mlbooksinternational" %>
-      <% if @publisher.theme_name== 'theme1' %>
-        <%= render :partial => "header_theme1"%>
-      <% elsif @publisher.theme_name== 'theme2' %>
-        <%= render :partial => "header_theme2"%>   
+      
+      <% unless @publisher.theme_name.blank? %>
+        <% if @publisher.theme_name== 'theme1' %>
+          <%= render :partial => "header_theme1"%>
+        <% elsif @publisher.theme_name== 'theme2' %>
+          <%= render :partial => "header_theme2"%>   
+        <% end %>
+      <% else %>
+        <%= render :partial => "mlbooksinternational_header_theme"%>
       <% end %>
     
-      <div class="container-fluid">
+      <div class="container">
         <div class="row"> 
-          <div class="col-sm-4 col-md-3 ">
-            <% if @publisher.theme_name== 'theme1' %>
-              <%= render :partial => "sidebar_theme1"%>
-            <% end %>  
+          <div class="row-fluid">
+            <div class="col-sm-0 col-md-0 mar-b50" >
+              <div id= 'pub_book'>
+                <%= render :partial => 'publisher_book' %>
+              </div>
+            </div> 
           </div>
-
-          <div class="col-sm-8 col-md-9 mar-b50" >
-            <div id= 'pub_book'>
-              <%= render :partial => 'publisher_book' %>
-            </div>
-          </div>   
         </div>
       </div>
   
@@ -100,9 +102,11 @@
   <% end %> 
  
 </section>
+</div>
 
 <!-- Footer Start -->
-  <footer>
-    <%= render :partial => "homes/publisher_footer"%>
-  </footer>
-  <!-- Footer Ends --> 
+<footer>
+  <%= render :partial => "homes/publisher_footer"%>
+</footer>
+  <!-- Footer Ends -->
+</body>
