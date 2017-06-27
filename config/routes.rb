@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       get 'books_by_title'
       post 'send_mail'
       get 'get_search_results'
+      get 'get_author'
       get 'books_by_author'
       get 'contact'
       get 'download_pdf'

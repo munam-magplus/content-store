@@ -22,6 +22,10 @@ class HomesController < ApplicationController
   end
   
   def books_by_author
+    @books = BooksPrimaryContentInformation.joins(:books_contributor).where('first_name LIKE ? AND last_name LIKE ?',"%#{params[:first_name]}%","%#{params[:last_name]}%").paginate(:page => params[:page], :per_page => 10)
+  end
+
+  def get_author
     if !params[:letter].present?
       @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10)
     else

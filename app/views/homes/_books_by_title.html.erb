@@ -3,7 +3,7 @@
 <div class="clearfix"></div>
 	<ul class="pagination">
 	  <%("A".."Z").each do |letter| %> 
-	  <li><%= link_to letter, books_by_author_homes_path(:letter=>letter)%></li>
+	  <li><%= link_to letter, books_by_title_homes_path(:letter=>letter)%></li>
 	  <%end%>
 	</ul>
 	<div class="clearfix m-b-30"></div>
