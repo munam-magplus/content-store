@@ -138,8 +138,62 @@
         
     </div>
   </div>
-
+<% elsif @publisher.domain_name == "mlbooksinternational" %>
+  <div class="container" >
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="border_wrapper padding10px mt5">
+          <div id="bodydivs">
+            <div class="col-sm-4 nopadding">
+              <h3 class="heading1">Search Results</h3>
+            </div>
+            <div class="text-right col-sm-8 nopadding">
+              <form class="form-inline" action="/action_page.php">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="pwd" value="Refine Search" name="pwd">
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+              </form>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-12  nopadding  bg-gray mt20">
+              <div class="pull-right">
+                <div class="pagination pagination-sm nomargin">
+                  <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+                </div>
+              </div>
+            </div>  
+            <% @books.each do |f| %>
+            <div class="margin_top20px im_width">
+              <div class="col-md-2  col-sm-2 col-xs-12 ">
+                <div class="effects search-result">
+                  <a href="/#" class="cover2"><%= link_to image_tag(f.logo.url(:medium),class: "img-responsive"), books_description_homes_path(:book_id => f.id),:remote => true, class: "cover2" %></a>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <h3 title=""><a href="#"><%= link_to truncate(f.book_title, length: 14), books_description_homes_path(:book_id => f.id), :remote => true %></a></h3>
+                <h3 title="Austin Balfour"> By
+                  : <span class="dark_yellow"><%= link_to truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14), books_description_homes_path(:book_id => f.id), :remote => true %></span></h3>
+                <p>
+                  <strong>Description :</strong>   <%= f.book_blurb%><a href="#"> More»</a>
+                </p>
+                <h3><a href="#">Book Info</a></h3>
+              </div>
+            </div>
+            <% end %>
+            <div class="border_bottom"></div>
+            <div class="clearfix"></div>
+            <div class="col-md-12  nopadding  bg-gray mt20">
+              <div class="pull-right">
+                <div class="pagination pagination-sm nomargin">
+                  <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+                </div>
+              </div>
+            </div>
+            <div class=" clearfix"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
-
-
-

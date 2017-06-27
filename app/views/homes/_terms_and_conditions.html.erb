@@ -1,8 +1,31 @@
-<h1 class="sectionHeading">Terms & Conditions</h1>
-<div class="row placeholders">
-	<%if @publisher_terms.present? %>
-	  <div class="wrapper container-fluid">
-	    <%= @publisher_terms %>
+<% if @publisher.domain_name == "mlbooksinternational" %>
+	<div class="container" >
+	  <div class="row">
+	    <div class="col-sm-12">
+	      <div class="border_wrapper padding10px mt5">
+	        <h1 class="heading1 border_bottom ">TERMS & CONDITIONS</h1>
+	        <div class="clearfix"></div>
+	        <div class="mt20" id="tcHead">
+	          <p>
+	          	<%if @publisher_terms.present? %>
+							  <div class="wrapper container-fluid">
+							    <%= @publisher_terms %>
+							  </div>
+							<%end%>
+	          </p>
+	          <div class="clearfix"> </div>
+	        </div>
+	      </div>
+	    </div>
 	  </div>
-	<%end%>
-</div>
+	</div>
+<% else %>
+	<h1 class="sectionHeading">Terms & Conditions</h1>
+	<div class="row placeholders">
+		<%if @publisher_terms.present? %>
+		  <div class="wrapper container-fluid">
+		    <%= @publisher_terms %>
+		  </div>
+		<%end%>
+	</div>
+<% end %>

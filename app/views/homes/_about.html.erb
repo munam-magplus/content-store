@@ -1,8 +1,13 @@
-<h1 class="sectionHeading">About us</h1>
-<div class="row placeholders">
-	<% if @publisher_about.present? %>
-	  <div class="wrapper container-fluid">
-	    <%= @publisher_about %>
-	  </div>
-	<%end%>
+<div class="container" >     	 
+	<div class="row"> 
+		<div class="col-sm-12"> 
+ 			<div class="border_wrapper padding10px mt5"> 
+ 				<h1 class="heading1 border_bottom ">About Us</h1>
+ 				<div class="clearfix"></div>
+				<% if @publisher_about.present? %>
+ 					<p class="mt20"><%= @publisher_about %></p>
+				<%end%>
+ 			</div>
+ 		</div>
+ 	</div>	 
 </div>
