@@ -1,152 +1,77 @@
-<% if @publisher.domain_name == "mlbooksinternational" %>
-  <div class="container" >       
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="border_wrapper padding10px mt5">
-          <h1 class="heading1 border_bottom ">ADVANCED SEARCH</h1>
-          <div class="clearfix"></div>
-          <div class="mt20">
-            <form action="search.do" method="get" id="advanceSearchForm" class="form-horizontal grayContainer">
-            <%= form_tag get_search_results_homes_path, :method => 'get',:class => "form-horizontal form-bg", :remote => true do %>
-              <fieldset>
-                <div class="form-group margin_bottom10px">
-                  <label class="col-md-3 control-label" for="">
-                    Title
-                    :</label>
-                  <div class="col-md-6">
-                    <%= text_field_tag :book_title,"", :class => "form-control" %>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-md-3 control-label">
-                    Author
-                    :</label>
-                  <div class="col-md-6">
-                    <%= text_field_tag :first_name,"", :class => "form-control" %>
-                  </div>
-                </div>                
-                <div class="form-group">
-                  <label class="col-md-3 control-label">
-                   Publisher :
-                   </label>
-                  <div class="col-md-6">
-                    <%= text_field_tag :publisher,"", :class => "form-control" %>
-                  </div>
-                </div>
-                
-                <div id="book1">
-                  <div class="form-group">
-                   <label class="col-md-3 control-label">
-                      Publisher
-                      :</label>
-                    <div class="col-md-6">
-                      <%= text_field_tag :publisher,"", :class => "form-control" %>
-                    </div>
-                  </div>
-                 
-                </div>
-                <div id="journal1" style="display:none;">
-                  <div class="control-group">
-                    <label class="control-label">
-                      ISSN
-                      :</label>
-                    <div class="controls">
-                      <%= text_field_tag :isbn,"", :class => "form-control" %>
-                    </div>
-                  </div>
-                  <input name="serachResultFilterOptions" value="A,J,E" id="serachResultFilterOptions" type="hidden">
-                </div>
-              </fieldset>
-              <div class="form-group  mt-20">
-                <label class="col-md-3"> &nbsp;</label>
-                <div class="col-md-6">
-                  <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-primary", type: :submit %>
-                  <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-primary" ,type: :reset%>
-                </div>
-              </div>  
-            <%end%>
-            </form>
-          </div>
+<h1 class="sectionHeading">Advance Search</h1>
+<div class="row placeholders">
+<div class="wrapper container-fluid">
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+  <%= form_tag get_search_results_homes_path, :method => 'get',:class => "form-horizontal form-bg", :remote => true do %>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="taskName" class="col-sm-4 control-label">Book Title:</label>
+        <div class="col-sm-8">
+          <%= text_field_tag :book_title,"", :class => "form-control" %>
         </div>
+         <div class="clearfix"></div>
       </div>
-    </div> 
-  </div>
-<% else %>
-  <h1 class="sectionHeading">Advance Search</h1>
-  <div class="row placeholders">
-  <div class="wrapper container-fluid">
-  <div class="clearfix"></div>
-  <div class="clearfix"></div>
-    <%= form_tag get_search_results_homes_path, :method => 'get',:class => "form-horizontal form-bg", :remote => true do %>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="taskName" class="col-sm-4 control-label">Book Title:</label>
-          <div class="col-sm-8">
-            <%= text_field_tag :book_title,"", :class => "form-control" %>
-          </div>
-           <div class="clearfix"></div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="bookISBN" class="col-sm-4 control-label">Author:</label>
-          <span class="col-sm-8">
-          <%= text_field_tag :first_name,"", :class => "form-control" %>
-          </span> <div class="clearfix"></div></div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="bookISBN" class="col-sm-4 control-label">ISBN:</label>
-          <span class="col-sm-8">
-          <%= text_field_tag :isbn,"", :class => "form-control" %>
-          </span> </div>
-           <div class="clearfix"></div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="taskName" class="col-sm-4 control-label">Select Subject Group</label>
-          <div class="col-sm-8">
-            <%= select_tag 'subject_group_name',options_from_collection_for_select(SubjectGroup.all, 'subject_group_name', 'subject_group_name'), :prompt => "Select subject Group",:class => "form-control",style: "background-color: #eee;"%>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="bookISBN" class="col-sm-4 control-label">Publication Year:</label>
-          <span class="col-sm-8">
-            <%= select_tag 'publication_date', options_for_select((2000..Date.today.year).to_a),:prompt => "Select Year",:class => "form-control",style: "background-color: #eee;" %>
-          </span> <div class="clearfix"></div></div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="bookISBN" class="col-sm-4 control-label">Fromat:</label>
-          <span class="col-sm-8">
-          <%= text_field_tag :format,"", :class => "form-control" %>
-          </span> </div>
-           <div class="clearfix"></div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="bookISBN" class="col-sm-4 control-label">Results Per Page:</label>
-          <span class="col-sm-8">
-             <%= select_tag 'per_page',options_for_select([['10',10], ['20',20],['30',30]]),:class => "form-control" %>
-          </span> <div class="clearfix"></div></div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="bookISBN" class="col-sm-4 control-label">Sort By:</label>
-          <span class="col-sm-8">
-             <%= select_tag 'sort_by',options_for_select([['Author',:author], ['Book Title',:book_title]]),:class => "form-control" %>
-          </span> <div class="clearfix"></div></div>
-      </div>
-    <div class="clearfix m-b-30"></div>
-   <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
-    <%= button_tag fa_icon("search", text: "Search"), :class => "btnBlack btn-sm", type: :submit %>
-    <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
-      </div>
-    <%end%>
-    
     </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="bookISBN" class="col-sm-4 control-label">Author:</label>
+        <span class="col-sm-8">
+        <%= text_field_tag :first_name,"", :class => "form-control" %>
+        </span> <div class="clearfix"></div></div>
     </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="bookISBN" class="col-sm-4 control-label">ISBN:</label>
+        <span class="col-sm-8">
+        <%= text_field_tag :isbn,"", :class => "form-control" %>
+        </span> </div>
+         <div class="clearfix"></div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="taskName" class="col-sm-4 control-label">Select Subject Group</label>
+        <div class="col-sm-8">
+          <%= select_tag 'subject_group_name',options_from_collection_for_select(SubjectGroup.all, 'subject_group_name', 'subject_group_name'), :prompt => "Select subject Group",:class => "form-control",style: "background-color: #eee;"%>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="bookISBN" class="col-sm-4 control-label">Publication Year:</label>
+        <span class="col-sm-8">
+          <%= select_tag 'publication_date', options_for_select((2000..Date.today.year).to_a),:prompt => "Select Year",:class => "form-control",style: "background-color: #eee;" %>
+        </span> <div class="clearfix"></div></div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="bookISBN" class="col-sm-4 control-label">Fromat:</label>
+        <span class="col-sm-8">
+        <%= text_field_tag :format,"", :class => "form-control" %>
+        </span> </div>
+         <div class="clearfix"></div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="bookISBN" class="col-sm-4 control-label">Results Per Page:</label>
+        <span class="col-sm-8">
+           <%= select_tag 'per_page',options_for_select([['10',10], ['20',20],['30',30]]),:class => "form-control" %>
+        </span> <div class="clearfix"></div></div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="bookISBN" class="col-sm-4 control-label">Sort By:</label>
+        <span class="col-sm-8">
+           <%= select_tag 'sort_by',options_for_select([['Author',:author], ['Book Title',:book_title]]),:class => "form-control" %>
+        </span> <div class="clearfix"></div></div>
+    </div>
+  <div class="clearfix m-b-30"></div>
+ <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+  <%= button_tag fa_icon("search", text: "Search"), :class => "btnBlack btn-sm", type: :submit %>
+  <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
+    </div>
+  <%end%>
+  
   </div>
-<% end %>
+  </div>
+</div>

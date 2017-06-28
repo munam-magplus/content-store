@@ -6,7 +6,7 @@ class HomesController < ApplicationController
   def index
     begin
       unless @publisher.books_primary_content_informations.blank?
-        @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 3)
+        @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 3)
       end
     rescue => e # catches StandardError (don't use rescue Esception => e)
       logger.error e.message
@@ -43,6 +43,11 @@ class HomesController < ApplicationController
     end
   end
 
+  def refine_search
+    @subject_group = SubjectGroup.find(params[:subject_group_id])
+    @books = @subject_group.books_primary_content_informations.joins(:books_contributor).where('book_title LIKE ? OR first_name LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 1)
+  end
+
   def get_search_results
     if params[:sort_by] == 'author'
       sort_order = "first_name asc"
@@ -50,7 +55,6 @@ class HomesController < ApplicationController
       sort_order = "book_title asc"
     end
    @books = @publisher.books_primary_content_informations.joins(:subject_groups,:books_content_pricing,:books_contributor).filter(params.slice(:book_title , :first_name, :isbn, :subject_group_name, :publication_date, :format)).order(sort_order).paginate(:page => params[:page], :per_page => 5)
-    #@books = BooksPrimaryContentInformation.get_books_by_advance_search(params).order(sort_order).paginate(:page => params[:per_page])
   end
 
   def about
@@ -92,8 +96,8 @@ class HomesController < ApplicationController
   end
 
   def books_by_category
-    subject_group = SubjectGroup.find(params[:subject_group_id])
-    @books = subject_group.books_primary_content_informations.paginate(:page => params[:page], :per_page => 1)
+    @subject_group = SubjectGroup.find(params[:subject_group_id])
+    @books = @subject_group.books_primary_content_informations.paginate(:page => params[:page], :per_page => 1)
     respond_to do |format|
       format.js
     end     

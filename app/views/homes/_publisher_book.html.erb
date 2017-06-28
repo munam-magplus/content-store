@@ -44,7 +44,7 @@
                       <div class="details">
                         <h3 class="title"><%= link_to truncate(f.book_title, length: 4), books_description_homes_path(:book_id => f.id), :remote => true %>
                         </h3>
-                        <h4 class="author" title=">Betty Karasek">Betty Karasek</h4>
+                        <h4 class="author" title=">Betty Karasek"><%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14)%></h4>
                       </div>
                     </div>
                   </div>
