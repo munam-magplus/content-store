@@ -4,7 +4,7 @@
         <div class="col-sm-6 col-md-6">
           <h1 class="logo_container">     
             <a class="logo"  href="#">
-              <%= link_to image_tag(@publisher.publisher_logo(:original)), {action: 'index', controller: 'homes'}, {class: 'dock-item'}%>
+              <%= link_to image_tag(@publisher.publisher_logo(:original)), homes_path %>
             </a>
           </h1>
         </div>
@@ -36,13 +36,21 @@
               </li>
             </ul>
             <div class="col-sm-3 col-md-3 pull-right nopadding" style="margin-top:8px;">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon1">
-                <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-search"></i></span>
-                <div class="pull-right" style="margin-left:10px;">
-                 <a href="#"><span><%= link_to '<i class="glyphicon glyphicon-plus-sign adSearchIcon"></i>'.html_safe, advance_search_homes_path,:remote => true %></span></a> 
+              <%= form_tag(search_homes_path, :method => "get", class: "navbar-form",:remote => true) do %>
+                <div class="input-group">
+                 <%= text_field_tag :book_title, params[:search], required: true,placeholder: "Search by Title " %>
+                 
+                   <%= button_tag(type: 'submit') do %>
+                     <i class="glyphicon glyphicon-search"></i>
+                    <% end %>
+                
+                  <div class='pull-right'  style="margin-left:10px;">
+                  <%= link_to advance_search_homes_path,remote: true  do %>
+                     <i class="glyphicon glyphicon-plus-sign" style="font-size:1.9em; color:#fff" ></i>
+                  <% end %>
+                  </div>
                 </div>
-              </div>
+              <%end%>
             </div><!--/.nav-collapse -->
           </div>
         </div>
@@ -67,9 +75,10 @@
                   </li>
                 </ul>
               </li>
-              <li class="dropdown col-md-4 thick_bord margin_author phone_width"><%= link_to "AUTHOR",(books_by_author_homes_path), :remote => true %>
+              <li class="dropdown col-md-4 thick_bord margin_author phone_width">
+                <%= link_to "AUTHOR",(get_author_homes_path), :remote => true %>
               </li>
-              <li class="dropdown col-md-4 thick_bord margin_title"> <a id="drop1" href="/titles" role="button" class="dropdown-toggle" data-toggle="dropdown"> TITLE </a></li>
+              <li class="dropdown col-md-4 thick_bord margin_title"><%= link_to "TITLE",books_by_title_homes_path, :remote => true %></li>
             </ul>
           </div>
         </div>

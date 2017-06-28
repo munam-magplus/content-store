@@ -1,21 +1,63 @@
-<h1 class="sectionHeading">BOOKS BY TITLE</h1>
-<div class="row placeholders">
-<div class="clearfix"></div>
-	<ul class="pagination">
-	  <%("A".."Z").each do |letter| %> 
-	  <li><%= link_to letter, books_by_title_homes_path(:letter=>letter)%></li>
-	  <%end%>
-	</ul>
-	<div class="clearfix m-b-30"></div>
-		<%@books.each do |book| %>
-		  <div class="form-group">
-		    <div class="col-sm-2 text-center">
-		      <%= image_tag book.logo.url(:original) , :class => "imgPopover"%><br>
-		        <p><%= link_to book.book_title, books_description_homes_path(:book_id => book.id), :remote => true %>
-		        </p>
-		        <%= book.book_blurb %>
-		    </div>
-		  </div>
-		<%end%>
-	</div>
+<div id="bodydivs">
+  <div class="col-sm-4 nopadding">
+    <h3 class="heading1">Book Title</h3>
+    <div class="border_bottom"></div>
+  	<div class="clearfix"></div>
+  </div>
+
+	<div>
+		<ul class='pagination'>
+		  <% ('A'..'Z').each do |letter| %> 
+		    <li>
+		    	<%= link_to letter, books_by_title_homes_path(:letter=>letter)%>
+		    </li>
+		  <%end%>
+		</ul>
+    <%if @books.count >2 %>
+      <div class="alpha_category">
+  			<div class="pull-left mt5">
+          Results  1–10 of  <%= @books.count%>
+  			</div>
+   			<div class="pull-right">
+          <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+    		</div>
+			</div>
+		<% end %>
+		<div class="clearfix"></div>
+  </div>	
+  <% @books.each do |f| %>
+    <div class="margin_top20px im_width">
+      <div class="col-md-2  col-sm-2 col-xs-12 ">
+        <div class="effects search-result">
+        	<%= link_to image_tag(f.logo.url(:medium),class: "img-responsive"), books_description_homes_path(:book_id => f.id),:remote => true, class: "cover2" %>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <h3 title=""><%= link_to truncate(f.book_title, length: 14), books_description_homes_path(:book_id => f.id), :remote => true %></h3>
+        <h3>By :<span class="dark_yellow"><%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14) %></span></h3>
+        <p><strong>Description :</strong>
+          <%= truncate(f.book_blurb, length: 40) %>... 
+          <%= link_to "More»",(books_description_homes_path), :remote => true %>
+        </p>
+        <h3></h3>
+      </div>
+      <div class=" clearfix"></div>
+    </div>
+    <div class="border_bottom"></div>
+    <div class="clearfix"></div>
+  <% end %>
+    
+  <%if @books.count >2 %>
+    <div class="col-md-12  nopadding  bg-gray mt20">
+			<div class="pull-left mt5">
+        Results  1–10 of  <%= @books.count%>
+			</div>
+ 			<div class="pull-right">
+    		<ul class="pagination pagination-sm nomargin">
+          <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+      	</ul>
+  		</div>
+		</div>
+	<% end %>
+  <div class=" clearfix"> </div>
 </div>
