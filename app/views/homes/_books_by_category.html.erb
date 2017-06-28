@@ -1,4 +1,3 @@
-
 <% if @publisher.domain_name == "syrawoodpublishinghouse"%>
 <div class="container" style="padding-bottom:90px;">
 <div class="row">
@@ -7,11 +6,11 @@
     <div id="bodydivs"> 
       <div class="col-md-12 border_bottom pb10">
         <h2 class="heading1 ">Search Results
-          <form id="refineSearch"    class="form-inline pull-right">
-            <input   value="Refine Search"   id="textToBeSearched" class="form-control input-sm  " type="text" >
-            
-            <input id="refineHref" value="Search"   class="btn btn-primary btn-sm responsive_margin_top20px border_radius3px" type="button">
-          </form>
+          <%= form_tag  refine_search_homes_path, :method => 'get',:id=>"Author Name/Book Title",:class=>"form-inline pull-right",:remote => true do %>
+            <%= text_field_tag :search,"", :class => "form-control input-sm", :placeholder => "Refine Search" %>
+            <%= hidden_field_tag :subject_group_id, @subject_group.id%>
+            <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-primary btn-sm responsive_margin_top20px border_radius3px", type: :submit %>
+          <%end%>
         </h2>
       </div>
       <div class="clearfix"> </div>
@@ -35,7 +34,7 @@
           </a>
         </div>
         <div class="col-md-9">
-          <h3 title="A Modern Approach to Ecology of Plants"><a href="/agricultural-sciences/9781682863947"><%= f.book_title%></a></h3>
+          <h3 title="A Modern Approach to Ecology of Plants"><%= f.book_title%></h3>
           <h3 title="Austin Balfour"> By
            : <span class="dark_yellow"><%= f.books_contributor.first_name + f.books_contributor.last_name %></span></h3>
           <p><strong> Description
@@ -47,7 +46,9 @@
       <div class="border_bottom"> </div>
       <div class=" clearfix"> </div>
       <% end %>
-      <% end %>
+      <% else %> 
+        <h3> Record Not Found </h3>
+      <%end%>
       <div class="pagination-frontend">
         <nav aria-label="Page navigation" style="clear:both;"> 
           <%= will_paginate @books,renderer: BootstrapPagination::Rails%>

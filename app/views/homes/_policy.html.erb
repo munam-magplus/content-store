@@ -8,7 +8,7 @@
 	        <p class="mt20">
 	        	<% if @publisher_policy.present? %>
 						  <div class="wrapper container-fluid">
-						    <%= @publisher_policy %>
+						    <%= @publisher_policy.html_safe %>
 						  </div>
 						<%end%>
 					</p>
@@ -36,7 +36,7 @@
 	<div class="row placeholders">
 		<% if @publisher_policy.present? %>
 		  <div class="wrapper container-fluid">
-		    <%= @publisher_policy %>
+		    <%= @publisher_policy.html_safe%>
 		  </div>
 		<%end%>
 	</div>
