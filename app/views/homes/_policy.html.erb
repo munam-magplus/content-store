@@ -16,6 +16,21 @@
 	    </div>
 	  </div>
 	</div>
+
+<% elsif @publisher.domain_name == "syrawoodpublishinghouse" 	 %>
+  <div class="container" style="padding-bottom:90px;">
+	  <div class="row">
+	    <div class="col-md-12 mt30">
+	    	<h2 class="heading1 border_bottom mb20">Privacy Policy</h2>
+	      <div class="termcondition">
+	      	<% if @publisher_policy.present? %>
+	 					<p class="mt20"><%= @publisher_policy %></p>
+					<%end%>
+				</div>
+	    </div>
+  	</div>
+	</div>
+	
 <% else %>
 	<h1 class="sectionHeading">Privacy Policy</h1>
 	<div class="row placeholders">

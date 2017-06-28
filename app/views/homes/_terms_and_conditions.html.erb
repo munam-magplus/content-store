@@ -19,6 +19,20 @@
 	    </div>
 	  </div>
 	</div>
+<% elsif @publisher.domain_name == "syrawoodpublishinghouse" 	 %>
+  <div class="container" style="padding-bottom:90px;">
+	  <div class="row">
+	    <div class="col-md-12 mt30">
+	    	<h2 class="heading1 border_bottom mb20">TERMS & CONDITIONS </h2>
+	      <div class="termcondition">
+	      	<% if @publisher_terms.present? %>
+	 					<p class="mt20"><%= @publisher_terms %></p>
+					<%end%>
+				</div>
+	    </div>
+  	</div>
+	</div>
+	
 <% else %>
 	<h1 class="sectionHeading">Terms & Conditions</h1>
 	<div class="row placeholders">
@@ -29,3 +43,4 @@
 		<%end%>
 	</div>
 <% end %>
+

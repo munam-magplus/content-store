@@ -1,35 +1,36 @@
 <% if @books.present? %>
   <% if request.domain == "mlbooksinternational" %>
-  <div class="container">
-    <div class="col-md-12 gray_box mt5">
-      
-      <h2 class="heading1 border_bottom pull-left">Featured Books</h2>  
-      <div class="clearfix"></div>
-      <% @books.each_with_index do |f,index| %>
-        <div class="mt20">  
-          <div class="col-md-4  col-sm-6">
-            <article class="media-result">
-              <div class="cover">
-                <a><%= image_tag(f.logo.url(:original), :style => "height: 206px; width: 148px;") %></a>
-              </div>
-              <div class="details">
-                <h3 class="title"><%= link_to truncate(f.book_title, length: 14), books_description_homes_path(:book_id => f.id), :remote => true %>
-                </h3>
-                <h4 class="author"><%= link_to truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14), books_description_homes_path(:book_id => f.id), :remote => true %></h4>
-              </div>
-            </article>
-          </div>   
-        </div> 
-      <% end %>
-      <div class="clearfix"></div>
-      <div class="col-md-12 mtb25">
-        <div class="pull-right">
-          <%= will_paginate @books,renderer: BootstrapPagination::Rails %>
-        </div>
+    <div class="container">
+      <div class="col-md-12 gray_box mt5">
+        <h2 class="heading1 border_bottom pull-left">Featured Books</h2>
         <div class="clearfix"></div>
+        <% @books.each_with_index do |f,index| %>
+          <div class="mt20">  
+            <div class="col-md-4  col-sm-6">
+              <article class="media-result">
+                <div class="cover">
+                  <a><%= image_tag(f.logo.url(:original), :style => "height: 206px; width: 148px;") %></a>
+                </div>
+                <div class="details">
+                  <h3 class="title"><%= link_to truncate(f.book_title, length: 14), books_description_homes_path(:book_id => f.id), :remote => true %>
+                  </h3>
+                  <h4 class="author"><%= link_to truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14), books_description_homes_path(:book_id => f.id), :remote => true %></h4>
+                </div>
+              </article>
+            </div>   
+          </div> 
+        <% end %>
+        <div class="clearfix"></div>
+        <div class="col-md-12 mtb25">
+          <div class="pull-right">
+            <%= will_paginate @books,renderer: BootstrapPagination::Rails %>
+          </div>
+          <div class="clearfix"></div>
+        </div>
       </div>
     </div>
-  </div>
+ 
+
   <% else %>
     <div class="row">
       <div class="col-md-10 col-sm-offset-1">
@@ -42,7 +43,7 @@
                     <div class="cover">
                       <%= link_to image_tag(f.logo.url(:original)),books_description_homes_path(:book_id => f.id), :remote => true %>
                       <div class="details">
-                        <h3 class="title"><%= link_to truncate(f.book_title, length: 4), books_description_homes_path(:book_id => f.id), :remote => true %>
+                        <h3 class="title"><%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id), :remote => true %>
                         </h3>
                         <h4 class="author" title=">Betty Karasek">Betty Karasek</h4>
                       </div>
@@ -56,16 +57,15 @@
           <a class="right carousel-control" href="#carousel123" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
         </div>
       </div>
-
     </div>
 
-        <div class="col-sm-12">
-          <%= @publisher.welcome_text.html_safe unless @publisher.welcome_text.blank? %>
-        </div>
+    <div class="col-sm-12">
+      <%= @publisher.welcome_text.html_safe unless @publisher.welcome_text.blank? %>
+    </div>
   <% end %>
 <% end %>
 
-<script>
+ <script>
 $(document).ready(function(){
  (function(){
   // setup your carousels as you normally would using JS
@@ -78,7 +78,6 @@ $(document).ready(function(){
 (function(){
   $('.carousel-showmanymoveone .item').each(function(){
     var itemToClone = $(this);
-
     for (var i=1;i<4;i++) {
       itemToClone = itemToClone.next();
 
