@@ -1,5 +1,4 @@
 class EndUserContactMailer < ApplicationMailer
-	default to: "iamaiyaz@hotmail.com"
 
 	def contact_email(publisher,name, email, subject, body)
     @name = name
@@ -7,6 +6,6 @@ class EndUserContactMailer < ApplicationMailer
     @body = body
     @subject = subject
 
-    mail(from: email, subject: subject)
+    mail(from: email, subject: subject , to: publisher.contact_email)
   end
 end

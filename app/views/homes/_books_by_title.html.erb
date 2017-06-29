@@ -36,8 +36,16 @@
         <h3 title=""><%= link_to truncate(f.book_title, length: 14), books_description_homes_path(:book_id => f.id), :remote => true %></h3>
         <h3>By :<span class="dark_yellow"><%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14) %></span></h3>
         <p><strong>Description :</strong>
-          <%= truncate(f.book_blurb, length: 40) %>... 
-          <%= link_to "More»",(books_description_homes_path), :remote => true %>
+         <% if f.book_blurb.length > 2 %>
+            <%= truncate(f.book_blurb, length: 30) %>
+            <%= link_to 'more', '', :class => "read-more-#{f.id}" %>
+            <script>
+              $('.read-more-<%= f.id %>').on('click', function(e) {
+                e.preventDefault()
+                $(this).parent().html('<strong> Description:</strong> <%= f.book_blurb %>')
+              })
+            </script>
+          <% end %>
         </p>
         <h3></h3>
       </div>
