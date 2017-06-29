@@ -1,2 +1,7 @@
+ <% if @publisher.domain_name == "syrawoodpublishinghouse" %>
+$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/syrawood_book_description', :object => @book_information)%>");
+
+<% else %>
 $("#pub_book").html("<%= escape_javascript(render :partial => 'homes/book_description', :object => @book_information)%>");
+<% end %>
 $("#pagination-frontend").html('');

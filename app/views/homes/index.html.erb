@@ -107,7 +107,33 @@
           </div>  
         </div>
       </div>  
-   <% end %> 
+    <% elsif @publisher.domain_name == 'haylemedical' %>
+
+        <% if @publisher.theme_name== 'theme1' %>
+          <%= render :partial => "header_theme1"%>
+        <% elsif @publisher.theme_name== 'theme2' %>
+          <%= render :partial => "header_theme2"%>   
+      <% else %>
+        <%= render :partial => "haylemedical_header_theme"%>
+      <% end %>
+
+      <div class="container-fluid">
+        <div class="row"> 
+          <div class="col-sm-4 col-md-3 ">
+            <%= render :partial => "sidebar_theme1"%>    
+          </div>
+
+          <div class="col-sm-8 col-md-9 mar-b50" > 
+            <div id='pub_book'>  
+               <div class="col-sm-12 no-lr-pad">
+                <%= render :partial => 'haylemedical_publisher_book' %>
+              </div>
+            </div>
+          </div>  
+        </div>
+      </div>  
+      
+    <% end %> 
       <footer>
         <%= render :partial => "homes/publisher_footer"%>
       </footer>
