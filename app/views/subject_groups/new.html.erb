@@ -115,9 +115,9 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Select Subject<sup class="mandatory">*</sup></label>
+            <label for="taskName" class="col-sm-4 control-label">Select Subject</label>
             <span class="col-sm-8">
-              <%= f.select 'subject_id',options_from_collection_for_select(Subject.all, :id, :subject_name),{ :prompt => "Select Subject"},{:required => true, :class => "form-control" , style: "background-color: #eee;" } %>
+              <%= f.select 'subject_id',options_from_collection_for_select(Subject.all, :id, :subject_name),{ :prompt => "Select Subject"},{:class => "form-control" , style: "background-color: #eee;" } %>
             </span> 
             <div class="clearfix"></div>
           </div>

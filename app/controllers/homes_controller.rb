@@ -43,9 +43,36 @@ class HomesController < ApplicationController
     end
   end
 
+  def refine_search_by_subject
+    @subject = Subject.find(params[:subject_id])
+    subjectbook = @subject.subject_groups
+    subjectbook.each do |subbook| 
+      @books = subbook.books_primary_content_informations.joins(:books_contributor).where('book_title LIKE ? OR first_name LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 1)
+    end
+    respond_to do |format|
+      format.js
+    end 
+  end
+
   def refine_search
-    @subject_group = SubjectGroup.find(params[:subject_group_id])
+    @subject_group = SubjectGroup.find(params[:book_ids])
     @books = @subject_group.books_primary_content_informations.joins(:books_contributor).where('book_title LIKE ? OR first_name LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 1)
+    respond_to do |format|
+      format.js
+    end 
+  end
+
+  def refine_publishers_book
+    @books = @publisher.books_primary_content_informations.filter(params.slice(:book_title)).paginate(:page => params[:page], :per_page => 5)
+   # books = BooksPrimaryContentInformation.find(params[:book_ids].split(' '))
+   # byebug
+   #  @books = books.books_contributor.where('book_title LIKE ? OR first_name LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 1)
+    books_ids =[]
+    get_book_ids(@books,books_ids)
+    @ids = books_ids
+    respond_to do |format|
+      format.js
+    end  
   end
 
   def get_search_results
@@ -83,6 +110,9 @@ class HomesController < ApplicationController
   
   def search
     @books = @publisher.books_primary_content_informations.filter(params.slice(:book_title)).paginate(:page => params[:page], :per_page => 5)
+    books_ids =[]
+    get_book_ids(@books,books_ids)
+    @ids = books_ids
     respond_to do |format|
       format.js
     end 
@@ -104,14 +134,20 @@ class HomesController < ApplicationController
   end
 
   def books_by_subject
-    subject = Subject.find(params[:subject])
-    subjectbook = subject.subject_groups
+    @subject = Subject.find(params[:subject])
+    subjectbook = @subject.subject_groups
     subjectbook.each do |subbook| 
       @books = subbook.books_primary_content_informations.paginate(:page => params[:page], :per_page => 1)
     end
     respond_to do |format|
       format.js
     end
+  end
+
+  def get_book_ids(books,books_ids)
+    books.each do|f|
+     books_ids << f.id
+    end   
   end
 
   def download_pdf

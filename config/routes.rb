@@ -35,6 +35,8 @@ Rails.application.routes.draw do
       get 'books_by_title'
       post 'send_mail'
       get 'refine_search'
+      get 'refine_publishers_book'
+      get 'refine_search_by_subject'
       get 'get_search_results'
       get 'get_author'
       get 'books_by_author'
