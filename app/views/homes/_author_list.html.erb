@@ -1,20 +1,24 @@
-<h1 class='sectionHeading'>BOOKS BY AUTHOR</h1>
-<div class='row placeholders'>
-  <div class='clearfix'></div>
-	<ul class='pagination'>
-	  <% ('A'..'Z').each do |letter| %> 
-	    <li><%= link_to letter, get_author_homes_path(:letter=>letter)%>
-	    </li>
-	  <%end%>
-	</ul>
-	<div class="clearfix m-b-30"></div>
+<div class="row">
+  <div class="col-sm-12">
+    <h1 class="heading1 border_bottom ">AUTHOR(S):</h1>
+    <div class="mt20 border_bottom ">
+	    <ul class="pagination pagination-sm nomargin">
+			  <% ('A'..'Z').each do |letter| %> 
+			    <li><%= link_to letter, get_author_homes_path(:letter=>letter)%>
+			    </li>
+			  <%end%>
+			</ul>
+		</div>
+		<div class="clearfix m-b-30"></div>
 		<%if @books.present?%>
 			<%@books.each do |book| %>
-			  <div class="form-group">
-			    <div class="col-md-12">
-			    	<h3><%= link_to truncate(book.books_contributor.first_name+" "+book.books_contributor.last_name, length: 14), books_by_author_homes_path(:first_name => book.books_contributor.first_name,:last_name => book.books_contributor.last_name), :remote => true %><h3>
-			    </div>
-			  </div>
+			  <div class="mt20 nopadding">
+      		<ul id="demoOne" class="description   margin_left5px">	
+						<li class="ln-R ln-r">
+			    		<%= link_to truncate(book.books_contributor.first_name+" "+book.books_contributor.last_name, length: 14), books_by_author_homes_path(:first_name => book.books_contributor.first_name,:last_name => book.books_contributor.last_name), :remote => true %>
+			    	</li>
+					</ul>
+				</div>
 			<%end%>
 		<%end%>
 	</div>

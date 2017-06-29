@@ -45,14 +45,14 @@
               <h2>
                <%= link_to f.book_title, books_description_homes_path(:book_id => f.id), :remote => true %>
               </h2>
-              <h3 title="Frank West">
-                By
-                : <span class="dark_yellow">Frank West</span></h3>
+              <h3>By :<span class="dark_yellow"><%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14) %></span>
+              </h3>
               <p><strong>
                 Description
                 :</strong> 
                 <%= f.book_blurb%>.... <a href="/engineering-and-technology/9781632380104">
-                More»</a> </p>
+                More»</a> 
+              </p>
             </div>
           </div>  
         </div>

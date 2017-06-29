@@ -2,11 +2,7 @@
 @import "bootstrap";
 @import "bootstrap-sprockets";
 @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
-@font-face {
-  font-family: 'Glyphicons Halflings';
-  src: url('/assets/glyphicons-halflings-regular.eot');
-  src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
-}
+
 
 
 /*--- main style ---*/
@@ -306,7 +302,6 @@ Main Components
 .cd-accordion-menu a::after {
   /* image icon */
   right: 18px;
-  background: url(../images/cd-icons.svg) no-repeat -48px 0;
 }
 .cd-accordion-menu input[type=checkbox]:checked + label::before {
   /* rotate arrow */

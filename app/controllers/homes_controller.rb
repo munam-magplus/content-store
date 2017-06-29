@@ -22,22 +22,15 @@ class HomesController < ApplicationController
   end
   
   def books_by_author
-    @books = BooksPrimaryContentInformation.joins(:books_contributor).where('first_name LIKE ? AND last_name LIKE ?',"%#{params[:first_name]}%","%#{params[:last_name]}%").paginate(:page => params[:page], :per_page => 10)
+    @books = BooksPrimaryContentInformation.joins(:books_contributor).where('first_name = ? AND last_name = ?',"#{params[:first_name]}","#{params[:last_name]}").paginate(:page => params[:page], :per_page => 10)
   end
 
   def get_author
-    if !params[:letter].present?
-      @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10)
-    else
-      @books = @publisher.books_primary_content_informations.joins(:books_contributor).where("first_name LIKE ?", "%#{params[:letter]}%").paginate(:page => params[:page], :per_page => 10)
-    end
+    @books = @publisher.books_primary_content_informations.joins(:books_contributor).where("substr(first_name,1,1) IN (?)",params[:letter]).paginate(:page => params[:page], :per_page => 10)
   end
+  
   def books_by_title
-    if !params[:letter].present?
-      @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10)
-    else
-      @books = @publisher.books_primary_content_informations.where("book_title LIKE ?", "%#{params[:letter]}%").paginate(:page => params[:page], :per_page => 10)
-    end
+    @books = @publisher.books_primary_content_informations.where("substr(book_title,1,1) IN (?)",params[:letter]).paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
       format.js
     end

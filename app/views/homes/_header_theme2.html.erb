@@ -67,8 +67,8 @@
               <% end %>
                 </ul>
               </li>
-              <li><%= link_to "AUTHOR / EDITOR",get_author_homes_path, :remote => true %></li>
-              <li ><%= link_to "TITLE",books_by_title_homes_path, :remote => true %></li>
+              <li><%= link_to "AUTHOR / EDITOR",get_author_homes_path(:letter => 'a'), :remote => true %></li>
+              <li ><%= link_to "TITLE",books_by_title_homes_path(:letter => 'a'), :remote => true %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

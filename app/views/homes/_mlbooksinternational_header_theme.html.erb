@@ -76,9 +76,9 @@
                 </ul>
               </li>
               <li class="dropdown col-md-4 thick_bord margin_author phone_width">
-                <%= link_to "AUTHOR",(get_author_homes_path), :remote => true %>
+                <%= link_to "AUTHOR",get_author_homes_path(:letter => 'a'), :remote => true %>
               </li>
-              <li class="dropdown col-md-4 thick_bord margin_title"><%= link_to "TITLE",books_by_title_homes_path, :remote => true %></li>
+              <li class="dropdown col-md-4 thick_bord margin_title"><%= link_to "TITLE",books_by_title_homes_path(:letter => 'a'), :remote => true %></li>
             </ul>
           </div>
         </div>
