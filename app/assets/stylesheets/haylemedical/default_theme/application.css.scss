@@ -12,7 +12,6 @@ body {
   padding:0px;
   margin:0;
   color: #6d6c6c;
-  background:url(../images/noise.png);
   font-family: 'Open Sans', sans-serif;
   color:#333;
 }
@@ -578,7 +577,7 @@ Main Components
   cursor: pointer;
 }
 .cd-accordion-menu label::before, .cd-accordion-menu label::after {
-  background-image: url(../images/cd-icons.svg);
+  background: image-url('cd-icons.svg');
   background-repeat: no-repeat;
 }
 .cd-accordion-menu label::before {
@@ -599,7 +598,6 @@ Main Components
 .cd-accordion-menu a::after {
   /* image icon */
   right: 18px;
-  background: url(../images/cd-icons.svg) no-repeat -48px 0;
 }
 .cd-accordion-menu input[type=checkbox]:checked + label::before {
   /* rotate arrow */

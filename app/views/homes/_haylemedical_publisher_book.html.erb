@@ -1,25 +1,24 @@
+<% if @books.present? %>
   <p>
-    <%= @publisher.welcome_text.html_safe %>
+    <%= @publisher.welcome_text.html_safe  unless @publisher.welcome_text.blank? %>
   </p>
   <br>
   <h1 class="sectionHeading">FEATURED BOOKS</h1>
   <div class="row">
     <div class="col-sm-12 no-lr-pad">
-      <% if @books.present? %>
-        <% @books.each do |f| %>
-           <div class="col-sm-3">
-            <div class="result media-result ebook">
-              <div class="cover"> 
-              <%= link_to image_tag(f.logo.url(:original)),books_description_homes_path(:book_id => f.id), :remote => true, :class => "border-img" %>
-                <div class="details">
-                  <h3 class="title"><%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id), :remote => true %>
-                  </h3>
-                  <h4 class="author"><%= f.books_contributor.first_name %>&nbsp <%= f.books_contributor.last_name  %> </h4>
-                </div>
+      <% @books.each do |f| %>
+         <div class="col-sm-3">
+          <div class="result media-result ebook">
+            <div class="cover"> 
+            <%= link_to image_tag(f.logo.url(:original)),books_description_homes_path(:book_id => f.id), :remote => true, :class => "border-img" %>
+              <div class="details">
+                <h3 class="title"><%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id), :remote => true %>
+                </h3>
+                <h4 class="author"><%= f.books_contributor.first_name %>&nbsp <%= f.books_contributor.last_name  %> </h4>
               </div>
             </div>
           </div>
-        <% end %>
+        </div>
       <% end %>
     </div>
   </div>
@@ -36,3 +35,4 @@
     </div>
   <% end %>
   <div class=" clearfix"> </div>
+<% end %>

@@ -16,6 +16,39 @@
     <div class="row">
       <div class="col-md-10">
         <div class="form-group">
+          <label for="bookISBN" class="col-sm-4 control-label"><h5>About</h5></label>
+          <span class="col-sm-10">
+          <%= f.cktext_area :about, required: true, cols: "10", rows: "5", :class => "form-control", :placeholder => "About" %>
+          </span>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+        <div class="form-group">
+          <label for="bookISBN" class="col-sm-4 control-label"><h5>Terms and Conditions</h5></label>
+          <span class="col-sm-10">
+          <%= f.cktext_area :terms_and_conditions, required: true, cols: "10", rows: "5", :class => "form-control", :placeholder => "Terms and Conditions" %>
+          </span>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+        <div class="form-group">
+          <label for="bookISBN" class="col-sm-4 control-label"><h5>Policy</h5></label>
+          <span class="col-sm-10">
+          <%= f.cktext_area :policy, required: true, cols: "10", rows: "5", :class => "form-control", :placeholder => "Policy" %>
+          </span>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+        <div class="form-group">
           <label for="bookISBN" class="col-sm-4 control-label"><h5>News and Events</h5></label>
           <span class="col-sm-10">
           <%= f.cktext_area :news_and_events, required: true, cols: "10", rows: "5", :class => "form-control", :placeholder => "News and Events" %>
@@ -34,3 +67,5 @@
     </div>
   <% end %>
 </html>
+
+

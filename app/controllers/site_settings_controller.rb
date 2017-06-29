@@ -45,6 +45,6 @@ class SiteSettingsController < ApplicationController
 
   private
   def homepage_params
-    params.require(:publisher).permit(:welcome_text, :news_and_events)
+    params.require(:publisher).permit(:welcome_text, :news_and_events, :about, :terms_and_conditions, :policy)
   end
 end
