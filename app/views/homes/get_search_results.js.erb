@@ -1,3 +1,3 @@
-$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/books_search_results', :object => @books)%>");
+$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/books_search_results', :locals => {:object => @books, :ids => @ids})%>");
 $("#pagination-frontend").html("<%= escape_javascript(will_paginate @books, renderer: BootstrapPagination::Rails)%>");
 $('.pagination a').attr('data-remote','true')

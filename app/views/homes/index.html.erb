@@ -3,12 +3,10 @@
     <!--Nyresearch Start-->
     <% if @publisher.domain_name == 'nyresearchpress'%>
       
-      <% unless @publisher.theme_name.blank? %>
-        <% if @publisher.theme_name== 'theme1' %>
-          <%= render :partial => "header_theme1"%>
-        <% elsif @publisher.theme_name== 'theme2' %>
-          <%= render :partial => "header_theme2"%>   
-        <% end %>
+      <% if @publisher.theme_name== 'theme1' %>
+        <%= render :partial => "header_theme1"%>
+      <% elsif @publisher.theme_name== 'theme2' %>
+        <%= render :partial => "header_theme2"%>
       <% else %>
         <%= render :partial => "nysearch_header"%>
       <% end %>  
@@ -31,15 +29,14 @@
       </div>
     
     <% elsif @publisher.domain_name == 'syrawoodpublishinghouse' %>
-
-      <% unless @publisher.theme_name.blank? %>
         <% if @publisher.theme_name== 'theme1' %>
           <%= render :partial => "header_theme1"%>
         <% elsif @publisher.theme_name== 'theme2' %>
-          <%= render :partial => "header_theme2"%>   
+          <%= render :partial => "header_theme2"%>
+        <% else %>
+          <%= render :partial => "header_theme2"%> 
         <% end %>
-      <% end %>  
-
+        
       <div class="container-fluid">
         <div class="row"> 
           <div id= 'pub_book'>
@@ -54,12 +51,10 @@
 
     <% elsif @publisher.domain_name == "mlbooksinternational" %>
       
-      <% unless @publisher.theme_name.blank? %>
-        <% if @publisher.theme_name== 'theme1' %>
-          <%= render :partial => "header_theme1"%>
-        <% elsif @publisher.theme_name== 'theme2' %>
+      <% if @publisher.theme_name== 'theme1' %>
+        <%= render :partial => "header_theme1"%>
+      <% elsif @publisher.theme_name== 'theme2' %>
           <%= render :partial => "header_theme2"%>   
-        <% end %>
       <% else %>
         <%= render :partial => "mlbooksinternational_header_theme"%>
       <% end %>
@@ -81,12 +76,10 @@
 
     <% elsif @publisher.domain_name == 'callistoreference' %>
   
-      <% unless @publisher.theme_name.blank? %>
-        <% if @publisher.theme_name== 'theme1' %>
+      <% if @publisher.theme_name== 'theme1' %>
           <%= render :partial => "header_theme1"%>
-        <% elsif @publisher.theme_name== 'theme2' %>
-          <%= render :partial => "header_theme2"%>   
-        <% end %>
+      <% elsif @publisher.theme_name== 'theme2' %>
+        <%= render :partial => "header_theme2"%>   
       <% else %>
         <%= render :partial => "callistoreference_header_theme"%>
       <% end %>
