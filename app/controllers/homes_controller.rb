@@ -2,6 +2,7 @@ class HomesController < ApplicationController
 
   protect_from_forgery
   skip_before_action :verify_authenticity_token
+  before_action :set_them
 
   def index
     begin
@@ -148,4 +149,27 @@ class HomesController < ApplicationController
     type: "application/pdf"
     )
   end
+
+  private
+
+  def set_them
+    if request.domain.present? && request.domain != 'www'
+      begin
+        @gethost = request.host.split('.')[0]
+        @publisher = Publisher.find_by_domain_name!(@gethost)
+        unless @publisher.blank?
+          unless @publisher.theme_name.blank?
+            @css_root = "#{request.domain}/#{@publisher.theme_name}/application"
+          else
+            @css_root = "#{request.domain}/default_theme/application"
+          end  
+        else 
+          @css_root = "application"
+        end
+      rescue ActiveRecord::RecordNotFound
+        redirect_to users_sign_in_path
+      end
+    end 
+  end
+
 end

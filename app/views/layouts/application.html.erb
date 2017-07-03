@@ -3,8 +3,12 @@
   <head>
     <title>ContentStore</title>
     <%= csrf_meta_tags %>
+    <% if defined? @css_root %>
+    <%= stylesheet_link_tag  @css_root, media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% else %>
+     <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% end %>
 
-    <%= stylesheet_link_tag   @css_root, media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
