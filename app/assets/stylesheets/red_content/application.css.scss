@@ -1,5 +1,9 @@
+
 @import "bootstrap";
 @import "bootstrap-sprockets";
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
+
+
 
 /*--- main style ---*/
 
@@ -1040,8 +1044,21 @@ ul.menu li a {
     max-width: 100%;
   width: 100%;
 }  
+.tab_border {
 
-/*------my style responsive-----*/
+   border:1px solid #efefef;
+  padding:6px 7px 3px 7px;
+}
+.tab-content {
+   margin:0;
+   float:left;width:100%;
+}
+.ownBookImg{width:100%;padding:10px;border:1px solid #ccc; box-shadow: 0 0 4px #bbb;}
+.book_atr{font-size: 1.1em;    padding:3px 0 3px 6px;margin-bottom:20px; background-color: #eedda5; color: #fff; font-weight: 700;}
+.book_description{font-size: 1.1em; padding: 3px 0 3px 6px; margin-bottom:20px; }
+
+
+/* Responsive */
 
 @media (min-width: 768px) {
   .container {
@@ -1061,6 +1078,7 @@ ul.menu li a {
 }
 
 @media (max-width: 767px) {
+  .book_atr{margin-bottom:0px;}
   .web_block{ display:none !important;}
   .mobile_block{ display:block !important;}
   .searchmenu{ display:none !important;}
@@ -1125,6 +1143,7 @@ ul.menu li a {
 }
 
 @media (min-width:768px) and (max-width:990px) {
+  .book_atr{margin-bottom:0px;}
   .searchmenu{ display:none !important;}
   .input-group{ width:100%; display:table;}
   .input-group-btn { width:1% !important;}

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  #protect_from_forgery unless: -> { request.format.json? }
+
   protect_from_forgery
   before_action :configure_permitted_parameters, if: :devise_controller?  
  
@@ -7,11 +7,6 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     dashboard_content_conversations_path
-    # if current_user.admin?
-    #   dashboard_content_conversations_path
-    # else
-    #   index_contents_content_code_path
-    # end
   end
 
   def after_sign_out_path_for(resource)
@@ -19,7 +14,6 @@ class ApplicationController < ActionController::Base
   end
 
   
-
   protected
 
   def configure_permitted_parameters

@@ -1,94 +1,27 @@
 <!--Main Content Start -->
   <section class="content">
     <!--Nyresearch Start-->
-    <% if @publisher.domain_name == 'nyresearchpress'%>
+
+    <%= render :partial => "#{@publisher.theme_name}"%>    
       
-      <% if @publisher.theme_name== 'theme1' %>
-        <%= render :partial => "header_theme1"%>
-      <% elsif @publisher.theme_name== 'theme2' %>
-        <%= render :partial => "header_theme2"%>
-      <% else %>
-        <%= render :partial => "nysearch_header"%>
-      <% end %>  
-    
-      <div class="container-fluid">
-        <div class="row"> 
+    <div class="container-fluid">
+      <div class="row">  
+        <% if ["red_content","green_content","haylemedical"].include? @publisher.theme_name %>
           <div class="col-sm-4 col-md-3 ">
-            <% if @publisher.theme_name== 'theme1' %>
-              <%= render :partial => "sidebar_theme1"%>
-            <% end %>  
+            <%= render :partial => "sidebar_theme1"%>
           </div>
-        
+        <% end %>  
+
+        <% if @publisher.domain_name == "nyresearchpress" %>
+    
           <div class="col-sm-8 col-md-9 mar-b50" >
             <div id= 'pub_book'>
               <h1 class="sectionHeading">Featured Books</h1>
-                <%= render :partial => 'publisher_book' %>
-            </div>
-          </div>   
-        </div>
-      </div>
-    
-    <% elsif @publisher.domain_name == 'syrawoodpublishinghouse' %>
-        <% if @publisher.theme_name== 'theme1' %>
-          <%= render :partial => "header_theme1"%>
-        <% elsif @publisher.theme_name== 'theme2' %>
-          <%= render :partial => "header_theme2"%>
-        <% else %>
-          <%= render :partial => "header_theme2"%> 
-        <% end %>
-        
-      <div class="container-fluid">
-        <div class="row"> 
-          <div id= 'pub_book'>
-            <div class="col-md-12" style="padding-left: 30px;">
-              <h1 class="heading1">Featured Books</h1>
-            </div>
               <%= render :partial => 'publisher_book' %>
+            </div>
           </div>
-        </div>
-      </div>
- 
 
-    <% elsif @publisher.domain_name == "mlbooksinternational" %>
-      
-      <% if @publisher.theme_name== 'theme1' %>
-        <%= render :partial => "header_theme1"%>
-      <% elsif @publisher.theme_name== 'theme2' %>
-          <%= render :partial => "header_theme2"%>   
-      <% else %>
-        <%= render :partial => "mlbooksinternational_header_theme"%>
-      <% end %>
-    
-      <div class="container">
-        <div class="row"> 
-          <div class="col-sm-12">
-            <div class="border_wrapper padding10px mt5">
-              <div id="bodydivs">
-                <div id= 'pub_book'>
-                  <%= render :partial => 'publisher_book' %>
-                </div>
-              </div>
-            </div> 
-          </div>
-        </div>
-      </div>
-   
-
-    <% elsif @publisher.domain_name == 'callistoreference' %>
-  
-      <% if @publisher.theme_name== 'theme1' %>
-          <%= render :partial => "header_theme1"%>
-      <% elsif @publisher.theme_name== 'theme2' %>
-        <%= render :partial => "header_theme2"%>   
-      <% else %>
-        <%= render :partial => "callistoreference_header_theme"%>
-      <% end %>
-
-      <div class="container-fluid">
-        <div class="row"> 
-          <div class="col-sm-4 col-md-3 ">
-            <%= render :partial => "sidebar_theme1"%>    
-          </div>
+        <% elsif @publisher.domain_name == "callistoreference" %>
 
           <div class="col-sm-8 col-md-9 mar-b50" > 
             <div id='pub_book'>  
@@ -97,39 +30,46 @@
                 <%= render :partial => 'callistoreference_publisher_book' %>
               </div>
             </div>
-          </div>  
-        </div>
-      </div>  
-    <% elsif @publisher.domain_name == 'haylemedical' %>
-
-        <% if @publisher.theme_name== 'theme1' %>
-          <%= render :partial => "header_theme1"%>
-        <% elsif @publisher.theme_name== 'theme2' %>
-          <%= render :partial => "header_theme2"%>   
-      <% else %>
-        <%= render :partial => "haylemedical_header_theme"%>
-      <% end %>
-
-      <div class="container-fluid">
-        <div class="row"> 
-          <div class="col-sm-4 col-md-3 ">
-            <%= render :partial => "sidebar_theme1"%>    
           </div>
+    
+        <% elsif @publisher.domain_name == "syrawoodpublishinghouse" %>
+
+          <div id= 'pub_book'>
+            <div class="col-md-12" style="padding-left: 30px;">
+              <h1 class="heading1">Featured Books</h1>
+            </div>
+            <%= render :partial => 'publisher_book' %>
+          </div>
+
+        <% elsif @publisher.domain_name == "mlbooksinternational" %>
+          <div class='container'>
+            <div class="col-sm-14">
+              <div class="border_wrapper padding10px mt5">
+                <div id= 'pub_book'>
+                  <%= render :partial => 'publisher_book' %>
+                </div>
+              </div> 
+            </div>
+          </div>
+       
+        <% elsif @publisher.domain_name == 'haylemedical' %>
 
           <div class="col-sm-8 col-md-9 mar-b50" > 
             <div id='pub_book'>  
-               <div class="col-sm-12 no-lr-pad">
+              <div class="col-sm-12 no-lr-pad">
                 <%= render :partial => 'haylemedical_publisher_book' %>
               </div>
             </div>
           </div>  
-        </div>
-      </div>  
-      
-    <% end %> 
-      <footer>
-        <%= render :partial => "homes/publisher_footer"%>
-      </footer>
+        <% end %> 
+
+    </div>
+  </div>
+
+  <footer>
+    <%= render :partial => "homes/publisher_footer"%>
+  </footer>
+
 </section>
 
 <!-- Footer Start -->
