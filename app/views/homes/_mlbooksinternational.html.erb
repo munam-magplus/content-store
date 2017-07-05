@@ -35,23 +35,27 @@
                 <%= link_to "CONTACT US",(contact_homes_path), :remote => true %>
               </li>
             </ul>
-            <div class="col-sm-3 col-md-3 pull-right nopadding" style="margin-top:8px;">
+
+            <div class="searchmenu pull-right">
               <%= form_tag(search_homes_path, :method => "get", class: "navbar-form",:remote => true) do %>
-                <div class="input-group">
-                 <%= text_field_tag :book_title, params[:search], required: true,placeholder: "Search by Title " %>
-                 
-                   <%= button_tag(type: 'submit') do %>
-                     <i class="glyphicon glyphicon-search"></i>
+                <div class="input-group add-on">
+                 <%= text_field_tag :book_title, params[:search], required: true,placeholder: "Search by Title ", class: "form-control" %>
+                  <div class="input-group-btn ">
+                   <%= button_tag(type: 'submit', class: "btn btn-default form-control") do %>
+                     <i class="fa fa-search"></i>
                     <% end %>
-                
-                  <div class='pull-right'  style="margin-left:10px;">
-                  <%= link_to advance_search_homes_path,remote: true  do %>
-                     <i class="glyphicon glyphicon-plus-sign" style="font-size:1.9em; color:#fff" ></i>
-                  <% end %>
                   </div>
                 </div>
+                
+                <div class='pull-right'>
+                  <a>
+                  <%= link_to advance_search_homes_path, class: "adcance_search", remote: true  do %>
+                     <i class="fa fa-plus-circle head-plus"></i>
+                  <% end %>
+                  </a>
+                </div>
               <%end%>
-            </div><!--/.nav-collapse -->
+            </div>
           </div>
         </div>
       </div>

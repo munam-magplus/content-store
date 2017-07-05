@@ -1,4 +1,4 @@
-<div class="border_wrapper padding10px">
+<div class="border_wrapper padding10px mt5">
   <div class="row ">
     <div class="col-sm-4 pb-10">Search Results</div>
       <div class="text-right col-sm-8">
@@ -18,7 +18,7 @@
               Results  1–<%= @books.count%>
             </div>
           <div class="col-sm-8 text-right no-pad">
-            <div class="pagination-frontend">
+            <div class="pagination-frontend" id="sresult">
               <nav aria-label="Page navigation" style="clear:both;"> 
                 <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
               </nav>  
@@ -70,7 +70,7 @@
 
         <% end%>
       <%else%>
-       <h3> Record Not Found </h3>
+      <div class="col-md-12"><h3> Record Not Found </h3></div>
       <%end%>
        <!--lower pagination start -->
       <div class="col-md-12 col-xs-12 mt-20">
@@ -80,7 +80,7 @@
               Results  1–<%= @books.count%>
             </div>
           <div class="col-sm-8 text-right no-pad">
-            <div class="pagination-frontend">
+            <div class="pagination-frontend" id="sresult">
               <nav aria-label="Page navigation" style="clear:both;"> 
                 <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
               </nav>  

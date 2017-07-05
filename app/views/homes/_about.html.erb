@@ -1,5 +1,11 @@
-<h1 class="heading1 border_bottom ">About Us</h1>
-<div class="clearfix"></div>
-<% if @publisher_about.present? %>
-	<p class="mt20"><%= @publisher_about.html_safe %></p>
-<%end%>
+<div class="row"> 
+	<div class="col-sm-12">
+		<div class="border_wrapper padding10px mt5">
+			<h1 class="heading1 border_bottom ">About Us</h1>
+			<div class="clearfix"></div>
+			<% if @publisher_about.present? %>
+				<p class="mt20"><%= @publisher_about.html_safe %></p>
+			<%end%>
+		</div>
+	</div>
+</div>
