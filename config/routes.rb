@@ -153,6 +153,7 @@ Rails.application.routes.draw do
       get 'metadata_sheet'
       get 'onix_input'
       get 'onix_supp_sheet'
+      post :import
     end
   end
 

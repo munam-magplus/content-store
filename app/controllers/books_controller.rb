@@ -2,10 +2,34 @@ class BooksController < ApplicationController
   #before_action :authenticate_user!
 
   def new
-    @book = BooksPrimaryContentInformation.new
+     @book = BooksPrimaryContentInformation.new
     @book_contributor = BooksContributor.new
     @book_content_pricing = BooksContentPricing.new
     @book_content_access_rule  = BooksContentAccessRule.new
+  end
+
+  def import
+    spreadsheet = open_spreadsheet(params[:file])
+    header = spreadsheet.row(1)
+    (2..spreadsheet.last_row).each do |i|
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+      @book = BooksPrimaryContentInformation.new
+      @book.attributes = row.to_hash.slice(*row.to_hash.keys)
+      @book.save!
+    end
+    redirect_to :back
+  end
+
+  def open_spreadsheet(file)
+    case File.extname(file.original_filename)
+    when ".csv" then Csv.new(file.path, nil, :ignore)
+    when ".xls" then Roo::Spreadsheet.open(file.path, extension: :xls) 
+    when ".xlsx" then Excelx.new(file.path, nil, :ignore)
+    else raise "Unknown file type: #{file.original_filename}"
+    end
+  end
+
+  def metadata_sheet
   end
 
   def create
@@ -61,10 +85,11 @@ class BooksController < ApplicationController
   private
 
   def book_primary_content_information_params
+    byebug
     params.require(:books_primary_content_information).permit(:content_code, :publisher_id, :book_title, :subject_title, :isbn, :language, 
     :content_classification, :file_name, :stock_number, :publisher_site_sales_link, :book_blurb, :publication_date,
-    :publication_month, :publication_year, :conversion_required, :edition, :binding, :volume, :dimension, :series_isbn,
-    :series_title, :logo)
+    :conversion_required, :edition, :binding, :volume, :dimension, :series_isbn,
+    :series_title, :logo, :license_id)
   end
   def book_contributor_params
     params.require(:books_contributor).permit(:contributor_role, :first_name, :description, :date_of_birth, :date_of_death, :professional_position, 
