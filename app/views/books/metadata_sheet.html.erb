@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>Content Store :: Upload Books Metadata File  </title>
+<title>Content Store :: Upload Metadata Sheet </title>
 <!-- Latest compiled and minified CSS -->
   <!-- Header -->
   <%= render :partial => "layouts/top_header"%>
@@ -10,169 +10,47 @@
 
 <body>
 <!-- Aside Start-->
-<%= render :partial => "layouts/sidebar"%>
-<!-- Aside Ends--> 
+  <%= render :partial => "layouts/sidebar"%>
+    <!-- Aside Ends-->
 <!--Main Content Start -->
-<section class="content"> 
-  <!-- Page Content Start --> 
-  <!-- ================== -->
-  <div class="wrapper container-fluid">
-  <ol class="breadcrumb">
-       <li><a href="#">Home</a></li>
-     <li><a href="#">Content Conversion</a></li>
-     <li><a href="#" class="active">Upload Books Metadata File</a></li>
-        
+  <section class="content"> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="container-fluid">
+      <ol class="breadcrumb">
+           <li><a>Home</a></li>
+         <li><a> Content Conversion</a></li>
+         <li><a>Books</a></li>
+         <li><a> Upload Metadata Sheet </a></li>
       </ol>
-    
-    <h2 class="H2-L1">Upload Books Metadata File</h2>
-    <form class="form-horizontal form-bg" role="form">
-            <%= form_tag metadata_sheet_subject_groups_path, :method => 'get' do %>
-      
-      <div class="col-md-12">
-        <div class="form-group">
-          <label for="bookISBN" class="col-sm-2 control-label">Select Language:</label>
-          <span class="col-sm-4">
-          <%= select_tag(:JOC_CODE, options_for_select([['Select',0],[' Dansk',1],['Polish',2],['Latvian',3],['English',4]]))  %>
-          </span> 
+
+      <h2 class="H2-L1">Upload Metadata Sheet</h2>
+      <%= form_tag import_books_path, multipart: true do %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 nopadding">Browse File</label>
+            <span class="col-sm-8">
+            <%= file_field_tag :file, :required => true, :class => "form-control", :placeholder =>"Browse files" %>
+            </span> 
+            <div class="clearfix"></div>
+          </div>
         </div>
-      </div>
-    <div class="col-md-12">
-        <div class="form-group">
-          <label for="bookISBN" class="col-sm-2 control-label">File Name:</label>
-          <span class="col-sm-4">
-         <div class="file-placeholder">
-             
-            <input type="file" class="fileUpload" >
-            
-            <div class="file-browse">
-              <input type="file" name="uploadMetadataFile" size="60" value="" onkeydown="return false;" onkeypress="return false;" id="uploadMetadataFile" class="text_field">
-             <span class="file-browse-txt">Select somes files </span>
-             <span class="browse">Browse</span>
-            </div>
-           </div>
-          </span> 
-     </div>
-      </div>
-      <%= submit_tag "Upload" %>
-                <%= button_tag "Cancel", type: :reset %>
-      <div class="clearfix"></div>
-    </form>
-    <div class="clearfix m-b-30"></div>
-  <div class="row">
-  <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
-  <button type="submit" class="btn btn-sm pull-left" data-toggle="modal" data-target="#createAdminUsers"><i class="fa fa-plus-square-o" aria-hidden="true"></i> &nbsp;<%= link_to 'Create Book', books_new_path %></button>    
-    <button type="submit" class="btn btn-sm" onclick="javascript:showDiv();"><i class="fa fa-cloud-download" aria-hidden="true"></i> &nbsp;<%= link_to 'Download Template', download_books_content_conversation_index_path %></button>
-    <button type="submit" class="btn btn-sm" onclick="javascript:showDiv();"><i class="fa fa-cloud-upload" aria-hidden="true"></i> &nbsp;Upload</button>
-        <button type="reset" class="btnBlack btn-sm" onclick="javascript:hideDiv();"><i class="fa fa-refresh" aria-hidden="true"></i> &nbsp;Clear</button>
-      </div>
-    </div>
-    <div class="clearfix m-b-30"></div>
-    <!-- <div class="row" id="searchResultGrid" style="display:none;">
-      <div class="col-md-12">
-        <div class="mt10 table-demo">Search Result <span class="pull-right">
-                        <div class="dropdown">
-                          <ul class="nav">
-                            <li class="drop"><i style="cursor: pointer;width: 12px;" class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                              <ul class="dropdown-menu-right">
-                                <li><a href="#"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</a></li>
-                                <li><a href="#"> <i class="fa fa-file-o" aria-hidden="true"></i> CSV</a></li>
-                                <li><a href="#"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a></li>
-                              </ul>
-                            </li>
-                          </ul>
-                        </div>
-                        </span></div>
-        <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead>
-              <tr style="font-size:13px">
-                <th>Contact Name</th>
-                <th>Email Id</th>
-                <th>User Status</th>
-                <th>User Name</th>
-        <th>User Role</th>
-                 <th>Institution ID</th>
-         <th>Institution Name</th>
-         <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-            <tr>
-                  <td ><a href="#">Ayush Vaidya</a>                  </td>
-                  <td >manish.kumar@adi-mps.com </td>
-                  <td >Active </td>
-                  <td >PA022 </td>
-                  <td >Primary Institution Administrator                  </td>
-                  <td >DEMO </td>
-                  <td >DEMO </td>
-                  <td ><a href="#" >  User detail</a> </td>
-                  
-                </tr>
-        <tr>
-                  <td ><a href="#">mps tech</a>                  </td>
-                  <td >test@adi-mps.com </td>
-                  <td >Active </td>
-                  <td >PA020 </td>
-                  <td >Primary Institution Administrator                  </td>
-                  <td >1 </td>
-                  <td >demo_library_subscription </td>
-                  <td ><a href="#" > User Details </a> </td>
-                  
-                </tr>
-        
-            </tbody>
-          </table>
+        <div class="clearfix"></div>
+        <div class="clearfix m-b-30"></div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+
+            <%= button_tag fa_icon("fa fa-plus-square-o", text: "Import"), :class => "btn btn-sm", type: :submit %>
+
+            <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
+
+          </div>
         </div>
-      </div> -->
       <% end %>
-      <div class="col-sm-12"> </div>
-    </div>
-  </div>
-  <!-- Page Content Ends --> 
-  <!-- ================== --> 
-  
-  <!-- Footer Start -->
-  <%= render :partial => "layouts/footer"%>
-  <!-- Footer Ends --> 
-</section>
-
-<!--for popup page all popup comes from this page-->
-<!-- Main Content Ends --> 
-<!-- Latest compiled and minified JavaScript --> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-<script src="assets/scripts/jquery.slimscroll.min.js"></script> 
-<script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script> 
-<script src="https://www.gstatic.com/charts/loader.js"></script> 
-<script src="assets/scripts/js/pace.min.js"></script> 
-<script src="assets/scripts/modernizr.min.js"></script> 
-<script src="assets/scripts/jquery.app.js"></script> 
-<script src="jqgrid/js/i18n/grid.locale-en.js"></script> 
-<script src="jqgrid/js/jquery.jqGrid.min.js"></script> 
-
-<!--Chart code start--> 
-<script src="https://code.highcharts.com/highcharts.js"></script> 
-<script src="https://code.highcharts.com/modules/exporting.js"></script> 
- 
-<script type="text/javascript">
-        function showDiv() {
-            div = document.getElementById('searchResultGrid');
-            div.style.display = "block";
-        }
-    function hideDiv() {
-            div = document.getElementById('searchResultGrid');
-            div.style.display = "none";
-        }
-    function hideshow() {
-    var x = document.getElementById('addpublisher');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-    </script>
-<!--Chart code end-->
-
+    </div>  
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+    <!-- Footer Ends --> 
+  </section>
 </body>
 </html>

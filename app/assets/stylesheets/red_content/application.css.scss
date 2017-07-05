@@ -1,9 +1,5 @@
 
 @import "bootstrap";
-@import "bootstrap-sprockets";
-@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
-
-
 
 /*--- main style ---*/
 
@@ -66,7 +62,7 @@ a:hover, a:focus {
 .btn {    
     border-radius: 0px;
 }
-
+.btn-default{background-color:#eee;}
 /*form End*/
 
 
@@ -245,6 +241,7 @@ Main Components
   -ms-user-select: none;
   user-select: none;
 }
+.cd-accordion-menu >li > label, .cd-accordion-menu >li > a{color:#08c;}
 .cd-accordion-menu input[type=checkbox] {
   /* hide native checkbox */
   position: absolute;
@@ -1160,3 +1157,36 @@ ul.menu li a {
 @media (min-width:991px) { 
 
 }
+
+.sliderArrowleft{
+  background: #828282;
+border-radius: 50%;
+padding: 5px 5px 6px 0px;
+box-shadow: 0px 0px 5px 1px #000;
+border: 2px solid #fff;
+font-size:18px !important;
+}
+.sliderArrowright{
+  background: #828282;
+border-radius: 50%;
+padding: 5px 0px 6px 2px;
+box-shadow: 0px 0px 5px 1px #000;
+border: 2px solid #fff;
+font-size:18px !important;
+}
+.homeHeading{width:100%;float:left;}
+.homeHeading span{
+float:left;
+font-size: 16px;
+font-weight: 300;
+padding: 10px;
+background-color:#5c5c5c;
+color:#fff;
+margin-bottom:10px;
+}
+.carousel-control{opacity:1;}
+.carousel-control:hover, .carousel-control:focus{opacity:1;}
+.sliderArrowleft:hover, .sliderArrowleft:focus, .sliderArrowright:hover, .sliderArrowrightfocus{opacity:1;background-color:#6d6d6d;}
+
+.advSearchMob{margin-bottom:4px;margin-left:4px;float:left;}
+.bottom-page{border-bottom:0;}
