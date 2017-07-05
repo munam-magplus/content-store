@@ -4,9 +4,10 @@
     <title>ContentStore</title>
     <%= csrf_meta_tags %>
     <% if defined? @css_root %>
-    <%= stylesheet_link_tag  @css_root, media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag  @css_root, media: 'all', 'data-turbolinks-track': 'reload' %>
+      
     <% else %>
-     <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <% end %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -17,18 +18,14 @@
   <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
   <script src="https://use.fontawesome.com/9575fa9c22.js"></script>
- 
-
-  
   <!-- Custom styles for this template -->
-  
+  <!-- Google_font-->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
   
   <!-- Internal CSS -->
   <!--Animation css-->
-  <%= javascript_include_tag('pace.min.js') %>
-  <%= javascript_include_tag('modernizr.min.js') %>
-  <%= javascript_include_tag('jquery.app.js') %>
-  <%= javascript_include_tag('grid.locale-en.js') %>
+      
    <!--Icon-fonts css-->
   <!-- javascript files -->
 
