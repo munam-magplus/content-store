@@ -6858,8 +6858,9 @@ footer {
 footer p {margin:0;padding:0;color:#fff;}
 footer a{color:#fff;}
  footer a:hover{color:#fff; text-decoration:underline;}
+  footer a:focus{color:#fff; text-decoration:underline;}
+ footer a:active{color:#fff; text-decoration:underline;}
  
-
 .alpha_category h3 {font-size: 12px; cursor:pointer;}
 .alpha_category .pagination{margin:5px 0;}
 .margin_bottom10px { margin-bottom: 10px;}
@@ -7005,7 +7006,7 @@ ul.description li {
     background-color: #F7F6F7;
     border: none;
     font-size: 12px;
-    padding: 5px 0px;
+    
     float: left;
     width: 100%;
 }
@@ -7177,3 +7178,5 @@ article.media-result {
 .no-pad {
     padding: 0px;
 }
+
+.bottomUl ul.pagination{margin:0;padding: 5px;}

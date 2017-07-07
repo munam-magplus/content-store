@@ -85,19 +85,22 @@ class BooksController < ApplicationController
   private
 
   def book_primary_content_information_params
-     params.require(:books_primary_content_information).permit(:content_code, :publisher_id, :book_title, :subject_title, :isbn, :language, 
+    params.require(:books_primary_content_information).permit(:content_code, :publisher_id, :book_title, :subject_title, :isbn, :language, 
     :content_classification, :file_name, :stock_number, :publisher_site_sales_link, :book_blurb, :publication_date,
     :conversion_required, :edition, :binding, :volume, :dimension, :series_isbn,
     :series_title, :logo, :license_id)
   end
+
   def book_contributor_params
     params.require(:books_contributor).permit(:contributor_role, :first_name, :description, :date_of_birth, :date_of_death, :professional_position, 
     :professional_affiliation, :website, :website_description,:books_primary_content_information_id)
   end
+
   def books_content_pricing_params
     params.require(:books_content_pricing).permit(:format, :format_isbn, :date_of_issue, :weight, :watermark_drm, 
     :external_drm,:books_primary_content_information_id,:books_primary_content_information_id)
   end
+  
   def book_content_access_rule_params
     params.require(:book_content_access_rule).permit(:territorial_list_type, :territorial_list, :landing_page, :viewability_percentage, :exclude_pages_from_display, :total_free_pages_before_purchase, 
     :total_free_page_before_login, :exclude_pages_from_external_index, :actual_pages_indexable, :actual_browsable_pages, :actual_printable_pages, :actual_allowed_copying_pages, :internal_related_content)

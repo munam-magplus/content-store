@@ -6,7 +6,7 @@
         <div class="border_bottom"></div>
       	<div class="clearfix"></div>
         <div class="col-sm-12 no-pad mt-20">
-          <nav aria-label="Page navigation" style="clear:both; height: 30px;">
+          <nav aria-label="Page navigation"  >
             <ul class='pagination pagination-sm'>
               <li class="active"><li class="active"><%= link_to "All", books_by_title_homes_path %></li> 
               <% ('A'..'Z').each do |letter| %> 
@@ -59,17 +59,17 @@
           <div class="clearfix"></div>
         <% end %>
         <%if @books.count >1 %>
-          <div class="col-md-12  nopadding  bg-gray mt20">
+          <div class="col-md-12  bg-gray mt20">
       			<div class="pull-left mt5">
               Results  1–<%= @books.count%>
       			</div>
-       			<div class="pull-right">
-          		<ul class="pagination pagination-sm nomargin">
+       			<div class="pull-right bottomUl">
+          		 
                 <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
-            	</ul>
+            	 
         		</div>
+          </div>
             <div class=" clearfix"> </div>
-      		</div>
       	<% end %>
       </div>
     </div>
