@@ -13,7 +13,6 @@
 
 //=require jquery
 //=require jquery_ujs
-//= require bootstrap
 //= require jquery.remotipart
 //= require ckeditor/init
 //= require_tree .
