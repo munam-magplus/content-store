@@ -38,10 +38,7 @@
         <% elsif @publisher.domain_name == "syrawoodpublishinghouse" %>
 
           <div id= 'pub_book'>
-            <div class="col-md-12" style="padding-left: 30px;">
-              <h1 class="heading1">Featured Books</h1>
-            </div>
-            <%= render :partial => 'publisher_book' %>
+            <%= render :partial => 'syrawood_publisher_book' %>
           </div>
 
         <% elsif @publisher.domain_name == "mlbooksinternational" %>
@@ -69,9 +66,7 @@
     </div>
   </div>
 
-  <footer>
     <%= render :partial => "homes/publisher_footer"%>
-  </footer>
 
 </section>
 

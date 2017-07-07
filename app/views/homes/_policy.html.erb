@@ -16,13 +16,15 @@
 <% elsif @publisher.domain_name == "syrawoodpublishinghouse" 	 %>
   <div class="container" style="padding-bottom:90px;">
 	  <div class="row">
-	    <div class="col-md-12 mt30">
+	    <div class="col-md-12">
+	    	<div class="border_wrapper padding10px mtb25">
 	    	<h2 class="heading1 border_bottom mb20">Privacy Policy</h2>
 	      <div class="termcondition">
 	      	<% if @publisher_policy.present? %>
-	 					<p class="mt20"><%= @publisher_policy %></p>
+	 					<p class="mt20"><%= @publisher_policy.html_safe %></p>
 					<%end%>
 				</div>
+		</div>
 	    </div>
   	</div>
 	</div>

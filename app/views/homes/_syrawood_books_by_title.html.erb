@@ -1,0 +1,89 @@
+<div class="container" style="padding-bottom:90px;">
+ 	 <div class="row">
+     	 
+     	<section class="col-md-12">
+  <div class="border_wrapper padding10px mtb25">
+    <div id="bodydivs"> 
+        <h2 class="heading1 border_bottom mb20">Book Titles</h2>
+      <ul class="pagination pagination-sm nomargin">
+        <% ('A'..'Z').each do |letter| %> 
+          <li>
+            <%= link_to letter, syrawood_books_by_title_homes_path(:letter=>letter)%>
+          </li>
+        <%end%>
+      </ul>
+      <div class="clearfix"> </div>
+      <div class="alpha_category margin_bottom10px border_bottom">
+        <div class="pull-left pageNumber">
+          <p>Results  1–<%= @books.count%></p>
+        </div>
+        <div class="pull-right">
+        	<ul class="pagination pagination-sm">
+            <%= will_paginate @books%>
+          </ul>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    <% @books.each do |f| %>
+      <div class="margin_top20px im_width">
+        <div class="pull-left margin_right5px margin_left5px effects search-result col-md-3  ">
+          <%= link_to image_tag(f.logo.url(:medium),class: "img-responsive"), books_description_homes_path(:book_id => f.id),:remote => true, class: "cover2" %>
+        </div>
+        <div class="col-md-9">
+          <h3>
+            <%= link_to truncate(f.book_title, length: 14), books_description_homes_path(:book_id => f.id), :remote => true %>
+          </h3>
+          <h3>
+            By :
+            <span class="dark_yellow">
+              <%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14) %>
+            </span>
+          </h3>
+          <p><strong> Description :</strong>
+            <% if f.book_blurb.length > 2 %>
+              <%= truncate(f.book_blurb, length: 30) %>
+              <%= link_to 'more', '', :class => "read-more-#{f.id}" %>
+              <script>
+                $('.read-more-<%= f.id %>').on('click', function(e) {
+                  e.preventDefault()
+                  $(this).parent().html('<strong> Description:</strong> <%= f.book_blurb %>')
+                })
+              </script>
+            <% end %>
+          </p>
+          <p class="searchResultsLinks"><strong><%= link_to "Book Info", books_description_homes_path(:book_id => f.id), :remote => true %></strong></p>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="border_bottom"> </div>
+    <% end %>
+    <%if @books.count >1 %> 
+      <div class="alpha_category margin_bottom10px">
+        <div class="pull-left pageNumber">
+          <p>Results  1–<%= @books.count%></p>
+        </div>
+        <div class="pull-right">
+        	<ul class="pagination pagination-sm">
+            <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+          </ul>
+        </div>
+        <div class="clearfix"> </div>
+      </div>
+    <% end %>
+      <style type="text/css">
+.greenLayout .content .column1 .leftMenuBlock h2{
+	border-top:none!important;
+	margin:0!important;
+	padding:2px 0 8px 0;
+}
+
+
+</style>
+    </div>
+  </div>
+</section>
+
+     </div>
+     
+ 
+ </div>
