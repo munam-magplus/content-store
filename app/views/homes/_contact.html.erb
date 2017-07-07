@@ -66,67 +66,67 @@
     </div>
   </div>
 <% elsif @publisher.domain_name == "mlbooksinternational" %>
-        <div class="border_wrapper padding10px mt5">
-          <div class="row">
-            <div class="col-sm-12">
-              <h1 class="heading1 border_bottom">Contact Us</h1>
-              <div class="col-sm-12 form_bg no-pad mt20">
-                <div class="col-sm-8">
-                  <p>Please Fill Below Query Form, We'll right back soon with a response.</p>
-                  <p><em>Fields marked with <sup class="mandatory">*</sup>are compulsory</em></p>
-                  <br>
-                  <form action="search.do" method="get" id="advanceSearchForm" class="form-horizontal ">
-                    <%= form_tag(send_mail_homes_path) do %>
-                      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                      <fieldset>
-                        <div class="form-group  ">
-                          <label class="col-md-3 control-label" for=""> Your name: <sup class="mandatory">*</sup></label>
-                          <div class="col-md-6">
-                            <%= text_field_tag :name,"", :class => "form-control" %>
-                          </div>
-                        </div>
-                        <div class="form-group  mt-20">
-                          <label class="col-md-3 control-label" for=""> Your email: <sup class="mandatory">*</sup></label>
-                          <div class="col-md-6">
-                            <%= text_field_tag :email,"", :required => true ,:class => "form-control" %>
-                          </div>
-                        </div>
-                        <div class="form-group  mt-20">
-                          <label class="col-md-3 control-label" for=""> Subject:</label>
-                          <div class="col-md-6">
-                            <input name="title" class="form-control" value="" type="text">
-                          </div>
-                        </div>
-                        <div class="form-group  mt-20">
-                          <label class="col-md-3 control-label" for=""> Your message: <sup class="mandatory">*</sup> </label>
-                          <div class="col-md-6">
-                            <%= text_area_tag :message,"", :class => "form-control", :maxlength => "140", :rows => "7" %>
-                          </div>
-                        </div>
-                        <div class="form-group  mt-20">
-                          <label class="col-md-3"> &nbsp;</label>
-                          <div class="col-md-6">
-                            <%= button_tag fa_icon("send Message", text: "Send Message"), :class => "btn btn-primary", type: :submit %>
-                          </div>
-                        </div>
-                      </fieldset>
-                    <% end %>
-                  </form>
-                </div>
-                <div class="col-sm-4">
-                  <div class="contact">      
-                    <h4 class="text_uppercase heading">ADDRESS</h4>
-                    <p><b>ML Books International</b></p>
-                    <p>225, Prakashdeep Building, 22 Ansari Road, <br>
-                    Daryaganj, New Delhi-110002 <br>
-                    Email-<a href="mailto:marc@mlbooksinternational.com">marc@mlbooksinternational.com</a>
-                    </p>
+  <div class="border_wrapper padding10px mt5">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="heading1 border_bottom">Contact Us</h1>
+        <div class="col-sm-12 form_bg no-pad mt20">
+          <div class="col-sm-8">
+            <p>Please Fill Below Query Form, We'll right back soon with a response.</p>
+            <p><em>Fields marked with <sup class="mandatory">*</sup>are compulsory</em></p>
+            <br>
+            <form action="search.do" method="get" id="advanceSearchForm" class="form-horizontal ">
+              <%= form_tag(send_mail_homes_path) do %>
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                <fieldset>
+                  <div class="form-group  ">
+                    <label class="col-md-3 control-label" for=""> Your name: <sup class="mandatory">*</sup></label>
+                    <div class="col-md-6">
+                      <%= text_field_tag :name,"", :class => "form-control" %>
+                    </div>
                   </div>
-                </div>
-              </div>
+                  <div class="form-group  mt-20">
+                    <label class="col-md-3 control-label" for=""> Your email: <sup class="mandatory">*</sup></label>
+                    <div class="col-md-6">
+                      <%= text_field_tag :email,"", :required => true ,:class => "form-control" %>
+                    </div>
+                  </div>
+                  <div class="form-group  mt-20">
+                    <label class="col-md-3 control-label" for=""> Subject:</label>
+                    <div class="col-md-6">
+                      <input name="title" class="form-control" value="" type="text">
+                    </div>
+                  </div>
+                  <div class="form-group  mt-20">
+                    <label class="col-md-3 control-label" for=""> Your message: <sup class="mandatory">*</sup> </label>
+                    <div class="col-md-6">
+                      <%= text_area_tag :message,"", :class => "form-control", :maxlength => "140", :rows => "7" %>
+                    </div>
+                  </div>
+                  <div class="form-group  mt-20">
+                    <label class="col-md-3"> &nbsp;</label>
+                    <div class="col-md-6">
+                      <%= button_tag fa_icon("send Message", text: "Send Message"), :class => "btn btn-primary", type: :submit %>
+                    </div>
+                  </div>
+                </fieldset>
+              <% end %>
+            </form>
+          </div>
+          <div class="col-sm-4">
+            <div class="contact">      
+              <h4 class="text_uppercase heading">ADDRESS</h4>
+              <p><b>ML Books International</b></p>
+              <p>225, Prakashdeep Building, 22 Ansari Road, <br>
+              Daryaganj, New Delhi-110002 <br>
+              Email-<a href="mailto:marc@mlbooksinternational.com">marc@mlbooksinternational.com</a>
+              </p>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
 
 <% elsif @publisher.domain_name == "callistoreference" %>
 
@@ -220,7 +220,70 @@ Forest Hills, NY 11375, USA<br>
         
       </div>
     
-        
+<% elsif @publisher.domain_name == "haylemedical" %>
+  <div class="row">
+    <div class="col-sm-12 ">
+      <div class="border_wrapper padding10px">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="sectionHeading">CONTACT US </h1>
+            <div class="col-sm-12 form_bg no-pad">
+              <div class="col-sm-8">
+                <p><em>Fields marked with<sup class="mandatory">*</sup>are compulsory</em> </p>
+                <br>
+                <form action="search.do" method="get" id="advanceSearchForm" class="form-horizontal ">
+                  <fieldset>
+                    <div class="form-group  ">
+                      <label class="col-md-3" for=""> Your name: <sup class="mandatory">*</sup></label>
+                      <div class="col-md-6">
+                        <input name="title" class="form-control" value="" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group  mt-20">
+                      <label class="col-md-3" for=""> Your email: <sup class="mandatory">*</sup></label>
+                      <div class="col-md-6">
+                        <input name="title" class="form-control" value="" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group  mt-20">
+                      <label class="col-md-3" for=""> Subject:</label>
+                      <div class="col-md-6">
+                        <input name="title" class="form-control" value="" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group  mt-20">
+                      <label class="col-md-3" for=""> Your message: <sup class="mandatory">*</sup> </label>
+                      <div class="col-md-6">
+                        <textarea class="form-control" type="textarea" id="message" maxlength="140" rows="7"></textarea>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group  mt-20">
+                      <label class="col-md-3" > &nbsp;</label>
+                      <div class="col-md-6">
+                        <button class="btn btn-primary">Send Message</button>
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+              <div class="col-sm-4">
+                <h1 class="text_uppercase contact_heading">Address</h1>
+                <p><b>Hayle Medical,</b></p>
+                <p>750 Third Avenue, 9th floor,<br>
+                New York, NY 10017, USA<br>
+                <a href="http://www.haylemedical.com/home">www.haylemedical.com</a><br>
+                <b>Email-</b><a href="mailto:info@haylemedical.com">info@haylemedical.com</a>
+                </p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6044.328639547161!2d-74.003225!3d40.7584105!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259b352d8f061%3A0x86c598ed2f832442!2s612+W+37th+St%2C+New+York%2C+NY+10018%2C+USA!5e0!3m2!1sen!2sin!4v1408957590195" width="100%" height="350" frameborder="0" style="border:0"></iframe>
+                <!-- <img src="./templates/template1/haylmed/images/contactus-img.png" alt="" title="" /> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <% else %>
 <h1 class="sectionHeading">Contact us</h1>
 <div class="row placeholders">

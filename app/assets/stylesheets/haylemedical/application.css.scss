@@ -6988,7 +6988,7 @@ a:hover, a:focus {
 
 
 
-.my_menu{ padding: 0px 0px; position:relative;}
+.my_menu{ padding: 0px 0px; position:relative; margin-top: 8px; }
 .my_menu .navbar-form{margin:0;     padding: 0px;}
 .navbar-brand{ height:auto; padding:5px 0px;}
 .navbar-brand img {max-width: 80%;}
@@ -7082,13 +7082,20 @@ Main Components
 .cd-accordion-menu label, .cd-accordion-menu a {
     position: relative;
     display: block;
-    color: #000;
+    color: #fff;
     padding: 8px 15px;
         background: #797676;
     font-size: 13px;
   margin-bottom: 4px;
       font-weight: 500;
         text-transform: uppercase;
+}
+
+.cd-accordion-menu ul ul a {
+    margin: 0px;
+    background: #fff;
+    color: #000;
+    text-transform: uppercase;
 }
  .cd-accordion-menu label:hover, .cd-accordion-menu a:hover {
   background: #007171;
@@ -7112,7 +7119,7 @@ Main Components
   cursor: pointer;
 }
 .cd-accordion-menu label::before, .cd-accordion-menu label::after {
-  background-image: url(../images/cd-icons.svg);
+  background: image-url('cd-icons-white.svg');
   background-repeat: no-repeat;
 }
 .cd-accordion-menu label::before {
@@ -7129,11 +7136,6 @@ Main Components
   /* folder icons */
   right: 18px;
   background-position: -16px 0;
-}
-.cd-accordion-menu a::after {
-  /* image icon */
-  right: 18px;
-  background: url(../images/cd-icons.svg) no-repeat -48px 0;
 }
 .cd-accordion-menu input[type=checkbox]:checked + label::before {
   /* rotate arrow */
@@ -7160,10 +7162,10 @@ Main Components
   background-color: #797676;  
  
 }
-.no-touch .cd-accordion-menu ul label:hover, .no-touch
+/*.no-touch .cd-accordion-menu ul label:hover, .no-touch
 .cd-accordion-menu ul a:hover {
   background: #edf6fa;
-}
+}*/
 
 .cd-accordion-menu ul label::before {
   right: 18px;
@@ -7941,7 +7943,8 @@ ul.menu li a {
   .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {background-color: #333;}
   .dropdown-menu::before{ border:none;}
   .dropdown-menu .divider{display: none !important; }
-  .navbar-default .navbar-nav > li > a{ margin-bottom:2px;}
+  .navbar-default .navbar-nav > li > a{ margin-bottom:2px;display:
+  inherit}
   .navbar-default .navbar-nav > li > a:hover,
   .navbar-default .navbar-nav > li > a:focus {
     color: #0088cc;

@@ -108,7 +108,7 @@ a:hover, a:focus {
 
 
 .menu-bg #mdd .dropdown-menu{
-    width: 50%!important;
+    width: 50% ;
     margin-top: 42px;
 	 
 	
@@ -116,7 +116,7 @@ a:hover, a:focus {
 }
 
 .mm{
-    width: 50%!important;
+    width: 50% ;
     margin-top: 42px;
 	   background: #F8FAFC;
   
@@ -1218,8 +1218,8 @@ form {
 	}
 	
 	.mm {
-    width: 100%!important;
-	    margin-top: 4px;
+    width: 100% !important;
+	    margin-top: 4px !important;
    
 }
 	
@@ -1297,3 +1297,6 @@ form {
 .pagination-frontend {
     margin-bottom: -6px;
 }
+
+
+ 
