@@ -22,3 +22,6 @@ Rails.application.config.assets.precompile += %w( style-old.css)
 
 
 Rails.application.config.assets.precompile += %w( accessedit.css)
+
+
+Rails.application.config.assets.precompile += %w( owl.carousel.js )

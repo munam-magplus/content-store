@@ -1,0 +1,92 @@
+<div class="navbar navbar-default navbar-fixed-top top_band" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+       <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="#">
+         <%= image_tag @publisher.publisher_logo(:original), :class => "img-responsive"%>
+       
+      </a>
+      <div class="custom-search-input show_in_mobile">
+        <%= form_tag(search_homes_path, :method => "get",:remote => true) do %>
+          <div class="input-group">
+            <%= text_field_tag :book_title, params[:search],required: true,placeholder: "Search by Title " %>
+            <span class="input-group-btn">
+            <%= button_tag(type: 'submit', class: "btn btn-info btn-lg") do %>
+              <i class="glyphicon glyphicon-search"></i>
+            <% end %>
+            </span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="navbar-collapse collapse">
+      <div class=" main_menu clearfix">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active">
+            <%= link_to '<i class="glyphicon glyphicon-home"></i>'.html_safe, homes_path, :class => "scroll" %>
+          </li>
+          <li><%= link_to "About us", about_homes_path, remote: true %></li>
+          <li><%= link_to 'Catalogue', download_pdf_homes_url, target: "_blank" %></li>
+          <li><%= link_to "Contact Us", contact_homes_path, remote: true %></li>
+         </ul>
+
+        
+          <div class="custom-search-input show_in_dextop ">
+          <%= form_tag(search_homes_path, :method => "get",:remote => true) do %> 
+            <div class="input-group">
+              <%= text_field_tag :book_title, params[:search],required: true,placeholder: "Search by Title " %>
+              <span class="input-group-btn">
+                <%= button_tag(type: 'submit', class: "btn btn-info btn-lg") do %>
+                 <i class="glyphicon glyphicon-search"></i>
+               <% end %>
+                <%= link_to 'Advance Search', advance_search_homes_path , class: "advance_btn", :remote => true%>
+              </span> 
+            </div>
+             <% end %>
+          </div>
+       
+
+      </div>
+    </div>
+    <!--/.nav-collapse --> 
+  </div>
+</div>
+
+<!-- /main_banner_section -->
+<div class=" main_banner_section">
+  <div class="main_banner"> &nbsp;</div>
+</div>
+<!-- /main_banner_section --> 
+ <!-- /stats_section -->
+<div class="main_link_section" >
+  <div class="container">
+    <ul class="main_tab">
+      <li><a role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Categories <i class="fa fa-angle-right pull-right"></i></a></li>
+      <li><%= link_to "AUTHORS",get_author_homes_path(:letter => 'a'), :remote => true %></li>
+      <li ><%= link_to "TITLE",books_by_title_homes_path(:letter => 'a'), :remote => true %></li>
+    </ul>
+  </div>
+  <div class="collapse category_box clearfix" id="collapseExample">
+    <div class="category_box">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4">
+            <% unless @publisher.subject_groups.blank? %>
+              <ul>
+                <%@publisher.subject_groups.each do |subject_group| %>
+                  <li><i class="fa fa-angle-right leftIcon" aria-hidden="true"></i> <%=link_to subject_group.subject_group_name ,books_by_category_homes_path(:subject_group_id => subject_group.id), :remote => true %>
+                  </li>
+                <%end%>
+              </ul>
+            <%end%>
+          </div>
+        </div>
+       </div>
+    </div>
+  </div>
+</div>

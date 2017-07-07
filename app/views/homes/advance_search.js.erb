@@ -1,2 +1,6 @@
+<% if  @publisher.domain_name == 'larsen-keller'%>
+$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/larsen_and_keller_advance_search')%>");
+<% else %>
 $("#pub_book").html("<%= escape_javascript(render :partial => 'homes/advance_search')%>");
+<% end %>
 $("#pagination-frontend").html('');

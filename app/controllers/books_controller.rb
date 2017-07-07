@@ -85,8 +85,7 @@ class BooksController < ApplicationController
   private
 
   def book_primary_content_information_params
-    byebug
-    params.require(:books_primary_content_information).permit(:content_code, :publisher_id, :book_title, :subject_title, :isbn, :language, 
+     params.require(:books_primary_content_information).permit(:content_code, :publisher_id, :book_title, :subject_title, :isbn, :language, 
     :content_classification, :file_name, :stock_number, :publisher_site_sales_link, :book_blurb, :publication_date,
     :conversion_required, :edition, :binding, :volume, :dimension, :series_isbn,
     :series_title, :logo, :license_id)

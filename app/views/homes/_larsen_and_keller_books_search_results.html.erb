@@ -1,0 +1,111 @@
+ <!-- / breadcrumb_bar -->
+<div class="breadcrumb_bar clearfix">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li class="active">Search Results</li>
+    </ol>
+  </div>
+  <!-- /container --> 
+</div> 
+ 
+<!-- / breadcrumb_bar -->
+
+<!-- / main_content_section -->
+
+<div class="main_content_section">
+  <div class="container">
+    <div class="common_tittle clearfix"> Search <span>Results</span> </div>
+    <div class="content_wrapper">
+    
+    	<!-- / showing_records_bar -->
+    	<div class="showing_records_bar">
+    		<div class="row">
+          	<div class="col-md-12 col-xs-12 mt-20">
+        <%if @books.count >1 %>
+          <div class="bg-gray">
+            <div class="col-sm-4 no-pad" style="padding-top: 6px;"> 
+              Results  1–<%= @books.count%>
+            </div>
+          <div class="col-sm-8 text-right no-pad">
+            <div class="pagination-frontend">
+              <nav aria-label="Page navigation" style="clear:both;"> 
+                <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+              </nav>  
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+        </div>
+        <% end %>
+      </div>
+          </div>
+      </div>
+<!-- / showing_records_bar_end -->
+           
+           <!-- / list_of_records -->
+           
+      <div>
+     		<div class="row">
+            <% if @books.present? %>
+              <% @books.each do |f| %>
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="product_list_box">
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                         <%= link_to image_tag(f.logo.url(:medium),class: "img-responsive center-block img_border margin_bottom_10px"), books_description_homes_path(:book_id => f.id),:remote => true %>
+                         </div>
+                        <div class="col-xs-12 col-sm-8 col-md-8">
+                          <div class="product_detail">
+                            <div class="product_tittle">
+                            <%= link_to f.book_title, books_description_homes_path(:book_id => f.id), :remote => true %>
+                            </div>
+                            <h4><strong>By :</strong> <%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14) %></h4>
+                            <p><strong>Description :</strong>
+                            <% if f.book_blurb.length > 2 %>
+                              <%= truncate(f.book_blurb, length: 30) %>
+                              <%= link_to 'more', '', :class => "read-more-#{f.id}" %>
+                              <script>
+                                $('.read-more-<%= f.id %>').on('click', function(e) {
+                                  e.preventDefault()
+                                  $(this).parent().html('<strong> Description:</strong> <%= f.book_blurb %>')
+                                })
+                              </script>
+                            <% end %>
+                            </p>
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              <% end %>
+            <% end %>
+        </div>		               
+      </div>
+       
+       <!-- / list_of_records_end -->
+       
+       <!-- / showing_records_bar -->
+      
+
+      <div class="showing_records_bar">
+        <%if @books.count >1 %>      
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6 pd_top7">
+              Showing 1 to <%= @books.count%>
+           </div>
+          <div class="col-xs-12 col-sm- text-right col-md-6">
+           <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+          </div>
+        </div>
+        <% end %>
+      </div>
+
+       <!-- / showing_records_bar_end -->
+     </div>
+  </div>
+</div>
+</div>
+
+<!-- / clients_section end --> 
+ 

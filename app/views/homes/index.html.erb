@@ -1,10 +1,14 @@
 <!--Main Content Start -->
   <section class="content">
     <!--Nyresearch Start-->
-
+ 
     <%= render :partial => "#{@publisher.theme_name}"%>    
       
+  <% if @publisher.domain_name == 'larsen-keller'%>
+  <div class="container mt20">
+  <% else %>
     <div class="container-fluid">
+  <% end %>
       <div class="row">  
         <% if ["red_content","green_content","haylemedical"].include? @publisher.theme_name %>
           <div class="col-sm-4 col-md-3 ">
@@ -54,12 +58,20 @@
               <!-- </div> 
             </div> -->
           </div>
-       
+ 
+        <% elsif @publisher.domain_name == 'larsen-keller' %>
+        <div class="col-sm-12">
+           <div id='pub_book'>  
+            <%= render :partial => 'larsan_and_keller_publisher_books' %>
+          </div>
+        </div>
+
+
         <% elsif @publisher.domain_name == 'haylemedical' %>
 
           <div class="col-sm-8 col-md-9 mar-b50" > 
-            <div id='pub_book'>  
-              <div class="col-sm-12 no-lr-pad">
+            <div class="col-sm-12 no-lr-pad">
+              <div id='pub_book'>  
                 <%= render :partial => 'haylemedical_publisher_book' %>
               </div>
             </div>
@@ -69,9 +81,15 @@
     </div>
   </div>
 
+  <% if @publisher.domain_name == 'larsen-keller' %>
+  <footer class="footer">
+    <%= render :partial => "larsen_and_keller_footer"%>
+  </footer>
+  <% else %>
   <footer>
     <%= render :partial => "homes/publisher_footer"%>
   </footer>
+  <% end %>
 
 </section>
 
