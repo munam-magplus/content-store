@@ -1,0 +1,90 @@
+<!-- / clients_section -->
+<div class="featured_books_section">
+  <div class="container">
+    <div class="common_tittle clearfix"> FEATURED <span>BOOKS</span> 
+      <!-- Controls -->
+      <div class="owl_carousel_nav"> 
+        <a class="prev_btn prev"><%= image_tag('prev.png')%></a>
+        <a class="next_btn next"><%= image_tag('next.png')%></a> 
+      </div>
+    </div>
+    <div id="owl-example" class="owl-carousel" style="clear:both;">
+    <% @books.each do |f|%>
+      <div class="item">
+        <div class="item_box clearfix">
+          <div class="image_box"> 
+            <%= link_to image_tag(f.logo.url(:original), :class => "img-responsive center-block"), books_description_homes_path(:book_id => f.id), :remote => true %>
+          </div>
+          <div class="item_info">
+            <p><%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id), :remote => true %></p>
+            <b><%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14)%></b> </div>
+          <div class="item_btn_box">
+            <ul>
+              <li><a href="#"> Read More</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- / clients_section end --> 
+<%= javascript_include_tag "owl.carousel" %>
+
+<!-- Frontpage Demo --> 
+<script>
+
+        $(document).ready(function ($) {
+            $("#owl-example").owlCarousel({
+        autoPlay: 4000, //Set AutoPlay to 4 seconds
+        
+                items: 4,
+                itemsDesktop: [1199, 3],
+                itemsDesktopSmall: [979, 3],
+        itemsTablet: [768, 3]
+
+            });
+      
+            var owl = $("#owl-example");
+            owl.owlCarousel();
+
+            // Custom Navigation Events
+            $(".prev").click(function () {
+                owl.trigger('owl.prev');
+            })
+            $(".next").click(function () {
+                owl.trigger('owl.next');
+            })
+      
+        });
+    $("body").data("page", "frontpage");
+
+    </script> 
+<script>
+    $(function() {
+          $('.scroll').click(function() {
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+              var target = $(this.hash);
+              target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+              if (target.length) {
+                $('html,body').animate({
+                scrollTop: target.offset().top
+                }, 1000);
+                return false;
+              }
+            }
+          });
+        });
+  </script> 
+<script>
+    $(function() {
+    $('.nav a').on('click', function(){ 
+      if($('.navbar-toggle').css('display') !='none'){
+        $(".navbar-toggle").trigger( "click" );
+      }
+    });
+  });
+    </script>

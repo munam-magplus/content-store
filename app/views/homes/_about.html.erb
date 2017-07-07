@@ -1,4 +1,4 @@
-<% if @publisher.domain_name == "syrawoodpublishinghouse" %>
+ <% if @publisher.domain_name == "syrawoodpublishinghouse" %>
   <div class="container" style="padding-bottom:90px;">
     <div class="row">
     	<div class="col-md-12">
@@ -11,6 +11,13 @@
 	    	</div>
 			</div>
   	</div>
+	</div>
+<% elsif @publisher.domain_name == "larsen-keller" %>
+	<div class="container">
+		<h1 class="heading1 border_bottom ">About Us</h1>
+		<% if @publisher_about.present? %>
+			<%= @publisher_about.html_safe %>
+		<% end %>
 	</div>
 <% else %>
 	<div class="row"> 
@@ -25,3 +32,4 @@
 		</div>
 	</div>
 <% end %>
+ 
