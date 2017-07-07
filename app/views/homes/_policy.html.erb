@@ -26,7 +26,15 @@
 	    </div>
   	</div>
 	</div>
-	
+
+<% elsif @publisher.domain_name == "nyresearchpress"%>
+  <div class="border_wrapper padding10px mt5">
+    <h1 class="heading1 sectionHeading border_bottom "> Privacy Policy </h1>
+	  <% if @publisher_policy.present? %>
+	    <%= @publisher_policy.html_safe %>			 
+	  <%end%>				
+  </div>
+    
 <% else %>
 	<h1 class="sectionHeading">Privacy Policy</h1>
 	<div class="row placeholders">

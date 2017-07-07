@@ -1,5 +1,6 @@
 
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600');
 
 /*--- main style ---*/
 
@@ -86,13 +87,7 @@ a:hover, a:focus {
 }
 
 
-.welcome_text {
-    color: #EC3B34;
-    font-family: opensans;
-    font-size: 20px!important;
-    word-spacing: 4px;
-    margin: 10px 0;
-}
+
 
 
 /*
@@ -188,7 +183,8 @@ a:hover, a:focus {
 }
 .nav > li > a:hover,
 .nav > li > a:focus {color:#0088cc; text-decoration: none;  color: #fff!important;   background-color: #AFAFB8!important;}
-.adcance_search{ margin:5px 0 0 0; padding:0 0 0 10px; display:inline-block;}
+.adcance_search{ margin:5px 0 0 0; padding:0 0 0 10px; }
+.adcance_search i{ margin:5px 0 0 0; }
 .mar-t5 {margin-top:5px;}
 .dropdown-menu{font-family: 'Open Sans', Arial, sans-serif; border-radius:0;}
 
@@ -551,7 +547,6 @@ Main Components
 }
 .media-result {
     min-height: 150px;
-  max-width: 150px;
 }
 .result {
     position: relative;
@@ -575,6 +570,7 @@ Main Components
     position: static;
     width: 100%;
     margin: 10px 0;
+    padding-top:10px;
     text-align: center;
     font-size: 1.25em;
     border: 1px solid #ccc;
@@ -890,7 +886,8 @@ ul.description li {
     text-decoration: none
 }
 .container-fluid h1 {
-    margin: 0 0 30px
+    margin: 0px 0 20px;
+    padding-bottom: 6px;
 }
 .book_description {
     background-color: #FFF;
@@ -1018,7 +1015,7 @@ ul.menu li a {
 
 .welcome_text {
     color: #EC3B34;
-    font-family: opensans;
+    font-family: 'Open Sans', sans-serif;
     font-size: 20px!important;
     word-spacing: 4px;
     margin: 10px 0
@@ -1075,6 +1072,7 @@ ul.menu li a {
 }
 
 @media (max-width: 767px) {
+  form {width: 100%;}
   .book_atr{margin-bottom:0px;}
   .web_block{ display:none !important;}
   .mobile_block{ display:block !important;}
@@ -1158,21 +1156,21 @@ ul.menu li a {
 
 }
 
-.sliderArrowleft{
+.sliderArrowleft {
   background: #828282;
-border-radius: 50%;
-padding: 5px 5px 6px 0px;
-box-shadow: 0px 0px 5px 1px #000;
-border: 2px solid #fff;
-font-size:18px !important;
+  border-radius: 50%;
+  padding: 5px 10px 5px 5px;
+  box-shadow: 0px 0px 5px 1px #000;
+  border: 2px solid #fff;
+  font-size: 18px !important;
 }
-.sliderArrowright{
-  background: #828282;
-border-radius: 50%;
-padding: 5px 0px 6px 2px;
-box-shadow: 0px 0px 5px 1px #000;
-border: 2px solid #fff;
-font-size:18px !important;
+.sliderArrowright {
+    background: #828282;
+    border-radius: 50%;
+    padding: 5px 8px;
+    box-shadow: 0px 0px 5px 1px #000;
+    border: 2px solid #fff;
+    font-size: 18px !important;
 }
 .homeHeading{width:100%;float:left;}
 .homeHeading span{

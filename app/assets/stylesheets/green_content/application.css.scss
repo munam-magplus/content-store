@@ -86,6 +86,10 @@ a:hover, a:focus {
     background-color: #f89406 !important;  
 }
 
+.btn-default {
+    background-color: #eee;
+}
+
 .badge {
     padding-right: 9px;
     padding-left: 9px;
@@ -293,7 +297,7 @@ a:hover, a:focus {
 }
 .nav > li > a:hover,
 .nav > li > a:focus {color:#0088cc; text-decoration: none;  /*color: #fff!important;   background-color: #AFAFB8!important;*/}
-.adcance_search{ margin:5px 0 0 0; padding:0 0 0 10px; display:inline-block;}
+.adcance_search{ margin:5px 0 0 0; padding:0 0 0 10px; display:inline-block; vertical-align: text-bottom;}
 .mar-t5 {margin-top:5px;}
 .dropdown-menu{font-family: 'Open Sans', Arial, sans-serif; border-radius:0;}
 
@@ -906,8 +910,10 @@ Main Components
     border: none!important
 }
 .border_wrapper {
-    border: 1px solid #d7dadb;
-	    margin-bottom: 70px;
+  border: 1px solid #d7dadb;
+	margin-bottom: 70px;
+  float: left;
+  width: 100%;
 }
 
 .table_bg {
@@ -986,7 +992,7 @@ ul.description li {
 }
 
 .pageHeading h1 {
-    background: none repeat scroll 0 0 #B43838;
+    background: none repeat scroll 0 0 #73c463;
     border-radius: 2px;
     color: #999;
     display: block;
@@ -1009,7 +1015,7 @@ ul.description li {
 }
 .book_atr {
     font-weight: 700;
-    background-color: #EEDDA5;
+    
     color: #FFF
 }
 .xtraPadding .span9 p {
@@ -1157,14 +1163,14 @@ ul.menu li a {
 
 .border-img{border-radius:8px;}
 .form_bg {
-	background-image: url(../images/contact_us.jpg);
+  background: image-url('contact_us_callistoreference.jpg');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	padding: 15px;
 }
 
 .ownBookImg{width:100%;padding:10px;border:1px solid #ccc; box-shadow: 0 0 4px #bbb;}
-.book_atr{font-size: 1.1em;    padding:3px 0 3px 6px;margin-bottom:20px; background-color: #eedda5; color: #fff; font-weight: 700;}
+.book_atr{font-size: 1.1em;    padding:3px 0 3px 6px;margin-bottom:20px; background-color: #f89406; color: #fff; font-weight: 700;}
 .book_description{font-size: 1.1em; padding: 3px 0 3px 6px; margin-bottom:20px; }
 
 .tabbg{background-color: #f8f8f8 !important;}
@@ -1187,6 +1193,11 @@ ul.menu li a {
 }
 
 @media (max-width: 767px) {
+
+form {
+    width: 100%;
+}
+
 	.book_atr{margin-bottom:0px;}
 	.web_block{ display:none !important;}
 	.mobile_block{ display:block !important;}
@@ -1247,6 +1258,7 @@ ul.menu li a {
 @media(min-width:320px) and (max-width:480px) {
 
 
+
 	
 }
 
@@ -1255,6 +1267,8 @@ ul.menu li a {
 }
 
 @media(min-width:550px) and (max-width:767px) {
+
+
 }
 
 @media (min-width:768px) and (max-width:990px) {
@@ -1277,4 +1291,9 @@ ul.menu li a {
 
 @media (min-width:991px) { 
 
+}
+
+
+.pagination-frontend {
+    margin-bottom: -6px;
 }

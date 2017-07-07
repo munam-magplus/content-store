@@ -1,2 +1,8 @@
-$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/advance_search')%>");
-$("#pagination-frontend").html('');
+
+<% if @publisher.domain_name == 'callistoreference' %>
+  $("#pub_book").html("<%= escape_javascript(render :partial => 'homes/callisto_advance_search')%>");
+  $("#pagination-frontend").html('');
+<% else %> 
+  $("#pub_book").html("<%= escape_javascript(render :partial => 'homes/advance_search')%>");
+  $("#pagination-frontend").html('');
+<% end %> 

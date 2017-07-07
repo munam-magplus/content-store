@@ -43,7 +43,7 @@
   </div>
   <% else %>
     <div class="row">
-      <div class="col-md-10 col-sm-offset-1">
+      <div class="col-md-12 ">
         <div class="carousel carousel-showmanymoveone slide bx-wrapper" id="carousel123">
           <div class="carousel-inner">
             <% @books.each_with_index do |f,index| %>
@@ -69,7 +69,7 @@
       </div>
     </div>
 
-    <div class="col-sm-12">
+    <div class="col-sm-12 no-pad">
       <%= @publisher.welcome_text.html_safe unless @publisher.welcome_text.blank? %>
     </div>
   <% end %>
