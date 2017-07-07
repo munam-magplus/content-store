@@ -7,8 +7,6 @@
     
     
   <span class="badge badge-warning dropdown-toggle" data-toggle="dropdown">Browse By Category</span>
-     
-     
       <div class="dropdown-menu mm">
         <div class="col-sm-12">
           <h4 class="list-head">subject</h4>
@@ -23,7 +21,7 @@
           <div class="col-sm-6">
             <ul class="list-mega-drop">
               <li><%= link_to "AUTHOR / EDITOR",get_author_homes_path(:letter => 'a'), :remote => true %></li>
-              <li><%= link_to "TITLE",books_by_title_homes_path(:letter => 'a'), :remote => true %></li>
+              <li><%= link_to "TITLE",books_by_title_homes_path, :remote => true %></li>
             </ul>
           </div>
         </div>

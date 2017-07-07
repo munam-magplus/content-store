@@ -7122,3 +7122,58 @@ article.media-result {
 #sresult .pagination.pagination {
     margin: 0px;
 }
+
+.book_atr {
+  font-size: 1.1em;
+  padding: 3px 0 3px 6px;
+  margin-bottom: 20px;
+      background-color: #8dcea2;
+  color: #fff;
+  font-weight: 700;
+}
+
+.book_description {
+  font-size: 1.1em;
+  padding: 3px 0 3px 6px;
+  margin-bottom: 20px;
+}
+
+.book_description {
+    background-color: #FFF;
+    box-shadow: 0 0 4px #e5e5e5;
+    text-align: justify;
+    padding-right: 6px !important;
+}
+.grayContainer {
+    background-color: #f8f8f8;
+    padding: 10px;
+    float:left;
+    margin-bottom:20px;
+}
+.tab_border {
+    border: 1px solid #EFEFEF;
+    padding: 6px 7px 3px;
+}
+
+.pageHeading h1 {
+    background: none repeat scroll 0 0 #555;
+    border-radius: 2px;
+    color: #999;
+    display: block;
+    font-size: 18px;
+    height: auto;
+    padding: 7px;
+}
+.pageHeading h1 a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.alpha_category {
+   
+    margin-top: 15px;
+}
+
+.no-pad {
+    padding: 0px;
+}

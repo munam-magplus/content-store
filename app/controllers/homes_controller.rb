@@ -24,7 +24,7 @@ class HomesController < ApplicationController
   
   def books_by_author
     @ids = @publisher.subject_groups
-    @books = BooksPrimaryContentInformation.joins(:books_contributor).where('first_name = ? AND last_name = ?',"#{params[:first_name]}","#{params[:last_name]}").paginate(:page => params[:page], :per_page => 10)
+    @books = BooksPrimaryContentInformation.joins(:books_contributor).where('first_name = ? AND last_name = ?',"#{params[:first_name]}","#{params[:last_name]}").paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
   end
 
   def syrawood_books_by_author
@@ -33,15 +33,21 @@ class HomesController < ApplicationController
   end
 
   def get_author
-    @books = @publisher.books_primary_content_informations.joins(:books_contributor).where("substr(first_name,1,1) IN (?)",params[:letter]).paginate(:page => params[:page], :per_page => 10)
+    @books = @publisher.books_primary_content_informations.joins(:books_contributor).where("substr(first_name,1,1) IN (?)",params[:letter]).paginate(:page => params[:page], :per_page => 10).order('first_name ASC')
   end
 
   def syrawood_get_author
-    @books = @publisher.books_primary_content_informations.joins(:books_contributor).where("substr(first_name,1,1) IN (?)",params[:letter]).paginate(:page => params[:page], :per_page => 10)
+    @books = @publisher.books_primary_content_informations.joins(:books_contributor).where("substr(first_name,1,1) IN (?)",params[:letter]).paginate(:page => params[:page], :per_page => 10).order('first_name ASC')
   end
   
   def books_by_title
-    @books = @publisher.books_primary_content_informations.where("substr(book_title,1,1) IN (?)",params[:letter]).paginate(:page => params[:page], :per_page => 10)
+    if !params[:letter].present?
+      # for all the books of requested Domain.
+      @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
+    else
+      #books by slected letter
+      @books = @publisher.books_primary_content_informations.where("substr(book_title,1,1) IN (?)",params[:letter]).paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
+    end
     respond_to do |format|
       format.js
     end
@@ -115,7 +121,7 @@ class HomesController < ApplicationController
   end
   
   def search
-    @books = @publisher.books_primary_content_informations.filter(params.slice(:book_title)).paginate(:page => params[:page], :per_page => 5)
+    @books = @publisher.books_primary_content_informations.filter(params.slice(:book_title)).paginate(:page => params[:page], :per_page => 5).order('book_title ASC')
     books_ids =[]
     get_book_ids(@books,books_ids)
     @ids = books_ids

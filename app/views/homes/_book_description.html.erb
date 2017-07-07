@@ -1,7 +1,7 @@
  <div id="bodydivs"> 
   <div class="row">
-    <div class="col-md-12">
-      <ul class="nav nav-tabs noborder" data-tabs="tabs">
+    <div class="col-md-12 mt20">
+      <ul class="nav nav-tabs noborder" data-tabs="tabs" style="background: transparent;">
         <li class="active tabGradient"><a href="#bookInfo" data-toggle="tab">Book Info</a></li>
       </ul>
       <div class="tab-content tab_border grayContainer">
@@ -9,7 +9,7 @@
           <div class="pageHeading">
             <h1> <a  href="#"><strong><%= @book_information.book_title %></strong></a> </h1>
           </div>
-          <div class="xtraPadding">
+          <div class="xtraPadding mt20">
             <div class="col-md-3 col-sm-3"> <%= image_tag @book_information.logo.url(:medium), class: 'ownBookImg' %> </div>
             <div class="col-md-9 col-sm-9"> 
                 <!-- <p>To read sections of the book, please use the navigation menu at the top left.</p> -->

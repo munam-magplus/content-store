@@ -8,7 +8,7 @@
         <div class="col-sm-12 no-pad mt-20">
           <nav aria-label="Page navigation" style="clear:both; height: 30px;">
             <ul class='pagination pagination-sm'>
-              <li class="active"><a href="javascript:;">All</a></li> 
+              <li class="active"><li class="active"><%= link_to "All", books_by_title_homes_path %></li> 
               <% ('A'..'Z').each do |letter| %> 
                 <li>
                   <%= link_to letter, books_by_title_homes_path(:letter=>letter)%>

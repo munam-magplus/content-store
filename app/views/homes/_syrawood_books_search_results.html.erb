@@ -5,11 +5,11 @@
     <div id="bodydivs"> 
       <div class="col-md-12 border_bottom pb10">
         <h2 class="heading1 ">Search Results
-          <form id="refineSearch"    class="form-inline pull-right">
-            <input   value="Refine Search"   id="textToBeSearched" class="form-control input-sm  " type="text" >
-            
-            <input id="refineHref" value="Search"   class="btn btn-primary btn-sm responsive_margin_top20px border_radius3px" type="button">
-          </form>
+        <%= form_tag  refine_publishers_book_homes_path, :method => 'get',:id=>"Author Name/Book Title",:class=>"form-inline pull-right",:remote => true do %>
+            <%= text_field_tag :search,"", :class => "form-control input-sm", :placeholder => "Refine Search" %>
+            <%= hidden_field_tag "book_ids", ids %>
+           <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-primary btn-sm responsive_margin_top20px border_radius3px", type: :submit %>
+         <%end%>
         </h2>
       </div>
       <div class="clearfix"> </div>
