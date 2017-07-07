@@ -13,26 +13,26 @@
         </h2>
       </div>
       <div class="clearfix"> </div>
-      <div class="dotted_bottom"> </div>
-      <div class="col-md-12 mtb25 ">
-        <div class="pull-right">
-          <div class="pagination-frontend">
-        <nav aria-label="Page navigation" style="clear:both;"> 
-          <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
-        </nav>  
-      </div>
+      <%if @books.count >1 %>
+        <div class="dotted_bottom"> </div>
+        <div class="alpha_category margin_bottom10px border_bottom">
+          <div class="pull-left pageNumber">
+            <p> Results  1–<%= @books.count%></p>
+          </div>
+          <div class="pull-right">
+            <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+          </div>
+          <div class="clearfix"></div>
         </div>
-      </div>
+      <% end %>
 
       <% if @books.present? %>
         <% @books.each do |f| %>
           <div class="clearfix"></div>
-          <div class="border_bottom"> </div>
+         
           <div class="margin_top20px im_width">
             <div class="pull-left margin_right5px margin_left5px effects search-result col-md-3">
-            <a>
-              <%= image_tag(f.logo.url(:thumb), height: '178', width: '126', :class => "cover2")%>
-            </a>
+              <%= link_to image_tag(f.logo.url(:original)), books_description_homes_path(:book_id => f.id),:remote => true, class: "cover2" %>
              </div>
 
             <div class="col-md-9">
@@ -56,22 +56,24 @@
             <div class=" clearfix"> </div>
           </div>
         <% end %>
-      <% end %>
+      <%else%>
+        <div class="col-md-12"><h3> Record Not Found </h3></div>
+      <%end%>
 
       <div class="clearfix"></div>
-      <div class="border_bottom"> </div>
-      <div class="row">
-        <div class="col-md-12 mt20">
-          <div class="pull-right">
-              <div class="pagination-frontend">
-                <nav aria-label="Page navigation" style="clear:both;"> 
-                  <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
-                </nav>  
-              </div>
+      <%if @books.count >1 %>
+        <div class="border_bottom"> </div>
+        <div class="alpha_category margin_bottom10px">
+          <div class="pull-left pageNumber">
+            <p>Results  1–<%= @books.count%></p>
           </div>
-          <div class="clearfix"></div>
+          <div class="pull-right">
+            <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+          </div>
+          <div class="clearfix"> </div>
         </div>
-      </div>
+      <% end %>
+       
       <div class=" clearfix"> </div>
     </div>
   </div>

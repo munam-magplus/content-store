@@ -1,8 +1,27 @@
-<footer class="footer text-center">
-	<div class="container-fluid">
+<% if @publisher.domain_name == "syrawoodpublishinghouse" 	 %>
+  <footer >
+	 	<div class="container">
+	    <div class="row mobTextCenter">
+	    	<div class="col-md-12">
+	    		<p class="pull-left mobfooter">
+	    			<%= link_to "Terms & Conditions",terms_and_conditions_homes_path, class: "border_left0px", :remote => true %> | <%= link_to "Privacy Policy", policy_homes_path,:remote => true%>
+	    		</p> 
+	    		<p class="pull-right mobfooter">&copy; 2017 <%= @publisher.publisher_name%>. All right reserved.
+	    		</p>
+	    	</div>
+	    </div>	      
+			<div class="clearfix"></div>
+	  </div>
+	</footer>
+<% else %>
+	<footer class="footer text-center">
+		<div class="container-fluid">
    	  <div class="row">
-      	<div class="col-xs-12 col-sm-6 col-md-6 footer_text text-left"><%= link_to "Terms & Conditions",terms_and_conditions_homes_path, :remote => true %> | <%= link_to "Privacy Policy", policy_homes_path,:remote => true%></div>
-        <div class="col-xs-12 col-sm-6 col-md-6 footer_text text-right">&copy;   2017-2018 <%= @publisher.publisher_name%>. All right reserved.</div>
+      	<div class="col-xs-12 col-sm-6 col-md-6 footer_text text-left"><%= link_to "Terms & Conditions",terms_and_conditions_homes_path, :remote => true %> | <%= link_to "Privacy Policy", policy_homes_path,:remote => true%>
+      	</div>
+        <div class="col-xs-12 col-sm-6 col-md-6 footer_text text-right">&copy;   2017-2018 <%= @publisher.publisher_name%>. All right reserved.
         </div>
-    </div>
-</footer>
+      </div>
+	  </div>
+	</footer>
+<% end %>

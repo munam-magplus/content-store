@@ -1,13 +1,15 @@
 <% if @publisher.domain_name == "syrawoodpublishinghouse" 	 %>
   <div class="container" style="padding-bottom:90px;">
 	  <div class="row">
-	    <div class="col-md-12 mt30">
+	    <div class="col-md-12">
+	    	<div class="border_wrapper padding10px mtb25">
 	    	<h2 class="heading1 border_bottom mb20">TERMS & CONDITIONS </h2>
 	      <div class="termcondition">
 	      	<% if @publisher_terms.present? %>
-	 					<p class="mt20"><%= @publisher_terms.html_safe %></p>
+						<p class="mt20"><%= @publisher_terms.html_safe %></p>
 					<%end%>
 				</div>
+			</div>
 	    </div>
   	</div>
 	</div>
