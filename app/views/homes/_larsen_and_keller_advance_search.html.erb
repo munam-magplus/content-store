@@ -1,113 +1,80 @@
 <div class="placeholders">
-<div class="">
-   <div class="border_wrapper padding10px">
-      <h1 class="sectionHeading">Advance Search</h1>
-      <div class="col-sm-12 mt-20 no-pad">
+  <div class="border_wrapper padding10px">
+    <h1 class="sectionHeading">Advance Search</h1>
+    <div class="col-sm-12 mt-20 no-pad">
       <%= form_tag get_search_results_homes_path, :method => 'get',:class => "form-horizontal grayContainer", :remote => true do %>
-            <fieldset>
-               <div class="well">
-                  <div class="padding10px">
-                     <!-- <form class="form-horizontal">-->
-                     <div class="form-group">
-                        <label class="col-md-3" style="padding-top:8px;"> Search this site for
-                        :</label>
-                        <div class="col-md-6">
-                           <!--<input type="text" name="allwords" id="allwords" value=""/>-->
-                           <input name="allwords" id="allwords" class="form-control" placeholder="search" value="" type="text">
-                        </div>
-                     </div>
-                     <div class="form-group">
-                        <div class="col-md-12">
-                           <label class="radio-inline">
-                           <input name="searchOption" id="searchOption" value="atleast" checked="checked" type="radio">
-                           with at least one of these words </label>
-                           <label class="radio-inline">
-                           <input name="searchOption" id="searchOption" value="all" type="radio">
-                           with all of these words </label>
-                           <label class="radio-inline">
-                           <input name="searchOption" id="searchOption" value="exact" type="radio">
-                           with exactly this phrase </label>
-                        </div>
-                     </div>
-                     <!--</form>--> 
-                  </div>
+        <fieldset>
+          <div class="form-group margin_bottom10px">
+            <label class="col-md-3" for=""> Title :</label>
+            <div class="col-md-6">
+              <%= text_field_tag :book_title,"", :class => "form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3"> Author :</label>
+            <div class="col-md-6">
+              <%= text_field_tag :first_name,"", :class => "form-control" %>
+            </div>
+          </div>
+          <div id="book1">
+            <div class="form-group">
+               <label class="col-md-3"> ISBN :</label>
+               <div class="col-md-6">
+                  <%= text_field_tag :isbn,"", :class => "form-control" %>
                </div>
-               <div class="form-group margin_bottom10px">
-                  <label class="col-md-3" for=""> Title
-                  :</label>
-                  <div class="col-md-6">
-                      <%= text_field_tag :book_title,"", :class => "form-control" %>
-                     
-                  </div>
+            </div>
+          </div>
+          <div id="book1">
+            <div class="form-group">
+               <label class="col-md-3"> Subject Group :</label>
+               <div class="col-md-6">
+                  <%= select_tag 'subject_group_name',options_from_collection_for_select(SubjectGroup.all, 'subject_group_name', 'subject_group_name'), :prompt => "Select subject Group",:class => "form-control",style: "background-color: #eee;"%>
                </div>
-               <div class="form-group">
-                  <label class="col-md-3"> Author
-                  :</label>
-                  <div class="col-md-6">
-                     <%= text_field_tag :first_name,"", :class => "form-control" %>
-                  </div>
-               </div>
-               <div id="book1">
-                  <div class="form-group">
-                     <label class="col-md-3"> ISBN:</label>
-                     <div class="col-md-6">
-                        <%= text_field_tag :isbn,"", :class => "form-control" %>
-                     </div>
-                  </div>
-               </div>
-               <div id="book1">
-                  <div class="form-group">
-                     <label class="col-md-3"> Subject group</label>
-                     <div class="col-md-6">
-                        <%= select_tag 'subject_group_name',options_from_collection_for_select(SubjectGroup.all, 'subject_group_name', 'subject_group_name'), :prompt => "Select subject Group",:class => "form-control",style: "background-color: #eee;"%>
-                     </div>
-                  </div>
-               </div>
-               <div class="form-group">
-                  <label class="col-md-3"> Publication Year (YYYY)            :</label>
-                  <div class="col-md-6 no-pad">
-                     <div class="col-md-2"> 
-                        <%= select_tag 'publication_date', options_for_select((2000..Date.today.year).to_a),:prompt => "Select Year",:class => "form-control col-sm-2",style: "background-color: #eee;" %>
-                     </div>
-                     <div class="col-md-8" style="padding-top: 8px;">
-                        ( Specifying only "From:" year will result in items for that year only )
-                     </div>
-                  </div>
-               </div>
-               <div id="book1">
-                  <div class="form-group">
-                     <label class="col-md-3"> Format:</label>
-                     <div class="col-md-6">
-                        <%= text_field_tag :format,"", :class => "form-control" %>
-                     </div>
-                  </div>
-               </div>
-               <div class="form-group">
-                  <label class="col-md-3"> Results per page : </label>
-                  <div class="col-md-6 no-pad">
-                     <div class="col-md-2">
-                        <%= select_tag 'per_page',options_for_select([['10',10], ['20',20],['30',30]]),:class => "form-control" %>
-                     </div>
-                  </div>
-               </div>
-               <div class="form-group">
-                  <label class="col-md-3"> &nbsp;</label>
-                  <div class="col-md-6 no-pad">
-                     <div class="col-md-12 "> 
-                     <span>
-                        <%= button_tag fa_icon("search", text: "Search"), :class => "btnBlack btn-sm", type: :submit %>
-                      </span>
-                      <span>
-                        <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
-                      </span>
-                         
-                     </div>
-                  </div>
-               </div>
-            </fieldset>
-          <% end %>
-      </div>
-      <div class="clearfix"></div>
-   </div>
-</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3"> Publication Year (YYYY) :</label>
+            <div class="col-md-6 no-pad">
+              <div class="col-md-2"> 
+                <%= select_tag 'publication_date', options_for_select((2000..Date.today.year).to_a),:prompt => "Select Year",:class => "form-control col-sm-2",style: "background-color: #eee;" %>
+              </div>
+              <div class="col-md-8" style="padding-top: 8px;">
+                ( Specifying only "From:" year will result in items for that year only )
+              </div>
+            </div>
+          </div>
+          <div id="book1">
+            <div class="form-group">
+                <label class="col-md-3"> Format :</label>
+                <div class="col-md-6">
+                  <%= text_field_tag :format,"", :class => "form-control" %>
+                </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3"> Results per page : </label>
+            <div class="col-md-6 no-pad">
+              <div class="col-md-2">
+                <%= select_tag 'per_page',options_for_select([['10',10], ['20',20],['30',30]]),:class => "form-control" %>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3"> &nbsp;</label>
+            <div class="col-md-6 no-pad">
+              <div class="col-md-12 "> 
+                <span>
+                  <%= button_tag fa_icon("search", text: "Search"), :class => "btnBlack btn-sm", type: :submit %>
+                </span>
+                <span>
+                  <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
+                </span>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      <% end %>
+    </div>
+    <div class="clearfix"></div>
+  </div>
 </div>

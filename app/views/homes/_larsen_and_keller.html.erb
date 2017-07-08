@@ -30,16 +30,16 @@
           <li class="active">
             <%= link_to '<i class="glyphicon glyphicon-home"></i>'.html_safe, homes_path, :class => "scroll" %>
           </li>
-          <li><%= link_to "About us", about_homes_path, remote: true %></li>
-          <li><%= link_to 'Catalogue', download_pdf_homes_url, target: "_blank" %></li>
-          <li><%= link_to "Contact Us", contact_homes_path, remote: true %></li>
+          <li><%= link_to "ABOUT US", about_homes_path, remote: true %></li>
+          <li><%= link_to 'CATALOGUE', download_pdf_homes_url, target: "_blank" %></li>
+          <li><%= link_to "CONTACT US", contact_homes_path, remote: true %></li>
          </ul>
 
         
           <div class="custom-search-input show_in_dextop ">
           <%= form_tag(search_homes_path, :method => "get",:remote => true) do %> 
             <div class="input-group">
-              <%= text_field_tag :book_title, params[:search],required: true,placeholder: "Search by Title " %>
+              <%= text_field_tag :book_title, params[:search],required: true,placeholder: "Search" %>
               <span class="input-group-btn">
                 <%= button_tag(type: 'submit', class: "btn btn-info btn-lg") do %>
                  <i class="glyphicon glyphicon-search"></i>

@@ -1,3 +1,7 @@
-$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/author_list', :object => @books)%>");
-$("#pagination-frontend").html("<%= escape_javascript(will_paginate @books, renderer: BootstrapPagination::Rails)%>");
-$('.pagination a').attr('data-remote','true')
+<% if @publisher.domain_name == 'syrawoodpublishinghouse' %>
+	$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/syrawood_get_author', :object => @books)%>");
+<% else %>
+	$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/author_list', :object => @books)%>");
+<% end %>
+	$("#pagination-frontend").html("<%= escape_javascript(will_paginate @books, renderer: BootstrapPagination::Rails)%>");
+	$('.pagination a').attr('data-remote','true')

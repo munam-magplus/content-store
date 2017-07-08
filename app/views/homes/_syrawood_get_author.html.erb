@@ -6,7 +6,7 @@
           <h2 class="heading1 border_bottom mb20">Author(s): </h2>
           <ul class="pagination pagination-sm nomargin">
             <% ('A'..'Z').each do |letter| %> 
-            <li><%= link_to letter, syrawood_get_author_homes_path(:letter=>letter)%>
+            <li><%= link_to letter, get_author_homes_path(:letter=>letter)%>
             </li>
             <%end%>
           </ul>
@@ -16,7 +16,7 @@
             <%if @books.present?%>
               <%@books.each do |book| %>  
                 <li class="ln-R ln-r">
-                  <%= link_to truncate(book.books_contributor.first_name+" "+book.books_contributor.last_name, length: 14), syrawood_books_by_author_homes_path(:first_name => book.books_contributor.first_name,:last_name => book.books_contributor.last_name), :remote => true %>
+                  <%= link_to truncate(book.books_contributor.first_name+" "+book.books_contributor.last_name, length: 14), books_by_author_homes_path(:first_name => book.books_contributor.first_name,:last_name => book.books_contributor.last_name), :remote => true %>
                 </li>
               <%end%>
             <%end%>

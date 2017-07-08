@@ -1,81 +1,81 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ContentStore</title>
+    <% unless @publisher.present? %>
+      <title>ContentStore</title>
+    <% else %>
+      <title><%= @publisher.domain_name %></title>
+    <% end %>
+
     <%= csrf_meta_tags %>
     <% if defined? @css_root %>
       <%= stylesheet_link_tag  @css_root, media: 'all', 'data-turbolinks-track': 'reload' %>
-      
     <% else %>
       <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <% end %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  > -->
-  <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
-  <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
-  <script src="https://use.fontawesome.com/9575fa9c22.js"></script>
-  <!-- Custom styles for this template -->
-  <!-- Google_font-->
-
-  
-  <!-- Internal CSS -->
-  <!--Animation css-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
+    <script src="https://use.fontawesome.com/9575fa9c22.js"></script>
+    <!-- Custom styles for this template -->
+    <!-- Google_font-->
+    
+    <!-- Internal CSS -->
+    <!--Animation css-->
     <%= javascript_include_tag('pace.min.js') %>
     <%= javascript_include_tag('modernizr.min.js') %>
     <%= javascript_include_tag('jquery.app.js') %>
     <%= javascript_include_tag('grid.locale-en.js') %>  
-   <!--Icon-fonts css-->
-  <!-- javascript files -->
+    <!--Icon-fonts css-->
+    <!-- javascript files -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"</script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-  <script>
-  $( function() {
-    $( "#from" ).datepicker({
-      dateFormat: 'yy-mm-dd',
-      changeMonth: true,
-      changeYear: true
-    });
-    $( "#to" ).datepicker({
-      dateFormat: 'yy-mm-dd',
-      changeMonth: true,
-      changeYear: true
-    });
-     $( "#from1" ).datepicker({
-      dateFormat: 'yy-mm-dd',
-      changeMonth: true,
-      changeYear: true
-    });
-    $( "#to1" ).datepicker({
-      dateFormat: 'yy-mm-dd',
-      changeMonth: true,
-      changeYear: true
-    });
-    $( "#date_of_birth" ).datepicker({
-      dateFormat: 'yy-mm-dd',
-      changeMonth: true,
-      changeYear: true
-    });
-    $( "#date_of_death" ).datepicker({
-      dateFormat: 'yy-mm-dd',
-      changeMonth: true,
-      changeYear: true
-    });
-    $( "#date_of_issue" ).datepicker({
-      dateFormat: 'yy-mm-dd',
-      changeMonth: true,
-      changeYear: true
-    });
-  } );
-  </script>
-</head>
+    <script>
+    $( function() {
+      $( "#from" ).datepicker({
+        dateFormat: 'yy-mm-dd',
+        changeMonth: true,
+        changeYear: true
+      });
+      $( "#to" ).datepicker({
+        dateFormat: 'yy-mm-dd',
+        changeMonth: true,
+        changeYear: true
+      });
+       $( "#from1" ).datepicker({
+        dateFormat: 'yy-mm-dd',
+        changeMonth: true,
+        changeYear: true
+      });
+      $( "#to1" ).datepicker({
+        dateFormat: 'yy-mm-dd',
+        changeMonth: true,
+        changeYear: true
+      });
+      $( "#date_of_birth" ).datepicker({
+        dateFormat: 'yy-mm-dd',
+        changeMonth: true,
+        changeYear: true
+      });
+      $( "#date_of_death" ).datepicker({
+        dateFormat: 'yy-mm-dd',
+        changeMonth: true,
+        changeYear: true
+      });
+      $( "#date_of_issue" ).datepicker({
+        dateFormat: 'yy-mm-dd',
+        changeMonth: true,
+        changeYear: true
+      });
+    } );
+    </script>
+
+  </head>
   <body>
     <%= yield %>
   </body>

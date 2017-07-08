@@ -9,22 +9,24 @@
       </div>
     </div>
     <div id="owl-example" class="owl-carousel" style="clear:both;">
-    <% @books.each do |f|%>
-      <div class="item">
-        <div class="item_box clearfix">
-          <div class="image_box"> 
-            <%= link_to image_tag(f.logo.url(:original), :class => "img-responsive center-block"), books_description_homes_path(:book_id => f.id), :remote => true %>
-          </div>
-          <div class="item_info">
-            <p><%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id), :remote => true %></p>
-            <b><%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14)%></b> </div>
-          <div class="item_btn_box">
-            <ul>
-              <li><a href="#"> Read More</a></li>
-            </ul>
+    <% if @books.present? %>
+      <% @books.each do |f|%>
+        <div class="item">
+          <div class="item_box clearfix">
+            <div class="image_box"> 
+              <%= link_to image_tag(f.logo.url(:original), :class => "img-responsive center-block"), books_description_homes_path(:book_id => f.id), :remote => true %>
+            </div>
+            <div class="item_info">
+              <p><%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id), :remote => true %></p>
+              <b><%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14)%></b> </div>
+            <div class="item_btn_box">
+              <ul>
+                <li><a href="#"> Read More</a></li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
     </div>
   </div>

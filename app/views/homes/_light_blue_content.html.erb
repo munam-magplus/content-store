@@ -28,7 +28,7 @@
                 <% end %>
             </div>
             <div class="pull-right advSearch"> 
-              <%= link_to syrawood_advance_search_homes_path,remote: true  do %>
+              <%= link_to advance_search_homes_path,remote: true  do %>
                 <i class="fa fa-plus-circle" style="font-size:1.9em; color:#fff" ></i>&nbsp; 
               <% end %>
             </div>
@@ -68,8 +68,8 @@
               <% end %>
             </ul>
           </li>
-          <li><%= link_to "AUTHOR / EDITOR",syrawood_get_author_homes_path(:letter => 'a'), :remote => true %></li>
-          <li ><%= link_to "TITLE",syrawood_books_by_title_homes_path, :remote => true %></li>
+          <li><%= link_to "AUTHOR / EDITOR", get_author_homes_path(:letter => 'a'), :remote => true %></li>
+          <li ><%= link_to "TITLE", books_by_title_homes_path, :remote => true %></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>

@@ -1,5 +1,5 @@
 <html>
-<title>Content Store :: Create Subject</title>
+<title>Content Store :: Create Subject Group</title>
 <!-- Latest compiled and minified CSS -->
     <!-- Header -->
     <%= render :partial => "layouts/top_header"%>
@@ -18,10 +18,10 @@
       <ol class="breadcrumb">
 		<li><a href="#">Home</a></li>
 		<li><a>Manage User Account</a></li>
-		<li><a>Create Subject</a></li>
+		<li><a>Create Subject Group</a></li>
       </ol>
 
-      <h2 class="H2-L1">Create Subject</h2>
+      <h2 class="H2-L1">Create Subject Group</h2>
       <%= form_for @subject, validate: true do |f| %>
         <div class="col-md-6">
           <div class="form-group">
@@ -34,9 +34,9 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Subject Name<sup class="mandatory">*</sup></label>
+            <label for="bookISBN" class="col-sm-4 control-label">Subject Group Name<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-            <%= f.text_field :subject_name, :required => true, :class => "form-control", :placeholder => "Subject Name" %>
+            <%= f.text_field :subject_name, :required => true, :class => "form-control", :placeholder => "Subject Group Name" %>
             </span>
             <div class="clearfix"></div>
           </div>

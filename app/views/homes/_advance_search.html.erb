@@ -7,9 +7,9 @@
     <div class="col-md-6">
       <div class="form-group">
         <label for="taskName" class="col-sm-4 control-label">Book Title:</label>
-        <div class="col-sm-8">
+        <span class="col-sm-8">
           <%= text_field_tag :book_title,"", :class => "form-control" %>
-        </div>
+        </span>
          <div class="clearfix"></div>
       </div>
     </div>
@@ -31,9 +31,9 @@
     <div class="col-md-6">
       <div class="form-group">
         <label for="taskName" class="col-sm-4 control-label">Select Subject Group</label>
-        <div class="col-sm-8">
+        <span class="col-sm-8">
           <%= select_tag 'subject_group_name',options_from_collection_for_select(SubjectGroup.all, 'subject_group_name', 'subject_group_name'), :prompt => "Select subject Group",:class => "form-control",style: "background-color: #eee;"%>
-        </div>
+        </span>
       </div>
     </div>
     <div class="col-md-6">
@@ -55,7 +55,7 @@
       <div class="form-group">
         <label for="bookISBN" class="col-sm-4 control-label">Results Per Page:</label>
         <span class="col-sm-8">
-           <%= select_tag 'per_page',options_for_select([['10',10], ['20',20],['30',30]]),:class => "form-control" %>
+          <%= select_tag 'per_page',options_for_select([['10',10], ['20',20],['30',30]]),:class => "form-control" %>
         </span> <div class="clearfix"></div></div>
     </div>
     <div class="col-md-6">

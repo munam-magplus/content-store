@@ -1,5 +1,5 @@
 <html>
-<title>Content Store :: Create Subject Group</title>
+<title>Content Store :: Create Subject</title>
 <!-- Latest compiled and minified CSS -->
     <!-- Header -->
     <%= render :partial => "layouts/top_header"%>
@@ -18,10 +18,10 @@
       <ol class="breadcrumb">
            <li><a href="#">Home</a></li>
          <li><a>Manage User Account </a></li>
-         <li><a>Create Subject Group</a></li>
+         <li><a>Create Subject</a></li>
       </ol>
 
-      <h2 class="H2-L1">Create Subject Group</h2>
+      <h2 class="H2-L1">Create Subject</h2>
       <%= form_for @subject_group, validate: true do |f| %>
         <div class="col-md-6">
           <div class="form-group">
@@ -34,27 +34,27 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Subject Group Level</label>
+            <label for="taskName" class="col-sm-4 control-label">Subject Level</label>
             <div class="col-sm-8">
-              <%= f.number_field :subject_group_level, :class => "form-control", :placeholder => "Subject Group Level" %>
+              <%= f.number_field :subject_group_level, :class => "form-control", :placeholder => "Subject Level" %>
             </div>
             <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Subject Group Code<sup class="mandatory">*</sup> </label>
+            <label for="taskName" class="col-sm-4 control-label">Subject Code<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.text_field :subject_group_code, :required => true, :class => "form-control", :placeholder => "Subject Group Code" %>
+              <%= f.text_field :subject_group_code, :required => true, :class => "form-control", :placeholder => "Subject Code" %>
             </div>
             <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Subject Group Name<sup class="mandatory">*</sup></label>
+            <label for="bookISBN" class="col-sm-4 control-label">Subject Name<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-            <%= f.text_field :subject_group_name, :required => true, :class => "form-control", :placeholder => "Subject Group Name" %>
+            <%= f.text_field :subject_group_name, :required => true, :class => "form-control", :placeholder => "Subject Name" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -115,9 +115,9 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Select Subject</label>
+            <label for="taskName" class="col-sm-4 control-label">Select Subject Group</label>
             <span class="col-sm-8">
-              <%= f.select 'subject_id',options_from_collection_for_select(Subject.all, :id, :subject_name),{ :prompt => "Select Subject"},{:class => "form-control" , style: "background-color: #eee;" } %>
+              <%= f.select 'subject_id',options_from_collection_for_select(Subject.all, :id, :subject_name),{ :prompt => "Select Subject Group"},{:class => "form-control" , style: "background-color: #eee;" } %>
             </span> 
             <div class="clearfix"></div>
           </div>

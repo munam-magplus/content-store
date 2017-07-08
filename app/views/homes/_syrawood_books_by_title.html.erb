@@ -8,7 +8,7 @@
       <ul class="pagination pagination-sm nomargin">
         <% ('A'..'Z').each do |letter| %> 
           <li>
-            <%= link_to letter, syrawood_books_by_title_homes_path(:letter=>letter)%>
+            <%= link_to letter, books_by_title_homes_path(:letter=>letter)%>
           </li>
         <%end%>
       </ul>

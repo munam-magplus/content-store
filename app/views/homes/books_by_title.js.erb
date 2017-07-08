@@ -1,7 +1,9 @@
 <% if  @publisher.domain_name == 'larsen-keller' %>
-$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/larsen_and_keller_books_by_title', :object => @books)%>");
+	$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/larsen_and_keller_books_by_title', :object => @books)%>");
+<% elsif @publisher.domain_name == 'syrawoodpublishinghouse' %>
+	$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/syrawood_books_by_title', :object => @books)%>");
 <% else %>
-$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/books_by_title', :object => @books)%>");
+	$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/books_by_title', :object => @books)%>");
 <% end %>
-$("#pagination-frontend").html("<%= escape_javascript(will_paginate @books, renderer: BootstrapPagination::Rails)%>");
-$('.pagination a').attr('data-remote','true')
+	$("#pagination-frontend").html("<%= escape_javascript(will_paginate @books, renderer: BootstrapPagination::Rails)%>");
+	$('.pagination a').attr('data-remote','true')

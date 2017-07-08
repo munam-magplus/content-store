@@ -29,20 +29,11 @@ class HomesController < ApplicationController
   def books_by_author
     @ids = @publisher.subject_groups
     @books = BooksPrimaryContentInformation.joins(:books_contributor).where('first_name = ? AND last_name = ?',"#{params[:first_name]}","#{params[:last_name]}").paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
-  end
-
-  def syrawood_books_by_author
-    @ids = @publisher.subject_groups
-    @books = BooksPrimaryContentInformation.joins(:books_contributor).where('first_name = ? AND last_name = ?',"#{params[:first_name]}","#{params[:last_name]}").paginate(:page => params[:page], :per_page => 10)
-  end
+  end 
 
   def get_author
     @books = @publisher.books_primary_content_informations.joins(:books_contributor).where("substr(first_name,1,1) IN (?)",params[:letter]).paginate(:page => params[:page], :per_page => 10).order('first_name ASC')
-  end
-
-  def syrawood_get_author
-    @books = @publisher.books_primary_content_informations.joins(:books_contributor).where("substr(first_name,1,1) IN (?)",params[:letter]).paginate(:page => params[:page], :per_page => 10).order('first_name ASC')
-  end
+  end  
   
   def books_by_title
     if !params[:letter].present?
@@ -56,14 +47,7 @@ class HomesController < ApplicationController
       format.js
     end
   end
-
-  def syrawood_books_by_title
-    @books = @publisher.books_primary_content_informations.where("substr(book_title,1,1) IN (?)",params[:letter]).paginate(:page => params[:page], :per_page => 10)
-    respond_to do |format|
-      format.js
-    end
-  end
-
+  
   def refine_search_by_subject
     @subject = Subject.find(params[:subject_id])
     subjectbook = @subject.subject_groups
@@ -96,7 +80,7 @@ class HomesController < ApplicationController
     else
       sort_order = "book_title asc"
     end
-    @books = @publisher.books_primary_content_informations.joins(:subject_groups,:books_content_pricing,:books_contributor).filter(params.slice(:book_title , :first_name, :isbn, :subject_group_name, :publication_date, :format)).order(sort_order).paginate(:page => params[:page], :per_page => 5)
+    @books = @publisher.books_primary_content_informations.joins(:subject_groups,:books_content_pricing,:books_contributor).filter(params.slice(:book_title , :first_name, :isbn, :subject_group_name, :publication_date, :format)).order(sort_order).paginate(:page => params[:page], :per_page => params[:per_page])
     @ids = @publisher.subject_groups
   end
 

@@ -43,10 +43,6 @@ Rails.application.routes.draw do
       get 'contact'
       get 'download_pdf'
       get 'search'
-      get 'syrawood_get_author'
-      get 'syrawood_books_by_title'
-      get 'syrawood_advance_search'
-      get 'syrawood_books_by_author'
     end
   end
 

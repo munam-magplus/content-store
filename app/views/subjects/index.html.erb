@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>Content Store :: Search Subject</title>
+<title>Content Store :: Search Subject Group</title>
 <!-- Latest compiled and minified CSS -->
     <!-- Header -->
    <%= render :partial => "layouts/top_header"%>
@@ -20,10 +20,10 @@
       <ol class="breadcrumb">
          <li><a href="#">Home</a></li>
        <li><a> Publisher Setup</a></li>
-       <li><a>Search Subject</a></li>
+       <li><a>Search Subject Group</a></li>
       </ol>
       
-      <h2 class="H2-L1">Search Subject</h2>
+      <h2 class="H2-L1">Search Subject Group</h2>
       <%= form_tag search_subjects_path, :method => 'get', :remote => true do %>
         <div class="col-md-6">
           <div class="form-group">
@@ -36,9 +36,9 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Subject Name</label>
+            <label for="bookISBN" class="col-sm-4 control-label">Subject Group Name</label>
             <span class="col-sm-8">
-            <%= text_field_tag :subject_name, params[:subject_name],:class => "form-control", :placeholder => "Subject Name" %>
+            <%= text_field_tag :subject_name, params[:subject_name],:class => "form-control", :placeholder => "Subject Group Name" %>
             </span> 
             <div class="clearfix"></div>
           </div>
