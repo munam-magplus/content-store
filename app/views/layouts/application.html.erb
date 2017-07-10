@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <% unless @publisher.present? %>
-      <title>ContentStore</title>
-    <% else %>
-      <title><%= @publisher.domain_name %></title>
-    <% end %>
-
+    
     <%= csrf_meta_tags %>
     <% if defined? @css_root %>
+      <title><%= @publisher.domain_name %></title>
+   
       <%= stylesheet_link_tag  @css_root, media: 'all', 'data-turbolinks-track': 'reload' %>
+
     <% else %>
       <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <% end %>

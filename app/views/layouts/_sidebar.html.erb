@@ -83,58 +83,18 @@
                     <li><%= link_to "Create New Book", new_book_path%></li>
                     <li><%= link_to "Search Book", search_books_path%></li>
                     <li>
-                      <%= link_to "Upload Book's Metadata", metadata_sheet_books_path %>
-                    </li>
-                   <!--  <li>
-                      <a href="#">ONIX Input</a>
+                      <%= link_to "Upload Book's Metadata", metadata_sheet_for_books_primary_information_books_path %>
                     </li>
                     <li>
-                      <a href="#">ONIX Supplement Sheet</a>
-                    </li>  -->
-                   <!--  <li><%= link_to "Search Book", search_books_path%></li>
-                    <li><%= link_to "Book Metadata Sheet", metadata_sheet_books_path%></li>
-                  </ul>
-              </li>
-              <li>
-                <a class="submenu"><span class="fa fa-angle-right"></span>Journals</a>
-                  <ul class="nav-multi__list nav-multi" style="display:none">
-                    <li>
-                      <a href="#">Create New Journal</a>
+                      <%= link_to "Upload Book's Contributor's Metadata", metadata_sheet_for_books_contributor_books_path %>
                     </li>
-                    <li>
-                      <a href="#">Search Journal</a>
-                    </li>
-                    <li>
-                      <a href="#">Article Metadata Sheet</a>
-                    </li>
-                    <li>
-                      <a href="#">Create Articles</a>
-                    </li>
-                    <li>
-                      <a href="#">Search Articles</a>
-                    </li>
-                    <!-- <li><%= link_to "Create New Journal", new_journal_path %></li>
-                    <li><%= link_to "Search Journal", journals_path%></li>
-                    <li><%= link_to "Article Metadata Sheet", metadata_sheet_articles_path%></li>
-                    <li><%= link_to "Create Articles", new_article_path %></li>
-                    <li><%= link_to "Search Articles", search_articles_path %></li> -->
                   </ul>
               </li>
               <li>
                 <a class="submenu"><span class="fa fa-angle-right"></span>Subject</a>
                   <ul class="nav-multi__list nav-multi" style="display:none">
-                    <!-- <li>
-                      <a href="#">Create Subject Group</a>
-                    </li>
-                    <li>
-                      <a href="#">Search Subject Group</a>
-                    </li>
-                    <li>
-                      <a href="#">Upload Subject Group Metadata Sheet</a>
-                    </li> -->
                     <li><%= link_to "Create Subject", new_subject_group_path %></li>
                     <li><%= link_to "Search Subject", subject_groups_path%></li>
-                    <!-- <li><%= link_to "Upload Subject Metadata Sheet", metadata_sheet_subject_groups_path %></li> -->
                   </ul>
               </li>
               <li>

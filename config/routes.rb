@@ -150,10 +150,12 @@ Rails.application.routes.draw do
   resources :books do
     collection do
       get 'search'
-      get 'metadata_sheet'
+      get 'metadata_sheet_for_books_primary_information'
+      get 'metadata_sheet_for_books_contributor'
       get 'onix_input'
       get 'onix_supp_sheet'
-      post :import
+      post 'import'
+      post 'import_contributor'
     end
   end
 

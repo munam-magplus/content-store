@@ -2,17 +2,23 @@ class BooksController < ApplicationController
   #before_action :authenticate_user!
 
   def new
-     @book = BooksPrimaryContentInformation.new
+    @book = BooksPrimaryContentInformation.new
     @book_contributor = BooksContributor.new
     @book_content_pricing = BooksContentPricing.new
     @book_content_access_rule  = BooksContentAccessRule.new
   end
 
   def import
+    #  In this method,we get the entire Excel file in params.
+    # in params[:file], we get the path of the excel file.
     spreadsheet = open_spreadsheet(params[:file])
     header = spreadsheet.row(1)
+    # we fetch first row elements( that act as column names of table) in header
     (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
+      # we get excel's row elements(that are attributes of table) in header
+      # and in spreadsheet.row(i) we get data for record
+      # here we transpose inorder to map each column and data for record insertion
       @book = BooksPrimaryContentInformation.new
       @book.attributes = row.to_hash.slice(*row.to_hash.keys)
       @book.save!
@@ -20,16 +26,38 @@ class BooksController < ApplicationController
     redirect_to :back
   end
 
+  def import_contributor
+    spreadsheet = open_spreadsheet(params[:file])
+    header = spreadsheet.row(1)
+    (2..spreadsheet.last_row).each do |i|
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+       @book = BooksContributor.new
+      @book.attributes = row.to_hash.slice(*row.to_hash.keys)
+      @book.save!
+    end
+    redirect_to :back
+  end
+
   def open_spreadsheet(file)
+     #  the details of Excel sheet are holded in file
     case File.extname(file.original_filename)
+      # in file.original_filename, we get the name of the excel sheet.
+      #  the File.extname is a method that is used to fetch the extension 
+      # of file
     when ".csv" then Csv.new(file.path, nil, :ignore)
-    when ".xls" then Roo::Spreadsheet.open(file.path, extension: :xls) 
+    when ".xls" then Roo::Spreadsheet.open(file.path, extension: :xls)
+     # in file.path,we get the path in which the excel sheet is stored
+     # Roo:Spreadsheet.open(file.path, extension: :xls) helps us to open the 
+     # Excel Spreadsheet
     when ".xlsx" then Excelx.new(file.path, nil, :ignore)
     else raise "Unknown file type: #{file.original_filename}"
     end
   end
 
-  def metadata_sheet
+  def metadata_sheet_for_books_primary_information
+  end
+
+  def metadata_sheet_for_books_contributor
   end
 
   def create
