@@ -1,22 +1,27 @@
 <!--Main Content Start -->
   <section class="content">
-    <!--Nyresearch Start-->
- 
-    <%= render :partial => "#{@publisher.theme_name}"%>    
-      
-  <% if @publisher.domain_name == 'larsen-keller'%>
-  <div class="container mt20">
-  <% else %>
-    <div class="container-fluid">
-  <% end %>
-      <div class="row">  
-        <% if ["red_content","green_content","haylemedical"].include? @publisher.theme_name %>
-          <div class="col-sm-4 col-md-3 ">
-            <%= render :partial => "sidebar_theme1"%>
-          </div>
-        <% end %>  
+    <!--Header-->
+      <%= render :partial => "#{@publisher.theme_name}"%> 
+    <!--HeaderEnd-->
 
-        <% if @publisher.domain_name == "nyresearchpress" %>
+    <!--Sidebar Start--> 
+
+      <% if @publisher.theme_name == 'larsen-keller'%>
+        <div class="container mt20">
+      <% else %>
+        <div class="container-fluid">
+      <% end %>
+
+      <div class="row">  
+        <% if ['red_content','green_content','haylemedical'].include? @publisher.theme_name %>
+          <div class="col-sm-4 col-md-3 ">
+            <%= render :partial => "subject_sidebar"%>
+          </div>
+        <% end %> 
+
+      <!--Sidebar End-->   
+
+        <% if @publisher.theme_name == 'red_content' %>
     
           <div class="col-sm-8 col-md-9 mar-b50" >
             <div id= 'pub_book'>
@@ -28,25 +33,20 @@
             </div>
           </div>
 
-        <% elsif @publisher.domain_name == "callistoreference" %>
-
+        <% elsif @publisher.theme_name == 'green_content' %>
           <div class="col-sm-8 col-md-9 mar-b50" > 
-            
-              <div id='pub_book'>  
-                <h1 class="sectionHeading">Featured Books</h1> 
-                <div class="col-sm-12 no-lr-pad">
-                  <%= render :partial => 'callistoreference_publisher_book' %>
-                </div>
-              
+            <div id='pub_book'>  
+              <h1 class="sectionHeading">Featured Books</h1> 
+              <div class="col-sm-12 no-lr-pad">
+                <%= render :partial => 'green_content_publisher_book' %>
+              </div>
             </div>
             </br>
           </div>
 
-    
-        <% elsif @publisher.domain_name == "syrawoodpublishinghouse" %>
-
+        <% elsif @publisher.theme_name == 'light_blue_content' %>
           <div id= 'pub_book'>
-            <%= render :partial => 'syrawood_publisher_book' %>
+            <%= render :partial => 'light_blue_content_publisher_book' %>
           </div>
 
         <% elsif @publisher.domain_name == "mlbooksinternational" %>
@@ -54,7 +54,7 @@
            <!--  <div class="col-sm-1">
               <div class="border_wrapper padding10px mt5"> -->
                 <div id= 'pub_book'>
-                  <%= render :partial => 'publisher_book' %>
+                  <%= render :partial => 'mlbooksinternational_publisher_book' %>
                 </div>
               <!-- </div> 
             </div> -->

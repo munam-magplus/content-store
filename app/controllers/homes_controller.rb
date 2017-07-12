@@ -6,12 +6,14 @@ class HomesController < ApplicationController
 
   def index
     begin
-      unless @publisher.books_primary_content_informations.blank?
-        if (@publisher.domain_name == 'mlbooksinternational') ||(@publisher.domain_name == 'callistoreference') || ( @publisher.domain_name == 'haylemedical')
-        @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10)
+
+      unless @publisher.books_primary_content_informations.blank? 
+        if ['red_content','light_blue_content'].include? @publisher.theme_name
+          @books = @publisher.books_primary_content_informations.joins(:books_contributor)
+
         else
-         @books = @publisher.books_primary_content_informations.joins(:books_contributor)
-         end
+          @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10)
+        end
       end
     rescue => e # catches StandardError (don't use rescue Esception => e)
       logger.error e.message

@@ -1,4 +1,4 @@
-<% if @publisher.domain_name == "syrawoodpublishinghouse" %> 
+<% if @publisher.theme_name == "light_blue_content" %> 
   <div class="container" style="padding-bottom:90px;">
     <div class="row">
       <section class="col-md-12  mt30">
@@ -54,10 +54,15 @@
               <p>
                 <strong>Address</strong>
               </p>
-              <p>Syrawood Publishing House,<br> 750 Third Avenue, 9th Floor,<br> New York, NY 10017, USA <br></p>
+              <p>
+               <!-- @publisher.address -->
+
+              </p>
               <p>
                 <strong>Email</strong><br>
-               <span class="clr_red"><i class="glyphicon glyphicon-envelope"></i> </span> <a href="mailto:info@syrawoodpublishinghouse.com">info@syrawoodpublishinghouse.com</a></p>
+               <span class="clr_red"><i class="glyphicon glyphicon-envelope"></i> </span> 
+               <%= link_to @publisher.contact_email, "mailto:#{@publisher.contact_email}"%>
+               </p>
             </div>
             <div class="clearfix"></div>
            </div>
@@ -65,7 +70,7 @@
       </section>
     </div>
   </div>
-<% elsif @publisher.domain_name == "mlbooksinternational" %>
+<% elsif @publisher.theme_name == "mlbooksinternational" %>
   <div class="border_wrapper padding10px mt5">
     <div class="row">
       <div class="col-sm-12">
@@ -116,10 +121,8 @@
           <div class="col-sm-4">
             <div class="contact">      
               <h4 class="text_uppercase heading">ADDRESS</h4>
-              <p><b>ML Books International</b></p>
-              <p>225, Prakashdeep Building, 22 Ansari Road, <br>
-              Daryaganj, New Delhi-110002 <br>
-              Email-<a href="mailto:marc@mlbooksinternational.com">marc@mlbooksinternational.com</a>
+              <p><!-- @publisher.address -->
+              Email-<%= link_to @publisher.contact_email, "mailto:#{@publisher.contact_email}"%>
               </p>
             </div>
           </div>
@@ -128,7 +131,7 @@
     </div>
   </div>
 
-<% elsif @publisher.domain_name == "callistoreference" %>
+<% elsif @publisher.theme_name == "green_content" %>
 
       
       <div class="row">
@@ -190,13 +193,15 @@
           </form></div>
          
            <div class="col-sm-4">
-           <div class="text-left contact-text" style="line-height: 22px;">Callisto Reference,<br>118-35 Queens Blvd., Suite 400,<br>
-Forest Hills, NY 11375, USA<br>
+           <div class="text-left contact-text" style="line-height: 22px;">
+           <!-- @publisher.address --><br>
 
-<span style="text-transform:lowercase;"><a href="http://www.callistoreference.com">www.callistoreference.com</a></span>
+<span style="text-transform:lowercase;">
+  <%= link_to @publisher.domain_name, "http://www.#{@publisher.domain_name}"%>
+</span>
 
 <br>Email-<span style="text-transform:lowercase;">
-<a href="mailto:info@callistoreference.com">info@callistoreference.com</a></span>
+<%= link_to @publisher.contact_email, "mailto:#{@publisher.contact_email}"%></span>
 
 
 </div>
@@ -223,7 +228,7 @@ Forest Hills, NY 11375, USA<br>
           </div>
          
  
-<% elsif @publisher.domain_name == "larsen-keller" %> 
+<% elsif @publisher.theme_name == "larsen-keller" %> 
   <div  style="padding-bottom:90px;">
     <div class="row">
       <section class="col-md-12  mt30">
@@ -279,10 +284,10 @@ Forest Hills, NY 11375, USA<br>
               <p>
                 <strong>Address</strong>
               </p>
-              <p>Larsen & Keller,<br>5 Penn Plaza, 19th Floor,<br> New York, NY 10017, USA<br>www.larsen-keller.com<br></p>
+              <p><!-- @publisher.address --></p>
               <p>
                 <strong>Email</strong><br>
-               <span class="clr_red"><i class="glyphicon glyphicon-envelope"></i> </span> <a href="mailto:info@syrawoodpublishinghouse.com">info@larsen-keller.com</a></p>
+               <span class="clr_red"><i class="glyphicon glyphicon-envelope"></i> </span> <%= link_to @publisher.contact_email, "mailto:#{@publisher.contact_email}"%></p>
             </div>
             <div class="clearfix"></div>
            </div>
@@ -290,7 +295,7 @@ Forest Hills, NY 11375, USA<br>
       </section>
     </div>
   </div>      
-<% elsif @publisher.domain_name == "haylemedical" %>
+<% elsif @publisher.theme_name == "haylemedical" %>
   <div class="row">
     <div class="col-sm-12 ">
       <div class="border_wrapper padding10px">
@@ -339,11 +344,9 @@ Forest Hills, NY 11375, USA<br>
               </div>
               <div class="col-sm-4">
                 <h1 class="text_uppercase contact_heading">Address</h1>
-                <p><b>Hayle Medical,</b></p>
-                <p>750 Third Avenue, 9th floor,<br>
-                New York, NY 10017, USA<br>
-                <a href="http://www.haylemedical.com/home">www.haylemedical.com</a><br>
-                <b>Email-</b><a href="mailto:info@haylemedical.com">info@haylemedical.com</a>
+                <p><!-- @publisher.address --><br>
+                  <%= link_to @publisher.domain_name, "http://www.#{@publisher.domain_name}"%><br>
+                <b>Email-</b><%= link_to @publisher.contact_email, "mailto:#{@publisher.contact_email}"%>
                 </p>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6044.328639547161!2d-74.003225!3d40.7584105!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259b352d8f061%3A0x86c598ed2f832442!2s612+W+37th+St%2C+New+York%2C+NY+10018%2C+USA!5e0!3m2!1sen!2sin!4v1408957590195" width="100%" height="350" frameborder="0" style="border:0"></iframe>
                 <!-- <img src="./templates/template1/haylmed/images/contactus-img.png" alt="" title="" /> -->

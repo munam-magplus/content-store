@@ -1,6 +1,6 @@
-<% if @publisher.domain_name == "larsen-keller" %>
+<% if @publisher.theme_name == "larsen-keller" %>
 $("#pub_book").html("<%= escape_javascript(render :partial => 'homes/larsen_and_keller_books_search_results', :locals => {:object => @books, :ids => @ids})%>");
-<% elsif @publisher.domain_name == "syrawoodpublishinghouse" %>
+<% elsif @publisher.theme_name == "light_blue_content" %>
 $("#pub_book").html("<%= escape_javascript(render :partial => 'homes/syrawood_books_search_results', :locals => {:object => @books, :ids => @ids})%>");
 <% else %>
 $("#pub_book").html("<%= escape_javascript(render :partial => 'homes/books_search_results', :locals => {:object => @books, :ids => @ids})%>");
