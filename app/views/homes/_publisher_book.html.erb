@@ -13,9 +13,9 @@
                     <div class="cover">
                       <%= link_to image_tag("http://www.nyresearchpress.com/static/templates/template1/nysp/thumbnails/#{f.isbn}-T-FC.jpg"),books_description_homes_path(:book_id => f.id), :remote => true %>
                       <div class="details">
-                        <h3 class="title"><%= link_to truncate(f.book_title, length: 24), books_description_homes_path(:book_id => f.id), :remote => true %>
+                        <h3 class="title"><%= link_to truncate(f.book_title.presence || "", length: 24), books_description_homes_path(:book_id => f.id), :remote => true %>
                         </h3>
-                        <h4 class="author"><%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14)%></h4>
+                        <h4 class="author"><%= truncate(f.books_contributor.first_name.presence || "" +" "+f.books_contributor.last_name.presence || "", length: 14)%></h4>
                       </div>
                     </div>
                   </div>
