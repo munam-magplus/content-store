@@ -5,21 +5,23 @@
     <div class="col-md-12 ">
       <div class="carousel carousel-showmanymoveone slide bx-wrapper" id="carousel123">
         <div class="carousel-inner">
-          <% @books.each_with_index do |f,index| %>
-            <div class="item <%= 'active' if index == 0 %>">
-              <div class="col-xs-12 col-sm-6 col-md-3">
-                <div class="result media-result ebook">
-                  <div class="cover">
-                    <%= link_to image_tag("http://www.nyresearchpress.com/static/templates/template1/nysp/thumbnails/#{f.isbn}-T-FC.jpg"),books_description_homes_path(:book_id => f.id), :remote => true %>
-                    <div class="details">
-                      <h3 class="title"><%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id), :remote => true %>
-                      </h3>
-                      <h4 class="author" title=">Betty Karasek"><%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14)%></h4>x
+          <% if @books.present? %>
+            <% @books.each_with_index do |f,index| %>
+              <div class="item <%= 'active' if index == 0 %>">
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                  <div class="result media-result ebook">
+                    <div class="cover">
+                      <%= link_to image_tag("http://www.nyresearchpress.com/static/templates/template1/nysp/thumbnails/#{f.isbn}-T-FC.jpg"),books_description_homes_path(:book_id => f.id), :remote => true %>
+                      <div class="details">
+                        <h3 class="title"><%= link_to truncate(f.book_title, length: 24), books_description_homes_path(:book_id => f.id), :remote => true %>
+                        </h3>
+                        <h4 class="author"><%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14)%></h4>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         </div>
 
