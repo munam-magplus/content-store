@@ -8,7 +8,7 @@ class HomesController < ApplicationController
     begin
       unless @publisher.books_primary_content_informations.blank?
         if (@publisher.domain_name == 'mlbooksinternational') ||(@publisher.domain_name == 'callistoreference') || ( @publisher.domain_name == 'haylemedical')
-        @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 3)
+        @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10)
         else
          @books = @publisher.books_primary_content_informations.joins(:books_contributor)
          end
@@ -52,7 +52,7 @@ class HomesController < ApplicationController
     @subject = Subject.find(params[:subject_id])
     subjectbook = @subject.subject_groups
     subjectbook.each do |subbook| 
-      @books = subbook.books_primary_content_informations.joins(:books_contributor).where('book_title LIKE ? OR first_name LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 1)
+      @books = subbook.books_primary_content_informations.joins(:books_contributor).where('book_title LIKE ? OR first_name LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 10)
     end
     respond_to do |format|
       format.js
@@ -61,7 +61,7 @@ class HomesController < ApplicationController
 
   def refine_search
     @subject_group = SubjectGroup.find(params[:subject_group_id])
-    @books = @subject_group.books_primary_content_informations.joins(:books_contributor).where('book_title LIKE ? OR first_name LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 1)
+    @books = @subject_group.books_primary_content_informations.joins(:books_contributor).where('book_title LIKE ? OR first_name LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
       format.js
     end 
@@ -109,7 +109,7 @@ class HomesController < ApplicationController
   end
   
   def search
-    @books = @publisher.books_primary_content_informations.filter(params.slice(:book_title)).paginate(:page => params[:page], :per_page => 5).order('book_title ASC')
+    @books = @publisher.books_primary_content_informations.filter(params.slice(:book_title)).paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
     books_ids =[]
     get_book_ids(@books,books_ids)
     @ids = books_ids
@@ -127,7 +127,7 @@ class HomesController < ApplicationController
 
   def books_by_category
     @subject_group = SubjectGroup.find(params[:subject_group_id])
-    @books = @subject_group.books_primary_content_informations.paginate(:page => params[:page], :per_page => 1)
+    @books = @subject_group.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
       format.js
     end     
@@ -137,7 +137,7 @@ class HomesController < ApplicationController
     @subject = Subject.find(params[:subject])
     subjectbook = @subject.subject_groups
     subjectbook.each do |subbook| 
-      @books = subbook.books_primary_content_informations.paginate(:page => params[:page], :per_page => 1)
+      @books = subbook.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10)
     end
     respond_to do |format|
       format.js

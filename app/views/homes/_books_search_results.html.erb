@@ -33,21 +33,20 @@
           <div class="col-md-12  no-pad mt-20">
             <div class="col-md-2  col-sm-2 col-xs-12 ">
               <div class="effects search-result "> 
-                <%= link_to image_tag(f.logo.url(:medium),class: "img-responsive"), books_description_homes_path(:book_id => f.id),:remote => true, class: "cover2" %>
+                <%= link_to image_tag("http://www.nyresearchpress.com/static/templates/template1/nysp/thumbnails/#{f.isbn}-T-FC.jpg",class: "img-responsive"), books_description_homes_path(:book_id => f.id),:remote => true, class: "cover2" %>
               </div>
             </div>
             <div class="col-md-10">
               <div class="">
                 <h2>
-                 <%= link_to f.book_title, books_description_homes_path(:book_id => f.id), :remote => true %>
+                 <%= link_to f.book_title.presence || "", books_description_homes_path(:book_id => f.id), :remote => true %>
                 </h2>
                 <h3>By :<span class="dark_yellow"><%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14) %></span>
                 </h3>
                 <p><strong>
                   Description
                   :</strong> 
-                  <% if f.book_blurb.length > 2 %>
-                    <%= truncate(f.book_blurb, length: 30) %>
+                    <%= truncate(f.book_blurb.presence || "", length: 30) %>
                     <%= link_to 'more', '', :class => "read-more-#{f.id}" %>
                     <script>
                       $('.read-more-<%= f.id %>').on('click', function(e) {
@@ -55,8 +54,7 @@
                         $(this).parent().html('<strong> Description:</strong> <%= f.book_blurb %>')
                       })
                     </script>
-                  <% end %>
-                </p>
+                 </p>
               </div>
             </div>  
           </div>

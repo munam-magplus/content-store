@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
   mount Ckeditor::Engine => '/ckeditor'
-  resources :subject_group_books 
+  resources :subject_group_books do 
+    collection do
+      get 'metadata_sheet'
+      post 'import'
+     
+    end
+  end
  
   get 'index_contents/content_code'
 
@@ -46,13 +52,22 @@ Rails.application.routes.draw do
     end
   end
 
-  post 'subject_groups/associate_book'
-
+  resources :subject_groups do 
+    collection do 
+      get 'associate_book'
+      post 'import'
+      get 'metadata_sheet'
+      get 'search'      
+    end
+  end 
+ 
   resources :contacts
 
   resources :subjects do
     collection do
       get 'search'
+      post 'import'
+      get 'metadata_sheet'
     end
   end
 
@@ -123,7 +138,7 @@ Rails.application.routes.draw do
   end
  
   resources :publishers, :access_tokens, :promo_codes, :campaigns, :license_groups, :licenses,
-            :subscriptions, :subject_groups, :member_publishers do 
+            :subscriptions, :member_publishers do 
     collection do 
       post 'save'
       get 'search'
@@ -135,7 +150,6 @@ Rails.application.routes.draw do
       get 'linked_member_publisher'
       get 'subject_group_search'
       get 'title_search'
-      get 'associate_book'
     end
   end
   
