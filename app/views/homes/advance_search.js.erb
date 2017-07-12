@@ -1,10 +1,10 @@
-<% if @publisher.domain_name == 'callistoreference' %>
+<% if @publisher.theme_name == 'green_content' %>
   $("#pub_book").html("<%= escape_javascript(render :partial => 'homes/callisto_advance_search')%>");
   $("#pagination-frontend").html('');
-<% elsif @publisher.domain_name == 'larsen-keller' %>
+<% elsif @publisher.theme_name == 'larsen-keller' %>
 	$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/larsen_and_keller_advance_search')%>");
 	$("#pagination-frontend").html('');
-<% elsif @publisher.domain_name == 'syrawoodpublishinghouse' %>
+<% elsif @publisher.theme_name == 'light_blue_content' %>
 	$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/syrawood_advance_search')%>");
 	$("#pagination-frontend").html('');
 <% else %> 

@@ -1,30 +1,5 @@
-<div class="container" style="padding-bottom:90px;">
- 	<div class="row">
-   	<div class="col-md-12">
-			<h2 class="heading1">FEATURED BOOKS</h2>
-		</div>
-    <div class="clearfix"></div>
-   	<div class="col-md-12 mt20">
-   	  <div id="bookSlider" class="scroll-img">
-        <ul>
-        <% @books.each_with_index do |f,index| %>
-          
-            <li>
-              <%= link_to image_tag(f.logo.url(:original)),books_description_homes_path(:book_id => f.id), :remote => true %>
-            </li>
-          
-        <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 mt30">
-      <%= @publisher.welcome_text.html_safe unless @publisher.welcome_text.blank? %>
-    </div>
-  </div>
-</div>
-<script>
+$(document).ready(function(){
+
  /*global jQuery */
 /*!
  * jQuery Scrollbox
@@ -312,4 +287,6 @@ $.fn.scrollbox = function(config) {
   });
   
 });
-</script>
+
+
+ });	
