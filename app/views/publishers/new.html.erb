@@ -38,9 +38,9 @@
           <div class="col-sm-7">
             <%= f.hidden_field :id, value: @publisher.id %>
            <%if @publisher.new_record?%>
-            <%= f.text_field :publisher_code ,:required => true, :class => "form-control" %>
+            <%= f.text_field :publisher_code ,:required => true, :class => "form-control", :placeholder => "Publisher Code" %>
           <%else%>
-            <%= f.text_field :publisher_code ,:required => true, :class => "form-control",disabled: true %>
+            <%= f.text_field :publisher_code ,:required => true, :class => "form-control", :placeholder => "Publisher Code",disabled: true %>
           <%end%>
           </div>
         </div></div>
@@ -48,9 +48,9 @@
           <label for="PublisherName" class="col-sm-5 control-label">Publisher Name<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
             <%if @publisher.new_record?%>
-              <%= f.text_field :publisher_name ,:required => true, :class => "form-control" %>
+              <%= f.text_field :publisher_name ,:required => true, :placeholder => "Publisher Name", :class => "form-control" %>
             <%else%>
-              <%= f.text_field :publisher_name ,:required => true, :class => "form-control",disabled: true %>
+              <%= f.text_field :publisher_name ,:required => true, :placeholder => "Publisher Name", :class => "form-control",disabled: true %>
             <%end%>
           </div>
           <div class="clearfix"></div>
@@ -117,21 +117,21 @@
 		<div class="col-md-6"><div class="form-group">
       <label for="ContactFirstName" class="col-sm-5 control-label">Contact First Name<sup class="mandatory">*</sup></label>
       <div class="col-sm-7">
-         <%= f.text_field :contact_first_name, :required => true, :class => "form-control" %>
+         <%= f.text_field :contact_first_name, :required => true, :placeholder => "Contact First Name", :class => "form-control" %>
       </div>
       <div class="clearfix"></div>
     </div></div>
 		<div class="col-md-6"><div class="form-group">
       <label for="ContactlastName" class="col-sm-5 control-label">Contact Last Name<sup class="mandatory">*</sup></label>
       <div class="col-sm-7">
-            <%= f.text_field :contact_last_name, :required => true, :class => "form-control" %>
+            <%= f.text_field :contact_last_name, :required => true, :placeholder => "Contact Last Name", :class => "form-control" %>
       </div>
       <div class="clearfix"></div>
     </div></div>
 		<div class="col-md-6"><div class="form-group">
       <label for="ContactEmail" class="col-sm-5 control-label">Contact Email<sup class="mandatory">*</sup></label>
       <div class="col-sm-7">
-           <%= f.email_field :contact_email, required: true, :class => "form-control" %>
+           <%= f.email_field :contact_email, required: true, :placeholder => "Contact Email", :class => "form-control" %>
       </div>
       <div class="clearfix"></div>
     </div></div>
@@ -139,7 +139,7 @@
       <div class="form-group">
         <label for="taskName" class="col-sm-5 control-label">Country<sup class="mandatory">*</sup> </label>
         <div class="col-sm-7">
-          <%= f.select 'country_code',options_from_collection_for_select(country , 'country_code', 'country_name'),{ :prompt => "please Select"},{required: true, :class => "form-control"} %>
+          <%= f.select 'country_code',options_from_collection_for_select(country , 'country_code', 'country_name'),{ :prompt => "Please Select"},{required: true, :class => "form-control"} %>
         </div>
         <div class="clearfix"></div>
       </div>
@@ -147,14 +147,21 @@
     <div class="col-md-6"><div class="form-group">
       <label for="taskName" class="col-sm-5 control-label">Domain Name<sup class="mandatory">*</sup></label>
       <div class="col-sm-7">
-            <%= f.text_field :domain_name, :required => true, :class => "form-control" %>
+        <%= f.text_field :domain_name, :required => true, :placeholder => "Domain Name", :class => "form-control" %>
       </div>
       <div class="clearfix"></div>
     </div></div>
     <div class="col-md-6"><div class="form-group">
       <label for="DefaultManagerLanguage" class="col-sm-5 control-label">Publisher Logo</label>
       <div class="col-sm-7">
-         <%= f.file_field :publisher_logo,:placeholder => "Member Publisher Logo", :class => "form-control"%>
+        <%= f.file_field :publisher_logo,:placeholder => "Member Publisher Logo", :class => "form-control"%>
+      </div>
+      <div class="clearfix"></div>
+    </div></div>
+    <div class="col-md-6"><div class="form-group">
+      <label for="taskName" class="col-sm-5 control-label">Publisher Address</label>
+      <div class="col-sm-7">
+        <%= f.text_area :publisher_address, :placeholder => "Publisher Address", :class => "form-control" %>
       </div>
       <div class="clearfix"></div>
     </div></div>

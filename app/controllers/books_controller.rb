@@ -101,7 +101,8 @@ class BooksController < ApplicationController
   end
 
   def search
-    
+    #Call filter method to get search results
+    @books = BooksPrimaryContentInformation.filter(params.slice(:publisher_id, :isbn, :title))
   end
 
   def destroy

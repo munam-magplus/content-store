@@ -16,7 +16,7 @@
       <!-- ================== -->
       <div class="wrapper container-fluid">
         <ol class="breadcrumb">
-          <li><a href="#">Home</a></li>
+          <li>Home</a></li>
           <li><%= link_to "Publisher Setup" %></li>
           <li><%= link_to "Search Books" %></li>
         </ol>
@@ -26,215 +26,40 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label for="bookISBN" class="col-sm-4 control-label">Search By:<span class="red">*</span>:</label>
+              <label for="bookISBN" class="col-sm-4 control-label" >Publisher<span class="red">*</span></label>
               <span class="col-sm-8">
-                <%= radio_button_tag 'search_by', "Book", class: "form-control" %>Book
-                <%= radio_button_tag 'search_by', "Chapter", class: "form-control" %>Chapter
-                <%= radio_button_tag 'search_by', "Batch", class: "form-control" %>Batch
-              </span><span>(Wildcard characters supported: *,+ )
+              <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "Select publisher", :class => "form-control", :style => "background-color: #eee"%>
             </span>
             </div>
           </div>
         </div>
-        <div id="search_book">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >Publisher:<span class="red">*</span>:</label>
-                <span class="col-sm-8">
-                <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "Select publisher", :class => "form-control", :style => "background-color: #eee"%>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label">ISBN <span class="red">*</span></label>
+              <span class="col-sm-8">
+              <%= text_field_tag :isbn, params[:isbn], :class => "form-control", :placeholder => "ISBN" %>
               </span>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label">ISBN <span class="red">*</span>:</label>
-                <span class="col-sm-8">
-                <%= text_field_tag :isbn, params[:isbn], :class => "form-control", :placeholder => "ISBN" %>
-              </span>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >Title</label>
-                <span class="col-sm-8">
-                <%= text_field_tag :title, params[:title], :class => "form-control", :placeholder => "Title" %>
-              </span>
-              </div>
-            </div>
-          </div>
-          <label>Author</label>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >First Name:</label>
-                <span class="col-sm-8">
-                <%= text_field_tag :first_name, params[:first_name], :class => "form-control", :placeholder => "First Name" %>
-              </span>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >Last Name:</label>
-                <span class="col-sm-8">
-                <%= text_field_tag :last_name, params[:last_name], :class => "form-control", :placeholder => "Last Name" %>
-              </span>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >Status <span class="red">*</span>:</label>
-                <span class="col-sm-8">
-                <%= text_field_tag :status, params[:status], :class => "form-control", :placeholder => "Status" %>
-                </span>
-              </div>
-            </div>
-          </div>
-          <label>Upload Period</label>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >from</label>
-                <span class="col-sm-8">
-                <%= text_field_tag :from, params[:from], :class => "form-control", :placeholder => "from" %>
-                </span>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >to</label>
-                <span class="col-sm-8">
-                <%= text_field_tag :to, params[:to], :class => "form-control", :placeholder => "to" %>
-              </span>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >Sort Order<span class="red">*</span>:</label>
-                <span class="col-sm-8">
-                <%= select_tag(:sort_order, options_for_select([['---','---'],['Title','title'],['Publisher Code','publisher_code'],['Author','author']]))  %>
-              </span>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >No. of search results per page<span class="red">*</span>:</label>
-                <span class="col-sm-8">
-                <%= select_tag(:sort_order, options_for_select([['10','10'],['50','50'],['100','100'],['250','250'],['500','500']]))  %>
-              </span>
-              </div>
             </div>
           </div>
         </div>
-        <div id="search_chapter">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >Publisher:<span class="red">*</span>:</label>
-                <span class="col-sm-8">
-                <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "Select publisher", :class => "form-control", :style => "background-color: #eee"%>
-              </span>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >Book ISBN <span class="red">*</span>:</label>
-                <span class="col-sm-8">
-                <%= text_field_tag :isbn, params[:isbn], :class => "form-control", :placeholder => "Book ISBN" %>
-              </span>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >Chapter Identifier</label>
-                <span class="col-sm-8">
-                <%= text_field_tag :identifier, params[:identifier], :class => "form-control", :placeholder => "Chapter Identifier" %>
-              </span>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >Chapter Title</label>
-                <span class="col-sm-8">
-                <%= text_field_tag :title, params[:title], :class => "form-control", :placeholder => "Chapter Title" %>
-              </span>
-              </div>
-            </div>
-          </div>
-          <label>Author</label>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >First Name</label>
-                <span class="col-sm-8">
-                <%= text_field_tag :first_name, params[:first_name], :class => "form-control", :placeholder => "First Name" %>
-              </span>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >Last Name</label>
-                <span class="col-sm-8">
-                <%= text_field_tag :last_name, params[:last_name], :class => "form-control", :placeholder => "Last Name" %>.
-              </span>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >Sort Order<span class="red">*</span>:</label>
-                <span class="col-sm-8">
-                <%= select_tag(:sort_order, options_for_select([['---','---'],['Title','title'],['Publisher Code','publisher_code'],['Chapter Identifier','chapter_identifier']]))  %>
-              </span>
-              </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label" >Title</label>
+              <span class="col-sm-8">
+              <%= text_field_tag :book_title, params[:book_title], :class => "form-control", :placeholder => "Title" %>
+            </span>
             </div>
           </div>
         </div>
-        <div id="search_batch">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >Conversion Batch Name</label>
-                <span class="col-sm-8">
-                <%= text_field_tag :conversion_batch_name, params[:conversion_batch_name], :class => "form-control", :placeholder => "Conversion Batch Name" %>
-              </span>
-              </div>
-            </div>
-          </div>
-          <label>Batch Creation Date</label>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >from</label>
-                <span class="col-sm-8">
-                <%= text_field_tag :from, params[:from], :class => "form-control", :placeholder => "from" %>
-              </span>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="bookISBN" class="col-sm-4 control-label" >to</label>
-                <span class="col-sm-8">
-                <%= text_field_tag :to, params[:to], :class => "form-control", :placeholder => "to" %>
-              </span>
-              </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label" >No. of search results per page<span class="red">*</span></label>
+              <span class="col-sm-8">
+                <%= select_tag(:sort_order, options_for_select([['10','10'],['50','50'],['100','100'],['250','250'],['500','500']]),:prompt => "Number of books per page", :class => "form-control", :style => "background-color: #eee")  %>
+            </span>
             </div>
           </div>
         </div>
@@ -242,7 +67,7 @@
         <div class="clearfix m-b-30"></div>
         <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
           <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit %>
-          <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
+          <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset %>
         </div>
       <%end%>
         <div class="clearfix m-b-30"></div>
@@ -256,32 +81,3 @@
     </section>
   </body>
 </html>
-
-<script>
-$(document).ready(function(){
-  $('#search_book').hide();
-  $('#search_chapter').hide();
-  $('#search_batch').hide();
-
-  $(':radio').change(function (event) {
-      var id = $(this).val();
-      console.log(id);
-      if(id.search("Chapter")!=-1)
-      {
-        $('#search_book').hide();
-        $('#search_chapter').show();
-        $('#search_batch').hide();
-      } else if(id.search("Batch")!=-1)
-      {
-        $('#search_book').hide();
-        $('#search_chapter').hide();
-        $('#search_batch').show();
-      } else{
-        $('#search_book').show();
-        $('#search_chapter').hide();
-        $('#search_batch').hide();
-      }
-  });
-});
-}
-</script>
