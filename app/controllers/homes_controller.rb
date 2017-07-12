@@ -153,7 +153,7 @@ class HomesController < ApplicationController
   end
 
   def download_pdf
-    req = request.domain
+    req = @publisher.publisher_code
     send_file(
     "#{Rails.root}/vendor/#{req}.pdf",
     filename: "#{req}.pdf",
