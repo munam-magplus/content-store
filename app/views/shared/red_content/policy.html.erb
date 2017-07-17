@@ -1,0 +1,31 @@
+<section class="content">
+  <%= render :partial => "#{@publisher.theme_name}"%> 
+
+    <div class="container-fluid">
+      <div class="row">
+        
+        
+        <div class="col-sm-4 col-md-3 ">
+          <%= render :partial => "subject_sidebar"%>
+        </div>
+        
+
+        <div class="col-sm-8 col-md-9 mar-b50" >
+          <div id= 'pub_book'>
+            
+            <div class="border_wrapper padding10px mt5">
+              <h1 class="heading1 sectionHeading border_bottom "> Privacy Policy </h1>
+              <% if @publisher_policy.present? %>
+                <%= @publisher_policy.html_safe %>       
+              <%end%>       
+            </div>
+
+          </div>
+        </div>  
+
+      </div>
+    </div>
+
+    <%= render :partial => "homes/publisher_footer"%>
+    
+</section>    

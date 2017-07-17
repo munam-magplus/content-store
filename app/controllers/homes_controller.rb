@@ -10,7 +10,6 @@ class HomesController < ApplicationController
       unless @publisher.books_primary_content_informations.blank? 
         if ['red_content','light_blue_content'].include? @publisher.theme_name
           @books = @publisher.books_primary_content_informations.joins(:books_contributor)
-
         else
           @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10)
         end
@@ -21,6 +20,7 @@ class HomesController < ApplicationController
   end
 
   def contact
+    render :template => "shared/#{@publisher.theme_name}/contact"
   end
 
   def send_mail
@@ -30,12 +30,23 @@ class HomesController < ApplicationController
   
   def books_by_author
     @ids = @publisher.subject_groups
-    @books = BooksPrimaryContentInformation.joins(:books_contributor).where('first_name = ? AND last_name = ?',"#{params[:first_name]}","#{params[:last_name]}").paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
-  end 
+    @books = BooksPrimaryContentInformation.joins(:books_contributor).where('first_name = ? AND last_name = ?',"#{params[:format].split()[0]}","#{params[:format].split()[1]}").paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
+    render :template => "shared/#{@publisher.theme_name}/books_by_author"
+  end
 
-  def get_author
+  def get_author 
     @books = @publisher.books_primary_content_informations.joins(:books_contributor).where("substr(first_name,1,1) IN (?)",params[:letter]).paginate(:page => params[:page], :per_page => 10).order('first_name ASC')
+    authors = []
+    @books.each do |book|
+      if !authors.include?(book.books_contributor.first_name + " " + book.books_contributor.last_name)
+        authors << book.books_contributor.first_name + " " + book.books_contributor.last_name
+      end
+      @authors = authors
+    end
+    render :template => "shared/#{@publisher.theme_name}/get_author"
   end  
+
+    
   
   def books_by_title
     if !params[:letter].present?
@@ -45,9 +56,9 @@ class HomesController < ApplicationController
       #books by slected letter
       @books = @publisher.books_primary_content_informations.where("substr(book_title,1,1) IN (?)",params[:letter]).paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
     end
-    respond_to do |format|
-      format.js
-    end
+
+    render :template => "shared/#{@publisher.theme_name}/books_by_title"
+
   end
   
   def refine_search_by_subject
@@ -88,23 +99,17 @@ class HomesController < ApplicationController
 
   def about
     @publisher_about = @publisher.about
-    respond_to do |format|
-      format.js
-    end 
+    render :template => "shared/#{@publisher.theme_name}/about" 
   end
 
   def terms_and_conditions
     @publisher_terms = @publisher.terms_and_conditions
-    respond_to do |format|
-      format.js
-    end 
+    render :template => "shared/#{@publisher.theme_name}/terms_and_conditions" 
   end
 
   def policy
     @publisher_policy = @publisher.policy
-    respond_to do |format|
-      format.js
-    end 
+    render :template => "shared/#{@publisher.theme_name}/policy"  
   end
 
   def advance_search
@@ -122,9 +127,7 @@ class HomesController < ApplicationController
 
   def books_description
     @book_information = BooksPrimaryContentInformation.find(params[:book_id])
-    respond_to do |format|
-      format.js
-    end 
+    render :template => "shared/#{@publisher.theme_name}/books_description"
   end
 
   def books_by_category

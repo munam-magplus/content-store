@@ -1,0 +1,107 @@
+<section class="content">
+  <%= render :partial => "#{@publisher.theme_name}"%> 
+
+    <div class="container-fluid">
+      <div class="row">
+        
+        <div class="col-sm-4 col-md-3 ">
+          <%= render :partial => "subject_sidebar"%>
+        </div>
+
+        <div class="col-sm-8 col-md-9 mar-b50" > 
+          <div class="col-sm-12 no-lr-pad">
+            <div id= 'pub_book'>
+              
+              <!--title-->
+              <div class="row">
+  <div class="col-sm-12">
+    <div class="border_wrapper padding10px mt5">
+      <div id="bodydivs">
+        <h3 class="heading1">Book Title</h3>
+        <div class="border_bottom"></div>
+        <div class="clearfix"></div>
+        <div class="col-sm-12 no-pad mt-20">
+          <nav aria-label="Page navigation"  >
+            <ul class='pagination pagination-sm'>
+              <li class="active"><li class="active"><%= link_to "All", books_by_title_homes_path %></li> 
+              <% ('A'..'Z').each do |letter| %> 
+                <li>
+                  <%= link_to letter, books_by_title_homes_path(:letter=>letter)%>
+                </li>
+              <%end%>
+            </ul>
+          </nav>
+        </div>
+        <div class="clearfix"> </div>
+        <div class="alpha_category margin_bottom10px">
+          <div class="pull-left">
+            <h3>Results  1–<%= @books.count%></h3>
+          </div>
+          <div class="pull-right">
+            <%= will_paginate @books%>
+           
+          </div>
+          <div class="clearfix"></div>
+        </div>
+       
+        <% @books.each do |f| %>
+          <div class="margin_top20px im_width">
+            <div class="col-md-2  col-sm-2 col-xs-12 ">
+              <div class="effects search-result">
+                <%= link_to image_tag("http://www.nyresearchpress.com/static/templates/template1/nysp/thumbnails/#{f.isbn}-T-FC.jpg",class: "img-responsive"), books_description_homes_path(:book_id => f.id), class: "cover2" %>
+              </div>
+            </div>
+            <div class="col-md-10">
+              <h3 title=""><%= link_to truncate(f.book_title, length: 14), books_description_homes_path(:book_id => f.id) %></h3>
+              <h3>By :<span class="dark_yellow"><%= truncate(f.books_contributor.first_name.presence || "" +" "+f.books_contributor.last_name.presence || "" , length: 14) %></span></h3>
+              <p><strong>Description :</strong>
+                     <%= truncate(f.book_blurb.presence || "", length: 30) %>
+                    <%= link_to 'more', '', :class => "read-more-#{f.id}" %>
+                    <script>
+                      $('.read-more-<%= f.id %>').on('click', function(e) {
+                        e.preventDefault()
+                        $(this).parent().html('<strong> Description:</strong> <%= f.book_blurb %>')
+                      })
+                    </script>
+               </p>
+              <h3></h3>
+            </div>
+            <div class=" clearfix"></div>
+          </div>
+          <div class="border_bottom"></div>
+          <div class="clearfix"></div>
+        <% end %>
+        <%if @books.count >1 %>
+          <div class="col-md-12  bg-gray mt20">
+            <div class="pull-left mt5">
+              Results  1–<%= @books.count%>
+            </div>
+            <div class="pull-right bottomUl">
+               
+                <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+               
+            </div>
+          </div>
+            <div class=" clearfix"> </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+              <!--title end-->
+
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
+    <footer>
+      <%= render :partial => "homes/publisher_footer"%>
+    </footer>
+
+</section>

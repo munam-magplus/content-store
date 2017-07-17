@@ -60,7 +60,7 @@
             </div> -->
           </div>
  
-        <% elsif @publisher.domain_name == 'larsen-keller' %>
+        <% elsif @publisher.theme_name == 'larsen-keller' %>
         <div class="col-sm-12">
            <div id='pub_book'>  
             <%= render :partial => 'larsan_and_keller_publisher_books' %>
@@ -68,7 +68,7 @@
         </div>
 
 
-        <% elsif @publisher.domain_name == 'haylemedical' %>
+        <% elsif @publisher.theme_name == 'haylemedical' %>
 
           <div class="col-sm-8 col-md-9 mar-b50" > 
             <div class="col-sm-12 no-lr-pad">
@@ -83,7 +83,7 @@
   </div>
 
  
-  <% if @publisher.domain_name == 'larsen-keller' %>
+  <% if @publisher.theme_name == 'larsen-keller' %>
   <footer class="footer">
     <%= render :partial => "larsen_and_keller_footer"%>
   </footer>

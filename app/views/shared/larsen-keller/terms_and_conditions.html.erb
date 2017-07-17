@@ -1,0 +1,37 @@
+<section class="content">
+  <%= render :partial => "#{@publisher.theme_name}"%>
+
+  <div class="container mt20">
+
+    <div class='row'>
+      <div class="col-sm-12">
+        <div id='pub_book'>  
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="border_wrapper padding10px mt5">
+                <h1 class="heading1 sectionHeading border_bottom ">TERMS & CONDITIONS</h1>
+                <div class="clearfix"></div>
+                <div class="mt20" id="tcHead">
+                  <p>
+                    <%if @publisher_terms.present? %>
+                      <div class="wrapper container-fluid">
+                        <%= @publisher_terms.html_safe %>
+                      </div>
+                    <%end%>
+                  </p>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <%= render :partial => "larsen_and_keller_footer"%>
+  </footer>
+
+</section>    

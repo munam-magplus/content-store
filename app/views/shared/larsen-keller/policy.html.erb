@@ -1,0 +1,29 @@
+<section class="content">
+  <%= render :partial => "#{@publisher.theme_name}"%>
+
+  <div class="container mt20">
+
+    <div class='row'>
+      <div class="col-sm-12">
+        <div id='pub_book'>  
+          
+          <h1 class="sectionHeading">Privacy Policy</h1>
+          <div class="row placeholders">
+            <% if @publisher_policy.present? %>
+              <div class="wrapper container-fluid">
+                <%= @publisher_policy.html_safe%>
+              </div>
+            <%end%>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <%= render :partial => "larsen_and_keller_footer"%>
+  </footer>
+
+</section>    

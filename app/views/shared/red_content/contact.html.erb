@@ -1,0 +1,73 @@
+<section class="content">
+  <%= render :partial => "#{@publisher.theme_name}"%> 
+
+    <div class="container-fluid">
+      <div class="row">
+        
+        
+        <div class="col-sm-4 col-md-3 ">
+          <%= render :partial => "subject_sidebar"%>
+        </div>
+        
+
+        <div class="col-sm-8 col-md-9 mar-b50" >
+          <div id= 'pub_book'>
+            
+            <h1 class="sectionHeading">Contact us</h1>
+<div class="row placeholders">
+  <div class="wrapper container-fluid">
+  <div class="clearfix"></div>
+  <%= form_tag(send_mail_homes_path) do %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>  
+    <div class="col-md-12">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Your Name:</label>
+            <div class="col-sm-8">
+              <%= text_field_tag :name,"", :class => "form-control" %>
+        </div>
+        <div class="clearfix"></div>
+          </div>
+        </div>
+    <div class="col-md-12">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Email:</label>
+            <div class="col-sm-8">
+              <%= text_field_tag :email,"", :required => true ,:class => "form-control" %>
+        </div>
+        <div class="clearfix"></div>
+          </div>
+        </div>
+    <div class="col-md-12">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Subject:</label>
+            <div class="col-sm-8">
+              <%= text_field_tag :subject,"", :class => "form-control" %>
+        </div>
+        <div class="clearfix"></div>
+          </div>
+        </div>
+    <div class="col-md-12">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Your Message:</label>
+            <div class="col-sm-8">
+              <%= text_field_tag :message,"", :class => "form-control" %>
+        </div>
+        <div class="clearfix"></div>
+          </div>
+        </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+      <%= button_tag fa_icon("send Message", text: "Send Message"), :class => "btn btn-sm", type: :submit %>
+    </div>
+  <%end%>
+  </div>
+</div>
+
+          </div>
+        </div>  
+
+      </div>
+    </div>
+
+    <%= render :partial => "homes/publisher_footer"%>
+    
+</section>    

@@ -1,0 +1,38 @@
+<section class="content">
+  <%= render :partial => "#{@publisher.theme_name}"%> 
+
+    <div class="container-fluid">
+      <div class="row">
+        
+        <div class="col-sm-4 col-md-3 ">
+          <%= render :partial => "subject_sidebar"%>
+        </div>
+
+        <div class="col-sm-8 col-md-9 mar-b50" > 
+          <div class="col-sm-12 no-lr-pad">
+            <div id= 'pub_book'>
+              <div class="row"> 
+                <div class="col-sm-12">
+	              <div class="border_wrapper padding10px mt5">
+	                <h1 class="heading1 sectionHeading border_bottom ">About Us</h1>
+		            <div class="clearfix"></div>
+		            <% if @publisher_about.present? %>
+		              <p class="mt20"><%= @publisher_about.html_safe %></p>
+		            <%end%>
+	              </div>
+	            </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
+    <footer>
+      <%= render :partial => "homes/publisher_footer"%>
+    </footer>
+
+</section>        
