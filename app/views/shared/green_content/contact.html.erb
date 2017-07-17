@@ -1,0 +1,120 @@
+<section class="content">
+  <%= render :partial => "#{@publisher.theme_name}"%> 
+
+    <div class="container-fluid">
+      <div class="row">
+        
+        <div class="col-sm-4 col-md-3 ">
+          <%= render :partial => "subject_sidebar"%>
+        </div>
+        
+
+        <div class="col-sm-8 col-md-9 mar-b50" > 
+          <div id='pub_book'>  
+            
+                  <div class="row">
+        <div class="col-sm-12 ">
+        
+       <div class="border_wrapper padding10px">
+      
+      <div class="row">
+      
+      <div class="col-sm-12">
+      
+      <h1 class="sectionHeading">CONTACT US
+
+</h1>
+      
+     
+     <div class="col-sm-12 form_bg no-pad">
+         <div class="col-sm-8">
+         <p><em>Fields marked with <sup class="mandatory">*</sup>are compulsory</em>
+</p>
+        <br> 
+         <form action="search.do" method="get" id="advanceSearchForm" class="form-horizontal ">
+            <fieldset>
+             
+              <div class="form-group  ">
+                <label class="col-md-3" for=""> Your name: <sup class="mandatory">*</sup></label>
+                <div class="col-md-6">
+                  <input name="title" class="form-control" value="" type="text">
+                </div>
+              </div>
+              <div class="form-group  mt-20">
+                <label class="col-md-3" for=""> Your email: <sup class="mandatory">*</sup></label>
+                <div class="col-md-6">
+                  <input name="title" class="form-control" value="" type="text">
+                </div>
+              </div>
+              
+              
+              <div class="form-group  mt-20">
+                <label class="col-md-3" for=""> Subject:</label>
+                <div class="col-md-6">
+                  <input name="title" class="form-control" value="" type="text">
+                </div>
+              </div>
+        
+        
+       <div class="form-group  mt-20">
+                <label class="col-md-3" for=""> Your message: <sup class="mandatory">*</sup>
+</label>
+                <div class="col-md-6">
+                 <textarea class="form-control" type="textarea" id="message" maxlength="140" rows="7"></textarea>
+                </div>
+              </div>
+          
+          
+          
+              
+            </fieldset>
+          </form></div>
+         
+           <div class="col-sm-4">
+           <div class="text-left contact-text" style="line-height: 22px;">
+           <!-- @publisher.address --><br>
+
+<span style="text-transform:lowercase;">
+  <%= link_to @publisher.domain_name, "http://www.#{@publisher.domain_name}"%>
+</span>
+
+<br>Email-<span style="text-transform:lowercase;">
+<%= link_to @publisher.contact_email, "mailto:#{@publisher.contact_email}"%></span>
+
+
+</div>
+           </div>
+             
+          
+        </div>
+     
+  
+      
+      </div>
+      </div>
+      
+    </div>
+        
+          
+          
+          
+          
+        </div>
+        
+      </div>
+    
+          </div>
+
+          </div>
+          </br>
+
+        </div>  
+
+    </div>
+  </div>
+        
+  <footer>
+    <%= render :partial => "homes/publisher_footer"%>
+  </footer>
+  
+</section>   

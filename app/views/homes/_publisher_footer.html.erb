@@ -4,7 +4,7 @@
 	    <div class="row mobTextCenter">
 	    	<div class="col-md-12">
 	    		<p class="pull-left mobfooter">
-	    			<%= link_to "Terms & Conditions",terms_and_conditions_homes_path, class: "border_left0px", :remote => true %> | <%= link_to "Privacy Policy", policy_homes_path,:remote => true%>
+	    			<%= link_to "Terms & Conditions",terms_and_conditions_homes_path, class: "border_left0px" %> | <%= link_to "Privacy Policy", policy_homes_path %>
 	    		</p> 
 	    		<p class="pull-right mobfooter">&copy; 2017 <%= @publisher.publisher_name%>. All right reserved.
 	    		</p>
@@ -17,7 +17,7 @@
 	<footer class="footer text-center">
 		<div class="container-fluid">
    	  <div class="row">
-      	<div class="col-xs-12 col-sm-6 col-md-6 footer_text text-left"><%= link_to "Terms & Conditions",terms_and_conditions_homes_path, :remote => true %> | <%= link_to "Privacy Policy", policy_homes_path,:remote => true%>
+      	<div class="col-xs-12 col-sm-6 col-md-6 footer_text text-left"><%= link_to "Terms & Conditions",terms_and_conditions_homes_path  %> | <%= link_to "Privacy Policy", policy_homes_path%>
       	</div>
         <div class="col-xs-12 col-sm-6 col-md-6 footer_text text-right">&copy;   2017-2018 <%= @publisher.publisher_name%>. All right reserved.
         </div>

@@ -13,9 +13,9 @@
         <div class="topmenue">
           <ul>
             <li><%= link_to '<i class="fa fa-home"></i>'.html_safe, homes_path %><span>|</span></li>
-            <li><%= link_to "ABOUT US", about_homes_path, remote: true%><span>|</span></li>
+            <li><%= link_to "ABOUT US", about_homes_path%><span>|</span></li>
             <li><%= link_to 'CATALOGUE', download_pdf_homes_url, target: "_blank" %> <span>|</span></li>
-            <li><%= link_to "CONTACT US", contact_homes_path, remote: true %></li>
+            <li><%= link_to "CONTACT US", contact_homes_path %></li>
           </ul>
         </div> 
         <%= form_tag(search_homes_path, :method => "get",:remote => true) do %>
@@ -68,8 +68,8 @@
               <% end %>
             </ul>
           </li>
-          <li><%= link_to "AUTHOR / EDITOR", get_author_homes_path(:letter => 'a'), :remote => true %></li>
-          <li ><%= link_to "TITLE", books_by_title_homes_path, :remote => true %></li>
+          <li><%= link_to "AUTHOR / EDITOR", get_author_homes_path(:letter => 'a') %></li>
+          <li ><%= link_to "TITLE", books_by_title_homes_path %></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>

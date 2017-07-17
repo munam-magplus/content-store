@@ -1,0 +1,81 @@
+<section class="content">
+  <%= render :partial => "#{@publisher.theme_name}"%> 
+
+    <div class="container-fluid">
+      <div class="row">
+        
+        <div class="col-sm-4 col-md-3 ">
+          <%= render :partial => "subject_sidebar"%>
+        </div>
+
+        <div class="col-sm-8 col-md-9 mar-b50" > 
+          <div class="col-sm-12 no-lr-pad">
+            <div id= 'pub_book'>
+              
+              <!-- DEScription -->
+  
+                <div id="bodydivs"> 
+  <div class="row">
+    <div class="col-md-12 mt20">
+      <ul class="nav nav-tabs noborder" data-tabs="tabs" style="background: transparent;">
+        <li class="active tabGradient"><a href="#bookInfo" data-toggle="tab">Book Info</a></li>
+      </ul>
+      <div class="tab-content tab_border grayContainer">
+        <div class="tab-pane active" id="bookInfo">
+          <div class="pageHeading">
+            <h1> <a  href="#"><strong><%= @book_information.book_title.presence || "" %></strong></a> </h1>
+          </div>
+          <div class="xtraPadding mt20">
+            <div class="col-md-3 col-sm-3"> <%= image_tag("http://www.nyresearchpress.com/static/templates/template1/nysp/thumbnails/#{@book_information.isbn}-T-FC.jpg",class: "img-responsive") %> 
+            </div>
+            <div class="col-md-9 col-sm-9"> 
+                <!-- <p>To read sections of the book, please use the navigation menu at the top left.</p> -->
+            <div class="clearFloat"></div>
+
+            <p><span class="book_atr col-xs-12 col-md-3"><strong>ISBN&nbsp;:&nbsp;</strong></span><span class="book_description col-xs-12 col-md-9"><%= @book_information.isbn.presence || "" %></span></p>
+            <p><span class="book_atr col-xs-12 col-md-3"><strong>Publisher&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-9">&nbsp;<%= @publisher.publisher_name.presence || "" %></span></p>
+            <p><span class="book_atr col-xs-12 col-md-3"><strong>Language&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-9">&nbsp;<%= @book_information.language.presence || "" %></span></p>
+            <p><span class="book_atr col-xs-12 col-md-3"><strong>Category&nbsp;:&nbsp;</strong></span> <span class="book_description col-xs-12 col-md-9">&nbsp;<%= @book_information.subject_groups.first.subject_group_name.presence || "" %></span></p>
+              
+                
+            <p><span class="book_atr col-xs-12 col-md-3"><strong>Publication Year&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-9">&nbsp;<%= @book_information.publication_date.presence || "" %></span></p>
+            <p><span class="book_atr col-xs-12 col-md-3"><strong>Price&nbsp;:</strong></span><span class="book_description col-xs-12 col-md-9">&nbsp;USD&nbsp;    145.00</span></p>
+            <% if @book_information.books_content_pricing.present? %>
+              <p><span class="book_atr col-xs-12 col-md-3"><strong>Format&nbsp;:</strong></span><span class="col-xs-12 book_description col-md-9">&nbsp; <%=@book_information.books_content_pricing.format.presence || "" %></span></p>
+            <% end %>
+            <p><span class="book_atr col-xs-12 col-md-3"><strong>Description&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-12 margin_bottom10px"><%= @book_information.book_blurb.presence || "" %> </span></p>
+            <p><span class="col-xs-12 book_atr col-md-3"><strong>Author/Editor&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-12">
+              <%= @book_information.books_contributor.first_name.presence || "" %>&nbsp <%= @book_information.books_contributor.last_name.presence || "" %>
+             <br>
+            </span></p>
+            <p><span class="col-xs-12 book_atr col-md-3"><strong>Author's Description&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-12">
+              <%= @book_information.books_contributor.description.presence || "" %>
+             <br>
+            </span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+              <!-- DEScription END-->
+
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
+    <footer>
+      <%= render :partial => "homes/publisher_footer"%>
+    </footer>
+
+</section>

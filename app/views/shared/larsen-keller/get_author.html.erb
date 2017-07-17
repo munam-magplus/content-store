@@ -1,0 +1,62 @@
+<section class="content">
+  <%= render :partial => "#{@publisher.theme_name}"%>
+
+  <div class="container mt20">
+
+    <div class='row'>
+      <div class="col-sm-12">
+        <div id='pub_book'>  
+          
+          <!--get author-->
+            
+            <div class="row">
+  <div class="col-sm-12">
+    <h1 class="heading1 border_bottom ">AUTHOR(S):</h1>
+    <div class="mt20 border_bottom ">
+      <ul class="pagination pagination-sm nomargin">
+        <% ('A'..'Z').each do |letter| %> 
+          <li><%= link_to letter, get_author_homes_path(:letter=>letter)%>
+          </li>
+        <%end%>
+      </ul>
+    </div>
+    <div class="clearfix m-b-30"></div>
+    <%if @authors.present?%>
+      <%@authors.each do |authname| %>
+        <div class="mt20 nopadding">
+          <ul id="demoOne" class="description   margin_left5px">  
+            <li class="ln-R ln-r">
+              <%= link_to truncate(authname, length: 14), books_by_author_homes_path(authname) %>
+            </li>
+          </ul>
+        </div>
+      <%end%>
+    <%end%>
+  </div>
+  <div class="clearfix"></div>
+    <div class="col-md-12 mt20">
+      <div class="pull-right">
+        <div class="pagination-frontend">
+          <nav aria-label="Page navigation" style="clear:both;"> 
+            <%= will_paginate @books,renderer: BootstrapPagination::Rails %>
+          </nav>  
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+ </div>
+
+            <!--author list-->
+          
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <%= render :partial => "larsen_and_keller_footer"%>
+  </footer>
+
+</section>    
