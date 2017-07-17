@@ -133,9 +133,7 @@ class HomesController < ApplicationController
   def books_by_category
     @subject_group = SubjectGroup.find(params[:subject_group_id])
     @books = @subject_group.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10)
-    respond_to do |format|
-      format.js
-    end     
+    render :template => "shared/#{@publisher.theme_name}/books_by_category"
   end
 
   def books_by_subject
@@ -144,9 +142,8 @@ class HomesController < ApplicationController
     subjectbook.each do |subbook| 
       @books = subbook.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10)
     end
-    respond_to do |format|
-      format.js
-    end
+    render :template => "shared/#{@publisher.theme_name}/books_by_subject"
+    
   end
 
   def get_book_ids(books,books_ids)

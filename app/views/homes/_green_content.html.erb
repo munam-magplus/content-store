@@ -13,15 +13,15 @@
           <div class="col-sm-6 border-rht">
             <ul class="list-mega-drop">
               <% @publisher.subjects.each do |subject| %>
-                <li><%=link_to subject.subject_name ,books_by_subject_homes_path(:subject => subject.id), :remote => true %>
+                <li><%=link_to subject.subject_name ,books_by_subject_homes_path(:subject => subject.id) %>
                 </li>
               <% end %>
             </ul>
           </div>
           <div class="col-sm-6">
             <ul class="list-mega-drop">
-              <li><%= link_to "AUTHOR / EDITOR",get_author_homes_path(:letter => 'a'), :remote => true %></li>
-              <li><%= link_to "TITLE",books_by_title_homes_path, :remote => true %></li>
+              <li><%= link_to "AUTHOR / EDITOR",get_author_homes_path(:letter => 'a') %></li>
+              <li><%= link_to "TITLE",books_by_title_homes_path %></li>
             </ul>
           </div>
         </div>

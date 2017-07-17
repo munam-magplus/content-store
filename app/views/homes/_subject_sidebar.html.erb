@@ -11,7 +11,7 @@
             <ul class="accordion-color">
               <%subject.subject_groups.each do |subject_group| %>
                 <li>
-                  <%=link_to subject_group.subject_group_name ,books_by_category_homes_path(:subject_group_id => subject_group.id), :remote => true %>
+                  <%=link_to subject_group.subject_group_name ,books_by_category_homes_path(:subject_group_id => subject_group.id)%>
                 </li>
               <% end%>
             </ul>
