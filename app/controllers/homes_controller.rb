@@ -38,8 +38,8 @@ class HomesController < ApplicationController
     @books = @publisher.books_primary_content_informations.joins(:books_contributor).where("substr(first_name,1,1) IN (?)",params[:letter]).paginate(:page => params[:page], :per_page => 10).order('first_name ASC')
     authors = []
     @books.each do |book|
-      if !authors.include?(book.books_contributor.first_name.presence || "" + " " + book.books_contributor.last_name.presence || "")
-        authors << book.books_contributor.first_name.presence || "" + " " + book.books_contributor.last_name.presence || ""
+      if !authors.include?((book.books_contributor.first_name.presence || "") + " " + (book.books_contributor.last_name.presence || ""))
+        authors << (book.books_contributor.first_name.presence || "") + " " + (book.books_contributor.last_name.presence || "")
       end
       @authors = authors
     end
