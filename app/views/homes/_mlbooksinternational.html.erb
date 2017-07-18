@@ -29,10 +29,10 @@
                 <%= link_to "HOME", homes_path %>
               </li>
               <li>
-                <%= link_to "ABOUT US",(about_homes_path), :remote => true %>  
+                <%= link_to "ABOUT US", about_homes_path %>  
               </li>
               <li>
-                <%= link_to "CONTACT US",(contact_homes_path), :remote => true %>
+                <%= link_to "CONTACT US", contact_homes_path %>
               </li>
             </ul>
 
@@ -70,7 +70,7 @@
                   <li>
                     <% unless @publisher.subject_groups.blank? %>
                       <%@publisher.subject_groups.each do |subject_group| %>
-                        <li> <%=link_to subject_group.subject_group_name ,books_by_category_homes_path(:subject_group_id => subject_group.id), :remote => true %>
+                        <li> <%=link_to subject_group.subject_group_name ,books_by_category_homes_path(:subject_group_id => subject_group.id) %>
                         </li>
                       <%end%>
                     <%end%>
@@ -78,9 +78,9 @@
                 </ul>
               </li>
               <li class="dropdown col-md-4 thick_bord margin_author phone_width">
-                <%= link_to "AUTHOR",get_author_homes_path(:letter => 'a'), :remote => true %>
+                <%= link_to "AUTHOR",get_author_homes_path(:letter => 'a') %>
               </li>
-              <li class="dropdown col-md-4 thick_bord margin_title"><%= link_to "TITLE",books_by_title_homes_path, :remote => true %></li>
+              <li class="dropdown col-md-4 thick_bord margin_title"><%= link_to "TITLE",books_by_title_homes_path %></li>
             </ul>
           </div>
         </div>
