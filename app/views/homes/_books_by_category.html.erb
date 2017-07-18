@@ -256,8 +256,12 @@
           </div>
 
          <% end%>
-        <% else %> 
-          <h3> Record Not Found </h3>
+        <% else %>
+         <div class="container">
+          <div class="col-md-12">
+            <h3> Record Not Found </h3>
+          </div>
+        </div>
         <%end%>
 
 
@@ -265,7 +269,8 @@
        <!--lower pagination start -->
       <div class="col-md-12 col-xs-12 mt-20">
         <div class="bg-gray">
-          <div class="col-sm-4 no-pad" style="padding-top: 6px;">Results  1–10 of  227 </div>
+          <div class="col-sm-4 no-pad" style="padding-top: 6px;">
+          Results  1– of <%= @books.count%></div>
           <div class="col-sm-8 text-right no-pad">
             <div class="pagination-frontend">
               <nav aria-label="Page navigation" style="clear:both;"> 
@@ -333,7 +338,11 @@
               </div>
               <% end %>
             <% else %> 
-              <h3> Record Not Found </h3>
+              <div class="container">
+               <div class="col-md-12">
+                 <h3> Record Not Found </h3>
+               </div>
+              </div>
             <%end%>
             <div class="border_bottom"></div>
             <div class="clearfix"></div>

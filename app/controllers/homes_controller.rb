@@ -9,7 +9,7 @@ class HomesController < ApplicationController
 
       unless @publisher.books_primary_content_informations.blank? 
         if ['red_content','light_blue_content'].include? @publisher.theme_name
-          @books = @publisher.books_primary_content_informations.joins(:books_contributor)
+          @books = @publisher.books_primary_content_informations.joins(:books_contributor).where('content_classification = ?', 'Featured Books')
         else
           @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10)
         end
@@ -38,8 +38,8 @@ class HomesController < ApplicationController
     @books = @publisher.books_primary_content_informations.joins(:books_contributor).where("substr(first_name,1,1) IN (?)",params[:letter]).paginate(:page => params[:page], :per_page => 10).order('first_name ASC')
     authors = []
     @books.each do |book|
-      if !authors.include?(book.books_contributor.first_name + " " + book.books_contributor.last_name)
-        authors << book.books_contributor.first_name + " " + book.books_contributor.last_name
+      if !authors.include?(book.books_contributor.first_name.presence || "" + " " + book.books_contributor.last_name.presence || "")
+        authors << book.books_contributor.first_name.presence || "" + " " + book.books_contributor.last_name.presence || ""
       end
       @authors = authors
     end
