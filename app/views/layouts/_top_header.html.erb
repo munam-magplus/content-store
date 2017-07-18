@@ -1,27 +1,29 @@
- <div class="top-head container-fluid">
-            <button type="button" class="navbar-toggle pull-left">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <!-- Left navbar -->
-            <!-- Right navbar -->
-            <ul class="list-inline navbar-right top-menu">
-               <!-- /Notification -->
-               <!-- user login dropdown start-->
-               <li class="dropdown text-center">
-                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                  <i class="material-icons">person_outline</i>
-                  </a>
-                  <div class="dropdown-menu extended pro-menu fadeInUp animated" tabindex="5003" style="overflow: hidden; outline: none;">
-                     <p class="text-center welcome">Welcome <span class="username">CTS Superadmin</span></p>
-                     <p class="action-buttons">
-                        <%= link_to "Logout", destroy_user_session_path, :method => "delete", :id => "button_id", :class => "flat-btn pull-right" %>
-                     </p>
-                  </div>
-               </li>
-               <!-- user login dropdown end -->
-            </ul>
-            <!-- End right navbar -->
-         </div>
+<div class="top-head container-fluid">
+  <button type="button" class="navbar-toggle pull-left">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <!-- Left navbar -->
+  <!-- Right navbar -->
+  <div class="list-inline navbar-right top-menu">
+    <!-- /Notification -->
+    <!-- user login dropdown start-->
+    <li class="dropdown text-center">
+      <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <i class="material-icons">person_outline</i>
+      </a>
+      <div class="dropdown-menu extended pro-menu fadeInUp animated" tabindex="5003" style="overflow: hidden; outline: none;">
+        <p class="text-center welcome">
+          Welcome <span class="username">CTS Superadmin</span>
+        </p>
+        <p class="action-buttons">
+          <%= link_to "Logout", destroy_user_session_path, :method => "delete", :id => "button_id", :class => "flat-btn pull-right" %>
+        </p>
+      </div>
+    </li>
+    <!-- user login dropdown end -->
+  </div>
+  <!-- End right navbar -->
+</div>
