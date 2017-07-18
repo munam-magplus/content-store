@@ -24,7 +24,7 @@
       <div class="clearfix"> </div>
       <div class="alpha_category margin_bottom10px border_bottom">
         <div class="pull-left pageNumber">
-          <p>Results  1–<%= @books.count%></p>
+          <p><%= page_entries_info @books %></p>
         </div>
         <div class="pull-right">
           <ul class="pagination pagination-sm">
@@ -66,10 +66,10 @@
       <div class="clearfix"></div>
       <div class="border_bottom"> </div>
     <% end %>
-    <%if @books.count >1 %> 
+    
       <div class="alpha_category margin_bottom10px">
         <div class="pull-left pageNumber">
-          <p>Results  1–<%= @books.count%></p>
+          <p><%= page_entries_info @books %></p>
         </div>
         <div class="pull-right">
           <ul class="pagination pagination-sm">
@@ -78,7 +78,7 @@
         </div>
         <div class="clearfix"> </div>
       </div>
-    <% end %>
+    
       <style type="text/css">
 .greenLayout .content .column1 .leftMenuBlock h2{
   border-top:none!important;

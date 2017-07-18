@@ -35,7 +35,7 @@
         <div class="clearfix"> </div>
         <div class="alpha_category margin_bottom10px">
           <div class="pull-left">
-            <h3>Results  1–<%= @books.count%></h3>
+            <%= page_entries_info @books %>
           </div>
           <div class="pull-right">
             <%= will_paginate @books%>
@@ -71,10 +71,10 @@
           <div class="border_bottom"></div>
           <div class="clearfix"></div>
         <% end %>
-        <%if @books.count >1 %>
+        
           <div class="col-md-12  bg-gray mt20">
             <div class="pull-left mt5">
-              Results  1–<%= @books.count%>
+              <%= page_entries_info @books %>
             </div>
             <div class="pull-right bottomUl">
                
@@ -83,7 +83,7 @@
             </div>
           </div>
             <div class=" clearfix"> </div>
-        <% end %>
+        
       </div>
     </div>
   </div>

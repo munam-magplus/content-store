@@ -34,10 +34,10 @@
       <div class="showing_records_bar">
         <div class="row">
             <div class="col-md-12 col-xs-12 mt-20">
-        <%if @books.count >1 %>
+        
           <div class="bg-gray">
             <div class="col-sm-4 no-pad" style="padding-top: 6px;"> 
-              Results  1–<%= @books.count%>
+              <%= page_entries_info @books %>
             </div>
           <div class="col-sm-8 text-right no-pad">
             <div class="pagination-frontend">
@@ -49,7 +49,7 @@
 
           <div class="clearfix"></div>
         </div>
-        <% end %>
+        
       </div>
           </div>
       </div>
@@ -97,16 +97,16 @@
        
        <!-- / showing_records_bar -->
        <div class="showing_records_bar">
-        <%if @books.count >1 %>      
+              
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6 pd_top7">
-              Showing 1 to <%= @books.count%>
+              <%= page_entries_info @books %>
            </div>
           <div class="col-xs-12 col-sm- text-right col-md-6">
            <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
           </div>
         </div>
-        <% end %>
+      
       </div>
        <!-- / showing_records_bar_end -->
      </div>

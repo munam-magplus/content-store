@@ -31,10 +31,10 @@
         <%end%>
       </div>
       <div class="col-md-12 col-xs-12 mt-20">
-        <%if @books.count >1 %>
+        
           <div class="bg-gray">
             <div class="col-sm-4 no-pad" style="padding-top: 6px;"> 
-              Results  1–<%= @books.count%>
+              <%= page_entries_info @books %>
             </div>
             <div class="col-sm-8 text-right no-pad">
               <div class="pagination-frontend" id="sresult">
@@ -45,7 +45,7 @@
             </div>
             <div class="clearfix"></div>
           </div>
-        <% end %>
+        
       </div>
       <div class="clearfix"></div>
       <% if @books.present? %>
@@ -91,10 +91,10 @@
       <%end%>
        <!--lower pagination start -->
       <div class="col-md-12 col-xs-12 mt-20">
-        <%if @books.count >1 %>
+        
           <div class="bg-gray">
             <div class="col-sm-4 no-pad" style="padding-top: 6px;"> 
-              Results  1–<%= @books.count%>
+              <%= page_entries_info @books %>
             </div>
             <div class="col-sm-8 text-right no-pad">
               <div class="pagination-frontend" id="sresult">
@@ -105,7 +105,7 @@
             </div>
             <div class="clearfix"></div>
           </div>
-        <% end %>
+        
       </div>
     </div>
   </div>

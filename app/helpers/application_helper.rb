@@ -16,4 +16,17 @@ module ApplicationHelper
 	def country_name(country_code)
  		@country_name = Country.find_by_country_code(country_code).country_name		
 	end
+
+	def page_entries_info(collection, options = {})
+
+      if collection.total_pages > 1
+       %{Results %d - %d of %d} % [
+        collection.offset + 1,
+        collection.offset + collection.length,
+        collection.total_entries
+        ]
+      end
+
+    end
+    
 end
