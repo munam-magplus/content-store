@@ -163,6 +163,7 @@ Rails.application.routes.draw do
 
   resources :books do
     collection do
+      post 'save'
       get 'search'
       get 'metadata_sheet_for_books_primary_information'
       get 'metadata_sheet_for_books_contributor'

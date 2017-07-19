@@ -8,6 +8,14 @@ class BooksController < ApplicationController
     @book_content_access_rule  = BooksContentAccessRule.new
   end
 
+  def edit
+    @book = BooksPrimaryContentInformation.find(params[:id])
+    @book_contributor = BooksContributor.new
+    @book_content_pricing = BooksContentPricing.new
+    @book_content_access_rule  = BooksContentAccessRule.new
+    render 'new'
+  end
+
   def import
     #  In this method,we get the entire Excel file in params.
     # in params[:file], we get the path of the excel file.
@@ -60,12 +68,18 @@ class BooksController < ApplicationController
   def metadata_sheet_for_books_contributor
   end
 
+  def update
+    @book = BooksPrimaryContentInformation.find(params[:books_primary_content_information][:id])
+    @book.update_attributes!(book_primary_content_information_params)
+    @form = "form1"
+  end
+
   def create
     if params[:books_primary_content_information].present?
-    # To save books_primary_content_information values
-     @book = BooksPrimaryContentInformation.new(book_primary_content_information_params)
-     @book.save!
-     @form = "form1"# just to move on next form.
+      @book = BooksPrimaryContentInformation.new(book_primary_content_information_params)
+      @book.save!
+      # To save books_primary_content_information values
+      @form = "form1"# just to move on next form.
     elsif params[:book_contributers].present? 
     # To save book_contributers values
      book_contributers = JSON.parse(params[:book_contributers])

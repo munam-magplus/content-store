@@ -3,5 +3,3 @@
 <% else %>
 	$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/author_list', :object => @books)%>");
 <% end %>
-	$("#pagination-frontend").html("<%= escape_javascript(will_paginate @books, renderer: BootstrapPagination::Rails)%>");
-	$('.pagination a').attr('data-remote','true')

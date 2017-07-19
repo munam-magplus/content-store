@@ -1,0 +1,15 @@
+<%if @form == "form1" %>
+	$("#collapseOne").collapse('hide');
+	$("#collapseTwo").collapse('show');
+	$("#books_primary_content_information_id").val("<%= @book.id%>");
+<%elsif @form == "form2"%>
+	$("#collapseTwo").collapse('hide');
+	$("#collapseThree").collapse('show');
+	$(".book_id").val("<%= @book_contributor.books_primary_content_information_id%>");
+<%elsif @form == "form3"%>
+	$("#collapseThree").collapse('hide');
+	$("#collapseFour").collapse('show');	
+<%else%>
+	$("#collapseFour").collapse('hide');
+	$("#collapsefive").collapse('show');
+<%end%>

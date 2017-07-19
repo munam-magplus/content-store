@@ -29,7 +29,7 @@
       </div>
       <div id="collapseOne" class="collapse in">
         <div class="checkout-step-body">
-          <%= form_for(@book, url: {:controller => "books",action: "create"}, remote: true) do |f| %>
+          <%= form_for(@book, url: {:controller => "books",action: "save"}, remote: true) do |f| %>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
@@ -44,6 +44,7 @@
 								<div class="form-group">
 								  <label class="control-label col-sm-4" for="email">Publisher<sup class="mandatory">*</sup></label>
 								  <div class="col-sm-8">
+								  	   <%= f.hidden_field :id, value: @book.id %>
 										<%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'),{ :prompt => "Select Publisher"},{required: true, :class => "form-control", style: "background-color: #eee;"} %>	  
 								  </div>
 								  <div class="clearfix"></div>
@@ -275,7 +276,7 @@
 									  </tr>
 									</thead>
 									<tbody>
-										<%= form_for(@book_contributor, url: {:controller => "books", action: "create"}, remote: true) do |f| %>
+										<%= form_for(@book_contributor, url: {:controller => "books", action: "save"}, remote: true) do |f| %>
 											<tr class="participantRow">  
 											  <td >
 											  	<%= f.hidden_field :id, value: @book.id, :id =>"books_primary_content_information_id" %>
@@ -327,7 +328,7 @@
       	<span class="checkout-step-number">3</span>
         <h4 class="checkout-step-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href=""  >Content Pricing Information</a></h4>
       </div>
-			<%= form_for(:books_content_pricing, url: {:controller => "books",action: "create"}, remote: true) do |f| %>
+			<%= form_for(:books_content_pricing, url: {:controller => "books",action: "save"}, remote: true) do |f| %>
 	      <div id="collapseThree" class="panel-collapse collapse">
 	        <div class="checkout-step-body">
 						<h4>Content Format</h4>
@@ -389,7 +390,7 @@
 			<div class="clearfix"></div>
       <div id="collapseFour" class="panel-collapse collapse">
         <div class="checkout-step-body" style="padding-left: <%= 30 %>px;">
-      		<%= form_for :book_content_access_rule ,url: {:controller => "books",action: "create"}, remote: true do |f| %>
+      		<%= form_for :book_content_access_rule ,url: {:controller => "books",action: "save"}, remote: true do |f| %>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
