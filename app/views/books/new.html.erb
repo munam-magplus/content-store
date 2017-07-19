@@ -20,7 +20,11 @@
 		  <li><a href="#">Content Conversion</a></li>
 		  <li><a href="#" class="active">Create New Book</a></li>
 		</ol>
-    <h2 class="H2-L1">Create New Book</h2>
+    <%if @book.new_record?%>
+        <h2 class="H2-L1">Create New Book</h2>
+      <%else%>
+        <h2 class="H2-L1">Edit Book Information</h2>
+    <%end%>
     <div id="accordion" class="checkout">
 			<div class="clearfix"></div>
       <div class="panel checkout-step">
