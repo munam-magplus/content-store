@@ -30,7 +30,7 @@
       <div class="margin_top20px im_width">
         <div class="pull-left margin_right5px margin_left5px effects search-result col-md-3">
           <a href="#" class="cover2">
-          <%= image_tag(f.logo.url(:original))%>
+          <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg",class: "img-responsive"), books_description_homes_path(:book_id => f.id) %>
           </a>
         </div>
         <div class="col-md-9">
@@ -131,12 +131,12 @@
                     <div class="product_list_box">
                       <div class="row">
                         <div class="col-xs-12 col-sm-4 col-md-4">
-                         <%= link_to image_tag(f.logo.url(:medium),class: "img-responsive center-block img_border margin_bottom_10px"), books_description_homes_path(:book_id => f.id),:remote => true %>
+                         <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg",class: "img-responsive center-block img_border margin_bottom_10px"), books_description_homes_path(:book_id => f.id) %>
                          </div>
                         <div class="col-xs-12 col-sm-8 col-md-8">
                           <div class="product_detail">
                             <div class="product_tittle">
-                            <%= link_to f.book_title.presence || "", books_description_homes_path(:book_id => f.id), :remote => true %>
+                            <%= link_to f.book_title.presence || "", books_description_homes_path(:book_id => f.id) %>
                             </div>
                             <h4><strong>By :</strong> <%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14) %></h4>
                             <p><strong>Description :</strong>
@@ -225,13 +225,13 @@
           <div class="col-md-12  no-pad mt-20">
             <div class="col-md-2  col-sm-2 col-xs-12 ">
               <div class="effects search-result "> 
-              <%= link_to image_tag("http://www.nyresearchpress.com/static/templates/template1/nysp/thumbnails/#{f.isbn}-T-FC.jpg",class: "img-responsive"), books_description_homes_path(:book_id => f.id),:remote => true, class: "cover2" %>
+              <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg",class: "img-responsive"), books_description_homes_path(:book_id => f.id), class: "cover2" %>
               </div>
             </div>
             <div class="col-md-10">
               <div class="">
                 <h2>
-                 <%= link_to f.book_title.presence || "", books_description_homes_path(:book_id => f.id), :remote => true %>
+                 <%= link_to f.book_title.presence || "", books_description_homes_path(:book_id => f.id) %>
                 </h2>
                 <h3 title="Frank West">
                   By
@@ -315,11 +315,11 @@
               <div class="margin_top20px im_width">
                 <div class="col-md-2  col-sm-2 col-xs-12 ">
                   <div class="effects search-result">
-                    <a href="/#" class="cover2"><%= link_to image_tag(f.logo.url(:medium),class: "img-responsive"), books_description_homes_path(:book_id => f.id),:remote => true, class: "cover2" %></a>
+                    <a href="/#" class="cover2"><%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg",class: "img-responsive"), books_description_homes_path(:book_id => f.id), class: "cover2" %></a>
                   </div>
                 </div>
                 <div class="col-md-10">
-                  <h3 title=""><a href="#"><%= link_to truncate(f.book_title.presence || "", length: 14), books_description_homes_path(:book_id => f.id), :remote => true %></a></h3>
+                  <h3 title=""><a href="#"><%= link_to truncate(f.book_title.presence || "", length: 14), books_description_homes_path(:book_id => f.id) %></a></h3>
                   <h3 title="Austin Balfour"> By
                     : <span class="dark_yellow"><%= link_to truncate(f.books_contributor.first_name.presence || "" +" "+f.books_contributor.last_name.presence || "", length: 14), books_description_homes_path(:book_id => f.id), :remote => true %></span></h3>
                   <p>

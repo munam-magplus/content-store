@@ -28,7 +28,7 @@
             <h1> <a  href="#"><strong><%= @book_information.book_title.presence || "" %></strong></a> </h1>
           </div>
           <div class="xtraPadding mt20">
-            <div class="col-md-3 col-sm-3"> <%= image_tag("http://www.nyresearchpress.com/static/templates/template1/nysp/thumbnails/#{@book_information.isbn}-T-FC.jpg",class: "img-responsive") %> 
+            <div class="col-md-3 col-sm-3"> <%= image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{@book_information.isbn}-T-FC.jpg",class: "img-responsive") %> 
             </div>
             <div class="col-md-9 col-sm-9"> 
                 <!-- <p>To read sections of the book, please use the navigation menu at the top left.</p> -->
@@ -37,8 +37,9 @@
             <p><span class="book_atr col-xs-12 col-md-3"><strong>ISBN&nbsp;:&nbsp;</strong></span><span class="book_description col-xs-12 col-md-9"><%= @book_information.isbn.presence || "" %></span></p>
             <p><span class="book_atr col-xs-12 col-md-3"><strong>Publisher&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-9">&nbsp;<%= @publisher.publisher_name.presence || "" %></span></p>
             <p><span class="book_atr col-xs-12 col-md-3"><strong>Language&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-9">&nbsp;<%= @book_information.language.presence || "" %></span></p>
-            <p><span class="book_atr col-xs-12 col-md-3"><strong>Category&nbsp;:&nbsp;</strong></span> <span class="book_description col-xs-12 col-md-9">&nbsp;<%= @book_information.subject_groups.first.subject_group_name.presence || "" %></span></p>
-              
+            <% unless @book_information.subject_groups.blank? %>
+              <p><span class="book_atr col-xs-12 col-md-3"><strong>Category&nbsp;:&nbsp;</strong></span> <span class="book_description col-xs-12 col-md-9">&nbsp;<%= @book_information.subject_groups.first.subject_group_name %></span></p>
+            <% end %>
                 
             <p><span class="book_atr col-xs-12 col-md-3"><strong>Publication Year&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-9">&nbsp;<%= @book_information.publication_date.presence || "" %></span></p>
             <p><span class="book_atr col-xs-12 col-md-3"><strong>Price&nbsp;:</strong></span><span class="book_description col-xs-12 col-md-9">&nbsp;USD&nbsp;    145.00</span></p>

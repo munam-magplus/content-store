@@ -26,7 +26,7 @@
             <h1> <a  href="#"><strong><%= @book_information.book_title.presence || "" %></strong></a> </h1>
           </div>
           <div class="xtraPadding mt20">
-            <div class="col-md-3 col-sm-3"> <%= image_tag("http://www.nyresearchpress.com/static/templates/template1/nysp/thumbnails/#{@book_information.isbn}-T-FC.jpg",class: "img-responsive") %> 
+            <div class="col-md-3 col-sm-3"> <%= image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{@book_information.isbn}-T-FC.jpg",class: "img-responsive") %> 
             </div>
             <div class="col-md-9 col-sm-9"> 
                 <!-- <p>To read sections of the book, please use the navigation menu at the top left.</p> -->

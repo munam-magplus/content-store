@@ -68,12 +68,12 @@
                     <div class="product_list_box">
                       <div class="row">
                         <div class="col-xs-12 col-sm-4 col-md-4">
-                         <%= link_to image_tag(f.logo.url(:medium),class: "img-responsive center-block img_border margin_bottom_10px"), books_description_homes_path(:book_id => f.id),:remote => true %>
+                         <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg"),class: "img-responsive center-block img_border margin_bottom_10px"), books_description_homes_path(:book_id => f.id) %>
                          </div>
                         <div class="col-xs-12 col-sm-8 col-md-8">
                           <div class="product_detail">
                             <div class="product_tittle">
-                            <%= link_to f.book_title, books_description_homes_path(:book_id => f.id), :remote => true %>
+                            <%= link_to f.book_title, books_description_homes_path(:book_id => f.id) %>
                             </div>
                             <h4><strong>By :</strong> <%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14) %></h4>
                             <p><strong>Description :</strong>

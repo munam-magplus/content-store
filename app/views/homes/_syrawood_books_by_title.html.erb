@@ -27,7 +27,7 @@
     <% @books.each do |f| %>
       <div class="margin_top20px im_width">
         <div class="pull-left margin_right5px margin_left5px effects search-result col-md-3 col-xs-12 ">
-          <%= link_to image_tag(f.logo.url(:medium),class: "img-responsive"), books_description_homes_path(:book_id => f.id),:remote => true, class: "cover2" %>
+          <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg",class: "img-responsive"), books_description_homes_path(:book_id => f.id),:remote => true, class: "cover2" %>
         </div>
         <div class="col-md-9">
           <h3>

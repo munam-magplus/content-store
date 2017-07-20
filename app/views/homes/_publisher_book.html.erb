@@ -11,9 +11,9 @@
                 <div class="col-xs-12 col-sm-6 col-md-3">
                   <div class="result media-result ebook">
                     <div class="cover">
-                      <%= link_to image_tag("http://www.nyresearchpress.com/static/templates/template1/nysp/thumbnails/#{f.isbn}-T-FC.jpg"),books_description_homes_path(:book_id => f.id), :remote => true %>
+                      <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg"),books_description_homes_path(:book_id => f.id) %>
                       <div class="details">
-                        <h3 class="title"><%= link_to truncate(f.book_title.presence || "", length: 24), books_description_homes_path(:book_id => f.id), :remote => true %>
+                        <h3 class="title"><%= link_to truncate(f.book_title.presence || "", length: 24), books_description_homes_path(:book_id => f.id) %>
                         </h3>
                         <h4 class="author"><%= truncate(f.books_contributor.first_name.presence || "" +" "+f.books_contributor.last_name.presence || "", length: 14)%></h4>
                       </div>

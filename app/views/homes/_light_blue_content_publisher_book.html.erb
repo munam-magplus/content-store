@@ -15,7 +15,7 @@
         <% @books.each_with_index do |f,index| %>
           
             <li>
-              <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg", class: 'border-img'),books_description_homes_path(:book_id => f.id), :remote => true %>
+              <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg", class: 'border-img'),books_description_homes_path(:book_id => f.id) %>
             </li>
           
         <% end %>

@@ -45,7 +45,7 @@
           <div class="col-md-12  no-pad mt-20">
             <div class="col-md-2  col-sm-2 col-xs-12 ">
               <div class="effects search-result "> 
-                <%= link_to image_tag("http://www.nyresearchpress.com/static/templates/template1/nysp/thumbnails/#{f.isbn}-T-FC.jpg",class: "img-responsive"), books_description_homes_path(:book_id => f.id), class: "cover2" %>
+                <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg",class: "img-responsive"), books_description_homes_path(:book_id => f.id), class: "cover2" %>
               </div>
             </div>
             <div class="col-md-10">
