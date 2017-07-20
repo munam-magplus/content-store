@@ -19,7 +19,7 @@
         <div class="dotted_bottom"> </div>
         <div class="alpha_category margin_bottom10px border_bottom">
           <div class="pull-left pageNumber">
-            <p> Results  1–<%= @books.count%></p>
+            <p> <%= page_entries_info @books %></p>
           </div>
           <div class="pull-right">
             <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
@@ -74,7 +74,7 @@
         <div class="border_bottom"> </div>
         <div class="alpha_category margin_bottom10px">
           <div class="pull-left pageNumber">
-            <p>Results  1–<%= @books.count%></p>
+            <p><%= page_entries_info @books %></p>
           </div>
           <div class="pull-right">
             <%= will_paginate @books,renderer: BootstrapPagination::Rails%>

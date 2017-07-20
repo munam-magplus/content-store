@@ -14,7 +14,7 @@
         <%if @books.count >1 %>
           <div class="bg-gray">
             <div class="col-sm-4 no-pad" style="padding-top: 6px;"> 
-              Results  1–<%= @books.count%>
+              <%= page_entries_info @books %>
             </div>
             <div class="col-sm-8 text-right no-pad">
               <div class="pagination-frontend" id="sresult">
@@ -74,7 +74,7 @@
         <%if @books.count >1 %>
           <div class="bg-gray">
             <div class="col-sm-4 no-pad" style="padding-top: 6px;"> 
-              Results  1–<%= @books.count%>
+              <%= page_entries_info @books %>
             </div>
             <div class="col-sm-8 text-right no-pad">
               <div class="pagination-frontend" id="sresult">
