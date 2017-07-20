@@ -38,23 +38,37 @@
     </div>
     <div class="col-md-6">
       <div class="form-group">
-        <label for="bookISBN" class="col-sm-4 control-label">Publication Year:</label>
+        <label for="bookISBN" class="col-sm-4 control-label">Publication Year From:</label>
         <span class="col-sm-8">
-          <%= select_tag 'publication_date', options_for_select((2000..Date.today.year).to_a),:prompt => "Select Year",:class => "form-control",style: "background-color: #eee;" %>
+          <%= select_tag 'publication_year_from', options_for_select((2000..Date.today.year).to_a),:prompt => "Select Year",:class => "form-control",style: "background-color: #eee;" %>
         </span> <div class="clearfix"></div></div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
-        <label for="bookISBN" class="col-sm-4 control-label">Results Per Page:</label>
+        <label for="bookISBN" class="col-sm-4 control-label">Publication Year To:</label>
         <span class="col-sm-8">
-          <%= select_tag 'per_page',options_for_select([['10',10], ['20',20],['30',30]]),:class => "form-control" %>
+          <%= select_tag 'publication_year_to', options_for_select((2000..Date.today.year).to_a),:prompt => "Select Year",:class => "form-control",style: "background-color: #eee;" %>
         </span> <div class="clearfix"></div></div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <label for="bookISBN" class="col-sm-4 control-label">Sort By:</label>
         <span class="col-sm-8">
-           <%= select_tag 'sort_by',options_for_select([['Author',:author], ['Book Title',:book_title]]),:class => "form-control" %>
+           <%= select_tag 'sort_by',options_for_select([['Author',:first_name], ['Book Title',:book_title], ['ISBN',:isbn],['Subject',:subject_group_name],['Publication Year',:publication_date],]),:class => "form-control",style: "background-color: #eee;" %>
+        </span> <div class="clearfix"></div></div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="bookISBN" class="col-sm-4 control-label">Order:</label>
+        <span class="col-sm-8">
+          <%= select_tag 'order',options_for_select([['Ascending',:asc], ['Descending',:desc]]),:class => "form-control", style: "background-color: #eee;" %>
+        </span> <div class="clearfix"></div></div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="bookISBN" class="col-sm-4 control-label">Results Per Page:</label>
+        <span class="col-sm-8">
+          <%= select_tag 'per_page',options_for_select([['10',10], ['20',20],['30',30]]),:class => "form-control", style: "background-color: #eee;" %>
         </span> <div class="clearfix"></div></div>
     </div>
   <div class="clearfix m-b-30"></div>

@@ -13,10 +13,13 @@ module Filterable
         if key == "to"
           cond << " AND created_at <=?" if value.present?
         end
-        if key == "publication_date"
-          cond << " AND extract(year from publication_date) = ?" if value.present?
+        if key == "publication_date_from"
+          cond << " AND extract(year from publication_date) >=?" if value.present?
         end
-        if key != "from" && key != "to" && key != "publication_date"
+        if key == "publication_date_to"
+          cond << " AND extract(year from publication_date) <=?" if value.present?
+        end
+        if (key != "from" && key != "to") && (key != "publication_date_from" && key != "publication_date_to")
           # if key's value is present only then key will be added to cond
           cond << " AND #{key} LIKE ?" if value.present?
         end

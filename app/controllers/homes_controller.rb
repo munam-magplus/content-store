@@ -90,12 +90,9 @@ class HomesController < ApplicationController
   end
 
   def get_search_results
-    if params[:sort_by] == 'author'
-      sort_order = "first_name asc"
-    else
-      sort_order = "book_title asc"
-    end
-    @books = @publisher.books_primary_content_informations.joins(:subject_groups,:books_contributor).filter(params.slice(:book_title , :first_name, :isbn, :subject_group_name, :publication_date)).order(sort_order).paginate(:page => params[:page], :per_page => params[:per_page])
+    sort_column = params[:sort_by]
+    sort_order = params[:order]
+    @books = @publisher.books_primary_content_informations.joins(:subject_groups,:books_contributor).filter(params.slice(:book_title , :first_name, :isbn, :subject_group_name, :publication_date_from, :publication_date_to)).order(sort_column + " " + sort_order).paginate(:page => params[:page], :per_page => params[:per_page])
     @ids = @publisher.subject_groups
   end
 
