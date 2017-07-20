@@ -45,14 +45,6 @@
     </div>
     <div class="col-md-6">
       <div class="form-group">
-        <label for="bookISBN" class="col-sm-4 control-label">Fromat:</label>
-        <span class="col-sm-8">
-        <%= text_field_tag :format,"", :class => "form-control" %>
-        </span> </div>
-         <div class="clearfix"></div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
         <label for="bookISBN" class="col-sm-4 control-label">Results Per Page:</label>
         <span class="col-sm-8">
           <%= select_tag 'per_page',options_for_select([['10',10], ['20',20],['30',30]]),:class => "form-control" %>

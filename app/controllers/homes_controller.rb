@@ -6,10 +6,10 @@ class HomesController < ApplicationController
 
   def index
     begin
-
       unless @publisher.books_primary_content_informations.blank? 
         if ['red_content','light_blue_content'].include? @publisher.theme_name
           @books = @publisher.books_primary_content_informations.joins(:books_contributor).where('content_classification = ?', 'Featured Books')
+
         else
           @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10)
         end
@@ -51,10 +51,12 @@ class HomesController < ApplicationController
   def books_by_title
     if !params[:letter].present?
       # for all the books of requested Domain.
+      @letter = 'All'
       @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
     else
       #books by slected letter
       @books = @publisher.books_primary_content_informations.where("substr(book_title,1,1) IN (?)",params[:letter]).paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
+      @letter = params[:letter]
     end
 
     render :template => "shared/#{@publisher.theme_name}/books_by_title"
@@ -93,7 +95,7 @@ class HomesController < ApplicationController
     else
       sort_order = "book_title asc"
     end
-    @books = @publisher.books_primary_content_informations.joins(:subject_groups,:books_content_pricing,:books_contributor).filter(params.slice(:book_title , :first_name, :isbn, :subject_group_name, :publication_date, :format)).order(sort_order).paginate(:page => params[:page], :per_page => params[:per_page])
+    @books = @publisher.books_primary_content_informations.joins(:subject_groups,:books_contributor).filter(params.slice(:book_title , :first_name, :isbn, :subject_group_name, :publication_date)).order(sort_order).paginate(:page => params[:page], :per_page => params[:per_page])
     @ids = @publisher.subject_groups
   end
 
