@@ -1,9 +1,0 @@
-<% if  @publisher.theme_name == 'larsen-keller' %>
-	$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/larsen_and_keller_books_by_title', :object => @books)%>");
-<% elsif @publisher.theme_name == 'light_blue_content' %>
-	$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/syrawood_books_by_title', :object => @books)%>");
-<% else %>
-	$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/books_by_title', :object => @books)%>");
-<% end %>
-	$("#pagination-frontend").html("<%= escape_javascript(will_paginate @books, renderer: BootstrapPagination::Rails)%>");
-	$('.pagination a').attr('data-remote','true')

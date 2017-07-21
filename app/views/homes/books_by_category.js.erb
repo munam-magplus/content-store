@@ -1,3 +1,0 @@
-$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/books_by_category', :locals => {:object => @books,:subject_group => @subject_group})%>");
-$("#pagination-frontend").html("<%= escape_javascript(will_paginate @books, renderer: BootstrapPagination::Rails)%>");
-$('.pagination a').attr('data-remote','true')

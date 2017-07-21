@@ -1,5 +1,0 @@
-<% if @publisher.theme_name == 'light_blue_content' %>
-	$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/syrawood_get_author', :object => @books)%>");
-<% else %>
-	$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/author_list', :object => @books)%>");
-<% end %>
