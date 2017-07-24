@@ -49,7 +49,7 @@
 								  <label class="control-label col-sm-4" for="email">Publisher<sup class="mandatory">*</sup></label>
 								  <div class="col-sm-8">
 								  	   <%= f.hidden_field :id, value: @book.id %>
-										<%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'),{ :prompt => "Select Publisher"},{required: true, :class => "form-control", style: "background-color: #eee;"} %>	  
+										<%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name', :selected => f.object.publisher_id),{ :prompt => "Select Publisher"},{required: true, :class => "form-control", style: "background-color: #eee;"} %>	  
 								  </div>
 								  <div class="clearfix"></div>
 								</div>

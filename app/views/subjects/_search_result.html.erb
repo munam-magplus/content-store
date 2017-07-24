@@ -20,6 +20,7 @@
         <thead>
           <tr style="font-size:13px">
             <th>Subject Group Name</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +28,7 @@
 	      		<% @subject.each do |f| %>
               <tr>
                 <td><%= f.subject_name %></td>
+                <td><%= link_to("Edit ", edit_subject_path(f.id), :class => "btn btn-sm", :method => :get) %></td>
               </tr>
             <% end %>
           <% else %>

@@ -7,6 +7,21 @@ class SubjectsController < ApplicationController
   	@subject = Subject.new
   end
 
+  def edit
+    @subject = Subject.find(params[:id])
+    render 'new'
+  end
+
+  def update
+    @subject =Subject.find(params[:subject][:id])
+    if @subject.update_attributes!(subject_params)
+      # Handle a successful update.
+      flash[:notice] = 'subject successfully updated.'
+      redirect_to subjects_path
+    else
+      render 'edit'
+    end
+  end
   def create
   	@subject = Subject.new(subject_params)
   	if @subject.save
@@ -61,6 +76,6 @@ class SubjectsController < ApplicationController
 
   private
   def subject_params
-  	params.require(:subject).permit(:publisher_id, :subject_name)
+  	params.require(:subject).permit(:publisher_id, :subject_name, :subject_priority)
 	end
 end
