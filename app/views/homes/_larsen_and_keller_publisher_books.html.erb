@@ -14,7 +14,7 @@
         <div class="item">
           <div class="item_box clearfix">
             <div class="image_box"> 
-              <%= link_to image_tag(f.logo.url(:original), :class => "img-responsive center-block"), books_description_homes_path(:book_id => f.id), :remote => true %>
+              <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg", class: "img-responsive center-block"), books_description_homes_path(:book_id => f.id), :remote => true %>
             </div>
             <div class="item_info">
               <p><%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id), :remote => true %></p>
@@ -29,6 +29,9 @@
       <% end %>
     <% end %>
     </div>
+    <p>
+      <%= @publisher.welcome_text.html_safe  unless @publisher.welcome_text.blank? %>
+    </p>
   </div>
 </div>
 </div>

@@ -7,15 +7,14 @@
       <div class="col-sm-12">
         <div id='pub_book'>  
           
-          <!-- category-->
-
-          <!-- / breadcrumb_bar -->
-
+          <!--book title -->
+          
+           <!-- / breadcrumb_bar -->
 <div class="breadcrumb_bar clearfix">
   <div class="container">
     <ol class="breadcrumb">
       <li><a href="#">Home</a></li>
-      <li class="active">Search Results</li>
+      <li class="active">Books By Title</li>
     </ol>
   </div>
   <!-- /container --> 
@@ -27,25 +26,29 @@
 
 <div class="main_content_section">
   <div class="container">
-    <div class="common_tittle clearfix"> Search <span>Results</span> </div>
+    <div class="common_tittle clearfix"> Books By <span>Title</span> </div>
     <div class="content_wrapper">
-    
+      <ul class='pagination'>
+      <% ('A'..'Z').each do |letter| %> 
+        <li>
+          <%= link_to letter, books_by_title_homes_path(:letter=>letter)%>
+        </li>
+      <%end%>
+    </ul>
       <!-- / showing_records_bar -->
       <div class="showing_records_bar">
         <div class="row">
-            <div class="col-md-12 col-xs-12 mt-20">
+        <div class="col-md-12 col-xs-12 mt-20">
         
           <div class="bg-gray">
-            <div class="col-sm-4 no-pad" style="padding-top: 6px;"> 
-              <%= page_entries_info @books %>
+            <div class="col-md-12  bg-gray mt20">
+              <div class="pull-left mt5">
+               <%= page_entries_info @books %>
+              </div>
+              <div class="pull-right bottomUl">
+               <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+              </div>
             </div>
-          <div class="col-sm-8 text-right no-pad">
-            <div class="pagination-frontend">
-              <nav aria-label="Page navigation" style="clear:both;"> 
-                <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
-              </nav>  
-            </div>
-          </div>
 
           <div class="clearfix"></div>
         </div>
@@ -65,16 +68,17 @@
                     <div class="product_list_box">
                       <div class="row">
                         <div class="col-xs-12 col-sm-4 col-md-4">
-                         <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg"),class: "img-responsive center-block img_border margin_bottom_10px"), books_description_homes_path(:book_id => f.id),:remote => true %>
+                         <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg",class: "img-responsive center-block img_border margin_bottom_10px"), books_description_homes_path(:book_id => f.id) %>
                          </div>
                         <div class="col-xs-12 col-sm-8 col-md-8">
                           <div class="product_detail">
                             <div class="product_tittle">
-                            <%= link_to f.book_title.presence || "", books_description_homes_path(:book_id => f.id), :remote => true %>
+                            <%= link_to f.book_title, books_description_homes_path(:book_id => f.id) %>
                             </div>
                             <h4><strong>By :</strong> <%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14) %></h4>
                             <p><strong>Description :</strong>
-                               <%= truncate(f.book_blurb.presence || "", length: 30) %>
+                            <% if f.book_blurb.length > 2 %>
+                              <%= truncate(f.book_blurb, length: 30) %>
                               <%= link_to 'more', '', :class => "read-more-#{f.id}" %>
                               <script>
                                 $('.read-more-<%= f.id %>').on('click', function(e) {
@@ -82,7 +86,8 @@
                                   $(this).parent().html('<strong> Description:</strong> <%= f.book_blurb %>')
                                 })
                               </script>
-                             </p>
+                            <% end %>
+                            </p>
                            </div>
                         </div>
                       </div>
@@ -96,18 +101,21 @@
        <!-- / list_of_records_end -->
        
        <!-- / showing_records_bar -->
-       <div class="showing_records_bar">
+      
+
+      <div class="showing_records_bar">
               
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6 pd_top7">
-              <%= page_entries_info @books %>
+              Showing 1 to <%= @books.count%>
            </div>
           <div class="col-xs-12 col-sm- text-right col-md-6">
            <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
           </div>
         </div>
-      
+       
       </div>
+
        <!-- / showing_records_bar_end -->
      </div>
   </div>
@@ -115,8 +123,9 @@
 </div>
 
 <!-- / clients_section end --> 
-
-          <!-- category End-->
+ 
+          
+          <!--book title end-->
           
         </div>
       </div>
@@ -128,4 +137,4 @@
     <%= render :partial => "larsen_and_keller_footer"%>
   </footer>
 
-</section>    
+</section>

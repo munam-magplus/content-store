@@ -70,7 +70,7 @@
                   <li>
                     <% unless @publisher.subject_groups.blank? %>
                       <%@publisher.subject_groups.each do |subject_group| %>
-                        <li> <%=link_to subject_group.subject_group_name ,books_by_category_homes_path(:subject_group_id => subject_group.id) %>
+                        <li> <%=link_to truncate(subject_group.subject_group_name, length: 50) ,books_by_category_homes_path(:subject_group_id => subject_group.id) %>
                         </li>
                       <%end%>
                     <%end%>
