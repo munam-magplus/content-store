@@ -13,10 +13,11 @@
       <div class="border_wrapper padding10px mtb25">
         <div id="bodydivs"> 
           <h2 class="heading1 border_bottom mb20">Author(s): </h2>
-          <ul class="pagination pagination-sm nomargin">
+          <ul class='pagination pagination-sm'>
             <% ('A'..'Z').each do |letter| %> 
-            <li><%= link_to letter, get_author_homes_path(:letter=>letter)%>
-            </li>
+              <li>
+                <%= link_to letter, get_author_homes_path(:letter=>letter)%>
+              </li>
             <%end%>
           </ul>
           <div class="clearfix"></div>
@@ -48,3 +49,10 @@
 
 
 </section>
+<script>
+  $('ul.pagination li').each(function() {
+    if($(this).text().trim()== "<%= @letter%>"){
+     $(this).addClass("active");
+    }
+  });
+</script> 

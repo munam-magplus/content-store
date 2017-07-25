@@ -34,16 +34,18 @@
           </nav>
         </div>
         <div class="clearfix"> </div>
-        <div class="col-md-12  bg-gray mt20">
-          <div class="pull-left mt5">
-            <%= page_entries_info @books %>
+        <% if @books.count >= 10 %>
+          <div class="col-md-12  bg-gray mt20">
+            <div class="pull-left mt5">
+              <%= page_entries_info @books %>
+            </div>
+            <div class="pull-right bottomUl">
+              <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+            </div>
+           <div class="clearfix"></div>
           </div>
-          <div class="pull-right bottomUl">
-            <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
-          </div>
-         <div class="clearfix"></div>
-        </div>
-       
+        <%end%>
+         
         <% @books.each do |f| %>
           <div class="margin_top20px im_width">
             <div class="col-md-2  col-sm-2 col-xs-12 ">
@@ -71,17 +73,18 @@
           <div class="border_bottom"></div>
           <div class="clearfix"></div>
         <% end %>
-        
-          <div class="col-md-12  bg-gray mt20">
-            <div class="pull-left mt5">
-              <%= page_entries_info @books %>
+          <% if @books.count >= 10 %>
+            <div class="col-md-12  bg-gray mt20">
+              <div class="pull-left mt5">
+                <%= page_entries_info @books %>
+              </div>
+              <div class="pull-right bottomUl">
+                 
+                  <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+                 
+              </div>
             </div>
-            <div class="pull-right bottomUl">
-               
-                <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
-               
-            </div>
-          </div>
+          <%end%>
             <div class=" clearfix"> </div>
         
       </div>
@@ -103,4 +106,11 @@
     </footer>
   
  
-</section>      
+</section>
+<script>
+  $('ul.pagination li').each(function() {
+    if($(this).text().trim()== "<%= @letter%>"){
+     $(this).addClass("active");
+    }
+  });
+</script>    

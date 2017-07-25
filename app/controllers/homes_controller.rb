@@ -34,9 +34,10 @@ class HomesController < ApplicationController
     render :template => "shared/#{@publisher.theme_name}/books_by_author"
   end
 
-  def get_author 
+  def get_author
     @books = @publisher.books_primary_content_informations.joins(:books_contributor).where("substr(first_name,1,1) IN (?)",params[:letter]).order('first_name ASC')
     authors = []
+    @letter = params[:letter]
     @books.each do |book|
       if !authors.include?((book.books_contributor.first_name.presence || "") + " " + (book.books_contributor.last_name.presence || ""))
         authors << (book.books_contributor.first_name.presence || "") + " " + (book.books_contributor.last_name.presence || "")
@@ -83,7 +84,7 @@ class HomesController < ApplicationController
   end
 
   def refine_publishers_book
-    @books = BooksPrimaryContentInformation.where(id: params[:book_ids].split(' '), book_title: params[:book_title]).paginate(:page => params[:page], :per_page => 10)
+    @books = BooksPrimaryContentInformation.where(id: params[:book_ids].split(' ')).book_title(params[:book_title]).paginate(:page => params[:page], :per_page => 10)
       respond_to do |format|
         format.js
       end 
@@ -93,7 +94,9 @@ class HomesController < ApplicationController
     sort_column = params[:sort_by]
     sort_order = params[:order]
     @books = @publisher.books_primary_content_informations.joins(:subject_groups,:books_contributor).filter(params.slice(:book_title , :first_name, :isbn, :subject_group_name, :publication_date_from, :publication_date_to)).order(sort_column + " " + sort_order).paginate(:page => params[:page], :per_page => params[:per_page])
-    @ids = @publisher.subject_groups
+    books_ids =[]
+    get_book_ids(@books,books_ids)
+    @ids = books_ids
   end
 
   def about

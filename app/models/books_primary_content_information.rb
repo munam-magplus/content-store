@@ -12,4 +12,6 @@ class BooksPrimaryContentInformation < ApplicationRecord
 	#used for uploading image
 	has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" }
     validates_attachment_content_type :logo, content_type: /\Aimage\/.*\z/
+    #scope
+    scope :book_title, -> (book_title) { where("book_title LIKE ?", "%#{book_title}%") }
 end

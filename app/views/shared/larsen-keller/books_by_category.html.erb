@@ -33,20 +33,20 @@
       <!-- / showing_records_bar -->
       <div class="showing_records_bar">
         <div class="row">
-            <div class="col-md-12 col-xs-12 mt-20">
-        
-          <div class="bg-gray">
-            <div class="col-sm-4 no-pad" style="padding-top: 6px;"> 
-              <%= page_entries_info @books %>
+          <div class="col-md-12 col-xs-12 mt-20">
+          <% if @books.count >= 10 %>
+            <div class="bg-gray">
+              <div class="col-sm-4 no-pad" style="padding-top: 6px;"> 
+                <%= page_entries_info @books %>
+              </div>
+            <div class="col-sm-8 text-right no-pad">
+              <div class="pagination-frontend">
+                <nav aria-label="Page navigation" style="clear:both;"> 
+                  <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+                </nav>  
+              </div>
             </div>
-          <div class="col-sm-8 text-right no-pad">
-            <div class="pagination-frontend">
-              <nav aria-label="Page navigation" style="clear:both;"> 
-                <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
-              </nav>  
-            </div>
-          </div>
-
+          <%end%>
           <div class="clearfix"></div>
         </div>
         
