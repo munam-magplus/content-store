@@ -14,10 +14,10 @@
         <div class="item">
           <div class="item_box clearfix">
             <div class="image_box"> 
-              <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg", class: "img-responsive center-block"), books_description_homes_path(:book_id => f.id), :remote => true %>
+              <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg", class: "img-responsive center-block"), books_description_homes_path(:book_id => f.id) %>
             </div>
             <div class="item_info">
-              <p><%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id), :remote => true %></p>
+              <p><%= link_to truncate(f.book_title, length: 10), books_description_homes_path(:book_id => f.id) %></p>
               <b><%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14)%></b> </div>
             <div class="item_btn_box">
               <ul>

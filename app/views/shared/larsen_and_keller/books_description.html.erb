@@ -37,19 +37,20 @@
           </div>
           <div class="col-xs-12 col-sm-8 col-md-9">
             <div class="product_detail">
-              <h4><strong>ISBN :</strong> <%= @book_information.isbn%></h4>
-              <h4><strong>Publisher :</strong> <%= @publisher.publisher_name%></h4>
-              <h4><strong>Language :</strong><%= @book_information.language%></h4>
-              <h4><strong>Category :</strong> <%= @book_information.subject_groups.first.subject_group_name%></h4>
-              <h4><strong>Publication Year :</strong> <%= @book_information.publication_date%></h4>
+              <h4><strong>ISBN :</strong> <%= @book_information.isbn.presence || "" %></h4>
+              <h4><strong>Publisher :</strong> <%= @publisher.publisher_name.presence || "" %></h4>
+              <h4><strong>Language :</strong><%= @book_information.language.presence || "" %></h4>
+              <h4><strong>Category :</strong> <%= @book_information.subject_groups.first.subject_group_name.presence || "" %></h4>
+              <h4><strong>Publication Year :</strong> <%= @book_information.publication_date.presence || "" %></h4>
               <h4><strong>Price :</strong> USD  154.99</h4>
-              <h4><strong>Format :</strong>  <%=@book_information.books_content_pricing.format%></h4>
-              
+              <% if @book_information.books_content_pricing.present? %>
+                <h4><strong>Format :</strong>  <%=@book_information.books_content_pricing.format.presence || "" %></h4>
+              <% end %>
               <h4><strong>Description :</strong> <br>
-                <%= @book_information.book_blurb %>
+                <%= @book_information.book_blurb.presence || "" %>
               </h4>
-              <h4><strong>Author/Editor :</strong><%= @book_information.books_contributor.first_name %>&nbsp <%= @book_information.books_contributor.last_name %> <br>
-              <%= @book_information.books_contributor.description %></h4>
+              <h4><strong>Author/Editor :</strong><%= @book_information.books_contributor.first_name.presence || "" %>&nbsp <%= @book_information.books_contributor.last_name.presence || "" %> <br>
+              <%= @book_information.books_contributor.description.presence || "" %></h4>
             </div>
           </div>
         </div>
