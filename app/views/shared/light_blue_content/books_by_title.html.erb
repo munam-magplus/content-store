@@ -15,6 +15,7 @@
     <div id="bodydivs"> 
         <h2 class="heading1 border_bottom mb20">Book Titles</h2>
       <ul class="pagination pagination-sm nomargin">
+        <li><%= link_to "All", books_by_title_homes_path %></li> 
         <% ('A'..'Z').each do |letter| %> 
           <li>
             <%= link_to letter, books_by_title_homes_path(:letter=>letter)%>
