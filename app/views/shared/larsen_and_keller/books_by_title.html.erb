@@ -29,6 +29,7 @@
     <div class="common_tittle clearfix"> Books By <span>Title</span> </div>
     <div class="content_wrapper">
       <ul class='pagination'>
+        <li><%= link_to "All", books_by_title_homes_path %></li>
       <% ('A'..'Z').each do |letter| %> 
         <li>
           <%= link_to letter, books_by_title_homes_path(:letter=>letter)%>

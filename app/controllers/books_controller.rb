@@ -10,7 +10,7 @@ class BooksController < ApplicationController
 
   def edit
     @book = BooksPrimaryContentInformation.find(params[:id])
-    @book_contributor = BooksContributor.new
+    @book_contributor = BooksContributor.find_by_books_primary_content_information_id(params[:id])
     @book_content_pricing = BooksContentPricing.new
     @book_content_access_rule  = BooksContentAccessRule.new
     render 'new'
@@ -74,21 +74,26 @@ class BooksController < ApplicationController
     @form = "form1"
   end
 
-  def create
+  def save
     if params[:books_primary_content_information].present?
       @book = BooksPrimaryContentInformation.new(book_primary_content_information_params)
       @book.save!
       # To save books_primary_content_information values
       @form = "form1"# just to move on next form.
-    elsif params[:book_contributers].present? 
-    # To save book_contributers values
+    elsif params[:book_contributers].present?   
+    # To save book_contributers valuese
      book_contributers = JSON.parse(params[:book_contributers])
      book_contributers.each do |book_contributor_params|
       # To save multiple records
-        @book_contributor = BooksContributor.new(book_contributor_params)
-        primary_id = BooksPrimaryContentInformation.last[:id]
-        @book_contributor.books_primary_content_information_id = primary_id
-        @book_contributor.save!
+        if book_contributor_params["id"].present?
+          @book_contributor = BooksContributor.find(book_contributor_params["id"])
+          @book_contributor.update_attributes!(book_contributor_params)
+        else
+          @book_contributor = BooksContributor.new(book_contributor_params)
+          primary_id = BooksPrimaryContentInformation.last[:id]
+          @book_contributor.books_primary_content_information_id = primary_id
+          @book_contributor.save!
+        end
       end
      @form = "form2"  # just to move on next form. 
      respond_to { |format| format.js }

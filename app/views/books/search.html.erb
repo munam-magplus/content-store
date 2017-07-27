@@ -29,37 +29,35 @@
               <label for="bookISBN" class="col-sm-4 control-label" >Publisher<span class="red">*</span></label>
               <span class="col-sm-8">
               <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "Select publisher", :class => "form-control", :style => "background-color: #eee"%>
-            </span>
+             </span>
+             <div class="clearfix"></div>
             </div>
           </div>
-        </div>
-        <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label for="bookISBN" class="col-sm-4 control-label">ISBN <span class="red">*</span></label>
               <span class="col-sm-8">
               <%= text_field_tag :isbn, params[:isbn], :class => "form-control", :placeholder => "ISBN" %>
               </span>
+              <div class="clearfix"></div>
             </div>
           </div>
-        </div>
-        <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label for="bookISBN" class="col-sm-4 control-label" >Title</label>
               <span class="col-sm-8">
               <%= text_field_tag :book_title, params[:book_title], :class => "form-control", :placeholder => "Title" %>
             </span>
+            <div class="clearfix"></div>
             </div>
           </div>
-        </div>
-        <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label for="bookISBN" class="col-sm-4 control-label" >No. of search results per page<span class="red">*</span></label>
               <span class="col-sm-8">
                 <%= select_tag(:sort_order, options_for_select([['10','10'],['50','50'],['100','100'],['250','250'],['500','500']]),:prompt => "Number of books per page", :class => "form-control", :style => "background-color: #eee")  %>
             </span>
+            <div class="clearfix"></div>
             </div>
           </div>
         </div>

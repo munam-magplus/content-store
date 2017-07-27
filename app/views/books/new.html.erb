@@ -89,7 +89,7 @@
 		                                  ['Dansk', 'dansk'],
 		                                  ['Polish', 'polish'],
 		                                  ['Latvian', 'latvin'],
-		                                  ['English', 'english']]),{ :prompt => "Please Select"},{required: true, :class =>"form-control", style: "background-color: #eee;"} %>
+		                                  ['English', 'english']],:selected => f.object.language),{ :prompt => "Please Select"},{required: true, :class =>"form-control", style: "background-color: #eee;"} %>
 
 								  </div>
 								  <div class="clearfix"></div>
@@ -99,7 +99,7 @@
 								<div class="form-group">
 								  <label class="control-label col-sm-4" for="email">Content Classification </label>
 								  <div class="col-sm-8">
-								  	<%= f.select 'content_classification', options_for_select([ "Bestsellers", "Coming Soon", "Featured Books", "New Releases"]),{ :prompt => "Please Select"},{:class =>"form-control", style: "background-color: #eee;"} %>
+								  	<%= f.select 'content_classification', options_for_select([ "Bestsellers", "Coming Soon", "Featured Books", "New Releases"],:selected => f.object.content_classification),{ :prompt => "Please Select"},{:class =>"form-control", style: "background-color: #eee;"} %>
 								  </div>
 								  <div class="clearfix"></div>
 								</div>
@@ -164,7 +164,7 @@
 								<div class="form-group">
 								  <label class="control-label col-sm-4" for="email">Conversion Required </label>
 								  <div class="col-sm-8">
-								  	<%= f.select 'conversion_required', options_for_select([ "Yes", "No"]),{ :prompt => "Please Select"},{:class =>"form-control" , style: "background-color: #eee;"} %>
+								  	<%= f.select 'conversion_required', options_for_select([ "Yes", "No"],:selected => f.object.conversion_required),{ :prompt => "Please Select"},{:class =>"form-control" , style: "background-color: #eee;"} %>
 								  </div>
 								  <div class="clearfix"></div>
 								</div>
@@ -182,7 +182,7 @@
 								<div class="form-group">
 								  <label class="control-label col-sm-4" for="email">Binding</label>
 								  <div class="col-sm-8">
-								  	<%= f.select 'binding', options_for_select([ "Board book", "Audio", "Audio cassette", "CD-Audio", "DAT", "Audio disc", "Audio tape", "MiniDisc", "CD-Extra", "DVD Audio", "Downloadable audio file", "Other audio format", "Book", "Hardback", "Paperback"]),{ :prompt => "Please Select"},{:class =>"form-control" , style: "background-color: #eee;"} %>
+								  	<%= f.select 'binding', options_for_select([ "Board book", "Audio", "Audio cassette", "CD-Audio", "DAT", "Audio disc", "Audio tape", "MiniDisc", "CD-Extra", "DVD Audio", "Downloadable audio file", "Other audio format", "Book", "Hardback", "Paperback"],:selected => f.object.binding),{ :prompt => "Please Select"},{:class =>"form-control" , style: "background-color: #eee;"} %>
 								  </div>
 								  <div class="clearfix"></div>
 								</div>
@@ -283,8 +283,9 @@
 										<%= form_for(@book_contributor, url: {:controller => "books", action: "save"}, remote: true) do |f| %>
 											<tr class="participantRow">  
 											  <td >
-											  	<%= f.hidden_field :id, value: @book.id, :id =>"books_primary_content_information_id" %>
-											  	<%= f.select 'contributor_role', options_for_select([ "Screenplay by", "Libretto by", "Lyrics by", "By (composer)", "By (artist)", "By (photographer)", "From an idea by", "Designed by", "Photographs by", "Text by", "Preface by", "Prologue by", "Summary by", "Supplement by", "Afterword by", "Notes by", "Commentaries by", "Foreword by", "Introduction by", "Footnotes by", "Memoir by", "Software written by"]),{ :prompt => "Please select"},{:class =>"form-control" ,:id =>"contributor_role" ,style: "background-color: #eee;"} %>
+											  	<%= f.hidden_field :id, value: @book_contributor.id,:id =>"id" %>
+											  	<%= f.hidden_field :book_primary_content_information_id, value: @book.id, :id =>"books_primary_content_information_id" %> 
+											  	<%= f.select 'contributor_role', options_for_select([ "Screenplay by", "Libretto by", "Lyrics by", "By (composer)", "By (artist)", "By (photographer)", "From an idea by", "Designed by", "Photographs by", "Text by", "Preface by", "Prologue by", "Summary by", "Supplement by", "Afterword by", "Notes by", "Commentaries by", "Foreword by", "Introduction by", "Footnotes by", "Memoir by", "Software written by"],:selected => f.object.contributor_role),{ :prompt => "Please select"},{:class =>"form-control" ,:id =>"contributor_role" ,style: "background-color: #eee;"} %>
 											  </td>
 											  <td ><%= f.text_field :first_name , :placeholder => "First Name", :class => "form-control",:id =>"first_name" %> <%= f.text_field :last_name , :placeholder => "Last Name", :class => "form-control",:id =>"last_name" %>
 											  </td>
@@ -575,8 +576,8 @@
             params.push(val);
     });
     $.ajax({
+			url: '/books/save',
 			type: "POST",
-			url: "/books",
 			//dataType: 'script',
    		data: {books_content_pricing : JSON.stringify(params)}
 		});
@@ -600,8 +601,8 @@
     });
 
     $.ajax({
+			url: '/books/save',
 			type: "POST",
-			url: "/books",
 			//dataType: 'script',
    		data: {book_contributers : JSON.stringify(params)}
 		});
