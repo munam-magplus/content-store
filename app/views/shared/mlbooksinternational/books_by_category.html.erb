@@ -45,10 +45,10 @@
                 <div class="col-md-10">
                   <h3 title=""><a href="#"><%= link_to truncate(f.book_title.presence || "", length: 14), books_description_homes_path(:book_id => f.id) %></a></h3>
                   <h3 title="Austin Balfour"> By
-                    : <span class="dark_yellow"><%= link_to truncate(f.books_contributor.first_name.presence || "" +" "+f.books_contributor.last_name.presence || "", length: 14), books_description_homes_path(:book_id => f.id) %></span></h3>
+                    : <span class="dark_yellow"><%= (f.books_contributor.first_name.presence || "")+" "+(f.books_contributor.last_name.presence || "") %></span></h3>
                   <p>
                     <strong>Description :</strong>   
-                      <%= truncate(f.book_blurb.presence || "", length: 30) %>
+                      <%= truncate(f.book_blurb.presence || "", length: 182) %>
                       <%= link_to 'more', '', :class => "read-more-#{f.id}" %>
                       <script>
                         $('.read-more-<%= f.id %>').on('click', function(e) {

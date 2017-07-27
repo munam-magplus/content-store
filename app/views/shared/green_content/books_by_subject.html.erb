@@ -63,12 +63,12 @@
                 </h2>
                 <h3 title="Frank West">
                   By
-                  : <span class="dark_yellow"><%= f.books_contributor.first_name+" "+f.books_contributor.last_name %></span></h3>
+                  : <span class="dark_yellow"><%= (f.books_contributor.first_name.presence || "")+" "+(f.books_contributor.last_name.presence || "") %></span></h3>
                 <p><strong>
                   Description
                   :</strong> 
                   <% if f.book_blurb.length > 2 %>
-                  <%= truncate(f.book_blurb, length: 30) %>
+                  <%= truncate(f.book_blurb, length: 182) %>
                   <%= link_to 'more', '', :class => "read-more-#{f.id}" %>
                   <script>
                     $('.read-more-<%= f.id %>').on('click', function(e) {

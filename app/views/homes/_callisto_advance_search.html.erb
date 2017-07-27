@@ -24,7 +24,19 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-3"> Publication Year (YYYY) :</label>
+          <label class="col-md-3"> Select Subject Group</label>
+          <div class="col-md-6">
+            <%= select_tag 'subject_group_name',options_from_collection_for_select(SubjectGroup.all, 'subject_group_name', 'subject_group_name'), :prompt => "Select subject Group",:class => "form-control",style: "background-color: #eee;"%>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3"> Publication Year From (YYYY) :</label>
+          <div class="col-md-6">
+            <%= select_tag 'publication_date', options_for_select((2000..Date.today.year).to_a),:prompt => "Select Year",:class => "form-control",style: "background-color: #eee;" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3"> Publication Year TO (YYYY) :</label>
           <div class="col-md-6">
             <%= select_tag 'publication_date', options_for_select((2000..Date.today.year).to_a),:prompt => "Select Year",:class => "form-control",style: "background-color: #eee;" %>
           </div>
@@ -33,7 +45,15 @@
           <label class="col-md-3"> Sort by :</label>
           <div class="col-md-6 no-pad">
             <div class="col-md-6">
-              <%= select_tag 'sort_by',options_for_select([['Author',:author], ['Book Title',:book_title]]),:class => "form-control" %>
+              <%= select_tag 'sort_by',options_for_select([['Author',:first_name], ['Book Title',:book_title], ['ISBN',:isbn],['Subject',:subject_group_name],['Publication Year',:publication_date],]),:class => "form-control",style: "background-color: #eee;" %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3"> Order:</label>
+          <div class="col-md-6 no-pad">
+            <div class="col-md-6">
+              <%= select_tag 'order',options_for_select([['Ascending',:asc], ['Descending',:desc]]),:class => "form-control", style: "background-color: #eee;" %>
             </div>
           </div>
         </div>

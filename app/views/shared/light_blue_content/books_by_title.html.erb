@@ -39,17 +39,17 @@
         </div>
         <div class="col-md-9">
           <h3>
-            <%= link_to truncate(f.book_title, length: 14), books_description_homes_path(:book_id => f.id) %>
+            <%= link_to f.book_title, books_description_homes_path(:book_id => f.id) %>
           </h3>
           <h3>
             By :
             <span class="dark_yellow">
-              <%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14) %>
+              <%= (f.books_contributor.first_name.presence || "")+" "+(f.books_contributor.last_name.presence || "") %>
             </span>
           </h3>
           <p><strong> Description :</strong>
             <% if f.book_blurb.length > 2 %>
-              <%= truncate(f.book_blurb, length: 30) %>
+              <%= truncate(f.book_blurb, length: 182) %>
               <%= link_to 'more', '', :class => "read-more-#{f.id}" %>
               <script>
                 $('.read-more-<%= f.id %>').on('click', function(e) {

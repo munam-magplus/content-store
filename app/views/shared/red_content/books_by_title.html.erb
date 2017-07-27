@@ -55,10 +55,10 @@
               </div>
             </div>
             <div class="col-md-10">
-              <h3 title=""><%= link_to truncate(f.book_title, length: 14), books_description_homes_path(:book_id => f.id) %></h3>
-              <h3>By :<span class="dark_yellow"><%= truncate(f.books_contributor.first_name.presence || "" +" "+f.books_contributor.last_name.presence || "" , length: 14) %></span></h3>
+              <h3 title=""><%= link_to f.book_title, books_description_homes_path(:book_id => f.id) %></h3>
+              <h3>By :<span class="dark_yellow"><%= (f.books_contributor.first_name.presence || "")+" "+(f.books_contributor.last_name.presence || "") %></span></h3>
               <p><strong>Description :</strong>
-                     <%= truncate(f.book_blurb.presence || "", length: 30) %>
+                     <%= truncate(f.book_blurb.presence || "", length: 182) %>
                     <%= link_to 'more', '', :class => "read-more-#{f.id}" %>
                     <script>
                       $('.read-more-<%= f.id %>').on('click', function(e) {
