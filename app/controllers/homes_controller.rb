@@ -118,7 +118,7 @@ class HomesController < ApplicationController
   end
   
   def search
-    @books = @publisher.books_primary_content_informations.filter(params.slice(:book_title)).paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
+    @books = @publisher.books_primary_content_informations.get_books(params[:book_title]).paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
     books_ids =[]
     get_book_ids(@books,books_ids)
     @ids = books_ids
