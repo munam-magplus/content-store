@@ -20,7 +20,7 @@
             <h1 class="sectionHeading">CONTACT US </h1>
             <div class="col-sm-12 form_bg no-pad">
               <div class="col-sm-8">
-                <p><em>Fields marked with<sup class="mandatory">*</sup>are compulsory</em> </p>
+                <p><em>Fields marked with <sup class="mandatory">*</sup> are compulsory</em> </p>
                 <br>
                 <form action="search.do" method="get" id="advanceSearchForm" class="form-horizontal ">
                   <fieldset>
@@ -61,7 +61,7 @@
               <div class="col-sm-4">
                 <h1 class="text_uppercase contact_heading">Address</h1>
                 <p><%= @publisher.publisher_address.presence || "" %> <br>
-                  <%= link_to @publisher.domain_name, "http://www.#{@publisher.domain_name}"%><br>
+                  <%= link_to "www.#{@publisher.domain_name}.com", "http://www.#{@publisher.domain_name}.com"%><br>
                 <b>Email-</b><%= link_to @publisher.contact_email, "mailto:#{@publisher.contact_email}"%>
                 </p>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6044.328639547161!2d-74.003225!3d40.7584105!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259b352d8f061%3A0x86c598ed2f832442!2s612+W+37th+St%2C+New+York%2C+NY+10018%2C+USA!5e0!3m2!1sen!2sin!4v1408957590195" width="100%" height="350" frameborder="0" style="border:0"></iframe>
