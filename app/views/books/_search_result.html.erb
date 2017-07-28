@@ -32,6 +32,7 @@
                 <td ><%= f.isbn %></td>
                 <td ><%= f.book_title %></td>
                 <td><%= button_to("Edit ", edit_book_path(f.id), :class => "btn btn-sm", :method => :get) %></td>
+                <td><%= link_to "Delete", book_path(f.id), :data => { :confirm => "Are you sure you want to delete this Book?"},:class => "btn btn-sm",:method => :delete %></td>
               </tr>
             <% end %>
           <% else %>

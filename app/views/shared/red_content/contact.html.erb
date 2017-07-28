@@ -65,7 +65,7 @@
                 <strong>Address</strong>
               </p>
               <p>
-               <%= @publisher.publisher_address %>
+               <%= @publisher.publisher_address.presence || "" %>
 
               </p>
               <p>

@@ -57,8 +57,14 @@
                         <div class="col-sm-4">
                           <div class="text-left contact-text" style="line-height: 22px;">
                         <!-- @publisher.address --><br>
+                          <p>
+                            <strong>Address</strong>
+                          </p>
+                          <p>
+                            <%= @publisher.publisher_address.presence || "" %>
+                          </p>
                             <span style="text-transform:lowercase;">
-                              <%= link_to @publisher.domain_name, "http://www.#{@publisher.domain_name}"%>
+                              <%= link_to "www.#{@publisher.domain_name}.com", "http://www.#{@publisher.domain_name}.com"%>
                             </span>
                             <br>Email-
                             <span style="text-transform:lowercase;">

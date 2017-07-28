@@ -171,6 +171,7 @@ Rails.application.routes.draw do
       get 'onix_supp_sheet'
       post 'import'
       post 'import_contributor'
+      delete 'destroy'
     end
   end
 
