@@ -60,7 +60,7 @@
               </div>
               <div class="col-sm-4">
                 <h1 class="text_uppercase contact_heading">Address</h1>
-                <p><!-- @publisher.address --><br>
+                <p><%= @publisher.publisher_address.presence || "" %> <br>
                   <%= link_to @publisher.domain_name, "http://www.#{@publisher.domain_name}"%><br>
                 <b>Email-</b><%= link_to @publisher.contact_email, "mailto:#{@publisher.contact_email}"%>
                 </p>

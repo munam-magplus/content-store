@@ -63,7 +63,7 @@
           <div class="col-sm-4">
             <div class="contact">      
               <h4 class="text_uppercase heading">ADDRESS</h4>
-              <p><!-- @publisher.address -->
+              <p><%= @publisher.publisher_address.presence || "" %>
               Email-<%= link_to @publisher.contact_email, "mailto:#{@publisher.contact_email}"%>
               </p>
             </div>

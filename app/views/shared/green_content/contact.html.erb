@@ -15,7 +15,7 @@
                       <h1 class="sectionHeading">CONTACT US</h1>
                       <div class="col-sm-12 form_bg no-pad">
                         <div class="col-sm-8">
-                          <p><em>Fields marked with <sup class="mandatory">*</sup>are compulsory</em></p><br> 
+                          <p><em>Fields marked with <sup class="mandatory">*</sup> are compulsory</em></p><br> 
                           <%= form_tag(send_mail_homes_path) do %>
                             <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
                             <fieldset>
@@ -49,7 +49,7 @@
                                 <div class="clearfix"></div>
                               </div>
                                <div class="col-lg-9 col-md-9 col-sm-9 colx-9 text-right">
-                                <%= button_tag fa_icon("send Message", text: "Send Message"), :class => "btn btn-sm", type: :submit %>
+                                <%= button_tag fa_icon("send Message", text: "Send Message"), :class => "btn btn-primary btn-inverse pull-right", type: :submit %>
                               </div>                          
                             </fieldset>
                           <% end %>

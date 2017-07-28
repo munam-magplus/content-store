@@ -29,8 +29,10 @@ class HomesController < ApplicationController
   end
   
   def books_by_author
-    @ids = @publisher.subject_groups
     @books = @publisher.books_primary_content_informations.joins(:books_contributor).where('first_name = ? AND last_name = ?',"#{params[:format].split()[0]}","#{params[:format].split()[1]}").paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
+    ids =[]
+    get_book_ids(@books, ids)
+    @ids = ids
     render :template => "shared/#{@publisher.theme_name}/books_by_author"
   end
 
@@ -85,9 +87,6 @@ class HomesController < ApplicationController
 
   def refine_publishers_book
     @books = BooksPrimaryContentInformation.where(id: params[:book_ids].split(' ')).book_title(params[:book_title]).paginate(:page => params[:page], :per_page => 10)
-      respond_to do |format|
-        format.js
-      end 
   end
 
   def get_search_results
