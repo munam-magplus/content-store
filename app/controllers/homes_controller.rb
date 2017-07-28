@@ -30,7 +30,7 @@ class HomesController < ApplicationController
   
   def books_by_author
     @ids = @publisher.subject_groups
-    @books = BooksPrimaryContentInformation.joins(:books_contributor).where('first_name = ? AND last_name = ?',"#{params[:format].split()[0]}","#{params[:format].split()[1]}").paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
+    @books = @publisher.books_primary_content_informations.joins(:books_contributor).where('first_name = ? AND last_name = ?',"#{params[:format].split()[0]}","#{params[:format].split()[1]}").paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
     render :template => "shared/#{@publisher.theme_name}/books_by_author"
   end
 
