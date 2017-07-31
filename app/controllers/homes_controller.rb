@@ -153,7 +153,7 @@ class HomesController < ApplicationController
     end   
   end
 
-  def download_pdf
+  def catalogue
     req = @publisher.domain_name
     send_file(
     "#{Rails.root}/vendor/#{req}.pdf",

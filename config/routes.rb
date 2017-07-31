@@ -47,7 +47,7 @@ Rails.application.routes.draw do
       get 'get_author'
       get 'books_by_author'
       get 'contact'
-      get 'download_pdf'
+      get 'catalogue'
       get 'search'
     end
   end
