@@ -13,7 +13,7 @@
       <% end %>
 
       <div class="row">  
-        <% if ['red_content','green_content','haylemedical'].include? @publisher.theme_name %>
+        <% if ['red_content','green_content','haylemedical','willfordpress'].include? @publisher.theme_name %>
           <div class="col-sm-4 col-md-3 ">
             <%= render :partial => "subject_sidebar"%>
           </div>
@@ -76,8 +76,18 @@
                 <%= render :partial => 'haylemedical_publisher_book' %>
               </div>
             </div>
+          </div>
+        <% elsif @publisher.theme_name == 'willfordpress' %>
+
+          <div class="col-sm-8 col-md-9 mar-b50" > 
+            <div class="col-sm-12 no-lr-pad">
+              <div id='pub_book'>  
+                <%= render :partial => 'willfordpress_publisher_book' %>
+              </div>
+            </div>
           </div>  
         <% end %> 
+
 
     </div>
   </div>

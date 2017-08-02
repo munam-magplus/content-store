@@ -1,0 +1,30 @@
+<div class="main-wrapper">
+  <!--header_bar--> 
+  <div class="col-sm-12 " >
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="sectionHeading">WELCOME TO WILLFORD PRESS</h1>   
+        <%= @publisher.welcome_text.html_safe  unless @publisher.welcome_text.blank? %>
+      </div>
+      <div class="col-sm-12">
+       <h1 class="sectionHeading">FEATURED BOOKS</h1>   
+        <% if @books.present? %>
+          <% @books.each do |f| %>
+            <div class="col-sm-3  pad-10 cover">
+              <div class="result media-result ebook">
+                <div class="cover">
+                  <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg"), books_description_homes_path(:book_id => f.id) %>
+                  <div class="details">
+                   <h3 class="title" title="9781632385444"><%= link_to truncate(f.book_title, length: 14), books_description_homes_path(:book_id => f.id) %></h3>
+                    <h4 class="author" title=">Betty Karasek"><%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14) %></h4>
+                  </div>  
+                </div>
+              </div>
+            </div>     
+          <%end%>
+        <%end%> 
+      </div> 
+    </div>
+  </div>
+</div>
+

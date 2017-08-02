@@ -1,0 +1,93 @@
+<div class="main-wrapper"> 
+  <!--header_bar-->
+  <%= render :partial => "#{@publisher.theme_name}"%> 
+  <div class="col-sm-4 col-md-3  ">  
+    <%= render :partial => "subject_sidebar"%> 
+  </div>
+  <!--header_bar-->
+  <div class="container-fluid">
+    <div class="col-sm-8 col-md-9">
+          <div id="bodydivs">
+            <div class="col-sm-12 no-pad ">
+              <h1 class="sectionHeading">BOOK TITLES </h1>
+              <nav aria-label="Page navigation">
+                 <ul class='pagination pagination-sm'>
+                  <li><%= link_to "All", books_by_title_homes_path %></li> 
+                  <% ('A'..'Z').each do |letter| %> 
+                    <li>
+                      <%= link_to letter, books_by_title_homes_path(:letter=>letter)%>
+                    </li>
+                 <%end%>
+                </ul>
+              </nav>
+            </div>
+            <div class="clearfix"> </div>
+            <% if @books.count >= 10 %>
+              <div class="alpha_category margin_bottom10px ">
+                <div class="pull-left">
+                  <h3><%= page_entries_info @books %></h3>
+                </div>
+                <div class="pull-right">
+                  <h3>
+                    <ex:searchresults>  <%= will_paginate @books,renderer: BootstrapPagination::Rails%> </ex:searchresults>
+                  </h3>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            <%end%>
+            <% @books.each do |f| %>
+              <div class="margin_top20px im_width">
+                <div class="row ">
+                  <div class=" effects search-result col-sm-2"> <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg",class: "img-responsive"), books_description_homes_path(:book_id => f.id), class: "cover2" %></div>
+                  <div class="col-sm-10">
+                    <h2><%= link_to f.book_title, books_description_homes_path(:book_id => f.id) %></h3>
+              <h3>By :<span class="dark_yellow"><%= (f.books_contributor.first_name.presence || "")+" "+(f.books_contributor.last_name.presence || "") %></h2>
+                    <h3 title="Kevin Parker">By
+                      : <span class="dark_yellow"> <%= (f.books_contributor.first_name.presence || "")+" "+(f.books_contributor.last_name.presence || "") %></span></h3>
+                    <p><strong> Description
+                      :</strong> <%= truncate(f.book_blurb.presence || "", length: 182) %>
+                    <%= link_to 'more', '', :class => "read-more-#{f.id}" %>
+                    <script>
+                      $('.read-more-<%= f.id %>').on('click', function(e) {
+                        e.preventDefault()
+                        $(this).parent().html('<strong> Description:</strong> <%= f.book_blurb %>')
+                      })
+                    </script> </p>
+                    <p class="searchResultsLinks"> <strong><%= link_to "Book Info", books_description_homes_path(:book_id => f.id)%></strong> </p>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="border_bottom"> </div>
+            <%end%>
+            <% if @books.count >= 10 %>
+              <div class="alpha_category margin_bottom10px">
+                <div class="pull-left">
+                  <%= page_entries_info @books %>
+                </div>
+                <div class="pull-right">
+                  <h3>
+                    <ex:searchresults> <%= will_paginate @books,renderer: BootstrapPagination::Rails%> </ex:searchresults>
+                  </h3>
+                </div>
+                <div class="clearfix"> </div>
+              </div>
+            <%end%>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  <!-- / footer_section -->
+  <footer>
+    <%= render :partial => "homes/publisher_footer"%>
+  </footer>
+</div>
+<script>
+  $('ul.pagination li').each(function() {
+    if($(this).text().trim()== "<%= @letter%>"){
+     $(this).addClass("active");
+    }
+  });
+</script

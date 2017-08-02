@@ -1,0 +1,26 @@
+
+<div class="main-wrapper">
+<!--header_bar-->
+  <%= render :partial => "#{@publisher.theme_name}"%> 
+  <!--header_bar-->
+  <div class="col-sm-4 col-md-3  ">  
+    <%= render :partial => "subject_sidebar"%> 
+  </div>
+  <div class="container-fluid">
+    <div class="col-sm-8 col-md-9 " >
+   
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 class="sectionHeading">ABOUT US</h1>
+          <% if @publisher_about.present? %>
+            <p class="mt20"><%= @publisher_about.html_safe %></p>
+          <%end%>
+        </div> 
+      </div>
+    </div>
+  </div>
+  <footer>
+    <%= render :partial => "homes/publisher_footer"%>
+  </footer>
+</div>
+

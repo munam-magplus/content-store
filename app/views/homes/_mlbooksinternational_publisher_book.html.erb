@@ -6,7 +6,7 @@
           <li class="col-md-4  col-sm-6">
             <article class="media-result">
               <div class="cover">
-                <a href="#"><%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg"), books_description_homes_path(:book_id => f.id) %></a>
+                <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg"), books_description_homes_path(:book_id => f.id) %>
               </div>
               <div class="details">
                 <h3 class="title" title="9781632385444"><%= link_to truncate(f.book_title, length: 14), books_description_homes_path(:book_id => f.id) %></h3>

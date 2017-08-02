@@ -1,0 +1,93 @@
+<div class="main-wrapper"> 
+  <!--header_bar-->
+ <%= render :partial => "#{@publisher.theme_name}"%> 
+  <!--header_bar-->
+  <div class="col-sm-4 col-md-3  ">  
+    <%= render :partial => "subject_sidebar"%> 
+  </div>
+  <!--header_bar-->
+  <div class="container-fluid">
+	  <div class="col-sm-8 col-md-9">
+	    <div class="row ">
+	      <div class="text-right col-sm-12">
+	      	<%= form_tag refine_publishers_book_homes_path, :method => 'get',:id=>"Author Name/Book Title",:class=>"form-inline",:remote => true do %>
+	          <div class="form-group">
+	            <%= text_field_tag :book_title,"", :class => "form-control", :placeholder => "Refine Search" %>
+	            <%= hidden_field_tag "book_ids", @ids  %>
+	          </div>
+	          <%= button_tag fa_icon("search", text: "Search"), :class => "btn black_btn", type: :submit %>
+	        <%end%>
+	      </div>
+	      <div class="col-md-12 col-xs-12 mt-20">
+	      	<% if @books.count >= 10 %>
+		        <div class="bg-gray">
+		          <div class="col-sm-4 no-pad" style="padding-top: 6px;"><%= page_entries_info @books %> </div>
+		          <div class="col-sm-8 text-right no-pad">
+		            <nav aria-label="Page navigation">
+		              <ul class="pagination">
+		                <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+		              </ul>
+		            </nav>
+		          </div>
+		          <div class="clearfix"></div>
+		        </div>
+		    <%end%>
+	      </div>
+	      <div class="clearfix"></div>
+	      <% if @books.present? %>
+	        <% @books.each do |f| %>
+			      <div class="col-md-12  no-pad mt-20">
+			        <div class="col-md-3  col-sm-2 col-xs-12 ">
+			          <div class="effects search-result "> <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg",class: "img-responsive"), books_description_homes_path(:book_id => f.id), class: "cover2" %> </div>
+			        </div>
+			        <div class="col-md-9">
+			          <h2 ttile="Aquatic Biogeography in a Changing World"><%= link_to f.book_title.presence || "", books_description_homes_path(:book_id => f.id) %></h2>
+			          <h3 ttile="Jonas Bailey"> By
+			            : <span class="dark_yellow">Finn Miller</span></h3>
+			          <p><strong> Description
+			            :</strong> <%= truncate(f.book_blurb.presence || "", length: 182) %>
+	                    <%= link_to 'more', '', :class => "read-more-#{f.id}" %>
+	                    <script>
+	                      $('.read-more-<%= f.id %>').on('click', function(e) {
+	                        e.preventDefault()
+	                        $(this).parent().html('<strong> Description:</strong> <%= f.book_blurb %>')
+	                      })
+	                    </script></p>
+			        </div>
+			      </div>
+			      <div class="col-md-12 ">
+			        <div class="border_bottom-list"> </div>
+			      </div>
+			    <%end%>
+			  <%end%>
+
+	      <div class="col-md-12  no-pad mt-20">
+	        <div class="col-md-3  col-sm-2 col-xs-12 ">
+	          <div class="effects search-result "> <a href="/engineering-and-technology/9781632380104" class="cover2"><img class="img-responsive" src="images/4.jpg" alt="" title="Advanced Concepts and Applications of Fuzzy Logic"></a> </div>
+	        </div>
+	        <div class="col-md-12 col-xs-12 mt-20">
+	        	<% if @books.count >= 10 %>
+	            <div class="bg-gray">
+	              <div class="col-sm-4 no-pad" style="padding-top: 6px;"><%= page_entries_info @books %> </div>
+	              <div class="col-sm-8 text-right no-pad">
+	                <nav aria-label="Page navigation" style="clear:both; height: 30px;">
+	                  <ul class="pagination">
+	                    <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+	                  </ul>
+	                </nav>
+	              </div>
+	              <div class="clearfix"></div>
+	            </div>
+		        <%end%>
+	          </div>
+	        </div>
+	      </div>
+	   </div>   
+	</div>
+	  
+  <!-- / footer_section -->
+ <footer>
+    <%= render :partial => "homes/publisher_footer"%>
+  </footer>
+
+</div>

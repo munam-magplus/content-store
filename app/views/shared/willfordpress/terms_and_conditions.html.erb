@@ -1,0 +1,40 @@
+<div class="main-wrapper"> 
+  <!--header_bar-->
+  <%= render :partial => "#{@publisher.theme_name}"%>
+  <div class="col-sm-4 col-md-3  ">  
+    <%= render :partial => "subject_sidebar"%> 
+  </div>
+  <!--header_bar-->
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4 col-md-3  ">
+        
+      </div>
+      <div class="col-sm-8 col-md-9 ">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="sectionHeading">TERMS & CONDITIONS </h1>
+            <div class="">
+              <p> <%if @publisher_terms.present? %>
+                    <div class="wrapper container-fluid">
+                      <%= @publisher_terms.html_safe %>
+                    </div></p>
+                  <%end%>
+              <br>
+              <center>
+                Thank you for visiting our site.
+              </center>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- / footer_section -->
+  <footer>
+    <%= render :partial => "homes/publisher_footer"%>
+  </footer>
+</div>
