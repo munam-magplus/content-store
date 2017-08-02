@@ -207,7 +207,7 @@ ul.description li {
 /*-------------- tab_section --------------*/
 .main_link_section{padding:0; margin:-46px 0 0 0; position:relative;}
 .main_link_section .main_tab{ margin:0; padding:0px; position:relative; list-style:none; float:left; width:100%;  box-shadow:none;}
-.main_link_section .main_tab i{ font-size:20px; margin:3px 5px 0 0;}
+.main_link_section .main_tab i{ font-size:20px; margin:3px 5px 0 0; color: #fff;}
 .main_link_section .main_tab li{ margin:0 5px 0 0; position:relative; list-style:none; width:32.8%; float:left;}
 .main_link_section .main_tab li a{ padding:10px; margin:0; font-size:18px; font-weight:700; color:#FFF; background-color:#138d89; display:block;}
 .main_link_section .main_tab li a:hover{color:#FFF; background-color:#138d89; text-decoration:none;}
@@ -549,6 +549,13 @@ ul.description li {
 .link_box span{ margin:0 5px;}
 .link_box a{color:#ec5127; text-decoration:none; font-weight:600;}
 .link_box a:hover{color:#000; text-decoration:underline;}
+.subitem{max-height:200px;overflow:auto;}
+.category_box .subitem  li{width:100%}
+.category_box{left: 0;
+    position: absolute;
+    right: 0;
+    z-index: 1;}
+ .category_box .subitem  li a{padding:3px 0;font-size:16px}
 
 
 
