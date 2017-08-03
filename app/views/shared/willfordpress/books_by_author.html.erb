@@ -1,13 +1,15 @@
 <div class="main-wrapper"> 
-  <!--header_bar-->
- <%= render :partial => "#{@publisher.theme_name}"%> 
-  <!--header_bar-->
+ <%= render :partial => "#{@publisher.theme_name}"%>
   <div class="col-sm-4 col-md-3  ">  
     <%= render :partial => "subject_sidebar"%> 
   </div>
   <!--header_bar-->
   <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4 col-md-3  ">
+      </div>
 	  <div class="col-sm-8 col-md-9">
+	  	<div id= 'pub_book'>
 	    <div class="row ">
 	      <div class="text-right col-sm-12">
 	      	<%= form_tag refine_publishers_book_homes_path, :method => 'get',:id=>"Author Name/Book Title",:class=>"form-inline",:remote => true do %>
@@ -60,11 +62,6 @@
 			      </div>
 			    <%end%>
 			  <%end%>
-
-	      <div class="col-md-12  no-pad mt-20">
-	        <div class="col-md-3  col-sm-2 col-xs-12 ">
-	          <div class="effects search-result "> <a href="/engineering-and-technology/9781632380104" class="cover2"><img class="img-responsive" src="images/4.jpg" alt="" title="Advanced Concepts and Applications of Fuzzy Logic"></a> </div>
-	        </div>
 	        <div class="col-md-12 col-xs-12 mt-20">
 	        	<% if @books.count >= 10 %>
 	            <div class="bg-gray">
@@ -80,7 +77,7 @@
 	            </div>
 		        <%end%>
 	          </div>
-	        </div>
+	        </div></div>
 	      </div>
 	   </div>   
 	</div>

@@ -1,17 +1,18 @@
 <div class="main-wrapper"> 
-  <!--header_bar-->
- <%= render :partial => "#{@publisher.theme_name}"%> 
-  <!--header_bar-->
+  <%= render :partial => "#{@publisher.theme_name}"%>
   <div class="col-sm-4 col-md-3  ">  
     <%= render :partial => "subject_sidebar"%> 
   </div>
-
+  <!--header_bar-->
   <div class="container-fluid">
-      <div class="col-sm-8 col-md-9">
-      
-        <div class="row ">
-          
-          <div class="col-md-12 col-xs-12 ">
+    <div class="row">
+      <div class="col-sm-4 col-md-3  ">
+        
+      </div>
+      <div class="col-sm-8 col-md-9 ">
+        <div id= 'pub_book'>
+        <div class="row">
+          <div class="col-sm-12">
            <h1 class="sectionHeading">AUTHOR(S):</h1>
             <div class="text_uppercase border_bottom padding_bottom12px">
               <div class="col-sm-12 no-pad">
@@ -42,7 +43,7 @@
             
         </div>
       
-    </div>
+    </div></div>
     </div>
   </div>
   <!-- / footer_section -->
