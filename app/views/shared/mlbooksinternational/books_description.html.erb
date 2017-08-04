@@ -38,7 +38,7 @@
               
                 
             <p><span class="book_atr col-xs-12 col-md-3"><strong>Publication Year&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-9">&nbsp;<%= @book_information.publication_date.presence || "" %></span></p>
-            <p><span class="book_atr col-xs-12 col-md-3"><strong>Price&nbsp;:</strong></span><span class="book_description col-xs-12 col-md-9">&nbsp;USD&nbsp;    145.00</span></p>
+            <p><span class="book_atr col-xs-12 col-md-3"><strong>Price&nbsp;:</strong></span><span class="book_description col-xs-12 col-md-9">&nbsp;USD&nbsp; <%= @book_information.book_price.presence || "" %></span></p>
             <% if @book_information.books_content_pricing.present? %>
               <p><span class="book_atr col-xs-12 col-md-3"><strong>Format&nbsp;:</strong></span><span class="col-xs-12 book_description col-md-9">&nbsp; <%=@book_information.books_content_pricing.format.presence || "" %></span></p>
             <% end %>

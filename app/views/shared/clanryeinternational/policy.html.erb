@@ -1,0 +1,18 @@
+<section class="content">
+  <!--Header-->
+    <%= render :partial => "#{@publisher.theme_name}"%> 
+  <!--HeaderEnd-->
+  <div id= 'pub_book'>
+    <div class="contentWrapper">
+      <h2 class="heading2">Privacy Policy</h2>
+      <div class="clearfix"></div>
+      <% if @publisher_policy.present? %>
+        <p class="mt20"><%= @publisher_policy.html_safe %></p>
+      <%end%>
+    </div>
+  </div>
+
+  <footer>
+    <%= render :partial => "homes/publisher_footer"%>
+  </footer>
+</section>      

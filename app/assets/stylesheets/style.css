@@ -986,7 +986,6 @@ aside.left-panel {
     vertical-align: middle; }
   .navigation > ul > li > ul {
     display: none;
-    background-color: #393b71;
     padding-bottom: 0px; }
   .navigation > ul > li > ul > li > a {
     display: block;

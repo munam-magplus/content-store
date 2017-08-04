@@ -67,6 +67,14 @@
           </div>
         </div>
 
+        <% elsif @publisher.theme_name == 'clanryeinternational' %>
+        <div class="row">
+          <div class="col-md-12"> 
+            <div id='pub_book'>  
+              <%= render :partial => 'clanryeinternational_publisher_book' %>
+            </div>
+          </div>
+        </div>
 
         <% elsif @publisher.theme_name == 'haylemedical' %>
 
@@ -94,13 +102,11 @@
 
  
   <% if @publisher.theme_name == 'larsen-keller' %>
-  <footer class="footer">
-    <%= render :partial => "larsen_and_keller_footer"%>
-  </footer>
+    <footer class="footer">
+      <%= render :partial => "larsen_and_keller_footer"%>
+    </footer>
   <% else %>
-  <footer>
     <%= render :partial => "homes/publisher_footer"%>
-  </footer>
   <% end %>
  
 </section>

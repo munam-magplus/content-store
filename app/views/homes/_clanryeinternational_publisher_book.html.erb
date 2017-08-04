@@ -1,0 +1,39 @@
+<% if @books.present? %>
+  <div class="row">
+    <div class="col-md-12">
+ 			<h2 class="heading2">FEATURED BOOKS </h2>
+  	</div>
+   	<div class="col-md-12">
+      <div class="alt_content mediaResults results">
+   	    <% @books.each do |f| %>
+          <div class="col-md-3 col-sm-3 tabView">
+            <article class="result media-result ebook">
+              <div class="cover">
+                <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg", class: 'border-img'),books_description_homes_path(:book_id => f.id), :remote => true %>
+              </div>
+              <div class="details">
+                <h3 class="title" title="9781632406286">
+                  <%= link_to truncate(f.book_title, length: 25), books_description_homes_path(:book_id => f.id), :remote => true %>
+                </h3>
+                <h4 class="author" title="&gt;Ricky Peyret">
+                  <%= (f.books_contributor.first_name+" "+f.books_contributor.last_name) %>
+                </h4>
+              </div>
+            </article>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% if @books.count >= 10 %>
+    <div class="col-md-12  bg-gray mt20">
+      <div class="pull-left mt5">
+        <%= page_entries_info @books %>
+      </div>
+      <div class="pull-right bottomUl">
+        <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+      </div>
+    </div>
+  <%end%>
+  <div class=" clearfix"> </div>
+<%end%>

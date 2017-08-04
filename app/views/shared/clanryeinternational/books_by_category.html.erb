@@ -1,0 +1,86 @@
+<section class="content">
+  <%= render :partial => "#{@publisher.theme_name}"%>
+  <div class="row">
+    <div class="col-md-12">
+      <div id= 'pub_book'>
+        <div class="col-md-12">
+          <h2 class="heading2">Search Results
+            <%= form_tag refine_publishers_book_homes_path, :method => 'get',:id=>"refineSearch",:class=>"form-inline pull-right" do %>
+              <%= text_field_tag :book_title,"", :class => "form-control input-sm", :placeholder => "Refine Search", :size => "40", :id => "textToBeSearched" %>
+              <%= hidden_field_tag "book_ids", @ids  %>
+              <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-primary btn-sm", type: :submit %>
+            <%end%>
+          </h2>
+        </div>    
+        <% if @books.count >= 10 %>
+          <div  class="searchResult">
+            <div class="data-sort-panel col-md-12">
+              <div class="pull-left padding_top3px">
+                <p><%= page_entries_info @books %><strong>&nbsp;</strong></p>
+              </div>
+              <div class="pull-right  padding_top3px">
+                <ul class="pagination pagination-sm nomargin pull-right">
+                  <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+                </ul>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        <% end %>
+        <% if @books.present? %>
+          <% @books.each do |f| %>
+            <div class="contentWrapper">
+              <div class="row margin_top20px">
+                <div class="pull-left margin_right5px margin_left5px effects search-result col-md-3">
+                  <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg",class: "img-responsive"), books_description_homes_path(:book_id => f.id), class: "cover2" %>
+                </div>
+                <div class="col-md-9">
+                  <h2 title="<%= f.book_title.presence || "" %>">
+                    <%= link_to f.book_title.presence || "", books_description_homes_path(:book_id => f.id) %>
+                  </h2>
+                  <h3 title="<%= (f.books_contributor.first_name.presence || ""+" "+f.books_contributor.last_name.presence || "") %>">
+                    By : <span class="dark_yellow">
+                      <%= (f.books_contributor.first_name.presence || ""+" "+f.books_contributor.last_name.presence || "") %>
+                    </span>
+                  </h3>
+                  <p><strong> Description :</strong>
+                    <%= truncate(f.book_blurb.presence || "", length: 180) %>
+                    <%= link_to 'more', '', :class => "read-more-#{f.id}" %>
+                    <script>
+                      $('.read-more-<%= f.id %>').on('click', function(e) {
+                        e.preventDefault()
+                        $(this).parent().html('<strong> Description:</strong> <%= f.book_blurb %>')
+                      })
+                    </script>
+                  </p>
+                </div>
+                <div class=" clearfix"></div>
+              </div>
+              <div class="border_bottom"></div> 
+            </div>
+          <% end%>
+        <%else%>
+          <div class="container">
+            <div class="col-md-12">
+              <h3> Record Not Found </h3>
+            </div>
+          </div>
+        <%end%>
+        <% if @books.count >= 10 %>
+          <div class="data-sort-panel col-md-12">
+            <div class="pull-left padding_top3px">
+              <p><%= page_entries_info @books %><strong>&nbsp;</strong></p>
+            </div>
+            <div class=" pull-right padding_top3px">
+              <ul class="pagination pagination-sm nomargin pull-right">
+                <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+              </ul>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class=" clearfix"></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
