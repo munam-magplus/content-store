@@ -44,16 +44,17 @@
                             <td><strong>Category&nbsp;:&nbsp;</strong></td>
                             <td>&nbsp;<%= @book_information.subject_groups.first.subject_group_name.presence || "" %></td>
                           </tr>
-                          <tr>
-                            <td><strong>Publication Year&nbsp;:&nbsp;</strong></td>
-                            <td>&nbsp;<%= @book_information.publication_date.presence || "" %></td>
-                          </tr>
-                          <% if @book_information.books_content_pricing.present? %>
+                          <% unless @book_information.publication_date.blank? %>
+                            <tr>
+                              <td><strong>Publication Year&nbsp;:&nbsp;</strong></td>
+                              <td>&nbsp;<%= @book_information.publication_date.to_date.year.presence || "" %></td>
+                            </tr>
+                          <%end%>
                             <tr>
                               <td><strong>Price&nbsp;:</strong></td>
-                              <td>&nbsp;USD&nbsp;<%=@book_information.books_content_pricing.format.presence || "" %></td>
+                              <td>&nbsp;USD&nbsp;<%= @book_information.book_price.presence || "145" %></td>
                             </tr>
-                          <% end %>
+
                           <tr>
                             <td><strong>Format :</strong></td>
                             <td>&nbsp;<%= @book_information.binding.presence || "" %></td>

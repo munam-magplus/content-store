@@ -34,7 +34,7 @@
           </nav>
         </div>
         <div class="clearfix"> </div>
-        <% if @books.count >= 10 %>
+        <% if @books.count >= 0 %>
           <div class="col-md-12  bg-gray mt20">
             <div class="pull-left mt5">
               <%= page_entries_info @books %>
@@ -73,7 +73,7 @@
           <div class="border_bottom"></div>
           <div class="clearfix"></div>
         <% end %>
-          <% if @books.count >= 10 %>
+          <% if @books.count >= 0 %>
             <div class="col-md-12  bg-gray mt20">
               <div class="pull-left mt5">
                 <%= page_entries_info @books %>

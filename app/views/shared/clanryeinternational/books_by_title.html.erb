@@ -18,7 +18,7 @@
             <%end%>				
           </ul>
   		  </div>		
-        <% if @books.count >= 10 %>
+        <% if @books.count >= 0 %>
           <div  class="searchResult col-md-12">
             <div class="data-sort-panel  border_bottom">
               <div class="pull-left padding_top3px ">
@@ -64,7 +64,7 @@
             <div class="border_bottom"></div>
           </div>
         <% end %>
-        <% if @books.count >= 10 %>
+        <% if @books.count >= 0 %>
           <div class="data-sort-panel col-md-12">
             <div class="pull-left padding_top3px">
               <p><%= page_entries_info @books %><strong>&nbsp;</strong></p>

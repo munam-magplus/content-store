@@ -31,8 +31,10 @@
                       <p><span class="book_atr col-xs-12 col-md-4"><strong>Language&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8">&nbsp;<%= @book_information.language.presence || "" %></span></p>
                       <% unless @book_information.subject_groups.blank? %>
                       <p><span class="book_atr col-xs-12 col-md-4"><strong>Category&nbsp;:&nbsp;</strong></span> <span class="book_description col-xs-12 col-md-8">&nbsp;<%= @book_information.subject_groups.first.subject_group_name %> <%end%> </span></p>
-                      <p><span class="book_atr col-xs-12 col-md-4"><strong>Publication&nbsp;Year:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8"><%= @book_information.publication_date.presence || "" %></span></p>
-                      <p><span class="book_atr col-xs-12 col-md-4"><strong>Price&nbsp;:&nbsp;</strong></span><span class="book_description col-xs-12 col-md-8 ">&nbsp;USD&nbsp;<%= @book_information.book_price.presence || "" %></span></p>
+                      <% unless @book_information.publication_date.blank? %>
+                        <p><span class="book_atr col-xs-12 col-md-4"><strong>Publication&nbsp;Year:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8"><%= @book_information.publication_date.to_date.year.presence || "" %></span></p>
+                      <%end%>
+                      <p><span class="book_atr col-xs-12 col-md-4"><strong>Price&nbsp;:&nbsp;</strong></span><span class="book_description col-xs-12 col-md-8 ">&nbsp;USD&nbsp;<%= @book_information.book_price.presence || "145" %></span></p>
                       <p><span class="book_atr col-xs-12 col-md-4"><strong>Format&nbsp;:</strong></span><span class="col-xs-12 book_description col-md-8">&nbsp; Hardback</span></p>
                       <p><span class="book_atr col-xs-12 col-md-4"><strong>Description&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-12 margin_bottom10px"><%= @book_information.book_blurb.presence || "" %></span></p>
                       <p><span class="col-xs-12 book_atr col-md-4"><strong>Author/Editor&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8">&nbsp; <%= @book_information.books_contributor.first_name.presence || "" %>&nbsp <%= @book_information.books_contributor.last_name.presence || "" %></span><span class="col-xs-12 book_description col-md-12">
