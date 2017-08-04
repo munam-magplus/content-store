@@ -1,0 +1,38 @@
+<section class="content">
+  <%= render :partial => "#{@publisher.theme_name}"%> 
+  <div class="row">
+    <div class="col-md-12">
+      <div id= 'pub_book'>
+        <div class="contentWrapper">
+     			<h2 class="heading2">Author(s)</h2>
+          <div id="bodydivs">
+            <!--  start of Pagination  -->
+            <div id="demoOne-nav" class="listNav btn-toolbar">
+              <div class="ln-letters">
+                <ul class="pagination pagination-sm abc nomargin">
+                  <% ('A'..'Z').each do |letter| %>
+                    <li>
+                      <%= link_to letter, get_author_homes_path(:letter=>letter), :class => "letter" %>
+                    </li>
+                  <%end%>
+                </ul>
+                <div class="clearfix ln-last"></div>
+              </div>
+              <div class="ln-letter-count" style="position: absolute; top: 0px; left: 115px; width: 20px; display: none;">1</div>
+            </div>
+            <div class="border_bottom "></div>
+            <%if @authors.present?%>
+              <% @authors.each do |authname| %>
+                <ul id="demoOne" class="description   margin_left5px">           
+                  <li class="ln-A ln-a" style="display: list-item;">
+                    <%= link_to authname, books_by_author_homes_path(authname) %>
+                  </li>
+                </ul>
+              <%end%>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+</section>

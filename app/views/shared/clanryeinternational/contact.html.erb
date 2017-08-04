@@ -1,0 +1,64 @@
+<section class="content">
+  <%= render :partial => "#{@publisher.theme_name}"%> 
+  <div class="row"> 
+    <div class="col-md-12">
+      <div id= 'pub_book'>
+        <div class="contentWrapper">
+          <h2 class="heading2">Contact Us</h2>       
+        </div>
+        <form name="contactUsForm" method="post" action="#" class="form-horizontal col-lg-9 col-md-9 grayContainer padding10px margin_top10px nomargin" >
+        <%= form_tag(send_mail_homes_path) do %>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          
+          <p class="margin_bottom10px pull-left"><em>Fields marked with&nbsp;<span class="red">*</span>&nbsp;are compulsory</em></p>
+          <span class="clearfix"></span> 
+          <div class="form-group">
+            <label class="control-label col-lg-3 col-md-3" for="inputName">Your name:<span class="red">*</span></label>
+            <div class="col-lg-8 col-md-8"> 
+              <%= text_field_tag :name,"", :class => "form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-lg-3 col-md-3">Your email:<span class="red">*</span></label>
+            <div class="col-lg-8 col-md-8">
+              <%= text_field_tag :email,"", :required => true ,:class => "form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-lg-3 col-md-3">Subject:</label>
+            <div id="defaultDiv" style="display:block">
+              <div class="col-lg-8 col-md-8">
+                <%= text_field_tag :subject,"", :class => "form-control" %>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-lg-3 col-md-3">Your message:<span class="red">*</span></label>    
+            <div class="col-lg-8 col-md-8">
+              <%= text_area_tag :message,"", :class => "form-control", :maxlength => "140", :rows => "5" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-lg-3 col-md-3" for=""></label>
+            <div class="col-lg-12 col-md-12 text-center">
+              <%= button_tag fa_icon("send Message", text: "Send Message"), :class => "btn btn-small btn-inverse", type: :submit %>
+            </div>
+          </div>
+        <% end %>
+        </form>
+        <div class="col-lg-3 col-md-3">
+          <div class="pull-left">
+            <h1 class="text_uppercase ">ADDRESS</h1>
+            <p><b><%= @publisher.domain_name %>,</b></p>
+            <p><%= @publisher.publisher_address.presence || "" %><br>
+            <span style="text-transform:lowercase;"><%= link_to @publisher.domain_name, "http://www.#{@publisher.domain_name}.com"%></span>
+            <br><span class="clr_blue">Email<i class="icon-envelope"></i></span>
+            <%= link_to @publisher.contact_email, "mailto:#{@publisher.contact_email}"%>
+            </p>
+          </div>
+          <%= image_tag('clanryeinternationals_contant_us.png', :class => "pull-left", :style => "width:100%;")%>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

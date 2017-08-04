@@ -1,0 +1,72 @@
+<div  class="container wrapper">
+  <header>
+	  <div class="row mobPosition">
+		  <div class="col-xs-6 col-sm-4 col-md-4">
+        <h1 class="logo_container">     
+          <%= link_to image_tag(@publisher.publisher_logo(:original)), homes_path, :class => "img-responsive brand" %>
+     		</h1>
+      </div>
+      <div class="col-xs-6 col-md-8 col-sm-8 mobView">
+      	<div class="right-header pull-right">
+          <!-- top menue -->
+          <div class="nav navbar-default " role="navigation">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+            <div class="collapse navbar-collapse">
+              <div class="topmenue">
+                <ul>
+                  <li><%= link_to '<i class="fa fa-home"></i>'.html_safe, homes_path %></li>
+                  <li><%= link_to "ABOUT US", about_homes_path%></li>
+                  <li><%= link_to 'CATALOGUE', download_pdf_homes_url, target: "_blank" %></li>
+                  <li><%= link_to "CONTACT US", contact_homes_path %></li>
+                </ul>
+              </div>
+            </div> 
+            <div class="input-group searchBoxMob">
+              <%= form_tag(search_homes_path, :method => "get",:remote => true) do %>
+                <%= text_field_tag :book_title, params[:search], class:'form-control', required: true, placeholder: "Search", style: "    max-width: 80%;" %>
+                <span class=" " id="basic-addon1">
+                  <%= button_tag 'submit', class: 'btn btn-default', style: "border-radius: 0;" do %>
+                    <i class="fa fa-search"></i>
+                  <% end %>
+                </span>
+                <div class="pull-right" style="margin-left:10px;margin-top:10px">
+                  <%= link_to advance_search_homes_path,remote: true  do %>
+                    <%= image_tag "adcance_search_03.png", :style => "vertical-align: inherit;" %>
+                  <% end %> 
+                </div>
+              <%end%>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="row">
+	  <div class="br_cat" role="navigation">
+     <div class="col-md-12">          
+      <ul class="nav navbar-nav">
+        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">BROWSE BY CATEGORY<span class="caret"></span></a>
+          <% unless @publisher.subject_groups.blank? %>
+            <ul class="dropdown-menu">
+              <%@publisher.subject_groups.each do |subject_group| %>
+                <li>
+                  <%=link_to subject_group.subject_group_name ,books_by_category_homes_path(:subject_group_id => subject_group.id) %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>  
+        </li>
+        <li><%= link_to "AUTHOR / EDITOR", get_author_homes_path(:letter => 'a') %></li>
+        <li><%= link_to "TITLE", books_by_title_homes_path %></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>

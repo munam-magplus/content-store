@@ -1,0 +1,94 @@
+<section class="content">
+  <!--Header-->
+  <%= render :partial => "#{@publisher.theme_name}"%> 
+  <!--HeaderEnd-->
+  <div class="row">
+   	<div class="col-md-12">
+      <div id= 'pub_book'>
+        <div class="contentWrapper">  		  
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="active tabGradient"><a href="#bookInfo" data-toggle="tab" role="tab">Book Info</a></li>
+          </ul>
+          <div class="tab-content tab_border">
+            <div class="tab-pane active" id="bookInfo">
+              <div class="pageHeading">
+                <h2 class="heading2"><strong><%= @book_information.book_title.presence || "" %></strong></h2>
+              </div>
+              <div class="xtraPadding">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <%= image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{@book_information.isbn}-T-FC.jpg",style: => "width:100%;") %>
+                  <div class="col-lg-8 col-md-8 col-sm-8"><!-- <p>To read sections of the book, please use the navigation menu at the top left.</p> -->
+                    <div class="clearFloat"></div>
+                    <div class="clearFloat"></div>
+                    <div class="table-responsive" style="font-family:helvetica !important">
+                      <p> </p>
+                      <p> </p>
+                      <p> </p>
+                      <p> </p>
+                      <p></p>
+                      <table class="table">
+                        <tbody>
+                          <tr>
+                            <td><strong>ISBN&nbsp;:&nbsp;</strong></td>
+                            <td>&nbsp;<%= @book_information.isbn.presence || "" %></td>
+                          </tr>
+                          <tr>
+                            <td><strong>Publisher&nbsp;:&nbsp;</strong></td>
+                            <td>&nbsp;<%= @publisher.publisher_name.presence || "" %></td>
+                          </tr>
+                          <tr>
+                            <td><strong>Language&nbsp;:&nbsp;</strong></td>
+                            <td>&nbsp;<%= @book_information.language.presence || "" %></td>
+                          </tr>
+                          <tr>
+                            <td><strong>Category&nbsp;:&nbsp;</strong></td>
+                            <td>&nbsp;<%= @book_information.subject_groups.first.subject_group_name.presence || "" %></td>
+                          </tr>
+                          <tr>
+                            <td><strong>Publication Year&nbsp;:&nbsp;</strong></td>
+                            <td>&nbsp;<%= @book_information.publication_date.presence || "" %></td>
+                          </tr>
+                          <% if @book_information.books_content_pricing.present? %>
+                            <tr>
+                              <td><strong>Price&nbsp;:</strong></td>
+                              <td>&nbsp;USD&nbsp;<%=@book_information.books_content_pricing.format.presence || "" %></td>
+                            </tr>
+                          <% end %>
+                          <tr>
+                            <td><strong>Format :</strong></td>
+                            <td>&nbsp;<%= @book_information.binding.presence || "" %></td>
+                          </tr>
+                          <tr>
+                            <td><p><strong>Description&nbsp;:&nbsp;</strong></p></td>
+                            <td><p><%= @book_information.book_blurb.presence || "" %></p></td>
+                          </tr>
+                          <tr>
+                            <td><strong>Author/Editor&nbsp;:&nbsp;</strong></td>
+                            <td><p><%= @book_information.books_contributor.first_name.presence || "" %>&nbsp <%= @book_information.books_contributor.last_name.presence || "" %><br>
+                                <%= @book_information.books_contributor.description.presence || "" %><br>
+                              </p></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p></p>                
+                    <p></p>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="relatedContent">
+                <div class="xtraPadding">
+                  <ul>
+                    <li><a onclick="top.location=this.href;return false;" href="/search.do?home=Home&amp;allwords=&amp;title=&amp;publisherName=&amp;publisher=&amp;subject=&amp;publicationStartDate=&amp;publicationEndDate=&amp;sortBy=1&amp;sortOrder=Ascending&amp;resultsPerPage=10&amp;optionValue=4&amp;parent=&amp;author=Anthony+Rocus&amp;flag=true&amp;isbn=9781632400345">By this Author</a> </li>
+                    <li><a onclick="top.location=this.href;return false;" href="/search.do?home=Home&amp;allwords=&amp;title=&amp;author=&amp;publisherName=&amp;publisher=&amp;publicationStartDate=&amp;publicationEndDate=&amp;sortBy=1&amp;sortOrder=Ascending&amp;resultsPerPage=10&amp;optionValue=4&amp;ref=&amp;subject=Business%2c+Management+and+Economics&amp;isbn=9781632400345&amp;flag=true&amp;parent=Business%2c+Management+and+Economics&amp;subjectId=sub11746">In this Category</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>                  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
