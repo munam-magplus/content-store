@@ -47,11 +47,7 @@
        <div class="col-md-6"><div class="form-group">
           <label for="PublisherName" class="col-sm-5 control-label">Publisher Name<sup class="mandatory">*</sup></label>
           <div class="col-sm-7">
-            <%if @publisher.new_record?%>
-              <%= f.text_field :publisher_name ,:required => true, :placeholder => "Publisher Name", :class => "form-control" %>
-            <%else%>
-              <%= f.text_field :publisher_name ,:required => true, :placeholder => "Publisher Name", :class => "form-control",disabled: true %>
-            <%end%>
+            <%= f.text_field :publisher_name ,:required => true, :placeholder => "Publisher Name", :class => "form-control" %>
           </div>
           <div class="clearfix"></div>
         </div></div>
