@@ -1,0 +1,31 @@
+<% if @books.present? %>
+  <section class="col-md-9 col-sm-9 margin_top5px ">
+    <div id="bodydivs">
+      <h1 class="sectionHeading">FEATURED BOOKS</h1>
+      <div class="padding10px">
+       
+        <div class="col-md-12" id="paging_container3">
+          <div class="alt_content mediaResults results">
+            <% @books.each do |f| %>
+              <div class="col-sm-4 col-md-3">
+                <article class="result media-result ebook">
+                  <div class="cover">
+                    <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg"),books_description_homes_path(:book_id => f.id) %>
+                  </div>
+                  <div class="details">
+                    <h3 class="title" title="<% f.isbn %>">
+                      <%= link_to truncate(f.book_title, length: 25), books_description_homes_path(:book_id => f.id) %>
+                    </h3>
+                    <h4 class="author" title="<% (f.books_contributor.first_name+" "+f.books_contributor.last_name) %>">
+                      <%= (f.books_contributor.first_name+" "+f.books_contributor.last_name) %>
+                    </h4>
+                  </div>
+                </article>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

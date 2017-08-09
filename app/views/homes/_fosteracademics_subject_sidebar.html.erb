@@ -1,0 +1,31 @@
+<div class="clearfix"></div>
+<section class="col-md-3 col-sm-3 margin_top5px">
+  <div class="sidebar-nav">
+    <h1 class="sectionHeading">BROWSE BY</h1>
+    <div class="clearfix"></div>
+    <div class="accordion visible-desktop" id="accordion2">
+      <div class="accordion-group">
+        <div class="accordion-heading"> <a class="accordion-toggle text_uppercase" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"> subject <i class="pull-right"> <i class="fa fa-angle-down"></i></i></a> </div>
+        <div id="collapseOne" class="accordion-body collapse in">
+          <div class="accordion-inner">
+            <% unless @publisher.subject_groups.blank? %>
+              <ul class="accordion-color">
+                <%@publisher.subject_groups.each do |subject_group| %>
+                  <li>
+                    <%= link_to subject_group.subject_group_name ,books_by_category_homes_path(:subject_group_id => subject_group.id) %>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>  
+          </div>
+        </div>
+      </div>
+      <div class="accordion-heading uppercase">
+        <%= link_to "AUTHOR / EDITOR", get_author_homes_path(:letter => 'a'), :class => "accordion-toggle text_uppercase" %>
+      </div>
+      <div class="accordion-heading uppercase">
+        <%= link_to "TITLE", books_by_title_homes_path, :class => "accordion-toggle text_uppercase" %>
+      </div>
+    </div>
+  </div>
+</section>

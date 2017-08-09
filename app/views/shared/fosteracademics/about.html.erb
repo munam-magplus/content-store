@@ -1,0 +1,22 @@
+<!--Header-->
+<%= render :partial => "#{@publisher.theme_name}"%> 
+<!--HeaderEnd-->
+<div class="container-fluid wrapper" > 
+  <div class="row "> 
+    <%= render :partial => "fosteracademics_subject_sidebar"%>
+
+    <section class="col-md-9 col-sm-9 margin_top5px ">
+      <div class="border_wrapper padding10px">
+        <div id="bodydivs">
+          <div id= 'pub_book'>
+            <h1 class="sectionHeading heading-bg">About Us</h1> 
+            <% if @publisher_about.present? %>
+              <p><%= @publisher_about.html_safe %></p>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<%= render :partial => "fosteracademics_footer"%>
