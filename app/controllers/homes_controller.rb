@@ -7,7 +7,7 @@ class HomesController < ApplicationController
   def index
     begin
       unless @publisher.books_primary_content_informations.blank? 
-        if ['red_content','light_blue_content'].include? @publisher.theme_name
+        if ['red_content','light_blue_content','fosteracademics'].include? @publisher.theme_name
           @books = @publisher.books_primary_content_informations.joins(:books_contributor).where('content_classification = ?', 'Featured Books')
 
         else

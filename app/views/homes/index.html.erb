@@ -17,6 +17,8 @@
           <div class="col-sm-4 col-md-3 ">
             <%= render :partial => "subject_sidebar"%>
           </div>
+        <% elsif ['fosteracademics'].include? @publisher.theme_name %>  
+          <%= render :partial => "fosteracademics_subject_sidebar"%>
         <% end %> 
 
       <!--Sidebar End-->   
@@ -61,20 +63,31 @@
           </div>
  
         <% elsif @publisher.theme_name == 'larsen_and_keller' %>
-        <div class="col-sm-12">
-           <div id='pub_book'>  
-            <%= render :partial => 'larsen_and_keller_publisher_books' %>
-          </div>
-        </div>
-
-        <% elsif @publisher.theme_name == 'clanryeinternational' %>
-        <div class="row">
-          <div class="col-md-12"> 
-            <div id='pub_book'>  
-              <%= render :partial => 'clanryeinternational_publisher_book' %>
+          <div class="col-sm-12">
+             <div id='pub_book'>  
+              <%= render :partial => 'larsen_and_keller_publisher_books' %>
             </div>
           </div>
-        </div>
+
+        <% elsif @publisher.theme_name == 'clanryeinternational' %>
+
+          <div class="row">
+            <div class="col-md-12"> 
+              <div id='pub_book'>  
+                <%= render :partial => 'clanryeinternational_publisher_book' %>
+              </div>
+            </div>
+          </div>
+
+        <% elsif @publisher.theme_name == 'fosteracademics' %>
+
+          <div class="container-fluid wrapper" > 
+            <div class="row ">
+              <div id='pub_book'>  
+                <%= render :partial => 'fosteracademics_publisher_book' %>
+              </div>
+            </div>
+          </div>
 
         <% elsif @publisher.theme_name == 'haylemedical' %>
 
@@ -105,13 +118,12 @@
     <footer class="footer">
       <%= render :partial => "larsen_and_keller_footer"%>
     </footer>
+  <% elsif @publisher.theme_name == 'clanryeinternational' %>
+    <footer class="footer">
+      <%= render :partial => "homes/clanryeinternational_footer"%>
+    </footer>
   <% else %>
     <%= render :partial => "homes/publisher_footer"%>
   <% end %>
  
 </section>
-
-<!-- Footer Start -->
-
-  <!-- Footer Ends -->
-

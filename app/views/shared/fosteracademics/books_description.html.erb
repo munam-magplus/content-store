@@ -1,0 +1,53 @@
+<!--Header-->
+<%= render :partial => "#{@publisher.theme_name}"%> 
+<!--HeaderEnd-->
+<div class="container-fluid wrapper" > 
+  <div class="row ">
+    <%= render :partial => "fosteracademics_subject_sidebar"%>
+
+    <section class="col-md-9 col-sm-9 margin_top5px ">
+      <div class="border_wrapper padding10px">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="nav nav-tabs noborder" data-tabs="tabs">
+              <li class="active ">
+                <a class="tabbg" href="#bookInfo" data-toggle="tab">Book Info</a>
+              </li>
+            </ul>
+            <div class="tab-content tab_border grayContainer">
+              <div class="tab-pane active mt-20" id="bookInfo">
+                <h1 class="text_uppercase border_bottom padding_bottom12px nomargin ">
+                  <%= @book_information.book_title.presence || "" %>
+                </h1>
+                <div class="xtraPadding mt-20">
+                  <div class="col-md-3 col-sm-3">
+                    <%= image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{@book_information.isbn}-T-FC.jpg",class: "ownBookImg") %>
+                  </div>
+                  <div class="col-md-9 col-sm-9 "> 
+                    <!-- <p>To read sections of the book, please use the navigation menu at the top left.</p> -->
+                    <div class="clearFloat"></div>
+                    <p><span class="book_atr col-xs-12 col-md-4"><strong>ISBN&nbsp;:&nbsp;</strong></span><span class="book_description col-xs-12 col-md-8">&nbsp;<%= @book_information.isbn.presence || "" %></span></p>
+                    <p><span class="book_atr col-xs-12 col-md-4"><strong>Publisher&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8">&nbsp;<%= @publisher.publisher_name.presence || "" %></span></p>
+                    <p><span class="book_atr col-xs-12 col-md-4"><strong>Language&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8">&nbsp;<%= @book_information.language.presence || "" %></span></p>
+                    <p><span class="book_atr col-xs-12 col-md-4"><strong>Category&nbsp;:&nbsp;</strong></span> <span class="book_description col-xs-12 col-md-8">&nbsp;<%= @book_information.subject_groups.first.subject_group_name.presence || "" %></span></p>
+                    <p><span class="book_atr col-xs-12 col-md-4"><strong>Publication Year&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8"><%= @book_information.publication_date.presence || "" %></span></p>
+                    <p><span class="book_atr col-xs-12 col-md-4"><strong>Price&nbsp;:</strong></span><span class="book_description col-xs-12 col-md-8">&nbsp;USD&nbsp;    145.00</span></p>
+                    <% if @book_information.books_content_pricing.present? %>
+                      <p><span class="book_atr col-xs-12 col-md-4"><strong>Format&nbsp;:</strong></span><span class="col-xs-12 book_description col-md-8">&nbsp; <%=@book_information.books_content_pricing.format.presence || "" %></span></p>
+                    <% end %>
+                    <p><span class="book_atr col-xs-12 col-md-4"><strong>Description&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-12 margin_bottom10px"><%= @book_information.book_blurb.presence || "" %></span></p>
+                    <p><span class="col-xs-12 book_atr col-md-4"><strong>Author/Editor&nbsp;:&nbsp;</strong></span><span class="col-xs-12 book_description col-md-12"><br>
+                      <%= @book_information.books_contributor.first_name.presence || "" %>&nbsp <%= @book_information.books_contributor.last_name.presence || "" %><br>
+                      <%= @book_information.books_contributor.description.presence || "" %><br></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<%= render :partial => "fosteracademics_footer"%>
