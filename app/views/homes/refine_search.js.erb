@@ -1,7 +1,7 @@
 <% if @publisher.theme_name == "light_blue_content" %>
-$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/syrawood_books_search_results', :locals => {:object => @books, :ids => @ids})%>");
+$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/syrawood_books_search_results', :locals => {:object => @books, :ids => @subject_group})%>");
 <% else %>
-$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/books_by_category', :locals => {:object => @books,:subject_group => @subject_group})%>");
+$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/books_search_results', :locals => {:object => @books,:ids => @subject_group})%>");
 <% end %>
 $("#pagination-frontend").html("<%= escape_javascript(will_paginate @books, renderer: BootstrapPagination::Rails)%>");
 $('.pagination a').attr('data-remote','true')

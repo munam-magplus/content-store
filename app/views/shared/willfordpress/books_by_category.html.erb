@@ -1,11 +1,13 @@
 <div class="main-wrapper"> 
-  <!--header_bar-->
- <%= render :partial => "#{@publisher.theme_name}"%> 
+ <%= render :partial => "#{@publisher.theme_name}"%>
   <div class="col-sm-4 col-md-3  ">  
     <%= render :partial => "subject_sidebar"%> 
   </div>
   <!--header_bar-->
+  <div class="container-fluid">
+    <div class="row">
       <div class="col-sm-8 col-md-9">
+        <div id= 'pub_book'>
         <div class="row ">
           <div class="text-right col-sm-12">
              <%= form_tag  refine_search_homes_path, :method => 'get',:id=>"Author Name/Book Title",:class=>"form-inline pull-right",:remote => true do %>
@@ -36,7 +38,9 @@
               <% @books.each do |f| %>
                 <div class="col-md-12  no-pad mt-20">
                   <div class="col-md-3  col-sm-2 col-xs-12 ">
-                    <div class="effects search-result "> <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg"), books_description_homes_path(:book_id => f.id)%> </div>
+                    <div class="effects search-result ">
+                      <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg",class: "img-responsive"), books_description_homes_path(:book_id => f.id), class: "cover2" %>
+                       </div>
                   </div>
                   <div class="col-md-9">
                     <h2 ><%= link_to f.book_title.presence || "", books_description_homes_path(:book_id => f.id)%></h2>
@@ -72,7 +76,7 @@
                 <div class="clearfix"></div>
               </div>
             </div>
-          <% end %>
+          <%end%>
         </div>
       </div>
     </div>
