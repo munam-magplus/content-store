@@ -8,7 +8,7 @@ class HomesController < ApplicationController
     begin
       unless @publisher.books_primary_content_informations.blank? 
         if ['red_content','light_blue_content','fosteracademics'].include? @publisher.theme_name
-          @books = @publisher.books_primary_content_informations.joins(:books_contributor).where('content_classification = ?', 'Featured Books')
+          @books = @publisher.books_primary_content_informations.joins(:books_contributor).where('content_classification = ? OR content_classification = ?', 'Featured Books', 'New Releases')
 
         else
           @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10)
@@ -181,7 +181,7 @@ class HomesController < ApplicationController
         
       end
     else
-     redirect_to users_sign_in_path  
+     redirect_to users_sign_in_path 
     end
   end
 

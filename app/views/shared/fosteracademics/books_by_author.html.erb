@@ -13,7 +13,7 @@
             <%= form_tag  refine_publishers_book_homes_path, :method => 'get',:id=>"Author Name/Book Title",:class=>"form-inline", :remote => true do %>
               <div class="form-group">
                 <%= text_field_tag :book_title,"", :class => "form-control input-sm", :placeholder => "Refine Search" %>
-                <%= hidden_field_tag "book_ids", ids  %>
+                <%= hidden_field_tag "book_ids", @ids  %>
               </div>
               <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn btn-primary", type: :submit %>
             <%end%>
