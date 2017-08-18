@@ -122,6 +122,8 @@
     <footer class="footer">
       <%= render :partial => "homes/clanryeinternational_footer"%>
     </footer>
+  <% elsif @publisher.theme_name == 'fosteracademics' %>
+    <%= render :partial => "homes/fosteracademics_footer"%>
   <% else %>
     <%= render :partial => "homes/publisher_footer"%>
   <% end %>

@@ -7,41 +7,43 @@
 
     <div class="col-sm-9 col-md-9 margin_top5px">
       <div class="border_wrapper padding10px">
-        <div class="row ">
-          <div class="col-sm-12 ">
-            <div>
-              <h1 class="text_uppercase border_bottom padding_bottom12px nomargin"> Author(s): </h1>
+        <div id= 'pub_book'>
+          <div class="row ">
+            <div class="col-sm-12 ">
+              <div>
+                <h1 class="text_uppercase border_bottom padding_bottom12px nomargin"> Author(s): </h1>
+              </div>
             </div>
-          </div>
-          <div class="col-md-12 col-xs-12 ">
-            <div class="text_uppercase border_bottom padding_bottom12px">
-              <div class="col-sm-12 no-pad">
-                <div class="ln-letters">
-                  <ul class="pagination pagination-sm">
-                    <% ('A'..'Z').each do |letter| %>
-                      <li>
-                        <%= link_to letter, get_author_homes_path(:letter=>letter)%>
-                      </li>
-                    <% end %>
-                  </ul>
-                  <div class="clearfix ln-last"></div>
+            <div class="col-md-12 col-xs-12 ">
+              <div class="text_uppercase border_bottom padding_bottom12px">
+                <div class="col-sm-12 no-pad">
+                  <div class="ln-letters">
+                    <ul class="pagination pagination-sm">
+                      <% ('A'..'Z').each do |letter| %>
+                        <li>
+                          <%= link_to letter, get_author_homes_path(:letter=>letter)%>
+                        </li>
+                      <% end %>
+                    </ul>
+                    <div class="clearfix ln-last"></div>
+                  </div>
                 </div>
+                <div class="clearfix"></div>
               </div>
-              <div class="clearfix"></div>
             </div>
+            <%if @authors.present?%>
+              <%@authors.each do |authname| %>
+                <div class="col-md-12   mt-20">
+                  <ul id="demoOne" class="description   margin_left5px">
+                    <li class="ln-N ln-n">
+                      <%= link_to authname, books_by_author_homes_path(authname) %>
+                    </li>
+                    <li class="ln-no-match" style="display:none">Sorry, there are no titles available from this alphabet. For further help please try our<a href="advancesearchHome.do"> Advanced Search</a>.</li>
+                  </ul>
+                </div>
+              <%end%>
+            <%end%>  
           </div>
-          <%if @authors.present?%>
-            <%@authors.each do |authname| %>
-              <div class="col-md-12   mt-20">
-                <ul id="demoOne" class="description   margin_left5px">
-                  <li class="ln-N ln-n">
-                    <%= link_to authname, books_by_author_homes_path(authname) %>
-                  </li>
-                  <li class="ln-no-match" style="display:none">Sorry, there are no titles available from this alphabet. For further help please try our<a href="advancesearchHome.do"> Advanced Search</a>.</li>
-                </ul>
-              </div>
-            <%end%>
-          <%end%>  
         </div>
       </div>
     </div>

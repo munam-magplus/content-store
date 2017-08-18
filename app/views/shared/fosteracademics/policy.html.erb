@@ -8,12 +8,14 @@
     <div class="col-md-9 col-sm-9 margin_top5px ">
       <div class="border_wrapper padding10px">
         <div id="bodydivs">
-          <h1 class="sectionHeading ">Privacy Policy</h1>
-          <p class="mt-20">
-            <% if @publisher_policy.present? %>
-              <%= @publisher_policy.html_safe %>       
-            <%end%>
-          </p>
+          <div id= 'pub_book'>
+            <h1 class="sectionHeading ">Privacy Policy</h1>
+            <p class="mt-20">
+              <% if @publisher_policy.present? %>
+                <%= @publisher_policy.html_safe %>       
+              <%end%>
+            </p>
+          </div>
         </div>
       </div>
     </div>

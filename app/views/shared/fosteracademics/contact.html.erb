@@ -8,57 +8,59 @@
     <div class="col-md-9 col-sm-9 margin_top5px ">
       <div class="border_wrapper padding10px">
         <div id="bodydivs">
-          <h1 class="sectionHeading">Contact Us</h1>
-          <%= form_tag send_mail_homes_path, :class => "col-md-8 form-horizontal grayContainer-contact  padding10px margin_top10px nomargin" do %>
-            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-            <div class="">
-              <p class="margin_bottom10px pull-left"><em>Fields marked with&nbsp;<span class="red">*</span>&nbsp;are compulsory</em></p>
-              <span class="clearfix"></span> 
-              <fieldset>
-                <div class="form-group  ">
-                  <label class="col-md-3 control-label" for=""> Your name: <sup class="mandatory">*</sup></label>
-                  <div class="col-md-6">
-                    <%= text_field_tag :name,"", :class => "form-control" %>
+          <div id= 'pub_book'>
+            <h1 class="sectionHeading">Contact Us</h1>
+            <%= form_tag send_mail_homes_path, :class => "col-md-8 form-horizontal grayContainer-contact  padding10px margin_top10px nomargin" do %>
+              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+              <div class="">
+                <p class="margin_bottom10px pull-left"><em>Fields marked with&nbsp;<span class="red">*</span>&nbsp;are compulsory</em></p>
+                <span class="clearfix"></span> 
+                <fieldset>
+                  <div class="form-group  ">
+                    <label class="col-md-3 control-label" for=""> Your name: <sup class="mandatory">*</sup></label>
+                    <div class="col-md-6">
+                      <%= text_field_tag :name,"", :class => "form-control" %>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group  mt-20">
-                  <label class="col-md-3 control-label" for=""> Your email: <sup class="mandatory">*</sup></label>
-                  <div class="col-md-6">
-                    <%= text_field_tag :email,"", :required => true ,:class => "form-control" %>
+                  <div class="form-group  mt-20">
+                    <label class="col-md-3 control-label" for=""> Your email: <sup class="mandatory">*</sup></label>
+                    <div class="col-md-6">
+                      <%= text_field_tag :email,"", :required => true ,:class => "form-control" %>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group  mt-20">
-                  <label class="col-md-3 control-label" for=""> Subject:</label>
-                  <div class="col-md-6">
-                    <%= text_field_tag :subject,"", :class => "form-control" %>
+                  <div class="form-group  mt-20">
+                    <label class="col-md-3 control-label" for=""> Subject:</label>
+                    <div class="col-md-6">
+                      <%= text_field_tag :subject,"", :class => "form-control" %>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group  mt-20">
-                  <label class="col-md-3 control-label" for=""> Your message: <sup class="mandatory">*</sup>
-                  </label>
-                  <div class="col-md-6">
-                    <%= text_area :message,"", :class => "form-control", :id => "message", :rows => "7" %>
+                  <div class="form-group  mt-20">
+                    <label class="col-md-3 control-label" for=""> Your message: <sup class="mandatory">*</sup>
+                    </label>
+                    <div class="col-md-6">
+                      <%= text_area :message,"", :class => "form-control", :id => "message", :rows => "7" %>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group  mt-20">
-                  <label class="col-md-3 control-label" for=""></label>
-                  <div class="col-md-6">
-                    <%= button_tag fa_icon("send Message", text: "Send Message"), :class => "btn btn btn-primary", type: :submit %>
+                  <div class="form-group  mt-20">
+                    <label class="col-md-3 control-label" for=""></label>
+                    <div class="col-md-6">
+                      <%= button_tag fa_icon("send Message", text: "Send Message"), :class => "btn btn btn-primary", type: :submit %>
+                    </div>
                   </div>
-                </div>
-              </fieldset>
+                </fieldset>
+              </div>
+              <div class="clearfix"></div>
+            <% end %>
+            <div class="add_text2 col-md-4">
+              <%= image_tag("http://www.#{@publisher.domain_name}.com/templates/template1/#{@publisher.publisher_code}/images/contact_us.jpg", :class => "img-responsive")%>
+              <h1><%= @publisher.publisher_name.presence || "" %></h1>
+              <p><%= @publisher.publisher_address.presence || "" %><br>
+                <%= link_to "www.#{@publisher.domain_name}.com", "http://www.#{@publisher.domain_name}.com"%>
+                <br>Email-<%= link_to @publisher.contact_email, "mailto:#{@publisher.contact_email}"%>
+              </p>
             </div>
-            <div class="clearfix"></div>
-          <% end %>
-          <div class="add_text2 col-md-4">
-            <%= image_tag("http://www.#{@publisher.domain_name}.com/templates/template1/#{@publisher.publisher_code}/images/contact_us.jpg", :class => "img-responsive")%>
-            <h1><%= @publisher.publisher_name.presence || "" %></h1>
-            <p><%= @publisher.publisher_address.presence || "" %><br>
-              <%= link_to "www.#{@publisher.domain_name}.com", "http://www.#{@publisher.domain_name}.com"%>
-              <br>Email-<%= link_to @publisher.contact_email, "mailto:#{@publisher.contact_email}"%>
-            </p>
+            <div class="clearfix"></div>\
           </div>
-          <div class="clearfix"></div>
         </div>
       </div>
     </div>
