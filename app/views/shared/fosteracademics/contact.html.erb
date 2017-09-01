@@ -5,10 +5,10 @@
   <div class="row "> 
     <%= render :partial => "fosteracademics_subject_sidebar"%>
 
-    <div class="col-md-9 col-sm-9 margin_top5px ">
-      <div class="border_wrapper padding10px">
-        <div id="bodydivs">
-          <div id= 'pub_book'>
+    <div id= 'pub_book'>
+      <div class="col-md-9 col-sm-9 margin_top5px ">
+        <div class="border_wrapper padding10px">
+          <div id="bodydivs">
             <h1 class="sectionHeading">Contact Us</h1>
             <%= form_tag send_mail_homes_path, :class => "col-md-8 form-horizontal grayContainer-contact  padding10px margin_top10px nomargin" do %>
               <%= hidden_field_tag :authenticity_token, form_authenticity_token %>

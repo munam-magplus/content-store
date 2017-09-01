@@ -1,86 +1,90 @@
-<div class="row ">
-  <div class="col-sm-4 pt-10">Search Results</div>
-  <div class="text-right col-sm-8">
-    <%= form_tag  refine_publishers_book_homes_path, :method => 'get',:id=>"Author Name/Book Title",:class=>"form-inline",:remote => true do %>
-      <div class="form-group">
-        <%= text_field_tag :book_title,"", :class => "form-control", :placeholder => "Refine Search" %>
-        <%= hidden_field_tag "book_ids", ids  %>
+<section class="col-md-9 col-sm-9 margin_top5px ">
+  <div class="border_wrapper padding10px">
+    <div class="row ">
+      <div class="col-sm-4 pt-10">Search Results</div>
+      <div class="text-right col-sm-8">
+        <%= form_tag  refine_publishers_book_homes_path, :method => 'get',:id=>"Author Name/Book Title",:class=>"form-inline",:remote => true do %>
+          <div class="form-group">
+            <%= text_field_tag :book_title,"", :class => "form-control", :placeholder => "Refine Search" %>
+            <%= hidden_field_tag "book_ids", ids  %>
+          </div>
+          <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn btn-primary", type: :submit %>
+        <% end %>
       </div>
-      <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn btn-primary", type: :submit %>
-    <% end %>
-  </div>
-  <div class="col-md-12 col-xs-12 mt-20">
-    <%if @books.count >10 %>
-      <div class="bg-gray">
-        <div class="col-sm-4 no-pad" style="padding-top: 6px;">
-          <%= page_entries_info @books %>
-          <strong> for&nbsp;:&nbsp;</strong>
-          <strong>a&nbsp;</strong>
-        </div>
-        <div class="col-sm-8 text-right no-pad">
-          <nav aria-label="Page navigation">
-            <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
-          </nav>
-        </div>
-        <div class="clearfix"></div>
+      <div class="col-md-12 col-xs-12 mt-20">
+        <%if @books.count >10 %>
+          <div class="bg-gray">
+            <div class="col-sm-4 no-pad" style="padding-top: 6px;">
+              <%= page_entries_info @books %>
+              <strong> for&nbsp;:&nbsp;</strong>
+              <strong>a&nbsp;</strong>
+            </div>
+            <div class="col-sm-8 text-right no-pad">
+              <nav aria-label="Page navigation">
+                <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+              </nav>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-  <div class="clearfix"></div>
-  <% if @books.present? %>
-    <% @books.each do |f| %>
-      <div class="col-md-12  no-pad mt-20">
-        <div class="col-md-3  col-sm-2 col-xs-12 ">
-          <div class="effects search-result ">
-            <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg",class: "img-responsive"), books_description_homes_path(:book_id => f.id), class: "cover2" %>
+      <div class="clearfix"></div>
+      <% if @books.present? %>
+        <% @books.each do |f| %>
+          <div class="col-md-12  no-pad mt-20">
+            <div class="col-md-3  col-sm-2 col-xs-12 ">
+              <div class="effects search-result ">
+                <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg",class: "img-responsive"), books_description_homes_path(:book_id => f.id), class: "cover2" %>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <h2>
+                <%= link_to f.book_title.presence || "", books_description_homes_path(:book_id => f.id) %>
+              </h2>            
+              <h3>By : 
+                <span class="dark_yellow"><%= (f.books_contributor.first_name.presence || "")+" "+(f.books_contributor.last_name.presence || "") %>
+                </span>
+              </h3>
+              <p><strong>Description :</strong>
+                <%= truncate(f.book_blurb.presence || "", length: 182) %>
+                  <%= link_to 'more', '', :class => "read-more-#{f.id}" %>
+                  <script>
+                    $('.read-more-<%= f.id %>').on('click', function(e) {
+                      e.preventDefault()
+                      $(this).parent().html('<strong> Description:</strong> <%= f.book_blurb %>')
+                    })
+                  </script> 
+              </p>
+            </div>
+          </div>
+          <div class="col-md-12 ">
+            <div class="border_bottom-list"></div>
+          </div>
+        <% end %>
+      <%else%>
+        <div class="container">
+          <div class="col-md-12">
+            <h3> Record Not Found </h3>
           </div>
         </div>
-        <div class="col-md-9">
-          <h2>
-            <%= link_to f.book_title.presence || "", books_description_homes_path(:book_id => f.id) %>
-          </h2>            
-          <h3>By : 
-            <span class="dark_yellow"><%= (f.books_contributor.first_name.presence || "")+" "+(f.books_contributor.last_name.presence || "") %>
-            </span>
-          </h3>
-          <p><strong>Description :</strong>
-            <%= truncate(f.book_blurb.presence || "", length: 182) %>
-              <%= link_to 'more', '', :class => "read-more-#{f.id}" %>
-              <script>
-                $('.read-more-<%= f.id %>').on('click', function(e) {
-                  e.preventDefault()
-                  $(this).parent().html('<strong> Description:</strong> <%= f.book_blurb %>')
-                })
-              </script> 
-          </p>
-        </div>
-      </div>
-      <div class="col-md-12 ">
-        <div class="border_bottom-list"></div>
-      </div>
-    <% end %>
-  <%else%>
-    <div class="container">
-      <div class="col-md-12">
-        <h3> Record Not Found </h3>
+      <%end%>  
+      <div class="col-md-12 col-xs-12 mt-20">
+        <%if @books.count >10 %>
+          <div class="bg-gray">
+            <div class="col-sm-4 no-pad" style="padding-top: 6px;">
+              <%= page_entries_info @books %>
+              <strong> for&nbsp;:&nbsp;</strong>
+              <strong>a&nbsp;</strong>
+            </div>
+            <div class="col-sm-8 text-right no-pad">
+              <nav aria-label="Page navigation" style="clear:both; height: 30px;">
+                <%= will_paginate @books,renderer: BootstrapPagination::Rails %>
+              </nav>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        <% end %>
       </div>
     </div>
-  <%end%>  
-  <div class="col-md-12 col-xs-12 mt-20">
-    <%if @books.count >10 %>
-      <div class="bg-gray">
-        <div class="col-sm-4 no-pad" style="padding-top: 6px;">
-          <%= page_entries_info @books %>
-          <strong> for&nbsp;:&nbsp;</strong>
-          <strong>a&nbsp;</strong>
-        </div>
-        <div class="col-sm-8 text-right no-pad">
-          <nav aria-label="Page navigation" style="clear:both; height: 30px;">
-            <%= will_paginate @books,renderer: BootstrapPagination::Rails %>
-          </nav>
-        </div>
-        <div class="clearfix"></div>
-      </div>
-    <% end %>
   </div>
-</div>
+</section>

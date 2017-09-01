@@ -2,6 +2,8 @@
 $("#pub_book").html("<%= escape_javascript(render :partial => 'homes/larsen_and_keller_books_search_results', :locals => {:object => @books, :ids => @ids})%>");
 <% elsif @publisher.theme_name == "light_blue_content" %>
 $("#pub_book").html("<%= escape_javascript(render :partial => 'homes/syrawood_books_search_results', :locals => {:object => @books, :ids => @ids})%>");
+<% elsif @publisher.theme_name == "fosteracademics" %>
+$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/fosteracademics_books_search_results', :locals => {:object => @books, :ids => @ids})%>");
 <% else %>
 $("#pub_book").html("<%= escape_javascript(render :partial => 'homes/books_search_results', :locals => {:object => @books, :ids => @ids})%>");
 <% end %>

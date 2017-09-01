@@ -7,6 +7,12 @@
 <% elsif @publisher.theme_name == 'light_blue_content' %>
 	$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/syrawood_advance_search')%>");
 	$("#pagination-frontend").html('');
+<% elsif @publisher.theme_name == 'clanryeinternational' %>
+	$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/clanryeinternational_advance_search')%>");
+	$("#pagination-frontend").html('');
+<% elsif @publisher.theme_name == 'fosteracademics' %>
+	$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/fosteracademics_advance_search')%>");
+	$("#pagination-frontend").html('');
 <% else %> 
   $("#pub_book").html("<%= escape_javascript(render :partial => 'homes/advance_search')%>");
   $("#pagination-frontend").html('');

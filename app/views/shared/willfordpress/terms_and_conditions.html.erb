@@ -16,11 +16,13 @@
           <div class="col-sm-12">
             <h1 class="sectionHeading">TERMS & CONDITIONS </h1>
             <div class="">
-              <p> <%if @publisher_terms.present? %>
-                    <div class="wrapper container-fluid">
-                      <%= @publisher_terms.html_safe %>
-                    </div></p>
-                  <%end%>
+              <p>
+                <%if @publisher_terms.present? %>
+                  <div class="wrapper container-fluid">
+                    <%= @publisher_terms.html_safe %>
+                  </div>
+                <%end%>
+              </p>
               <br>
               <center>
                 Thank you for visiting our site.

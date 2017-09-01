@@ -1,0 +1,83 @@
+<h1 class="sectionHeading">Advance Search</h1>
+<div class="row placeholders">
+<div class="container-fluid">
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+  <%= form_tag get_search_results_homes_path, :method => 'get',:class => "form-horizontal form-bg", :remote => true do %>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="taskName" class="col-sm-4 control-label">Book Title:</label>
+        <span class="col-sm-8">
+          <%= text_field_tag :book_title,"", :class => "form-control" %>
+        </span>
+         <div class="clearfix"></div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="bookISBN" class="col-sm-4 control-label">Author:</label>
+        <span class="col-sm-8">
+        <%= text_field_tag :first_name,"", :class => "form-control" %>
+        </span> <div class="clearfix"></div></div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="bookISBN" class="col-sm-4 control-label">ISBN:</label>
+        <span class="col-sm-8">
+        <%= text_field_tag :isbn,"", :class => "form-control" %>
+        </span> </div>
+         <div class="clearfix"></div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="taskName" class="col-sm-4 control-label">Select Subject Group</label>
+        <span class="col-sm-8">
+          <%= select_tag 'subject_group_name',options_from_collection_for_select(SubjectGroup.all, 'subject_group_name', 'subject_group_name'), :prompt => "Select subject Group",:class => "form-control",style: "background-color: #eee;"%>
+        </span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="bookISBN" class="col-sm-4 control-label">Publication Year From:</label>
+        <span class="col-sm-8">
+          <%= select_tag 'publication_year_from', options_for_select((2000..Date.today.year).to_a),:prompt => "Select Year",:class => "form-control",style: "background-color: #eee;" %>
+        </span> <div class="clearfix"></div></div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="bookISBN" class="col-sm-4 control-label">Publication Year To:</label>
+        <span class="col-sm-8">
+          <%= select_tag 'publication_year_to', options_for_select((2000..Date.today.year).to_a),:prompt => "Select Year",:class => "form-control",style: "background-color: #eee;" %>
+        </span> <div class="clearfix"></div></div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="bookISBN" class="col-sm-4 control-label">Sort By:</label>
+        <span class="col-sm-8">
+           <%= select_tag 'sort_by',options_for_select([['Author',:first_name], ['Book Title',:book_title], ['ISBN',:isbn],['Subject',:subject_group_name],['Publication Year',:publication_date],]),:class => "form-control",style: "background-color: #eee;" %>
+        </span> <div class="clearfix"></div></div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="bookISBN" class="col-sm-4 control-label">Order:</label>
+        <span class="col-sm-8">
+          <%= select_tag 'order',options_for_select([['Ascending',:asc], ['Descending',:desc]]),:class => "form-control", style: "background-color: #eee;" %>
+        </span> <div class="clearfix"></div></div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="bookISBN" class="col-sm-4 control-label">Results Per Page:</label>
+        <span class="col-sm-8">
+          <%= select_tag 'per_page',options_for_select([['10',10], ['20',20],['30',30]]),:class => "form-control", style: "background-color: #eee;" %>
+        </span> <div class="clearfix"></div></div>
+    </div>
+  <div class="clearfix m-b-30"></div>
+ <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+  <%= button_tag fa_icon("search", text: "Search"), :class => "btnBlack btn-sm", type: :submit %>
+  <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
+    </div>
+  <%end%> 
+  </div>
+  </div>
+</div>
+
