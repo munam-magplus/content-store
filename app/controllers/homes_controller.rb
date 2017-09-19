@@ -166,7 +166,7 @@ class HomesController < ApplicationController
   private
 
   def set_them
-    if request.domain.present? && request.domain != 'www' && request.domain != 'localhost'
+    if request.domain.present?
       begin
         @gethost = request.host.split('.')[0]
         @publisher = Publisher.find_by_domain_name!(@gethost)
