@@ -166,20 +166,27 @@ class HomesController < ApplicationController
   private
 
   def set_them
+   
     if request.domain.present?
-      begin
-        @gethost = request.host.split('.')[0]
-        @publisher = Publisher.find_by_domain_name!(@gethost)
-        unless @publisher.blank?
-          unless @publisher.theme_name.blank?
-            @css_root = "#{@publisher.theme_name}/application"
-          else
-            @css_root = "default_theme/application"
-          end  
-        end
-      rescue ActiveRecord::RecordNotFound
-        
+      pub_domain = request.domain
+
+      unless pub_domain.start_with?('www')
+        pub_domain = 'www' + '.'  +  request.domain 
       end
+
+        begin
+          @gethost = pub_domain.split('.')[1]
+          @publisher = Publisher.find_by_domain_name(@gethost)
+          unless @publisher.blank?
+            unless @publisher.theme_name.blank?
+              @css_root = "#{@publisher.theme_name}/application"
+            else
+              @css_root = "default_theme/application"
+            end  
+          end
+        rescue ActiveRecord::RecordNotFound
+        
+        end  
     else
      redirect_to users_sign_in_path 
     end
