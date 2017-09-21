@@ -23,7 +23,7 @@
        
           <div class="form-group">
             <%= text_field_tag :book_title,"", :class => "form-control input-sm", :placeholder => "Refine Search" %>
-            <%= hidden_field_tag "book_ids", ids  %>
+            <%= hidden_field_tag "book_ids", @ids  %>
           </div>
           <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-primary btn-sm responsive_margin_top20px border_radius3px", type: :submit %>
         <%end%>
