@@ -5,7 +5,7 @@
       <div id= 'pub_book'>
         <div class="col-md-12">
           <h2 class="heading2">Search Results
-            <%= form_tag refine_publishers_book_homes_path, :method => 'get',:id=>"refineSearch",:class=>"form-inline pull-right" do %>
+            <%= form_tag refine_publishers_book_homes_path, :method => 'get',:id=>"refineSearch",:class=>"form-inline pull-right", :remote => true do %>
               <%= text_field_tag :book_title,"", :class => "form-control input-sm", :placeholder => "Refine Search", :size => "40", :id => "textToBeSearched" %>
               <%= hidden_field_tag "book_ids", @ids  %>
               <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-primary btn-sm", type: :submit %>
