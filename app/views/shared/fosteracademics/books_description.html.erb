@@ -34,7 +34,7 @@
                       <p><span class="book_atr col-xs-12 col-md-4"><strong>Publication Year&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8"><%= @book_information.publication_date.presence || "" %></span></p>
                       <p><span class="book_atr col-xs-12 col-md-4"><strong>Price&nbsp;:</strong></span><span class="book_description col-xs-12 col-md-8">&nbsp;USD&nbsp;    <%=number_with_precision(@book_information.book_price, :precision => 2) %></span></p>
                       <% if @book_information.books_content_pricing.present? %>
-                        <p><span class="book_atr col-xs-12 col-md-4"><strong>Format&nbsp;:</strong></span><span class="col-xs-12 book_description col-md-8">&nbsp; <%=@book_information.books_content_pricing.format.presence || "" %></span></p>
+                        <p><span class="book_atr col-xs-12 col-md-4"><strong>Format&nbsp;:</strong></span><span class="col-xs-12 book_description col-md-8">&nbsp; <%=@book_information.books_content_pricing.format.presence || "Hardback" %></span></p>
                       <% end %>
                       <p><span class="book_atr col-xs-12 col-md-4"><strong>Description&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-12 margin_bottom10px"><%= @book_information.book_blurb.presence || "" %></span></p>
                       <p><span class="col-xs-12 book_atr col-md-4"><strong>Author/Editor&nbsp;:&nbsp;</strong></span><span class="col-xs-12 book_description col-md-12"><br>
