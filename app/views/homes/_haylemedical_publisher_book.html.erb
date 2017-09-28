@@ -10,9 +10,9 @@
          <div class="col-sm-3">
           <div class="result media-result ebook">
             <div class="cover"> 
-            <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg", class: 'border-img'),books_description_homes_path(:book_id => f.id), :remote => true %>
+            <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg", class: 'border-img'),books_description_homes_path(:book_id => f.id) %>
               <div class="details">
-                <h3 class="title"><%= link_to truncate(f.book_title, length: 22), books_description_homes_path(:book_id => f.id), :remote => true %>
+                <h3 class="title"><%= link_to truncate(f.book_title, length: 22), books_description_homes_path(:book_id => f.id) %>
                 </h3>
                 <h4 class="author"><%= f.books_contributor.first_name %>&nbsp<%= f.books_contributor.last_name  %> </h4>
               </div>
