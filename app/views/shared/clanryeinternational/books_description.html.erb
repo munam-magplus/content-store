@@ -53,7 +53,7 @@
                         <%end%>
                           <tr>
                             <td><strong>Price&nbsp;:</strong></td>
-                            <td>&nbsp;USD&nbsp;<%= @book_information.book_price.presence || "145" %></td>
+                            <td>&nbsp;USD&nbsp;<%=number_with_precision(@book_information.book_price, :precision => 2) %></td>
                           </tr>
 
                         <tr>

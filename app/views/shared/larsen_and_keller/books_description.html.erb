@@ -45,7 +45,7 @@
               <% unless @book_information.publication_date.blank? %> 
                 <h4><strong>Publication Year :</strong> <%= @book_information.publication_date.to_date.year.presence || "" %></h4>
               <%end%>
-              <h4><strong>Price :</strong> USD  <%= @book_information.book_price.presence || "145" %></h4>
+              <h4><strong>Price :</strong> USD  <%=number_with_precision(@book_information.book_price, :precision => 2) %></h4>
               <% if @book_information.books_content_pricing.present? %>
                 <h4><strong>Format :</strong>  <%=@book_information.books_content_pricing.format.presence || "" %></h4>
               <% end %>
