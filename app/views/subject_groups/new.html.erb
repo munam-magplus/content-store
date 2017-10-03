@@ -21,13 +21,22 @@
          <li><a>Create Subject</a></li>
       </ol>
 
-      <h2 class="H2-L1">Create Subject</h2>
+      <%if @subject_group.new_record?%>
+        <h2 class="H2-L1">Create Subject</h2>
+      <%else%>
+        <h2 class="H2-L1">Edit Subject</h2>
+      <%end%>
       <%= form_for @subject_group, validate: true do |f| %>
         <div class="col-md-6">
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Publisher<sup class="mandatory">*</sup> </label>
             <div class="col-sm-8">
-              <%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'),{ :prompt => "Select Publisher"},{:required => true, :class => "form-control" , style: "background-color: #eee;" } %>
+              <%= f.hidden_field :id, value: @subject_group.id %>
+              <%if @subject_group.new_record?%>
+                <%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'),{ :prompt => "Select Publisher"},{:required => true, :class => "form-control" , style: "background-color: #eee;" } %>
+              <%else%>
+                <%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'),{ :prompt => "Select Publisher"},{:required => true, :class => "form-control" , style: "background-color: #eee;", :disabled => true } %>
+              <%end%>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -99,7 +108,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Select Language<sup class="mandatory">*</sup></label>
             <span class="col-sm-8">
-            <%= f.select 'language',options_for_select(['Dansk', 'Polish', 'Latvian','English']), {:prompt => "Select Language"}, {:required => true, :class => "form-control" , style: "background-color: #eee;" } %>
+            <%= f.select 'language',options_for_select(['Dansk', 'Polish', 'Latvian','English'],:selected => f.object.language), {:prompt => "Select Language"}, {:required => true, :class => "form-control" , style: "background-color: #eee;" } %>
             </span> 
             <div class="clearfix"></div>
           </div>
@@ -117,7 +126,7 @@
           <div class="form-group">
             <label for="taskName" class="col-sm-4 control-label">Select Subject Group</label>
             <span class="col-sm-8">
-              <%= f.select 'subject_id',options_from_collection_for_select(Subject.all, :id, :subject_name),{ :prompt => "Select Subject Group"},{:class => "form-control" , style: "background-color: #eee;" } %>
+              <%= f.select 'subject_id',options_from_collection_for_select(Subject.all, :id, :subject_name,:selected => f.object.subject_id),{ :prompt => "Select Subject Group"},{:class => "form-control" , style: "background-color: #eee;" } %>
             </span> 
             <div class="clearfix"></div>
           </div>

@@ -4,6 +4,11 @@ class SubjectGroupsController < ApplicationController
   def new
     @subject_group = SubjectGroup.new
   end
+
+  def edit
+    @subject_group = SubjectGroup.find(params[:id])
+    render 'new'
+  end
   
   def create
     @subject_group = SubjectGroup.new(subject_group_params)
@@ -11,6 +16,17 @@ class SubjectGroupsController < ApplicationController
       redirect_to subject_groups_path
     else
       render 'new'
+    end
+  end
+
+  def update
+    @subject_group =SubjectGroup.find(params[:subject_group][:id])
+    if @subject_group.update_attributes!(subject_group_params)
+      # Handle a successful update.
+      flash[:notice] = 'Subject Group successfully updated.'
+      redirect_to subject_groups_path
+    else
+      render 'edit'
     end
   end
 
