@@ -35,7 +35,7 @@
               <%if @subject_group.new_record?%>
                 <%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'),{ :prompt => "Select Publisher"},{:required => true, :class => "form-control" , style: "background-color: #eee;" } %>
               <%else%>
-                <%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'),{ :prompt => "Select Publisher"},{:required => true, :class => "form-control" , style: "background-color: #eee;", :disabled => true } %>
+                <%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name',:selected => f.object.publisher_id),{ :prompt => "Select Publisher"},{:required => true, :class => "form-control" , style: "background-color: #eee;", :disabled => true } %>
               <%end%>
             </div>
             <div class="clearfix"></div>
