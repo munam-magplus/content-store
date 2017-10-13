@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8 col-md-9">
+      <ul class="breadcrumb breadcrumb2 print">
+        <a href="/BookStore/home"><u>Home</u></a> &gt; Advanced Search
+      </ul>
+      <div class="border_wrapper padding10px">
+        <div class="">
+          <h1 class="text_uppercase border_bottom heading-main "> ADVANCED SEARCH </h1>
+        </div>
+        <div class=" col-sm-12 grayContainer pad20">
+          <%= form_tag get_search_results_homes_path, :method => 'get',:class => "form-horizontal col-sm-12", :remote => true do %>
+            <fieldset>
+              <div class="form-group margin_bottom10px">
+                <label class="col-md-3 control-label" for="">Title :</label>
+                <div class="col-md-6">
+                  <%= text_field_tag :book_title,"", :class => "form-control" %>
+                </div>
+              </div>              
+            </fieldset>
+            <%= button_tag fa_icon("search", text: "Search"), :class => "btnBlack btn-sm", type: :submit %>
+            <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>  
+          <% end %>
+        </div>       
+      </div>
+    </div>
+  </div>
+</div>

@@ -164,6 +164,14 @@ class HomesController < ApplicationController
     )
   end
 
+  def sign_in
+    render :template => "shared/#{@publisher.theme_name}/sign_in"
+  end
+
+  def registration
+    render :template => "shared/#{@publisher.theme_name}/registration"
+  end
+
   private
 
   def set_them

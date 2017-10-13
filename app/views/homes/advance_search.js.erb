@@ -13,6 +13,9 @@
 <% elsif @publisher.theme_name == 'fosteracademics' %>
 	$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/fosteracademics_advance_search')%>");
 	$("#pagination-frontend").html('');
+<% elsif @publisher.theme_name == 'wtbooks' %>
+	$("#pub_book").html("<%= escape_javascript(render :partial => 'homes/wtbooks_advance_search')%>");
+	$("#pagination-frontend").html('');
 <% else %> 
   $("#pub_book").html("<%= escape_javascript(render :partial => 'homes/advance_search')%>");
   $("#pagination-frontend").html('');

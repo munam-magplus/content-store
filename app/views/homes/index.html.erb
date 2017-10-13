@@ -19,6 +19,8 @@
           </div>
         <% elsif ['fosteracademics'].include? @publisher.theme_name %>  
           <%= render :partial => "fosteracademics_subject_sidebar"%>
+        <% elsif ['wtbooks'].include? @publisher.theme_name %>  
+          <%= render :partial => "wtbooks_subject_sidebar"%>
         <% end %> 
 
       <!--Sidebar End-->   
@@ -98,6 +100,17 @@
               </div>
             </div>
           </div>
+
+        <% elsif @publisher.theme_name == 'wtbooks' %>
+
+          <div class="container-fluid">
+            <div class="row">
+              <div id='pub_book'>  
+                <%= render :partial => 'wtbooks_publisher_book' %>
+              </div>
+            </div>
+          </div>  
+
         <% elsif @publisher.theme_name == 'willfordpress' %>
 
           <div class="col-sm-8 col-md-9 mar-b50" > 
@@ -125,6 +138,8 @@
     </footer>
   <% elsif @publisher.theme_name == 'fosteracademics' %>
     <%= render :partial => "homes/fosteracademics_footer"%>
+  <% elsif @publisher.theme_name == 'wtbooks' %>
+    <%= render :partial => "homes/wtbooks_footer"%>  
   <% else %>
     <%= render :partial => "homes/publisher_footer"%>
   <% end %>

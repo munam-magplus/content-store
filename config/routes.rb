@@ -49,6 +49,8 @@ Rails.application.routes.draw do
       get 'contact'
       get 'catalogue'
       get 'search'
+      get 'sign_in'
+      get 'registration'
     end
   end
 

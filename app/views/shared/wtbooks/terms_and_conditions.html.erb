@@ -1,0 +1,26 @@
+<%= render :partial => "#{@publisher.theme_name}"%> 
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render :partial => "wtbooks_subject_sidebar"%> 
+    <div id='pub_book'>  
+    <div class="col-sm-8 col-md-9">
+      <ul class="breadcrumb breadcrumb2 print">
+        <a href="index.html"><u>Home</u></a> &gt; Terms and Conditions
+      </ul>
+      <div class="border_wrapper padding10px">
+        <div class="">
+          <h1 class="text_uppercase border_bottom heading-main "> TERMS & CONDITIONS</h1>
+        </div>
+        <div class="mt-20">
+          <% if @publisher_terms.present? %>
+            <p class="mt20"><%= @publisher_terms.html_safe %></p>
+          <%end%>
+          <div class="clearfix"> </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<%= render :partial => "homes/wtbooks_footer"%>
