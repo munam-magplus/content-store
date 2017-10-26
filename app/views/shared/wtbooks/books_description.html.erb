@@ -30,11 +30,13 @@
                       <p><span class="book_atr col-xs-12 col-md-4"><strong>ISBN&nbsp;:&nbsp;</strong></span><span class="book_description col-xs-12 col-md-8">&nbsp;<%= @book_information.isbn.presence || "" %></span></p>
                       <p><span class="book_atr col-xs-12 col-md-4"><strong>Publisher&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8">&nbsp;<%= @publisher.publisher_name.presence || "" %></span></p>
                       <p><span class="book_atr col-xs-12 col-md-4"><strong>Language&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8">&nbsp;<%= @book_information.language.presence || "" %></span></p>
-                      <p><span class="book_atr col-xs-12 col-md-4"><strong>Category&nbsp;:&nbsp;</strong></span> <span class="book_description col-xs-12 col-md-8">&nbsp;<%= @book_information.subject_groups.first.subject_group_name.presence || "" %>
-                        <% if @book_subject_group.subject_group_name.present? %>
-                        ,<%= @book_subject_group.subject.subject_name.presence || "" %> > <%= @book_subject_group.subject_group_name.presence || "" %>
-                        <% end %> 
-                      </span></p>
+                      <% unless @book_information.subject_groups.blank? %>
+                        <p><span class="book_atr col-xs-12 col-md-4"><strong>Category&nbsp;:&nbsp;</strong></span> <span class="book_description col-xs-12 col-md-8">&nbsp;<%= @book_information.subject_groups.first.subject_group_name.presence || "" %>
+                          <% if @book_subject_group.subject_group_name.present? %>
+                          ,<%= @book_subject_group.subject.subject_name.presence || "" %> > <%= @book_subject_group.subject_group_name.presence || "" %>
+                          <% end %> 
+                        </span></p>
+                      <% end %>
                       <% unless @book_information.publication_date.blank? %>
                       <p><span class="book_atr col-xs-12 col-md-4"><strong>Publication Year&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8">March-20<%= @book_information.publication_date.to_date.year.presence || "" %></span></p>
                       <% end %>

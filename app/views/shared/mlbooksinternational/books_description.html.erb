@@ -34,8 +34,9 @@
             <p><span class="book_atr col-xs-12 col-md-3"><strong>ISBN&nbsp;:&nbsp;</strong></span><span class="book_description col-xs-12 col-md-9"><%= @book_information.isbn.presence || "" %></span></p>
             <p><span class="book_atr col-xs-12 col-md-3"><strong>Publisher&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-9">&nbsp;<%= @publisher.publisher_name.presence || "" %></span></p>
             <p><span class="book_atr col-xs-12 col-md-3"><strong>Language&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-9">&nbsp;<%= @book_information.language.presence || "" %></span></p>
-            <p><span class="book_atr col-xs-12 col-md-3"><strong>Category&nbsp;:&nbsp;</strong></span> <span class="book_description col-xs-12 col-md-9">&nbsp;<%= @book_information.subject_groups.first.subject_group_name.presence || "" %></span></p>
-              
+            <% unless @book_information.subject_groups.blank? %>
+              <p><span class="book_atr col-xs-12 col-md-3"><strong>Category&nbsp;:&nbsp;</strong></span> <span class="book_description col-xs-12 col-md-9">&nbsp;<%= @book_information.subject_groups.first.subject_group_name.presence || "" %></span></p>
+            <% end %>
 
             <% unless @book_information.publication_date.blank? %>     
               <p><span class="book_atr col-xs-12 col-md-3"><strong>Publication Year&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-9">&nbsp;<%= @book_information.publication_date.to_date.year.presence || "" %></span></p>

@@ -40,8 +40,10 @@
               <h4><strong>ISBN :</strong> <%= @book_information.isbn.presence || "" %></h4>
               <h4><strong>Publisher :</strong> <%= @publisher.publisher_name.presence || "" %></h4>
               <h4><strong>Language :</strong><%= @book_information.language.presence || "" %></h4>
-              <h4><strong>Category :</strong> <%= @book_information.subject_groups.first.subject_group_name.presence || "" %>
-              </h4>
+              <% unless @book_information.subject_groups.blank? %>
+                <h4><strong>Category :</strong> <%= @book_information.subject_groups.first.subject_group_name.presence || "" %>
+                </h4>
+              <% end %>
               <% unless @book_information.publication_date.blank? %> 
                 <h4><strong>Publication Year :</strong> <%= @book_information.publication_date.to_date.year.presence || "" %></h4>
               <%end%>

@@ -41,10 +41,12 @@
                           <td><strong>Language&nbsp;:&nbsp;</strong></td>
                           <td>&nbsp;<%= @book_information.language.presence || "" %></td>
                         </tr>
-                        <tr>
-                          <td><strong>Category&nbsp;:&nbsp;</strong></td>
-                          <td>&nbsp;<%= @book_information.subject_groups.first.subject_group_name.presence || "" %></td>
-                        </tr>
+                        <% unless @book_information.subject_groups.blank? %>
+                          <tr>
+                            <td><strong>Category&nbsp;:&nbsp;</strong></td>
+                            <td>&nbsp;<%= @book_information.subject_groups.first.subject_group_name.presence || "" %></td>
+                          </tr>
+                        <% end %>
                         <% unless @book_information.publication_date.blank? %>
                           <tr>
                             <td><strong>Publication Year&nbsp;:&nbsp;</strong></td>
