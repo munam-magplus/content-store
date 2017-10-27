@@ -23,6 +23,7 @@
             <th>Subject Code</th>
             <th>Subject Level</th>
             <th>Action</th>
+            <th>Action</th>
             <th>Edit</th>
           </tr>
         </thead>
@@ -34,6 +35,7 @@
                 <td><%= f.subject_group_code %></td>
                 <td><%= f.subject_group_level %></td>
                 <td><%= link_to 'Associate Books',associate_book_subject_groups_path(f.publisher_id, subject_group_name: f.subject_group_name, subject_group_id: f.id) %></td>
+                <td><%= link_to 'Unassociate Books',unassociate_book_subject_groups_path(f.publisher_id, subject_group_name: f.subject_group_name, subject_group_id: f.id) %></td>
                  <td><%= link_to("Edit ", edit_subject_group_path(f.id), :class => "btn btn-sm", :method => :get) %></td>
               </tr>
             <% end %>

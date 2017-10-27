@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     collection do
       get 'metadata_sheet'
       post 'import'
-     
+      post 'unassociate_books'
     end
   end
  
@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   resources :subject_groups do 
     collection do 
       get 'associate_book'
+      get 'unassociate_book'
       post 'import'
       get 'metadata_sheet'
       get 'search'      
