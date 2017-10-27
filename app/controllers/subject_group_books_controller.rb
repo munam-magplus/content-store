@@ -24,7 +24,6 @@ class SubjectGroupBooksController < ApplicationController
       book_ids = params[:book_id]
       book_ids.each do |book|
         SubjectGroupBook.new
-        @subject_group_id = params[:subject_group_id]
         SubjectGroupBook.where(books_primary_content_information_id: book).where(subject_group_id: params[:subject_group_id]).delete_all
       end
       redirect_to new_subject_group_path

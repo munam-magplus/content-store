@@ -84,7 +84,7 @@ class SubjectGroupsController < ApplicationController
     @subject_group_id = params[:subject_group_id]
     @subject_group_name = params[:subject_group_name]
     @subject_group = SubjectGroup.find(params[:subject_group_id])
-    @associated_books = @subject_group.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10)
+    @associated_books = @subject_group.books_primary_content_informations
   end
 
   private
