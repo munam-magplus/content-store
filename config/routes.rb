@@ -15,6 +15,10 @@ Rails.application.routes.draw do
 
   get 'my_accounts/index'
 
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
+
   resources :site_settings do 
     collection do 
       get 'books_of_publisher'
@@ -50,7 +54,10 @@ Rails.application.routes.draw do
       get 'catalogue'
       get 'search'
       get 'sign_in'
+      post 'login'
       get 'registration'
+      post 'sign_up'
+      delete 'logout'
     end
   end
 

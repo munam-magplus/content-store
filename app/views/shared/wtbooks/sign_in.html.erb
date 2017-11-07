@@ -15,28 +15,28 @@
         <p>Please login here or register below.</p>
         <div class="clearfix"></div>
         <div class=" col-sm-12 grayContainer pad20">
-          <%= form_tag sign_in_homes_path , :class => "form-horizontal col-sm-7" do %>
+          <%= form_for(:session, url: login_homes_path, :class => "form-horizontal col-sm-7") do |f| %>
             <div class="form-group">
-              <label class="control-label col-sm-3" for="email">Email address: <sup class="mandatory">*</sup></label>
+              <label class="control-label col-sm-3" for="email"><%= f.label :email_address %>: <sup class="mandatory">*</sup></label>
               <div class="col-sm-9">
-                <%= text_field_tag :email,"", :required => true ,:class => "form-control", :placeholder => "Enter email" %>
+                <%= f.email_field :email, class: 'form-control', required: "true", placeholder: "Enter Email" %>
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-3" for="pwd">Password: <sup class="mandatory">*</sup></label>
-              <div class="col-sm-9">          
-                <%= text_field_tag :password,"", :required => true ,:class => "form-control", :placeholder => "Enter password" %>              
+              <label class="control-label col-sm-3" for="pwd"><%= f.label :password %>: <sup class="mandatory">*</sup></label>
+              <div class="col-sm-9">
+                <%= f.password_field :password, class: 'form-control', required: "true", placeholder: "Enter Password" %>          
               </div>
             </div>
             <div class="form-group">        
               <div class="col-sm-offset-3 col-sm-9">
-                <%= button_tag fa_icon("login", text: "Login"), :class => "btn btn-inverse", type: :submit %>
+                <%= f.submit "Login", class: "btn btn-inverse" %>
                 <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-default" ,type: :reset%>  
                 <a data-backdrop="static" data-keyboard="false" data-toggle="" href="forgotPasswordPageHome.do">&nbsp;&nbsp;Forgot your Password?</a>
               </div>
             </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
         <div class="col-sm-12 no-padd mt10">
           <h1 class="text_uppercase border_bottom heading-main ">NEW USER REGISTRATION</h1>
           <p>If you are a new user and have not yet registered, 

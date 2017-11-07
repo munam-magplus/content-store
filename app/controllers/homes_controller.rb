@@ -48,8 +48,6 @@ class HomesController < ApplicationController
     end
     render :template => "shared/#{@publisher.theme_name}/get_author"
   end  
-
-    
   
   def books_by_title
     if !params[:letter].present?
@@ -168,14 +166,41 @@ class HomesController < ApplicationController
     render :template => "shared/#{@publisher.theme_name}/sign_in"
   end
 
+  def login
+    end_user = EndUser.find_by(email: params[:session][:email].downcase)
+    if end_user && end_user.authenticate(params[:session][:password])
+      log_in end_user
+      redirect_to homes_path
+    else
+      flash[:danger] = 'Invalid email/password combination'
+      render :template => "shared/#{@publisher.theme_name}/sign_in"
+    end
+  end
+
   def registration
+    @end_user = EndUser.new
+    @subject_group = @publisher.subject_groups
+    publisher_id = @publisher.id
     render :template => "shared/#{@publisher.theme_name}/registration"
+  end
+
+  def sign_up
+    @end_user = EndUser.new(end_user_params)
+    if verify_recaptcha(model: @end_user) && @end_user.save
+      render :template => "shared/#{@publisher.theme_name}/sign_in"
+    else
+      render :template => "shared/#{@publisher.theme_name}/registration"
+    end
+  end
+
+  def logout
+    log_out
+    redirect_to root_url
   end
 
   private
 
   def set_them
-   
     if request.domain.present?
       pub_domain = request.domain
 
@@ -183,22 +208,25 @@ class HomesController < ApplicationController
         pub_domain = 'www' + '.'  +  request.domain 
       end
 
-        begin
-          @gethost = pub_domain.split('.')[1]
-          @publisher = Publisher.find_by_domain_name(@gethost)
-          unless @publisher.blank?
-            unless @publisher.theme_name.blank?
-              @css_root = "#{@publisher.theme_name}/application"
-            else
-              @css_root = "default_theme/application"
-            end  
-          end
+      begin
+        @gethost = pub_domain.split('.')[1]
+        @publisher = Publisher.find_by_domain_name(@gethost)
+        unless @publisher.blank?
+          unless @publisher.theme_name.blank?
+            @css_root = "#{@publisher.theme_name}/application"
+          else
+            @css_root = "default_theme/application"
+          end  
+        end
         rescue ActiveRecord::RecordNotFound
-        
-        end  
+      end  
     else
      redirect_to users_sign_in_path 
     end
   end
 
+  def end_user_params
+    params.require(:end_user).permit(:publisher_id, :email, :password, 
+    :confirm_password, :first_name, :last_name, :country_code)
+  end
 end

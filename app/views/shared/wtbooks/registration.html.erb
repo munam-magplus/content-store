@@ -14,122 +14,85 @@
         </div>
         <div class=" col-sm-12 grayContainer pad20 no-padd">
           <p class="col-sm-12">Thank you for choosing to register. Please provide us with the following details. Fields marked with <sup class="mandatory">*</sup> are compulsory</p>
-          <%= form_for(:registration, url: registration_homes_path) do |f| %>
+
+          <%= form_for(@end_user, url: sign_up_homes_path) do |f| %>
+            <%= f.hidden_field :publisher_id, value: @publisher.id %>
             <div class = "form-horizontal col-sm-7 mt20">
               <div class="form-group">
-                <label class="control-label col-sm-3" for="email">Email : <sup class="mandatory">*</sup></label>
-                <div class="col-sm-9">
+                <label class="control-label col-sm-4" for="email"><%= f.label :email %>: <sup class="mandatory">*</sup></label>
+                <div class="col-sm-8">
                   <%= f.email_field :email, :required => true ,:class => "form-control", :placeholder => "Enter email" %>
                 </div>
               </div>
               
               <div class="form-group">
-                <label class="control-label col-sm-3" for="email">Confirm Email:<sup class="mandatory">*</sup></label>
-                <div class="col-sm-9">
-                  <%= f.email_field :confirm_email, :required => true ,:class => "form-control", :placeholder => "Confirm email" %>
-                </div>
-              </div>
-              
-              <div class="form-group">
-                <label class="control-label col-sm-3" for="pwd">Password:<sup class="mandatory">*</sup></label>
-                <div class="col-sm-9">          
+                <label class="control-label col-sm-4" for="pwd"><%= f.label :password %>:<sup class="mandatory">*</sup></label>
+                <div class="col-sm-8">          
                   <%= f.password_field :password, :required => true ,:class => "form-control", :placeholder => "Enter Password" %>
                 </div>
               </div>
               
               <div class="form-group">
-                <label class="control-label col-sm-3" for="pwd">Confirm Password: <sup class="mandatory">*</sup></label>
-                <div class="col-sm-9">          
+                <label class="control-label col-sm-4" for="pwd"><%= f.label :confirm_password, "Confirm Password" %>: <sup class="mandatory">*</sup></label>
+                <div class="col-sm-8">          
                   <%= f.password_field :confirm_password, :required => true ,:class => "form-control", :placeholder => "Confirm Password" %>
                 </div>
               </div>
               
               <div class="form-group">
-                <label class="control-label col-sm-3" for="email">First Name:<sup class="mandatory">*</sup></label>
-                <div class="col-sm-9">
+                <label class="control-label col-sm-4" for="email"><%= f.label :first_name %>:<sup class="mandatory">*</sup></label>
+                <div class="col-sm-8">
                   <%= f.text_field :first_name, :required => true ,:class => "form-control", :placeholder => "First Name" %>
                 </div>
               </div>
               
               <div class="form-group">
-                <label class="control-label col-sm-3" for="email">Last Name:<sup class="mandatory">*</sup></label>
-                <div class="col-sm-9">
+                <label class="control-label col-sm-4" for="email"><%= f.label :last_name %>:<sup class="mandatory">*</sup></label>
+                <div class="col-sm-8">
                   <%= f.text_field :last_name, :required => true ,:class => "form-control", :placeholder => "Last Name" %>
                 </div>
               </div>
               
               <div class="form-group">
-                <label class="control-label col-sm-3" for="email">Country:<sup class="mandatory">*</sup></label>
-                <div class="col-sm-9">
+                <label class="control-label col-sm-4" for="email">Country:<sup class="mandatory">*</sup></label>
+                <div class="col-sm-8">
                   <%= f.select 'country_code',options_from_collection_for_select(Country.all.order('country_name asc'), 'country_code', 'country_name'),{ :prompt => "Select Country"},{required: true, :class => "form-control"} %>
                 </div>
               </div>
-              
-              <div class="form-group  mt-20">
-                <label class="col-md-3" for=""></label>
-                <div class="col-md-9">
-                  <label style="padding-left:20px" class="checkbox"><input type="checkbox" name="sendToMyEmailId" value="on">Your registration details are required to fully use this site. Should you wish not to receive any further information or being contacted by our marketing team, please select this checkbox.
-                  </label>
-                </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-4" for="checkbox"></label>
+              <div class="col-sm-12">
+                <label style="padding-left:200px" class="checkbox"><input type="checkbox" name="sendToMyEmailId" value="on">Your registration details are required to fully use this site. Should you wish not to receive any further information or being contacted by our marketing team, please select this checkbox.
+                </label>
               </div>
             </div>
             <div class="col-sm-12">
               <p class="mt20">If you want to set up an email alert click <a style="cursor:pointer" class="" data-toggle="collapse" data-target="#show">here</a>.<br><%= link_to "What are email alerts?", "http://ebooks.wtbooks.com/static/templates/template1/wtbooks/files/help/en/index.htm", target: "_blank" %>
                 <div id="show" class="collapse">
-                  <div class=" col-sm-12 jumbotron pad20">
-                <!--  <div class="field">
-                      <%= f.check_box :agriculture %>
-                      <%= f.label "Agriculture" %>
-                      <%= f.check_box :american_history %>
-                      <%= f.label "American History" %>
-                 
-                    </div> -->
+                  <div class=" col-sm-12 jumbotron pad20">                 
                     <p><strong>Email Alerts</strong></p>
                     <p>Please send me alerts on the following subject(s):</p>
                     <p><strong>Subject Categories</strong></p>
                     <div class="control-group" id="ckbox">
-         
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="2922"><span class="font12px">Languages</span></label><div class="clearFloat"></div>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="2800"><span class="font12px">Law</span></label>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="3006"><span class="font12px">Literature</span></label>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="2848"><span class="font12px">Local History of the United States and British, Dutch, French, and Latin America</span></label><div class="clearFloat"></div>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="3040"><span class="font12px">MARKETING</span></label>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="2105"><span class="font12px">Medicine</span></label>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="2389"><span class="font12px">Military Science</span></label><div class="clearFloat"></div>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="1905"><span class="font12px">Music and Books On Music</span></label>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="2422"><span class="font12px">Naval Science</span></label>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="2881"><span class="font12px">Philosophy &amp; psychology</span></label><div class="clearFloat"></div>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="2459"><span class="font12px">Philosophy, Psychology, Religion</span></label>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="2780"><span class="font12px">Political Science</span></label>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="2893"><span class="font12px">Religion</span></label><div class="clearFloat"></div>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="1989"><span class="font12px">Science</span></label>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="2933"><span class="font12px">Science</span></label>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="2667"><span class="font12px">Social Sciences</span></label><div class="clearFloat"></div>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="2906"><span class="font12px">Social sciences</span></label>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="3041"><span class="font12px">Strategic Management</span></label>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="2235"><span class="font12px">Technology</span></label><div class="clearFloat"></div>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="2960"><span class="font12px">Technology</span></label>
-              
-                      <label class="checkbox inline"> <input type="checkbox" name="subjectgroup" value="2556"><span class="font12px">World History (except American History)</span></label>
+                      <% if @subject_group.present? %>
+                        <% @subject_group.each do |subject_group| %>
+                          <tr class="content_value">
+                            <td>
+                              <input type="checkbox" name="checkbox" id="chk" />
+                            </td>
+                            <td>
+                              <%= subject_group.subject_group_name %>
+                            </td>
+                          </tr>
+                        <% end %>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td><input type="button" value="add" onclick="getAddDetails();" class="btn btn-sm" /></td>
+                        </tr>
+                      <%else%>
+                        No Record Found
+                      <%end%>                
                     </div>
                     <br>     
                     <p>You can opt in or out of these alerts any time. For the purposes of data protection legistation, submitting this page will indicate you have opted-in, and provided direct consent to receive the e-alerts you have selected. To find out more about our commitment to confidentiality and data protection, please see our <%= link_to "privacy policy", "http://ebooks.wtbooks.com/BookStore/displayDataHome.do?popUp=true&key=PRIVACY_POLICY", target: "_blank" %>.</p>
@@ -137,9 +100,15 @@
                 </div>
               </p>
             </div>
+            <div class="form-group">
+              <label class="control-label col-sm-4" for="email"></label>
+              <div class="col-sm-8">
+                <%= recaptcha_tags %>
+              </div>
+            </div>
             <div class="clearfix"></div>
             <p class="mt10">
-              <%= button_tag fa_icon("login", text: "Login"), :class => "btn btn-inverse", type: :submit %>
+              <%= f.submit "Submit", class: "btn btn-inverse" %>
               <%= button_tag fa_icon("cancel", text: "Cancel"), :class => "btn btn-default" ,type: :reset%>
             </p>
           <% end %>

@@ -29,6 +29,9 @@ gem 'exception_handler'
 
 gem 'devise'
 
+# For Captcha
+gem "recaptcha", require: "recaptcha/rails"
+
 # For ckeditor
 gem 'ckeditor'
 
