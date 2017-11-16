@@ -15,19 +15,21 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.new
   end
 
+  def search
+    @subscription = Subscription.filter(params.slice(:publisher_id, :subscription_name, :available_for_institutional_accounts, :subscription_category))
+  end
+  
   def create
     @subscription = Subscription.new(subscription_params)
     respond_to do |format|
-      if @subscription.save! && params[:value] == ["Subject Group"]
+      if @subscription.save! && params[:value] == "Subject Group"
         add_subscription_for_subject_group
-        format.html {render "new" }
-        format.js   { }
-      elsif @subscription.save! && params[:value] == ["Book"]
+        redirect_to subscriptions_path
+      elsif @subscription.save! && params[:value] == "Book"
         add_subscription_for_book  
-        format.html {render "new" }
-        format.js   { }
+        redirect_to subscriptions_path
       else
-        render 'new'
+        redirect_to new_subscription_path
       end
     end
   end
@@ -40,50 +42,26 @@ class SubscriptionsController < ApplicationController
       new_role_ids << new_role_id
     end
     new_role_ids.flatten.each do |role_id|
-     @subject_group_id = SubscriptionForSubjectGroup.new
-     @subject_group_id.subscription_id = @subscription.id
-     @subject_group_id.subject_group_id = role_id
-     @subject_group_id.save!
+      @subject_group_id = SubscriptionForSubjectGroup.new
+      @subject_group_id.subscription_id = @subscription.id
+      @subject_group_id.subject_group_id = role_id
+      @subject_group_id.save!
     end
   end
 
   def add_subscription_for_book
-    @book_id = SubscriptionForBook.new
-    @book_id.subscription_id = @subscription.id
-    if params[:value1] == ["All Publishers"] && params[:value] == ["Book"]
-      @book_id.all_publisher = "true"
-    else
-      @book_id.all_publisher = "false"
+    role_ids = params[:subscription][:role_ids]
+    new_role_ids = []
+    role_ids.each do |role_id|
+      new_role_id = role_id.split(',').map(&:squish)
+      new_role_ids << new_role_id
     end
-    if params[:value2] == ["All Titles"]
-      @book_id.all_title = "true"
-    else
-      @book_id.all_title = "false"
+    new_role_ids.flatten.each do |role_id|
+      @book_id = SubscriptionForBook.new
+      @book_id.subscription_id = @subscription.id
+      @book_id.title_id = role_id
+      @book_id.save!
     end
-    if params[:value1] == ["Select Publisher"]
-      selected_publisher_id = params[:subscription][:publisher_id]
-      selected_publisher_id = selected_publisher_id.split(',').map(&:squish)
-      selected_publisher_id.each do |step1|
-        @book_id.publisher_id = selected_publisher_id[step1.to_i]
-      end
-    else
-      @book_id.publisher_id = "nil"
-    end
-    if params[:value2] == ["Select Title"]
-      role_ids = params[:subscription][:role_ids]
-      new_role_ids = []
-      role_ids.each do |role_id|
-        new_role_id = role_id.split(',').map(&:squish)
-        new_role_ids << new_role_id
-      end
-      new_role_ids.flatten.each do |role_id|
-        @book_id.title_id = role_id
-        @book_id.save!
-      end
-    else
-      @book_id.title_id = "nil"
-    end
-    @book_id.save!
   end
 
   def condition_one
@@ -99,11 +77,13 @@ class SubscriptionsController < ApplicationController
   end
 
   def index
+    #Call filter method to get search results
+    @subscription = Subscription.filter(params.slice(:publisher_id, :email, :last_name, :country_code))
   end
 
   private
   def subscription_params
-    params.require(:subscription).permit(:subscription_id, :subscription_name, 
+    params.require(:subscription).permit(:publisher_id, :subscription_id, :subscription_name, 
     :subscription_description, :subscription_category, 
     :subscription_type, :agreement_form, :agreement_to, :available_for_institutional_account, 
     :purchase_information_number_of_books, :purchase_information_price,

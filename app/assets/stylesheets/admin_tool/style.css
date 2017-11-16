@@ -1444,38 +1444,6 @@ header {
 /* Mixins */
 /* Common */
 /* App */
-.tabContainer {
-  /* border-bottom: 2px solid rgba(0,0,0,.12);*/
-  height: 48px; }
-  .tabContainer .tabs {
-    position: relative;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around; }
-    .tabContainer .tabs .tab {
-      display: block;
-      padding-left: 24px;
-      padding-right: 24px;
-      padding: 17px;
-      width: 100%;
-      text-align: left;
-      white-space: nowrap;
-      cursor: pointer; }
-      .tabContainer .tabs .tab .text {
-        display: inline-block;
-        vertical-align: middle;
-        cursor: pointer;
-        font-weight: 500; }
-      .tabContainer .tabs .tab .text {
-        font-size: 16px; }
-      .tabContainer .tabs .tab.active {
-        color: #252874;
-        opacity: 1 !important; }
-    .tabContainer .tabs .indicator {
-      position: absolute;
-      bottom: 10px;
-      height: 3px;
-      background: #252874; }
 
 .sectionsContainer {
   padding: 30px 3px 30px; }

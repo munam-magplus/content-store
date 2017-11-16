@@ -1,58 +1,29 @@
-<div class="col-md-6">
-  <div class="form-group">
-    <label for="License" class="col-sm-5 control-label">ISBN<sup class="mandatory">*</sup></label>
-    <div class="col-sm-7">
-      <input id="isbn" class="form-control" placeholder="ISBN">
-    </div>
+<div class="col-md-12">
+  <div class="col-md-6">
+    <label for="">ISBN</label>
+    <input id="isbn" type="text" placeholder="ISBN" class="form-control" >
+  </div>
+  <div class="col-md-6">
+    <label for="">Title</label>
+    <input id="title" type="text" placeholder="Title" class="form-control" >
+  </div>
+  <div class="col-md-6">
+    <label for="">File Name</label>
+    <input id="file_name" type="text" placeholder="File Name" class="form-control" >
+  </div>
+  <div class="col-md-6">
+    <label for="">Publication Year</label>
+    <input id="publication_year" type="text" placeholder="Publication Year" class="form-control" >
+  </div>
+  <div class="col-md-12">
+    <br>
+    <input type="button" name="button2" id="button" value="Search" onclick="getSearchDetails();" class="btn btn-sm" />
   </div>
 </div>
-<div class="col-md-6">
-  <div class="form-group">
-    <label for="License" class="col-sm-5 control-label">Title</label>
-    <div class="col-sm-7">
-      <input id="title" class="form-control" placeholder="Title">
-    </div>
-    <div class="clearfix"></div>
-  </div>
-</div>
-<div class="col-md-6">
-  <div class="form-group">
-    <label for="License" class="col-sm-5 control-label">File Name</label>
-    <div class="col-sm-7">
-      <input id="file_name" class="form-control" placeholder="File Name">
-    </div>
-    <div class="clearfix"></div>
-  </div>
-</div>
-<!-- <div class="col-md-6"><div class="form-group">
-  <label for="License" class="col-sm-5 control-label">Author First Name</label>
-  <div class="col-sm-7">
-    <input id="author_first_name" class="form-control"/>
-  </div>
-  <div class="clearfix"></div>
-</div></div>
-<div class="col-md-6"><div class="form-group">
-  <label for="License" class="col-sm-5 control-label">Author Last Name</label>
-   <div class="col-sm-7">
-        <input id="author_last_name" class="form-control"/>
-  </div>
-  <div class="clearfix"></div>
-</div></div> -->
-<div class="col-md-6">
-  <div class="form-group">
-    <label for="License" class="col-sm-5 control-label">Publication Year</label>
-    <div class="col-sm-7">
-      <input id="publication_year" class="form-control" placeholder="Publication Year">
-    </div>
-    <div class="clearfix"></div>
-  </div>
-</div>
-<div class="clearfix m-b-30"></div>
-<div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
-  <input type="button" name="button2" id="button" value="Search" onclick="getSearchDetails();" class="btn btn-sm" />
-</div>
+
 <script type="text/javascript">
   function getSearchDetails(){
+
     var isbn = $('#isbn').val();
     var title = $('#title').val();
     var file_name = $('#file_name').val();
@@ -62,7 +33,9 @@
     $.ajax({
       type: 'GET',
       url: '/subscriptions/title_search',
-      data : { isbn: isbn, title: title, file_name: file_name, publication_year: publication_year }
+      data : { isbn: isbn, title: title, file_name: file_name, publication_year: publication_year },
+     
+      
     });
   }
 </script>

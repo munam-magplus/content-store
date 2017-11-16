@@ -1,33 +1,50 @@
-<tr class="content_head">
-  <th><input type="checkbox" name="select-all" id="select-all" /></th>
-  <th>Subject Group Name</th>
-  <th>Subject Group Code</th>
-  <th>Subject Group Id</th>
-</tr>
-<% if @subject_group_search.present? %>
-  <% @subject_group_search.each do |sub_group| %>
-    <tr class="content_value">
-      <td>
-        <input type="checkbox" name="checkbox" id="chk" />
-      </td>
-      <td>
-        <%= sub_group.subject_group_name %>
-      </td>
-      <td>
-        <%= sub_group.subject_group_code %>
-      </td>
-      <td>
-        <%= sub_group.id %>  
-      </td>
-    </tr>
-  <% end %>
-  <tr>
-    <td>&nbsp;</td>
-    <td><input type="button" value="add" onclick="getAddDetails();" class="btn btn-sm" /></td>
-  </tr>
-<%else%>
-  No Record Found
-<%end%>
+<div class="col-md-12">
+  <div class="mt10 table-demo"> Search Result 
+    <span class="pull-right">
+      <div class="dropdown">
+        <ul class="nav">
+          <li class="drop"><i style="cursor: pointer;width: 12px;" class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            <ul class="dropdown-menu-right">
+              <li><a href="#"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</a></li>
+              <li><a href="#"> <i class="fa fa-file-word-o" aria-hidden="true"></i> Word</a></li>
+              <li><a href="#"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </span> 
+  </div>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr style="font-size:13px" class="content_head">
+          <th><input type="checkbox" name="select-all" id="select-all" /></th>
+          <th>Subject Group Name  </th>
+          <th> Subject Group Code </th>
+          <th>Subject Group ID </th>
+        </tr>
+      </thead>
+      <% if @subject_group_search.present? %>
+        <% @subject_group_search.each do |sub_group| %>
+          <tbody>
+            <tr class="content_value">
+              <td><input type="checkbox" name="checkbox" id="chk" /></td>
+              <td><%= sub_group.subject_group_name %></td>
+              <td><%= sub_group.subject_group_code %></td>
+              <td><%= sub_group.id %></td>
+            </tr>
+          </tbody>
+        <% end %>
+        <div class="col-md-12 text-right">
+          <input type="button" value="add" onclick="getAddDetails();" class="btn btn-sm" />
+        </div>
+      <%else%>
+        No Record Found
+      <%end%>
+    </table>
+  </div>
+</div>
+
 <script>
   $('#select-all').click(function(event) {   
     if(this.checked) {
