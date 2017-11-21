@@ -1096,4 +1096,53 @@ ol.vertical {
   background: #eff5f7 !important;
   border-left: 3px solid #45319d; }
 
+.card {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem; }
+
+.tabContainer {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.12); }
+  .tabContainer .tabs {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: inherit;
+    overflow-x: auto;
+    overflow-y: hidden; }
+    .tabContainer .tabs .tab {
+      display: block;
+      padding-left: 24px;
+      padding-right: 24px;
+      padding: 17px 3px;
+      margin: 0 auto;
+      text-align: center;
+      white-space: nowrap;
+      cursor: pointer; }
+      .tabContainer .tabs .tab .text {
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+        font-weight: 500; }
+      .tabContainer .tabs .tab .text {
+        font-size: 15px; }
+      .tabContainer .tabs .tab.active {
+        color: #252874;
+        opacity: 1 !important; }
+    .tabContainer .tabs .indicator {
+      position: absolute;
+      bottom: 0px;
+      height: 3px;
+      background: #1cabdf; }
+
 /*# sourceMappingURL=accessedit.css.map */

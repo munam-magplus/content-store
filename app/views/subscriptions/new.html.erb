@@ -1,253 +1,204 @@
 <!doctype html>
 <html>
-<head><title>Content Store :: Create Subscription </title></head>
-<body>
-<!-- Aside Start-->
-<%= render :partial => "layouts/sidebar"%>
-<!-- Aside Ends--> 
-<!--Main Content Start -->
-<section class="content"> 
-  <!-- Header -->
-  <%= render :partial => "layouts/top_header"%>
-  <!-- Header Ends --> 
-  <!-- Page Content Start --> 
-  <!-- ================== -->
-  <div class="wrapper container-fluid">
-    <ol class="breadcrumb">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Manage User Account</a></li>
-      <li><a href="#" class="active">End Users</a></li>
-      <div class="pull-right hidden">
-        <li><a href="#">Browse by Chapter</a></li>
-        <li><a href="#">Browse by Book </a></li>
-      </div>
-    </ol>
-    
-    <h2 class="H2-L1"> Create Subscription </h2>
-    <div class="col-md-12">
-      <h3 class="H2-L1">Information</h3>   
-    </div>
-    <%= form_for @subscription, url: {action: "create"},:remote => true do |f| %>
-      <div class="row" >
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Subscription ID:</label>
-            <div class="col-sm-8">
-               <%= f.text_field :subscription_id, :value => "System Generated", :class => "form-control", :readonly => true %>
+  <head>
+  <title>Content Store :: Create Subscription </title>
+  <!-- Latest compiled and minified CSS -->
+      <!-- Header -->
+      <%= render :partial => '/layouts/top_header'%>
+        <!-- Header Ends --> 
+  </head>
+
+  <body>
+    <!-- Aside Start-->
+    <%= render :partial => "layouts/sidebar"%>
+    <!-- Aside Ends-->
+    <!--Main Content Start -->
+    <section class="content"> 
+        <!-- Page Content Start --> 
+        <!-- ================== -->
+      <div class="wrapper container-fluid">
+        <ol class="breadcrumb">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Manage User Account</a></li>
+          <li><a href="#" class="active">End Users</a></li>
+          <div class="pull-right hidden">
+            <li><a href="#">Browse by Chapter</a></li>
+            <li><a href="#">Browse by Book </a></li>
+          </div>
+        </ol>
+        <h2 class="H2-L1"> Create Subscription </h2>
+        <h4>Information</h4>
+        <%= form_for(@subscription, url: {action: "create"}, :html => {:class => 'form-horizontal form-bg'}) do |f| %>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="taskName" class="col-sm-4 control-label">Subscription ID:</label>
+              <div class="col-sm-8">
+                <%= f.text_field :subscription_id, :value => "System Generated", :class => "form-control", :readonly => true %>
+              </div>
             </div>
-            <div class="clearfix"></div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Subscription Name:</label>
-            <div class="col-sm-8">
-              <%= f.text_field :subscription_name, :required => true, :class => "form-control", :placeholder => "Subscription Name" %>
-            </div> 
-            <div class="clearfix"></div>
-          </div>
-        </div>
-      </div>
-      <div class="row" >
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Subscription Description:</label>
-            <div class="col-sm-8">
-              <%= f.text_area :subscription_description, :class => "form-control", :placeholder => "Subscription Description" %>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label">Subscription Name:</label>
+              <span class="col-sm-8">
+                <%= f.text_field :subscription_name, :required => true, :class => "form-control", :placeholder => "Subscription Name" %>
+              </span>
             </div>
-            <div class="clearfix"></div>
           </div>
-        </div>
-      </div>
-      <div class="row" >
-        <div class="col-md-12">
-          <div class="form-group">
-            <label for="bookISBN" class="col-sm-2 control-label">Subscription category:</label>
-            <span class="col-sm-8">
-              <%= f.radio_button :subscription_category, 'Online Subscription for library' %>Online Subscription for library
-              <%= f.radio_button :subscription_category, 'Individual Borrow' %> Individual Borrow
-              <%= f.radio_button :subscription_category, 'Library Borrow' %> Library Borrow
-            </span>
-            <div class="clearfix"></div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label">Publisher:</label>
+              <span class="col-sm-8">
+                <%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'),{ :prompt => "Select Publisher"},{required: true, :class => "form-control", style: "background-color: #eee;"} %>
+              </span>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <h3 class="H2-L1">Content</h3>   
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <%= radio_button_tag 'value[]', "Subject Group", checked:"true" %>Subject Group
-          <%= radio_button_tag 'value[]', "Book" %>Book
-        </div>
-      </div>
-      <div class="row", id="subject_group">
-        <div class="col-md-12">
-          <div class="form-group">
-            <%= render :partial => 'search_subject_group'%>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="taskName" class="col-sm-4 control-label">Subscription Description:</label>
+              <div class="col-sm-8">
+                <%= f.text_area :subscription_description, :class => "form-control", :placeholder => "Subscription Description" %>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="col-md-12">
-          <div class="form-group">
-            <div id ="result_subject_group"> </div>
-          </div>
-        </div>
-      </div>
-      <div id="book_id">
-        <div class="col-md-12">
-          <div class="form-group">
-            <%= radio_button_tag 'value1[]', "All Publishers", checked:"true" %>All Publishers
-            <%= radio_button_tag 'value1[]', "Select Publisher" %>Select Publisher
-          </div>
-        </div>
-        <div class="col-md-12" id="select_publisher">
-          <div class="form-group">
-            <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'publisher_name', 'publisher_name'), :multiple => true, :prompt => "Select publisher", :class => "form-control", :style => "background-color: #eee"%> 
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= radio_button_tag 'value2[]', "All Titles", checked:"true" %>All Titles
-            <%= radio_button_tag 'value2[]', "Select Title" %>Select Title
-          </div>
-        </div>
-        <div class="row" id="select_title">
           <div class="col-md-12">
             <div class="form-group">
-              <%= render :partial => 'search_title'%>
-              <div id ="result_title"> </div>
+              <label for="bookISBN" class="col-sm-2 control-label">Subscription category:</label>
+              <span class="col-sm-8">
+                <%= f.radio_button :subscription_category, 'Online Subscription for library', class: 'radio-inline' %>Online Subscription for library
+                <%= f.radio_button :subscription_category, 'Individual Borrow', class: 'radio-inline' %> Individual Borrow
+                <%= f.radio_button :subscription_category, 'Library Borrow', class: 'radio-inline' %> Library Borrow
+              </span>
             </div>
           </div>
-        </div>
-      </div>
-      <%= f.hidden_field "role_ids][", { :id => "role_ids", :value => [] } %>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="form-group">
+          <%= hidden_field_tag "value", "Book"  %>
+          <div class="clearfix"></div>
+          <p>&nbsp;</p>
+          <div class="card">
+            <div class="tabContainer">
+              <div class="tabs" data-max-width="1024"> 
+                <span class="tab" data-tab="bookDetails"> <span class="text">Book</span></span> 
+                <span class="tab" data-tab="editorDetails"> <span class="text">Subject Group</span> </span> 
+              </div>
+            </div>
+            <div class="sectionsContainer tabbingSection">
+              <div class="sections">
+                <div class="section" data-section="bookDetails">
+                  <div class="col-md-12 form-bg">
+                    <div class="row" id="select_title">
+                      <%= render :partial => 'search_title'%>
+                      <div id ="result_title"> </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="section" data-section="editorDetails">
+                  <div class="row", id="subject_group">
+                    <%= render :partial => 'search_subject_group'%>
+                    <div id ="result_subject_group"> </div>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <!--Material Tabs End--> 
+            </div>
+          </div>
+          <%= f.hidden_field "role_ids][", { :id => "role_ids", :value => [] } %>
+          <div class="row">
             <div class="col-md-12">
-              <h3 class="H2-L1">Length of Agreement</h3>   
+              <p>&nbsp;</p>
+              <div class="col-md-12"><h4>Length of Agreement</h4></div>
+              <div class="col-md-6">
+                <label for="">Subscription Type</label>
+                <select name="subscriptionType" class="form-control" id="subscriptionType" onchange="showSubscriptionTypeRow(this.value);">
+                  <option value="" selected="">Select</option>
+                  <option value="INSTITUTE_FIXED">Fixed Date Range</option>
+                  <option value="INSTITUTE_RELATIVE">Relative Date Range</option>
+                </select>
+              </div>
+              <div class="hidden">
+                <div class="col-md-3">
+                  <label>From</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Date From">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" style="padding:4px 12px;" type="button"><i class="fa fa-calendar"></i></button>
+                    </span>
+                  </div><!-- /input-group -->
+                </div>
+                <div class="col-md-3">
+                  <label>To</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Date To">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" style="padding:4px 12px;" type="button"><i class="fa fa-calendar"></i></button>
+                    </span>
+                  </div><!-- /input-group -->
+                </div>
+              </div>
+              <div class=" ">
+                <div class="col-md-3">
+                  <label>Duration</label>
+                  <input type="text" class="form-control" placeholder="Duration">
+                </div>
+                <div class="col-md-3">
+                  <label>Year</label>
+                  <select name="durationUnit" class="form-control" id="durationUnit">
+                    <option value="">Select</option>
+                    <option value="YEARS">Years</option>
+                    <option value="MONTHS">Months</option>
+                    <option value="WEEKS">Weeks</option>
+                  </select>
+                </div>
+              </div>
+              <p>&nbsp;</p>
+              <div class="col-md-12">
+                <h4>Available for Institutional Accounts </h4>
+              </div>
+              <div class="col-md-6">
+                <div class="col-md-12">
+                  <label class="radio-inline"><input type="radio" name="optradio2">  Yes </label>
+                  <label class="radio-inline"><input type="radio" name="optradio2">No</label>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <!-- <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Subscription Type *</label>
-            <div class="col-sm-8">
-              <select select id="AgreementLength" class="form-control">
-                <option value="" selected>Select</option>
-                <option value="fixed">Fixed Date Range</option>
-                <option value="relative">Relative Date Range</option>
-              </select>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-      </div>
-      <div id="fixed"> -->
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label for="taskName" class="col-sm-1 control-label">From</label>
-              <div class="col-sm-3">
-                <%= f.text_field :agreement_form, :required => true, :class => "form-control", :placeholder => "From",:id => 'from' %>
-              </div>
-                <label for="taskName" class="col-sm-1 control-label">To</label>
-              <div class="col-sm-2">
-                <%= f.text_field :agreement_to, :required => true, :class => "form-control", :placeholder => "To",:id => 'to' %>
-              </div>
+          <div class="clearfix"></div>
+          <div class="clearfix m-b-30"></div>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+              <%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Search Subject Group'.html_safe, subject_groups_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
+              <%= button_tag fa_icon("save", text: "Save"), :class => "btn btn-sm", type: :submit %>
+              <%= button_tag fa_icon("clear", text: "Clear"), :class => "btn btn-sm", type: :reset %>
             </div>
           </div>
-        </div>
-      <!-- </div>
-      <div id="relative">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label for="taskName" class="col-sm-2 control-label">Duration</label>
-              <div class="col-sm-2">
-                <%= text_field :agreement_to, :class => "form-control", :placeholder => "Duration" %>
-              </div>
-              <div class="col-sm-2">
-                <%= select_tag "duration", options_for_select(["Years", "Months", "Weeks"]), {:prompt => "Select", :class => "form-control"} %>
-              </div>
-               
-            </div>
-          </div>
-        </div>
-      </div> -->
-      <div class="col-md-12">
-        <div class="col-md-12">
-          <h3 class="H2-L1">Available for Institutional Accounts</h3>   
-        </div>
+        <% end %>
+
+        <div class="clearfix"></div>
       </div>
-      <div class="col-md-6">
-        <div class="col-md-12">
-          <label class="radio-inline"><%= f.radio_button :available_for_institutional_account, 'yes' %>Yes</label>
-          <label class="radio-inline"><%= f.radio_button :available_for_institutional_account, 'no' %>No</label>
-        </div>
-      </div>
-      <div class="clearfix m-b-30"></div>
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
-          <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
-          <%= button_tag fa_icon("save", text: "Save"), :class => "btn btn-sm", type: :submit %>
-          <%= button_tag fa_icon("clear", text: "Clear"), :class => "btn btn-sm", type: :reset %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-    <div class="clearfix m-b-30"></div>
-  </div>
-  <!-- Page Content Ends --> 
-  <!-- ================== --> 
-  
-  <!-- Footer Start -->
-    <%= render :partial => "layouts/footer"%>
-  <!-- Footer Ends --> 
-</section>
-</body>
+      <!-- Page Content Ends --> 
+      <!-- ================== --> 
+
+      <!-- Footer Start -->
+      <%= render :partial => '/layouts/footer'%>
+      <!-- Footer Ends --> 
+    </section>
+   
+  </body>
 </html>
-<script>   
-$(document).ready(function(){
+
+// <script>   
+// $(document).ready(function(){
         // $('#book').hide();
 // if(id == "Book")) 
-$('#book_id').hide();
-$('#fixed').hide();
-$('#relative').hide();
-$('#select_publisher').hide();
-$('#select_title').hide();
+// $('#book_id').hide();
+// $('#fixed').hide();
+// $('#relative').hide();
 
-  $(':radio').change(function() {
-      var id = $(this).val();
-      
-      console.log(id);
-      if(id.search("Subject Group")!=-1){
-        $('#book_id').hide();
-        $('#subject_group').show();
-      } else if(id.search("Book")!=-1){
-        $('#subject_group').hide();
-        $('#book_id').show();
-      } else if(id.search("All Publishers")!=-1){
-        $('#select_publisher').hide();
-      } else if(id.search("All Titles")!=-1){
-        $('#select_title').hide();    
-      } else if(id.search("Select Publisher")!=-1){
-        $('#select_publisher').show();
-      } else if(id.search("Select Title")!=-1){
-        $('#select_title').show();
-      }
-      /*else{
-        $('#book_id').hide();
-        $('#subject_group').show();
-      }*/
-  });
-  $('#AgreementLength').change(function () {
-   var isFixed = this.value == 'fixed';
-   var isRelative = this.value == 'relative';
-    $('#fixed').toggle(isFixed);
-    $("#relative").toggle(isRelative);
-  });
-});
-</script>
+//   $('#AgreementLength').change(function () {
+//    var isFixed = this.value == 'fixed';
+//    var isRelative = this.value == 'relative';
+//     $('#fixed').toggle(isFixed);
+//     $("#relative").toggle(isRelative);
+//   });
+// });
+// </script>

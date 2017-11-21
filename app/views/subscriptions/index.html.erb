@@ -1,128 +1,86 @@
-<!-- Aside Start-->
+<!doctype html>
+<html>
+  <head>
+  <title>Content Store :: Create Subscription </title>
+  <!-- Latest compiled and minified CSS -->
+      <!-- Header -->
+      <%= render :partial => '/layouts/top_header'%>
+        <!-- Header Ends --> 
+  </head>
+
+  <body>
+    <!-- Aside Start-->
     <%= render :partial => "layouts/sidebar"%>
     <!-- Aside Ends-->
-<div class="div1">
-  <form action="getSubscriptionResult.do" method="post" name="searchSubscription">
-    <table border="0" cellpadding="0" cellspacing="0" width="860">
-      <tr>
-        <td class="page_head">Search Subscription</td>
-        <td align="right" class="page_head" valign="bottom"></td>
-      </tr>
-      <tr>
-        <td colspan="2"></td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <table border="0" cellpadding="6" cellspacing="0">
-            <tr>
-              <td>
-                <table align="left" border="0" cellpadding="10" cellspacing="0">
-                  <tbody>
-                    <tr>
-                      <td>Publisher</td>
-                      <td>
-                        <select id="pubCodeCombo" name="pubCode">
-                          <option value="wtbooks">
-                            World Technology
-                          </option>
-                        </select>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Subscription Name</td>
-                      <td>
-                        <input class="text_field" name="subscriptionName"></input>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Subscription Type</td>
-                      <td>
-                        <select id="subscriptionType" name="subscriptionType">
-                          <option selected="selected">Select</option>
-                          <option value="INSTITUTE_FIXED">Fixed Date Range</option>
-                          <option value="INSTITUTE_RELATIVE">Relative Date Range</option>
-                        </select>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td height="12">Subject Group Name</td>
-                      <td height="12">
-                        <input class="text_field" name="subjectGroupName"></input>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td height="12">Publication Year</td>
-                      <td height="12">
-                        <input class="text_field" name="publicationYear"></input>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td height="12">Title</td>
-                      <td height="12">
-                        <input class="text_field" name="bookTitle"></input>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td height="12">Author First Name</td>
-                      <td height="12">
-                        <input class="text_field" name="authorFirstName"></input>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td height="12">Author Last Name</td>
-                      <td height="12">
-                        <input class="text_field" name="authorLastName"></input>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td height="12">Available for Institutional Accounts</td>
-                      <td height="12">
-                        <select id="select" name="isAvailableSearch">
-                          <option selected="selected">Select</option>
-                          <option value="Y">Yes</option>
-                          <option value="N">No</option>
-                        </select>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Subscription category</td>
-                      <td>
-                        <table cellpadding="4" cellspacing="0">
-                          <tr>
-                            <td>
-                              <input id="onlineSubs" name="radio2" onclick="setCategoryValue(this.value)" type="radio" value="ONLINE_SUBSCRIPTION"></input>
-                              Online Subscription for library
-                            </td>
-                            <td nowrap="nowrap">
-                              <input id="indivBorrow" name="radio2" onclick="setCategoryValue(this.value)" type="radio" value="INDIVIDUAL_BORROW"></input>
-                              Individual Borrow
-                            </td>
-                            <td nowrap="nowrap">
-                              <input id="libBorrow" name="radio2" onclick="setCategoryValue(this.value)" type="radio" value="LIBRARY_BORROW"></input>
-                              Library Borrow
-                              <input id="licenseCategory" name="licenseCategory" type="hidden"></input>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                  </tbody>
-                  <tbody>
-                    <tr>
-                      <td align="right"></td>
-                      <td align="left">
-                        <input class="submit_btn" name="search" onclick="return checkPublisher();" type="submit" value="Search"></input>
-                        <input class="submit_btn" name="button" type="reset" value="Reset"></input>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-  </form>
-</div>
-<%= render :partial => '/layouts/footer' %>
+    <!--Main Content Start -->
+    <section class="content"> 
+        <!-- Page Content Start --> 
+        <!-- ================== -->
+      <div class="wrapper container-fluid">
+        <ol class="breadcrumb">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Manage User Account</a></li>
+          <li><a href="#" class="active">Search Subscription</a></li>
+          <div class="pull-right hidden">
+            <li><a href="#">Browse by Chapter</a></li>
+            <li><a href="#">Browse by Book </a></li>
+          </div>
+        </ol>
+        <h2 class="H2-L1">Search Subscription</h2>
+        <%= form_tag search_subscriptions_path, :method => 'get', :remote => true do  %>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="taskName" class="col-sm-4 control-label">Publisher</label>
+              <div class="col-sm-8">
+              <%= select_tag 'publisher_id',options_from_collection_for_select(Publisher.all, 'id', 'publisher_name'), :prompt => "Select Publisher", :class => "form-control", :style => "background-color: #eee"%>
+              </div>
+              <div class="clearfix"></div>            
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label">Subscription Name:</label>
+              <span class="col-sm-8">
+              <%= text_field_tag :subscription_name, params[:subscription_name], :class => "form-control", :placeholder => "Subscription Name" %>
+              </span> 
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label">Available for Institutional Accounts:</label>
+              <span class="col-sm-8">
+                <%= select_tag "available_for_institutional_accounts", options_for_select(["Yes", "No"]), {:prompt => "Select", :class => "form-control", :style => "background-color: #eee"} %>
+              </span> 
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <div class="form-group">
+              <label for="bookISBN" class="col-sm-4 control-label">Subscription category:</label>
+              <span class="col-sm-8">
+                <label class="radio-inline"><%= radio_button_tag :subscription_category, 'Online Subscription for library' %>Online Subscription for library</label>
+                <label class="radio-inline"><%= radio_button_tag :subscription_category, 'Individual Borrow' %>Individual Borrow</label>
+                <label class="radio-inline"><%= radio_button_tag :subscription_category, 'Library Borrow' %>Library Borrow</label>
+              </span> 
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="clearfix m-b-30"></div>
+          <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+            <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-sm", type: :submit %>
+            <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
+          </div>
+        <%end%>
+        <div class="clearfix m-b-30"></div>
+        <div id="search_result"></div>
+      </div>
+      <!-- Page Content Ends --> 
+      <!-- ================== --> 
+
+      <!-- Footer Start -->
+      <%= render :partial => '/layouts/footer'%>
+      <!-- Footer Ends --> 
+    </section>
+  </body>
+</html>
