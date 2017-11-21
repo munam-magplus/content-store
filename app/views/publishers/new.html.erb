@@ -159,18 +159,43 @@
       <div class="col-sm-7">
         <%= f.text_area :publisher_address, :placeholder => "Publisher Address", :class => "form-control" %>
       </div>
-      <div class="clearfix"></div>
     </div></div>
-    
-      
+    <%= f.fields_for :users do |builder| %> 
+    <%if @publisher.new_record?%>
+      <div class="col-md-6"><div class="form-group">
+        <label for="taskName" class="col-sm-5 control-label">Login Email<sup class="mandatory">*</sup></label>
+      <div class="col-sm-7">
+        <%= builder.email_field :email, :placeholder => "Login Email", :class => "form-control" %>
+      </div>
+    </div></div>
+    <div class="col-md-6"><div class="form-group">
+      <label for="taskName" class="col-sm-5 control-label">Login Password<sup class="mandatory">*</sup></label>
+      <div class="col-sm-7">
+        <%= builder.password_field :password, :placeholder => "Login Password", :class => "form-control" %>
+        <%= builder.hidden_field :role_id, :value => 25%>
+      </div>
+    </div></div>
+    <% else %>
+      <div class="col-md-6"><div class="form-group">
+        <label for="taskName" class="col-sm-5 control-label">Login Email<sup class="mandatory">*</sup></label>
+      <div class="col-sm-7">
+        <%= @publisher.users.last.email :email, :placeholder => "Login Email", :class => "form-control", :disabled => true %>
+      </div>
+    </div></div>
+    <div class="col-md-6"><div class="form-group">
+      <label for="taskName" class="col-sm-5 control-label">Login Password<sup class="mandatory">*</sup></label>
+      <div class="col-sm-7">
+        <%= builder.password_field :password, :placeholder => "Login Password", :class => "form-control" %>
+        <%= builder.hidden_field :role_id, :value => 25%>
+      </div>
+    </div></div>
+    <%end%>
+    <% end %>
       <div class="clearfix"></div>
-    
       <div class="clearfix m-b-30"></div>
-     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right pull-right">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right pull-right">
         <%= button_tag fa_icon("save", text: "Save"), :class => "btn btn-sm", type: :submit %>
-        <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
-        
-       
+        <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%> 
       </div>
       <%end%>
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pull-left">
@@ -180,8 +205,6 @@
         <%end%>
       </div>
     </div>
-    
-    
     <!-- Footer Start -->
     <%= render :partial => "layouts/footer" %>
       <!-- Footer Ends --> 

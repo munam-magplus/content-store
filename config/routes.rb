@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'welcome/new'
+
+  get 'welcome/index'
+
   mount Ckeditor::Engine => '/ckeditor'
   resources :subject_group_books do 
     collection do
