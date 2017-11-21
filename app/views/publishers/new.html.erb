@@ -179,7 +179,7 @@
       <div class="col-md-6"><div class="form-group">
         <label for="taskName" class="col-sm-5 control-label">Login Email<sup class="mandatory">*</sup></label>
       <div class="col-sm-7">
-        <%= @publisher.users.last.email :email, :placeholder => "Login Email", :class => "form-control", :disabled => true %>
+        <%= builder.email_field :email, :placeholder => "Login Email", :class => "form-control", :disabled => true %>
       </div>
     </div></div>
     <div class="col-md-6"><div class="form-group">
