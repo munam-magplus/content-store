@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable      
   belongs_to :institute_account, optional: true
-  #belongs_to :role, optional: true
+  belongs_to :role, optional: true
   belongs_to :publisher, optional: true
 
   ROLE = ['SuperAdmin', 'Publisher', 'MemberPublisher', 'EndUser']
