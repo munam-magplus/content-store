@@ -40,6 +40,9 @@
                       <% unless @book_information.publication_date.blank? %>
                       <p><span class="book_atr col-xs-12 col-md-4"><strong>Publication Year&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8"><%= @book_information.publication_date.to_date.year.presence || "" %></span></p>
                       <% end %>
+                      <% unless @book_information.number_of_pages.blank? %>
+                      <p><span class="book_atr col-xs-12 col-md-4"><strong>No. of pages&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8"><%= @book_information.number_of_pages.presence || "" %></span></p>
+                      <% end %>
                       <p><span class="book_atr col-xs-12 col-md-4"><strong>Price&nbsp;:</strong></span><span class="book_description col-xs-12 col-md-8">&nbsp;USD&nbsp;<%=number_with_precision(@book_information.book_price, :precision => 2) %></span></p>
                       <% if @book_information.books_content_pricing.present? %>
                       <p><span class="book_atr col-xs-12 col-md-4"><strong>Format&nbsp;:</strong></span><span class="col-xs-12 book_description col-md-8">&nbsp; <%=@book_information.books_content_pricing.format.presence || "" %></span></p>
@@ -48,6 +51,9 @@
                         <%= @book_information.books_contributor.first_name.presence || "" %>&nbsp <%= @book_information.books_contributor.last_name.presence || "" %><br>
                         </span>
                       </p>
+                      <% unless @book_information.book_blurb.blank? %>
+                      <p><span class="book_atr col-xs-12 col-md-4"><strong>Description&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8"><%= @book_information.book_blurb.presence || "" %></span></p>
+                      <% end %>
                     </div>
                   </div>
                 </div>

@@ -52,19 +52,23 @@
           <li><%= link_to "CONTACT US", contact_homes_path %></li>
           <li><%= link_to "Help", "http://ebooks.wtbooks.com/static/templates/template1/wtbooks/help/en/index.htm", target: "_blank" %></li>
           <li class="searchmenu">
-            <form class="navbar-form" role="search">
-              <div class="input-group add-on">
-                <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
-                <div class="input-group-btn">
-                  <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+            <div class="searchmenu pull-right">
+              <%= form_tag(search_homes_path, :method => "get", class: "navbar-form",:remote => true) do %>
+                <div class="input-group add-on">
+                 <%= text_field_tag :book_title, params[:search], required: true,placeholder: "Search by Title ", class: "form-control" %>
+                  <div class="input-group-btn ">
+                   <%= button_tag(type: 'submit', class: "btn btn-default form-control") do %>
+                      <i class="fa fa-search"></i>
+                    <% end %>
+                  </div>
                 </div>
-              </div>
-              <div class="pull-right">
-                <%= link_to advance_search_homes_path,remote: true  do %>
-                  <%= image_tag "http://ebooks.wtbooks.com/static/templates/template1/wtbooks/images/adcance_search_03.png" %>
-                <% end %>
-              </div>
-            </form>
+                <div class="pull-right">
+                  <%= link_to advance_search_homes_path,remote: true  do %>
+                    <%= image_tag "http://ebooks.wtbooks.com/static/templates/template1/wtbooks/images/adcance_search_03.png" %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
           </li>
         </ul>
       </div>

@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-  <title>Content Store :: Create Subscription </title>
+  <title>Content Store :: Create Subscription</title>
   <!-- Latest compiled and minified CSS -->
       <!-- Header -->
       <%= render :partial => '/layouts/top_header'%>
@@ -18,9 +18,9 @@
         <!-- ================== -->
       <div class="wrapper container-fluid">
         <ol class="breadcrumb">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Manage User Account</a></li>
-          <li><a href="#" class="active">End Users</a></li>
+          <li>Home</li>
+          <li>Manage User Account</li>
+          <li>Create Subscription</li>
           <div class="pull-right hidden">
             <li><a href="#">Browse by Chapter</a></li>
             <li><a href="#">Browse by Book </a></li>
@@ -107,47 +107,18 @@
             <div class="col-md-12">
               <p>&nbsp;</p>
               <div class="col-md-12"><h4>Length of Agreement</h4></div>
-              <div class="col-md-6">
-                <label for="">Subscription Type</label>
-                <select name="subscriptionType" class="form-control" id="subscriptionType" onchange="showSubscriptionTypeRow(this.value);">
-                  <option value="" selected="">Select</option>
-                  <option value="INSTITUTE_FIXED">Fixed Date Range</option>
-                  <option value="INSTITUTE_RELATIVE">Relative Date Range</option>
-                </select>
-              </div>
-              <div class="hidden">
+              <div>
                 <div class="col-md-3">
                   <label>From</label>
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Date From">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" style="padding:4px 12px;" type="button"><i class="fa fa-calendar"></i></button>
-                    </span>
+                    <%= f.text_field :agreement_form, :required => true, :class => "form-control", :placeholder => "From",:id => 'from' %>
                   </div><!-- /input-group -->
                 </div>
                 <div class="col-md-3">
                   <label>To</label>
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Date To">
-                    <span class="input-group-btn">
-                    <button class="btn btn-default" style="padding:4px 12px;" type="button"><i class="fa fa-calendar"></i></button>
-                    </span>
+                    <%= f.text_field :agreement_to, :required => true, :class => "form-control", :placeholder => "To",:id => 'to' %>
                   </div><!-- /input-group -->
-                </div>
-              </div>
-              <div class=" ">
-                <div class="col-md-3">
-                  <label>Duration</label>
-                  <input type="text" class="form-control" placeholder="Duration">
-                </div>
-                <div class="col-md-3">
-                  <label>Year</label>
-                  <select name="durationUnit" class="form-control" id="durationUnit">
-                    <option value="">Select</option>
-                    <option value="YEARS">Years</option>
-                    <option value="MONTHS">Months</option>
-                    <option value="WEEKS">Weeks</option>
-                  </select>
                 </div>
               </div>
               <p>&nbsp;</p>
@@ -156,8 +127,8 @@
               </div>
               <div class="col-md-6">
                 <div class="col-md-12">
-                  <label class="radio-inline"><input type="radio" name="optradio2">  Yes </label>
-                  <label class="radio-inline"><input type="radio" name="optradio2">No</label>
+                  <label class="radio-inline"><%= f.radio_button :available_for_institutional_account, 'yes' %>Yes</label>
+                  <label class="radio-inline"><%= f.radio_button :available_for_institutional_account, 'no' %>No</label>
                 </div>
               </div>
             </div>
@@ -166,7 +137,7 @@
           <div class="clearfix m-b-30"></div>
           <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
-              <%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Search Subject Group'.html_safe, subject_groups_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
+              <%= link_to '<i class="fa fa-search" aria-hidden="true"></i>Search Subscription'.html_safe, subscriptions_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
               <%= button_tag fa_icon("save", text: "Save"), :class => "btn btn-sm", type: :submit %>
               <%= button_tag fa_icon("clear", text: "Clear"), :class => "btn btn-sm", type: :reset %>
             </div>

@@ -38,6 +38,7 @@
                     <%= image_tag("link_license.gif")%>
                     <%= image_tag("view_linked_licenses.gif")%><br>
                     <%= image_tag("delete_icon.gif")%>
+                    <%= link_to("Link Subscription ", view_subscriptions_path(end_user_first_name: f.first_name,end_user_last_name: f.last_name, end_user_id: f.id), :class => "btn btn-sm", :method => :get) %>
                 </td>
               </tr>
             <% end %>
