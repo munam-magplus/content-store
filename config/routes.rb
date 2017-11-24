@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       post 'unassociate_books'
     end
   end
+ mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
  
   get 'index_contents/content_code'
 
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
 
   resources :homes do
     collection do
+      get 'permission_check_for_books'
       get 'books_by_category'
       get 'books_by_subject'
       get 'about'
@@ -58,6 +60,7 @@ Rails.application.routes.draw do
       get 'registration'
       post 'sign_up'
       delete 'logout'
+      get 'book_reader'
     end
   end
 

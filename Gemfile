@@ -25,6 +25,9 @@ gem 'coffee-rails', '~> 4.2'
 gem 'haml'
 # To use haml in views
 # Use jquery as the JavaScript library
+
+gem 'pdfjs_viewer-rails'
+
 gem 'exception_handler'
 
 gem 'devise'

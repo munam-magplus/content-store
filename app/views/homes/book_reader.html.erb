@@ -1,0 +1,20 @@
+<%= render :partial => "#{@publisher.theme_name}"%> 
+
+<div class="container-fluid">
+  <div class="row">
+
+  <div class="clearfix"></div>
+    <%= render :partial => "wtbooks_subject_sidebar"%>
+    <div id='pub_book'>  
+    <div class="col-sm-8 col-md-9">
+      <ul class="breadcrumb breadcrumb2 print">
+        <a href="index.html"><u>Home</u></a> &gt; Book Info
+      </ul>
+      <div class="border_wrapper height100 padding10px">
+            <%= pdfjs_viewer pdf_url: "/#{@isbn}.pdf", style: :full %>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<%= render :partial => "homes/wtbooks_footer"%>

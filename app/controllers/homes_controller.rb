@@ -147,6 +147,19 @@ class HomesController < ApplicationController
     
   end
 
+  def permission_check_for_books
+    if logged_in?
+      @result = true
+    else
+      redirect_to sign_in_homes_path
+    end
+  end
+
+  def book_reader
+    @book_information = BooksPrimaryContentInformation.find(params[:book_id])
+    @isbn = @book_information.isbn
+  end
+
   def get_book_ids(books,books_ids)
     books.each do|f|
      books_ids << f.id

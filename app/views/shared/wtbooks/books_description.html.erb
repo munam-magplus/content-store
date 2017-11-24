@@ -22,7 +22,7 @@
                   </h2>
                   <div class="xtraPadding mt-20">
                     <div class="col-md-3 col-sm-3">
-                      <%= image_tag("http://ebooks.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{ @book_information.isbn}-T-FC.jpg",class: "ownBookImg") %>   
+                      <%= link_to image_tag("http://ebooks.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{ @book_information.isbn}-T-FC.jpg", class: "ownBookImg"), book_reader_homes_path(:book_id => @book_information.id) %>   
                     </div>
                     <div class="col-md-9 col-sm-9 "> 
                       <!-- <p>To read sections of the book, please use the navigation menu at the top left.</p> -->
