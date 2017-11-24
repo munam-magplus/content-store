@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'welcome/new'
+
+  get 'welcome/index'
+
   mount Ckeditor::Engine => '/ckeditor'
   resources :subject_group_books do 
     collection do
@@ -149,7 +153,24 @@ Rails.application.routes.draw do
       get 'download_subject_group'
     end
   end
- 
+  
+  resources :subscriptions do
+    collection do
+      get 'view'
+      post 'link'
+      post 'save'
+      get 'search'
+      get 'content_search'
+      get 'metadata_sheet'
+      get 'search_result'
+      get 'apply_discount'
+      get 'result'
+      get 'linked_member_publisher'
+      get 'subject_group_search'
+      get 'title_search'
+    end
+  end
+
   resources :publishers, :access_tokens, :promo_codes, :campaigns, :license_groups, :licenses,
             :subscriptions, :member_publishers do 
     collection do 

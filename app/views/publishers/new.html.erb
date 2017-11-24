@@ -159,18 +159,12 @@
       <div class="col-sm-7">
         <%= f.text_area :publisher_address, :placeholder => "Publisher Address", :class => "form-control" %>
       </div>
-      <div class="clearfix"></div>
     </div></div>
-    
-      
       <div class="clearfix"></div>
-    
       <div class="clearfix m-b-30"></div>
-     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right pull-right">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right pull-right">
         <%= button_tag fa_icon("save", text: "Save"), :class => "btn btn-sm", type: :submit %>
-        <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%>
-        
-       
+        <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btnBlack btn-sm" ,type: :reset%> 
       </div>
       <%end%>
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pull-left">
@@ -180,8 +174,6 @@
         <%end%>
       </div>
     </div>
-    
-    
     <!-- Footer Start -->
     <%= render :partial => "layouts/footer" %>
       <!-- Footer Ends --> 

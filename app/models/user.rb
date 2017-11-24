@@ -3,7 +3,14 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable      
+  belongs_to :institute_account, optional: true
 
-     # devise :timeoutable, :timeout_in => 15.minutes
+  ROLE = ['SuperAdmin', 'Publisher', 'MemberPublisher', 'EndUser']
+
+  ROLE.each do |role|
+    define_method "is_#{role}?" do
+    self.role.name == role
+    end
+  end
 end

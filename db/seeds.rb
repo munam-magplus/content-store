@@ -91,5 +91,4 @@ Country.create(country_name: "Afghanistan",country_code: "AF")
 
 # for institution Admin User:
 InstitutionAdminUserAccount.create(role:"Primary Institutiton Administrator", publisher_id: "1",institution_name: "Adept Techno Demo", user_name: "PA01", status: "active",first_name: "test1", last_name: "test2",email: "test@gmail.com", phone: 9876543210, fax: "1234",password: "12345",comments: "test user", primary_count: 1)
-
 User.create(email: "ctssuperadmin@bookstoredev.com",password: "adi@1234", admin: "false")
