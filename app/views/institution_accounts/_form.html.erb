@@ -199,15 +199,15 @@
           </div>
         </div>
         <% end %>
-        <!-- <div class="col-md-12">
+        <div class="col-md-12">
           <h2 class="H2-L1"> Ip Details</h2> 
         </div>
-        <%= f.fields_for #:ip_addresses do |builder| %> 
+        <%= f.fields_for :ip_addresses do |builder| %> 
         <div class="col-md-6">
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">LowIp<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= builder.text_field #:low_ip ,:required => true, :class => "form-control", :placeholder => "Low Ip" %>
+              <%= builder.text_field :low_ip ,:required => true, :class => "form-control", :placeholder => "Low Ip" %>
             </span>
             <div class="clearfix"></div>
           </div>
@@ -216,12 +216,12 @@
           <div class="form-group">
              <label for="bookISBN" class="col-sm-4 nopadding">High Ip<sup class="mandatory">*</sup> </label>
             <span class="col-sm-8">
-              <%= builder.text_field #:high_ip ,:required => true, :class => "form-control", :placeholder => "High Ip" %>
+              <%= builder.text_field :high_ip ,:required => true, :class => "form-control", :placeholder => "High Ip" %>
             </span>
             <div class="clearfix"></div>
           </div>
         </div>
-        <% end %> -->
+        <% end %>
 
       <div class="col-md-12">
         <h2 class="H2-L1"> Add User Details</h2> 

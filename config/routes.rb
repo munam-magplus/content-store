@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get 'homes/index'
   root :to => "homes#index"
   get 'homes/search'
+  get 'homes/subscribes_books'
 
   resources :homes do
     collection do

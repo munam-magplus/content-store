@@ -11,9 +11,9 @@ module ApplicationHelper
 		@publishers = Publisher.order('publisher_name').all
 	end
 
-	# def subscription_names
-	# 	@subscriptions = Subscription.order('subscription_name').all
-	# end
+	def subscription_names
+		@subscriptions = Subscription.order('subscription_name').all
+	end
 	
 	def country 
 		@country = Country.order('country_name').all

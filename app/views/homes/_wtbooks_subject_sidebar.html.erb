@@ -3,8 +3,17 @@
         <!--institutionBox-->
         
           <!--institutionBoxEnd-->
-          
-      <h1 class="sectionHeading ">BROWSE BY</h1>
+      <% if @institute_name.present? %>
+        <div class="institutionBox">
+          <h1>You are logged in from:</h1>
+          <%= @institute_name %>
+          <strong>
+          <%= link_to "view subscribed content", homes_subscribes_books_path(institution_id: @institute_id) %>
+          </strong>
+          </div>
+        <% end %>
+
+        <h1 class="sectionHeading ">BROWSE BY</h1>
         <!--accordion-->
         <div class="panel-group " id="accordion" role="tablist" aria-multiselectable="true">
           <div class="panel panel-default">

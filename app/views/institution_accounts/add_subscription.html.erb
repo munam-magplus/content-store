@@ -1,0 +1,62 @@
+<!doctype html>        
+<html>
+<head>
+<title>Content Store :: Institutional Account </title>
+<!-- Latest compiled and minified CSS -->
+
+    <!-- Header -->
+    <%= render :partial => "layouts/top_header"%>
+    <!-- Header Ends --> 
+</head>
+
+<body>
+<!-- Aside Start-->
+    <%= render :partial => "layouts/sidebar"%>
+    <!-- Aside Ends-->
+<!--Main Content Start -->
+  <section class="content"> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="wrapper container-fluid">
+      <div class="row" id="searchResultGrid">
+  <div class="col-md-12">
+    <div class="mt10 table-demo">Add Subscription for Institution
+      <span class="pull-right">
+        <div class="dropdown">
+          <ul class="nav">
+            <li class="drop"><i style="cursor: pointer;width: 12px;" class="fa fa-ellipsis-v" aria-hidden="true"></i>
+              <ul class="dropdown-menu-right">
+                <li><a href="#"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</a></li>
+                <li><a href="#"> <i class="fa fa-file-o" aria-hidden="true"></i> CSV</a></li>
+                <li><a href="#"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </span>
+    </div>
+    <%= form_tag add_subscription_tag_institution_accounts_path, :method => 'post', :class => "form-horizontal form-bg" do |f| %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-4 control-label">Select Subscription</label>
+            <div class="col-sm-8">
+              <%= select_tag 'subscription_id',options_from_collection_for_select(subscription_names, 'id', 'subscription_name'), :prompt => "Select Subscription", :class => "form-control", style: "background-color: #eee;"%>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <%= hidden_field_tag :institute_account_id, @institute_account.id%>
+        </div>
+        </div>
+       <%= button_tag fa_icon("search", text: "Submit"), :class => "btn btn-sm", type: :submit, :id => "submit" %>
+  <%end %> 
+  <div class="col-sm-12"> </div>
+</div>
+
+    </div>  
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+    <!-- Footer Ends --> 
+  </section>
+</body>
+</html>
