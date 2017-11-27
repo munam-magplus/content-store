@@ -5,6 +5,12 @@ class InstitutionAccountsController < ApplicationController
   def index
   end
 
+  def add_subscription_tag
+    SubscriptionInstitute.create!(subscription_id: params[:subscription_id], institution_account_id: params[:institute_account_id])
+    flash[:notice] = 'Subscription are sucessfully created for innstitution!'
+    redirect_to institution_accounts_path
+  end
+
   def search 
     @institution_account = InstitutionAccount.filter(params.slice(:publisher_id, 
             :status, :library_name, :institution_name, :id))
@@ -51,7 +57,10 @@ class InstitutionAccountsController < ApplicationController
     else
       render 'new'
     end
-    
+  end
+
+  def add_subscription
+    @institute_account = InstitutionAccount.find_by_id(params[:id]) 
   end
  
   def edit

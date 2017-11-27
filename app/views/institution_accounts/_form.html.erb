@@ -227,18 +227,13 @@
         <h2 class="H2-L1"> Add User Details</h2> 
       </div>
 
-      
-
-        <div class="clearfix"></div>
-        <div class="clearfix m-b-30"></div>
-        <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
-
-            <%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Search Institutional Accounts'.html_safe, institution_accounts_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
-
-            <%= button_tag fa_icon("search", text: "Submit"), :class => "btn btn-sm", type: :submit %>
-
-            <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
+      <div class="clearfix"></div>
+      <div class="clearfix m-b-30"></div>
+      <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+      <%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Search Institutional Accounts'.html_safe, institution_accounts_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
+          <%= button_tag fa_icon("search", text: "Submit"), :class => "btn btn-sm", type: :submit %>
+          <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
           </div>
         </div>
       <% end %>

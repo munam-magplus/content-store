@@ -20,8 +20,8 @@
     <div class="wrapper container-fluid">
       <ol class="breadcrumb">
        <li><a href="#">Home</a></li>
-	   <li><a href="#">Publisher Setup</a></li>
-	   <li><a href="#" class="active">Create Publisher</a></li>
+     <li><a href="#">Publisher Setup</a></li>
+     <li><a href="#" class="active">Create Publisher</a></li>
        <div class="pull-right hidden">
         <li><a href="#">Browse by Chapter</a></li>
         <li><a href="#">Browse by Book </a></li>
@@ -66,7 +66,7 @@
             <%else%>
               <%= f.select 'publisher_type', options_for_select([ "Digital", "Academic", "Discovery"]),{ :prompt => "Please Select"},{required: true, :class =>"form-control", :disabled => true} %>
             <%end%>
-			     
+           
           </div>
           <div class="clearfix"></div>
         </div></div>
@@ -90,7 +90,7 @@
           </div>
           <div class="clearfix"></div>
         </div></div>
-		<div class="col-md-6"><div class="form-group">
+    <div class="col-md-6"><div class="form-group">
       <label for="DefaultManagerLanguage" class="col-sm-5 control-label">Default Manager Language</label>
       <div class="col-sm-7">
         <%if @publisher.new_record?%>
@@ -110,21 +110,21 @@
       </div>
       <div class="clearfix"></div>
     </div></div>
-		<div class="col-md-6"><div class="form-group">
+    <div class="col-md-6"><div class="form-group">
       <label for="ContactFirstName" class="col-sm-5 control-label">Contact First Name<sup class="mandatory">*</sup></label>
       <div class="col-sm-7">
          <%= f.text_field :contact_first_name, :required => true, :placeholder => "Contact First Name", :class => "form-control" %>
       </div>
       <div class="clearfix"></div>
     </div></div>
-		<div class="col-md-6"><div class="form-group">
+    <div class="col-md-6"><div class="form-group">
       <label for="ContactlastName" class="col-sm-5 control-label">Contact Last Name<sup class="mandatory">*</sup></label>
       <div class="col-sm-7">
             <%= f.text_field :contact_last_name, :required => true, :placeholder => "Contact Last Name", :class => "form-control" %>
       </div>
       <div class="clearfix"></div>
     </div></div>
-		<div class="col-md-6"><div class="form-group">
+    <div class="col-md-6"><div class="form-group">
       <label for="ContactEmail" class="col-sm-5 control-label">Contact Email<sup class="mandatory">*</sup></label>
       <div class="col-sm-7">
            <%= f.email_field :contact_email, required: true, :placeholder => "Contact Email", :class => "form-control" %>
@@ -150,7 +150,7 @@
     <div class="col-md-6"><div class="form-group">
       <label for="DefaultManagerLanguage" class="col-sm-5 control-label">Publisher Logo</label>
       <div class="col-sm-7">
-        <%= f.file_field :publisher_logo,:placeholder => "Member Publisher Logo", :class => "form-control"%>
+        <%= f.file_field :publisher_logo, :placeholder => "Member Publisher Logo", :class => "form-control"%>
       </div>
       <div class="clearfix"></div>
     </div></div>
