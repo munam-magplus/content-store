@@ -97,6 +97,8 @@ Rails.application.routes.draw do
   resources :institution_accounts do
     collection do 
       get 'search'
+      get 'add_subscription'
+      post 'add_subscription_tag'
       get 'institution_admin_result'
     end
   end

@@ -1,10 +1,8 @@
 <!--top_bar-->
 <nav class="top_bar navbar-inner">
   <div class="container-fluid">
-    
-
       <% if logged_in? %>
-        <div class="pull-right welcome"> Welcome <strong><%= link_to "Users", '#' %></strong> <span class="pipe"> | </span>
+        <div class="pull-right welcome"><strong><%= link_to "Users", '#' %></strong> <span class="pipe"> | </span>
         <span class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             Account <b class="caret"></b>
@@ -19,7 +17,7 @@
           </ul>
         </span>
       <% else %>
-      <div class="pull-right welcome"> Welcome <strong> Guest&nbsp;User</strong> <span class="pipe"> | </span>
+      <div class="pull-right welcome"> <%="#{@institute_name}"%> <strong> Guest&nbsp;User</strong> <span class="pipe"> | </span>
         <%= link_to "Login", sign_in_homes_path%>
       <% end %>
     </div>
