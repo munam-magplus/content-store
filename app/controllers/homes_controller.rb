@@ -3,11 +3,11 @@ class HomesController < ApplicationController
   protect_from_forgery
   skip_before_action :verify_authenticity_token
   before_action :set_them
-  before_action :redirect_if_bolivia, only: [:index] 
+  #before_action :redirect_if_bolivia, only: [:index] 
 
   def index
-    @institute_name = InstitutionAccount.find_by_id(params[:id]).institution_name
-    @institute_books = InstitutionAccount.find_by_id(params[:id]).subscriptions.all.map(&:books_primary_content_informations)
+   #@institute_name = InstitutionAccount.find_by_id(params[:id]).institution_name
+    #@institute_books = InstitutionAccount.find_by_id(params[:id]).subscriptions.all.map(&:books_primary_content_informations)
     begin
       unless @publisher.books_primary_content_informations.blank? 
         if ['red_content','light_blue_content','fosteracademics'].include? @publisher.theme_name
@@ -240,18 +240,18 @@ class HomesController < ApplicationController
     end
   end
 
-  def redirect_if_bolivia
-    if request.domain == "wtbooks" 
-      IpAddress.all.each do |ip_add|
-        low =  IPAddr.new(ip_add.low_ip).to_i
-        high = IPAddr.new(ip_add.high_ip).to_i
-        request_ip = IPAddr.new(request.remote_ip).to_i
-        if (low..high) === request_ip
-          redirect_to root_path(id: ip_add.institution_account_id)  unless request.fullpath == root_path(id: ip_add.institution_account_id)
-        end
-      end
-    end
-  end
+  # def redirect_if_bolivia
+  #   if request.domain == "wtbooks" 
+  #     IpAddress.all.each do |ip_add|
+  #       low =  IPAddr.new(ip_add.low_ip).to_i
+  #       high = IPAddr.new(ip_add.high_ip).to_i
+  #       request_ip = IPAddr.new(request.remote_ip).to_i
+  #       if (low..high) === request_ip
+  #         redirect_to root_path(id: ip_add.institution_account_id)  unless request.fullpath == root_path(id: ip_add.institution_account_id)
+  #       end
+  #     end
+  #   end
+  # end
 
   def end_user_params
     params.require(:end_user).permit(:publisher_id, :email, :password, 
