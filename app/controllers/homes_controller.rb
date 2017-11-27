@@ -15,6 +15,8 @@ class HomesController < ApplicationController
           @institute_id = InstitutionAccount.find_by_id(params[:id]) rescue nil
           @institute_books = InstitutionAccount.find_by_id(params[:id]).subscriptions.all.map(&:books_primary_content_informations) rescue nil
           @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 18)
+        else
+          @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10)
         end
       end
     rescue => e # catches StandardError (don't use rescue Esception => e)
