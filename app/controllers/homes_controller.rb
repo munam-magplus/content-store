@@ -142,13 +142,15 @@ class HomesController < ApplicationController
   end
 
   def books_description  
+      if ['wtbooks'].include? @publisher.theme_name
+        subscription = InstitutionAccount.find(params[:institution_id]).subscriptions.all.map(&:subscription_books) 
+        subscription.reject(&:empty?).each do |sbooks| 
+        @subscriptionn = sbooks.where(books_primary_content_information_id: params[:book_id])
+        end
+        @has_subscription = @subscriptionn
+      end
      @book_information = BooksPrimaryContentInformation.find(params[:book_id])
      @book_subject_group = @book_information.subject_groups.first
-     subscription = InstitutionAccount.find(params[:institution_id]).subscriptions.all.map(&:subscription_books) 
-     subscription.reject(&:empty?).each do |sbooks| 
-      @subscriptionn = sbooks.where(books_primary_content_information_id: params[:book_id])
-     end
-     @has_subscription = @subscriptionn
      render :template => "shared/#{@publisher.theme_name}/books_description"
   end
 
@@ -164,8 +166,7 @@ class HomesController < ApplicationController
     subjectbook.each do |subbook| 
       @books = subbook.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10)
     end
-    render :template => "shared/#{@publisher.theme_name}/books_by_subject"
-    
+    render :template => "shared/#{@publisher.theme_name}/books_by_subject" 
   end
 
   def permission_check_for_books
