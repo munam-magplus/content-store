@@ -40,7 +40,7 @@ class SubscriptionsController < ApplicationController
       new_role_ids << new_role_id
     end
     new_role_ids.flatten.each do |role_id|
-      @subject_group_id = SubscriptionForSubjectGroup.new
+      @subject_group_id = SubscriptionBook.new
       @subject_group_id.subscription_id = @subscription.id
       @subject_group_id.subject_group_id = role_id
       @subject_group_id.save!
@@ -55,9 +55,9 @@ class SubscriptionsController < ApplicationController
       new_role_ids << new_role_id
     end
     new_role_ids.flatten.each do |role_id|
-      @book_id = SubscriptionForBook.new
+      @book_id = SubscriptionBook.new
       @book_id.subscription_id = @subscription.id
-      @book_id.title_id = role_id
+      @book_id.books_primary_content_information_id = role_id
       @book_id.save!
     end
   end

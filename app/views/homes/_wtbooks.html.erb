@@ -2,14 +2,13 @@
 <nav class="top_bar navbar-inner">
   <div class="container-fluid">
       <% if logged_in? %>
-        <div class="pull-right welcome"><strong><%= link_to "Users", '#' %></strong> <span class="pipe"> | </span>
+        <div class="pull-right welcome"><strong><%= @current_end_user.first_name+" "+@current_end_user.last_name %></strong> <span class="pipe"> | </span>
         <span class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             Account <b class="caret"></b>
           </a>
           <ul class="dropdown-menu">
-            <li><%= link_to "Profile", current_user %></li>
-            <li><%= link_to "Settings", '#' %></li>
+            <li><%= link_to "Profile", current_user_homes_path, method: :get %></li>
             <li class="divider"></li>
             <li>
               <%= link_to "Log out", logout_homes_path, method: :delete %>
@@ -40,7 +39,7 @@
           <li><%= link_to '<i class="fa fa-home"></i>'.html_safe, homes_path %></li>
           <li class="dropdown"> <a data-toggle="dropdown" class="dropdown-toggle uppercase" href="#">My&nbsp;Account<b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><a href="#"> Edit My Profile </a></li>
+              <li><%= link_to "Edit My Profile", current_user_homes_path, method: :get %></li>
               <li class="divider"></li>
               <li><a href="#">My&nbsp;Notes</a></li>
               <li><a href="#">My Saved Searches</a></li>

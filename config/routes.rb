@@ -65,7 +65,8 @@ Rails.application.routes.draw do
       get 'registration'
       post 'sign_up'
       delete 'logout'
-      #get 'book_reader'
+      get 'current_user'
+      get 'my_profile'
     end
   end
 
