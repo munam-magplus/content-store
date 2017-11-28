@@ -26,8 +26,12 @@ class HomesController < ApplicationController
 
   def subscribes_books
     if ['wtbooks'].include? @publisher.theme_name
-      @institute_name =  InstitutionAccount.where(id: params[:institution_id]).last.institution_name rescue nil
-      @institute_books = InstitutionAccount.where(id: params[:institution_id]).last.subscriptions.all.map(&:books_primary_content_informations) rescue nil
+       @institute_id = InstitutionAccount.find_by_id(params[:id])
+       @institute_name =  InstitutionAccount.where(id: params[:institution_id]).last.institution_name rescue nil
+       @institute_books = InstitutionAccount.where(id: params[:institution_id]).last.subscriptions.all.map(&:books_primary_content_informations) rescue nil
+       #@institute_books = .where(id: params[:institution_id]).last.subscriptions.all.map(&:books_primary_content_informations)
+
+      #@inst_books =
       #@books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 18)
     end
   end
@@ -137,10 +141,15 @@ class HomesController < ApplicationController
     end 
   end
 
-  def books_description
-    @book_information = BooksPrimaryContentInformation.find(params[:book_id])
-    @book_subject_group = @book_information.subject_groups.first
-    render :template => "shared/#{@publisher.theme_name}/books_description"
+  def books_description  
+     @book_information = BooksPrimaryContentInformation.find(params[:book_id])
+     @book_subject_group = @book_information.subject_groups.first
+     subscription = InstitutionAccount.find(params[:institution_id]).subscriptions.all.map(&:subscription_books) 
+     subscription.reject(&:empty?).each do |sbooks| 
+      @subscriptionn = sbooks.where(books_primary_content_information_id: params[:book_id])
+     end
+     @has_subscription = @subscriptionn
+     render :template => "shared/#{@publisher.theme_name}/books_description"
   end
 
   def books_by_category
@@ -167,10 +176,10 @@ class HomesController < ApplicationController
     end
   end
 
-  def book_reader
-    @book_information = BooksPrimaryContentInformation.find(params[:book_id])
-    @isbn = @book_information.isbn
-  end
+  # def book_reader
+  #   @book_information = BooksPrimaryContentInformation.find(params[:book_id])
+  #   @isbn = @book_information.isbn
+  # end
 
   def get_book_ids(books,books_ids)
     books.each do|f|

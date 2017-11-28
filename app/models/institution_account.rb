@@ -6,6 +6,7 @@ class InstitutionAccount < ApplicationRecord
 	#has_many :subscriptions, optional: true
 	has_many :subscription_institute
     has_many :subscriptions, through: :subscription_institute
+    belongs_to :publisher
     
 	has_one :institution_account_billing_address, dependent: :destroy
 	accepts_nested_attributes_for :institution_account_billing_address
