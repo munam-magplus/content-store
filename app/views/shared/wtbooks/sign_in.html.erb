@@ -15,7 +15,7 @@
         <p>Please login here or register below.</p>
         <div class="clearfix"></div>
         <div class=" col-sm-12 grayContainer pad20">
-          <%= form_for(:session, url: login_homes_path, :class => "form-horizontal col-sm-7") do |f| %>
+          <%= form_for(:session, url: login_homes_path, :html => {:class => 'form-horizontal col-sm-8'}) do |f| %>
             <div class="form-group">
               <label class="control-label col-sm-3" for="email"><%= f.label :email_address %>: <sup class="mandatory">*</sup></label>
               <div class="col-sm-9">

@@ -1,0 +1,53 @@
+<%= render :partial => "#{@publisher.theme_name}"%> 
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render :partial => "wtbooks_subject_sidebar"%>
+    <div id='pub_book'>  
+      <div class="col-sm-8 col-md-9">
+        <ul class="breadcrumb breadcrumb2 print">
+    		<a href="index.html"><u>Home</u></a> &gt; My Profile 
+        </ul>     
+        <div class="border_wrapper padding10px">
+          <div class="">
+            <h1 class="text_uppercase border_bottom heading-main ">My Profile</h1>
+          </div>
+          <div class=" col-sm-12 grayContainer pad20">
+						<form class="form-horizontal col-sm-7" action="/action_page.php">
+					    <div class="form-group">
+					      <label class="control-label col-sm-3" for="email">Email: <sup class="mandatory">*</sup></label>
+					      <div class="col-sm-9">
+					        <%= @current_end_user.email %>
+					      </div>
+					    </div>
+					    <div class="form-group">
+					      <label class="control-label col-sm-3" for="pwd">First Name: <sup class="mandatory">*</sup></label>
+					      <div class="col-sm-9">          
+					        <%= @current_end_user.first_name %>
+					      </div>
+					    </div>
+					    <div class="form-group">
+					      <label class="control-label col-sm-3" for="pwd">Last Name: <sup class="mandatory">*</sup></label>
+					      <div class="col-sm-9">          
+					        <%= @current_end_user.last_name %>
+					      </div>
+					    </div>
+					    <div class="form-group">
+					      <label class="control-label col-sm-3" for="pwd">Country: <sup class="mandatory">*</sup></label>
+					      <div class="col-sm-9">          
+					        <%= country_name(@current_end_user.country_code) %>
+					      </div>
+					    </div>
+					    <div class="form-group">        
+					      <div class="col-sm-offset-3 col-sm-9">
+					        <!-- <button type="submit" class="btn btn-inverse">Modify Information</button> -->
+					      </div>
+					    </div>
+					  </form>
+					</div>
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render :partial => "homes/wtbooks_footer"%>

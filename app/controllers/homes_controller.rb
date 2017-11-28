@@ -224,6 +224,11 @@ class HomesController < ApplicationController
     redirect_to root_url
   end
 
+  def current_user
+    @current_end_user ||= EndUser.find_by(id: session[:end_user_id])
+    render :template => "shared/#{@publisher.theme_name}/my_profile"
+  end
+
   private
 
   def set_them
