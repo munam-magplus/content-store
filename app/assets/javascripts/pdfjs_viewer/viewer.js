@@ -6733,37 +6733,13 @@ var pdfjsWebLibs;
      PDFViewerApplication.page = 1;
     }
    }
-   function webViewerLastPage() {
+  function webViewerLastPage() {
     if (PDFViewerApplication.pdfDocument) {
-      var user_signed_in = $.ajax({
-         url: '/homes/permission_check_for_books',
-         type: "GET",
-         success: function(data) {
-          if (data=='true') {
-            PDFViewerApplication.page = PDFViewerApplication.pagesCount;
-          }
-          else{
-            alert("please Login First");
-          }
-
-    } });
-     
+     PDFViewerApplication.page = PDFViewerApplication.pagesCount;
     }
    }
    function webViewerNextPage() {
-    var user_signed_in = $.ajax({
-         url: '/homes/permission_check_for_books',
-         type: "GET",
-         success: function(data) {
-          if (data=='true') {
-            PDFViewerApplication.page++;
-          }
-          else{
-            alert("please Login First");
-          }
-
-    } });
-    
+    PDFViewerApplication.page++;
    }
    function webViewerPreviousPage() {
     PDFViewerApplication.page--;
