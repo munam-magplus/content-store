@@ -13,10 +13,10 @@ class HomesController < ApplicationController
         elsif ['wtbooks'].include? @publisher.theme_name
           @institute_name = InstitutionAccount.find_by_id(params[:id]).institution_name rescue nil
           @institute_id = InstitutionAccount.find_by_id(params[:id]) rescue nil
-          @institute_books = InstitutionAccount.find_by_id(params[:id]).subscriptions.all.map(&:books_primary_content_informations) rescue nil
-          @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 18)
+          @institute_books = InstitutionAccount.find_by_id(params[:id]).subscriptions.all.map(&:books_primary_content_informations) rescue nil 
+          @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10) rescue nil
         else
-          @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10)
+          @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10) rescue nil
         end
       end
     rescue => e # catches StandardError (don't use rescue Esception => e)
@@ -142,16 +142,18 @@ class HomesController < ApplicationController
   end
 
   def books_description  
-      if ['wtbooks'].include? @publisher.theme_name
-        subscription = InstitutionAccount.find(params[:institution_id]).subscriptions.all.map(&:subscription_books) 
-        subscription.reject(&:empty?).each do |sbooks| 
-        @subscriptionn = sbooks.where(books_primary_content_information_id: params[:book_id])
+      if params[:institution_id].present?
+        if ['wtbooks'].include? @publisher.theme_name
+          subscription = InstitutionAccount.find(params[:institution_id]).subscriptions.all.map(&:subscription_books) 
+          subscription.reject(&:empty?).each do |sbooks| 
+          @subscriptionn = sbooks.where(books_primary_content_information_id: params[:book_id])
         end
-        @has_subscription = @subscriptionn
+          @has_subscription = @subscriptionn
+        end
       end
-     @book_information = BooksPrimaryContentInformation.find(params[:book_id])
-     @book_subject_group = @book_information.subject_groups.first
-     render :template => "shared/#{@publisher.theme_name}/books_description"
+          @book_information = BooksPrimaryContentInformation.find(params[:book_id])
+          @book_subject_group = @book_information.subject_groups.first
+          render :template => "shared/#{@publisher.theme_name}/books_description"
   end
 
   def books_by_category
@@ -266,6 +268,10 @@ class HomesController < ApplicationController
 
   def redirect_if_bolivia
     if request.domain == "wtbooks" 
+      if params[:page].present?
+        @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10) rescue nil
+        return homes_index_path
+      end
       IpAddress.all.each do |ip_add|
         low =  IPAddr.new(ip_add.low_ip).to_i
         high = IPAddr.new(ip_add.high_ip).to_i

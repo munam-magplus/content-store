@@ -1,4 +1,5 @@
-<div class="container-fluid">
+<% if params[:institution_id].present? %>
+  <div class="container-fluid">
     <div class="row">
       <div class="col-sm-8 col-md-9">
         <h1 class="sectionHeading">FEATURED BOOKS</h1>
@@ -20,4 +21,31 @@
       </div>
     </div>
   </div>
+<% else %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-8 col-md-9">
+          <h1 class="sectionHeading">FEATURED BOOKS</h1>
+          <div class="row placeholders">
+            <% @books.each do |f|%>
+                <div class="col-xs-6 col-sm-3  col-md-2 placeholder">
+                <%= link_to image_tag("http://ebooks.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg", class: "img-responsive center-block"), books_description_homes_path(:book_id => f.id)%>
+                <h4><%= link_to truncate(f.book_title, length: 25), books_description_homes_path(:book_id => f.id) %></h4>
+                <span class="text-muted">
+                  <%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14) %>
+                </span> 
+              </div>
+            <% end %>
+            <div style="clear:both;"></div>
+            <div class="col-md-12 col-xs-12">
+              <%= will_paginate @books,renderer: BootstrapPagination::Rails %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+
+
 
