@@ -3,7 +3,7 @@ class HomesController < ApplicationController
   protect_from_forgery
   skip_before_action :verify_authenticity_token
   before_action :set_them
-  before_action :redirect_if_bolivia, only: [:index] 
+  before_action :redirect_if_subscriptions, only: [:index] 
 
   def index
     begin
@@ -142,18 +142,18 @@ class HomesController < ApplicationController
   end
 
   def books_description  
-      if params[:institution_id].present?
-        if ['wtbooks'].include? @publisher.theme_name
-          subscription = InstitutionAccount.find(params[:institution_id]).subscriptions.all.map(&:subscription_books) 
-          subscription.reject(&:empty?).each do |sbooks| 
+    if params[:institution_id].present?
+      if ['wtbooks'].include? @publisher.theme_name
+        subscription = InstitutionAccount.find(params[:institution_id]).subscriptions.all.map(&:subscription_books) 
+        subscription.reject(&:empty?).each do |sbooks| 
           @subscriptionn = sbooks.where(books_primary_content_information_id: params[:book_id])
         end
-          @has_subscription = @subscriptionn
-        end
+        @has_subscription = @subscriptionn
       end
-          @book_information = BooksPrimaryContentInformation.find(params[:book_id])
-          @book_subject_group = @book_information.subject_groups.first
-          render :template => "shared/#{@publisher.theme_name}/books_description"
+    end
+    @book_information = BooksPrimaryContentInformation.find(params[:book_id])
+    @book_subject_group = @book_information.subject_groups.first
+    render :template => "shared/#{@publisher.theme_name}/books_description"
   end
 
   def books_by_category
@@ -266,15 +266,15 @@ class HomesController < ApplicationController
     end
   end
 
-  def redirect_if_bolivia
+  def redirect_if_subscriptions
     if request.domain == "wtbooks" 
       if params[:page].present?
         @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10) rescue nil
         return homes_index_path
       end
       IpAddress.all.each do |ip_add|
-        low =  IPAddr.new(ip_add.low_ip).to_i
-        high = IPAddr.new(ip_add.high_ip).to_i
+        low =  (ip_add.low_ip).to_i
+        high = (ip_add.high_ip).to_i
         request_ip = IPAddr.new(request.remote_ip).to_i
         if (low..high) === request_ip
           redirect_to root_path(id: ip_add.institution_account_id)  unless request.fullpath == root_path(id: ip_add.institution_account_id)

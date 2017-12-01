@@ -498,7 +498,7 @@ html[dir='rtl'] #viewerContainer {
   position: relative;
   left: 0;
   right: 0;
-  z-index: 9999;
+  z-index: 9;
   cursor: default;
 }
 
@@ -1333,7 +1333,7 @@ html[dir='rtl'] .verticalToolbarSeparator {
 
 #thumbnailView {
   position: absolute;
-  width: 120px;
+  width: 100%;
   top: 0;
   bottom: 0;
   padding: 10px 40px 0;
@@ -2158,9 +2158,18 @@ html[dir='rtl'] #documentPropertiesOverlay .row > * {
   }
 }
 .height100 {
-    height: 100vh;
+   height: 100vh;
+   display: block;
+
+   
 }
 
 div#viewerContainer {
     background: #424242;
 }
+
+.thumbnailSelectionRing {
+    width: 112px!important;
+    height: 151px!important;
+}
+
