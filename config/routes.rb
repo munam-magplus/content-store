@@ -102,6 +102,12 @@ Rails.application.routes.draw do
       get 'add_subscription'
       post 'add_subscription_tag'
       get 'institution_admin_result'
+      get 'metadata_for_institution_accounts'
+      get 'metadata_for_institution_accounts_billing'
+      get 'metadata_for_ip_address'
+      post 'import_for_institution_accounts'
+      post 'import_for_institution_accounts_billing'
+      post 'import_for_ip_address'
     end
   end
 
@@ -172,6 +178,11 @@ Rails.application.routes.draw do
       get 'linked_member_publisher'
       get 'subject_group_search'
       get 'title_search'
+      get 'associate_subscription_with_books'
+      get 'associate_subscription_with_institutes'
+      post 'import_for_subscription_institute'
+      post 'import_for_subscription'
+      post 'import'
     end
   end
 

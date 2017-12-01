@@ -61,8 +61,11 @@
               <li>
                 <a class="submenu"><span class="fa fa-angle-right"></span>Institutional Account</a>
                   <ul class="nav-multi__list nav-multi" style="display:none">
-                     <li><%= link_to "Create New Account", new_institution_account_path %></li>
-                     <li><%= link_to "Search Institutional Account", institution_accounts_path %></li>
+                    <li><%= link_to "Create New Account", new_institution_account_path %></li>
+                    <li><%= link_to "Search Institutional Account", institution_accounts_path %></li>
+                    <li><%= link_to "Metadata for Institutional Account", metadata_for_institution_accounts_institution_accounts_path %></li>
+                    <li><%= link_to "Metadata for Institutional Account Billing Address", metadata_for_institution_accounts_billing_institution_accounts_path %></li>
+                    <li><%= link_to "Metadata for IP Address", metadata_for_ip_address_institution_accounts_path %></li>
                   </ul>
               </li>
               <li>
@@ -136,7 +139,10 @@
                 <a class="submenu"><span class="fa fa-angle-right"></span>Subscriptions</a>
                   <ul class="nav-multi__list nav-multi" style="display:none">
                     <li><%= link_to "Create Subscription",new_subscription_path %></li>
-                     <li><%= link_to "Search Subscription",subscriptions_path %></li>
+                    <li><%= link_to "Search Subscription",subscriptions_path %></li>
+                    <li><%= link_to "Associate Subscription with Books",associate_subscription_with_books_subscriptions_path %></li>
+                    <li><%= link_to "Metadata Upload for Subscription",metadata_sheet_subscriptions_path %></li>
+                    <li><%= link_to "Association for Subscription and Institute",associate_subscription_with_institutes_subscriptions_path %></li>
                   </ul>
               </li>
               <!-- <li>

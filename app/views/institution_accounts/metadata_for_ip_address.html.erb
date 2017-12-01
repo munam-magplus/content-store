@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<title>Content Store </title>
+<!-- Latest compiled and minified CSS -->
+  <!-- Header -->
+  <%= render :partial => "layouts/top_header"%>
+  <!-- Header Ends --> 
+</head>
+
+<body>
+<!-- Aside Start-->
+  <%= render :partial => "layouts/sidebar"%>
+    <!-- Aside Ends-->
+<!--Main Content Start -->
+  <section class="content"> 
+    <!-- Page Content Start --> 
+    <!-- ================== -->
+    <div class="container-fluid">
+      <ol class="breadcrumb">
+           <li><a>Home</a></li>
+         <li><a>Manage Access</a></li>
+         <li><a>Subscription</a></li>
+         <li><a>Metadata Sheet for IP Address</a></li>
+      </ol>
+
+      <h2 class="H2-L1">Metadata Sheet for IP Address</h2>
+      <%= form_tag import_for_ip_address_institution_accounts_path, multipart: true do %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 nopadding">Browse File</label>
+            <span class="col-sm-8">
+            <%= file_field_tag :file, :required => true, :class => "form-control", :placeholder =>"Browse files" %>
+            </span> 
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="clearfix m-b-30"></div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+
+            <%= button_tag fa_icon("fa fa-plus-square-o", text: "Import"), :class => "btn btn-sm", type: :submit %>
+
+            <%= button_tag fa_icon("refresh", text: "Reset"), :class => "btn btn-sm" ,type: :reset%>
+
+          </div>
+        </div>
+      <% end %>
+
+    </div>  
+    <!-- Footer Start -->
+    <%= render :partial => "layouts/footer" %>
+    <!-- Footer Ends --> 
+  </section>
+</body>
+</html>
