@@ -6751,25 +6751,13 @@ var pdfjsWebLibs;
     PDFViewerApplication.zoomOut();
    }
    function webViewerPageNumberChanged(e) {
-    var user_signed_in = $.ajax({
-         url: '/homes/permission_check_for_books',
-         type: "GET",
-         success: function(data) {
-          if (data=='true') {
-            var pdfViewer = PDFViewerApplication.pdfViewer;
-            pdfViewer.currentPageLabel = e.value;
-          }
-          else{
-            alert("please Login First");
-          }
-
-         } });
-    
-    
-    if (e.value !== pdfViewer.currentPageNumber.toString() && e.value !== pdfViewer.currentPageLabel) {
-     PDFViewerApplication.toolbar.setPageNumber(pdfViewer.currentPageNumber, pdfViewer.currentPageLabel);
+   
+      var pdfViewer = PDFViewerApplication.pdfViewer;
+      pdfViewer.currentPageLabel = e.value;
+      if (e.value !== pdfViewer.currentPageNumber.toString() && e.value !== pdfViewer.currentPageLabel) {
+        PDFViewerApplication.toolbar.setPageNumber(pdfViewer.currentPageNumber, pdfViewer.currentPageLabel);
+      }
     }
-   }
    function webViewerScaleChanged(e) {
     PDFViewerApplication.pdfViewer.currentScaleValue = e.value;
    }
