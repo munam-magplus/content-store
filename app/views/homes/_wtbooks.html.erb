@@ -52,7 +52,7 @@
             <div class="searchmenu pull-right">
               <%= form_tag(search_homes_path, :method => "get", class: "navbar-form",:remote => true) do %>
                 <div class="input-group add-on">
-                 <%= text_field_tag :book_title, params[:search], required: true,placeholder: "Search by Title ", class: "form-control" %>
+                 <%= text_field_tag :book_title, params[:search], required: true,placeholder: "Search", class: "form-control" %>
                   <div class="input-group-btn ">
                    <%= button_tag(type: 'submit', class: "btn btn-default form-control") do %>
                       <i class="fa fa-search"></i>
