@@ -60,7 +60,7 @@
               </div>
             <% else %>
               <div class="border_wrapper height100 padding10px">
-                <%= pdfjs_viewer pdf_url: "http://wtbooks.mpstechnologies.com/static/templates/template1/#{@book_information.isbn}.pdf", style: :full %>
+                <%= pdfjs_viewer pdf_url: "/static/#{@publisher.publisher_code}/ebooks/#{@book_information.isbn}.pdf", style: :full %>
              </div>
             <% end %>
             </div>

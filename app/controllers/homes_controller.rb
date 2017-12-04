@@ -14,7 +14,7 @@ class HomesController < ApplicationController
           @institute_name = InstitutionAccount.find_by_id(params[:id]).institution_name rescue nil
           @institute_id = InstitutionAccount.find_by_id(params[:id]) rescue nil
           @institute_books = InstitutionAccount.find_by_id(params[:id]).subscriptions.all.map(&:books_primary_content_informations) rescue nil 
-          @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10) rescue nil
+          @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10) rescue nil 
         else
           @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10) rescue nil
         end
@@ -244,42 +244,67 @@ class HomesController < ApplicationController
   private
 
   def set_them
-    if request.domain.present?
-      pub_domain = request.domain
-      unless pub_domain.start_with?('www')
-        pub_domain = 'www' + '.'  +  request.domain 
+    if request.host == "wtbooks.mpstechnologies.com"
+      set_them_wtbooks
+      else  
+        if request.domain.present?
+         pub_domain = request.domain
+          unless pub_domain.start_with?('www')
+            pub_domain = 'www' + '.'  +  request.domain 
+          end
+        begin
+          @gethost = pub_domain.split('.')[1]
+          @publisher = Publisher.find_by_domain_name(@gethost)
+          unless @publisher.blank?
+            unless @publisher.theme_name.blank?
+              @css_root = "#{@publisher.theme_name}/application"
+            else
+              @css_root = "default_theme/application"
+            end  
+          end
+          rescue ActiveRecord::RecordNotFound
+        end  
+      else
+       redirect_to users_sign_in_path 
       end
-      begin
-        @gethost = pub_domain.split('.')[1]
-        @publisher = Publisher.find_by_domain_name(@gethost)
-        unless @publisher.blank?
-          unless @publisher.theme_name.blank?
-            @css_root = "#{@publisher.theme_name}/application"
-          else
-            @css_root = "default_theme/application"
-          end  
-        end
-        rescue ActiveRecord::RecordNotFound
-      end  
-    else
-     redirect_to users_sign_in_path 
     end
   end
 
+
+   def set_them_wtbooks
+    if request.host == "wtbooks.mpstechnologies.com"
+      pub_domain = request.host
+      unless pub_domain.start_with?('www')
+          pub_domain = request.host 
+      end
+     begin
+      @gethost = pub_domain.split('.')[0]
+      @publisher = Publisher.find_by_domain_name(@gethost)
+      unless @publisher.blank?
+     unless @publisher.theme_name.blank?
+     @css_root = "#{@publisher.theme_name}/application"
+    else
+    @css_root = "default_theme/application"
+    end  
+    end
+    rescue ActiveRecord::RecordNotFound
+    end  
+    else
+    redirect_to users_sign_in_path 
+    end
+    # end    
+  end
+
   def redirect_if_subscriptions
-    if request.domain == "wtbooks.com" 
-    Rails.logger.info "print the request domain value in for ip  ip================#{request.domain}=========="
+    if request.host == "wtbooks.mpstechnologies.com" 
       if params[:page].present?
         @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10) rescue nil
         return homes_index_path
       end
       IpAddress.all.each do |ip_add|
         low =  (ip_add.low_ip).to_i
-        Rails.logger.info "I WANT this to go to console low value of ip=======#{low}=========="
         high = (ip_add.high_ip).to_i
-        Rails.logger.info "I WANT this to go to console high value of ip=======#{high}=========="
         request_ip = IPAddr.new(request.remote_ip).to_i
-        Rails.logger.info "I WANT this to go to console request_ip of server=======#{request_ip}=========="
         if (low..high) === request_ip
           redirect_to root_path(id: ip_add.institution_account_id)  unless request.fullpath == root_path(id: ip_add.institution_account_id)
         end
