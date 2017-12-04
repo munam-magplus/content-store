@@ -274,8 +274,11 @@ class HomesController < ApplicationController
       end
       IpAddress.all.each do |ip_add|
         low =  (ip_add.low_ip).to_i
+        Rails.logger.info "I WANT this to go to console low value of ip=======#{low}=========="
         high = (ip_add.high_ip).to_i
+        Rails.logger.info "I WANT this to go to console high value of ip=======#{high}=========="
         request_ip = IPAddr.new(request.remote_ip).to_i
+        Rails.logger.info "I WANT this to go to console request_ip of server=======#{request_ip}=========="
         if (low..high) === request_ip
           redirect_to root_path(id: ip_add.institution_account_id)  unless request.fullpath == root_path(id: ip_add.institution_account_id)
         end
