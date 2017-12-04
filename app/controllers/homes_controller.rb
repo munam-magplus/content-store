@@ -267,9 +267,8 @@ class HomesController < ApplicationController
   end
 
   def redirect_if_subscriptions
-    Rails.logger.info "print the request domain value in for ip  ip================ABBBBBBBBBBBBBBBBBBBB=========="
+    if request.domain == "wtbooks.com" 
     Rails.logger.info "print the request domain value in for ip  ip================#{request.domain}=========="
-    if request.domain == "wtbooks" 
       if params[:page].present?
         @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10) rescue nil
         return homes_index_path
