@@ -236,6 +236,18 @@
 </html>
     
 <script>
+  $( function() {
+    $( "#from1" ).datepicker({
+          dateFormat: 'yy-mm-dd',
+          changeMonth: true,
+          changeYear: true
+    });
+    $( "#to1" ).datepicker({
+     dateFormat: 'yy-mm-dd',
+     changeMonth: true,
+     changeYear: true
+    });
+  });
  $('#chapter').hide();
  $('#journal').hide();
  $('#article').hide();

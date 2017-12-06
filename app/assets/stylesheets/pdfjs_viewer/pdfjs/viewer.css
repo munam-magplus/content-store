@@ -1124,21 +1124,6 @@ html[dir='rtl'] .toolbarButton.pageDown::before {
   content: url(/pdfjs/web/images/toolbarButton-presentationMode.png);
 }
 
-.toolbarButton.print::before,
-.secondaryToolbarButton.print::before {
-  content: url(/pdfjs/web/images/toolbarButton-print.png);
-}
-
-.toolbarButton.openFile::before,
-.secondaryToolbarButton.openFile::before {
-  content: url(/pdfjs/web/images/toolbarButton-openFile.png);
-}
-
-.toolbarButton.download::before,
-.secondaryToolbarButton.download::before {
-  content: url(/pdfjs/web/images/toolbarButton-download.png);
-}
-
 .toolbarButton.bookmark,
 .secondaryToolbarButton.bookmark {
   -webkit-box-sizing: border-box;
@@ -1443,7 +1428,7 @@ html[dir='rtl'] .outlineItem > .outlineItems {
   height: auto;
   margin-bottom: 1px;
   border-radius: 2px;
-  color: hsla(0,0%,100%,.8);
+  color: hsla(0, 4.8%, 4.1%, 0.8);
   font-size: 13px;
   line-height: 15px;
   -moz-user-select: none;

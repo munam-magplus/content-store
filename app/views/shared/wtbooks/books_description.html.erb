@@ -5,7 +5,7 @@
     <div id='pub_book'>  
     <div class="col-sm-8 col-md-9">
       <ul class="breadcrumb breadcrumb2 print">
-        <a href="index.html"><u>Home</u></a> &gt; Book Info
+         <%= link_to "Home", homes_path%> &gt; Book Info
       </ul>
       <div class="border_wrapper padding10px">
         <div class="mt-20" >
@@ -61,6 +61,7 @@
             <% else %>
               <div class="border_wrapper height100 padding10px">
                 <%= pdfjs_viewer pdf_url: "/static/#{@publisher.publisher_code}/ebooks/#{@book_information.isbn}.pdf", style: :full %>
+
              </div>
             <% end %>
             </div>
