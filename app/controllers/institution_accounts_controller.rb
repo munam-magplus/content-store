@@ -14,7 +14,6 @@ class InstitutionAccountsController < ApplicationController
   def search 
     @institution_account = InstitutionAccount.filter(params.slice(:publisher_id, 
             :status, :library_name, :institution_name, :id))
-
     @id = @institution_account.ids
     @institution_billing = InstitutionAccountBillingAddress.filter(params.slice(:first_name, :last_name,
                   :phone, :email,:address,:address_line2,:address_line3,:city,:state,
@@ -68,7 +67,7 @@ class InstitutionAccountsController < ApplicationController
   end
 
   def update
-    @institution = InstitutionAccount.find_by(params[:id])
+    @institution = InstitutionAccount.find(params[:id])
     if @institution.update(institution_params)  
       redirect_to institution_accounts_path
     else
