@@ -73,7 +73,7 @@
             <label for="bookISBN" class="col-sm-4 nopadding">Logo</label>
             <span class="col-sm-8">
              <%= image_tag @institution.logo.url(:thumb)%>
-             <%= f.file_field :logo,:required => true, :class => "form-control", :placeholder => "Logo"%>
+             <%= f.file_field :logo, :class => "form-control", :placeholder => "Logo"%>
             </span>
             <div class="clearfix"></div>
           </div>

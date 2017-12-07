@@ -49,27 +49,25 @@
               <li><a href="#">My Saved Searches</a></li>
             </ul>
           </li>
-          <li><%= link_to "ABOUT US", about_homes_path%></li>
-          <li><%= link_to "CONTACT US", contact_homes_path %></li>
+          <li><%= link_to "About us", about_homes_path%></li>
+          <li><%= link_to "Contact us", contact_homes_path %></li>
           <li><%= link_to "Help", "http://ebooks.wtbooks.com/static/templates/template1/wtbooks/help/en/index.htm", target: "_blank" %></li>
           <li class="searchmenu">
-            <div class="searchmenu pull-right">
-              <%= form_tag(search_homes_path, :method => "get", class: "navbar-form",:remote => true) do %>
-                <div class="input-group add-on">
-                 <%= text_field_tag :book_title, params[:search], required: true,placeholder: "Search", class: "form-control" %>
-                  <div class="input-group-btn ">
-                   <%= button_tag(type: 'submit', class: "btn btn-default form-control") do %>
-                      <i class="fa fa-search"></i>
-                    <% end %>
-                  </div>
-                </div>
-                <div class="pull-right">
-                  <%= link_to advance_search_homes_path,remote: true  do %>
-                    <%= image_tag "http://ebooks.wtbooks.com/static/templates/template1/wtbooks/images/adcance_search_03.png" %>
+            <%= form_tag(search_homes_path, :method => "get", class: "navbar-form",:remote => true) do %>
+              <div class="input-group add-on">
+                <%= text_field_tag :book_title, params[:search], required: true,placeholder: "Search", class: "form-control" %>
+                <div class="input-group-btn ">
+                 <%= button_tag(type: 'submit', class: "btn btn-default") do %>
+                    <i class="fa fa-search"></i>
                   <% end %>
                 </div>
-              <% end %>
-            </div>
+              </div>
+              <div class="pull-right">
+                <%= link_to advance_search_homes_path,remote: true  do %>
+                  <%= image_tag "http://ebooks.wtbooks.com/static/templates/template1/wtbooks/images/adcance_search_03.png" %>
+                <% end %>
+              </div>
+            <% end %>
           </li>
         </ul>
       </div>
@@ -78,22 +76,22 @@
 </nav>
 <!--header_bar-->
 
-
 <div class="container-fluid mobile_block">
 	<div class="row">
-    	<div class="col-xs-12">
-        	<form class="navbar-form" role="search" style="margin-top:0;">
-                <div class="input-group add-on">
-                  <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
-                  <div class="input-group-btn">
-                    <button class="btn btn-default black_btn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                  </div>
-                </div>
-                <div class="text-right">
-                	<%= link_to 'ADVANCED SEARCH', advance_search_homes_path, remote: true  %>
-                </div>
-              </form>
-              
+  	<div class="col-xs-12">
+      <%= form_tag(search_homes_path, :method => "get", class: "navbar-form", style: "margin-top:0;",:remote => true) do %>
+        <div class="input-group add-on">
+          <%= text_field_tag :book_title, params[:search], required: true,placeholder: "Search", class: "form-control" %>
+          <div class="input-group-btn">
+            <%= button_tag(type: 'submit', class: "btn btn-default black_btn") do %>
+              <i class="fa fa-search"></i>
+            <% end %>
+          </div>
         </div>
+        <div class="text-right">
+        	<%= link_to 'ADVANCED SEARCH', advance_search_homes_path, remote: true  %>
+        </div>
+      <% end %>
     </div>
+  </div>
 </div>
