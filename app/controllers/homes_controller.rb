@@ -30,7 +30,7 @@ class HomesController < ApplicationController
     if ['wtbooks'].include? @publisher.theme_name
       @institute_id = InstitutionAccount.find_by_id(session[:institution_account_id])
       @institute_name =  InstitutionAccount.where(id: session[:institution_account_id]).last.institution_name rescue nil
-      @institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations).paginate(:page => params[:page], :per_page => 1)
+      @institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations).paginate(:page => params[:page], :per_page => 50)
     end
   end
 
