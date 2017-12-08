@@ -1,78 +1,78 @@
-      <div class="col-sm-4 col-md-3 ">
-        <div class="sidebar">
-          <!--institutionBox-->
-          <% if ip_logged_in? %>
-            <!--institutionBoxEnd-->
-            <div class="institutionBox">
-              <h1>You are logged in from:</h1>
-              <%= @institute_name %>
-            <strong>
-            <%= link_to "view subscribed content", homes_subscribes_books_path(institution_id: @institute_id) %>
-            </strong>
+<div class="col-sm-4 col-md-3 ">
+      <div class="sidebar">
+        <!--institutionBox-->
+        
+          <!--institutionBoxEnd-->
+      <% if @institute_name.present? %>
+        <div class="institutionBox">
+          <h1>You are logged in from:</h1>
+          <%= @institute_name %>
+          <strong>
+          <%= link_to "view subscribed content", homes_subscribes_books_path(institution_id: @institute_id) %>
+          </strong>
+          </div>
+        <% end %>
+
+        <h1 class="sectionHeading ">BROWSE BY</h1>
+        <!--accordion-->
+        <div class="panel-group " id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  LCC
+                  <span class="fa fa-angle-down pull-right"></span>
+                </a>
+              </h4>
             </div>
-          <% end %>
-          <h1 class="sectionHeading ">BROWSE BY</h1>
-          <!--accordion-->
-          <div class="panel-group " id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingOne">
-                <h4 class="panel-title">
-                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    LCC
-                    <span class="fa fa-angle-down pull-right"></span>
-                  </a>
-                </h4>
-              </div>
-              <% unless @publisher.subject_groups.blank? %>
-                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                  <div class="panel-body">
-                    <ul class="sidebar_sub">
-                      <%@publisher.subject_groups.each do |subject_group| %>
-                        <li>
-                          <%= link_to subject_group.subject_group_name ,books_by_category_homes_path(:subject_group_id => subject_group.id) %>
-                        </li>
-                      <% end %>
-                                     
-                    <li><a href="/BookStore/categories?classification=LCC">&nbsp;
-                     <i class="pull-right"> More&nbsp; <i class="fa fa-angle-right"></i></i></a></li>
-                    </ul>         
-                  </div>
+            <% unless @publisher.subjects.blank? %>
+              <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                  <ul class="sidebar_sub">
+                    <% @publisher.subjects.where(subject_classification: "LCC").each do |subject| %>
+                      <li><%=link_to subject.subject_name ,books_by_subject_homes_path(:subject => subject.id) %>
+                      </li>
+                    <% end %>
+                                   
+                  <li><a href="/BookStore/categories?classification=LCC">&nbsp;
+                   <i class="pull-right"> More&nbsp; <i class="fa fa-angle-right"></i></i></a></li>
+                  </ul>
                 </div>
-              <% end %>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingTwo">
-                <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    DDC
-                    <span class="fa fa-angle-down pull-right"></span>
-                  </a>
-                </h4>
               </div>
-              <% unless @publisher.subject_groups.blank? %>
-                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                  <div class="panel-body">
-                    <ul class="sidebar_sub">
-                      <%@publisher.subject_groups.each do |subject_group| %>
-                        <li>
-                          <%= link_to subject_group.subject_group_name ,books_by_category_homes_path(:subject_group_id => subject_group.id) %>
-                        </li>
-                      <% end%>
-                    <li><a href="/BookStore/categories?classification=DDC">&nbsp;
-                     <i class="pull-right"> More&nbsp; <i class="fa fa-angle-right"></i></i></a></li>
-                    </ul>                
-                  </div>
+            <% end %>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  DDC
+                  <span class="fa fa-angle-down pull-right"></span>
+                </a>
+              </h4>
+            </div>
+            <% unless @publisher.subjects.blank? %>
+              <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                  <ul class="sidebar_sub">
+                    <% @publisher.subjects.where(subject_classification: "DDC").each do |subject| %>
+                      <li><%=link_to subject.subject_name ,books_by_subject_homes_path(:subject => subject.id) %>
+                      </li>
+                    <% end %>
+                  <li><a href="/BookStore/categories?classification=DDC">&nbsp;
+                   <i class="pull-right"> More&nbsp; <i class="fa fa-angle-right"></i></i></a></li>
+                  </ul>                
                 </div>
-              <% end %>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <%= link_to "AUTHOR",get_author_homes_path(:letter => 'a', institution_id: session[:institution_account_id]) %> 
-                </h4>
               </div>
+            <% end %>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <%= link_to "AUTHOR",get_author_homes_path(:letter => 'a') %> 
+              </h4>
             </div>
           </div>
-           <!--accordionend--> 
         </div>
+         <!--accordionend--> 
       </div>
+    </div>

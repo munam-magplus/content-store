@@ -21,7 +21,7 @@
               <b><%= truncate(f.books_contributor.first_name+" "+f.books_contributor.last_name, length: 14)%></b> </div>
             <div class="item_btn_box">
               <ul>
-                <li><a href="#"> Read More</a></li>
+                <li><%= link_to "Read More", books_description_homes_path(:book_id => f.id) %></li>
               </ul>
             </div>
           </div>

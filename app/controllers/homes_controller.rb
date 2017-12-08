@@ -15,7 +15,7 @@ class HomesController < ApplicationController
           @institute_name = InstitutionAccount.find_by_id(params[:id]).institution_name rescue nil
           @institute_id = InstitutionAccount.find_by_id(params[:id]) rescue nil
           @institute_books = InstitutionAccount.find_by_id(params[:id]).subscriptions.all.map(&:books_primary_content_informations) rescue nil 
-          @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10) rescue nil 
+          @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10) rescue nil  
         else
           @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 18) rescue nil
         end
@@ -44,9 +44,6 @@ class HomesController < ApplicationController
     if ['wtbooks'].include? @publisher.theme_name
       @institution_profile = InstitutionAccount.find_by_id(session[:institution_account_id]) 
       @institute_name =  InstitutionAccount.where(id: session[:institution_account_id]).last.institution_name  rescue nil
-      #@institute_id = InstitutionAccount.find_by_id(session[:institution_account_id])
-      #@institute_name =  InstitutionAccount.where(id: session[:institution_account_id]).last.institution_name rescue nil
-      #@institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations).paginate(:page => params[:page], :per_page => 10) rescue nil
     end
   end
 
