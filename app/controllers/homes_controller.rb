@@ -78,17 +78,30 @@ class HomesController < ApplicationController
   end
 
     def get_author
-      @institute_name = InstitutionAccount.find_by_id(params[:institution_id]).institution_name rescue nil
-      @books = @publisher.books_primary_content_informations.joins(:books_contributor).where("substr(first_name,1,1) IN (?)",params[:letter]).order('first_name ASC')
-      authors = []
-      @letter = params[:letter]
-      @books.each do |book|
+      if ip_logged_in?
+        @institute_name = InstitutionAccount.find_by_id(id: session[:institution_account_id]).institution_name rescue nil
+        @books = @publisher.books_primary_content_informations.joins(:books_contributor).where("substr(first_name,1,1) IN (?)",params[:letter]).order('first_name ASC')
+       authors = []
+        @letter = params[:letter]
+        @books.each do |book|
         if !authors.include?((book.books_contributor.first_name.presence || "") + " " + (book.books_contributor.last_name.presence || ""))
           authors << (book.books_contributor.first_name.presence || "") + " " + (book.books_contributor.last_name.presence || "")
        end
         @authors = authors
       end
         render :template => "shared/#{@publisher.theme_name}/get_author"
+      else 
+        @books = @publisher.books_primary_content_informations.joins(:books_contributor).where("substr(first_name,1,1) IN (?)",params[:letter]).order('first_name ASC')
+       authors = []
+        @letter = params[:letter]
+        @books.each do |book|
+        if !authors.include?((book.books_contributor.first_name.presence || "") + " " + (book.books_contributor.last_name.presence || ""))
+          authors << (book.books_contributor.first_name.presence || "") + " " + (book.books_contributor.last_name.presence || "")
+       end
+        @authors = authors
+      end
+        render :template => "shared/#{@publisher.theme_name}/get_author"
+      end
     end  
   
   def books_by_title

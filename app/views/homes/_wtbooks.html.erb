@@ -54,8 +54,8 @@
               <li><a href="#">My Saved Searches</a></li>
             </ul>
           </li>
-          <li><%= link_to "About us", about_homes_path%></li>
-          <li><%= link_to "Contact us", contact_homes_path %></li>
+          <li><%= link_to "About us", about_homes_path(id: session[:institution_account_id])%></li>
+          <li><%= link_to "Contact us", contact_homes_path(id: session[:institution_account_id]) %></li>
           <li><%= link_to "Help", "http://ebooks.wtbooks.com/static/templates/template1/wtbooks/help/en/index.htm", target: "_blank" %></li>
           <li class="searchmenu">
             <%= form_tag(search_homes_path, :method => "get", class: "navbar-form",:remote => true) do %>
