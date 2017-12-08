@@ -18,7 +18,7 @@
                   <ul class="abc nomargin">
                     <% ('A'..'Z').each do |letter| %> 
                       <li>
-                        <%= link_to letter, get_author_homes_path(:letter=>letter, id: params[:institution_id])%>
+                        <%= link_to letter, get_author_homes_path(:letter=>letter, institution_id: params[:institution_id])%>
                       </li>
                     <%end%>
                   </ul>
