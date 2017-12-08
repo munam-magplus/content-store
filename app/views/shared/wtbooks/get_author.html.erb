@@ -1,6 +1,50 @@
 <%= render :partial => "#{@publisher.theme_name}"%> 
-
-<div class="container-fluid">
+<% if ip_logged_in? %>
+    <div class="container-fluid">
+      <div class="row">
+        <%= render :partial => "wtbooks_subject_sidebar"%>
+        <div id='pub_book'>  
+        <div class="col-sm-8 col-md-9">
+          <ul class="breadcrumb breadcrumb2 print">
+            <%= link_to "Home", homes_path%> &gt; Authors
+          </ul>
+          <div class="border_wrapper padding10px">
+            <div class="">
+              <h1 class="text_uppercase border_bottom heading-main text-uppercase "> AUTHOR(S):</h1>
+            </div>       
+            <div class="text_uppercase  border_bottom padding_bottom12px">
+              <div class="col-sm-12 no-padd">
+                <div class="ln-letters">
+                  <ul class="abc nomargin">
+                    <% ('A'..'Z').each do |letter| %> 
+                      <li>
+                        <%= link_to letter, get_author_homes_path(:letter=>letter, id: params[:institution_id])%>
+                      </li>
+                    <%end%>
+                  </ul>
+                  <div class="clearfix ln-last"></div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <%if @authors.present?%>
+              <%@authors.each do |authname| %>
+                <div class="col-md-12 no-padd">
+                  <ul id="demoOne" class="description margin_left5px">
+                    <li class="ln-K ln-k"><%= link_to truncate(authname, length: 14), books_by_author_homes_path(authname, institution_id: params[:institution_id]) %>
+                    </li>
+                  </ul>
+                </div>
+              <%end%> 
+            <%end%>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <%= render :partial => "homes/publisher_footer"%>
+<% else %>
+  <div class="container-fluid">
   <div class="row">
     <%= render :partial => "wtbooks_subject_sidebar"%>
     <div id='pub_book'>  
@@ -43,3 +87,4 @@
   </div>
 </div>
 <%= render :partial => "homes/publisher_footer"%>
+<% end %>

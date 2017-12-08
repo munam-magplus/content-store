@@ -15,9 +15,9 @@ class HomesController < ApplicationController
           @institute_name = InstitutionAccount.find_by_id(params[:id]).institution_name rescue nil
           @institute_id = InstitutionAccount.find_by_id(params[:id]) rescue nil
           @institute_books = InstitutionAccount.find_by_id(params[:id]).subscriptions.all.map(&:books_primary_content_informations) rescue nil 
-          @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 4) rescue nil 
+          @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10) rescue nil 
         else
-          @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10) rescue nil
+          @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 18) rescue nil
         end
       end
     rescue => e # catches StandardError (don't use rescue Esception => e)
@@ -26,25 +26,36 @@ class HomesController < ApplicationController
   end
 
   def subscribes_books
+    #session[:institution_account_id]
     if ['wtbooks'].include? @publisher.theme_name
-      @institute_id = InstitutionAccount.find_by_id(params[:institution_id])
-      @institute_name =  InstitutionAccount.where(id: params[:institution_id]).last.institution_name rescue nil
-      @institute_books = InstitutionAccount.where(id: params[:institution_id]).last.subscriptions.all.map(&:books_primary_content_informations).paginate(:page => params[:page], :per_page => 1) rescue nil
-   
-
-
-
-       #@ratings = OpinionRating.agreed.for(params[:id]).includes(:profile)
-       #@profiles = @ratings.collect(&:profile)
-       #@institute_books = .where(id: params[:institution_id]).last.subscriptions.all.map(&:books_primary_content_informations)
-
-      #@inst_books =
-      #@books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 18)
+      @institute_id = InstitutionAccount.find_by_id(session[:institution_account_id])
+      @institute_name =  InstitutionAccount.where(id: session[:institution_account_id]).last.institution_name rescue nil
+      @institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations).paginate(:page => params[:page], :per_page => 10) rescue nil
     end
   end
 
   def contact
+    @institute_name = InstitutionAccount.find_by_id(params[:id]).institution_name rescue nil
     render :template => "shared/#{@publisher.theme_name}/contact"
+  end
+
+
+  def institution_edit
+    if ['wtbooks'].include? @publisher.theme_name
+      @institution_profile = InstitutionAccount.find_by_id(session[:institution_account_id]) 
+      @institute_name =  InstitutionAccount.where(id: session[:institution_account_id]).last.institution_name  rescue nil
+      #@institute_id = InstitutionAccount.find_by_id(session[:institution_account_id])
+      #@institute_name =  InstitutionAccount.where(id: session[:institution_account_id]).last.institution_name rescue nil
+      #@institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations).paginate(:page => params[:page], :per_page => 10) rescue nil
+    end
+  end
+
+  def update
+    @institution = InstitutionAccount.where(id: session[:institution_account_id]).last
+    @institute_name =  InstitutionAccount.where(id: session[:institution_account_id]).last.institution_name 
+    if @institution.update(institution_params_values)  
+      redirect_to :back
+    end
   end
 
   def send_mail
@@ -53,25 +64,35 @@ class HomesController < ApplicationController
   end
   
   def books_by_author
-    @books = @publisher.books_primary_content_informations.joins(:books_contributor).where('first_name = ? AND last_name = ?',"#{params[:format].split()[0]}","#{params[:format].split()[1]}").paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
-    ids =[]
-    get_book_ids(@books, ids)
-    @ids = ids
-    render :template => "shared/#{@publisher.theme_name}/books_by_author"
+    if ip_logged_in?
+      @institute_name =  InstitutionAccount.where(id: session[:institution_account_id]).last.institution_name  rescue nil
+      @books = @publisher.books_primary_content_informations.joins(:books_contributor).where('first_name = ? AND last_name = ?',"#{params[:format].split()[0]}","#{params[:format].split()[1]}").paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
+      ids =[]
+      get_book_ids(@books, ids)
+      @ids = ids
+      render :template => "shared/#{@publisher.theme_name}/books_by_author"
+    else
+      @books = @publisher.books_primary_content_informations.joins(:books_contributor).where('first_name = ? AND last_name = ?',"#{params[:format].split()[0]}","#{params[:format].split()[1]}").paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
+      ids =[]
+      get_book_ids(@books, ids)
+      @ids = ids
+      render :template => "shared/#{@publisher.theme_name}/books_by_author"
+    end
   end
 
-  def get_author
-    @books = @publisher.books_primary_content_informations.joins(:books_contributor).where("substr(first_name,1,1) IN (?)",params[:letter]).order('first_name ASC')
-    authors = []
-    @letter = params[:letter]
-    @books.each do |book|
-      if !authors.include?((book.books_contributor.first_name.presence || "") + " " + (book.books_contributor.last_name.presence || ""))
-        authors << (book.books_contributor.first_name.presence || "") + " " + (book.books_contributor.last_name.presence || "")
+    def get_author
+      @institute_name = InstitutionAccount.find_by_id(params[:institution_id]).institution_name rescue nil
+      @books = @publisher.books_primary_content_informations.joins(:books_contributor).where("substr(first_name,1,1) IN (?)",params[:letter]).order('first_name ASC')
+      authors = []
+      @letter = params[:letter]
+      @books.each do |book|
+        if !authors.include?((book.books_contributor.first_name.presence || "") + " " + (book.books_contributor.last_name.presence || ""))
+          authors << (book.books_contributor.first_name.presence || "") + " " + (book.books_contributor.last_name.presence || "")
+       end
+        @authors = authors
       end
-      @authors = authors
-    end
-    render :template => "shared/#{@publisher.theme_name}/get_author"
-  end  
+        render :template => "shared/#{@publisher.theme_name}/get_author"
+    end  
   
   def books_by_title
     if !params[:letter].present?
@@ -83,9 +104,7 @@ class HomesController < ApplicationController
       @books = @publisher.books_primary_content_informations.where("substr(book_title,1,1) IN (?)",params[:letter]).paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
       @letter = params[:letter]
     end
-
     render :template => "shared/#{@publisher.theme_name}/books_by_title"
-
   end
   
   def refine_search_by_subject
@@ -121,6 +140,7 @@ class HomesController < ApplicationController
   end
 
   def about
+    @institute_name = InstitutionAccount.find_by_id(params[:id]).institution_name rescue nil
     @publisher_about = @publisher.about
     render :template => "shared/#{@publisher.theme_name}/about" 
   end
@@ -149,9 +169,10 @@ class HomesController < ApplicationController
   end
 
   def books_description  
-    if params[:institution_id].present?
+    if ip_logged_in?
       if ['wtbooks'].include? @publisher.theme_name
-        subscription = InstitutionAccount.find(params[:institution_id]).subscriptions.all.map(&:subscription_books) 
+        @institute_name = InstitutionAccount.find_by_id(session[:institution_account_id]).institution_name
+        subscription = InstitutionAccount.find(session[:institution_account_id]).subscriptions.all.map(&:subscription_books) 
         subscription.reject(&:empty?).each do |sbooks| 
           @subscriptionn = sbooks.where(books_primary_content_information_id: params[:book_id])
         end
@@ -282,22 +303,22 @@ class HomesController < ApplicationController
     if request.host == "wtbooks.mpstechnologies.com"
       pub_domain = request.host
       unless pub_domain.start_with?('www')
-          pub_domain = request.host 
+        pub_domain = request.host 
       end
-     begin
-      @gethost = pub_domain.split('.')[0]
-      @publisher = Publisher.find_by_domain_name(@gethost)
+      begin
+        @gethost = pub_domain.split('.')[0]
+        @publisher = Publisher.find_by_domain_name(@gethost)
       unless @publisher.blank?
-     unless @publisher.theme_name.blank?
-     @css_root = "#{@publisher.theme_name}/application"
-    else
-    @css_root = "default_theme/application"
-    end  
+        unless @publisher.theme_name.blank?
+          @css_root = "#{@publisher.theme_name}/application"
+        else
+        @css_root = "default_theme/application"
+      end  
     end
     rescue ActiveRecord::RecordNotFound
     end  
     else
-    redirect_to users_sign_in_path 
+      redirect_to users_sign_in_path 
     end
     # end    
   end
@@ -313,10 +334,18 @@ class HomesController < ApplicationController
         high = (ip_add.high_ip).to_i
         request_ip = IPAddr.new(request.remote_ip).to_i
         if (low..high) === request_ip
-          redirect_to root_path(id: ip_add.institution_account_id)  unless request.fullpath == root_path(id: ip_add.institution_account_id)
+          end_user_ip = IpAddress.find_by(low_ip: request_ip)
+          if end_user_ip
+            log_in_ip end_user_ip
+          end
         end
       end
     end
+  end
+
+  def institution_params_values
+    params.require(:institution_account).permit(:publisher_id,:institution_id, :institution_name)
+    
   end
 
   def end_user_params

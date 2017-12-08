@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   root :to => "homes#index"
   get 'homes/search'
   get 'homes/subscribes_books'
+  get 'homes/institution_edit'
+  get 'homes/institution_profile_wta'
 
   resources :homes do
     collection do
@@ -81,7 +83,6 @@ Rails.application.routes.draw do
   end 
  
   resources :contacts
-
   resources :subjects do
     collection do
       get 'search'
@@ -92,10 +93,8 @@ Rails.application.routes.draw do
 
   resources :reports, :printhouse_setup, 
              only: [:index]
-
   resources :books_seo_config,:books_content_access_rules,
             :books_content_pricing, :books_contributors 
-
   resources :institution_accounts do
     collection do 
       get 'search'
