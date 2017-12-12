@@ -46,7 +46,9 @@
                   <div class=" effects search-result col-sm-2"> <%= link_to image_tag("http://www.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg",class: "img-responsive"), books_description_homes_path(:book_id => f.id), class: "cover2" %></div>
                   <div class="col-sm-10">
                     <h2><%= link_to f.book_title, books_description_homes_path(:book_id => f.id) %></h3>
-              <h3>By :<span class="dark_yellow"><%= (f.books_contributor.first_name.presence || "")+" "+(f.books_contributor.last_name.presence || "") %></h2>
+              <h3>By :<span class="dark_yellow"><% f.books_contributors.uniq.each do |book_contributor| %>
+                   <%= book_contributor.first_name.presence || ""%>&nbsp<%= book_contributor.last_name.presence || ""%>
+                  <%end%></h2>
                     </h3>
                     <p><strong> Description
                       :</strong> <%= truncate(f.book_blurb.presence || "", length: 182) %>

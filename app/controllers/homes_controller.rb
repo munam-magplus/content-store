@@ -9,14 +9,14 @@ class HomesController < ApplicationController
     begin
       unless @publisher.books_primary_content_informations.blank? 
         if ['red_content','light_blue_content','fosteracademics'].include? @publisher.theme_name
-          @books = @publisher.books_primary_content_informations.joins(:books_contributor).where('content_classification = ? OR content_classification = ?', 'Featured Books', 'New Releases')
+          @books = @publisher.books_primary_content_informations.joins(:books_contributors).where('content_classification = ? OR content_classification = ?', 'Featured Books', 'New Releases')
         elsif ['wtbooks'].include? @publisher.theme_name
           @institute_name = InstitutionAccount.find_by_id(params[:id]).institution_name rescue nil
           @institute_id = InstitutionAccount.find_by_id(params[:id]) rescue nil
           @institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations) rescue nil 
-          @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 18) rescue nil  
+          @books = @publisher.books_primary_content_informations.joins(:books_contributors).paginate(:page => params[:page], :per_page => 18) rescue nil  
         else
-          @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10) rescue nil
+          @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10) rescue nil
         end
       end
     rescue => e # catches StandardError (don't use rescue Esception => e)
@@ -29,8 +29,7 @@ class HomesController < ApplicationController
     if ['wtbooks'].include? @publisher.theme_name
       @institute_id = InstitutionAccount.find_by_id(session[:institution_account_id])
       @institute_name =  InstitutionAccount.where(id: session[:institution_account_id]).last.institution_name rescue nil
-      @institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations).reject(&:empty?).paginate(:page => params[:page], :per_page => 10)
-    end
+      @institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations).last.paginate(:page => params[:page], :per_page => 10)    end
   end
 
   def contact
@@ -63,7 +62,7 @@ class HomesController < ApplicationController
     if ip_logged_in?
       @institute_name =  InstitutionAccount.where(id: session[:institution_account_id]).last.institution_name  rescue nil
     end
-      @books = @publisher.books_primary_content_informations.joins(:books_contributor).where('first_name = ? AND last_name = ?',"#{params[:format].split()[0]}","#{params[:format].split()[1]}").paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
+      @books = @publisher.books_primary_content_informations.joins(:books_contributors).where('first_name = ? AND last_name = ?',"#{params[:format].split()[0]}","#{params[:format].split()[1]}").paginate(:page => params[:page], :per_page => 10).order('book_title ASC')
       ids =[]
       get_book_ids(@books, ids)
       @ids = ids
@@ -74,13 +73,13 @@ class HomesController < ApplicationController
       if ip_logged_in?
         @institute_name = InstitutionAccount.find_by_id(params[:institution_id]).institution_name rescue nil
       end
-        @books = @publisher.books_primary_content_informations.joins(:books_contributor).where("substr(first_name,1,1) IN (?)",params[:letter]).order('first_name ASC')
-       authors = []
-        @letter = params[:letter]
-        @books.each do |book|
-        if !authors.include?((book.books_contributor.first_name.presence || "") + " " + (book.books_contributor.last_name.presence || ""))
-          authors << (book.books_contributor.first_name.presence || "") + " " + (book.books_contributor.last_name.presence || "")
-       end
+      auth = @publisher.books_primary_content_informations.joins(:books_contributors).where("substr(first_name,1,1) IN (?)",params[:letter]).order('first_name ASC').pluck(:first_name,:last_name)
+      authors = []
+      @letter = params[:letter]
+      auth.each do |f|
+        if !authors.include?((f[0].presence || "") + " " + (f[1].presence || ""))
+          authors << (f[0].presence || "") + " " + (f[1].presence || "")   
+        end
         @authors = authors
       end
         render :template => "shared/#{@publisher.theme_name}/get_author"
@@ -103,7 +102,7 @@ class HomesController < ApplicationController
     @subject = Subject.find(params[:subject_id])
     subjectbook = @subject.subject_groups
     subjectbook.each do |subbook| 
-      @books = subbook.books_primary_content_informations.joins(:books_contributor).where('book_title LIKE ? OR first_name LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 10)
+      @books = subbook.books_primary_content_informations.joins(:books_contributors).where('book_title LIKE ? OR first_name LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 10)
     end
     respond_to do |format|
       format.js
@@ -112,7 +111,7 @@ class HomesController < ApplicationController
 
   def refine_search
     @subject_group = SubjectGroup.find(params[:subject_group_id])
-    @books = @subject_group.books_primary_content_informations.joins(:books_contributor).where('book_title LIKE ? OR first_name LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 10)
+    @books = @subject_group.books_primary_content_informations.joins(:books_contributors).where('book_title LIKE ? OR first_name LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
       format.js
     end 
@@ -125,7 +124,7 @@ class HomesController < ApplicationController
   def get_search_results
     sort_column = params[:sort_by]
     sort_order = params[:order]
-    @books = @publisher.books_primary_content_informations.joins(:subject_groups,:books_contributor).filter(params.slice(:book_title , :first_name, :isbn, :subject_group_name, :publication_date_from, :publication_date_to)).order(sort_column + " " + sort_order).paginate(:page => params[:page], :per_page => params[:per_page])
+     @books = @publisher.books_primary_content_informations.joins(:subject_groups,:books_contributors).filter(params.slice(:book_title , :first_name, :isbn, :subject_group_name, :publication_date_from, :publication_date_to)).order(sort_column + " " + sort_order).paginate(:page => params[:page], :per_page => params[:per_page])
     books_ids =[]
     get_book_ids(@books,books_ids)
     @ids = books_ids

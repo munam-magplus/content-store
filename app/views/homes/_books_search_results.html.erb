@@ -44,7 +44,8 @@
                 <h2>
                  <%= link_to f.book_title.presence || "", books_description_homes_path(:book_id => f.id) %>
                 </h2>
-                <h3>By :<span class="dark_yellow"><%= (f.books_contributor.first_name.presence || "")+" "+(f.books_contributor.last_name.presence || "") %></span>
+                <h3>By :<span class="dark_yellow"><% f.books_contributors.uniq.each do |book_contributor| %>
+                    <%= book_contributor.first_name.presence || ""%>&nbsp<%= book_contributor.last_name.presence || ""%><%end%></span>
                 </h3>
                 <p><strong>
                   Description
