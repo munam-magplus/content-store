@@ -1,0 +1,101 @@
+<%= render :partial => "#{@publisher.theme_name}"%> 
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render :partial => "wtbooks_subject_sidebar"%>
+    <div id='pub_book'>  
+    <div class="col-sm-8 col-md-9">
+      <ul class="breadcrumb breadcrumb2 print">
+        <%= link_to "Home", homes_path%> &gt; Browse by Categories 
+      </ul>
+      <div class="border_wrapper padding10px">
+        <div class="row ">
+          <div class="col-sm-4 pb-10 ">Search Results</div>
+          <div class="text-right col-sm-8">
+            <%= form_tag  refine_publishers_book_homes_path, :method => 'get',:id=>"Author Name/Book Title",:class=>"form-inline", :remote => true do %>
+              <div class="form-group">
+                <%= text_field_tag :book_title,"", :class => "form-control", :placeholder => "Refine Search" %>
+                <%= hidden_field_tag "book_ids", @ids  %>
+              </div>
+              <%= button_tag fa_icon("search", text: "Search"), :class => "btn btn-inverse", type: :submit %>
+            <%end%>
+          </div>
+          <div class="col-md-12 col-xs-12 mt-20">
+            <% if @books.count >= 0 %>
+              <div class="bg-gray">
+                <div class="col-sm-4 no-pad" style="padding-top: 6px;">
+                  <%= page_entries_info @books %>
+                </div>
+                <div class="col-sm-8 text-right no-pad">
+                  <nav aria-label="Page navigation">
+                    <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+                  </nav>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            <% end %>
+          </div>
+          <div class="clearfix"></div>
+          <% if @books.present? %>
+            <% @books.flatten.each do |f| %>
+              <div class="col-md-12  no-pad mt-20">
+                <div class="col-sm-2 col-xs-12 ">
+                  <div class="effects search-result ">
+                    <%= link_to image_tag("http://ebooks.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg",class: "img-responsive"), books_description_homes_path(:book_id => f.id), class: "cover2" %>
+                  </div>
+                </div>
+                <div class="col-md-9">
+                  <h2 title="<%= f.book_title.presence || "" %>">
+                    <%= link_to f.book_title.presence || "", books_description_homes_path(:book_id => f.id) %>
+                  </h2>
+                  <h3 title="<%= (f.books_contributor.first_name.presence || "")+" "+(f.books_contributor.last_name.presence || "") %>">By :
+                    <span class="dark_yellow">
+                      <%= (f.books_contributor.first_name.presence || "")+" "+(f.books_contributor.last_name.presence || "") %>
+                    </span>
+                  </h3>
+                  <p><strong> Description :</strong>
+                    <%= truncate(f.book_blurb.presence || "", length: 182) %>
+                    <%= link_to 'more', '', :class => "read-more-#{f.id}" %>
+                    <script>
+                      $('.read-more-<%= f.id %>').on('click', function(e) {
+                        e.preventDefault()
+                      $(this).parent().html('<strong> Description:</strong> <%= f.book_blurb %>')
+                      })
+                    </script>
+                  </p>
+                  <p class="searchResultsLinks"><%= link_to "Book Info", books_description_homes_path(:book_id => f.id) %></p>
+                </div>
+              </div>
+              <div class="col-md-12 ">
+                <div class="border_bottom-list"> </div>
+              </div>
+            <% end %>
+          <%else%>
+            <div class="container">
+              <div class="col-md-12">
+                <h3> Record Not Found </h3>
+              </div>
+            </div>
+          <%end%>
+          <div class="col-md-12 col-xs-12 mt-20">
+            <% if @books.count >= 0 %>
+              <div class="bg-gray">
+                <div class="col-sm-4 no-pad" style="padding-top: 6px;">
+                  <%= page_entries_info @books %>
+                </div>
+                <div class="col-sm-8 text-right no-pad">
+                  <nav aria-label="Page navigation" style="clear:both; height: 30px;">
+                    <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+                  </nav>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<%= render :partial => "homes/wtbooks_footer"%>

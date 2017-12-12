@@ -183,11 +183,7 @@ class HomesController < ApplicationController
   end
 
   def books_by_subject
-    @subject = Subject.find(params[:subject])
-    subjectbook = @subject.subject_groups
-    subjectbook.each do |subbook| 
-      @books = subbook.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10)
-    end
+    @books = Subject.find(params[:subject]).subject_groups.all.map(&:books_primary_content_informations).paginate(:page => params[:page], :per_page => 10)
     render :template => "shared/#{@publisher.theme_name}/books_by_subject" 
   end
 
