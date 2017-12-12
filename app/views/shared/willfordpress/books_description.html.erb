@@ -38,8 +38,10 @@
                       <p><span class="book_atr col-xs-12 col-md-4"><strong>Price&nbsp;:&nbsp;</strong></span><span class="book_description col-xs-12 col-md-8 ">&nbsp;USD&nbsp;<%=number_with_precision(@book_information.book_price, :precision => 2) %></span></p>
                       <p><span class="book_atr col-xs-12 col-md-4"><strong>Format&nbsp;:</strong></span><span class="col-xs-12 book_description col-md-8">&nbsp; Hardback</span></p>
                       <p><span class="book_atr col-xs-12 col-md-4"><strong>Description&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-12 margin_bottom10px"><%= @book_information.book_blurb.presence || "" %></span></p>
-                      <p><span class="col-xs-12 book_atr col-md-4"><strong>Author/Editor&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8">&nbsp; <%= @book_information.books_contributor.first_name.presence || "" %>&nbsp <%= @book_information.books_contributor.last_name.presence || "" %></span><span class="col-xs-12 book_description col-md-12">
-                        <%= @book_information.books_contributor.description.presence || "" %>
+                      <p><span class="col-xs-12 book_atr col-md-4"><strong>Author/Editor&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8">&nbsp; <% @book_information.books_contributors.uniq.each do |book_contributor| %>
+                          <%= book_contributor.first_name.presence || ""%>&nbsp<%= book_contributor.last_name.presence || ""%>
+                        <%end%>
+                        </span><span class="col-xs-12 book_description col-md-12"> <%= @book_information.books_contributors.first.description.presence || "" %> </span></p>
                         </span></p>
                     </div>
                   </div>

@@ -14,7 +14,9 @@
               <div class="details">
                 <h3 class="title"><%= link_to truncate(f.book_title, length: 22), books_description_homes_path(:book_id => f.id) %>
                 </h3>
-                <h4 class="author"><%= f.books_contributor.first_name %>&nbsp<%= f.books_contributor.last_name  %> </h4>
+                <h4 class="author"><% f.books_contributors.each do |book_contributor| %>
+                  <%= book_contributor.first_name.presence || ""%>&nbsp<%= book_contributor.last_name.presence || ""%>
+                <%end%></h4>
               </div>
             </div>
           </div>

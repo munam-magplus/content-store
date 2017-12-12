@@ -72,7 +72,9 @@
                             <div class="product_tittle">
                             <%= link_to f.book_title.presence || "", books_description_homes_path(:book_id => f.id) %>
                             </div>
-                            <h4><strong>By :</strong> <%= (f.books_contributor.first_name.presence || "")+" "+(f.books_contributor.last_name.presence || "") %></h4>
+                            <h4><strong>By :</strong> <% f.books_contributors.each do |book_contributor| %>
+                              <%= book_contributor.first_name.presence || ""%>&nbsp<%= book_contributor.last_name.presence || ""%>
+                            <%end%></h4>
                             <p><strong>Description :</strong>
                                <%= truncate(f.book_blurb.presence || "", length: 182) %>
                               <%= link_to 'more', '', :class => "read-more-#{f.id}" %>

@@ -54,8 +54,10 @@
               <h4><strong>Description :</strong> <br>
                 <%= @book_information.book_blurb.presence || "" %>
               </h4>
-              <h4><strong>Author/Editor :</strong><%= @book_information.books_contributor.first_name.presence || "" %>&nbsp <%= @book_information.books_contributor.last_name.presence || "" %> <br>
-              <%= @book_information.books_contributor.description.presence || "" %></h4>
+              <h4><strong>Author/Editor :</strong><% @book_information.books_contributors.uniq.each do |book_contributor| %>
+                  <%= book_contributor.first_name.presence || ""%>&nbsp<%= book_contributor.last_name.presence || ""%>
+                <%end%> <br>
+              <%= @book_information.books_contributors.first.description.presence || "" %></h4>
             </div>
           </div>
         </div>

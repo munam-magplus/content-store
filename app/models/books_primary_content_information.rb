@@ -1,7 +1,7 @@
 class BooksPrimaryContentInformation < ApplicationRecord
 	include Filterable
 	belongs_to :publisher
-	has_one :books_contributor, dependent: :destroy
+	has_many :books_contributors, dependent: :destroy
 	has_one :books_content_pricing
 	has_one :books_content_access_rule
 	has_many :subject_group_books
@@ -18,6 +18,6 @@ class BooksPrimaryContentInformation < ApplicationRecord
   scope :book_title, -> (book_title) { where("book_title LIKE ?", "%#{book_title}%") }
 
   def self.get_books(value)
-		return BooksPrimaryContentInformation.joins(:books_contributor).where('book_title LIKE ? OR isbn LIKE ? OR (first_name = ? AND last_name = ?)',"%#{value}%", "%#{value}%","#{value.split()[0]}","#{value.split()[1]}")
+ 		return BooksPrimaryContentInformation.joins(:books_contributors).where('book_title LIKE ? OR isbn LIKE ? OR (first_name = ? AND last_name = ?)',"%#{value}%", "%#{value}%","#{value.split()[0]}","#{value.split()[1]}")
   end
 end

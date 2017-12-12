@@ -12,14 +12,14 @@
           <div class="col-sm-8 col-md-9">
             <h1 class="sectionHeading">Subscribed BOOKS</h1>
             <div class="row placeholders">
-                <% @institute_books.flatten.each do |f|%>
+                <% @institute_books.each do |f|%>
                   <div class="col-xs-6 col-sm-3  col-md-2 placeholder">
                   <%= link_to image_tag("http://ebooks.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg", class: "img-responsive center-block"), books_description_homes_path(:book_id => f.id, institution_id: params[:institution_id]) %>
                   <h4><%= link_to truncate(f.book_title, length: 25), books_description_homes_path(:book_id => f.id, institution_id: params[:institution_id]) %></h4>
                   <span class="text-muted">
-                    <% if f.books_contributor.present? %>
-                       <%= truncate((f.books_contributor.first_name.presence || "")+" "+(f.books_contributor.last_name.presence || ""), length: 14) %>
-                    <% end %>
+                    <% f.books_contributors.uniq.each do |book_contributor| %>
+                      <%= book_contributor.first_name.presence || ""%>&nbsp<%= book_contributor.last_name.presence || ""%>
+                    <%end%>
                   </span> 
                 </div>
               <% end %>
