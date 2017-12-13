@@ -1,6 +1,5 @@
 require 'ipaddr'
 require 'will_paginate/array'
-
 class HomesController < ApplicationController
   protect_from_forgery
   skip_before_action :verify_authenticity_token
@@ -161,6 +160,10 @@ class HomesController < ApplicationController
     end 
   end
 
+  def show
+    redirect_to homes_path
+  end
+
   def books_description  
     if ip_logged_in?
       if ['wtbooks'].include? @publisher.theme_name
@@ -187,6 +190,7 @@ class HomesController < ApplicationController
     if ip_logged_in?
      @institute_name = InstitutionAccount.find_by_id(session[:institution_account_id]).institution_name
     end
+    @subject = Subject.find(params[:subject])
     @books = Subject.find(params[:subject]).subject_groups.all.map(&:books_primary_content_informations).paginate(:page => params[:page], :per_page => 10)
     render :template => "shared/#{@publisher.theme_name}/books_by_subject" 
   end

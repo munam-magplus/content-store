@@ -41,15 +41,16 @@ Rails.application.routes.draw do
   get 'homes/institution_edit'
   get 'homes/institution_profile_wta'
 
+
   resources :homes do
     collection do
-      get 'permission_check_for_books'
-      get 'books_by_category'
-      get 'books_by_subject'
-      get 'about'
-      get 'terms_and_conditions'
-      get 'policy'
-      get 'books_description'
+      get  'permission_check_for_books'
+      get  'books_by_category'
+      get  'books_by_subject'
+      get  'about'
+      get  'terms_and_conditions'
+      get  'policy'
+      post 'books_description'
       get 'advance_search'
       get 'books_by_title'
       post 'send_mail'
