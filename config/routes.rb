@@ -50,6 +50,7 @@ Rails.application.routes.draw do
       get 'terms_and_conditions'
       get 'policy'
       get 'books_description'
+      get 'wt_categories'
       get 'advance_search'
       get 'books_by_title'
       post 'send_mail'

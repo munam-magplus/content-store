@@ -48,7 +48,7 @@
       </div>
         
       <%if @books.present? %>
-        <% @books.each do |f| %>
+        <% @books.flatten.each do |f| %>
           <div class="col-md-12 ">
             <div class="border_bottom-list"> </div>
           </div>
@@ -64,10 +64,11 @@
                  <%= link_to f.book_title, books_description_homes_path(:book_id => f.id) %>
                 </h2>
                 <h3 title="Frank West">
-                  By
-                  : <span class="dark_yellow"><% f.books_contributors.each do |book_contributor| %>
-                          <%= book_contributor.first_name.presence || ""%>&nbsp<%= book_contributor.last_name.presence || ""%>
-                        <%end%></span></h3>
+                  By:
+                  <span class="dark_yellow">
+                  <% f.books_contributors.each do |book_contributor| %>
+                    <%= book_contributor.first_name.presence || ""%>&nbsp<%= book_contributor.last_name.presence || ""%>
+                  <%end%></span></h3>
                 <p><strong>
                   Description
                   :</strong> 
