@@ -33,7 +33,7 @@
                       </li>
                     <% end %>
                                    
-                  <li class="pull-right"><%= link_to "More",wt_categories_homes_path(:subject =>"LLC") %>
+                  <li class="pull-right"><%#= link_to "More",wt_categories_homes_path(:subject =>"LLC") %>
                   <!-- <a href="/BookStore/categories?classification=LCC">&nbsp;
                    <i class="pull-right"> More&nbsp; <i class="fa fa-angle-right"></i></i></a> --></li>
                   </ul>
@@ -58,7 +58,7 @@
                       <li><%=link_to subject.subject_name ,books_by_subject_homes_path(:subject => subject.id, id: session[:institution_account_id])%>
                       </li>
                     <% end %>
-                  <li class="pull-right"><%= link_to "More",wt_categories_homes_path(:subject =>"DDC") %></li>
+                  <li class="pull-right"><%#= link_to "More",wt_categories_homes_path(:subject =>"DDC") %></li>
                   </ul>                
                 </div>
               </div>
