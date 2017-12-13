@@ -183,6 +183,9 @@ class HomesController < ApplicationController
 
   def books_by_subject
     @subject = Subject.find(params[:subject])
+    if ip_logged_in?
+     @institute_name = InstitutionAccount.find_by_id(session[:institution_account_id]).institution_name
+    end
     @books = Subject.find(params[:subject]).subject_groups.all.map(&:books_primary_content_informations).paginate(:page => params[:page], :per_page => 10)
     render :template => "shared/#{@publisher.theme_name}/books_by_subject" 
   end

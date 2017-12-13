@@ -29,7 +29,7 @@
                 <div class="panel-body">
                   <ul class="sidebar_sub">
                     <% @publisher.subjects.where(subject_classification: "LCC").each do |subject| %>
-                      <li><%=link_to subject.subject_name ,books_by_subject_homes_path(:subject => subject.id) %>
+                      <li><%=link_to subject.subject_name ,books_by_subject_homes_path(:subject => subject.id, id: session[:institution_account_id]) %>
                       </li>
                     <% end %>
                                    
