@@ -1,4 +1,3 @@
-require 'ipaddr'
 require 'will_paginate/array'
 class HomesController < ApplicationController
   protect_from_forgery
@@ -187,12 +186,19 @@ class HomesController < ApplicationController
   end
 
   def books_by_subject
+    @subject = Subject.find(params[:subject])
     if ip_logged_in?
      @institute_name = InstitutionAccount.find_by_id(session[:institution_account_id]).institution_name
     end
     @subject = Subject.find(params[:subject])
     @books = Subject.find(params[:subject]).subject_groups.all.map(&:books_primary_content_informations).paginate(:page => params[:page], :per_page => 10)
     render :template => "shared/#{@publisher.theme_name}/books_by_subject" 
+  end
+
+  def wt_categories
+    @type = params[:subject]
+    #@subjects = @publisher.subjects.where(subject_classification: params[:subject])
+    render :template => "shared/#{@publisher.theme_name}/wt_categories" 
   end
 
   def permission_check_for_books
@@ -202,11 +208,6 @@ class HomesController < ApplicationController
       redirect_to sign_in_homes_path
     end
   end
-
-  # def book_reader
-  #   @book_information = BooksPrimaryContentInformation.find(params[:book_id])
-  #   @isbn = @book_information.isbn
-  # end
 
   def get_book_ids(books,books_ids)
     books.each do|f|
