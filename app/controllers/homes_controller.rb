@@ -164,6 +164,9 @@ class HomesController < ApplicationController
   end
 
   def books_description  
+    if ip_logged_in?
+      @institute_name = InstitutionAccount.find_by_id(session[:institution_account_id]).institution_name
+    end
     @book_information = BooksPrimaryContentInformation.find(params[:book_id])
     @book_subject_group = @book_information.subject_groups.first
     render :template => "shared/#{@publisher.theme_name}/books_description"
