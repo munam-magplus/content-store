@@ -1,0 +1,2 @@
+class Isbnchapterdetail < ApplicationRecord
+end
