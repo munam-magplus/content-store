@@ -41,7 +41,6 @@ Rails.application.routes.draw do
   get 'homes/institution_edit'
   get 'homes/institution_profile_wta'
 
-
   resources :homes do
     collection do
       get  'permission_check_for_books'
@@ -50,7 +49,9 @@ Rails.application.routes.draw do
       get  'about'
       get  'terms_and_conditions'
       get  'policy'
-      post 'books_description'
+      post 'wt_books_description' 
+      get 'books_description'
+      get 'wt_categories'
       get 'advance_search'
       get 'books_by_title'
       post 'send_mail'
