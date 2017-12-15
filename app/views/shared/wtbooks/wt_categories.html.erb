@@ -1,0 +1,30 @@
+<%= render :partial => "#{@publisher.theme_name}"%> 
+<div class="container-fluid">
+  <div class="row">
+    <%= render :partial => "wtbooks_subject_sidebar"%>
+    <div id='pub_book'>  
+    <div class="col-sm-8 col-md-9">
+      <ul class="breadcrumb breadcrumb2 print">
+         <%= link_to "Home", homes_path%> &gt; Subjects
+      </ul>
+      <div class="border_wrapper padding10px">
+        <div class="mt-20" >
+          <div class="row">
+            <div class="col-md-12">
+              <ul class="nav nav-tabs noborder" data-tabs="tabs">
+                <li class="active "><a class="tabbg" href="#bookInfo" data-toggle="tab"> <%= "Browse by"+" "+ @type%></li>
+              </ul>
+              <div class="border_wrapper padding10px">
+                Please select your subject category of interest from the list below to see the sub-categories or titles available in this genre:
+                <div class="tab-content tab_border grayContainer">
+                    <div class="tab-pane active mt-20" id="bookInfo">
+                    <% @publisher.subjects.where(subject_classification: "LCC").each do |subject| %>
+                      <h2><%= link_to subject.subject_name ,books_by_subject_homes_path(:subject => subject.id) %> </h2>
+                      <% if subject.subject_groups .present? %>
+                        <% subject.subject_groups.each do |subject_group| %>   
+                          <h6><%= link_to subject_group.subject_group_name,books_by_category_homes_path(:subject_group_id => subject_group.id)%></h6>
+                      <%end%>
+                        <%end%>
+                      <%end%>
+                    </div>
+                </div>
