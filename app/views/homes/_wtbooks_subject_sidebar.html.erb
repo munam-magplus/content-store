@@ -2,7 +2,7 @@
       <div class="sidebar">
         <!--institutionBox-->
           <!--institutionBoxEnd-->
-      <% if @institute_name.present? %>
+      <% if ip_logged_in? %>
         <div class="institutionBox">
           <h1>You are logged in from:</h1>
           <%= @institute_name %>
@@ -10,7 +10,17 @@
           <%= link_to "view subscribed content", homes_subscribes_books_path(institution_id: @institute_id) %>
           </strong>
           </div>
+      <% else %>
+        <% if logged_in? %>
+          <div class="institutionBox">
+            <h1>You are logged in from:</h1>
+            <%= @institute_name %>
+            <strong>
+             <%= link_to "view subscribed content", homes_subscribes_books_path(institution_id: @institute_id) %>
+            </strong>
+          </div>
         <% end %>
+      <% end %>
         <h1 class="sectionHeading ">BROWSE BY</h1>
         <!--accordion-->
         <div class="panel-group " id="accordion" role="tablist" aria-multiselectable="true">
@@ -32,7 +42,7 @@
                       </li>
                     <% end %>
                                    
-                  <li class="pull-right"><%= link_to "More",wt_categories_homes_path(:subject =>"LLC") %>
+                  <li class="pull-right"><%= link_to "More",wt_categories_homes_path(:subject =>"LLC", id: session[:institution_account_id]) %>
                   <!-- <a href="/BookStore/categories?classification=LCC">&nbsp;
                    <i class="pull-right"> More&nbsp; <i class="fa fa-angle-right"></i></i></a> --></li>
                   </ul>

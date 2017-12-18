@@ -19,6 +19,29 @@ class EndUsersController < ApplicationController
 
   def index
   end
+
+  # def metadata_sheet
+  # end
+
+  # def import
+  #   #  In this method,we get the entire Excel file in params.
+  #   # in params[:file], we get the path of the excel file.
+  #   spreadsheet = open_spreadsheet(params[:file])
+  #   header = spreadsheet.row(1)
+  #   # we fetch first row elements( that act as column names of table) in header
+  #   (2..spreadsheet.last_row).each do |i|
+  #     row = Hash[[header, spreadsheet.row(i)].transpose]
+  #     # we get excel's row elements(that are attributes of table) in header
+  #     # and in spreadsheet.row(i) we get data for record
+  #     # here we transpose inorder to map each column and data for record insertion
+  #     @subscriptionbooks = EndUser.new
+  #     @subscriptionbooks.attributes = row.to_hash.slice(*row.to_hash.keys)
+  #     @subscriptionbooks.save!
+  #   end
+  #   redirect_to :back
+  # end
+
+  
   
   def search
     #Call filter method to get search results

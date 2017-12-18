@@ -1,7 +1,8 @@
 class EndUser < ApplicationRecord
 	include Filterable # Search Module
-
   attr_accessor :confirm_password # Note. You do not need this field in database, it's for 1-time use
+
+  has_many :institution_accounts
 
 	# Validations
 	validates_presence_of :email, :password, :first_name, 
