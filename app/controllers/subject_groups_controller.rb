@@ -51,7 +51,12 @@ class SubjectGroupsController < ApplicationController
       # here we transpose inorder to map each column and data for record insertion
       @subject = SubjectGroup.new
       @subject.attributes = row.to_hash.slice(*row.to_hash.keys)
-      @subject.save!
+      if @subject.id.present?
+       @subjects = SubjectGroup.find(@subject.id)
+       @subjects.update_attributes!(@subject.attributes)
+      else
+       @subject.save!
+      end
     end
     redirect_to :back
   end

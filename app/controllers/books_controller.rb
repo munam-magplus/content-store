@@ -29,7 +29,12 @@ class BooksController < ApplicationController
       # here we transpose inorder to map each column and data for record insertion
       @book = BooksPrimaryContentInformation.new
       @book.attributes = row.to_hash.slice(*row.to_hash.keys)
-      @book.save!
+      if @book.id.present?
+       @books = BooksPrimaryContentInformation.find(@book.id)
+       @books.update_attributes!(@book.attributes)
+      else
+       @book.save!
+      end
     end
     redirect_to :back
   end
@@ -41,7 +46,12 @@ class BooksController < ApplicationController
       row = Hash[[header, spreadsheet.row(i)].transpose]
        @book = BooksContributor.new
       @book.attributes = row.to_hash.slice(*row.to_hash.keys)
-      @book.save!
+      if @book.id.present?
+       @books = BooksContributor.find(@book.id)
+       @books.update_attributes!(@book.attributes)
+      else
+       @book.save!
+      end
     end
     redirect_to :back
   end
