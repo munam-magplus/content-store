@@ -3,7 +3,8 @@ module SessionsHelper
 	# Logs in the given end_user.
 	def log_in(end_user)
 		session[:end_user_id] = end_user.id
-	end
+    session[:institution_id] = end_user.institution_accounts.last
+  end
 
   def log_in_ip(end_user)
     session[:institution_account_id] = end_user.institution_account_id
@@ -11,7 +12,7 @@ module SessionsHelper
     redirect_to root_path(id: end_user.institution_account_id)  unless request.fullpath == root_path(id: end_user.institution_account_id)
   end
 
-	# Returns the current logged-in end_user (if any).
+  # Returns the current logged-in end_user (if any).
   def current_end_user
     @current_end_user ||= EndUser.find_by(id: session[:end_user_id])
   end

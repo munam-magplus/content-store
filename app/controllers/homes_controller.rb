@@ -11,6 +11,9 @@ class HomesController < ApplicationController
         if ['red_content','light_blue_content','fosteracademics'].include? @publisher.theme_name
           @books = @publisher.books_primary_content_informations.joins(:books_contributors).where('content_classification = ? OR content_classification = ?', 'Featured Books', 'New Releases')
         elsif ['wtbooks'].include? @publisher.theme_name
+          if logged_in?
+            @institute_name = InstitutionAccount.find_by_id(session[:institution_id]["id"]).institution_name
+          end
           @institute_name = InstitutionAccount.find_by_id(params[:id]).institution_name rescue nil
           @institute_id = InstitutionAccount.find_by_id(params[:id]) rescue nil
           @institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations) rescue nil 
@@ -27,9 +30,15 @@ class HomesController < ApplicationController
   def subscribes_books
     #session[:institution_account_id]
     if ['wtbooks'].include? @publisher.theme_name
-      @institute_id = InstitutionAccount.find_by_id(session[:institution_account_id])
-      @institute_name =  InstitutionAccount.where(id: session[:institution_account_id]).last.institution_name rescue nil
-      @institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations).last.paginate(:page => params[:page], :per_page => 10)    end
+      if logged_in?
+        @institute_name = InstitutionAccount.find_by_id(session[:institution_id]["id"]).institution_name 
+        @institute_books = InstitutionAccount.where(id: session[:institution_id]["id"]).last.subscriptions.all.map(&:books_primary_content_informations).last.paginate(:page => params[:page], :per_page => 10)   
+      else
+        @institute_id = InstitutionAccount.find_by_id(session[:institution_account_id])
+        @institute_name =  InstitutionAccount.where(id: session[:institution_account_id]).last.institution_name rescue nil
+        @institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations).last.paginate(:page => params[:page], :per_page => 10)  
+      end
+    end
   end
 
   def contact
@@ -165,11 +174,28 @@ class HomesController < ApplicationController
 
   def books_description  
     if ip_logged_in?
-      @institute_name = InstitutionAccount.find_by_id(session[:institution_account_id]).institution_name
+      if ['wtbooks'].include? @publisher.theme_name
+        @institute_name = InstitutionAccount.find_by_id(session[:institution_account_id]).institution_name
+        subscription = InstitutionAccount.find(session[:institution_account_id]).subscriptions.all.map(&:subscription_books) 
+        subscription.reject(&:empty?).each do |sbooks| 
+          @subscriptionn = sbooks.where(books_primary_content_information_id: params[:book_id])
+        end
+        @has_subscription = @subscriptionn
+      end
     end
-    @book_information = BooksPrimaryContentInformation.find(params[:book_id])
-    @book_subject_group = @book_information.subject_groups.first
-    render :template => "shared/#{@publisher.theme_name}/books_description"
+    if logged_in?
+      if ['wtbooks'].include? @publisher.theme_name
+        @institute_name = InstitutionAccount.find_by_id(session[:institution_id]["id"]).institution_name
+        subscription = InstitutionAccount.find_by_id(session[:institution_id]["id"]).subscriptions.all.map(&:subscription_books) 
+        subscription.reject(&:empty?).each do |sbooks| 
+          @subscriptionn = sbooks.where(books_primary_content_information_id: params[:book_id])
+        end
+        @has_subscription = @subscriptionn
+      end
+    end
+      @book_information = BooksPrimaryContentInformation.find(params[:book_id])
+      @book_subject_group = @book_information.subject_groups.first
+      render :template => "shared/#{@publisher.theme_name}/books_description"
   end
 
   def wt_books_description
@@ -205,6 +231,9 @@ class HomesController < ApplicationController
   end
 
   def wt_categories
+    if ip_logged_in?
+      @institute_name = InstitutionAccount.find_by_id(session[:institution_account_id]).institution_name
+    end
     @type = params[:subject]
     #@subjects = @publisher.subjects.where(subject_classification: params[:subject])
     render :template => "shared/#{@publisher.theme_name}/wt_categories" 
@@ -350,8 +379,7 @@ class HomesController < ApplicationController
   end
 
   def institution_params_values
-    params.require(:institution_account).permit(:publisher_id,:institution_id, :institution_name)
-    
+    params.require(:institution_account).permit(:publisher_id,:institution_id, :institution_name) 
   end
 
   def end_user_params
