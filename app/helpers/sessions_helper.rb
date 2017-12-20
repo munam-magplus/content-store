@@ -3,7 +3,7 @@ module SessionsHelper
 	# Logs in the given end_user.
 	def log_in(end_user)
 		session[:end_user_id] = end_user.id
-    session[:institution_id] = end_user.institution_accounts.last
+    session[:institution_id] =  InstitutionAccount.where(id: end_user.institution_account_id).last
   end
 
   def log_in_ip(end_user)

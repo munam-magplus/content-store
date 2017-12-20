@@ -145,6 +145,8 @@ Rails.application.routes.draw do
   resources :end_users, :admin_users do 
     collection do
       get  'search' 
+      get  'metadata_sheet'
+      post 'import_for_end_users'
       # post 'create'
     end
   end

@@ -226,7 +226,8 @@ class HomesController < ApplicationController
      @institute_name = InstitutionAccount.find_by_id(session[:institution_account_id]).institution_name
     end
     @subject = Subject.find(params[:subject])
-    @books = Subject.find(params[:subject]).subject_groups.all.map(&:books_primary_content_informations).paginate(:page => params[:page], :per_page => 10)
+    @books1 = Subject.find(params[:subject]).subject_groups.joins(:books_primary_content_informations)
+    @books = @books1.all.map(&:books_primary_content_informations).paginate(:page => params[:page], :per_page => 10)
     render :template => "shared/#{@publisher.theme_name}/books_by_subject" 
   end
 
@@ -235,7 +236,7 @@ class HomesController < ApplicationController
       @institute_name = InstitutionAccount.find_by_id(session[:institution_account_id]).institution_name
     end
     @type = params[:subject]
-    #@subjects = @publisher.subjects.where(subject_classification: params[:subject])
+    @subjects = @publisher.subjects.where(subject_classification: params[:subject])
     render :template => "shared/#{@publisher.theme_name}/wt_categories" 
   end
 

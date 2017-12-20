@@ -3,7 +3,7 @@ class InstitutionAccount < ApplicationRecord
 	has_many :library_users
 	has_many :ip_addresses, dependent: :destroy
 	has_many :users
-	belongs_to :end_user, optional: true
+	has_many :end_users
 	#has_many :subscriptions, optional: true
 	has_many :subscription_institute
     has_many :subscriptions, through: :subscription_institute

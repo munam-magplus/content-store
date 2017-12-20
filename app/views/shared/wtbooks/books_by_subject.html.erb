@@ -48,7 +48,7 @@
                   <h2 title="<%= f.book_title.presence || "" %>">
                     <%= link_to f.book_title.presence || "", books_description_homes_path(:book_id => f.id) %>
                   </h2>
-                  <% f.books_contributors.each do |book_contributor| %>
+                  <% f.books_contributors.limit(1).each do |book_contributor| %>
                     <h3 title="<%= (book_contributor.first_name.presence || "") +" "+(book_contributor.last_name.presence || "") %>">By :
                       <span class="dark_yellow">
                         <% f.books_contributors.each do |book_contributor| %>
