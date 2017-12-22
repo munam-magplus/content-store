@@ -2143,7 +2143,7 @@ html[dir='rtl'] #documentPropertiesOverlay .row > * {
   }
 }
 .height100 {
-   height: 100vh;
+   height: calc(130vh );
    display: block;
 
    

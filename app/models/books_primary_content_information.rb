@@ -1,6 +1,7 @@
 class BooksPrimaryContentInformation < ApplicationRecord
 	include Filterable
 	belongs_to :publisher
+	belongs_to :member_publisher, optional: true
 	has_many :books_contributors, dependent: :destroy
 	has_one :books_content_pricing
 	has_one :books_content_access_rule
