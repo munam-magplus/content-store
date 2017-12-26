@@ -1,0 +1,5 @@
+class AddStatusToBooksPrimaryContentInformation < ActiveRecord::Migration[5.0]
+  def change
+    add_column :books_primary_content_informations, :status, :string
+  end
+end
