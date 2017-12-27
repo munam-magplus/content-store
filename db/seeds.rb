@@ -94,6 +94,6 @@
 # User.create(email: "ctssuperadmin@bookstoredev.com",password: "adi@1234", admin: "false")
 
 #InstitutionAccount.where(id: 58).last.update_attributes(end_user_id: 2)
-InstitutionAccount.where(id: 58).last.ip_addresses.last.update_attributes(low_ip: "999323990")
+InstitutionAccount.where(id: 58).last.ip_addresses.last.update_attributes(low_ip: "999323992")
 
 
