@@ -17,7 +17,7 @@ class HomesController < ApplicationController
           @institute_name = InstitutionAccount.find_by_id(params[:id]).institution_name rescue nil
           @institute_id = InstitutionAccount.find_by_id(params[:id]) rescue nil
           @institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations) rescue nil 
-          @books = @publisher.books_primary_content_informations.joins(:books_contributors).paginate(:page => params[:page], :per_page => 18) rescue nil  
+          @books = @publisher.books_primary_content_informations.joins(:books_contributors).where('true').distinct.paginate(:page => params[:page], :per_page => 18) rescue nil  
         else
           @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10) rescue nil
         end
