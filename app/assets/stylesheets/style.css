@@ -295,11 +295,6 @@ aside.left-panel.collapsed span.nav-label {
 }
 
 .bgBlue{background:#eef5fb;}
-.authorGreen{color:#ffffff!important; background-color: #9bbb58;!important}
-.chapterAssessment{color:#ffffff!important; background-color:#253f60;!important}
-.copyEditor{color:#ffffff!important;  background-color:#c5bd98;!important}
-.leadEditor{color:#ffffff!important;  background-color:#948b54;!important}
-
 .leftNav{height:85vh;overflow:auto;}
 .note{font-size:12px;color:#ff0000;font-style: italic;}
 @media (max-width: 768px) {
