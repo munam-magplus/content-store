@@ -16,7 +16,8 @@ class BooksPrimaryContentInformation < ApplicationRecord
 	has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\z/
     #scope
-  scope :book_title, -> (book_title) { where("book_title LIKE ?", "%#{book_title}%") }
+    default_scope { where("status = 'Active'") }
+    scope :book_title, -> (book_title) { where("book_title LIKE ?", "%#{book_title}%") }
 
   def self.get_books(value)
  		return BooksPrimaryContentInformation.joins(:books_contributors).where('book_title LIKE ? OR isbn LIKE ? OR (first_name = ? AND last_name = ?)',"%#{value}%", "%#{value}%","#{value.split()[0]}","#{value.split()[1]}")
