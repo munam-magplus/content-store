@@ -15,8 +15,6 @@
     <!-- Aside Ends-->
 <!--Main Content Start -->
   <section class="content"> 
-    <!-- Page Content Start --> 
-    <!-- ================== -->
     <div class="wrapper container-fluid">
       <ol class="breadcrumb">
            <li><a href="#">Home</a></li>
@@ -28,7 +26,7 @@
       <%= form_tag search_institution_accounts_path, :method => 'get', :remote => true, :class => "form-horizontal form-bg" do |f| %>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Select Publisher</label>
+            <label for="taskName" class="col-sm-4 control-label">Publisher<sup class="mandatory">*</sup></label>
             <div class="col-sm-8">
               <%= select_tag 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'), :prompt => "Select Publisher", :class => "form-control", style: "background-color: #eee;"%>
             </div>
@@ -56,14 +54,6 @@
             <span class="col-sm-8">
             <%= text_field_tag :institution_name,"",:class => "form-control", :placeholder => "Institution Name" %>
             </span> 
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">IP Address:</label>
-            <span class="col-sm-8">
-            <%= text_field_tag :name,params[:ipadd],:class => "form-control", :placeholder => "IP Address" %>
-            </span>
           </div>
         </div>
         <div class="col-md-6">
@@ -119,6 +109,14 @@
             <label for="bookISBN" class="col-sm-4 control-label">Contact Email:</label>
             <span class="col-sm-8">
               <%= email_field_tag :email,"",:class => "form-control", :placeholder => "Email" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-4 control-label">IP Address:</label>
+            <span class="col-sm-8">
+            <%= text_field_tag :name,params[:ipadd],:class => "form-control", :placeholder => "IP Address" %>
             </span>
           </div>
         </div>
