@@ -21,7 +21,7 @@
 		    <table class="table table-bordered">
 	        <thead>
 	        	<tr style="font-size:13px">
-	            <th>Institution ID</th>
+	            <!-- <th>Institution ID</th> -->
 	            <th>Institution Name</th>
 	            <th>Lib./Dept. Name</th>
 	            <th>Country</th>
@@ -38,7 +38,7 @@
 								<% @institution.each do |f| %>
 									<%if f.status == "active"%>
 								 		<tr class="backgroundcolor">
-								 			<td class="tabledata"><%= f.id %></td>
+								 			<!-- <td class="tabledata"><%= f.id %></td> -->
 											<td class="tabledata">
 												<%= link_to (f.institution_name), edit_institution_account_path(f.id) %>
 											</td>
@@ -65,7 +65,7 @@
 												<%= image_tag("Referral_URL.png")%>
 											 -->
 												<%= link_to image_tag("Library_User.png"), result_library_users_path(id: f.id) , title: "Library users"%>
-												<%= link_to image_tag("institution.png"), institution_admin_result_institution_accounts_path(:id => f.id), title: "Institution Admin User" %>
+												<%#= link_to image_tag("institution.png"), institution_admin_result_institution_accounts_path(:id => f.id), title: "Institution Admin User" %>
 												<%= link_to image_tag("institution.png"), add_subscription_institution_accounts_path(id: f.id) %>
 											</td>
 										</tr>
