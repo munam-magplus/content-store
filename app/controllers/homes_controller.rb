@@ -385,6 +385,6 @@ class HomesController < ApplicationController
 
   def end_user_params
     params.require(:end_user).permit(:publisher_id, :email, :password, 
-    :confirm_password, :first_name, :last_name, :country_code)
+    :confirm_password, :first_name, :last_name, :country_code, :institution_account_id)
   end
 end

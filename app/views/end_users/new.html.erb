@@ -21,59 +21,77 @@
          <li><a>Manage User Account</a></li>
          <li><a>Create End User</a></li>
       </ol>
-
       <h2 class="H2-L1">Create End Users</h2>
-      <%= form_for(:end_user, url: end_users_path) do |f| %>
-        <div class="col-md-6">
+      <div class= "form-horizontal form-bg">
+      <%= form_for @end_user do |f| %>
+        <div class="col-md-12">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Publisher<sup class="mandatory">*</sup></label>
-            <div class="col-sm-8">
+            <label for="taskName" class="col-sm-3 control-label">Publisher<sup class="mandatory">*</sup></label>
+            <div class="col-sm-6">
               <%= f.select 'publisher_id',options_from_collection_for_select(publisher_names, 'id', 'publisher_name'),{ :prompt => "Select Publisher"},{required: true, :class => "form-control", style: "background-color: #eee;"} %>
             </div>
             <div class="clearfix"></div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Email<sup class="mandatory">*</sup></label>
-            <div class="col-sm-8">
+            <label for="taskName" class="col-sm-3 control-label">Email<sup class="mandatory">*</sup></label>
+            <div class="col-sm-6">
               <%= f.email_field :email, required: true, :class => "form-control", :placeholder => "Email" %>
             </div>
             <div class="clearfix"></div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Password<sup class="mandatory">*</sup></label>
-            <span class="col-sm-8">
+            <label for="bookISBN" class="col-sm-3 control-label">Password<sup class="mandatory">*</sup></label>
+            <span class="col-sm-6">
             <%= f.password_field :password, required: true, :class => "form-control", :placeholder => "Password" %>
             </span> 
             <div class="clearfix"></div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">First Name<sup class="mandatory">*</sup></label>
-            <span class="col-sm-8">
+            <label for="bookISBN" class="col-sm-3 control-label">Password confiramtion<sup class="mandatory">*</sup></label>
+            <span class="col-sm-6">
+            <%= f.password_field :password, required: true, :class => "form-control", :placeholder => "Password confirmation" %>
+            </span> 
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="bookISBN" class="col-sm-3 control-label">First Name<sup class="mandatory">*</sup></label>
+            <span class="col-sm-6">
             <%= f.text_field :first_name, required: true, :class => "form-control", :placeholder => "First Name" %>
             </span> 
             <div class="clearfix"></div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="form-group">
-            <label for="bookISBN" class="col-sm-4 control-label">Last Name<sup class="mandatory">*</sup></label>
-            <span class="col-sm-8">
+            <label for="bookISBN" class="col-sm-3 control-label">Last Name<sup class="mandatory">*</sup></label>
+            <span class="col-sm-6">
             <%= f.text_field :last_name, required: true, :class => "form-control", :placeholder => "Last Name" %>
             </span>
             <div class="clearfix"></div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="form-group">
-            <label for="taskName" class="col-sm-4 control-label">Country<sup class="mandatory">*</sup></label>
-            <span class="col-sm-8">
+            <label for="taskName" class="col-sm-3 control-label">Country<sup class="mandatory">*</sup></label>
+            <span class="col-sm-6">
             <%= f.select 'country_code',options_from_collection_for_select(Country.all.order('country_name asc'), 'country_code', 'country_name'),{ :prompt => "Select Country"},{required: true, :class => "form-control", style: "background-color: #eee;"} %>
+            </span> 
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="taskName" class="col-sm-3 control-label">Institution Name<sup class="mandatory">*</sup></label>
+            <span class="col-sm-6">
+            <%= f.select 'institution_account_id',options_from_collection_for_select(institutes_name, 'id', 'institution_name'),{ :prompt => "select Institution"},{:required => true,:class => "form-control"} %>
             </span> 
             <div class="clearfix"></div>
           </div>
@@ -81,7 +99,7 @@
         <div class="clearfix"></div>
         <div class="clearfix m-b-30"></div>
         <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
+          <div class="col-lg-11 col-md-11 col-sm-11 colx-11 text-right">
 
             <%= link_to '<i class="fa fa-plus-square-o" aria-hidden="true"></i>Search End User'.html_safe, end_users_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
             <%= f.submit "Submit", :class => "btn btn-sm" %>

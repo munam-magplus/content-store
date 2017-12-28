@@ -6,7 +6,7 @@ class EndUsersController < ApplicationController
   end
 
   def create
-  	@end_user = EndUser.new(end_user_params)
+    @end_user = EndUser.new(end_user_params)
 		if @end_user.save!
       flash[:success] = "End User Created!"
 			# If successfully stored then redirect to  setup path 
@@ -57,7 +57,6 @@ class EndUsersController < ApplicationController
     end
   end
 
-
   def search
     #Call filter method to get search results
     @end_user = EndUser.filter(params.slice(:publisher_id, :email, :last_name, :country_code))
@@ -66,6 +65,6 @@ class EndUsersController < ApplicationController
   private 
   def end_user_params
     params.require(:end_user).permit(:publisher_id, :email, 
-    :password, :first_name, :last_name, :country_code)
+    :password, :first_name, :last_name, :country_code, :institution_account_id)
   end
 end

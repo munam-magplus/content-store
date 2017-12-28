@@ -158,18 +158,14 @@ class InstitutionAccountsController < ApplicationController
       users_attributes: [:email, :password])
   end
 
-    def ip_save_for_institute
-      ip_store = params["institution_account"]["ip_addresses_attributes"]["0"]
-      institution_id = @institution.id
-      lw_ip = ip_store["low_ip"]
-      hg_ip = ip_store["high_ip"]
-      IpAddress.create!(low_ip: lw_ip, high_ip: hg_ip, institution_account_id: institution_id) 
-    end
+  def ip_save_for_institute
+    ip_store = params["institution_account"]["ip_addresses_attributes"]["0"]
+    institution_id = @institution.id
+    lw_ip = IPAddr.new(ip_store[:low_ip]).to_i
+    hg_ip = IPAddr.new(ip_store[:high_ip]).to_i
+    IpAddress.create!(low_ip: lw_ip, high_ip: hg_ip, institution_account_id: institution_id)
+  end
 end
-
-
-
-
 
  
 

@@ -6,6 +6,7 @@ class Subscription < ApplicationRecord
 	has_many :subject_groups, through: :subscription_books
 	has_many :subscription_institute
     has_many :instituition_accounts, through: :subscription_institute
+    validates_uniqueness_of :subscription_name
 end
 
 

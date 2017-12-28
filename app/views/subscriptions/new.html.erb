@@ -31,14 +31,6 @@
         <%= form_for(@subscription, url: {action: "create"}, :html => {:class => 'form-horizontal form-bg'}) do |f| %>
           <div class="col-md-6">
             <div class="form-group">
-              <label for="taskName" class="col-sm-4 control-label">Subscription ID:</label>
-              <div class="col-sm-8">
-                <%= f.text_field :subscription_id, :value => "System Generated", :class => "form-control", :readonly => true %>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
               <label for="bookISBN" class="col-sm-4 control-label">Subscription Name:</label>
               <span class="col-sm-8">
                 <%= f.text_field :subscription_name, :required => true, :class => "form-control", :placeholder => "Subscription Name" %>
@@ -63,12 +55,10 @@
           </div>
           <div class="col-md-12">
             <div class="form-group">
-              <label for="bookISBN" class="col-sm-2 control-label">Subscription category:</label>
               <span class="col-sm-8">
-                <%= f.radio_button :subscription_category, 'Online Subscription for library', class: 'radio-inline' %>Online Subscription for library
-                <%= f.radio_button :subscription_category, 'Individual Borrow', class: 'radio-inline' %> Individual Borrow
-                <%= f.radio_button :subscription_category, 'Library Borrow', class: 'radio-inline' %> Library Borrow
-              </span>
+                <%#= f.radio_button :subscription_category, 'Online Subscription for library', class: 'radio-inline' %>Online Subscription for library
+                <%#= f.radio_button :subscription_category, 'Individual Borrow', class: 'radio-inline' %> 
+                <%#= f.radio_button :subscription_category, 'Library Borrow', class: 'radio-inline' %> 
             </div>
           </div>
           <%= hidden_field_tag "value", "Book"  %>
@@ -106,36 +96,31 @@
           <div class="row">
             <div class="col-md-12">
               <p>&nbsp;</p>
-              <div class="col-md-12"><h4>Length of Agreement</h4></div>
+              <div class="col-md-12"><h4></h4></div>
               <div>
                 <div class="col-md-3">
-                  <label>From</label>
+                  <label></label>
                   <div class="input-group">
-                    <%= f.text_field :agreement_form, :required => true, :class => "form-control", :placeholder => "From",:id => 'from' %>
+                    <%#= f.text_field :agreement_form, :required => true, :class => "form-control", :placeholder => "From",:id => 'from' %>
                   </div><!-- /input-group -->
                 </div>
-                <div class="col-md-3">
-                  <label>To</label>
+               <!-- <div class="col-md-3">
+                  <label></label>
                   <div class="input-group">
-                    <%= f.text_field :agreement_to, :required => true, :class => "form-control", :placeholder => "To",:id => 'to' %>
+                    <%#= f.text_field :agreement_to, :required => true, :class => "form-control", :placeholder => "To",:id => 'to' %>
                   </div><!-- /input-group -->
                 </div>
-              </div>
-              <p>&nbsp;</p>
-              <div class="col-md-12">
-                <h4>Available for Institutional Accounts </h4>
-              </div>
+              </div> 
+                <!--<p>&nbsp;</p>
               <div class="col-md-6">
                 <div class="col-md-12">
-                  <label class="radio-inline"><%= f.radio_button :available_for_institutional_account, 'yes' %>Yes</label>
-                  <label class="radio-inline"><%= f.radio_button :available_for_institutional_account, 'no' %>No</label>
+                  <label class="radio-inline"><%#= f.radio_button :available_for_institutional_account, 'yes' %></label>
+                  <label class="radio-inline"><%#= f.radio_button :available_for_institutional_account, 'no' %></label>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="clearfix"></div>
-          <div class="clearfix m-b-30"></div>
-          <div class="row">
+          </div> -->
+          
             <div class="col-lg-12 col-md-12 col-sm-12 colx-12 text-right">
               <%= link_to '<i class="fa fa-search" aria-hidden="true"></i>Search Subscription'.html_safe, subscriptions_path, :id => "button_id", :class => "btn btn-sm pull-left" %>
               <%= button_tag fa_icon("save", text: "Save"), :class => "btn btn-sm", type: :submit %>
