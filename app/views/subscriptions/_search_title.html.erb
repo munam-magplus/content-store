@@ -5,7 +5,7 @@
   </div>
   <div class="col-md-6">
     <label for="">Title</label>
-    <input id="title" type="text" placeholder="Title" class="form-control" >
+    <input id="book_title" type="text" placeholder="Title" class="form-control" >
   </div>
   <div class="col-md-6">
     <label for="">File Name</label>
@@ -25,7 +25,7 @@
   function getSearchDetails(){
 
     var isbn = $('#isbn').val();
-    var title = $('#title').val();
+    var book_title = $('#book_title').val();
     var file_name = $('#file_name').val();
     // var author_first_name = $('#author_first_name').val();
     // var author_last_name = $('#author_last_name').val();
@@ -33,9 +33,8 @@
     $.ajax({
       type: 'GET',
       url: '/subscriptions/title_search',
-      data : { isbn: isbn, title: title, file_name: file_name, publication_year: publication_year },
-     
-      
+      data : { isbn: isbn, book_title: book_title, file_name: file_name, publication_year: publication_year },
+       
     });
   }
 </script>

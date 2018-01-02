@@ -160,10 +160,14 @@ class InstitutionAccountsController < ApplicationController
 
   def ip_save_for_institute
     ip_store = params["institution_account"]["ip_addresses_attributes"]["0"]
-    institution_id = @institution.id
-    lw_ip = IPAddr.new(ip_store[:low_ip]).to_i
-    hg_ip = IPAddr.new(ip_store[:high_ip]).to_i
-    IpAddress.create!(low_ip: lw_ip, high_ip: hg_ip, institution_account_id: institution_id)
+    params["institution_account"]["ip_addresses_attributes"].values.each do |ip_range|
+      if ip_range[:low_ip].present? && ip_range[:low_ip].present? 
+        institution_id = @institution.id
+        lw_ip = IPAddr.new(ip_range[:low_ip]).to_i 
+        hg_ip = IPAddr.new(ip_range[:high_ip]).to_i 
+          IpAddress.create!(low_ip: lw_ip, high_ip: hg_ip, institution_account_id: institution_id) 
+      end
+    end
   end
 end
 

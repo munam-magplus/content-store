@@ -8,7 +8,12 @@ class SubscriptionsController < ApplicationController
 
   def title_search
     # search for the Title at the time of Title creation
-    @title_search = BooksPrimaryContentInformation.filter(params.slice(:isbn, :title, :file_name, :publication_year))
+    isbn_book_info = params[:isbn].split
+    if isbn_book_info.count == 1 || params[:book_title].present?
+      @title_search = BooksPrimaryContentInformation.filter(params.slice(:isbn, :book_title, :file_name, :publication_year))
+    else
+      @title_search = BooksPrimaryContentInformation.where(isbn: isbn_book_info)
+    end
   end
 
   def new
