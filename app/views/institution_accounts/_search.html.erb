@@ -78,7 +78,7 @@
 											<td class="tabledata"><%= f.library_name %></td>
 											<td class="tabledata">
 												<%= country_name(f.institution_account_billing_address.country_code)%>			
-											</td>
+				              </td>
 											<td class="tabledata">
 													<%= link_to (f.institution_account_billing_address.first_name +  f.institution_account_billing_address.last_name), edit_institution_account_path(f.id) %>
 											</td>
@@ -113,6 +113,7 @@
 						<% end %>
 	    	</tbody>
 	    </table>
+					<%= js_will_paginate @result %>
 		</div>
 	</div>
 	<div class="col-sm-12"> </div>

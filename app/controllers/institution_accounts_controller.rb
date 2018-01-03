@@ -18,7 +18,7 @@ class InstitutionAccountsController < ApplicationController
     @institution_billing = InstitutionAccountBillingAddress.filter(params.slice(:first_name, :last_name,
                   :phone, :email,:address,:address_line2,:address_line3,:city,:state,
                   :postal_code,:country_code))
-    @result = @institution_billing.where(institution_account_id: @id)
+    @result = @institution_billing.where(institution_account_id: @id).paginate(:page => params[:page], :per_page => 5)
     
     # this is the params of the checkbox that is present in the form.
     @check = params[:ip_address]
