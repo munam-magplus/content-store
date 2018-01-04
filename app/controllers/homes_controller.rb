@@ -36,7 +36,11 @@ class HomesController < ApplicationController
       else
         @institute_id = InstitutionAccount.find_by_id(session[:institution_account_id])
         @institute_name =  InstitutionAccount.where(id: session[:institution_account_id]).last.institution_name rescue nil
-        @institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations).last.paginate(:page => params[:page], :per_page => 10)  
+        if InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.present?
+          @institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations).last.paginate(:page => params[:page], :per_page => 10)  
+        else
+          redirect_to :back
+        end
       end
     end
   end
