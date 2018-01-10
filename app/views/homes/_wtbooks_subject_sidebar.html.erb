@@ -5,6 +5,7 @@
       <% if ip_logged_in? %>
         <div class="institutionBox">
           <h1>You are logged in from:</h1>
+           <%= image_tag "http://wtbooks.mpstechnologies.com/static/wtbooks/ebooks/institution_logo/logo-#{@institute_name}.gif" %><br>
           <%= @institute_name %>
           <strong>
           <%= link_to "view subscribed content", homes_subscribes_books_path(institution_id: @institute_id) %>
@@ -14,6 +15,7 @@
         <% if logged_in? %>
           <div class="institutionBox">
             <h1>You are logged in from:</h1>
+            <%= image_tag "http://wtbooks.mpstechnologies.com/static/wtbooks/ebooks/institution_logo/logo-#{@institute_name}.gif" %><br>
             <%= @institute_name %>
             <strong>
              <%= link_to "view subscribed content", homes_subscribes_books_path(institution_id: @institute_id) %>
