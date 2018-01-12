@@ -6,21 +6,29 @@
         <div class="institutionBox">
           <h1>You are logged in from:</h1>
            <%= image_tag "http://wtbooks.mpstechnologies.com/static/wtbooks/ebooks/institution_logo/logo-#{@institute_name}.gif" %><br>
+           <p>
           <%= @institute_name %>
+          </p>
+          <p>
           <strong>
           <%= link_to "view subscribed content", homes_subscribes_books_path(institution_id: @institute_id) %>
           </strong>
           </div>
+          </p>
       <% else %>
         <% if logged_in? %>
           <div class="institutionBox">
             <h1>You are logged in from:</h1>
+            <p>
             <%= image_tag "http://wtbooks.mpstechnologies.com/static/wtbooks/ebooks/institution_logo/logo-#{session["institution_id"]["institution_name"]}.gif" %>
-            <%= "#{session["institution_id"]["institution_name"]}" %><br>
+            </p>
+            <%= "#{session["institution_id"]["institution_name"]}" %>
+            <p>
             <strong>
              <%= link_to "view subscribed content", homes_subscribes_books_path(institution_id: @institute_id) %>
             </strong>
           </div>
+          </p>
         <% end %>
       <% end %>
         <h1 class="sectionHeading ">BROWSE BY</h1>
