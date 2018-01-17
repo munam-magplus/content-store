@@ -11,6 +11,22 @@
         <div class="row">
           <div class="col-sm-8 col-md-9">
             <h1 class="sectionHeading">Subscribed BOOKS</h1>
+            <div class="col-md-12 col-xs-12">
+                  <%if @institute_books.count >0 %>
+                    <div class="bg-gray">
+                      <div class="col-sm-4 no-pad" style="padding-top: 6px;">
+                        <%= page_entries_info @institute_books %>
+                      </div>
+                      <div class="col-sm-8 text-right no-pad">
+                        <nav aria-label="Page navigation">
+                          <%= will_paginate @institute_books,renderer: BootstrapPagination::Rails %>
+                        </nav>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                  <% end %>
+               </div>
+              <div class="clearfix"></div>
             <div class="row placeholders">
               <% if logged_in? %>
                   <% @institute_books.each do |f|%>
@@ -41,9 +57,6 @@
                   </div>
                 <% end %>
                 <div style="clear:both;"></div>
-                <div class="col-md-12 col-xs-12">
-                  <%= will_paginate @institute_books,renderer: BootstrapPagination::Rails %>
-                </div>
               <% end %>
             </div>
           </div>
