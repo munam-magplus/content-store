@@ -15,12 +15,17 @@
         <div class="mt-20" >
           <div class="row">
             <div class="col-md-12">
-              <ul class="nav nav-tabs noborder" data-tabs="tabs">
-                <li class="active "><a class="tabbg" href="#bookInfo" data-toggle="tab"><% if @has_subscription.present? %> Book Reader <%else%>Book Info<%end%></a></li>
-              </ul>
-              <% unless @has_subscription.present? %>
-                <div class="tab-content tab_border grayContainer">
-                  <div class="tab-pane active mt-20" id="bookInfo">
+              <div class="tabbable tabs-left">
+                <ul class="nav nav-tabs">
+                    <li class="<%= 'active' if (params[:tab] == 'tab1'|| !params[:tab]) %>"><a href="#tab1" data-toggle="tab">Book Description</a></li>
+                    <%if @has_subscription.present? %>
+                      <li class="<%= 'active' if params[:tab] == 'tab9' %>"> <a href="#tab9" data-toggle="tab">Book Reader</a></li>
+                    <%end%>
+                </ul>
+
+                <div class="tab-content">
+                  <div class="<%= if (params[:tab] == 'tab1' || !params[:tab])then 'tab-pane active ' else 'tab-pane' end%>" id="tab1">
+                      <div class="tab-pane active mt-20" id="bookInfo">
                     <h2 class="text_uppercase border_bottom padding_bottom12px nomargin ">
                       <%= @book_information.book_title.presence || "" %>
                     </h2>
@@ -31,12 +36,12 @@
                       <div class="col-md-9 col-sm-9 "> 
                         <!-- <p>To read sections of the book, please use the navigation menu at the top left.</p> -->
                         <div class="clearFloat"></div>
-                        <p><span class="book_atr col-xs-12 col-md-4"><strong>ISBN&nbsp;:&nbsp;</strong></span><span class="book_description col-xs-12 col-md-8">&nbsp;<%= @book_information.isbn.presence || "" %></span></p>
-                        <p><span class="book_atr col-xs-12 col-md-4"><strong>Publisher&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8">&nbsp;<% if @book_information.member_publisher.present? %> <%= @book_information.member_publisher.member_publisher_name.presence || "" %> <%else%>
+                        <p><span class="book_atr col-xs-12 col-md-4"><strong>ISBN&nbsp;:&nbsp;</strong></span><span class="book_description col-xs-12 col-md-8"><%= @book_information.isbn.presence || "" %></span></p>
+                        <p><span class="book_atr col-xs-12 col-md-4"><strong>Publisher&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8"><% if @book_information.member_publisher.present? %> <%= @book_information.member_publisher.member_publisher_name.presence || "" %> <%else%>
                           <%= @publisher.publisher_name.presence || "" %><%end%></span></p>
-                        <p><span class="book_atr col-xs-12 col-md-4"><strong>Language&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8">&nbsp;<%= @book_information.language.presence || "" %></span></p>
+                        <p><span class="book_atr col-xs-12 col-md-4"><strong>Language&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8"><%= @book_information.language.presence || "" %></span></p>
                         <% unless @book_information.subject_groups.blank? %>
-                          <p><span class="book_atr col-xs-12 col-md-4"><strong>Category&nbsp;:&nbsp;</strong></span> <span class="book_description col-xs-12 col-md-8">&nbsp;<% if @book_information.member_publisher.present? %><%= @book_information.subject_groups.first.subject_group_name.presence || "" %> <%else%>
+                          <p><span class="book_atr col-xs-12 col-md-4"><strong>Category&nbsp;:&nbsp;</strong></span> <span class="book_description col-xs-12 col-md-8"><% if @book_information.member_publisher.present? %><%= @book_information.subject_groups.first.subject_group_name.presence || "" %> <%else%>
                               <% if @book_subject_group.subject_group_name.present? %>
                               <%= @book_subject_group.subject.subject_name.presence || "" %> > <%= @book_subject_group.subject_group_name.presence || "" %>
                               <% end %> 
@@ -49,7 +54,7 @@
                         <% unless @book_information.number_of_pages.blank? %>
                         <p><span class="book_atr col-xs-12 col-md-4"><strong>No. of pages&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8"><%= @book_information.number_of_pages.presence || "" %></span></p>
                         <% end %>
-                        <p><span class="book_atr col-xs-12 col-md-4"><strong>Price&nbsp;:</strong></span><span class="book_description col-xs-12 col-md-8">&nbsp;USD&nbsp;<%=number_with_precision(@book_information.book_price, :precision => 2) %></span></p>
+                        <p><span class="book_atr col-xs-12 col-md-4"><strong>Price&nbsp;:</strong></span><span class="book_description col-xs-12 col-md-8">USD&nbsp;<%=number_with_precision(@book_information.book_price, :precision => 2) %></span></p>
                         <% if @book_information.books_content_pricing.present? %>
                         <p><span class="book_atr col-xs-12 col-md-4"><strong>Format&nbsp;:</strong></span><span class="col-xs-12 book_description col-md-8">&nbsp; <%=@book_information.books_content_pricing.format.presence || "" %></span></p>
                         <% end %>
@@ -65,15 +70,16 @@
                       </div>
                     </div>
                   </div>
+                      <%if params[:tab] == 'tab1'  %>
+                      <%end%>
+                    </div>
+                    <div class="<%=if params[:tab] == 'tab9' then 'tab-pane active'  else 'tab-pane' end%>" id="tab9">
+                        <%= render 'book_reader' %>
+                    </div>
+                </div>
               </div>
-            <% else %>
-              <div class="border_wrapper height100 padding10px">
-                <%= pdfjs_viewer pdf_url: "/static/#{@publisher.publisher_code}/ebooks/#{@book_information.isbn}.pdf", style: :full %>
-
              </div>
-            <% end %>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
