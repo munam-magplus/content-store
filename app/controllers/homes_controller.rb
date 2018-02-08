@@ -215,6 +215,16 @@ class HomesController < ApplicationController
         @has_subscription = @subscriptionn
       end
     end
+    if logged_in?
+      if ['wtbooks'].include? @publisher.theme_name
+        @institute_name = InstitutionAccount.find_by_id(session[:institution_id]["id"]).institution_name
+        subscription = InstitutionAccount.find_by_id(session[:institution_id]["id"]).subscriptions.all.map(&:subscription_books) 
+        subscription.reject(&:empty?).each do |sbooks| 
+          @subscriptionn = sbooks.where(books_primary_content_information_id: params[:book_id])
+        end
+        @has_subscription = @subscriptionn
+      end
+    end
     @book_information = BooksPrimaryContentInformation.find(params[:book_id])
     @book_subject_group = @book_information.subject_groups.first
     render :template => "shared/#{@publisher.theme_name}/books_description"
@@ -269,7 +279,6 @@ class HomesController < ApplicationController
     type: "application/pdf"
     )
   end
- 
   def sign_in
     render :template => "shared/#{@publisher.theme_name}/sign_in"
   end
