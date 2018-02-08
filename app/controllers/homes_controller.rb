@@ -34,12 +34,12 @@ class HomesController < ApplicationController
     if ['wtbooks'].include? @publisher.theme_name
       if logged_in?
         @institute_name = InstitutionAccount.find_by_id(session[:institution_id]["id"]).institution_name 
-        @institute_books = InstitutionAccount.where(id: session[:institution_id]["id"]).last.subscriptions.all.map(&:books_primary_content_informations).last.paginate(:page => params[:page], :per_page => 10)   
+        @institute_books = InstitutionAccount.where(id: session[:institution_id]["id"]).last.subscriptions.all.map(&:books_primary_content_informations).last.paginate(:page => params[:page], :per_page => 18)   
       else
         @institute_id = InstitutionAccount.find_by_id(session[:institution_account_id])
         @institute_name =  InstitutionAccount.where(id: session[:institution_account_id]).last.institution_name rescue nil
         if InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.present?
-          @institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations).last.paginate(:page => params[:page], :per_page => 10)  
+          @institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations).last.paginate(:page => params[:page], :per_page => 18)  
         else
           redirect_to :back
         end
@@ -269,7 +269,7 @@ class HomesController < ApplicationController
     type: "application/pdf"
     )
   end
-
+ 
   def sign_in
     render :template => "shared/#{@publisher.theme_name}/sign_in"
   end
