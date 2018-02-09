@@ -22,6 +22,7 @@
                       <li class="<%= 'active' if params[:tab] == 'tab9' %>"> <a href="#tab9" data-toggle="tab">Book Reader</a></li>
                     <%end%>
                 </ul>
+
                 <div class="tab-content">
                   <div class="<%= if (params[:tab] == 'tab1' || !params[:tab])then 'tab-pane active ' else 'tab-pane' end%>" id="tab1">
                       <div class="tab-pane active mt-20" id="bookInfo">

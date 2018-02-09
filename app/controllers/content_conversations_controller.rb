@@ -41,6 +41,15 @@ class ContentConversationsController < ApplicationController
 	  )
 	end
 
+	def dashboard
+		publisher = Publisher.pluck(:publisher_name)
+		temp = []
+		publisher.each do |pub|
+			temp << Publisher.where(publisher_name: pub).last.books_primary_content_informations.count
+		end
+		@data = publisher.zip(temp)
+	end
+
   def index
   end
 end

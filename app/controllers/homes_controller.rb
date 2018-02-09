@@ -205,7 +205,7 @@ class HomesController < ApplicationController
   end
 
   def wt_books_description
-    if ip_logged_in?
+     if ip_logged_in?
       if ['wtbooks'].include? @publisher.theme_name
         @institute_name = InstitutionAccount.find_by_id(session[:institution_account_id]).institution_name
         subscription = InstitutionAccount.find(session[:institution_account_id]).subscriptions.all.map(&:subscription_books) 
@@ -225,9 +225,9 @@ class HomesController < ApplicationController
         @has_subscription = @subscriptionn
       end
     end
-    @book_information = BooksPrimaryContentInformation.find(params[:book_id])
-    @book_subject_group = @book_information.subject_groups.first
-    render :template => "shared/#{@publisher.theme_name}/books_description"
+      @book_information = BooksPrimaryContentInformation.find(params[:book_id])
+      @book_subject_group = @book_information.subject_groups.first
+      render :template => "shared/#{@publisher.theme_name}/wt_books_description"
   end
 
   def books_by_category
@@ -279,6 +279,7 @@ class HomesController < ApplicationController
     type: "application/pdf"
     )
   end
+ 
   def sign_in
     render :template => "shared/#{@publisher.theme_name}/sign_in"
   end
@@ -323,41 +324,41 @@ class HomesController < ApplicationController
   private
 
   def set_them
-    if request.host == "wtbooks.mpstechnologies.com"
+    if request.host == "ebooks.wtbooks.com"
       set_them_wtbooks
-      else  
-        if request.domain.present?
-         pub_domain = request.domain
-          unless pub_domain.start_with?('www')
-            pub_domain = 'www' + '.'  +  request.domain 
-          end
-        begin
-          @gethost = pub_domain.split('.')[1]
-          @publisher = Publisher.find_by_domain_name(@gethost)
-          unless @publisher.blank?
-            unless @publisher.theme_name.blank?
-              @css_root = "#{@publisher.theme_name}/application"
-            else
-              @css_root = "default_theme/application"
-            end  
-          end
-          rescue ActiveRecord::RecordNotFound
-        end  
+    else  
+      if request.domain.present?
+        pub_domain = request.domain
+        unless pub_domain.start_with?('www')
+          pub_domain = 'www' + '.'  +  request.domain 
+        end
+      begin
+        @gethost = pub_domain.split('.')[1]
+        @publisher = Publisher.find_by_domain_name(@gethost)
+        unless @publisher.blank?
+          unless @publisher.theme_name.blank?
+            @css_root = "#{@publisher.theme_name}/application"
+          else
+            @css_root = "default_theme/application"
+          end  
+        end
+        rescue ActiveRecord::RecordNotFound
+      end  
       else
-       redirect_to users_sign_in_path 
-      end
+        redirect_to users_sign_in_path 
+     end
     end
   end
 
 
    def set_them_wtbooks
-    if request.host == "wtbooks.mpstechnologies.com"
+    if request.host == "ebooks.wtbooks.com"
       pub_domain = request.host
       unless pub_domain.start_with?('www')
         pub_domain = request.host 
       end
       begin
-        @gethost = pub_domain.split('.')[0]
+        @gethost = pub_domain.split('.')[1]
         @publisher = Publisher.find_by_domain_name(@gethost)
       unless @publisher.blank?
         unless @publisher.theme_name.blank?
@@ -375,7 +376,7 @@ class HomesController < ApplicationController
   end
 
   def redirect_if_subscriptions
-    if request.host == "wtbooks.mpstechnologies.com" 
+    if request.host == "ebooks.wtbooks.com" 
       if params[:page].present?
         @books = @publisher.books_primary_content_informations.joins(:books_contributor).paginate(:page => params[:page], :per_page => 10) rescue nil
         return homes_index_path
@@ -403,3 +404,4 @@ class HomesController < ApplicationController
     :confirm_password, :first_name, :last_name, :country_code, :institution_account_id)
   end
 end
+

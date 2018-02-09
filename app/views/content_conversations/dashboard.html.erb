@@ -7,6 +7,7 @@
 </head>
 
 <body>
+
  <!-- Aside Start-->
 	<%= render :partial => "layouts/sidebar"%>
 <!-- Aside Ends-->
@@ -35,50 +36,35 @@
         <div class="col-sm-6">
           <div class="card card-min-height">
             <div class="card-header">
-              Quick Inbox
+              Show Publishers Details
             </div>
-            <div class="card-block">
-              <form>
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox"> The Biogenesis of Membranes and Organelles
-                  </label>
-                  </div>
-                  <div class="checkbox">
-                  <label>
-                    <input type="checkbox"> Advancing the Quality & Safety of Care
-                  </label>
-                  </div>
-                  <div class="checkbox">
-                  <label>
-                    <input type="checkbox"> Acute Lymphoblastic Leukemia
-                  </label>
-                </div>
-                <div class="checkbox">
-                <label>
-                  <input type="checkbox"> Personalized Pulmonary Medicine
-                </label>
-              </div>
-              <div class="checkbox">
-              <label>
-                <input type="checkbox"> Electrolyte & Acid-Base Disorders
-              </label>
-            </div>
-              </form>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="flat-btn pull-right">SEND FORWARD</a>
-              <a href="#" class="flat-btn pull-right">SEND BACKWARD</a>
-            </div>
-          </div>
+              <div id="chart" style="width: 1000px; height: 500px;"></div>
+              <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+              <%= javascript_tag do -%>
+                google.charts.load('current', {'packages':['bar']});
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+                  var data = JSON.parse('<%= @data.to_json.html_safe -%>');
+                  data = [['Publishers name', 'publishers']].concat(data);
+                  data = google.visualization.arrayToDataTable(data);
+                  var options = {
+                    chart: {
+                      title: 'Publisher books count',
+                    }
+                  };
+                  var chart = new google.charts.Bar(document.getElementById('chart'));
+                  chart.draw(data, google.charts.Bar.convertOptions(options));
+                }
+              <% end -%>
         </div>
         <div class="col-sm-6">
 
-          <div class="card">
+          <!-- <div class="card">
             <div class="card-header">
               Tasks at Glance
-            </div>
-           <div class="card-block">
+            </div> -->
+           <!-- <div class="card-block">
               <form>
                 <select class="form-control">
                   <option>Balch/Morita: Textbook of Surgical Oncology</option>
@@ -89,7 +75,7 @@
                 </select>
               </form>
              <div id="piechart" style="width: 100%; height: 213px;"></div>
-            </div>
+            </div> -->
             <div class="card-footer">
               <a href="#" class="flat-btn pull-right">Manage Tasks</a>
             </div>
