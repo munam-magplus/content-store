@@ -5,12 +5,7 @@
       <% if ip_logged_in? %>
         <div class="institutionBox">
           <h1>You are logged in from:</h1>
-
-          <% if @institute_name == "Liceo de Cagayan University "%>
-            <%= image_tag "http://ebooks.wtbooks.com/static/wtbooks/ebooks/institution_logo/logo-Liceo de Cagayan University.gif" %><br>
-          <%else %>
-            <%= image_tag "http://ebooks.wtbooks.com/static/wtbooks/ebooks/institution_logo/logo-#{@institute_name}.gif" %><br>
-          <%end%>
+           <%= image_tag "http://ebooks.wtbooks.com/static/wtbooks/ebooks/institution_logo/logo-#{@institute_name}.gif" %><br>
            <p>
           <%= @institute_name %>
           </p>
@@ -24,14 +19,10 @@
         <% if logged_in? %>
           <div class="institutionBox">
             <h1>You are logged in from:</h1>
-          <% if @institute_name == "Liceo de Cagayan University " %>
-            <%= image_tag "http://ebooks.wtbooks.com/static/wtbooks/ebooks/institution_logo/logo-Liceo de Cagayan University.gif" %>
-          <% else %>
             <p>
             <%= image_tag "http://ebooks.wtbooks.com/static/wtbooks/ebooks/institution_logo/logo-#{session["institution_id"]["institution_name"]}.gif" %>
-        <% end %>
             </p>
-            <%= @institute_name %>
+            <%= "#{session["institution_id"]["institution_name"]}" %>
             <p>
             <strong>
              <%= link_to "view subscribed content", homes_subscribes_books_path(institution_id: @institute_id) %>
