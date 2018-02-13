@@ -11,10 +11,10 @@
           <%else %>
             <%= image_tag "http://ebooks.wtbooks.com/static/wtbooks/ebooks/institution_logo/logo-#{@institute_name}.gif" %><br>
            <p>
-          <%end%>
           <%= @institute_name %>
           </p>
           <p>
+          <%end%>
           <strong>
           <%= link_to "view subscribed content", homes_subscribes_books_path(institution_id: @institute_id) %>
           </strong>
@@ -30,10 +30,10 @@
             <p>
             <%= image_tag "http://ebooks.wtbooks.com/static/wtbooks/ebooks/institution_logo/logo-#{session["institution_id"]["institution_name"]}.gif" %>
             </p>
-        <% end %>
             <%= "#{session["institution_id"]["institution_name"]}" %>
             <p>
             <strong>
+        <% end %>
              <%= link_to "view subscribed content", homes_subscribes_books_path(institution_id: @institute_id) %>
             </strong>
           </div>
