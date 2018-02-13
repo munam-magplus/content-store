@@ -24,7 +24,7 @@
         <% if logged_in? %>
           <div class="institutionBox">
             <h1>You are logged in from:</h1>
-          <% if session["institution_id"]["institution_name"] == "Liceo de Cagayan University" %>
+          <% if @institute_name == "Liceo de Cagayan University" %>
             <%= image_tag "http://ebooks.wtbooks.com/static/wtbooks/ebooks/institution_logo/logo-Liceo de Cagayan University.gif" %>
           <% else %>
             <p>
