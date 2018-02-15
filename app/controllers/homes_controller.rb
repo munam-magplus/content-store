@@ -9,7 +9,7 @@ class HomesController < ApplicationController
     begin
       unless @publisher.books_primary_content_informations.blank? 
         if ['red_content','light_blue_content','fosteracademics'].include? @publisher.theme_name
-          @books = @publisher.books_primary_content_informations.joins(:books_contributors).where('content_classification = ? OR content_classification = ?', 'Featured Books', 'New Releases')
+          @books = @publisher.books_primary_content_informations.includes(:books_contributors).where('content_classification = ? OR content_classification = ?', 'Featured Books', 'New Releases')
         elsif ['wtbooks'].include? @publisher.theme_name
           if logged_in?
             @institute_name = InstitutionAccount.find_by_id(session[:institution_id]["id"]).institution_name
@@ -19,7 +19,7 @@ class HomesController < ApplicationController
           end
           @institute_id = InstitutionAccount.find_by_id(params[:id]) rescue nil
           @institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations) rescue nil 
-          @books = @publisher.books_primary_content_informations.joins(:books_contributors).where('true').distinct.paginate(:page => params[:page], :per_page => 18) rescue nil  
+          @books = @publisher.books_primary_content_informations.includes(:books_contributors).where('true').distinct.paginate(:page => params[:page], :per_page => 18) rescue nil  
         else
           @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10) rescue nil
         end
@@ -243,7 +243,7 @@ class HomesController < ApplicationController
     end
     @subject = Subject.find(params[:subject])
     @books1 = Subject.find(params[:subject]).subject_groups
-    @books = @books1.includes(:books_primary_content_informations).all.map(&:books_primary_content_informations).flatten(1).uniq.paginate(:page => params[:page], :per_page => 10)
+    @books = @books1.includes(:books_primary_content_informations).uniq.paginate(:page => params[:page], :per_page => 10)
     render :template => "shared/#{@publisher.theme_name}/books_by_subject" 
   end
 
