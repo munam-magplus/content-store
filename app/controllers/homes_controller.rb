@@ -12,13 +12,17 @@ class HomesController < ApplicationController
           @books = @publisher.books_primary_content_informations.includes(:books_contributors).where('content_classification = ? OR content_classification = ?', 'Featured Books', 'New Releases')
         elsif ['wtbooks'].include? @publisher.theme_name
           if logged_in?
-            @institute_name = InstitutionAccount.find_by_id(session[:institution_id]["id"]).institution_name
+            if session[:institution_id].present?
+              @institute_name = InstitutionAccount.find_by_id(session[:institution_id]["id"]).institution_name
+            else
+              redirect_to sign_in_homes_path
+            end
           end
           if ip_logged_in?
             @institute_name = InstitutionAccount.find_by_id(params[:id]).institution_name rescue nil
           end
           @institute_id = InstitutionAccount.find_by_id(params[:id]) rescue nil
-          @institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations) rescue nil 
+          @institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations) rescue nil
           @books = @publisher.books_primary_content_informations.includes(:books_contributors).where('true').distinct.paginate(:page => params[:page], :per_page => 18) rescue nil  
         else
           @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10) rescue nil
