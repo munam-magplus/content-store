@@ -243,7 +243,7 @@ class HomesController < ApplicationController
     end
     @subject = Subject.find(params[:subject])
     @books1 = Subject.find(params[:subject]).subject_groups
-    @books = @books1.includes(:books_primary_content_informations).uniq.paginate(:page => params[:page], :per_page => 10)
+    @books = @books1.includes(:books_primary_content_informations).all.map(&:books_primary_content_informations).flatten(1).uniq.paginate(:page => params[:page], :per_page => 10)
     render :template => "shared/#{@publisher.theme_name}/books_by_subject" 
   end
 
