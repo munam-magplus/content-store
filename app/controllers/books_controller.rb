@@ -39,6 +39,18 @@ class BooksController < ApplicationController
     redirect_to :back
   end
 
+  def import_chapter_details
+    spreadsheet = open_spreadsheet(params[:file])
+    header = spreadsheet.row(1)
+    (2..spreadsheet.last_row).each do |i|
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+      @book = Isbnchapterdetail.new
+      @book.attributes = row.to_hash.slice(*row.to_hash.keys)
+      @book.save!
+    end
+    redirect_to :back
+  end
+
   def import_contributor
     spreadsheet = open_spreadsheet(params[:file])
     header = spreadsheet.row(1)
@@ -131,7 +143,7 @@ class BooksController < ApplicationController
 
   def search
     #Call filter method to get search results
-    @books = BooksPrimaryContentInformation.filter(params.slice(:publisher_id, :isbn, :title))
+    @books = BooksPrimaryContentInformation.filter(params.slice(:publisher_id, :isbn, :title)).paginate(:page => params[:page], :per_page => 10)
   end
 
   def destroy
@@ -146,7 +158,7 @@ class BooksController < ApplicationController
     params.require(:books_primary_content_information).permit(:content_code, :publisher_id, :book_title, :subject_title, :isbn, :language, 
     :content_classification, :file_name, :stock_number, :publisher_site_sales_link, :book_blurb, :publication_date,
     :conversion_required, :edition, :binding, :volume, :dimension, :series_isbn,
-    :series_title, :logo, :license_id, :number_of_pages, :book_price)
+    :series_title, :logo, :license_id, :number_of_pages, :book_price, :status)
   end
 
   def book_contributor_params
