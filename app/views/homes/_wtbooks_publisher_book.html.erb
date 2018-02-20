@@ -9,7 +9,9 @@
               <%= link_to image_tag("http://ebooks.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg", class: "img-responsive center-block"), wt_books_description_homes_path(:book_id => f.id, institution_id: params[:id]), :method => :post %>
               <h4><%= link_to truncate(f.book_title, length: 20), wt_books_description_homes_path(:book_id => f.id, institution_id: params[:id]), :method => :post  %></h4>
               <span class="text-muted">
+                <% if f.books_contributors.present? %>
                    <%= f.books_contributors.first.first_name.presence || ""%>&nbsp<%= f.books_contributors.first.last_name.presence || ""%>
+                <% end %>
               </span> 
             </div>
           <% end %>
@@ -32,7 +34,9 @@
               <%= link_to image_tag("http://ebooks.#{@publisher.domain_name}.com/static/templates/template1/#{@publisher.publisher_code}/thumbnails/#{f.isbn}-T-FC.jpg", class: "img-responsive center-block"), wt_books_description_homes_path(:book_id => f.id, institution_id: params[:id]), :method => :post %>
               <h4><%= link_to truncate(f.book_title, length: 20), wt_books_description_homes_path(:book_id => f.id, institution_id: params[:id]), :method => :post %></h4>
               <span class="text-muted">
+                <% if f.books_contributors.present? %>
                   <%= f.books_contributors.first.first_name.presence || ""%>&nbsp<%= f.books_contributors.first.last_name.presence || ""%>
+                <% end %>
               </span> 
             </div>
           <% end %>

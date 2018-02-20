@@ -59,9 +59,11 @@
                         <p><span class="book_atr col-xs-12 col-md-4"><strong>Format&nbsp;:</strong></span><span class="col-xs-12 book_description col-md-8">&nbsp; <%=@book_information.books_content_pricing.format.presence || "" %></span></p>
                         <% end %>
                         <p><span class="col-xs-12 book_atr col-md-4"><strong>Author/Editor&nbsp;:&nbsp;</strong></span> <span class="col-xs-12 book_description col-md-8">
+                          <% if @book_information.books_contributors.present? %>
                            <% @book_information.books_contributors.each do |book_contributor| %>
                             <%= book_contributor.first_name.presence || "" %>&nbsp<%= book_contributor.last_name.presence || "" %><br>
                           <%end%>
+                          <%end %>
                           </span>
                         </p>
                         <% unless @book_information.book_blurb.blank? %>
