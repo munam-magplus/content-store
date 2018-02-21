@@ -10,8 +10,7 @@ class BooksController < ApplicationController
 
   def edit
     @book = BooksPrimaryContentInformation.find(params[:id])
-    #@book_contributor = BooksContributor.find_by_books_primary_content_information_id(params[:id])
-    @book_contributor = BooksContributor.new
+    @book_contributor = BooksContributor.find_by_books_primary_content_information_id(params[:id])
     @book_content_pricing = BooksContentPricing.new
     @book_content_access_rule  = BooksContentAccessRule.new
     render 'new'
