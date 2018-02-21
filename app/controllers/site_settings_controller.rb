@@ -17,7 +17,7 @@ class SiteSettingsController < ApplicationController
 	end
 
 	def simple_search
-		@result = BooksPrimaryContentInformation.filter(params.slice(:isbn, :publisher_id , :book_title))
+		@result = BooksPrimaryContentInformation.filter(params.slice(:isbn, :publisher_id , :book_title)).paginate(:page => params[:page], :per_page => 10)
 	end
 
 	def delete
