@@ -36,6 +36,11 @@ class SubscriptionsController < ApplicationController
       redirect_to new_subscription_path
     end
   end
+
+  def edit
+    @subscription  = Subscription.find(params[:id])
+    render 'new'
+  end
   
   def add_subscription_for_subject_group
     role_ids = params[:subscription][:role_ids]
@@ -67,17 +72,17 @@ class SubscriptionsController < ApplicationController
     end
   end
 
-  def condition_one
-  end
+  # def condition_one
+  # end
 
-  def condition_two
-  end
+  # def condition_two
+  # end
 
-  def condition_three
-  end
+  # def condition_three
+  # end
 
-  def condition_four
-  end
+  # def condition_four
+  # end
 
   def index
     #Call filter method to get search results

@@ -25,9 +25,9 @@
           <li><a href="#">Browse by Chapter</a></li>
           <li><a href="#">Browse by Book </a></li>
         </div>
-      </ol>
-      
+      </ol>  
       <h2 class="H2-L1">Book Details</h2>
+      <%= link_to "Back", :back, :class => "btn btn-sm"%>
       <div class="table-responsive">
       <table class="table table-bordered">
         <thead>
@@ -35,7 +35,7 @@
             <div class="pageHeading"><th>Book Title</th></div>
             <th>ISBN</th>
             <th>Language</th>
-            <th>Publisher ID</th>
+            <th>Publisher Name</th>
             <th>Book Image</th>
           </tr>
         </thead>
@@ -44,8 +44,12 @@
             <td><%= @books_details.book_title %></td>
             <td><%= @books_details.isbn %></td>
             <td><%= @books_details.language %></td>
-            <td><%= @books_details.publisher_id %></td>
-            <td><%= image_tag(@books_details.logo.url(:thumb)) %></td>
+            <td><%= @books_details.publisher.publisher_name %></td>
+            <% if @books_details.publisher.id == 10 %>
+              <td><%= image_tag("http://ebooks.#{@books_details.publisher.domain_name}.com/static/templates/template1/#{@books_details.publisher.publisher_code}/thumbnails/#{ @books_details.isbn}-T-FC.jpg",class: "ownBookImg") %></td>
+            <%else%>
+              <td><%= image_tag("http://www.#{@books_details.publisher.domain_name}.com/static/templates/template1/#{@books_details.publisher.publisher_code}/thumbnails/#{ @books_details.isbn}-T-FC.jpg",class: "ownBookImg") %></td>
+            <%end%>
           </tr>
         </tbody>
       </table>

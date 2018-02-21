@@ -22,7 +22,6 @@
               <th>Book Title</th>
               <th>ISBN</th>
               <th>Language</th>
-              <th>Images</th>
             </tr>
           </thead>
           <tbody>
@@ -30,21 +29,23 @@
             <% @result.each do |f| %>
               <tr>
                 <td><%= f.book_title %></td>
-                <td><%= f.isbn %></td>
+                <td><%= link_to f.isbn, new_site_setting_path(f) %></td>
                 <td><%= f.language %></td>
-                <td><%= link_to image_tag(f.logo.url(:thumb)), new_site_setting_path(f) %></td>
               </tr>
             <% end %>
-		      <% else %>
-		        <tr>
-		          <td bgcolor="#FBFBFB">
-		            <p> Record Not Found </p> 
-		          </td>
-		        </tr>
-		      <% end %>
+        <div class="pagination-frontend">
+       </div>
+          <% else %>
+            <tr>
+              <td bgcolor="#FBFBFB">
+                <p> Record Not Found </p> 
+              </td>
+            </tr>
+          <% end %>
           </tbody>
         </table>
     </div>
+     <%= will_paginate @result,renderer: BootstrapPagination::Rails%>
   </div>
   <div class="col-sm-12"> </div>
 </div>

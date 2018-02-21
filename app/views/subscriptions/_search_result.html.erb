@@ -28,9 +28,9 @@
           <% if @subscription.present? %>
 	      		<% @subscription.each do |f| %>
               <tr>
-                <td><%= f.subscription_name %></td>
+                <td><%= f.subscription_name%></td>
                 <td><%= f.id %></td>
-                <td><%= link_to("Edit ", edit_subject_path(f.id), :class => "btn btn-sm", :method => :get) %></td>
+                <td><%= link_to("Edit ", edit_subscription_path(f.id), :class => "btn btn-sm", :method => :get) %></td>
               </tr>
             <% end %>
           <% else %>
