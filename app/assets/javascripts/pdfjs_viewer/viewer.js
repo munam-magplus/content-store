@@ -581,6 +581,25 @@ var pdfjsWebLibs;
   (function (root, factory) {
    factory(root.pdfjsWebDownloadManager = {}, root.pdfjsWebPDFJS);
   }(this, function (exports, pdfjsLib) {
+   function download(blobUrl, filename) {
+    var a = document.createElement('a');
+    if (a.click) {
+     a.href = blobUrl;
+     a.target = '_parent';
+     if ('download' in a) {
+      a.download = filename;
+     }
+     (document.body || document.documentElement).appendChild(a);
+     a.click();
+     a.parentNode.removeChild(a);
+    } else {
+     if (window.top === window && blobUrl.split('#')[0] === window.location.href.split('#')[0]) {
+      var padCharacter = blobUrl.indexOf('?') === -1 ? '?' : '&';
+      blobUrl = blobUrl.replace(/#|$/, padCharacter + '$&');
+     }
+     window.open(blobUrl, '_parent');
+    }
+   }
    function DownloadManager() {
    }
    DownloadManager.prototype = {
@@ -2801,6 +2820,11 @@ var pdfjsWebLibs;
        close: true
       },
       {
+       element: options.downloadButton,
+       eventName: 'download',
+       close: true
+      },
+      {
        element: options.viewBookmarkButton,
        eventName: null,
        close: true
@@ -3040,7 +3064,9 @@ var pdfjsWebLibs;
       items.print.addEventListener('click', function (e) {
        eventBus.dispatch('print');
       });
-      
+      items.download.addEventListener('click', function (e) {
+       eventBus.dispatch('download');
+      });
       items.scaleSelect.oncontextmenu = noContextMenuHandler;
       localized.then(this._localized.bind(this));
      },
@@ -6375,6 +6401,8 @@ var pdfjsWebLibs;
      eventBus.on('presentationmodechanged', webViewerPresentationModeChanged);
      eventBus.on('presentationmode', webViewerPresentationMode);
      eventBus.on('openfile', webViewerOpenFile);
+     eventBus.on('print', webViewerPrint);
+     eventBus.on('download', webViewerDownload);
      eventBus.on('firstpage', webViewerFirstPage);
      eventBus.on('lastpage', webViewerLastPage);
      eventBus.on('nextpage', webViewerNextPage);
@@ -6716,6 +6744,8 @@ var pdfjsWebLibs;
     var appConfig = PDFViewerApplication.appConfig;
     appConfig.toolbar.viewBookmark.setAttribute('hidden', 'true');
     appConfig.secondaryToolbar.viewBookmarkButton.setAttribute('hidden', 'true');
+    appConfig.toolbar.download.setAttribute('hidden', 'true');
+    appConfig.secondaryToolbar.downloadButton.setAttribute('hidden', 'true');
    };
    function webViewerPresentationMode() {
     PDFViewerApplication.requestPresentationMode();
@@ -6727,13 +6757,15 @@ var pdfjsWebLibs;
    function webViewerPrint() {
     window.print();
    }
-   
+   function webViewerDownload() {
+    PDFViewerApplication.download();
+   }
    function webViewerFirstPage() {
     if (PDFViewerApplication.pdfDocument) {
      PDFViewerApplication.page = 1;
     }
    }
-  function webViewerLastPage() {
+   function webViewerLastPage() {
     if (PDFViewerApplication.pdfDocument) {
      PDFViewerApplication.page = PDFViewerApplication.pagesCount;
     }
@@ -6751,13 +6783,12 @@ var pdfjsWebLibs;
     PDFViewerApplication.zoomOut();
    }
    function webViewerPageNumberChanged(e) {
-   
-      var pdfViewer = PDFViewerApplication.pdfViewer;
-      pdfViewer.currentPageLabel = e.value;
-      if (e.value !== pdfViewer.currentPageNumber.toString() && e.value !== pdfViewer.currentPageLabel) {
-        PDFViewerApplication.toolbar.setPageNumber(pdfViewer.currentPageNumber, pdfViewer.currentPageLabel);
-      }
+    var pdfViewer = PDFViewerApplication.pdfViewer;
+    pdfViewer.currentPageLabel = e.value;
+    if (e.value !== pdfViewer.currentPageNumber.toString() && e.value !== pdfViewer.currentPageLabel) {
+     PDFViewerApplication.toolbar.setPageNumber(pdfViewer.currentPageNumber, pdfViewer.currentPageLabel);
     }
+   }
    function webViewerScaleChanged(e) {
     PDFViewerApplication.pdfViewer.currentScaleValue = e.value;
    }
@@ -7004,7 +7035,7 @@ var pdfjsWebLibs;
       }
      case 74:
      case 78:
-      if (PDFViewerApplication.page < PDFViewerApplication.pagesCount) {s
+      if (PDFViewerApplication.page < PDFViewerApplication.pagesCount) {
        PDFViewerApplication.page++;
       }
       handled = true;
@@ -7367,7 +7398,7 @@ function getViewerConfiguration() {
    openFile: document.getElementById('openFile'),
    print: document.getElementById('print'),
    presentationModeButton: document.getElementById('presentationMode'),
-   
+   download: document.getElementById('download'),
    viewBookmark: document.getElementById('viewBookmark')
   },
   secondaryToolbar: {
@@ -7377,6 +7408,7 @@ function getViewerConfiguration() {
    presentationModeButton: document.getElementById('secondaryPresentationMode'),
    openFileButton: document.getElementById('secondaryOpenFile'),
    printButton: document.getElementById('secondaryPrint'),
+   downloadButton: document.getElementById('secondaryDownload'),
    viewBookmarkButton: document.getElementById('secondaryViewBookmark'),
    firstPageButton: document.getElementById('firstPage'),
    lastPageButton: document.getElementById('lastPage'),
