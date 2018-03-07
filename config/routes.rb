@@ -63,6 +63,7 @@ Rails.application.routes.draw do
       get 'books_by_author'
       get 'contact'
       get 'catalogue'
+      get 'download_file'
       get 'search'
       get 'sign_in'
       post 'login'
@@ -223,6 +224,7 @@ Rails.application.routes.draw do
       get 'onix_supp_sheet'
       post 'import'
       post 'import_contributor'
+      post 'import_chapter_details'
       delete 'destroy'
     end
   end

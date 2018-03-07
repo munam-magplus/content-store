@@ -22,6 +22,7 @@
             <th>Publisher</th>
             <th>ISBN</th>
             <th>Title</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -31,8 +32,7 @@
                 <td><%= f.publisher_id %></td>
                 <td ><%= f.isbn %></td>
                 <td ><%= f.book_title %></td>
-                <td><%= button_to("Edit ", edit_book_path(f.id), :class => "btn btn-sm", :method => :get) %></td>
-                <td><%= link_to "Delete", book_path(f.id), :data => { :confirm => "Are you sure you want to delete this Book?"},:class => "btn btn-sm",:method => :delete %></td>
+                <td><%= button_to("Edit ", edit_book_path(f.id), :class => "btn btn-sm", :method => :get) %>&nbsp<%= link_to "Delete", book_path(f.id), :data => { :confirm => "Are you sure you want to delete this Book?"},:class => "btn btn-sm",:method => :delete %></td>
               </tr>
             <% end %>
           <% else %>
@@ -44,6 +44,9 @@
           <% end %>
         </tbody>
       </table>
+      <div class="pagination-frontend">
+         <%= will_paginate @books,renderer: BootstrapPagination::Rails%>
+       </div>
     </div>
   </div>
   <div class="col-sm-12"> </div>

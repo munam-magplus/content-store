@@ -4,6 +4,7 @@ class BooksPrimaryContentInformation < ApplicationRecord
 	belongs_to :member_publisher, optional: true
 	has_many :books_contributors, dependent: :destroy
 	has_one :books_content_pricing
+	has_one :books_chapter_detail
 	has_one :books_content_access_rule
 	has_many :subject_group_books
 	has_many :subject_groups , through: :subject_group_books
