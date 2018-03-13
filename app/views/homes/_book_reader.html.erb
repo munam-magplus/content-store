@@ -1,4 +1,29 @@
-<div class="border_wrapper height100 padding10px">
-   <%= pdfjs_viewer pdf_url: "/static/#{@publisher.publisher_code}/ebooks/#{@book_information.isbn}/#{@book_information.isbn}.pdf", style: :full %>
-
+<div class="height100 padding10px" id="book_reader">
+  <% if @book_information.books_chapter_detail.present? %>
+    <% if @book_information.books_chapter_detail.number_of_chapters > 1 && current_end_user.id == 23 %>
+      <div class="text-right"><input type="submit" id="btn" name="submit" value="Download PDF" class="btn btn-small btn-inverse" style=" margin-bottom: 10px"></div>
+    <%end%>
+  <%end%>
+    <%= pdfjs_viewer pdf_url:"/9781280130083.pdf", style: :full %>
 </div>
+ <div class="col-md-2 padding10px">
+    <ul class="chapterList">
+      <% if @book_information.books_chapter_detail.present? %>
+        <% if @book_information.books_chapter_detail.number_of_chapters > 0 %>
+          <% 1.upto(@book_information.books_chapter_detail.number_of_chapters) do |i| %>
+              <li><%= link_to "Chapter -#{i}", download_file_homes_url(:id => @book_information, :chapter => "#{i}"), target: "_blank" %></li>
+            <%end%>
+        <%end%>
+      <%end%>
+    </ul>
+  </div>
+<script>
+  $(document).ready(function(){
+    $(".chapterList").hide();
+    $("#btn").click(function(){
+      $( "#book_reader" ).toggleClass( "col-md-12" );
+      $( "#book_reader" ).toggleClass( "col-md-10" );
+      $(".chapterList").toggle();
+    });    
+  });
+</script> 
