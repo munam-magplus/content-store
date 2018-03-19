@@ -283,7 +283,13 @@ class HomesController < ApplicationController
     type: "application/pdf"
     )
   end
- 
+
+  def download_file
+    @book_information =  BooksPrimaryContentInformation.find(params[:id])
+    data = open("http://ebooks.wtbooks.com/static/wtbooks/ebooks/#{@book_information.isbn}/#{@book_information.isbn}_Chapter%20#{params[:chapter]}.pdf") 
+    send_data data.read, filename: "#{@book_information.book_title}_Chapter #{params[:chapter]}.pdf", type: "application/pdf", stream: 'true', buffer_size: '4096' 
+  end
+
   def sign_in
     render :template => "shared/#{@publisher.theme_name}/sign_in"
   end
