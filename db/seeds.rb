@@ -98,35 +98,17 @@
 #InstitutionAccount.where(id: 58).last.ip_addresses.last.update_attributes(low_ip: "999323992")
 
 
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "BP", subject_group_name: "Botany, Plant Science and Agriculture", language: "ENG", subject_group_description: "test", subject_id: "66",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "BS", subject_group_name: "Biological Science, Biochemistry, Genetics, Biotechnology, Molecular Biology, Microbiology and Immunology", language: "ENG", subject_group_description: "test", subject_id: "67",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "GG", subject_group_name: "Geography and Geology", language: "ENG", subject_group_description: "test", subject_id: "68",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "PA", subject_group_name: "Physics and Astrophysics", language: "ENG", subject_group_description: "test", subject_id: "69",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "CS", subject_group_name: "Computer Science & Information Technology", language: "ENG", subject_group_description: "test", subject_id: "70",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "CSI", subject_group_name: "Computer Science & Information TechnologyElectronics and Communication & Electrical Engineering", language: "ENG", subject_group_description: "test", subject_id: "71",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "PR", subject_group_name: "Philosophy and Religion", language: "ENG", subject_group_description: "test", subject_id: "72",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "HA", subject_group_name: "History, Architecture and Archaeology", language: "ENG", subject_group_description: "test", subject_id: "73",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "JM", subject_group_name: "Journalism and Mass Communication", language: "ENG", subject_group_description: "test", subject_id: "74",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "ZA", subject_group_name: "Zoology, Animal Science & Veterinary Science", language: "ENG", subject_group_description: "test", subject_id: "75",member_publisher_id: "" )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "BP", subject_group_name: "Botany, Plant Science and Agriculture", language: "ENG", subject_group_description: "test", subject_id: "66",member_publisher_id: "" )
+#SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "BS", subject_group_name: "Biological Science, Biochemistry, Genetics, Biotechnology, Molecular Biology, Microbiology and Immunology", language: "ENG", subject_group_description: "test", subject_id: "67",member_publisher_id: "" )
+#SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "GG", subject_group_name: "Geography and Geology", language: "ENG", subject_group_description: "test", subject_id: "68",member_publisher_id: "" )
+#SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "PA", subject_group_name: "Physics and Astrophysics", language: "ENG", subject_group_description: "test", subject_id: "69",member_publisher_id: "" )
+#SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "CS", subject_group_name: "Computer Science & Information Technology", language: "ENG", subject_group_description: "test", subject_id: "70",member_publisher_id: "" )
+#SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "CSI", subject_group_name: "Computer Science & Information TechnologyElectronics and Communication & Electrical Engineering", language: "ENG", subject_group_description: "test", subject_id: "71",member_publisher_id: "" )
+#SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "PR", subject_group_name: "Philosophy and Religion", language: "ENG", subject_group_description: "test", subject_id: "72",member_publisher_id: "" )
+#SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "HA", subject_group_name: "History, Architecture and Archaeology", language: "ENG", subject_group_description: "test", subject_id: "73",member_publisher_id: "" )
+#SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "JM", subject_group_name: "Journalism and Mass Communication", language: "ENG", subject_group_description: "test", subject_id: "74",member_publisher_id: "" )
+#SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "ZA", subject_group_name: "Zoology, Animal Science & Veterinary Science", language: "ENG", subject_group_description: "test", subject_id: "75",member_publisher_id: "" )
+SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code "TH", subject_group_name: "Tourism And Hotel Management", language: "ENG",  subject_group_description:"test", subject_id: "76",  member_publisher_id: "")
+SubjectGroup.create!(publisher_id: 10,  subject_group_level: 2, subject_group_code "PE", subject_group_name: "Physical Education And Sports", language: "ENG", subject_group_description: "test", subject_id: "77", member_publisher_id: ""  )
 
 
