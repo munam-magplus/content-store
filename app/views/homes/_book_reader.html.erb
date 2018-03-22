@@ -1,9 +1,9 @@
 <div class="height100 padding10px" id="book_reader">
-  <% if @book_information.books_chapter_detail.present? && current_end_user.present? %>
-    <% if @book_information.books_chapter_detail.number_of_chapters > 1 && current_end_user.id == 23 %>
+  <%# if @book_information.books_chapter_detail.present? && current_end_user.present? %>
+    <%# if @book_information.books_chapter_detail.number_of_chapters > 1 && current_end_user.id == 23 %>
       <div class="text-right"><input type="submit" id="btn" name="submit" value="Download PDF" class="btn btn-small btn-inverse" style=" margin-bottom: 10px"></div>
-    <%end%>
-  <%end%>
+    <%#end%>
+  <%#end%>
     <%= pdfjs_viewer pdf_url: "/static/#{@publisher.publisher_code}/ebooks/#{@book_information.isbn}/#{@book_information.isbn}.pdf", style: :full %>
 </div>
  <div class="col-md-2 padding10px">
