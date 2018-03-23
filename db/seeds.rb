@@ -100,24 +100,16 @@
 
 
 
-Subject.create(subject_name: "Agricultural Sciences, Life Sciences and Biosciences",publisher_id: 10)
-Subject.create(subject_name: "Medical Sciences", publisher_id: 10)
+#Subject.create(subject_name: "Agricultural Sciences, Life Sciences and Biosciences",publisher_id: 10)
+#Subject.create(subject_name: "Medical Sciences", publisher_id: 10)
 
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "ECE", subject_group_name: "Food Science, Health and Nutrition", language: "ENG", subject_group_description: "test", subject_id: "83",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "ES", subject_group_name: "Environmental Science", language: "ENG", subject_group_description: "test", subject_id: "85",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "ME", subject_group_name: "Mechanical Engineering", language: "ENG", subject_group_description: "test", subject_id: "82",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "CE", subject_group_name: "Civil Engineering", language: "ENG", subject_group_description: "test", subject_id: "82",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "CHE", subject_group_name: "Chemistry", language: "ENG", subject_group_description: "test", subject_id: "82",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "MAT", subject_group_name: "Mathematics and Statistics", language: "ENG", subject_group_description: "test", subject_id: "82",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "SOC", subject_group_name: "Sociology", language: "ENG", subject_group_description: "test", subject_id: "90",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "SOC", subject_group_name: "Sociology", language: "ENG", subject_group_description: "test", subject_id: "90",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "PSY", subject_group_name: "Psychology", language: "ENG", subject_group_description: "test", subject_id: "90",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "EDU", subject_group_name: "Education", language: "ENG", subject_group_description: "test", subject_id: "90",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "VC", subject_group_name: "Vocational Education", language: "ENG", subject_group_description: "test", subject_id: "92",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "BME", subject_group_name: "Business, Management and Economics", language: "ENG", subject_group_description: "test", subject_id: "81",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "MS", subject_group_name: "Medical Science", language: "ENG", subject_group_description: "test", subject_id: "94",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "PS", subject_group_name: "Pharmaceutical Sciences", language: "ENG", subject_group_description: "test", subject_id: "88",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "PES", subject_group_name: "Physical Education and Sports", language: "ENG", subject_group_description: "test", subject_id: "89",member_publisher_id: "" )
+
+
+SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "ECE", subject_group_name: "Electronics and Communication & Electrical Engineering", language: "ENG", subject_group_description: "test", subject_id: "83",member_publisher_id: "" )
+SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "PS", subject_group_name: "Political Science", language: "ENG", subject_group_description: "test", subject_id: "90",member_publisher_id: "" )
+SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "THM", subject_group_name: "Tourism and Hotel Management", language: "ENG", subject_group_description: "test", subject_id: "91",member_publisher_id: "" )
+
+
 
 #SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "PES", subject_group_name: "Physical Education and Sports", language: "ENG", subject_group_description: "test", subject_id: "89",member_publisher_id: "" )
 
