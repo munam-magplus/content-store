@@ -97,19 +97,7 @@
 #InstitutionAccount.where(id: 58).last.update_attributes(end_user_id: 2)
 #InstitutionAccount.where(id: 58).last.ip_addresses.last.update_attributes(low_ip: "999323992")
 
+Subject.create(subject_name: "Agricultural Sciences, Life Sciences and Biosciences", publisher_id: 10)
 
-Subject.create(subject_name: "Basic and Applied Sciences", publisher_id: 10)
-Subject.create(subject_name: "Business, Management and Economics", publisher_id: 10)
-Subject.create(subject_name: "Basic and Applied Sciences", publisher_id: 10)
-Subject.create(subject_name: "Engineering and Technology", publisher_id: 10)
-Subject.create(subject_name: "Basic and Applied Sciences", publisher_id: 10)
-Subject.create(subject_name: "Environmental Science", publisher_id: 10)
-Subject.create(subject_name: "Geography and Geology", publisher_id: 10)
-Subject.create(subject_name: "Journalism and Mass Communication", publisher_id: 10)
-Subject.create(subject_name: "Pharmaceutical Sciences", publisher_id: 10)
-Subject.create(subject_name: "Physical Education and Sports", publisher_id: 10)
-Subject.create(subject_name: "Social Science and Humanities", publisher_id: 10)
-Subject.create(subject_name: "Tourism and Hotel Management", publisher_id: 10)
-Subject.create(subject_name: "Vocational Education", publisher_id: 10)
 
 
