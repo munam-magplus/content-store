@@ -111,16 +111,28 @@
 
 
 
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "BPS", subject_group_name: "Botany, Plant Science and Agriculture", language: "ENG", subject_group_description: "test", subject_id: "93",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "BSB", subject_group_name: "Biological Science, Biochemistry, Genetics, Biotechnology, Molecular Biology, Microbiology and Immunology", language: "ENG", subject_group_description: "test", subject_id: "93",member_publisher_id: "" )
-SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "LLL", subject_group_name: "Language, Literature and Linguistics", language: "ENG", subject_group_description: "test", subject_id: "90",member_publisher_id: "" )
+# SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "BPS", subject_group_name: "Botany, Plant Science and Agriculture", language: "ENG", subject_group_description: "test", subject_id: "93",member_publisher_id: "" )
+# SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "BSB", subject_group_name: "Biological Science, Biochemistry, Genetics, Biotechnology, Molecular Biology, Microbiology and Immunology", language: "ENG", subject_group_description: "test", subject_id: "93",member_publisher_id: "" )
+# SubjectGroup.create!(publisher_id: 10, subject_group_level: 2, subject_group_code: "LLL", subject_group_name: "Language, Literature and Linguistics", language: "ENG", subject_group_description: "test", subject_id: "90",member_publisher_id: "" )
 
 
 
-SubjectGroup.where(id: 707).last.update_attributes(subject_id: 92)
-SubjectGroup.where(id: 709).last.update_attributes(subject_id: 95)
-SubjectGroup.where(id: 712).last.update_attributes(subject_id: 83)
-SubjectGroup.where(id: 693).last.update_attributes(subject_id: 90)
+# SubjectGroup.where(id: 707).last.update_attributes(subject_id: 92)
+# SubjectGroup.where(id: 709).last.update_attributes(subject_id: 95)
+# SubjectGroup.where(id: 712).last.update_attributes(subject_id: 83)
+# SubjectGroup.where(id: 693).last.update_attributes(subject_id: 90)
+
+
+
+SubjectGroupBook.where(id: 17231).last.update_attributes(subject_group_id: 700)
+SubjectGroupBook.where(id: 17232).last.update_attributes(subject_group_id: 700)
+SubjectGroupBook.where(id: 17230).last.update_attributes(subject_group_id: 700)
+
+
+
+
+
+
 
 
 
