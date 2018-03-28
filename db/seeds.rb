@@ -124,9 +124,29 @@
 
 
 
-SubjectGroupBook.where(id: 17231).last.update_attributes(subject_group_id: 700)
-SubjectGroupBook.where(id: 17232).last.update_attributes(subject_group_id: 700)
-SubjectGroupBook.where(id: 17230).last.update_attributes(subject_group_id: 700)
+# SubjectGroupBook.where(id: 17231).last.update_attributes(subject_group_id: 700)
+# SubjectGroupBook.where(id: 17232).last.update_attributes(subject_group_id: 700)
+# SubjectGroupBook.where(id: 17230).last.update_attributes(subject_group_id: 700)
+
+
+SubjectGroupBook.where(id: 15600).last.update_attributes(subject_group_id: 700)
+
+SubjectGroupBook.where(id: 15599).last.update_attributes(subject_group_id: 700)
+
+SubjectGroupBook.where(id: 15671).last.update_attributes(subject_group_id: 708)
+
+
+
+
+
+
+BooksPrimaryContentInformation.where(id: 18322).last.update_attributes(language: "English", price: "USD 125.00")
+
+BooksContributor.where(books_primary_content_information_id: 18322).last.update_attributes(description: '')
+
+
+#BooksPrimaryContentInformation.where(id: 24329).last.update_attributes(language: "English", price: "USD 125.00")
+
 
 
 
