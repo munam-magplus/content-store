@@ -15,8 +15,13 @@
 #SubjectGroupBook.whereeate_attribu
 #SubjectGroupBook.whereeate_attribu
 
+
+
 BooksPrimaryContentInformation.where(id: 18900).last.update_attributes(book_price: "USD 125.00")
 BooksPrimaryContentInformation.where(id: 18253).last.update_attributes(book_price: "USD 125.00")
+BooksPrimaryContentInformation.where(id: 18955).last.update_attributes(book_price: "USD 125.00")
+
+
 
 
 
