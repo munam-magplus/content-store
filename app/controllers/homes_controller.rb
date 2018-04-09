@@ -8,7 +8,7 @@ class HomesController < ApplicationController
   def index
     begin
       unless @publisher.books_primary_content_informations.blank? 
-        if ['red_content','light_blue_content','fosteracademics', 'theachiverspress'].include? @publisher.theme_name
+        if ['red_content','light_blue_content','fosteracademics'].include? @publisher.theme_name
           @books = @publisher.books_primary_content_informations.includes(:books_contributors).where('content_classification = ? OR content_classification = ?', 'Featured Books', 'New Releases')
         elsif ['wtbooks'].include? @publisher.theme_name
           if logged_in?
@@ -24,6 +24,11 @@ class HomesController < ApplicationController
           @institute_id = InstitutionAccount.find_by_id(params[:id]) rescue nil
           @institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations) rescue nil
           @books = @publisher.books_primary_content_informations.includes(:books_contributors).where('true').distinct.paginate(:page => params[:page], :per_page => 18) rescue nil  
+
+        elsif ['green_content'].include? @publisher.theme_name
+          archivpres = [9781642872514, 9781642872521, 9781642872538, 9781642872545, 9781642872552, 9781642872569, 9781642872576]
+          @books =@publisher.books_primary_content_informations.where(isbn: archivpres).includes(:books_contributors)
+          
         else
           @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10) rescue nil
         end

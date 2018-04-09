@@ -21,7 +21,9 @@
   <div class="pull-right">
     <div class="pagination-frontend">
       <nav aria-label="Page navigation" style="clear:both;"> 
-        <%= will_paginate @books,renderer: BootstrapPagination::Rails %>
+        <% unless  @publisher.publisher_name == "theachiverspress" %>
+          <%= will_paginate @books,renderer: BootstrapPagination::Rails %>
+        <% end %>
       </nav>  
     </div>
   </div>
