@@ -26,7 +26,7 @@ class HomesController < ApplicationController
           @books = @publisher.books_primary_content_informations.includes(:books_contributors).where('true').distinct.paginate(:page => params[:page], :per_page => 18) rescue nil  
 
         elsif ['green_content'].include? @publisher.theme_name
-          archivpres = [19092, 19049, 19108, 19112, 19077, 19107]
+          archivpres = [9781642872514, 9781642872521, 9781642872538, 9781642872545, 9781642872552, 9781642872569, 9781642872576]
           @books =@publisher.books_primary_content_informations.where(id: archivpres).last.includes(:books_contributors)
           
         else
