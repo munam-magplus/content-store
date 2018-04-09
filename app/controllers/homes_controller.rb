@@ -27,7 +27,7 @@ class HomesController < ApplicationController
 
         elsif ['green_content'].include? @publisher.theme_name
           archivpres = [9781642872514, 9781642872521, 9781642872538, 9781642872545, 9781642872552, 9781642872569, 9781642872576]
-          @books =@publisher.books_primary_content_informations.where(id: archivpres).last.includes(:books_contributors)
+          @books =@publisher.books_primary_content_informations.where(isbn: archivpres).includes(:books_contributors)
           
         else
           @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10) rescue nil
