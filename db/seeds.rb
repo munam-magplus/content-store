@@ -25,7 +25,7 @@
  # Subject.create(subject_name: "Buisness and Management", publisher_id: 11)
  # Subject.create(subject_name: "Tourism, Hotel and Hospitality", publisher_id: 11)
 
- Subject.create(subject_name: "Vocational Education, Skill Development and Career Planning", publisher_id: 11)
+ #Subject.create(subject_name: "Vocational Education, Skill Development and Career Planning", publisher_id: 11)
 
 
 
@@ -33,7 +33,28 @@
  #SubjectGroup.create!(publisher_id: 11, subject_group_level: 2, subject_group_code: "BSAM", subject_group_name: "Tourism, Hotel and Hospitality", language: "English", subject_id: "97")
 
 
- SubjectGroup.create!(publisher_id: 11, subject_group_level: 2, subject_group_code: "VESD", subject_group_name: "Vocational Education, Skill Development and Career Planning", language: "English", subject_id: "98")
+ #SubjectGroup.create!(publisher_id: 11, subject_group_level: 2, subject_group_code: "VESD", subject_group_name: "Vocational Education, Skill Development and Career Planning", language: "English", subject_id: "98")
+
+ BooksPrimaryContentInformation.where(id: 18969).last.delete
+ BooksPrimaryContentInformation.where(id: 18977).last.delete
+ BooksPrimaryContentInformation.where(id: 18997).last.delete
+ BooksPrimaryContentInformation.where(id: 19012).last.delete
+ BooksPrimaryContentInformation.where(id: 19027).last.delete
+ BooksPrimaryContentInformation.where(id: 19027).last.delete
+ BooksPrimaryContentInformation.where(id: 19028).last.delete
+ BooksPrimaryContentInformation.where(id: 19032).last.delete
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,109 @@
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+  
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+@media (max-width: 767px) {
+	.book_atr{margin-bottom:0px;}
+	.web_block{ display:none !important;}
+	.mobile_block{ display:block !important;}
+	.searchmenu{ display:none !important;}
+	.navbar{ margin-bottom:0;}
+	.navbar-toggle{ top:3px;  background-color: #000; border:1px solid #000 !important; margin-right: 0px;}
+	.navbar-default .navbar-toggle .icon-bar {background-color: #fff;}
+	.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {background-color: #333;}
+	.dropdown-menu::before{ border:none;}
+	.dropdown-menu .divider{display: none !important; }
+	.navbar-default .navbar-nav > li > a{ margin-bottom:2px;}
+	.navbar-default .navbar-nav > li > a:hover,
+	.navbar-default .navbar-nav > li > a:focus {
+	  color: #0088cc;
+	  background-color: #ccc;
+	}
+	.border-rht{border-right: none
+	}
+	
+	.mm {
+    width: 100%!important;
+	    margin-top: 4px;
+   
+}
+	
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+	  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+		color: #0088cc;
+		background-color:  #ccc;
+	  }
+	  .footer .footer_text {
+    text-align: center;
+    padding-top: 5px;
+}
+	  .mob-pad{padding:0px;}
+	  
+	  
+	  
+	.im_width a img {
+    max-width: 100%;
+	width: 100%;
+}  
+
+
+
+
+.no-lr-pad {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.effects {
+    margin-bottom: 10px;
+}
+	  
+}
+
+@media(min-width:320px) and (max-width:480px) {
+
+
+	
+}
+
+@media(min-width:481px) and (max-width: 550px) {
+	
+}
+
+@media(min-width:550px) and (max-width:767px) {
+}
+
+@media (min-width:768px) and (max-width:990px) {
+	.book_atr{margin-bottom:0px;}
+	.searchmenu{ display:none !important;}
+	.input-group{ width:100%; display:table;}
+	.input-group-btn { width:1% !important;}
+	.navbar-form {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+	.web_block{ display:none !important;}
+	.mobile_block{ display:block !important;}
+	
+}
+
+@media (min-width: 991px) and (max-width:1169px) {
+	
+}
+
+@media (min-width:991px) { 
+
+}
