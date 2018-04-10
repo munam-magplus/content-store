@@ -1,0 +1,90 @@
+<section class="content">
+  <%= render :partial => "#{@publisher.theme_name}"%> 
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-4 col-md-3 ">
+          <%= render :partial => "subject_sidebar"%>
+        </div>
+        <div class="col-sm-8 col-md-9 mar-b50" > 
+          <div id='pub_book'>  
+            <div class="row">
+              <div class="col-sm-12 ">
+                <div class="border_wrapper padding10px">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <h1 class="sectionHeading">CONTACT US</h1>
+                      <div class="col-sm-12 form_bg no-pad">
+                        <div class="col-sm-8">
+                          <p><em>Fields marked with <sup class="mandatory">*</sup> are compulsory</em></p><br> 
+                          <%= form_tag(send_mail_homes_path) do %>
+                            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                            <fieldset>
+                              <div class="form-group  ">
+                                <label class="col-md-3" for=""> Your name: <sup class="mandatory">*</sup></label>
+                                <div class="col-md-6">
+                                  <%= text_field_tag :name,"", :class => "form-control" %>
+                                </div>
+                                <div class="clearfix"></div>
+                              </div>
+                              <div class="form-group  mt-20">
+                                <label class="col-md-3" for=""> Your email: <sup class="mandatory">*</sup></label>
+                                <div class="col-md-6">
+                                  <%= text_field_tag :email,"", :required => true ,:class => "form-control" %>
+                                </div>
+                                <div class="clearfix"></div>
+                              </div>
+                              <div class="form-group  mt-20">
+                                <label class="col-md-3" for=""> Subject:</label>
+                                <div class="col-md-6">
+                                  <%= text_field_tag :subject,"", :class => "form-control" %>
+                                </div>
+                                <div class="clearfix"></div>
+                              </div>
+                              <div class="form-group  mt-20">
+                                <label class="col-md-3" for=""> Your message: <sup class="mandatory">*</sup>
+                                </label>
+                                <div class="col-md-6">
+                                  <%= text_area :message,"", :class => "form-control" %>
+                                </div>
+                                <div class="clearfix"></div>
+                              </div>
+                               <div class="col-lg-9 col-md-9 col-sm-9 colx-9 text-right">
+                                <%= button_tag fa_icon("send Message", text: "Send Message"), :class => "btn btn-primary btn-inverse pull-right", type: :submit %>
+                              </div>                          
+                            </fieldset>
+                          <% end %>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="text-left contact-text" style="line-height: 22px;">
+                        <!-- @publisher.address --><br>
+                          <p>
+                            <strong>Address</strong>
+                          </p>
+                          <p>
+                            <%= @publisher.publisher_address.presence || "" %>
+                          </p>
+                            <span style="text-transform:lowercase;">
+                              <%= link_to "www.#{@publisher.domain_name}.com", "http://www.#{@publisher.domain_name}.com"%>
+                            </span>
+                            <br>Email-
+                            <span style="text-transform:lowercase;">
+                              <%= link_to @publisher.contact_email, "mailto:#{@publisher.contact_email}"%>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </br>
+      </div>  
+    </div>
+  </div>
+  <footer>
+    <%= render :partial => "homes/publisher_footer"%>
+  </footer>
+</section>   

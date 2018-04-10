@@ -1,0 +1,64 @@
+<section class="content">
+  <%= render :partial => "#{@publisher.theme_name}"%> 
+
+    <div class="container-fluid">
+      <div class="row">
+        
+        <div class="col-sm-4 col-md-3 ">
+          <%= render :partial => "subject_sidebar"%>
+        </div>
+        
+
+        <div class="col-sm-8 col-md-9 mar-b50" > 
+          <div id='pub_book'>  
+            
+            <!--get author-->
+
+                      <div class="row">
+  <div class="col-sm-12">
+    <h1 class="heading1 border_bottom ">AUTHOR(S):</h1>
+    <div class="mt20 border_bottom ">
+      <ul class='pagination pagination-sm'>
+        <% ('A'..'Z').each do |letter| %> 
+          <li>
+            <%= link_to letter, get_author_homes_path(:letter=>letter)%>
+          </li>
+        <%end%>
+      </ul>
+    </div>
+    <div class="clearfix m-b-30"></div>
+    <%if @authors.present?%>
+      <%@authors.each do |authname| %>
+        <div class="mt20 nopadding">
+          <ul id="demoOne" class="description   margin_left5px">  
+            <li class="ln-R ln-r">
+              <%= link_to authname, books_by_author_homes_path(authname) %>
+            </li>
+          </ul>
+        </div>
+      <%end%>
+    <%end%>
+  </div>
+  <div class="clearfix"></div>
+ </div>
+
+          </div>
+          </br>
+
+        </div>  
+
+    </div>
+  </div>
+        
+  <footer>
+    <%= render :partial => "homes/publisher_footer"%>
+  </footer>
+  
+</section>   
+<script>
+  $('ul.pagination li').each(function() {
+    if($(this).text().trim()== "<%= @letter%>"){
+     $(this).addClass("active");
+    }
+  });
+</script> 

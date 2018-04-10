@@ -25,13 +25,14 @@ class HomesController < ApplicationController
           @institute_books = InstitutionAccount.where(id: session[:institution_account_id]).last.subscriptions.all.map(&:books_primary_content_informations) rescue nil
           @books = @publisher.books_primary_content_informations.includes(:books_contributors).where('true').distinct.paginate(:page => params[:page], :per_page => 18) rescue nil  
 
-        elsif ['green_content'].include? @publisher.theme_name 
+        elsif ['green_content, white_content'].include? @publisher.theme_name 
           if @publisher.publisher_name == "theachiverspress"
             archivpres = [9781642872514, 9781642872521, 9781642872538, 9781642872545, 9781642872552, 9781642872569, 9781642872576]
-            @books =@publisher.books_primary_content_informations.where(isbn: archivpres).includes(:books_contributors)
-          else
-          @books = @publisher.books_primary_content_informations.includes(:books_contributors).where('true').distinct.paginate(:page => params[:page], :per_page => 18) rescue nil  
-        end
+            @books =@publisher.books_primary_content_informations.where(isbn: archivpres).includes(:books_contributors).where('true').distinct.paginate(:page => params[:page], :per_page => 18) rescue nil  
+          end
+          if @publisher.publisher_name == "callistoreference"
+            @books = @publisher.books_primary_content_informations.includes(:books_contributors).where('true').distinct.paginate(:page => params[:page], :per_page => 18) rescue nil  
+          end
         else
           @books = @publisher.books_primary_content_informations.paginate(:page => params[:page], :per_page => 10) rescue nil
         end

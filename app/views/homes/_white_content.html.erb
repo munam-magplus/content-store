@@ -1,0 +1,87 @@
+<div class=" container-fluid top_bar">
+  <div class="pull-left"><%= link_to image_tag(@publisher.publisher_logo(:original)), homes_path, :class => "img-responsive brand" %></div>
+</div>
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container-fluid menu-bg">
+    <div class="dropdown cbp-hrmenu " id="mdd">
+    
+    
+  <span class="badge badge-warning dropdown-toggle" data-toggle="dropdown">Browse By Category</span>
+      <div class="dropdown-menu mm">
+        <div class="col-sm-12">
+          <h4 class="list-head">subject</h4>
+          <div class="col-sm-6 border-rht">
+            <ul class="list-mega-drop">
+              <% @publisher.subjects.each do |subject| %>
+                <li><%=link_to subject.subject_name ,books_by_subject_homes_path(:subject => subject.id) %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="col-sm-6">
+            <ul class="list-mega-drop">
+              <li><%= link_to "AUTHOR / EDITOR",get_author_homes_path(:letter => 'a') %></li>
+              <li><%= link_to "TITLE",books_by_title_homes_path %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+   
+    <div class="mob-pad">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      </div>
+    </div></div>
+    <div class="col-sm-7 no-pad">
+      <div class="my_menu">
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <li><%= link_to '<i class="fa fa-home"></i>'.html_safe, homes_path, :class => "btn btn-sm pull-left" %></li>
+            <li><%= link_to "ABOUT US", about_homes_path%></li>
+            <li><%= link_to 'CATALOGUE', catalogue_homes_url, target: "_blank" %></li>
+            <li><%= link_to "CONTACT US", contact_homes_path %></li>
+          </ul>
+          
+        </div>
+      </div>
+    </div>
+    <div class="searchmenu pull-right">
+      <%= form_tag(search_homes_path, :method => "get", class: "navbar-form",:remote => true) do %>
+        <div class="input-group add-on">
+         <%= text_field_tag :book_title, params[:search], class:'form-control',required: true,placeholder: "Search by Title " %>
+         <div class="input-group-btn ">
+           <%= button_tag(type: 'submit', class: "btn btn-default") do %>
+             <i class="fa fa-search"></i>
+           <% end %>
+         </div>
+         <div class="pull-right"> 
+          <%= link_to advance_search_homes_path, class: 'adcance_search',remote: true  do %>
+            <i class="fa fa-plus-circle" style="font-size:1.9em; color:#73c463" ></i>&nbsp; 
+          <% end %>
+        </div>
+    
+      <%end%>
+
+  </div>
+</nav>
+<div class="container-fluid mobile_block">
+  <div class="row">
+    <div class="col-xs-12 col-md-12">
+    <%= form_tag(search_homes_path, :method => "get", class: "navbar-form",:remote => true) do %>
+          <div class="input-group add-on">
+            <%= text_field_tag :book_title, params[:search], class:'form-control',required: true,placeholder: "Search by Title " %>
+            <div class="input-group-btn">
+              <%= button_tag(type: 'submit', class: "btn btn-default black_btn") do %>
+                <i class="fa fa-search"></i>
+              <% end %>
+            </div>
+          </div>
+          
+          <div class="text-right">
+            <%= link_to 'ADVANCED SEARCH', advance_search_homes_path, remote: true  %>
+          </div>
+        <% end %>
+        
+    </div>
+  </div>
+</div>
