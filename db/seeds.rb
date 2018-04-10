@@ -29,20 +29,20 @@
 
 
 
- #SubjectGroup.create!(publisher_id: 11, subject_group_level: 2, subject_group_code: "BSAM", subject_group_name: "Business and Management", language: "English", subject_id: "96")
- #SubjectGroup.create!(publisher_id: 11, subject_group_level: 2, subject_group_code: "BSAM", subject_group_name: "Tourism, Hotel and Hospitality", language: "English", subject_id: "97")
+ # SubjectGroup.create!(publisher_id: 11, subject_group_level: 2, subject_group_code: "BSAM", subject_group_name: "Business and Management", language: "English", subject_id: "96")
+ # SubjectGroup.create!(publisher_id: 11, subject_group_level: 2, subject_group_code: "BSAM", subject_group_name: "Tourism, Hotel and Hospitality", language: "English", subject_id: "97")
 
 
  #SubjectGroup.create!(publisher_id: 11, subject_group_level: 2, subject_group_code: "VESD", subject_group_name: "Vocational Education, Skill Development and Career Planning", language: "English", subject_id: "98")
 
- BooksPrimaryContentInformation.where(id: 18969).last.delete
- BooksPrimaryContentInformation.where(id: 18977).last.delete
- BooksPrimaryContentInformation.where(id: 18997).last.delete
- BooksPrimaryContentInformation.where(id: 19012).last.delete
- BooksPrimaryContentInformation.where(id: 19027).last.delete
- BooksPrimaryContentInformation.where(id: 19027).last.delete
- BooksPrimaryContentInformation.where(id: 19028).last.delete
- BooksPrimaryContentInformation.where(id: 19032).last.delete
+ # BooksPrimaryContentInformation.where(id: 18969).last.delete
+ # BooksPrimaryContentInformation.where(id: 18977).last.delete
+ # BooksPrimaryContentInformation.where(id: 18997).last.delete
+ # BooksPrimaryContentInformation.where(id: 19012).last.delete
+ # BooksPrimaryContentInformation.where(id: 19027).last.delete
+ # BooksPrimaryContentInformation.where(id: 19027).last.delete
+ # BooksPrimaryContentInformation.where(id: 19028).last.delete
+ # BooksPrimaryContentInformation.where(id: 19032).last.delete
 
 
 
@@ -141,6 +141,9 @@
 # BooksContributor.where(id:21019).last.update_attributes(description: "The books tells us about tourism and management")
 # BooksContributor.where(id:21020).last.update_attributes(description: "The books tells us about tourism and management")
 # BooksContributor.where(id:21021).last.update_attributes(description: "The books tells us about tourism and management")
+
+
+Theme.create!(theme_name: "white_content", template_file_name: "white_content_logo.png", template_content_type: "image/png", template_file_size: "2085834")
 
 
 
