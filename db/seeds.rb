@@ -146,12 +146,9 @@
 #Theme.create!(theme_name: "white_content", template_file_name: "white_content_logo.png", template_content_type: "image/png", template_file_size: "2085834")
 
 
-BooksContributor.create!(first_name: "Heather", last_name: "Dale", books_primary_content_information_id: 18321)
+#BooksContributor.create!(first_name: "Heather", last_name: "Dale", books_primary_content_information_id: 18321)
 
-BooksContributor.create!(first_name: "Heather", last_name: "Dale", books_primary_content_information_id: 18320)
-
-
-
+#BooksContributor.create!(first_name: "Heather", last_name: "Dale", books_primary_content_information_id: 18320)
 
 
 BooksPrimaryContentInformation.where(id:15661	).last.update_attributes(book_blurb:"		Crop science is a primary branch of agricultural science focusing on the genetics, production and environmental aspects of crops. This book on crop science focuses on significant aspects of the discipline such as seed science, irrigation, yield potentials, etc. It is a valuable compilation of topics, ranging from the basic to the most complex advancements of this field. With state-of-the-art inputs by acclaimed experts of this field, this book targets students and professionals. In this text, using case studies and examples, constant effort has been made to make the understanding of the difficult concepts of crop science as easy and informative as possible, for the readers.")
@@ -1245,7 +1242,7 @@ BooksPrimaryContentInformation.where(id:18741	).last.update_attributes(book_blur
 	
 BooksPrimaryContentInformation.where(id:18742	).last.update_attributes(book_blurb:"This book discusses the selected applications of quantum mechanics with the help of in-depth information. Quantum mechanics has found vital applications in numerous distinct fields within human knowledge ever since its discovery. The unique distinction of quantum mechanics is that it plays important roles in various diverse fields like solid state physics, biotechnology, nanotechnology, nuclear physics, crystallography, atomic and molecular spectroscopy and astrophysics among others. Authors from across the globe have contributed worthy information in this book to meet the emerging needs in this area. The aim of this book is to serve as a valuable source of reference for students and researchers.")
 	
-BooksPrimaryContentInformation.where(id:18743	).last.update_attributes(book_blurb:"This book presents a detailed account on the domain of measurements in quantum chemistry. Quantum mechanics is considered as one of the most exceptional development in 20th century physics. Every successful theory is exclusively concerned about "results of measurement". In measurement, quantum mechanics perspective is a stark contrast from classical physics because in the microscopic world of quantum mechanics, a direct measurement, like in classical forms, is impossible. Hence, measurement has posed significant challenges over the period of development of quantum mechanics.  This book has been compiled by contributions from international experts and aims to clarify various interpretations about measurement in quantum mechanics.")
+BooksPrimaryContentInformation.where(id:18743	).last.update_attributes(book_blurb:"This book presents a detailed account on the domain of measurements in quantum chemistry. Quantum mechanics is considered as one of the most exceptional development in 20th century physics. Every successful theory is exclusively concerned about results of measurement. In measurement, quantum mechanics perspective is a stark contrast from classical physics because in the microscopic world of quantum mechanics, a direct measurement, like in classical forms, is impossible. Hence, measurement has posed significant challenges over the period of development of quantum mechanics.  This book has been compiled by contributions from international experts and aims to clarify various interpretations about measurement in quantum mechanics.")
 	
 BooksPrimaryContentInformation.where(id:18744	).last.update_attributes(book_blurb:"The advancement of quantum mechanics has given physics a completely new direction from that of classical physics in the early days. In fact, there is a constant development in this subject of a very fundamental nature, such as implications for the foundations of physics, physics of entanglement, geometric phases, gravity and cosmology and elementary particles as well. This book will be an important resource for researchers with respect to present topics of research in this developing area. The book addresses important subjects grouped under three sections: Classical-Quantum Correspondence, Schrödinger Equation and Path Integrals.")
 	
