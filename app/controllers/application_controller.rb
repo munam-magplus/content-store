@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_action :set_publisher_name
+  before_action :set_publisher_theme
   before_action :configure_permitted_parameters, if: :devise_controller?
   include SessionsHelper
  
@@ -17,6 +18,12 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource)
     new_user_session_path
+  end
+
+  def set_publisher_theme
+    unless request.domain == "wtbooks.com"
+      @publisher_logo =  Publisher.where(domain_name: request.domain).last.publisher_logo_file_name
+    end
   end
 
   protected
