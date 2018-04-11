@@ -5,10 +5,6 @@
       <%= favicon_link_tag "/assets/wtbooks-logo.png" %>
     <% end %>
 
-    <% if  request.host == "http://callistoreference.com" %>
-      <%= favicon_link_tag "/assets/callstore-logo.png" %>
-    <% end %>
-    
     <%= csrf_meta_tags %>
     <% if defined? @css_root %>
       <title><%= @publisher.domain_name %></title>
