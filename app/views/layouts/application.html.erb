@@ -4,6 +4,12 @@
     <% if @publisher_name == "wtbooks" %>
       <%= favicon_link_tag "/assets/wtbooks-logo.png" %>
     <% end %>
+
+    <% if  @publisher_domain == "callistoreference" %>
+      <%= favicon_link_tag "/assets/#{@publisher_logo}" %>
+    <% end %>
+
+
     <%= csrf_meta_tags %>
     <% if defined? @css_root %>
       <title><%= @publisher.domain_name %></title>
