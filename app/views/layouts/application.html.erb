@@ -3,7 +3,8 @@
   <head>
     <% if @publisher_name == "wtbooks" %>
       <%= favicon_link_tag "/assets/wtbooks-logo.png" %>
-      <%#= favicon_link_tag "/assets/#{@publisher_logo}" %>
+    <% else %>
+      <%= favicon_link_tag "/assets/#{@publisher_logo}" %>
     <% end %>
     <%= csrf_meta_tags %>
     <% if defined? @css_root %>
