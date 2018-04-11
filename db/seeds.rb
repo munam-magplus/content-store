@@ -146,9 +146,9 @@
 #Theme.create!(theme_name: "white_content", template_file_name: "white_content_logo.png", template_content_type: "image/png", template_file_size: "2085834")
 
 
-BooksContributor.create!(first_name: "Heather", last_name: "Dale", books_primary_content_information_id: 18321)
+# BooksContributor.create!(first_name: "Heather", last_name: "Dale", books_primary_content_information_id: 18321)
 
-BooksContributor.create!(first_name: "Heather", last_name: "Dale", books_primary_content_information_id: 18320)
+# BooksContributor.create!(first_name: "Heather", last_name: "Dale", books_primary_content_information_id: 18320)
 
 
 
