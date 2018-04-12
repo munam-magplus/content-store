@@ -22,7 +22,7 @@
     <div class="pagination-frontend">
       <nav aria-label="Page navigation" style="clear:both;"> 
         <%# unless @publisher.publisher_name == "theachiverspress" %>
-          <%#= will_paginate @books,renderer: BootstrapPagination::Rails %>
+          <%= @books %>
         <%# end %>
       </nav>  
     </div>
