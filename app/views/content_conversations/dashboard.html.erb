@@ -9,7 +9,7 @@
 <body>
 
  <!-- Aside Start-->
-	<%= render :partial => "layouts/sidebar"%>
+<%= render :partial => "layouts/sidebar"%>
 <!-- Aside Ends-->
   <!--Main Content Start -->
   <section class="content">
@@ -33,32 +33,100 @@
       </ol>
       <h2 class="H2-L1">Manager's Dashboard</h2>
       <div class="row m-b-30">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
           <div class="card card-min-height">
             <div class="card-header">
               Show Publishers Details
             </div>
-              <div id="chart" style="width: 1000px; height: 500px;"></div>
-              <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-              <%= javascript_tag do -%>
-                google.charts.load('current', {'packages':['bar']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                function drawChart() {
-                  var data = JSON.parse('<%= @data.to_json.html_safe -%>');
-                  data = [['Publishers name', 'publishers']].concat(data);
-                  data = google.visualization.arrayToDataTable(data);
-                  var options = {
-                    chart: {
-                      title: 'Publisher books count',
-                    }
-                  };
-                  var chart = new google.charts.Bar(document.getElementById('chart'));
-                  chart.draw(data, google.charts.Bar.convertOptions(options));
-                }
-              <% end -%>
+              
+<div id="container" style="min-width: 900px; height: 400px; margin: 0 auto"></div>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script>
+  var data = "<%=@data%>".replace(/&quot;/g,'"');
+  function getData(){
+   return JSON.parse(data);
+  }
+  Highcharts.chart('container', {
+  chart: {
+    type: 'column'
+  },
+  title: {
+    text: 'Publisher books count details'
+  },
+  subtitle: {
+    text: 'Source: <a href="http://en.wikipedia.org/wiki/List_of_cities_proper_by_population"></a>'
+  },
+  xAxis: {
+    type: 'category',
+    labels: {
+      rotation: -45,
+      style: {
+        fontSize: '13px',
+        fontFamily: 'Verdana, sans-serif'
+      }
+    }
+  },
+  yAxis: {
+    min: 0,
+    title: {
+      text: 'books (millions)'
+    }
+  },
+  legend: {
+    enabled: false
+  },
+  series: [{
+    name: 'books',
+    data: getData(),
+    dataLabels: {
+      enabled: true,
+      rotation: -90,
+      color: '#FFFFFF',
+      align: 'right',
+      format: '{point.y:.1f}', // one decimal
+      y: 10, // 10 pixels down from the top
+      style: {
+        fontSize: '13px',
+        fontFamily: 'Verdana, sans-serif'
+      }
+    }
+  }]
+});
+</script>
         </div>
         <div class="col-sm-6">
+
+
+
+
+
+
+
+
+
+        <!-- colors:['#434DF0'],
+                height:heightis,
+                fontSize:5,
+                titleFontSize:12,
+                width:widthis,
+                chartArea: {
+                    left:38,
+                    top:30,
+                    width:"65%",
+                    height:"80%"
+                },
+
+                title:heading,
+                titleColor:'#3300CC',
+                titleY:'Percentages',
+                titleX:dim1Name,
+                legend: 'none'
+
+
+            };
+ -->
+
+
 
           <!-- <div class="card">
             <div class="card-header">
@@ -87,71 +155,28 @@
         <div class="col-sm-6">
           <div class="card card-min-height">
             <div class="card-header">
-              Available Titles
+              Available Subscriptions
             </div>
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Book/Title Name</th>
-                  <th>Chapter Count</th>
-                  <th>Export</th>
+                  <th>Institution Name</th>
+                  <th>Subscription Name</th>
+                  <th>Subscription Count</th>
                 </tr>
               </thead>
               <tbody>
+                <% @institute_name.each do |f| %>
+                <%# @subscription.each do |f1| %>
                 <tr>
-                  <td>Balch/Morita: Textbook of Surgical Oncology</td>
-                  <td><a href="#">164</a></td>
-                  <td><i class="fa fa-download  font-b-icon"></i></td>
-                </tr>
-                <tr>
-                  <td>Hay - Current Diagnosis & Treatment Pediatrics</td>
-                  <td><a href="#">46</a></td>
-                  <td><i class="fa fa-download  font-b-icon"></i></td>
-                </tr>
-                <tr>
-                  <td>Kaushansky/Williams Hematology</td>
-                  <td><a href="#">139</a></td>
-                  <td><i class="fa fa-download  font-b-icon"></i></td>
-                </tr>
-                <tr>
-                  <td>OMMBID</td>
-                  <td><a href="#">308</a></td>
-                  <td><i class="fa fa-download  font-b-icon"></i></td>
-                </tr>
-                <tr>
-                  <td>Kaushansky/Williams Hematology</td>
-                  <td><a href="#">305</a></td>
-                  <td><i class="fa fa-download  font-b-icon"></i></td>
-                </tr>
-                <tr>
-                  <td>Tintinalli's Emergency Medicine Manual</td>
-                  <td><a href="#">184</a></td>
-                  <td><i class="fa fa-download  font-b-icon"></i></td>
-                </tr>
-				<tr>
-                  <td>Tintinalli's Emergency Medicine Manual</td>
-                  <td><a href="#">184</a></td>
-                  <td><i class="fa fa-download  font-b-icon"></i></td>
+                  <td><%= f.institution_name %></td>
+                  <td><%= f.subscriptions.last.subscription_name %></td>
+                  <td><%= link_to '<i class="fa fa-download  font-b-icon"></i>'.html_safe, download_quote_path(id: f.id, format: :xls) %> </td>
+                <% end %>               
+                </td>
                 </tr>
               </tbody>
             </table>
-            <div class="card-footer">
-              <a href="#" class="flat-btn pull-right">BROWSE ALL TITLES</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-header">
-              Tasks at Risk
-            </div>
-            <div id="overDueTasks" style="width: 500px; heigth:267px"></div>
-           
-           <div class="clearfix"></div>
-            <div class="card-footer">
-              <a href="#" class="flat-btn pull-right">View All Tasks</a>
-              <a href="#" data-toggle="modal" data-target="#sendReminder" class="flat-btn pull-right">Send Reminder</a>
-            </div>
           </div>
         </div>
       </div>
@@ -160,7 +185,7 @@
     <!-- ================== -->
 
    <!-- Footer Start -->
-	 <%= render :partial => "layouts/footer"%>
+<%= render :partial => "layouts/footer"%>
 <!-- Footer Ends -->
   </section>
  

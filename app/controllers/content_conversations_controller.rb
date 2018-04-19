@@ -1,5 +1,6 @@
 class ContentConversationsController < ApplicationController
     before_action :authenticate_user!
+    require "csv"
 
     def download_books
 	  send_file(
@@ -42,14 +43,28 @@ class ContentConversationsController < ApplicationController
 	end
 
 	def dashboard
-		publisher = Publisher.pluck(:publisher_name)
+		publisher = Publisher.pluck(:publisher_name).last(12)
+	  publisher1 = []
+	  	publisher.each do |key|
+			publisher1 << key
+		end
 		temp = []
 		publisher.each do |pub|
 			temp << Publisher.where(publisher_name: pub).last.books_primary_content_informations.count
 		end
-		@data = publisher.zip(temp)
+		@data = publisher1.zip(temp).reverse.to_json
+		@institute_name = InstitutionAccount.all
 	end
 
-  def index
-  end
+
+	def show
+		@institute_id = InstitutionAccount.where(id: params[:id]) 
+		@institute_name = @institute_id.last.institution_name
+		@subscription_name =  @institute_id.last.subscriptions.last.subscription_name
+		@subscription_count = @institute_id.last.subscriptions.last.books_primary_content_informations.count
+		@isbn = @institute_id.last.subscriptions.last.books_primary_content_informations
+		respond_to do |format|
+  		format.xls { render template: 'content_conversations/download_quotes.xls' }
+		end
+	end
 end

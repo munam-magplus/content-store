@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   get 'index_contents/publisher_code'
 
+  get '/download_quote/:id', to: 'content_conversations#show', as: 'download_quote'
+
   get 'my_accounts/index'
 
   get    '/login',   to: 'sessions#new'

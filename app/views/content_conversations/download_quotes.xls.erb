@@ -1,0 +1,45 @@
+  <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8'>
+      <title>XML To HTML using codebeautify.org</title>
+    </head>
+    <body>
+      <table border=1>
+        <thead>
+          <tr>
+            <th>Institute name</th>
+            <th><%= @institute_name %></th>
+          </tr>
+           <tr>
+            <th>subscription name</th>
+            <th><%= @subscription_name %></th>
+          </tr>
+          <tr>
+            <th>Books subscribed</th>
+            <th><%= @subscription_count %></th>
+          </tr>
+
+          <tr>
+            <th>Subscription_details</th>
+            <th></th>
+          </tr>
+          <tr>
+            <th>sn</th>
+            <th>ISBN</th>
+            <th>Book Name</th>
+          </tr>
+        </thead>
+        <tbody>
+        <%= @isbn.each_with_index do |key, val| %>
+        <tr>
+          <td><%=val + 1%></td>
+          <td><%=key.isbn%></td>
+          <td><%=key.book_title%></td>
+        </tr>
+      <% end %>
+        </tbody>
+        
+      </table>
+    </body>
+  </html>
